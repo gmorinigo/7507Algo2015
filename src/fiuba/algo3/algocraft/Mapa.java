@@ -2,14 +2,14 @@ package fiuba.algo3.algocraft;
 
 import java.util.ArrayList;
 
-public class CampoDeBatalla {
+public class Mapa {
 
-	private static CampoDeBatalla INSTANCE = null; 
+	private static Mapa INSTANCE = null; 
 	private Celda[][] matriz;
 	private ArrayList<Recursos> recursos;
 
 	
-	public CampoDeBatalla(){
+	public Mapa(){
 		Celda unaMatriz[][] = new Celda[25][25];
 		for(int i = 0; i < 25 ; i++){
 			for(int j = 0; j < 25 ; j++){
@@ -21,8 +21,8 @@ public class CampoDeBatalla {
 		recursos = new ArrayList<Recursos>();
 	}
 
-	public synchronized static CampoDeBatalla getInstance() {
-		if (INSTANCE == null) INSTANCE = new CampoDeBatalla();
+	public synchronized static Mapa getInstance() {
+		if (INSTANCE == null) INSTANCE = new Mapa();
 	return INSTANCE;
 	}
 
