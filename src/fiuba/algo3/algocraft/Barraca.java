@@ -1,6 +1,6 @@
 package fiuba.algo3.algocraft;
 
-public class Barraca extends Construccion{
+public class Barraca extends Construccion implements TurnoObserver{
 	
 	private int tamanio = 2;
 	
@@ -10,11 +10,16 @@ public class Barraca extends Construccion{
 
 	@Override
 	public boolean estaTerminada() {
-		if ((turno.dameTurno() - turnoInicial) == 12){
-			construcciones.add(celda);
-			return true;
-		};
-		return false;
+		return this.estaOperativa;
+	}
+
+	@Override
+	public void finDeTurnos() {
+		this.terminarConstruccion();
+	}
+
+	private void terminarConstruccion() {
+		this.estaOperativa = true;
 	}
 
 }

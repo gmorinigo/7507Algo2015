@@ -2,29 +2,28 @@ package fiuba.algo3.algocraft;
 
 import java.util.ArrayList;
 
-public abstract class Construccion {
+public abstract class Construccion implements TurnoObserver{
 
-	protected int turnoInicial;
-	protected Turno turno;
-	protected ArrayList<Celda> construcciones;
+	protected ArrayList<Celda> celdas;
 	protected Celda celda;
+	protected boolean estaOperativa;
 	
 	
 	public Construccion(Posicion unaPosicion) {
 		Celda unaCelda = new Celda(unaPosicion.dameFila(),unaPosicion.dameColumna());
-		construcciones = new ArrayList<Celda>();
+		this.celdas = new ArrayList<Celda>();
 		celda = unaCelda;
+		this.estaOperativa = false;
 	}
 
 	public abstract boolean estaTerminada();
 
 	public void crearEstructura(Turno unTurno) {
-		turnoInicial = unTurno.dameTurno();
-		turno = unTurno;
+		unTurno.setObserver(this);
 	}
 	
-	public ArrayList<Celda> dameConstrucciones(){
-		return construcciones;
+	public ArrayList<Celda> dameCeldas(){
+		return celdas;
 	}
 
 }

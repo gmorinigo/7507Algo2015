@@ -19,7 +19,7 @@ public class MarineTest extends TestCase {
 		Posicion posicion123 = new Posicion(12,3);
 		Barraca unaBarraca = new Barraca(posicion123);
 		Unidades unMarine = new Marine(); 
-		Turno unTurno = new Turno();
+		Turno unTurno = new Turno(12);
 		unaBarraca.crearEstructura(unTurno);
 		unTurno.aumentarTurno();
 		unTurno.aumentarTurno();

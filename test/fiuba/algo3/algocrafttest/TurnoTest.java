@@ -6,12 +6,12 @@ import junit.framework.TestCase;
 public class TurnoTest extends TestCase {
 	
 	public void testCrearUnTurnoEsElPrimero(){
-		Turno unTurno = new Turno();
+		Turno unTurno = new Turno(10);
 		assertTrue(unTurno.dameTurno() == 1);
 	}
 	
 	public void testAumentarUnTurnoAumentaElTurno(){
-		Turno unTurno = new Turno();
+		Turno unTurno = new Turno(10);
 		unTurno.aumentarTurno();
 		assertTrue(unTurno.dameTurno() == 2);
 	}
