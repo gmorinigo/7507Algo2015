@@ -2,14 +2,14 @@ package fiuba.algo3.algocraft;
 
 import java.util.ArrayList;
 
-public abstract class Unidades implements TurnoObserver{
+public abstract class Unidad implements TurnoObserver{
 
 	protected int turnoInicial;
 	protected ArrayList<Celda> unidades;
 	protected Celda celda; 
 	protected boolean estaOperativo;
 	
-	public Unidades(){
+	public Unidad(){
 		unidades = new ArrayList<Celda>();
 		this.estaOperativo = false;
 	}

@@ -1,7 +1,7 @@
 package fiuba.algo3.algocraft;
 
 
-public class Marine extends Unidades {
+public class Marine extends Unidad {
 
 
 	public boolean estaTerminado() {

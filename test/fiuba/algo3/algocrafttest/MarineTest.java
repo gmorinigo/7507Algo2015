@@ -4,7 +4,7 @@ import fiuba.algo3.algocraft.Barraca;
 import fiuba.algo3.algocraft.Marine;
 import fiuba.algo3.algocraft.Posicion;
 import fiuba.algo3.algocraft.Turno;
-import fiuba.algo3.algocraft.Unidades;
+import fiuba.algo3.algocraft.Unidad;
 import junit.framework.TestCase;
 
 public class MarineTest extends TestCase {
@@ -12,13 +12,13 @@ public class MarineTest extends TestCase {
 	public void testCrearMarine(){
 		Posicion posicion35 = new Posicion(3,5);
 		Barraca unaBarraca = new Barraca(posicion35);
-		Unidades unMarine = new Marine();
+		Unidad unMarine = new Marine();
 		assertNotNull(unMarine);
 	}
 	public void testCrearMarineSeCreaCuandoUnaBarracaEstaFinalizada(){
 		Posicion posicion123 = new Posicion(12,3);
 		Barraca unaBarraca = new Barraca(posicion123);
-		Unidades unMarine = new Marine(); 
+		Unidad unMarine = new Marine(); 
 		Turno unTurno = new Turno(12);
 		Turno turnoParaUnidad = new Turno(3);
 		unaBarraca.crearEstructura(unTurno);

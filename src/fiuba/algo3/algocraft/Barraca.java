@@ -21,5 +21,9 @@ public class Barraca extends Construccion implements TurnoObserver{
 	private void terminarConstruccion() {
 		this.estaOperativa = true;
 	}
+	
+	public Unidad crearMarine() {
+		return null;
+	}
 
 }
