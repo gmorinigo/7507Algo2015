@@ -20,6 +20,7 @@ public class MarineTest extends TestCase {
 		Barraca unaBarraca = new Barraca(posicion123);
 		Unidades unMarine = new Marine(); 
 		Turno unTurno = new Turno(12);
+		Turno turnoParaUnidad = new Turno(3);
 		unaBarraca.crearEstructura(unTurno);
 		unTurno.aumentarTurno();
 		unTurno.aumentarTurno();
@@ -35,11 +36,11 @@ public class MarineTest extends TestCase {
 		unTurno.aumentarTurno();
 		unTurno.aumentarTurno();
 		assertTrue(unMarine.estaListoParaCrearse());
-		unMarine.crearUnidad(unTurno);
+		unMarine.crearUnidad(turnoParaUnidad);
 		assertFalse(unMarine.estaTerminado());
-		unTurno.aumentarTurno();
-		unTurno.aumentarTurno();
-		unTurno.aumentarTurno();
+		turnoParaUnidad.aumentarTurno();
+		turnoParaUnidad.aumentarTurno();
+		turnoParaUnidad.aumentarTurno();
 		assertTrue(unMarine.estaTerminado());
 	}
 }
