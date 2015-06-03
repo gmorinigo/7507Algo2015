@@ -18,9 +18,9 @@ public class MarineTest extends TestCase {
 	public void testCrearMarineSeCreaCuandoUnaBarracaEstaFinalizada(){
 		Posicion posicion123 = new Posicion(12,3);
 		Barraca unaBarraca = new Barraca(posicion123);
-		Marine unMarine = new Marine(); 
+		Unidades unMarine = new Marine(); 
 		Turno unTurno = new Turno();
-		unaBarraca.agregarTurno(unTurno);
+		unaBarraca.crearEstructura(unTurno);
 		unTurno.aumentarTurno();
 		unTurno.aumentarTurno();
 		unTurno.aumentarTurno();
@@ -35,7 +35,7 @@ public class MarineTest extends TestCase {
 		unTurno.aumentarTurno();
 		unTurno.aumentarTurno();
 		assertTrue(unMarine.estaListoParaCrearse());
-		unMarine.crearMarine();
+		unMarine.crearUnidad(unTurno);
 		assertFalse(unMarine.estaTerminado());
 		unTurno.aumentarTurno();
 		unTurno.aumentarTurno();

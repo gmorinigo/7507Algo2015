@@ -18,7 +18,7 @@ public class BarracaTest extends TestCase {
 		Posicion posicion14 = new Posicion(1,4);
 		Construcciones unaBarraca = new Barraca(posicion14);
 		Turno unTurno = new Turno();
-		unaBarraca.agregarTurno(unTurno);
+		unaBarraca.crearEstructura(unTurno);
 		assertFalse(unaBarraca.estaTerminada());
 		unTurno.aumentarTurno();
 		unTurno.aumentarTurno();
