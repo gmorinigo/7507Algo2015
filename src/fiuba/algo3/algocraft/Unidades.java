@@ -8,7 +8,7 @@ public abstract class Unidades {
 	protected Turno turno;
 	protected ArrayList<Celda> unidades;
 	protected Celda celda; 
-	protected Construcciones construcciones;
+	protected Construccion construcciones;
 	
 	public Unidades(){
 		unidades = new ArrayList<Celda>();

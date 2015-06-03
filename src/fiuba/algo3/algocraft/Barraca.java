@@ -1,6 +1,6 @@
 package fiuba.algo3.algocraft;
 
-public class Barraca extends Construcciones{
+public class Barraca extends Construccion{
 	
 	private int tamanio = 2;
 	

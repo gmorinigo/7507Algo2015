@@ -2,7 +2,7 @@ package fiuba.algo3.algocraft;
 
 import java.util.ArrayList;
 
-public abstract class Construcciones {
+public abstract class Construccion {
 
 	protected int turnoInicial;
 	protected Turno turno;
@@ -10,7 +10,7 @@ public abstract class Construcciones {
 	protected Celda celda;
 	
 	
-	public Construcciones(Posicion unaPosicion) {
+	public Construccion(Posicion unaPosicion) {
 		Celda unaCelda = new Celda(unaPosicion.dameFila(),unaPosicion.dameColumna());
 		construcciones = new ArrayList<Celda>();
 		celda = unaCelda;
