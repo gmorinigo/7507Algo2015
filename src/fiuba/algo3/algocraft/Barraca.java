@@ -6,10 +6,12 @@ public class Barraca extends Construccion implements TurnoObserver{
 	
 	private int tamanio = 2;
 	protected ArrayList<Unidad> unidadesEnProceso;
+	protected ArrayList<Unidad> unidadesFinalizadas;
 	
 	public Barraca(Posicion unaPosicion){
 		super(unaPosicion);
 		this.unidadesEnProceso = new ArrayList<Unidad>();
+		this.unidadesFinalizadas = new ArrayList<Unidad>();
 	}
 
 	@Override
@@ -43,6 +45,13 @@ public class Barraca extends Construccion implements TurnoObserver{
 
 	public void finalizarUnidad(Unidad unidad) {
 		this.unidadesEnProceso.remove(unidad);
+		this.unidadesFinalizadas.add(unidad);
+	}
+
+	public Unidad dameUnidad() {
+		Unidad unidad = this.unidadesFinalizadas.get(this.unidadesFinalizadas.size()-1);
+		this.unidadesFinalizadas.remove(unidad);
+		return unidad;
 	}
 
 }

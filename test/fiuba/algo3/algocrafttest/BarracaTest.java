@@ -4,6 +4,7 @@ import fiuba.algo3.algocraft.Barraca;
 import fiuba.algo3.algocraft.Construccion;
 import fiuba.algo3.algocraft.Posicion;
 import fiuba.algo3.algocraft.Turno;
+import fiuba.algo3.algocraft.Unidad;
 import junit.framework.TestCase;
 
 public class BarracaTest extends TestCase {
@@ -60,5 +61,9 @@ public class BarracaTest extends TestCase {
 		turnoParaUnidad.aumentarTurno();
 		turnoParaUnidad.aumentarTurno();
 		assertFalse(unaBarraca.estaTrabajando());
+		
+		Unidad unidad = unaBarraca.dameUnidad();
+		assertTrue(unidad.estaTerminado());
+		
 	}
 }
