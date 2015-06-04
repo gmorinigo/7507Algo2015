@@ -22,6 +22,16 @@ public class CentroDeMineral extends Construccion{
 		almacen.almacenarRecurso(10);
 	}
 
+	@Override
+	public int costoGas() {
+		return 0;
+	}
+
+	@Override
+	public int costoMineral() {
+		return 100;
+	}
+
 
 
 

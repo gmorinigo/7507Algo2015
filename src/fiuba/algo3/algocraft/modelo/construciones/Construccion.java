@@ -40,16 +40,18 @@ public abstract class Construccion implements TurnoObserver{
 	
 
 	public void crearEstructura(Turno unTurno) throws CeldaOcupadaException, NoReuneLosRequisitosException{
-		unTurno.setObserver(this);
 		if( ! this.reuneLosRequisitos(this.jugador)) {
 			throw new NoReuneLosRequisitosException();
 		}
 		
+		unTurno.setObserver(this);
 		Mapa.getInstance().agregarConstruccion(this);
 		this.jugador.agregarConstruccion(this);
 	}
 	
 	abstract public boolean reuneLosRequisitos(Jugador jugador);
+	abstract public int costoGas();
+	abstract public int costoMineral();
 
 
 	public ArrayList<Celda> dameCeldas(){

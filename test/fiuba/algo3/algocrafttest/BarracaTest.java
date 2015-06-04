@@ -1,5 +1,6 @@
 package fiuba.algo3.algocrafttest;
 
+import fiuba.algo3.algocraft.modelo.Almacen;
 import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.Raza;
 import fiuba.algo3.algocraft.modelo.construciones.Barraca;
@@ -12,6 +13,7 @@ import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 import junit.framework.TestCase;
 
 public class BarracaTest extends TestCase {
+	
 
 	public void testCrearUnaBarraca(){
 		Posicion posicion64 = new Posicion(6,4);
@@ -73,5 +75,22 @@ public class BarracaTest extends TestCase {
 		Unidad unidad = unaBarraca.dameUnidad();
 		assertTrue(unidad.estaTerminado());
 		
+	}
+	
+	public void testNoSePuedeCrearSinSuficientesRecursos() throws CeldaOcupadaException {
+		Posicion posicion123 = new Posicion(12,3);
+		Almacen gas = new Almacen(0);
+		Almacen mineral = new Almacen(0);
+		
+		Jugador jugador = new Jugador(new Raza(),mineral, gas);
+		Barraca unaBarraca = new Barraca(posicion123, jugador);
+		Turno unTurno = new Turno(12);
+	
+		try {
+			unaBarraca.crearEstructura(unTurno);
+			fail("Deberia lanzar Exception");
+		} catch (NoReuneLosRequisitosException e) {
+			
+		}
 	}
 }

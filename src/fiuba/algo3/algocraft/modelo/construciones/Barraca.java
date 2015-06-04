@@ -2,6 +2,7 @@ package fiuba.algo3.algocraft.modelo.construciones;
 
 import java.util.ArrayList;
 
+import fiuba.algo3.algocraft.modelo.Almacen;
 import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.turnos.Turno;
@@ -47,7 +48,23 @@ public class Barraca extends Construccion {
 
 	@Override
 	public boolean reuneLosRequisitos(Jugador jugador) {
+		Almacen almacenGas = jugador.dameAlmacenGas();
+		try {
+			almacenGas.consumirRecurso(this.costoMineral());	
+		} catch (Exception e) {
+			return false;
+		}
 		return true;
+	}
+
+	@Override
+	public int costoGas() {
+		return 0;
+	}
+
+	@Override
+	public int costoMineral() {
+		return 150;
 	}
 
 }
