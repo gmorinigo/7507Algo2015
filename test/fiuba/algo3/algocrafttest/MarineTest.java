@@ -18,7 +18,7 @@ public class MarineTest extends TestCase {
 		Unidad unMarine = new Marine((Barraca)unaBarraca);
 		assertNotNull(unMarine);
 	}
-	public void testCrearMarineAlPasar3TurnosEstaCreadaEstaFinalizada(){
+	public void testCrearMarineAlPasar3TurnosEstaFinalizada(){
 		Posicion posicion64 = new Posicion(6,4);
 		Construccion unaBarraca = new Barraca(posicion64);
 		unaBarraca.terminarConstruccion();
