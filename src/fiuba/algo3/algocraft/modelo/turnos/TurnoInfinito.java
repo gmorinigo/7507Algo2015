@@ -1,4 +1,5 @@
-package fiuba.algo3.algocraft;
+package fiuba.algo3.algocraft.modelo.turnos;
+
 
 public class TurnoInfinito extends Turno{
 

@@ -1,6 +1,11 @@
-package fiuba.algo3.algocraft;
+package fiuba.algo3.algocraft.modelo.construciones;
 
 import java.util.ArrayList;
+
+import fiuba.algo3.algocraft.modelo.mapa.Posicion;
+import fiuba.algo3.algocraft.modelo.turnos.Turno;
+import fiuba.algo3.algocraft.modelo.unidades.Marine;
+import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 
 public class Barraca extends Construccion {
 	

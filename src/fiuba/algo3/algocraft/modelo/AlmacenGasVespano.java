@@ -1,4 +1,4 @@
-package fiuba.algo3.algocraft;
+package fiuba.algo3.algocraft.modelo;
 
 public class AlmacenGasVespano {
 	

@@ -1,4 +1,7 @@
-package fiuba.algo3.algocraft;
+package fiuba.algo3.algocraft.modelo.construciones;
+
+import fiuba.algo3.algocraft.modelo.AlmacenGasVespano;
+import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 
 public class Refineria extends Construccion{
 	

@@ -1,6 +1,9 @@
-package fiuba.algo3.algocraft;
+package fiuba.algo3.algocraft.modelo.recursos;
 
 import java.util.ArrayList;
+
+import fiuba.algo3.algocraft.modelo.mapa.Celda;
+import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 
 public class Recurso {
 

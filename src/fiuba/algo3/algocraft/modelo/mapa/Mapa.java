@@ -1,7 +1,9 @@
-package fiuba.algo3.algocraft;
+package fiuba.algo3.algocraft.modelo.mapa;
 
 import java.util.ArrayList;
-
+import fiuba.algo3.algocraft.modelo.construciones.Construccion;
+import fiuba.algo3.algocraft.modelo.excepciones.CeldaOcupadaException;
+import fiuba.algo3.algocraft.modelo.recursos.Recurso;
 
 public class Mapa {
 

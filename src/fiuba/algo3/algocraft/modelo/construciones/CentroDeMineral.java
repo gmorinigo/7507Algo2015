@@ -1,4 +1,7 @@
-package fiuba.algo3.algocraft;
+package fiuba.algo3.algocraft.modelo.construciones;
+
+import fiuba.algo3.algocraft.modelo.mapa.Posicion;
+import fiuba.algo3.algocraft.modelo.turnos.TurnoObserver;
 
 public class CentroDeMineral extends Construccion implements TurnoObserver{
 	
