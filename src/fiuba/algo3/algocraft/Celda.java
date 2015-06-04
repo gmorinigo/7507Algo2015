@@ -4,12 +4,14 @@ public class Celda {
 	private Posicion posicion;
 	private boolean tieneGas;
 	private boolean tieneMineral;
+	private boolean estaOcupada;
 	
 	public Celda(int fila, int columna) {
 		Posicion unaPosicion = new Posicion(fila,columna);
-		posicion = unaPosicion;
+		this.posicion = unaPosicion;
 		tieneGas = false; 
 		tieneMineral = false;
+		estaOcupada = false;
 	}
 
 	public void cargarCeldaConGas(){
@@ -26,6 +28,22 @@ public class Celda {
 	
 	public boolean celdaTieneMineral(){
 		return this.tieneMineral;  
+	}
+	
+	public Posicion obtenerPosicion(){
+		return this.posicion;  
+	}
+	
+	public boolean celdaOcupada(){
+		return (this.estaOcupada);  
+	}
+	
+	public void ocuparCelda(){
+		this.estaOcupada = true;  
+	}
+
+	public void desocuparCelda(){
+		this.estaOcupada = false;  
 	}
 	
 }

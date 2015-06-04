@@ -3,10 +3,10 @@ package fiuba.algo3.algocrafttest;
 import org.junit.Test;
 
 import fiuba.algo3.algocraft.Celda;
-import fiuba.algo3.algocraft.GasVespano;
+//import fiuba.algo3.algocraft.GasVespano;
 import fiuba.algo3.algocraft.Mapa;
 import fiuba.algo3.algocraft.Posicion;
-import fiuba.algo3.algocraft.Recurso;
+//import fiuba.algo3.algocraft.Recurso;
 
 public class RecoleccionTest{
 	@Test

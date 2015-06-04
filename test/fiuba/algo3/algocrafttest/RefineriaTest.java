@@ -5,6 +5,7 @@ import fiuba.algo3.algocraft.Construccion;
 import fiuba.algo3.algocraft.Posicion;
 import fiuba.algo3.algocraft.Refineria;
 import fiuba.algo3.algocraft.Turno;
+import fiuba.algo3.algocraftexceptions.CeldaOcupadaException;
 import junit.framework.TestCase;
 
 public class RefineriaTest extends TestCase {
@@ -19,7 +20,10 @@ public class RefineriaTest extends TestCase {
 		Posicion posicion14 = new Posicion(1,4);
 		Construccion refineria = new Refineria(posicion14);
 		Turno unTurno = new Turno(8);
-		refineria.crearEstructura(unTurno);
+		try {
+			refineria.crearEstructura(unTurno);
+		} catch (CeldaOcupadaException e) {
+		}
 		assertFalse(refineria.estaTerminada());
 		unTurno.aumentarTurno();
 		unTurno.aumentarTurno();
@@ -37,7 +41,10 @@ public class RefineriaTest extends TestCase {
 		Posicion posicion14 = new Posicion(1,4);
 		Refineria refineria = new Refineria(posicion14);
 		Turno unTurno = new Turno(8);
-		refineria.crearEstructura(unTurno);
+		try {
+			refineria.crearEstructura(unTurno);
+		} catch (CeldaOcupadaException e) {
+		}
 		assertFalse(refineria.estaTerminada());
 		unTurno.aumentarTurno();
 		unTurno.aumentarTurno();

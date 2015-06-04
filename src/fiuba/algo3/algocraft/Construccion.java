@@ -2,15 +2,19 @@ package fiuba.algo3.algocraft;
 
 import java.util.ArrayList;
 
+import fiuba.algo3.algocraftexceptions.CeldaOcupadaException;
+
 public abstract class Construccion implements TurnoObserver{
 
 	protected ArrayList<Celda> celdas;
 	protected boolean estaOperativa;
+	protected Celda celdaSupIzquierda;
 	
 	
 	public Construccion(Posicion unaPosicion) {
 		this.celdas = new ArrayList<Celda>();
 		this.estaOperativa = false;
+		this.celdaSupIzquierda = new Celda(unaPosicion.dameFila(),unaPosicion.dameColumna());
 	}
 
 	
@@ -27,13 +31,17 @@ public abstract class Construccion implements TurnoObserver{
 	}
 	
 
-	public void crearEstructura(Turno unTurno) {
+	public void crearEstructura(Turno unTurno) throws CeldaOcupadaException{
 		unTurno.setObserver(this);
 		Mapa.getInstance().agregarConstruccion(this);
 	}
 	
 	public ArrayList<Celda> dameCeldas(){
 		return celdas;
+	}
+	
+	public Celda dameCeldaSupIzquierda(){
+		return this.celdaSupIzquierda;
 	}
 	
 	public void agregarCeldas(ArrayList<Celda> celdas) {

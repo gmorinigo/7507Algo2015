@@ -5,6 +5,7 @@ import fiuba.algo3.algocraft.Construccion;
 import fiuba.algo3.algocraft.Posicion;
 import fiuba.algo3.algocraft.Turno;
 import fiuba.algo3.algocraft.Unidad;
+import fiuba.algo3.algocraftexceptions.CeldaOcupadaException;
 import junit.framework.TestCase;
 
 public class BarracaTest extends TestCase {
@@ -19,7 +20,10 @@ public class BarracaTest extends TestCase {
 		Posicion posicion14 = new Posicion(1,4);
 		Construccion unaBarraca = new Barraca(posicion14);
 		Turno unTurno = new Turno(12);
-		unaBarraca.crearEstructura(unTurno);
+		try {
+			unaBarraca.crearEstructura(unTurno);
+		} catch (CeldaOcupadaException e) {
+		}
 		assertFalse(unaBarraca.estaTerminada());
 		unTurno.aumentarTurno();
 		unTurno.aumentarTurno();
@@ -41,7 +45,10 @@ public class BarracaTest extends TestCase {
 		Posicion posicion123 = new Posicion(12,3);
 		Barraca unaBarraca = new Barraca(posicion123);
 		Turno unTurno = new Turno(12);
-		unaBarraca.crearEstructura(unTurno);
+		try {
+			unaBarraca.crearEstructura(unTurno);
+		} catch (CeldaOcupadaException e) {
+		}
 		unTurno.aumentarTurno();
 		unTurno.aumentarTurno();
 		unTurno.aumentarTurno();

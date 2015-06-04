@@ -1,10 +1,12 @@
 package fiuba.algo3.algocrafttest;
 
+import fiuba.algo3.algocraft.Barraca;
 import fiuba.algo3.algocraft.Mapa;
 import fiuba.algo3.algocraft.GasVespano;
 import fiuba.algo3.algocraft.Mineral;
 import fiuba.algo3.algocraft.Posicion;
 import fiuba.algo3.algocraft.Recurso;
+import fiuba.algo3.algocraftexceptions.CeldaOcupadaException;
 import junit.framework.TestCase;
 
 public class MapaTest extends TestCase {
@@ -41,4 +43,40 @@ public class MapaTest extends TestCase {
 		assertTrue(unMapa.dameRecursos().contains(unGasVespano));
 		assertTrue(unMapa.dameRecursos().contains(unMineral));
 	}
+	
+	public void testAgregarUnaConstruccionAlMapa(){
+		Posicion posicion55 = new Posicion(5,5);
+		Mapa unMapa = Mapa.getInstance();
+		Barraca unaBarraca = new Barraca(posicion55);
+		
+		try {
+			System.out.print("Va a agrega la barraca\n");
+			unMapa.agregarConstruccion(unaBarraca);
+		} catch (CeldaOcupadaException e) {
+			System.out.print("Excepcion!!\n");
+		}
+
+		assertTrue(unMapa.dameConstrucciones().contains(unaBarraca));
+	}
+
+	public void testAgregarUnaConstruccionAlMapaYVerificarLasCeldasOcupadas(){
+		Posicion posicion88 = new Posicion(8,8);
+		Posicion posicion89 = new Posicion(8,9);
+		Posicion posicion98 = new Posicion(9,8);
+		Posicion posicion99 = new Posicion(9,9);
+		Mapa unMapa = Mapa.getInstance();
+		Barraca unaBarraca = new Barraca(posicion88);
+		
+		try {
+			unMapa.agregarConstruccion(unaBarraca);
+		} catch (CeldaOcupadaException e) {
+		}
+		
+		assertTrue(unMapa.verificarCeldaOcupada(posicion88));
+		assertTrue(unMapa.verificarCeldaOcupada(posicion89));
+		assertTrue(unMapa.verificarCeldaOcupada(posicion98));
+		assertTrue(unMapa.verificarCeldaOcupada(posicion99));
+	}
+
 }
+

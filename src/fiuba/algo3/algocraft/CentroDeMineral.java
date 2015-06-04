@@ -2,7 +2,7 @@ package fiuba.algo3.algocraft;
 
 public class CentroDeMineral extends Construccion implements TurnoObserver{
 	
-	private int tamanio = 2;
+	//private int tamanio = 2;
 
 	
 	public CentroDeMineral(Posicion unaPosicion){

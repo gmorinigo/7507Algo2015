@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Barraca extends Construccion {
 	
-	private int tamanio = 2;
+	//private int tamanio = 2;
 	protected ArrayList<Unidad> unidadesEnProceso;
 	protected ArrayList<Unidad> unidadesFinalizadas;
 	
