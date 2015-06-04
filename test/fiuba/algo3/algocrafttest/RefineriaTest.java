@@ -14,13 +14,13 @@ public class RefineriaTest extends TestBase {
 
 	public void testCrearUnaRefineria(){
 		Posicion posicion64 = new Posicion(6,4);
-		Construccion refineria = new Refineria(posicion64, new Jugador(new Raza()));
+		Construccion refineria = new Refineria(posicion64, new Jugador("unNombre",new Raza()));
 		assertNotNull(refineria);
 	}
 	
 	public void testCrearUnaRefineriaAl12TurnosEstaCreada() throws CeldaOcupadaException, NoReuneLosRequisitosException{
 		Posicion posicion14 = new Posicion(1,4);
-		Construccion refineria = new Refineria(posicion14, new Jugador(new Raza()));
+		Construccion refineria = new Refineria(posicion14, new Jugador("unNombre",new Raza()));
 		Turno unTurno = new Turno(8);
 	
 		refineria.crearEstructura(unTurno);
@@ -40,7 +40,7 @@ public class RefineriaTest extends TestBase {
 	
 	public void testComanzarARecolectar() throws CeldaOcupadaException, NoReuneLosRequisitosException {
 		Posicion posicion14 = new Posicion(1,4);
-		Refineria refineria = new Refineria(posicion14, new Jugador(new Raza()));
+		Refineria refineria = new Refineria(posicion14, new Jugador("unNombre",new Raza()));
 		Turno unTurno = new Turno(8);
 		
 		refineria.crearEstructura(unTurno);

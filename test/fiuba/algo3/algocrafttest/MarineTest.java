@@ -13,7 +13,7 @@ public class MarineTest extends TestBase {
 	
 	public void testCrearMarine(){
 		Posicion posicion64 = new Posicion(6,4);
-		Construccion unaBarraca = new Barraca(posicion64, new Jugador(new Raza()));
+		Construccion unaBarraca = new Barraca(posicion64, new Jugador("unNombre",new Raza()));
 		unaBarraca.terminarConstruccion();
 		
 		Unidad unMarine = new Marine((Barraca)unaBarraca);
@@ -21,7 +21,7 @@ public class MarineTest extends TestBase {
 	}
 	public void testCrearMarineAlPasar3TurnosEstaFinalizada(){
 		Posicion posicion64 = new Posicion(6,4);
-		Construccion unaBarraca = new Barraca(posicion64, new Jugador(new Raza()));
+		Construccion unaBarraca = new Barraca(posicion64, new Jugador("unNombre",new Raza()));
 		unaBarraca.terminarConstruccion();
 		
 		Unidad unMarine = new Marine((Barraca)unaBarraca); 

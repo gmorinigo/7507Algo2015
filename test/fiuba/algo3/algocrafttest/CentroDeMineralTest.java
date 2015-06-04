@@ -14,13 +14,13 @@ public class CentroDeMineralTest extends TestBase {
 
 	public void testCrearUnCentroMineral(){
 		Posicion posicion64 = new Posicion(6,4);
-		Construccion centroMineral = new CentroDeMineral(posicion64, new Jugador(new Raza()));
+		Construccion centroMineral = new CentroDeMineral(posicion64, new Jugador("unNombre",new Raza()));
 		assertNotNull(centroMineral);
 	}
 	
 	public void testCrearUnCentroMineralAl8TurnosEstaCreada() throws CeldaOcupadaException, NoReuneLosRequisitosException{
 		Posicion posicion14 = new Posicion(1,4);
-		Construccion centroMineral = new CentroDeMineral(posicion14, new Jugador(new Raza()));
+		Construccion centroMineral = new CentroDeMineral(posicion14, new Jugador("unNombre",new Raza()));
 		Turno unTurno = new Turno(8);
 	
 		centroMineral.crearEstructura(unTurno);
@@ -40,7 +40,7 @@ public class CentroDeMineralTest extends TestBase {
 	
 	public void testComanzarARecolectar() throws CeldaOcupadaException, NoReuneLosRequisitosException {
 		Posicion posicion14 = new Posicion(1,4);
-		CentroDeMineral centroMineral = new CentroDeMineral(posicion14, new Jugador(new Raza()));
+		CentroDeMineral centroMineral = new CentroDeMineral(posicion14, new Jugador("unNombre",new Raza()));
 		Turno unTurno = new Turno(8);
 		
 		centroMineral.crearEstructura(unTurno);

@@ -51,7 +51,7 @@ public class MapaTest extends TestBase {
 	public void testAgregarUnaConstruccionAlMapa(){
 		Posicion posicion55 = new Posicion(5,5);
 		Mapa unMapa = Mapa.getInstance();
-		Barraca unaBarraca = new Barraca(posicion55, new Jugador(new Raza()));
+		Barraca unaBarraca = new Barraca(posicion55, new Jugador("unNombre",new Raza()));
 		
 		try {
 			unMapa.agregarConstruccion(unaBarraca);
@@ -67,7 +67,7 @@ public class MapaTest extends TestBase {
 		Posicion posicion98 = new Posicion(9,8);
 		Posicion posicion99 = new Posicion(9,9);
 		Mapa unMapa = Mapa.getInstance();
-		Barraca unaBarraca = new Barraca(posicion88, new Jugador(new Raza()));
+		Barraca unaBarraca = new Barraca(posicion88, new Jugador("unNombre",new Raza()));
 		
 		try {
 			unMapa.agregarConstruccion(unaBarraca);
@@ -86,7 +86,7 @@ public class MapaTest extends TestBase {
 		Posicion posicion32 = new Posicion(3,2);
 		Posicion posicion33 = new Posicion(3,3);
 		Mapa unMapa = Mapa.getInstance();
-		Barraca unaBarraca = new Barraca(posicion22, new Jugador(new Raza()));
+		Barraca unaBarraca = new Barraca(posicion22, new Jugador("unNombre",new Raza()));
 		
 		try {
 			unMapa.agregarConstruccion(unaBarraca);

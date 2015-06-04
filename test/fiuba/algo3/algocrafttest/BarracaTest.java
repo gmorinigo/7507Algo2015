@@ -16,13 +16,13 @@ public class BarracaTest extends TestBase {
 
 	public void testCrearUnaBarraca(){
 		Posicion posicion64 = new Posicion(6,4);
-		Construccion unaBarraca = new Barraca(posicion64, new Jugador(new Raza()));
+		Construccion unaBarraca = new Barraca(posicion64, new Jugador("unNombre",new Raza()));
 		assertNotNull(unaBarraca);
 	}
 	
 	public void testCrearUnaBarracaAlPasar12TurnosEstaCreada() throws CeldaOcupadaException, NoReuneLosRequisitosException{
 		Posicion posicion14 = new Posicion(1,4);
-		Construccion unaBarraca = new Barraca(posicion14, new Jugador(new Raza()));
+		Construccion unaBarraca = new Barraca(posicion14, new Jugador("unNombre",new Raza()));
 		Turno unTurno = new Turno(12);
 		
 		unaBarraca.crearEstructura(unTurno);
@@ -46,7 +46,7 @@ public class BarracaTest extends TestBase {
 	
 	public void testCrearMarineAlPasar3TurnosEstaCreadaEstaFinalizada() throws CeldaOcupadaException, NoReuneLosRequisitosException{
 		Posicion posicion123 = new Posicion(12,3);
-		Barraca unaBarraca = new Barraca(posicion123, new Jugador(new Raza()));
+		Barraca unaBarraca = new Barraca(posicion123, new Jugador("unNombre",new Raza()));
 		Turno unTurno = new Turno(12);
 	
 		unaBarraca.crearEstructura(unTurno);
