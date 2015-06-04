@@ -97,5 +97,8 @@ public class Mapa {
 		this.matriz[unaPosicion.dameFila()+1][unaPosicion.dameColumna()+1].ocuparCelda();
 	}
 
+	public void reset() {
+		INSTANCE = null;
+	}
 
 }

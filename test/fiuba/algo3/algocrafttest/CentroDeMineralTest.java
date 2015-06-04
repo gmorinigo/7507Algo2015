@@ -9,9 +9,8 @@ import fiuba.algo3.algocraft.modelo.excepciones.CeldaOcupadaException;
 import fiuba.algo3.algocraft.modelo.excepciones.NoReuneLosRequisitosException;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.turnos.Turno;
-import junit.framework.TestCase;
 
-public class CentroDeMineralTest extends TestCase {
+public class CentroDeMineralTest extends TestBase {
 
 	public void testCrearUnCentroMineral(){
 		Posicion posicion64 = new Posicion(6,4);

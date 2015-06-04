@@ -10,9 +10,8 @@ import fiuba.algo3.algocraft.modelo.excepciones.NoReuneLosRequisitosException;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.turnos.Turno;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
-import junit.framework.TestCase;
 
-public class BarracaTest extends TestCase {
+public class BarracaTest extends TestBase {
 	
 
 	public void testCrearUnaBarraca(){

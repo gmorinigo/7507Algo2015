@@ -9,9 +9,8 @@ import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.recursos.GasVespano;
 import fiuba.algo3.algocraft.modelo.recursos.Mineral;
 import fiuba.algo3.algocraft.modelo.recursos.Recurso;
-import junit.framework.TestCase;
 
-public class MapaTest extends TestCase {
+public class MapaTest extends TestBase {
 
 	public void testMapaTieneQueContenerTodasLasCeldas(){
 		

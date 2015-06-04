@@ -8,9 +8,8 @@ import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.turnos.Turno;
 import fiuba.algo3.algocraft.modelo.unidades.Marine;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
-import junit.framework.TestCase;
 
-public class MarineTest extends TestCase {
+public class MarineTest extends TestBase {
 	
 	public void testCrearMarine(){
 		Posicion posicion64 = new Posicion(6,4);

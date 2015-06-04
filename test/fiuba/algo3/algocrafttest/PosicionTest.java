@@ -1,9 +1,8 @@
 package fiuba.algo3.algocrafttest;
 
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
-import junit.framework.TestCase;
 
-public class PosicionTest extends TestCase{
+public class PosicionTest extends TestBase{
 
 	public void testDameFilaTieneQueDevolverLaFila(){
 		Posicion unaPosicion = new Posicion(7,4);
