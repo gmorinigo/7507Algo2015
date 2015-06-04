@@ -1,5 +1,6 @@
 package fiuba.algo3.algocraft.modelo.construciones;
 
+import fiuba.algo3.algocraft.modelo.Almacen;
 import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 
@@ -15,6 +16,10 @@ public class CentroDeMineral extends Construccion{
 	@Override
 	public boolean reuneLosRequisitos(Jugador jugador2) {
 		return true;
+	}
+
+	public void recolectar(Almacen almacen) {
+		almacen.almacenarRecurso(10);
 	}
 
 

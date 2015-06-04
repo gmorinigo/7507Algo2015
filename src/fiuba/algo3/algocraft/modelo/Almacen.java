@@ -1,14 +1,14 @@
 package fiuba.algo3.algocraft.modelo;
 
-public class AlmacenGasVespano {
+public class Almacen {
 	
 	protected int cantidad;
 	
-	public AlmacenGasVespano() {
+	public Almacen() {
 		this.cantidad = 0;
 	}
 	
-	public void almacenarGas(int cantidad) {
+	public void almacenarRecurso(int cantidad) {
 		this.cantidad += cantidad;
 	}
 	
