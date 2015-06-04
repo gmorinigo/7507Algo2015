@@ -20,11 +20,11 @@ public class RecoleccionTest{
 	
 	@Test
 	public void testValidarRefineriaParaRecolectarGasVaspeno(){
-		Posicion laPosicionDelRecurso = new Posicion(3,3); 
-		GasVespano unRecursoGas = new GasVespano(laPosicionDelRecurso);
-		//unRecursoGas.recolectar();
-		//unRecursoGas.
-		assert(1 == 1);
+		Mapa unMapa = Mapa.getInstance();		
+		Posicion laPosicionDelRecurso = new Posicion(4,4);
+		Celda unaCelda = unMapa.dameCelda(laPosicionDelRecurso);
+		unaCelda.cargarCeldaConMineral();
+		assert(unaCelda.celdaTieneMineral());
 	}	
 	
 	
