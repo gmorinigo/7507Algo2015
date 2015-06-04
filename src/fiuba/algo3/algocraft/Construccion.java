@@ -13,9 +13,19 @@ public abstract class Construccion implements TurnoObserver{
 		this.estaOperativa = false;
 	}
 
-	public abstract boolean estaTerminada();
 	
-	public abstract void terminarConstruccion();
+	public boolean estaTerminada() {
+		return this.estaOperativa;
+	}
+
+	public void finDeTurnos() {
+		this.terminarConstruccion();
+	}
+
+	public void terminarConstruccion() {
+		this.estaOperativa = true;
+	}
+	
 
 	public void crearEstructura(Turno unTurno) {
 		unTurno.setObserver(this);

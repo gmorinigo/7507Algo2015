@@ -31,4 +31,22 @@ public class RefineriaTest extends TestCase {
 		unTurno.aumentarTurno();
 		assertTrue(refineria.estaTerminada());
 	}
+	
+	public void testComanzarARecolectar() {
+		Posicion posicion14 = new Posicion(1,4);
+		Construccion refineria = new Refineria(posicion14);
+		Turno unTurno = new Turno(8);
+		refineria.crearEstructura(unTurno);
+		assertFalse(refineria.estaTerminada());
+		unTurno.aumentarTurno();
+		unTurno.aumentarTurno();
+		unTurno.aumentarTurno();
+		unTurno.aumentarTurno();
+		unTurno.aumentarTurno();
+		unTurno.aumentarTurno();
+		assertFalse(refineria.estaTerminada());
+		unTurno.aumentarTurno();
+		unTurno.aumentarTurno();
+		assertTrue(refineria.estaTerminada());
+	}
 }
