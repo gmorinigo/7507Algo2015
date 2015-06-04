@@ -1,4 +1,6 @@
-package fiuba.algo3.algocraft;
+package fiuba.algo3.algocraft.modelo.unidades;
+
+import fiuba.algo3.algocraft.modelo.construciones.Barraca;
 
 
 public class Marine extends Unidad {

@@ -1,8 +1,13 @@
-package fiuba.algo3.algocraft;
+package fiuba.algo3.algocraft.modelo.construciones;
 
 import java.util.ArrayList;
 
-import fiuba.algo3.algocraftexceptions.CeldaOcupadaException;
+import fiuba.algo3.algocraft.modelo.excepciones.CeldaOcupadaException;
+import fiuba.algo3.algocraft.modelo.mapa.Celda;
+import fiuba.algo3.algocraft.modelo.mapa.Mapa;
+import fiuba.algo3.algocraft.modelo.mapa.Posicion;
+import fiuba.algo3.algocraft.modelo.turnos.Turno;
+import fiuba.algo3.algocraft.modelo.turnos.TurnoObserver;
 
 public abstract class Construccion implements TurnoObserver{
 

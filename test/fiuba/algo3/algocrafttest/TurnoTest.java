@@ -1,6 +1,6 @@
 package fiuba.algo3.algocrafttest;
 
-import fiuba.algo3.algocraft.Turno;
+import fiuba.algo3.algocraft.modelo.turnos.Turno;
 import junit.framework.TestCase;
 
 public class TurnoTest extends TestCase {

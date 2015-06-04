@@ -1,6 +1,10 @@
-package fiuba.algo3.algocraft;
+package fiuba.algo3.algocraft.modelo.unidades;
 
 import java.util.ArrayList;
+
+import fiuba.algo3.algocraft.modelo.mapa.Celda;
+import fiuba.algo3.algocraft.modelo.turnos.Turno;
+import fiuba.algo3.algocraft.modelo.turnos.TurnoObserver;
 
 public abstract class Unidad implements TurnoObserver{
 

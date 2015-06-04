@@ -1,6 +1,9 @@
-package fiuba.algo3.algocraft;
+package fiuba.algo3.algocraft.modelo;
 
 import java.util.ArrayList;
+
+import fiuba.algo3.algocraft.modelo.construciones.Construccion;
+import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 
 public class Jugador {
 	

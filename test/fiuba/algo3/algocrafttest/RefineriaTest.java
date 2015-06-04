@@ -1,11 +1,11 @@
 package fiuba.algo3.algocrafttest;
 
-import fiuba.algo3.algocraft.AlmacenGasVespano;
-import fiuba.algo3.algocraft.Construccion;
-import fiuba.algo3.algocraft.Posicion;
-import fiuba.algo3.algocraft.Refineria;
-import fiuba.algo3.algocraft.Turno;
-import fiuba.algo3.algocraftexceptions.CeldaOcupadaException;
+import fiuba.algo3.algocraft.modelo.AlmacenGasVespano;
+import fiuba.algo3.algocraft.modelo.construciones.Construccion;
+import fiuba.algo3.algocraft.modelo.construciones.Refineria;
+import fiuba.algo3.algocraft.modelo.excepciones.CeldaOcupadaException;
+import fiuba.algo3.algocraft.modelo.mapa.Posicion;
+import fiuba.algo3.algocraft.modelo.turnos.Turno;
 import junit.framework.TestCase;
 
 public class RefineriaTest extends TestCase {

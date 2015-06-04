@@ -1,12 +1,12 @@
 package fiuba.algo3.algocrafttest;
 
-import fiuba.algo3.algocraft.Barraca;
-import fiuba.algo3.algocraft.Mapa;
-import fiuba.algo3.algocraft.GasVespano;
-import fiuba.algo3.algocraft.Mineral;
-import fiuba.algo3.algocraft.Posicion;
-import fiuba.algo3.algocraft.Recurso;
-import fiuba.algo3.algocraftexceptions.CeldaOcupadaException;
+import fiuba.algo3.algocraft.modelo.construciones.Barraca;
+import fiuba.algo3.algocraft.modelo.excepciones.CeldaOcupadaException;
+import fiuba.algo3.algocraft.modelo.mapa.Mapa;
+import fiuba.algo3.algocraft.modelo.mapa.Posicion;
+import fiuba.algo3.algocraft.modelo.recursos.GasVespano;
+import fiuba.algo3.algocraft.modelo.recursos.Mineral;
+import fiuba.algo3.algocraft.modelo.recursos.Recurso;
 import junit.framework.TestCase;
 
 public class MapaTest extends TestCase {
