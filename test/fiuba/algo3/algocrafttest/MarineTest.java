@@ -1,6 +1,7 @@
 package fiuba.algo3.algocrafttest;
 
 import fiuba.algo3.algocraft.Barraca;
+import fiuba.algo3.algocraft.Construccion;
 import fiuba.algo3.algocraft.Marine;
 import fiuba.algo3.algocraft.Posicion;
 import fiuba.algo3.algocraft.Turno;
@@ -10,32 +11,21 @@ import junit.framework.TestCase;
 public class MarineTest extends TestCase {
 	
 	public void testCrearMarine(){
-		Posicion posicion35 = new Posicion(3,5);
-		Barraca unaBarraca = new Barraca(posicion35);
-		Unidad unMarine = new Marine();
+		Posicion posicion64 = new Posicion(6,4);
+		Construccion unaBarraca = new Barraca(posicion64);
+		unaBarraca.terminarConstruccion();
+		
+		Unidad unMarine = new Marine((Barraca)unaBarraca);
 		assertNotNull(unMarine);
 	}
-	public void testCrearMarineSeCreaCuandoUnaBarracaEstaFinalizada(){
-		Posicion posicion123 = new Posicion(12,3);
-		Barraca unaBarraca = new Barraca(posicion123);
-		Unidad unMarine = new Marine(); 
-		Turno unTurno = new Turno(12);
+	public void testCrearMarineAlPasar3TurnosEstaCreadaEstaFinalizada(){
+		Posicion posicion64 = new Posicion(6,4);
+		Construccion unaBarraca = new Barraca(posicion64);
+		unaBarraca.terminarConstruccion();
+		
+		Unidad unMarine = new Marine((Barraca)unaBarraca); 
+		
 		Turno turnoParaUnidad = new Turno(3);
-		unaBarraca.crearEstructura(unTurno);
-		unTurno.aumentarTurno();
-		unTurno.aumentarTurno();
-		unTurno.aumentarTurno();
-		unTurno.aumentarTurno();
-		unTurno.aumentarTurno();
-		unTurno.aumentarTurno();
-		unTurno.aumentarTurno();
-		unTurno.aumentarTurno();
-		unTurno.aumentarTurno();
-		unTurno.aumentarTurno();
-		assertFalse(unMarine.estaListoParaCrearse());
-		unTurno.aumentarTurno();
-		unTurno.aumentarTurno();
-		assertTrue(unMarine.estaListoParaCrearse());
 		unMarine.crearUnidad(turnoParaUnidad);
 		assertFalse(unMarine.estaTerminado());
 		turnoParaUnidad.aumentarTurno();

@@ -17,6 +17,8 @@ public abstract class Construccion implements TurnoObserver{
 	}
 
 	public abstract boolean estaTerminada();
+	
+	public abstract void terminarConstruccion();
 
 	public void crearEstructura(Turno unTurno) {
 		unTurno.setObserver(this);

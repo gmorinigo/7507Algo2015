@@ -35,4 +35,30 @@ public class BarracaTest extends TestCase {
 		unTurno.aumentarTurno();
 		assertTrue(unaBarraca.estaTerminada());
 	}
+	
+	public void testCrearMarineAlPasar3TurnosEstaCreadaEstaFinalizada(){
+		Posicion posicion123 = new Posicion(12,3);
+		Barraca unaBarraca = new Barraca(posicion123);
+		Turno unTurno = new Turno(12);
+		unaBarraca.crearEstructura(unTurno);
+		unTurno.aumentarTurno();
+		unTurno.aumentarTurno();
+		unTurno.aumentarTurno();
+		unTurno.aumentarTurno();
+		unTurno.aumentarTurno();
+		unTurno.aumentarTurno();
+		unTurno.aumentarTurno();
+		unTurno.aumentarTurno();
+		unTurno.aumentarTurno();
+		unTurno.aumentarTurno();
+		unTurno.aumentarTurno();
+		unTurno.aumentarTurno();
+		
+		Turno turnoParaUnidad = unaBarraca.crearMarine();
+		assertTrue(unaBarraca.estaTrabajando());
+		turnoParaUnidad.aumentarTurno();
+		turnoParaUnidad.aumentarTurno();
+		turnoParaUnidad.aumentarTurno();
+		assertFalse(unaBarraca.estaTrabajando());
+	}
 }

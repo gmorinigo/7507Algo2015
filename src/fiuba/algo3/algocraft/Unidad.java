@@ -14,8 +14,6 @@ public abstract class Unidad implements TurnoObserver{
 		this.estaOperativo = false;
 	}
 
-	public abstract boolean estaListoParaCrearse();
-	
 	public void crearUnidad(Turno unTurno) {
 		unTurno.setObserver(this);
 	}
