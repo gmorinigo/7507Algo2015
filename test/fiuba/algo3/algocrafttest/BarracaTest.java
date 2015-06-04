@@ -1,11 +1,11 @@
 package fiuba.algo3.algocrafttest;
 
 import fiuba.algo3.algocraft.Barraca;
+import fiuba.algo3.algocraft.CeldaOcupadaException;
 import fiuba.algo3.algocraft.Construccion;
 import fiuba.algo3.algocraft.Posicion;
 import fiuba.algo3.algocraft.Turno;
 import fiuba.algo3.algocraft.Unidad;
-import fiuba.algo3.algocraftexceptions.CeldaOcupadaException;
 import junit.framework.TestCase;
 
 public class BarracaTest extends TestCase {

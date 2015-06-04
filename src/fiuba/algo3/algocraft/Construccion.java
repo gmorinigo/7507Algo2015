@@ -2,8 +2,6 @@ package fiuba.algo3.algocraft;
 
 import java.util.ArrayList;
 
-import fiuba.algo3.algocraftexceptions.CeldaOcupadaException;
-
 public abstract class Construccion implements TurnoObserver{
 
 	protected ArrayList<Celda> celdas;

@@ -2,8 +2,6 @@ package fiuba.algo3.algocraft;
 
 import java.util.ArrayList;
 
-import fiuba.algo3.algocraftexceptions.CeldaOcupadaException;
-
 
 public class Mapa {
 

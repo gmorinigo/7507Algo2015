@@ -1,11 +1,11 @@
 package fiuba.algo3.algocrafttest;
 
 import fiuba.algo3.algocraft.AlmacenGasVespano;
+import fiuba.algo3.algocraft.CeldaOcupadaException;
 import fiuba.algo3.algocraft.Construccion;
 import fiuba.algo3.algocraft.Posicion;
 import fiuba.algo3.algocraft.Refineria;
 import fiuba.algo3.algocraft.Turno;
-import fiuba.algo3.algocraftexceptions.CeldaOcupadaException;
 import junit.framework.TestCase;
 
 public class RefineriaTest extends TestCase {
