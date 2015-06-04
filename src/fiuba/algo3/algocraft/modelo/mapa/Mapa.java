@@ -61,8 +61,7 @@ public class Mapa {
 		}
 		
 		this.ocuparCeldasConstruccion(unaCelda.obtenerPosicion());
-		//this.asignarCeldas(construccion);
-		System.out.print("Agrega la construccion\n");
+		this.asignarCeldas(construccion);
 		this.construcciones.add(construccion);
 
 	}
@@ -97,8 +96,25 @@ public class Mapa {
 		this.matriz[unaPosicion.dameFila()+1][unaPosicion.dameColumna()+1].ocuparCelda();
 	}
 
+	public void asignarCeldas(Construccion construccion){
+
+		Posicion unaPosicion = construccion.dameCeldaSupIzquierda().obtenerPosicion();
+
+		ArrayList<Celda> celdas = new ArrayList<>();
+		
+		celdas.add(this.matriz[unaPosicion.dameFila()][unaPosicion.dameColumna()]);
+		celdas.add(this.matriz[unaPosicion.dameFila()+1][unaPosicion.dameColumna()]);
+		celdas.add(this.matriz[unaPosicion.dameFila()][unaPosicion.dameColumna()+1]);
+		celdas.add(this.matriz[unaPosicion.dameFila()+1][unaPosicion.dameColumna()+1]);
+		
+		construccion.agregarCeldas(celdas);
+
+	}
+	
+	
 	public void reset() {
 		INSTANCE = null;
 	}
 
 }
+

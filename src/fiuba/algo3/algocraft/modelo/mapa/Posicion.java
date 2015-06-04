@@ -16,4 +16,8 @@ public class Posicion {
 	public int dameColumna(){
 		return columna;
 	}
+
+	public boolean compararPosicion(Posicion unaPosicion) {
+		return ((fila == unaPosicion.dameFila()) && (columna == unaPosicion.dameColumna())); 
+	}
 }
