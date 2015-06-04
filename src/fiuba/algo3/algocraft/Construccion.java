@@ -9,7 +9,6 @@ public abstract class Construccion implements TurnoObserver{
 	
 	
 	public Construccion(Posicion unaPosicion) {
-		Mapa.getInstance().agregarConstruccion(this);
 		this.celdas = new ArrayList<Celda>();
 		this.estaOperativa = false;
 	}
@@ -20,6 +19,7 @@ public abstract class Construccion implements TurnoObserver{
 
 	public void crearEstructura(Turno unTurno) {
 		unTurno.setObserver(this);
+		Mapa.getInstance().agregarConstruccion(this);
 	}
 	
 	public ArrayList<Celda> dameCeldas(){
