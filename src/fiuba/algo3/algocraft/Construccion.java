@@ -5,14 +5,12 @@ import java.util.ArrayList;
 public abstract class Construccion implements TurnoObserver{
 
 	protected ArrayList<Celda> celdas;
-	protected Celda celda;
 	protected boolean estaOperativa;
 	
 	
 	public Construccion(Posicion unaPosicion) {
-		Celda unaCelda = new Celda(unaPosicion.dameFila(),unaPosicion.dameColumna());
+		Mapa.getInstance().agregarConstruccion(this);
 		this.celdas = new ArrayList<Celda>();
-		celda = unaCelda;
 		this.estaOperativa = false;
 	}
 
@@ -26,6 +24,10 @@ public abstract class Construccion implements TurnoObserver{
 	
 	public ArrayList<Celda> dameCeldas(){
 		return celdas;
+	}
+	
+	public void agregarCeldas(ArrayList<Celda> celdas) {
+		this.celdas = celdas;
 	}
 
 }
