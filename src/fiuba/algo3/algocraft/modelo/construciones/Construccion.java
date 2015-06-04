@@ -49,7 +49,7 @@ public abstract class Construccion implements TurnoObserver{
 		this.jugador.agregarConstruccion(this);
 	}
 	
-	abstract public boolean reuneLosRequisitos(Jugador jugador2);
+	abstract public boolean reuneLosRequisitos(Jugador jugador);
 
 
 	public ArrayList<Celda> dameCeldas(){

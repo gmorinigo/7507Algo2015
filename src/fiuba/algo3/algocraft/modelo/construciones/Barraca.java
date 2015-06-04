@@ -46,7 +46,7 @@ public class Barraca extends Construccion {
 	}
 
 	@Override
-	public boolean reuneLosRequisitos(Jugador jugador2) {
+	public boolean reuneLosRequisitos(Jugador jugador) {
 		return true;
 	}
 
