@@ -2,7 +2,9 @@ package fiuba.algo3.algocraft.modelo.construciones;
 
 import java.util.ArrayList;
 
+import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.excepciones.CeldaOcupadaException;
+import fiuba.algo3.algocraft.modelo.excepciones.NoReuneLosRequisitosException;
 import fiuba.algo3.algocraft.modelo.mapa.Celda;
 import fiuba.algo3.algocraft.modelo.mapa.Mapa;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
@@ -14,10 +16,11 @@ public abstract class Construccion implements TurnoObserver{
 	protected ArrayList<Celda> celdas;
 	protected boolean estaOperativa;
 	protected Celda celdaSupIzquierda;
+	protected Jugador jugador;
 	
-	
-	public Construccion(Posicion unaPosicion) {
+	public Construccion(Posicion unaPosicion, Jugador jugador) {
 		this.celdas = new ArrayList<Celda>();
+		this.perteneceA(jugador);
 		this.estaOperativa = false;
 		this.celdaSupIzquierda = new Celda(unaPosicion.dameFila(),unaPosicion.dameColumna());
 	}
@@ -36,11 +39,19 @@ public abstract class Construccion implements TurnoObserver{
 	}
 	
 
-	public void crearEstructura(Turno unTurno) throws CeldaOcupadaException{
+	public void crearEstructura(Turno unTurno) throws CeldaOcupadaException, NoReuneLosRequisitosException{
 		unTurno.setObserver(this);
+		if( ! this.reuneLosRequisitos(this.jugador)) {
+			throw new NoReuneLosRequisitosException();
+		}
+		
 		Mapa.getInstance().agregarConstruccion(this);
+		this.jugador.agregarConstruccion(this);
 	}
 	
+	abstract public boolean reuneLosRequisitos(Jugador jugador2);
+
+
 	public ArrayList<Celda> dameCeldas(){
 		return celdas;
 	}
@@ -52,5 +63,11 @@ public abstract class Construccion implements TurnoObserver{
 	public void agregarCeldas(ArrayList<Celda> celdas) {
 		this.celdas = celdas;
 	}
+	
+	protected void perteneceA(Jugador jugador) {
+		this.jugador = jugador;
+	}
+	
+	
 
 }

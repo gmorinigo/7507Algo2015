@@ -1,5 +1,7 @@
 package fiuba.algo3.algocrafttest;
 
+import fiuba.algo3.algocraft.modelo.Jugador;
+import fiuba.algo3.algocraft.modelo.Raza;
 import fiuba.algo3.algocraft.modelo.construciones.Barraca;
 import fiuba.algo3.algocraft.modelo.excepciones.CeldaOcupadaException;
 import fiuba.algo3.algocraft.modelo.mapa.Mapa;
@@ -47,7 +49,7 @@ public class MapaTest extends TestCase {
 	public void testAgregarUnaConstruccionAlMapa(){
 		Posicion posicion55 = new Posicion(5,5);
 		Mapa unMapa = Mapa.getInstance();
-		Barraca unaBarraca = new Barraca(posicion55);
+		Barraca unaBarraca = new Barraca(posicion55, new Jugador(new Raza()));
 		
 		try {
 			System.out.print("Va a agrega la barraca\n");
@@ -65,7 +67,7 @@ public class MapaTest extends TestCase {
 		Posicion posicion98 = new Posicion(9,8);
 		Posicion posicion99 = new Posicion(9,9);
 		Mapa unMapa = Mapa.getInstance();
-		Barraca unaBarraca = new Barraca(posicion88);
+		Barraca unaBarraca = new Barraca(posicion88, new Jugador(new Raza()));
 		
 		try {
 			unMapa.agregarConstruccion(unaBarraca);

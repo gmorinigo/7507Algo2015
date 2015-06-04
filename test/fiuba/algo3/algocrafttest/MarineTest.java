@@ -1,5 +1,7 @@
 package fiuba.algo3.algocrafttest;
 
+import fiuba.algo3.algocraft.modelo.Jugador;
+import fiuba.algo3.algocraft.modelo.Raza;
 import fiuba.algo3.algocraft.modelo.construciones.Barraca;
 import fiuba.algo3.algocraft.modelo.construciones.Construccion;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
@@ -12,7 +14,7 @@ public class MarineTest extends TestCase {
 	
 	public void testCrearMarine(){
 		Posicion posicion64 = new Posicion(6,4);
-		Construccion unaBarraca = new Barraca(posicion64);
+		Construccion unaBarraca = new Barraca(posicion64, new Jugador(new Raza()));
 		unaBarraca.terminarConstruccion();
 		
 		Unidad unMarine = new Marine((Barraca)unaBarraca);
@@ -20,7 +22,7 @@ public class MarineTest extends TestCase {
 	}
 	public void testCrearMarineAlPasar3TurnosEstaFinalizada(){
 		Posicion posicion64 = new Posicion(6,4);
-		Construccion unaBarraca = new Barraca(posicion64);
+		Construccion unaBarraca = new Barraca(posicion64, new Jugador(new Raza()));
 		unaBarraca.terminarConstruccion();
 		
 		Unidad unMarine = new Marine((Barraca)unaBarraca); 

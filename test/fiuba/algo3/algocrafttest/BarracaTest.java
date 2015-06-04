@@ -1,8 +1,11 @@
 package fiuba.algo3.algocrafttest;
 
+import fiuba.algo3.algocraft.modelo.Jugador;
+import fiuba.algo3.algocraft.modelo.Raza;
 import fiuba.algo3.algocraft.modelo.construciones.Barraca;
 import fiuba.algo3.algocraft.modelo.construciones.Construccion;
 import fiuba.algo3.algocraft.modelo.excepciones.CeldaOcupadaException;
+import fiuba.algo3.algocraft.modelo.excepciones.NoReuneLosRequisitosException;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.turnos.Turno;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
@@ -12,18 +15,17 @@ public class BarracaTest extends TestCase {
 
 	public void testCrearUnaBarraca(){
 		Posicion posicion64 = new Posicion(6,4);
-		Construccion unaBarraca = new Barraca(posicion64);
+		Construccion unaBarraca = new Barraca(posicion64, new Jugador(new Raza()));
 		assertNotNull(unaBarraca);
 	}
 	
-	public void testCrearUnaBarracaAlPasar12TurnosEstaCreada(){
+	public void testCrearUnaBarracaAlPasar12TurnosEstaCreada() throws CeldaOcupadaException, NoReuneLosRequisitosException{
 		Posicion posicion14 = new Posicion(1,4);
-		Construccion unaBarraca = new Barraca(posicion14);
+		Construccion unaBarraca = new Barraca(posicion14, new Jugador(new Raza()));
 		Turno unTurno = new Turno(12);
-		try {
-			unaBarraca.crearEstructura(unTurno);
-		} catch (CeldaOcupadaException e) {
-		}
+		
+		unaBarraca.crearEstructura(unTurno);
+		
 		assertFalse(unaBarraca.estaTerminada());
 		unTurno.aumentarTurno();
 		unTurno.aumentarTurno();
@@ -41,14 +43,13 @@ public class BarracaTest extends TestCase {
 		assertTrue(unaBarraca.estaTerminada());
 	}
 	
-	public void testCrearMarineAlPasar3TurnosEstaCreadaEstaFinalizada(){
+	public void testCrearMarineAlPasar3TurnosEstaCreadaEstaFinalizada() throws CeldaOcupadaException, NoReuneLosRequisitosException{
 		Posicion posicion123 = new Posicion(12,3);
-		Barraca unaBarraca = new Barraca(posicion123);
+		Barraca unaBarraca = new Barraca(posicion123, new Jugador(new Raza()));
 		Turno unTurno = new Turno(12);
-		try {
-			unaBarraca.crearEstructura(unTurno);
-		} catch (CeldaOcupadaException e) {
-		}
+	
+		unaBarraca.crearEstructura(unTurno);
+		
 		unTurno.aumentarTurno();
 		unTurno.aumentarTurno();
 		unTurno.aumentarTurno();
