@@ -4,7 +4,7 @@ import fiuba.algo3.algocraft.Mapa;
 import fiuba.algo3.algocraft.GasVespano;
 import fiuba.algo3.algocraft.Mineral;
 import fiuba.algo3.algocraft.Posicion;
-import fiuba.algo3.algocraft.Recursos;
+import fiuba.algo3.algocraft.Recurso;
 import junit.framework.TestCase;
 
 public class MapaTest extends TestCase {
@@ -35,7 +35,7 @@ public class MapaTest extends TestCase {
 		Posicion posicion89 = new Posicion(8,9);
 		Mapa unMapa = Mapa.getInstance();
 		GasVespano unGasVespano = new GasVespano(posicion55);
-		Recursos unMineral    = new Mineral(posicion89);
+		Recurso unMineral    = new Mineral(posicion89);
 		unMapa.agregarRecurso(unGasVespano);
 		unMapa.agregarRecurso(unMineral);
 		assertTrue(unMapa.dameRecursos().contains(unGasVespano));

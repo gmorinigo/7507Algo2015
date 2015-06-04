@@ -6,7 +6,7 @@ public class Mapa {
 
 	private static Mapa INSTANCE = null; 
 	private Celda[][] matriz;
-	private ArrayList<Recursos> recursos;
+	private ArrayList<Recurso> recursos;
 
 	
 	public Mapa(){
@@ -18,7 +18,7 @@ public class Mapa {
 			}
 		}
 		matriz = unaMatriz;
-		recursos = new ArrayList<Recursos>();
+		recursos = new ArrayList<Recurso>();
 	}
 
 	public synchronized static Mapa getInstance() {
@@ -32,11 +32,11 @@ public class Mapa {
 		return matriz[fila][columna];
 	}
 
-	public void agregarRecurso(Recursos unRecurso) {
+	public void agregarRecurso(Recurso unRecurso) {
 		recursos.add(unRecurso);
 	}
 
-	public ArrayList<Recursos> dameRecursos() {
+	public ArrayList<Recurso> dameRecursos() {
 		return recursos;
 	}
 
