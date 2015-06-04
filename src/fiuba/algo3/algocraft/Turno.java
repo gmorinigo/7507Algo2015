@@ -5,7 +5,7 @@ public class Turno {
 	private int turno = 1;
 	protected int cantidad;
 	protected boolean estaFinalizado;
-	private TurnoObserver observer;
+	protected TurnoObserver observer;
 	
 	public Turno(int cantidad) {
 		this.cantidad = cantidad;
