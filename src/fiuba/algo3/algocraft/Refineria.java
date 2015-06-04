@@ -23,18 +23,5 @@ public class Refineria extends Construccion implements TurnoObserver{
 	public void terminarConstruccion() {
 		this.estaOperativa = true;
 	}
-	
-/*	public Turno crearMarine() {
-		Turno turno = new Turno(3);
-		Marine marine = new Marine(this);
-		marine.crearUnidad(turno);
-		
-		this.unidadesEnProceso.add(marine);
-		
-		return turno;
-	}*/
-
-
-
 
 }
