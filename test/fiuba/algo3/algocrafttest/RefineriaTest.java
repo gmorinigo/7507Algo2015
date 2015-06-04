@@ -1,5 +1,6 @@
 package fiuba.algo3.algocrafttest;
 
+import fiuba.algo3.algocraft.AlmacenGasVespano;
 import fiuba.algo3.algocraft.Construccion;
 import fiuba.algo3.algocraft.Posicion;
 import fiuba.algo3.algocraft.Refineria;
@@ -34,7 +35,7 @@ public class RefineriaTest extends TestCase {
 	
 	public void testComanzarARecolectar() {
 		Posicion posicion14 = new Posicion(1,4);
-		Construccion refineria = new Refineria(posicion14);
+		Refineria refineria = new Refineria(posicion14);
 		Turno unTurno = new Turno(8);
 		refineria.crearEstructura(unTurno);
 		assertFalse(refineria.estaTerminada());
@@ -48,5 +49,15 @@ public class RefineriaTest extends TestCase {
 		unTurno.aumentarTurno();
 		unTurno.aumentarTurno();
 		assertTrue(refineria.estaTerminada());
+		
+		AlmacenGasVespano almacen = new AlmacenGasVespano();
+		
+		refineria.recolectar(almacen);
+		refineria.recolectar(almacen);
+		refineria.recolectar(almacen);
+		refineria.recolectar(almacen);
+
+		assertTrue(almacen.cantidad() == 40);
+		
 	}
 }

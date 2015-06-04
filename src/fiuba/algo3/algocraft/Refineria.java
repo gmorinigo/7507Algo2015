@@ -9,4 +9,8 @@ public class Refineria extends Construccion{
 		super(unaPosicion);
 	}
 
+	public void recolectar(AlmacenGasVespano almacen) {
+		almacen.almacenarGas(10);
+	}
+
 }
