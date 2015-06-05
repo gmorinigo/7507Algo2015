@@ -56,4 +56,9 @@ public class Jugador {
 	public boolean tieneElMismoNombre(String unNombre){
 		return (this.nombreJugador == unNombre);
 	}
+
+	public boolean verificarPoblacion() {
+	return ((unidadesTerminadas.size() + 1) <= 200);
+		
+	}
 }

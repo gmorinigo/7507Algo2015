@@ -12,6 +12,10 @@ public class Recurso {
 	public Recurso(Posicion unaPosicion){
 		Celda unaCelda = new Celda(unaPosicion.dameFila(),unaPosicion.dameColumna());
 		recursos.add(unaCelda);
-	}	
+	}
+	//public void recolectar() hacerlo abstracto
+		
+	 
+	
 
 }

@@ -13,7 +13,7 @@ public class RecoleccionTest extends TestBase{
 		Mapa unMapa = Mapa.getInstance();		
 		Posicion laPosicionDelRecurso = new Posicion(3,3);
 		Celda unaCelda = unMapa.dameCelda(laPosicionDelRecurso);
-		unaCelda.cargarCeldaConGas();
+		unaCelda.cargarCeldaConGas();		
 		assert(unaCelda.celdaTieneGas());
 	}	
 	
@@ -24,9 +24,7 @@ public class RecoleccionTest extends TestBase{
 		unaCelda.cargarCeldaConMineral();
 		assert(unaCelda.celdaTieneMineral());
 	}	
-	
-	
-	
+		
 	
 	
 	

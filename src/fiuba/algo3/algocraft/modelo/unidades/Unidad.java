@@ -9,12 +9,10 @@ import fiuba.algo3.algocraft.modelo.turnos.TurnoObserver;
 public abstract class Unidad implements TurnoObserver{
 
 	protected int turnoInicial;
-	protected ArrayList<Celda> unidades;
 	protected Celda celda; 
 	protected boolean estaOperativo;
 	
 	public Unidad(){
-		unidades = new ArrayList<Celda>();
 		this.estaOperativo = false;
 	}
 

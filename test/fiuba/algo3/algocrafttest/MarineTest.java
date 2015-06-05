@@ -21,11 +21,12 @@ public class MarineTest extends TestBase {
 	}
 	public void testCrearMarineAlPasar3TurnosEstaFinalizada(){
 		Posicion posicion64 = new Posicion(6,4);
-		Construccion unaBarraca = new Barraca(posicion64, new Jugador("unNombre",new Raza()));
+		Jugador jugador = new Jugador("pepe",new Raza());
+		Construccion unaBarraca = new Barraca(posicion64, jugador);
 		unaBarraca.terminarConstruccion();
-		
+	
 		Unidad unMarine = new Marine((Barraca)unaBarraca); 
-		
+		assertTrue(jugador.verificarPoblacion());
 		Turno turnoParaUnidad = new Turno(3);
 		unMarine.crearUnidad(turnoParaUnidad);
 		assertFalse(unMarine.estaTerminado());
