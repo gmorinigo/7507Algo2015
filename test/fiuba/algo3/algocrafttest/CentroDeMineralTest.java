@@ -59,12 +59,11 @@ public class CentroDeMineralTest extends TestBase {
 		
 		Almacen almacen = new Almacen();
 		
-		centroMineral.recolectar(almacen,posicion14);
-		//centroMineral.recolectar(almacen,posicion14);
-		//centroMineral.recolectar(almacen,posicion14);
-		//centroMineral.recolectar(almacen,posicion14);
-
-		//assertTrue(almacen.cantidad() == 10);
+		centroMineral.recolectar(almacen);
+		centroMineral.recolectar(almacen);
+		centroMineral.recolectar(almacen);
+		centroMineral.recolectar(almacen);
+		assertTrue(almacen.cantidad() == 40);
 		
 	}
 }

@@ -20,12 +20,8 @@ public class CentroDeMineral extends Construccion{
 		return true;
 	}
 
-	public void recolectar(Almacen almacen, Posicion unaPosicion) {
-		Mapa unMapa = Mapa.getInstance();				
-		Celda unaCelda = unMapa.dameCelda(unaPosicion);
-		if(unaCelda.celdaTieneGas()) 
-		almacen.almacenarRecurso(10);
-		
+	public void recolectar(Almacen almacen) {
+		almacen.almacenarRecurso(10);		
 	}
 
 	@Override
