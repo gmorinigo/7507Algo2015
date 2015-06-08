@@ -13,10 +13,10 @@ public class Mapa {
 	private ArrayList<Construccion> construcciones;
 
 	public Mapa() {
-		Celda unaMatriz[][] = new Celda[25][25];
+		Celda unaMatriz[][] = new Celda[200][200];
 		for (int i = 0; i < 200; i++) {
 			for (int j = 0; j < 200; j++) {
-				Celda unaCelda = new CeldaTerrestre(i, j);
+				CeldaTerrestre unaCelda = new CeldaTerrestre(i, j);
 				unaMatriz[i][j] = unaCelda;
 			}
 		}

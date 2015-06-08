@@ -1,6 +1,6 @@
 package fiuba.algo3.algocraft.modelo.unidades;
 
-import java.util.ArrayList;
+//import java.util.ArrayList;
 
 import fiuba.algo3.algocraft.modelo.mapa.Celda;
 import fiuba.algo3.algocraft.modelo.turnos.Turno;

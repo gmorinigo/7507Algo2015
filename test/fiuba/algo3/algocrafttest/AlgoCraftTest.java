@@ -31,6 +31,37 @@ public class AlgoCraftTest extends TestCase {
 		
 	}
 
-	//TODO PRUEBA EXCEPCION JUGADOR CON EL MISMO NOMBRE	
-	//TODO PRUEBA EXCEPCION MAXIMA CANTIDAD DE JUGADORES
+	
+	public void testVerificarExcepcionJugadorConElMismoNombre() throws MaximaCantidadDeJugadoresSuperadaException{
+		AlgoCraft unJuegoAlgoCraft = new AlgoCraft();
+		Raza unaRaza = new Raza();
+		
+		try {
+			unJuegoAlgoCraft.agregarJugador("nombreDelJugador",unaRaza);
+			unJuegoAlgoCraft.agregarJugador("nombreDelJugador",unaRaza);
+		} catch ( JugadorConElMismoNombreException e) {
+			return;
+		}
+		
+		fail(); 
+		
+	}		
+		
+
+	public void testVerificarExcepcionMaximaCantidadDeJugadoresSuperada() throws JugadorConElMismoNombreException{
+		AlgoCraft unJuegoAlgoCraft = new AlgoCraft();
+		Raza unaRaza = new Raza();
+		
+		try {
+			unJuegoAlgoCraft.agregarJugador("nombreDelJugador",unaRaza);
+			unJuegoAlgoCraft.agregarJugador("nombreDelJugador1",unaRaza);
+			unJuegoAlgoCraft.agregarJugador("nombreDelJugador2",unaRaza);
+		} catch ( MaximaCantidadDeJugadoresSuperadaException e) {
+			return;
+		}
+		
+		fail(); 
+		
+	}		
+	
 }
