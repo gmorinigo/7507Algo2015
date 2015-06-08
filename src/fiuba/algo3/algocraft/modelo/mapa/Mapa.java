@@ -14,9 +14,9 @@ public class Mapa {
 
 	public Mapa() {
 		Celda unaMatriz[][] = new Celda[25][25];
-		for (int i = 0; i < 25; i++) {
-			for (int j = 0; j < 25; j++) {
-				Celda unaCelda = new Celda(i, j);
+		for (int i = 0; i < 200; i++) {
+			for (int j = 0; j < 200; j++) {
+				Celda unaCelda = new CeldaTerrestre(i, j);
 				unaMatriz[i][j] = unaCelda;
 			}
 		}

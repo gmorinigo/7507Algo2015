@@ -6,6 +6,7 @@ import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.excepciones.CeldaOcupadaException;
 import fiuba.algo3.algocraft.modelo.excepciones.NoReuneLosRequisitosException;
 import fiuba.algo3.algocraft.modelo.mapa.Celda;
+import fiuba.algo3.algocraft.modelo.mapa.CeldaTerrestre;
 import fiuba.algo3.algocraft.modelo.mapa.Mapa;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.turnos.Turno;
@@ -22,7 +23,7 @@ public abstract class Construccion implements TurnoObserver{
 		this.celdas = new ArrayList<Celda>();
 		this.perteneceA(jugador);
 		this.estaOperativa = false;
-		this.celdaSupIzquierda = new Celda(unaPosicion.dameFila(),unaPosicion.dameColumna());
+		this.celdaSupIzquierda = new CeldaTerrestre(unaPosicion.dameFila(),unaPosicion.dameColumna());
 	}
 
 	

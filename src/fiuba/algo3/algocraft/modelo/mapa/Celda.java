@@ -1,9 +1,10 @@
 package fiuba.algo3.algocraft.modelo.mapa;
 
 
-public class Celda {
+public abstract class Celda {
 	private Posicion posicion;
 	private boolean estaOcupada;
+	
 	public Celda(int fila, int columna) {
 		Posicion unaPosicion = new Posicion(fila,columna);
 		this.posicion = unaPosicion;
