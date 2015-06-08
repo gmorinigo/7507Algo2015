@@ -11,7 +11,7 @@ public class UnidadesTest extends TestCase{
 public void testCrearUnidad(){	
 	AbstractUnidadFactory factoryUnidades = getFactoryUnidades();
 	
-	Unidad2 unaUnidad = (Unidad2) factoryUnidades.crearUnidad("Marine"/*,new DisparoSuperStrategy()*/);
+	Unidad2 unaUnidad = (Unidad2) factoryUnidades.crearUnidad("Golliat"/*,new DisparoSuperStrategy()*/);
 	
 	//Mapa.getInstance().AddUnidad(unaUnidad);
 	//unaUnidad.HacerAlgo();

@@ -6,7 +6,7 @@ public class Golliat implements Unidad2 {
 	//private DisparoStrategy disparoStrategy;
 	
 	public Golliat(String nombre/*, DisparoStrategy disparoStrategy*/){
-		//this.nombre=nombre;
+		this.nombre=nombre;
 		//this.disparoStrategy=disparoStrategy;
 		//this.disparoStrategy.setUnidad(this);
 	}
