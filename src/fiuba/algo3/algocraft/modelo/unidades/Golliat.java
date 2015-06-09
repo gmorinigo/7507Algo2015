@@ -19,4 +19,5 @@ public class Golliat implements Unidad2 {
 	public String toString(){
 		return "Unidad "+nombre;
 	}
+	public String getName(){ return this.nombre; } 
 }

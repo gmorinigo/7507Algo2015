@@ -20,7 +20,7 @@ public class Marine2 implements Unidad2 {
 	public String toString(){
 		return "Unidad "+nombre;
 	}
-
+	public String getName(){ return this.nombre; } 
 
 
 }

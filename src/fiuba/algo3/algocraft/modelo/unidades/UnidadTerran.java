@@ -21,6 +21,12 @@ public class UnidadTerran implements Unidad2 {
 		return "Unidad "+nombre;
 	}
 
+	@Override
+	public String getName() {
+		// TODO Auto-generated method stub
+		return this.nombre;
+	}
+
 
 
 }
