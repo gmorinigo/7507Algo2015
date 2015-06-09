@@ -9,9 +9,9 @@ import fiuba.algo3.algocraft.modelo.excepciones.CeldaOcupadaException;
 import fiuba.algo3.algocraft.modelo.mapa.Celda;
 import fiuba.algo3.algocraft.modelo.mapa.Mapa;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
-import fiuba.algo3.algocraft.modelo.recursos.GasVespano;
+/*import fiuba.algo3.algocraft.modelo.recursos.GasVespano;
 import fiuba.algo3.algocraft.modelo.recursos.Mineral;
-import fiuba.algo3.algocraft.modelo.recursos.Recurso;
+import fiuba.algo3.algocraft.modelo.recursos.Recurso;*/
 
 public class MapaTest extends TestBase {
 
@@ -35,7 +35,7 @@ public class MapaTest extends TestBase {
 		Posicion posicion31 = new Posicion(3,1);
 		assertNotSame(unMapa.dameCelda(posicion02),unMapa.dameCelda(posicion31));
 	}
-	
+	/*
 	public void testAgregarRecursosAlMapaDeberiaAgregarRecursosALaLista(){
 		Posicion posicion55 = new Posicion(5,5);
 		Posicion posicion89 = new Posicion(8,9);
@@ -47,7 +47,7 @@ public class MapaTest extends TestBase {
 		assertTrue(unMapa.dameRecursos().contains(unGasVespano));
 		assertTrue(unMapa.dameRecursos().contains(unMineral));
 	}
-	
+	*/
 	public void testAgregarUnaConstruccionAlMapa(){
 		Posicion posicion55 = new Posicion(5,5);
 		Mapa unMapa = Mapa.getInstance();
