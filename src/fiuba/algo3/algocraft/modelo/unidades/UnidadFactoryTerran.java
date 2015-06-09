@@ -12,8 +12,9 @@ public class UnidadFactoryTerran extends AbstractUnidadFactory {
 		
 		else if (nombre == "NaveTransporte"){return new NaveTransporte(nombre/*,estrategiaDisparo*/);}
 		
-		else {return new Golliat(nombre/*,estrategiaDisparo*/);}
+		//else {return new Golliat(nombre/*,estrategiaDisparo*/);}
 		
+		else {return null;}  //---> deberia retornar Exception  
 	}
 		
 	

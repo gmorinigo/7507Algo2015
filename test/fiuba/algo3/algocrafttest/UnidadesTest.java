@@ -31,7 +31,6 @@ public void testCrearUnidadEspectroNoEsCualquierCosaSinoLaUnidadQuePasoEnConstru
 	AbstractUnidadFactory factoryUnidades = getFactoryUnidades();	
 	Unidad2 unaUnidad = (Unidad2) factoryUnidades.crearUnidad("Espectro"/*,new DisparoSuperStrategy()*/);
 	assertNotSame(unaUnidad.getName(), "lalala");
-
 }
 
 
