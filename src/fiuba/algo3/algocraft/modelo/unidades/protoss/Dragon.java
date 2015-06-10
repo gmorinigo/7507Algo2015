@@ -1,6 +1,8 @@
-package fiuba.algo3.algocraft.modelo.unidades;
+package fiuba.algo3.algocraft.modelo.unidades.protoss;
 
-public class Dragon implements Unidad {
+import fiuba.algo3.algocraft.modelo.unidades.UnidadTerrestre;
+
+public class Dragon extends UnidadTerrestre {
 
 	private String nombre;
 	

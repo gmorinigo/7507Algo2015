@@ -19,7 +19,7 @@ public class TurnoInfinito extends Turno{
 
 	public void aumentarTurno() {
 		turno += 1;
-		this.observer.finDeTurnos();
+		this.observer.finDeTurno();
 	}
 	
 	public void finalizar() {

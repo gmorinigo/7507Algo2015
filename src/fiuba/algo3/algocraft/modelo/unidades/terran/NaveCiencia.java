@@ -1,6 +1,8 @@
-package fiuba.algo3.algocraft.modelo.unidades;
+package fiuba.algo3.algocraft.modelo.unidades.terran;
 
-public class NaveCiencia implements Unidad {
+import fiuba.algo3.algocraft.modelo.unidades.UnidadVoladora;
+
+public class NaveCiencia extends UnidadVoladora {
 
 	
 	private String nombre;

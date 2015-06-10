@@ -21,7 +21,7 @@ public class Turno {
 		turno += 1;
 		if(this.turno == this.cantidad) {
 			this.estaFinalizado = true;
-			this.observer.finDeTurnos();
+			this.observer.finDeTurno();
 		}
 	}
 	

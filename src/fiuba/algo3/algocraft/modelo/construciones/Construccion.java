@@ -31,7 +31,7 @@ public abstract class Construccion implements TurnoObserver{
 		return this.estaOperativa;
 	}
 
-	public void finDeTurnos() {
+	public void finDeTurno() {
 		this.terminarConstruccion();
 	}
 

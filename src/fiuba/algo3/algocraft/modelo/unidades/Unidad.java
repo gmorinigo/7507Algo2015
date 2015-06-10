@@ -1,8 +1,8 @@
 package fiuba.algo3.algocraft.modelo.unidades;
 
-public interface Unidad{
+abstract public class Unidad {
 
-	public void disparar();
-	public String getName();
+	public abstract void disparar();
+	public abstract String getName();
 	//public boolean estaTerminado();
 }

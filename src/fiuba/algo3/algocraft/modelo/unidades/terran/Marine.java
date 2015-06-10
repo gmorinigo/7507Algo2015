@@ -1,9 +1,9 @@
-package fiuba.algo3.algocraft.modelo.unidades;
+package fiuba.algo3.algocraft.modelo.unidades.terran;
 
-import fiuba.algo3.algocraft.modelo.construciones.Barraca;
+import fiuba.algo3.algocraft.modelo.unidades.UnidadTerrestre;
 
 
-public class Marine implements Unidad {
+public class Marine extends UnidadTerrestre {
 
 	private String nombre;
 	//private DisparoStrategy disparoStrategy;
