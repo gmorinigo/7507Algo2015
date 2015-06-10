@@ -1,9 +1,9 @@
 package fiuba.algo3.algocraft.modelo.unidades.protoss;
 
 import fiuba.algo3.algocraft.modelo.unidades.Salud;
-import fiuba.algo3.algocraft.modelo.unidades.UnidadTerrestre;
+import fiuba.algo3.algocraft.modelo.unidades.UnidadUno;
 
-public class Zealot extends UnidadTerrestre {
+public class Zealot extends UnidadUno{
 
 	private String nombre;
 	public Zealot(String nombre) {	}

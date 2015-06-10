@@ -1,9 +1,9 @@
 package fiuba.algo3.algocraft.modelo.unidades.terran;
 
 import fiuba.algo3.algocraft.modelo.unidades.Salud;
-import fiuba.algo3.algocraft.modelo.unidades.UnidadTerrestre;
+import fiuba.algo3.algocraft.modelo.unidades.UnidadDos;
 
-public class Golliat extends UnidadTerrestre {
+public class Golliat extends UnidadDos {
 
 	private String nombre;
 	//private DisparoStrategy disparoStrategy;

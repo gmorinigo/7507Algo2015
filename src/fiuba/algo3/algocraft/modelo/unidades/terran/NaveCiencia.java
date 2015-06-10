@@ -1,9 +1,9 @@
 package fiuba.algo3.algocraft.modelo.unidades.terran;
 
 import fiuba.algo3.algocraft.modelo.unidades.Salud;
-import fiuba.algo3.algocraft.modelo.unidades.UnidadVoladora;
+import fiuba.algo3.algocraft.modelo.unidades.UnidadCuatro;
 
-public class NaveCiencia extends UnidadVoladora {
+public class NaveCiencia extends UnidadCuatro {
 
 	
 	private String nombre;

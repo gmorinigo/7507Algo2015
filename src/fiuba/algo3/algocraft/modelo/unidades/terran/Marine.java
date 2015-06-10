@@ -1,10 +1,10 @@
 package fiuba.algo3.algocraft.modelo.unidades.terran;
 
 import fiuba.algo3.algocraft.modelo.unidades.Salud;
-import fiuba.algo3.algocraft.modelo.unidades.UnidadTerrestre;
+import fiuba.algo3.algocraft.modelo.unidades.UnidadUno;
 
 
-public class Marine extends UnidadTerrestre {
+public class Marine extends UnidadUno {
 
 	private String nombre;
 	//private DisparoStrategy disparoStrategy;

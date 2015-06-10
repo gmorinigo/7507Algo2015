@@ -1,5 +1,5 @@
 package fiuba.algo3.algocraft.modelo.unidades;
 
-abstract class UnidadTerrestreUno extends Unidad{
+abstract public class UnidadDos extends Unidad{
 
 }

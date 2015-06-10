@@ -1,9 +1,9 @@
 package fiuba.algo3.algocraft.modelo.unidades.protoss;
 
 import fiuba.algo3.algocraft.modelo.unidades.Salud;
-import fiuba.algo3.algocraft.modelo.unidades.UnidadVoladora;
+import fiuba.algo3.algocraft.modelo.unidades.UnidadTres;
 
-public class Scout extends UnidadVoladora {
+public class Scout extends UnidadTres {
 
 	private String nombre;
 	public Scout(String nombre) {	}

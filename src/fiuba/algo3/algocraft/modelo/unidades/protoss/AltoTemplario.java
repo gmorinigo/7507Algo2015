@@ -1,9 +1,9 @@
 package fiuba.algo3.algocraft.modelo.unidades.protoss;
 
 import fiuba.algo3.algocraft.modelo.unidades.Salud;
-import fiuba.algo3.algocraft.modelo.unidades.UnidadTerrestre;
+import fiuba.algo3.algocraft.modelo.unidades.UnidadCuatro;
 
-public class AltoTemplario extends UnidadTerrestre {
+public class AltoTemplario extends UnidadCuatro {
 
 	private String nombre;
 	public AltoTemplario(String nombre) {	}
