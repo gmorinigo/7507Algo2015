@@ -1,5 +1,6 @@
 package fiuba.algo3.algocraft.modelo.unidades.terran;
 
+import fiuba.algo3.algocraft.modelo.unidades.Salud;
 import fiuba.algo3.algocraft.modelo.unidades.UnidadVoladora;
 
 public class NaveCiencia extends UnidadVoladora {
@@ -22,5 +23,12 @@ public class NaveCiencia extends UnidadVoladora {
 
 	@Override
 	public String getName() { return this.nombre; }
+
+
+	@Override
+	protected Salud saludInicial() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	}

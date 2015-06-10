@@ -1,5 +1,6 @@
 package fiuba.algo3.algocraft.modelo.unidades.terran;
 
+import fiuba.algo3.algocraft.modelo.unidades.Salud;
 import fiuba.algo3.algocraft.modelo.unidades.UnidadTerrestre;
 
 public class Golliat extends UnidadTerrestre {
@@ -21,5 +22,11 @@ public class Golliat extends UnidadTerrestre {
 	public String toString(){
 		return "Unidad "+nombre;
 	}
-	public String getName(){ return this.nombre; } 
+	public String getName(){ return this.nombre; }
+
+	@Override
+	protected Salud saludInicial() {
+		// TODO Auto-generated method stub
+		return null;
+	} 
 }
