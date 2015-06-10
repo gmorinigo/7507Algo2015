@@ -4,9 +4,10 @@ import java.util.ArrayList;
 
 import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.excepciones.CeldaOcupadaException;
+import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException;
+import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException;
 import fiuba.algo3.algocraft.modelo.excepciones.NoReuneLosRequisitosException;
 import fiuba.algo3.algocraft.modelo.mapa.Celda;
-import fiuba.algo3.algocraft.modelo.mapa.CeldaTerrestre;
 import fiuba.algo3.algocraft.modelo.mapa.Mapa;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.turnos.Turno;
@@ -16,14 +17,16 @@ public abstract class Construccion implements TurnoObserver{
 
 	protected ArrayList<Celda> celdas;
 	protected boolean estaOperativa;
-	protected Celda celdaSupIzquierda;
+	//protected Celda celdaSupIzquierda;
 	protected Jugador jugador;
+	protected Posicion posicionCeldaSupIzquierda;
 	
 	public Construccion(Posicion unaPosicion, Jugador jugador) {
 		this.celdas = new ArrayList<Celda>();
 		this.perteneceA(jugador);
 		this.estaOperativa = false;
-		this.celdaSupIzquierda = new CeldaTerrestre(unaPosicion.dameFila(),unaPosicion.dameColumna());
+		//this.celdaSupIzquierda = new CeldaTerrestre(unaPosicion.dameFila(),unaPosicion.dameColumna());
+		this.posicionCeldaSupIzquierda = unaPosicion;
 	}
 
 	
@@ -40,7 +43,7 @@ public abstract class Construccion implements TurnoObserver{
 	}
 	
 
-	public void crearEstructura(Turno unTurno) throws CeldaOcupadaException, NoReuneLosRequisitosException{
+	public void crearEstructura(Turno unTurno) throws CeldaOcupadaException, NoReuneLosRequisitosException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException{
 		if( ! this.reuneLosRequisitos(this.jugador)) {
 			throw new NoReuneLosRequisitosException();
 		}
@@ -66,8 +69,13 @@ public abstract class Construccion implements TurnoObserver{
 		return celdas;
 	}
 	
+	/*
 	public Celda dameCeldaSupIzquierda(){
 		return this.celdaSupIzquierda;
+	}*/
+	
+	public Posicion damePosicionCeldaSupIzquierda(){
+		return this.posicionCeldaSupIzquierda;
 	}
 	
 	public void agregarCeldas(ArrayList<Celda> celdas) {

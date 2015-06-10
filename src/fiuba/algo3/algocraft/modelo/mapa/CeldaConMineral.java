@@ -4,4 +4,8 @@ public class CeldaConMineral extends Celda {
 	public CeldaConMineral(int fila, int columna){
 		super(fila, columna);
 	}
+	
+	public boolean tieneMineral(){
+		return true;
+	}
 }
