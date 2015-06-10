@@ -13,8 +13,15 @@ public class SaludProtoss extends Salud{
 	}
 
 	@Override
-	public boolean atacar(int cantidad) {
-		// TODO Auto-generated method stub
-		return false;
+	public void atacar(int ataque) {
+		int ataqueEfectivo = this.absorverAtaque(ataque);
+		int vida = this.valorDeSalud();
+		
+		this.setValorDeSalud(vida - ataqueEfectivo);
 	}
+	
+	protected int absorverAtaque(int ataque) {
+		return (this.escudo > ataque) ? 0: this.escudo - ataque;
+	}
+	
 }

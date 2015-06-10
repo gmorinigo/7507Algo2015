@@ -9,8 +9,8 @@ public class SaludTerran extends Salud {
 	}
 
 	@Override
-	public boolean atacar(int cantidad) {
-		// TODO Auto-generated method stub
-		return false;
+	public void atacar(int ataque) {
+		int vida = this.valorDeSalud();
+		this.setValorDeSalud(vida - ataque);
 	}
 }
