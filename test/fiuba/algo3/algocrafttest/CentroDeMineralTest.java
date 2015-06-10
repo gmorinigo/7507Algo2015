@@ -6,6 +6,8 @@ import fiuba.algo3.algocraft.modelo.Raza;
 import fiuba.algo3.algocraft.modelo.construciones.CentroDeMineral;
 import fiuba.algo3.algocraft.modelo.construciones.Construccion;
 import fiuba.algo3.algocraft.modelo.excepciones.CeldaOcupadaException;
+import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException;
+import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException;
 import fiuba.algo3.algocraft.modelo.excepciones.JugadorConNombreDemasiadoCortoException;
 import fiuba.algo3.algocraft.modelo.excepciones.NoReuneLosRequisitosException;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
@@ -19,9 +21,9 @@ public class CentroDeMineralTest extends TestBase {
 		assertNotNull(centroMineral);
 	}
 	
-	public void testCrearUnCentroMineralAl8TurnosEstaCreada() throws CeldaOcupadaException, NoReuneLosRequisitosException, JugadorConNombreDemasiadoCortoException{
-		Posicion posicion14 = new Posicion(1,4);
-		Construccion centroMineral = new CentroDeMineral(posicion14, new Jugador("unNombre",new Raza(),"Azul"));
+	public void testCrearUnCentroMineralAl8TurnosEstaCreada() throws CeldaOcupadaException, NoReuneLosRequisitosException, JugadorConNombreDemasiadoCortoException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException{
+		Posicion posicion911 = new Posicion(9,11);
+		Construccion centroMineral = new CentroDeMineral(posicion911, new Jugador("unNombre",new Raza(),"Azul"));
 		Turno unTurno = new Turno(8);
 	
 		centroMineral.crearEstructura(unTurno);
@@ -39,9 +41,9 @@ public class CentroDeMineralTest extends TestBase {
 		assertTrue(centroMineral.estaTerminada());
 	}
 	
-	public void testComanzarARecolectar() throws CeldaOcupadaException, NoReuneLosRequisitosException, JugadorConNombreDemasiadoCortoException {
-		Posicion posicion14 = new Posicion(1,4);
-		CentroDeMineral centroMineral = new CentroDeMineral(posicion14, new Jugador("unNombre",new Raza(),"Azul"));
+	public void testComanzarARecolectar() throws CeldaOcupadaException, NoReuneLosRequisitosException, JugadorConNombreDemasiadoCortoException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException {
+		Posicion posicion911 = new Posicion(9,11);
+		CentroDeMineral centroMineral = new CentroDeMineral(posicion911, new Jugador("unNombre",new Raza(),"Azul"));
 		Turno unTurno = new Turno(8);
 		
 		centroMineral.crearEstructura(unTurno);

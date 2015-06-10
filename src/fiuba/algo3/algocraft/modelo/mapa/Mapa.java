@@ -1,8 +1,11 @@
 package fiuba.algo3.algocraft.modelo.mapa;
 
 import java.util.ArrayList;
+
 import fiuba.algo3.algocraft.modelo.construciones.Construccion;
 import fiuba.algo3.algocraft.modelo.excepciones.CeldaOcupadaException;
+import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException;
+import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException;
 //import fiuba.algo3.algocraft.modelo.recursos.Recurso;
 
 public class Mapa {
@@ -27,7 +30,7 @@ public class Mapa {
 				if (((j==9) || (j==190)) && (i==9)){
 					agregarCeldaConGas(i, j);
 				} else {
-					if (((j==12) || (j==188)) && (i==9)){
+					if (((j==11) || (j==188)) && (i==9)){
 						agregarCeldaConMineral(i, j);
 					} else {
 						agregarCeldaTerrestre(i, j);						
@@ -137,12 +140,14 @@ public class Mapa {
 	}
 
 
-	public void agregarConstruccion(Construccion construccion) throws CeldaOcupadaException{
+	public void agregarConstruccion(Construccion construccion) throws CeldaOcupadaException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException{
 
-		Celda unaCelda = construccion.dameCeldaSupIzquierda();
+		Posicion unaPosicion = construccion.damePosicionCeldaSupIzquierda();
+		Celda unaCelda = this.matriz[unaPosicion.dameFila()][unaPosicion.dameColumna()];
 
 		try {
-			this.verificarCeldasOcupadas(construccion, unaCelda.obtenerPosicion());
+			this.verificarCeldasOcupadas(construccion, unaPosicion);
+			this.verificarSiCorrespondeLaConstruccionEnLaCelda(construccion, unaCelda);
 		} catch (CeldaOcupadaException e) {
 			throw e;
 		}
@@ -153,6 +158,16 @@ public class Mapa {
 
 	}
 
+	private void verificarSiCorrespondeLaConstruccionEnLaCelda(Construccion construccion, Celda unaCelda) throws ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException{
+		if ((construccion.construccionRecolectoraDeMineral()) && !(unaCelda.tieneMineral())){
+			throw new ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException();
+		}
+		if ((construccion.construccionRecolectoraDeGas()) && !(unaCelda.tieneGas())){
+			throw new ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException();
+		}
+	}
+	
+	
 	private void verificarCeldasOcupadas(Construccion construccion, Posicion unaPosicion) throws CeldaOcupadaException {
 
 		if (this.matriz[unaPosicion.dameFila()][unaPosicion.dameColumna()].celdaOcupada()) 
@@ -192,7 +207,7 @@ public class Mapa {
 
 	public void asignarCeldas(Construccion construccion){
 
-		Posicion unaPosicion = construccion.dameCeldaSupIzquierda().obtenerPosicion();
+		Posicion unaPosicion = construccion.damePosicionCeldaSupIzquierda();
 
 		ArrayList<Celda> celdas = new ArrayList<>();
 		

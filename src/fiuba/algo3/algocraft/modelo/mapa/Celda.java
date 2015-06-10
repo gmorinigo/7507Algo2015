@@ -27,4 +27,13 @@ public abstract class Celda {
 		this.estaOcupada = false;  
 	}
 	
+	
+	public boolean tieneGas(){
+		return false;
+	}
+
+	
+	public boolean tieneMineral(){
+		return false;
+	}
 }

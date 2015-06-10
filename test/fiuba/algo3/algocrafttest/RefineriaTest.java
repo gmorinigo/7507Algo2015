@@ -6,6 +6,8 @@ import fiuba.algo3.algocraft.modelo.Raza;
 import fiuba.algo3.algocraft.modelo.construciones.Construccion;
 import fiuba.algo3.algocraft.modelo.construciones.Refineria;
 import fiuba.algo3.algocraft.modelo.excepciones.CeldaOcupadaException;
+import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException;
+import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException;
 import fiuba.algo3.algocraft.modelo.excepciones.JugadorConNombreDemasiadoCortoException;
 import fiuba.algo3.algocraft.modelo.excepciones.NoReuneLosRequisitosException;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
@@ -19,9 +21,9 @@ public class RefineriaTest extends TestBase {
 		assertNotNull(refineria);
 	}
 	
-	public void testCrearUnaRefineriaAl12TurnosEstaCreada() throws CeldaOcupadaException, NoReuneLosRequisitosException, JugadorConNombreDemasiadoCortoException{
-		Posicion posicion14 = new Posicion(1,4);
-		Construccion refineria = new Refineria(posicion14, new Jugador("unNombre",new Raza(),"Azul"));
+	public void testCrearUnaRefineriaAl12TurnosEstaCreada() throws CeldaOcupadaException, NoReuneLosRequisitosException, JugadorConNombreDemasiadoCortoException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException{
+		Posicion posicion99 = new Posicion(9,9);
+		Construccion refineria = new Refineria(posicion99, new Jugador("unNombre",new Raza(),"Azul"));
 		Turno unTurno = new Turno(8);
 	
 		refineria.crearEstructura(unTurno);
@@ -39,9 +41,9 @@ public class RefineriaTest extends TestBase {
 		assertTrue(refineria.estaTerminada());
 	}
 	
-	public void testComanzarARecolectar() throws CeldaOcupadaException, NoReuneLosRequisitosException, JugadorConNombreDemasiadoCortoException {
-		Posicion posicion14 = new Posicion(1,4);
-		Refineria refineria = new Refineria(posicion14, new Jugador("unNombre",new Raza(),"Azul"));
+	public void testComanzarARecolectar() throws CeldaOcupadaException, NoReuneLosRequisitosException, JugadorConNombreDemasiadoCortoException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException {
+		Posicion posicion99 = new Posicion(9,9);
+		Refineria refineria = new Refineria(posicion99, new Jugador("unNombre",new Raza(),"Azul"));
 		Turno unTurno = new Turno(8);
 		
 		refineria.crearEstructura(unTurno);
