@@ -6,7 +6,7 @@ import fiuba.algo3.algocraft.modelo.Jugador;
 //import fiuba.algo3.algocraft.modelo.mapa.Mapa;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 
-public class CentroDeMineral extends Construccion{
+public class CentroDeMineral extends ExtractorDeMineral{
 	
 	//private int tamanio = 2;
 
@@ -15,13 +15,14 @@ public class CentroDeMineral extends Construccion{
 		super(unaPosicion, jugador);
 	}
 
+	public void recolectar(Almacen almacen) {
+		almacen.almacenarRecurso(10);		
+	}
+	
+	/* lo paso a la clase madre
 	@Override
 	public boolean reuneLosRequisitos(Jugador jugador) {
 		return true;
-	}
-
-	public void recolectar(Almacen almacen) {
-		almacen.almacenarRecurso(10);		
 	}
 
 	@Override
@@ -33,7 +34,7 @@ public class CentroDeMineral extends Construccion{
 	public int costoMineral() {
 		return 100;
 	}
-
+*/
 
 
 

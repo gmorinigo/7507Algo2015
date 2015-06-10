@@ -53,7 +53,14 @@ public abstract class Construccion implements TurnoObserver{
 	abstract public boolean reuneLosRequisitos(Jugador jugador);
 	abstract public int costoGas();
 	abstract public int costoMineral();
-
+	
+	public boolean construccionRecolectoraDeMineral(){
+		return false;
+	}
+	
+	public boolean construccionRecolectoraDeGas(){
+		return false;
+	}
 
 	public ArrayList<Celda> dameCeldas(){
 		return celdas;

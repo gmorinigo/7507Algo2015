@@ -4,7 +4,7 @@ import fiuba.algo3.algocraft.modelo.Almacen;
 import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 
-public class Refineria extends Construccion{
+public class Refineria extends ExtractorDeGas{
 	
 	//private int tamanio = 2;
 
@@ -17,7 +17,7 @@ public class Refineria extends Construccion{
 		almacen.almacenarRecurso(10);
 	}
 
-	@Override
+	// TODO Me parece que esto puede ir a la clase madre
 	public boolean reuneLosRequisitos(Jugador jugador) {
 		Almacen almacenGas = jugador.dameAlmacenGas();
 		try {
@@ -27,7 +27,7 @@ public class Refineria extends Construccion{
 		}
 		return true;
 	}
-
+/* lo mando a la clase madre
 	@Override
 	public int costoGas() {
 		return 0;
@@ -37,5 +37,5 @@ public class Refineria extends Construccion{
 	public int costoMineral() {
 		return 100;
 	}
-
+*/
 }
