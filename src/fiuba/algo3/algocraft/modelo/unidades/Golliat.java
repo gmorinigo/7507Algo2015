@@ -1,6 +1,6 @@
 package fiuba.algo3.algocraft.modelo.unidades;
 
-public class Golliat implements Unidad2 {
+public class Golliat implements Unidad {
 
 	private String nombre;
 	//private DisparoStrategy disparoStrategy;

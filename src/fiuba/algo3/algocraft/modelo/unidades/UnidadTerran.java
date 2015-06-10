@@ -1,7 +1,7 @@
 package fiuba.algo3.algocraft.modelo.unidades;
 
 
-public class UnidadTerran implements Unidad2 {
+public class UnidadTerran implements Unidad {
 
 	private String nombre;
 	//private DisparoStrategy disparoStrategy;

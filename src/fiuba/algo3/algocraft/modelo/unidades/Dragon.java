@@ -1,6 +1,6 @@
 package fiuba.algo3.algocraft.modelo.unidades;
 
-public class Dragon implements Unidad2 {
+public class Dragon implements Unidad {
 
 	private String nombre;
 	

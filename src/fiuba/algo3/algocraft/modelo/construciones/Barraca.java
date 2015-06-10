@@ -6,8 +6,9 @@ import fiuba.algo3.algocraft.modelo.Almacen;
 import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.turnos.Turno;
-import fiuba.algo3.algocraft.modelo.unidades.Marine;
+import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
+import fiuba.algo3.algocraft.modelo.unidades.UnidadFactoryTerran;
 
 public class Barraca extends Construccion {
 	
@@ -23,10 +24,12 @@ public class Barraca extends Construccion {
 	
 	public Turno crearMarine() {
 		Turno turno = new Turno(3);
-		Marine marine = new Marine(this);
-		marine.crearUnidad(turno);
+		// Obtener dinamicamente la factory
+		AbstractUnidadFactory factoryUnidades = new UnidadFactoryTerran();//getFactoryUnidades();
+		Unidad unaUnidad = (Unidad) factoryUnidades.crearUnidad("Marine");
+		//unaUnidad.crearUnidad(turno);
 		
-		this.unidadesEnProceso.add(marine);
+		this.unidadesEnProceso.add(unaUnidad);
 		
 		return turno;
 	}

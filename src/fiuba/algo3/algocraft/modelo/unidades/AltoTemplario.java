@@ -1,6 +1,6 @@
 package fiuba.algo3.algocraft.modelo.unidades;
 
-public class AltoTemplario implements Unidad2 {
+public class AltoTemplario implements Unidad {
 
 	private String nombre;
 	public AltoTemplario(String nombre) {	}

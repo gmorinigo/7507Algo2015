@@ -3,23 +3,26 @@ package fiuba.algo3.algocraft.modelo.unidades;
 import fiuba.algo3.algocraft.modelo.construciones.Barraca;
 
 
-public class Marine extends Unidad {
+public class Marine implements Unidad {
 
-	protected Barraca barraca;
-
-	public Marine(Barraca barraca) {
-		super();
-		this.barraca = barraca;
+	private String nombre;
+	//private DisparoStrategy disparoStrategy;
+	
+	public Marine(String nombre/*, DisparoStrategy disparoStrategy*/){
+		this.nombre=nombre;
+//		this.disparoStrategy=disparoStrategy;
+//		this.disparoStrategy.setUnidad(this);
 	}
-
-	public boolean estaTerminado() {
-		return this.estaOperativo;
+	
+	public void disparar()
+	{
+//		this.disparoStrategy.disparar();
 	}
-
-	@Override
-	public void finDeTurnos() {
-		this.estaOperativo = true;
-		this.barraca.finalizarUnidad(this);
+	
+	public String toString(){
+		return "Unidad "+nombre;
 	}
+	public String getName(){ return this.nombre; } 
+
 
 }

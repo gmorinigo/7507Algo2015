@@ -1,6 +1,6 @@
 package fiuba.algo3.algocraft.modelo.unidades;
 
-public class Espectro implements Unidad2 {
+public class Espectro implements Unidad {
 
 	private String nombre;
 

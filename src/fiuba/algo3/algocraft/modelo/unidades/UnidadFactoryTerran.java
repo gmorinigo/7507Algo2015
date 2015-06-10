@@ -2,9 +2,9 @@ package fiuba.algo3.algocraft.modelo.unidades;
 
 public class UnidadFactoryTerran extends AbstractUnidadFactory {
 	
-	public Unidad2 crearUnidad(String nombre/*,DisparoStrategy estrategiaDisparo*/){
+	public Unidad crearUnidad(String nombre/*,DisparoStrategy estrategiaDisparo*/){
 		if (nombre == "Golliat"){ return new Golliat(nombre/*,estrategiaDisparo*/);}
-		//else if (nombre == "Marine"){return new Marine(nombre/*,estrategiaDisparo*/);}
+		else if (nombre == "Marine"){return new Marine(nombre/*,estrategiaDisparo*/);}
 		
 		else if (nombre == "Espectro"){return new Espectro(nombre/*,estrategiaDisparo*/);}
 		

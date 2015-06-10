@@ -1,6 +1,6 @@
 package fiuba.algo3.algocraft.modelo.unidades;
 
-public class Scout implements Unidad2 {
+public class Scout implements Unidad {
 
 	private String nombre;
 	public Scout(String nombre) {	}

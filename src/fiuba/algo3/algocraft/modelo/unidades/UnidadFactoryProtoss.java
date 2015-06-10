@@ -2,7 +2,7 @@ package fiuba.algo3.algocraft.modelo.unidades;
 
 public class UnidadFactoryProtoss extends AbstractUnidadFactory {
 	
-	public Unidad2 crearUnidad(String nombre/*,DisparoStrategy estrategiaDisparo*/){
+	public Unidad crearUnidad(String nombre/*,DisparoStrategy estrategiaDisparo*/){
 
 		if (nombre == "Zealot"){ return new Zealot(nombre/*,estrategiaDisparo*/);}
 				

@@ -1,6 +1,6 @@
 package fiuba.algo3.algocraft.modelo.unidades;
 
-public class NaveTransporte implements Unidad2 {
+public class NaveTransporte implements Unidad {
 
 	private String nombre;
 
