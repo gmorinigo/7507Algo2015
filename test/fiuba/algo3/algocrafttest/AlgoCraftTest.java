@@ -29,6 +29,13 @@ public class AlgoCraftTest extends TestCase {
 		
 		assertTrue(unJuegoAlgoCraft.obtenerCantidadDeJugadores() == 1); 
 		
+		try {
+			unJuegoAlgoCraft.agregarJugador("nombreDelJugador2",unaRaza);
+		} catch (MaximaCantidadDeJugadoresSuperadaException | JugadorConElMismoNombreException e) {
+		}
+		
+		assertTrue(unJuegoAlgoCraft.obtenerCantidadDeJugadores() == 2);
+		
 	}
 
 	
