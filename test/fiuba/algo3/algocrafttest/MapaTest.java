@@ -6,6 +6,7 @@ import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.Raza;
 import fiuba.algo3.algocraft.modelo.construciones.Barraca;
 import fiuba.algo3.algocraft.modelo.excepciones.CeldaOcupadaException;
+import fiuba.algo3.algocraft.modelo.excepciones.JugadorConNombreDemasiadoCortoException;
 import fiuba.algo3.algocraft.modelo.mapa.Celda;
 import fiuba.algo3.algocraft.modelo.mapa.Mapa;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
@@ -48,10 +49,10 @@ public class MapaTest extends TestBase {
 		assertTrue(unMapa.dameRecursos().contains(unMineral));
 	}
 	*/
-	public void testAgregarUnaConstruccionAlMapa(){
+	public void testAgregarUnaConstruccionAlMapa() throws JugadorConNombreDemasiadoCortoException{
 		Posicion posicion55 = new Posicion(5,5);
 		Mapa unMapa = Mapa.getInstance();
-		Barraca unaBarraca = new Barraca(posicion55, new Jugador("unNombre",new Raza()));
+		Barraca unaBarraca = new Barraca(posicion55, new Jugador("unNombre",new Raza(),"Azul"));
 		
 		try {
 			unMapa.agregarConstruccion(unaBarraca);
@@ -61,13 +62,13 @@ public class MapaTest extends TestBase {
 		assertTrue(unMapa.dameConstrucciones().contains(unaBarraca));
 	}
 
-	public void testAgregarUnaConstruccionAlMapaYVerificarLasCeldasOcupadas(){
+	public void testAgregarUnaConstruccionAlMapaYVerificarLasCeldasOcupadas() throws JugadorConNombreDemasiadoCortoException{
 		Posicion posicion88 = new Posicion(8,8);
 		Posicion posicion89 = new Posicion(8,9);
 		Posicion posicion98 = new Posicion(9,8);
 		Posicion posicion99 = new Posicion(9,9);
 		Mapa unMapa = Mapa.getInstance();
-		Barraca unaBarraca = new Barraca(posicion88, new Jugador("unNombre",new Raza()));
+		Barraca unaBarraca = new Barraca(posicion88, new Jugador("unNombre",new Raza(),"Azul"));
 		
 		try {
 			unMapa.agregarConstruccion(unaBarraca);
@@ -80,13 +81,13 @@ public class MapaTest extends TestBase {
 		assertTrue(unMapa.verificarCeldaOcupada(posicion99));
 	}
 	
-	public void testAgregarUnaConstruccionAlMapaYVerificarLasCeldasQueOcupa(){
+	public void testAgregarUnaConstruccionAlMapaYVerificarLasCeldasQueOcupa() throws JugadorConNombreDemasiadoCortoException{
 		Posicion posicion22 = new Posicion(2,2);
 		Posicion posicion23 = new Posicion(2,3);
 		Posicion posicion32 = new Posicion(3,2);
 		Posicion posicion33 = new Posicion(3,3);
 		Mapa unMapa = Mapa.getInstance();
-		Barraca unaBarraca = new Barraca(posicion22, new Jugador("unNombre",new Raza()));
+		Barraca unaBarraca = new Barraca(posicion22, new Jugador("unNombre",new Raza(),"Azul"));
 		
 		try {
 			unMapa.agregarConstruccion(unaBarraca);

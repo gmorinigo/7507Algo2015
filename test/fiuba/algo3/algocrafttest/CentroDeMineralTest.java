@@ -6,21 +6,22 @@ import fiuba.algo3.algocraft.modelo.Raza;
 import fiuba.algo3.algocraft.modelo.construciones.CentroDeMineral;
 import fiuba.algo3.algocraft.modelo.construciones.Construccion;
 import fiuba.algo3.algocraft.modelo.excepciones.CeldaOcupadaException;
+import fiuba.algo3.algocraft.modelo.excepciones.JugadorConNombreDemasiadoCortoException;
 import fiuba.algo3.algocraft.modelo.excepciones.NoReuneLosRequisitosException;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.turnos.Turno;
 
 public class CentroDeMineralTest extends TestBase {
 
-	public void testCrearUnCentroMineral(){
+	public void testCrearUnCentroMineral() throws JugadorConNombreDemasiadoCortoException{
 		Posicion posicion64 = new Posicion(6,4);
-		Construccion centroMineral = new CentroDeMineral(posicion64, new Jugador("unNombre",new Raza()));
+		Construccion centroMineral = new CentroDeMineral(posicion64, new Jugador("unNombre",new Raza(),"Azul"));
 		assertNotNull(centroMineral);
 	}
 	
-	public void testCrearUnCentroMineralAl8TurnosEstaCreada() throws CeldaOcupadaException, NoReuneLosRequisitosException{
+	public void testCrearUnCentroMineralAl8TurnosEstaCreada() throws CeldaOcupadaException, NoReuneLosRequisitosException, JugadorConNombreDemasiadoCortoException{
 		Posicion posicion14 = new Posicion(1,4);
-		Construccion centroMineral = new CentroDeMineral(posicion14, new Jugador("unNombre",new Raza()));
+		Construccion centroMineral = new CentroDeMineral(posicion14, new Jugador("unNombre",new Raza(),"Azul"));
 		Turno unTurno = new Turno(8);
 	
 		centroMineral.crearEstructura(unTurno);
@@ -38,9 +39,9 @@ public class CentroDeMineralTest extends TestBase {
 		assertTrue(centroMineral.estaTerminada());
 	}
 	
-	public void testComanzarARecolectar() throws CeldaOcupadaException, NoReuneLosRequisitosException {
+	public void testComanzarARecolectar() throws CeldaOcupadaException, NoReuneLosRequisitosException, JugadorConNombreDemasiadoCortoException {
 		Posicion posicion14 = new Posicion(1,4);
-		CentroDeMineral centroMineral = new CentroDeMineral(posicion14, new Jugador("unNombre",new Raza()));
+		CentroDeMineral centroMineral = new CentroDeMineral(posicion14, new Jugador("unNombre",new Raza(),"Azul"));
 		Turno unTurno = new Turno(8);
 		
 		centroMineral.crearEstructura(unTurno);

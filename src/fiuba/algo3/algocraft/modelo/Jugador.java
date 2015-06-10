@@ -3,26 +3,33 @@ package fiuba.algo3.algocraft.modelo;
 import java.util.ArrayList;
 
 import fiuba.algo3.algocraft.modelo.construciones.Construccion;
+import fiuba.algo3.algocraft.modelo.excepciones.JugadorConNombreDemasiadoCortoException;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 
 public class Jugador {
 	
 	private String nombreJugador;
+	private String colorJugador;
 	protected Raza raza;
 	protected ArrayList<Construccion> contruccionesTerminadas;
 	protected ArrayList<Unidad> unidadesTerminadas;
 	private Almacen almacenGas;
 	private Almacen almacenMineral;
 
-	public Jugador(String unNombre,Raza raza) {
+	public Jugador(String unNombre,Raza raza, String unColor) throws JugadorConNombreDemasiadoCortoException {
+		if (unNombre.length() < 4){
+			throw new JugadorConNombreDemasiadoCortoException();
+		}
+		
 		this.raza = raza;
 		this.contruccionesTerminadas = new ArrayList<Construccion>();
 		this.unidadesTerminadas = new ArrayList<Unidad>();
 		this.almacenGas = new Almacen(500);
 		this.almacenMineral = new Almacen(500);
 		this.nombreJugador = unNombre;
+		this.colorJugador = unColor;
 	}
-	
+
 	public Jugador(Raza raza, Almacen mineral, Almacen gas) {
 		this.raza = raza;
 		this.almacenGas = gas;
@@ -57,8 +64,20 @@ public class Jugador {
 		return (this.nombreJugador == unNombre);
 	}
 
+	public boolean tieneElMismoColor(String unColor){
+		return (this.colorJugador == unColor);
+	}
+	
 	public boolean verificarPoblacion() {
 	return ((unidadesTerminadas.size() + 1) <= 200);
 		
+	}
+
+	public String dameNombre() {
+		return this.nombreJugador;
+	}
+
+	public String dameColor() {
+		return this.colorJugador;
 	}
 }

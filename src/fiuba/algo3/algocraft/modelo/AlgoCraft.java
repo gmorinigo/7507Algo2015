@@ -1,6 +1,8 @@
 package fiuba.algo3.algocraft.modelo;
 
+import fiuba.algo3.algocraft.modelo.excepciones.JugadorConElMismoColorException;
 import fiuba.algo3.algocraft.modelo.excepciones.JugadorConElMismoNombreException;
+import fiuba.algo3.algocraft.modelo.excepciones.JugadorConNombreDemasiadoCortoException;
 import fiuba.algo3.algocraft.modelo.excepciones.MaximaCantidadDeJugadoresSuperadaException;
 import fiuba.algo3.algocraft.modelo.mapa.Mapa;
 
@@ -19,13 +21,14 @@ public class AlgoCraft {
 		return this.mapaDelJuego;
 	}
 	
-	public void agregarJugador(String nombreJugador, Raza unaRaza) throws MaximaCantidadDeJugadoresSuperadaException, JugadorConElMismoNombreException{
+	public void agregarJugador(String nombreJugador, Raza unaRaza, String unColor) 
+	throws MaximaCantidadDeJugadoresSuperadaException, JugadorConElMismoNombreException, JugadorConElMismoColorException, JugadorConNombreDemasiadoCortoException{		
 		if (this.jugador1 == null){
-			this.agregarJugadorNumero1(nombreJugador, unaRaza);
+			this.agregarJugadorNumero1(nombreJugador, unaRaza, unColor);
 		}
 		else{
 			if (this.jugador2 == null){
-				this.agregarJugadorNumero2(nombreJugador, unaRaza);
+				this.agregarJugadorNumero2(nombreJugador, unaRaza, unColor);
 			}
 			else{
 				throw new MaximaCantidadDeJugadoresSuperadaException();
@@ -33,15 +36,23 @@ public class AlgoCraft {
 		}
 	}
 	
-	public void agregarJugadorNumero1(String nombreJugador, Raza unaRaza){
-		this.jugador1 = new Jugador(nombreJugador, unaRaza);
+	
+	public void agregarJugadorNumero1(String nombreJugador, Raza unaRaza, String unColor) throws JugadorConNombreDemasiadoCortoException{
+		this.jugador1 = new Jugador(nombreJugador, unaRaza, unColor);
 	}
 	
-	public void agregarJugadorNumero2(String nombreJugador, Raza unaRaza) throws JugadorConElMismoNombreException{
+	
+	public void agregarJugadorNumero2(String nombreJugador, Raza unaRaza, String colorJugador) 
+	throws JugadorConElMismoNombreException, JugadorConElMismoColorException, JugadorConNombreDemasiadoCortoException{
 		if (this.jugador1.tieneElMismoNombre(nombreJugador)){
 			throw new JugadorConElMismoNombreException();
 		}
-		this.jugador2 = new Jugador(nombreJugador, unaRaza);
+		
+		if (this.jugador1.tieneElMismoColor(colorJugador)){
+			throw new JugadorConElMismoColorException();
+		}
+		
+		this.jugador2 = new Jugador(nombreJugador, unaRaza, colorJugador);
 	}
 	
 	
