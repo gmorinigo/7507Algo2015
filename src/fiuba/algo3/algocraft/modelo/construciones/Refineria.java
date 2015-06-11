@@ -2,6 +2,7 @@ package fiuba.algo3.algocraft.modelo.construciones;
 
 import fiuba.algo3.algocraft.modelo.Almacen;
 import fiuba.algo3.algocraft.modelo.Jugador;
+import fiuba.algo3.algocraft.modelo.ProgresoCreacion;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 
 public class Refineria extends ExtractorDeGas{
@@ -38,4 +39,9 @@ public class Refineria extends ExtractorDeGas{
 		return 100;
 	}
 */
+
+	@Override
+	protected ProgresoCreacion progresoCreacion() {
+		return new ProgresoCreacion(8, this);
+	}
 }

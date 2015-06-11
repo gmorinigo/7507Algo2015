@@ -2,6 +2,7 @@ package fiuba.algo3.algocraft.modelo.construciones;
 
 import fiuba.algo3.algocraft.modelo.Almacen;
 import fiuba.algo3.algocraft.modelo.Jugador;
+import fiuba.algo3.algocraft.modelo.ProgresoCreacion;
 //import fiuba.algo3.algocraft.modelo.mapa.Celda;
 //import fiuba.algo3.algocraft.modelo.mapa.Mapa;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
@@ -17,6 +18,11 @@ public class CentroDeMineral extends ExtractorDeMineral{
 
 	public void recolectar(Almacen almacen) {
 		almacen.almacenarRecurso(10);		
+	}
+
+	@Override
+	protected ProgresoCreacion progresoCreacion() {
+		return new ProgresoCreacion(8, this);
 	}
 	
 	/* lo paso a la clase madre

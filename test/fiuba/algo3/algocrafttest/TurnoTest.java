@@ -6,7 +6,7 @@ import fiuba.algo3.algocraft.modelo.excepciones.JugadorConNombreDemasiadoCortoEx
 import fiuba.algo3.algocraft.modelo.turnos.Turno;
 import junit.framework.TestCase;
 
-public class TurnoTest extends TestCase {
+public class TurnoTest extends TestBase {
 	
 	public void testCrearUnTurnoEsElPrimero() throws JugadorConNombreDemasiadoCortoException{
 		Turno unTurno = new Turno(new Jugador("unNombre",new RazaProtoss(),"Azul"));

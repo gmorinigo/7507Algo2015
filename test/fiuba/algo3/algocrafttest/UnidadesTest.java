@@ -6,7 +6,7 @@ import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 import fiuba.algo3.algocraft.modelo.unidades.UnidadFactoryTerran;
 import junit.framework.TestCase;
 
-public class UnidadesTest extends TestCase{
+public class UnidadesTest extends TestBase{
 	
 	
 public void testCrearUnidadGolliat(){	

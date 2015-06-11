@@ -1,10 +1,9 @@
 package fiuba.algo3.algocraft.modelo.construciones;
 
 import fiuba.algo3.algocraft.modelo.Jugador;
-import fiuba.algo3.algocraft.modelo.ProgresoCreacion;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 
-public class ExtractorDeMineral extends Construccion {
+abstract public class ExtractorDeMineral extends Construccion {
 	public ExtractorDeMineral(Posicion unaPosicion, Jugador jugador){
 		super(unaPosicion, jugador);
 	}
@@ -23,10 +22,5 @@ public class ExtractorDeMineral extends Construccion {
 
 	public boolean construccionRecolectoraDeMineral(){
 		return true;
-	}
-
-	@Override
-	protected ProgresoCreacion progresoCreacion() {
-		return new ProgresoCreacion(10, this);
 	}
 }
