@@ -1,6 +1,5 @@
 package fiuba.algo3.algocrafttest;
 
-import junit.framework.Assert;
 import junit.framework.TestCase;
 import fiuba.algo3.algocraft.modelo.Almacen;
 import fiuba.algo3.algocraft.modelo.Jugador;

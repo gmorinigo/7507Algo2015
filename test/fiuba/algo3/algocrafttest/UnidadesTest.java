@@ -1,10 +1,8 @@
 package fiuba.algo3.algocrafttest;
 
-import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 import fiuba.algo3.algocraft.modelo.unidades.UnidadFactoryTerran;
-import junit.framework.TestCase;
 
 public class UnidadesTest extends TestBase{
 	

@@ -4,7 +4,6 @@ import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.RazaProtoss;
 import fiuba.algo3.algocraft.modelo.excepciones.JugadorConNombreDemasiadoCortoException;
 import fiuba.algo3.algocraft.modelo.turnos.Turno;
-import junit.framework.TestCase;
 
 public class TurnoTest extends TestBase {
 	
