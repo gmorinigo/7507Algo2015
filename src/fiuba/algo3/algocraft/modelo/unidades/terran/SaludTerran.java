@@ -11,6 +11,11 @@ public class SaludTerran extends Salud {
 	@Override
 	public void atacar(int ataque) {
 		int vida = this.valorDeSalud();
-		this.setValorDeSalud(vida - ataque);
+		if (vida >= ataque){
+			this.setValorDeSalud(vida - ataque);
+		}
+		else{
+			this.setValorDeSalud(0);	
+		}
 	}
 }

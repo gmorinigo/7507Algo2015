@@ -1,14 +1,13 @@
 package fiuba.algo3.algocrafttest;
 
 import fiuba.algo3.algocraft.modelo.AlgoCraft;
-import junit.framework.TestCase;
 import fiuba.algo3.algocraft.modelo.Raza;
 import fiuba.algo3.algocraft.modelo.excepciones.JugadorConElMismoColorException;
 import fiuba.algo3.algocraft.modelo.excepciones.JugadorConElMismoNombreException;
 import fiuba.algo3.algocraft.modelo.excepciones.JugadorConNombreDemasiadoCortoException;
 import fiuba.algo3.algocraft.modelo.excepciones.MaximaCantidadDeJugadoresSuperadaException;
 
-public class AlgoCraftTest extends TestCase {
+public class AlgoCraftTest extends TestBase {
 	public void testCrearAlgoCraft(){
 		AlgoCraft unJuegoAlgoCraft = new AlgoCraft();
 		assertNotNull(unJuegoAlgoCraft);

@@ -11,7 +11,7 @@ abstract public class Salud {
 	}
 	
 	public boolean tieneVida() {
-		return (salud == 0);
+		return (salud > 0);
 	};
 	
 	public int porcentajeSalud() {

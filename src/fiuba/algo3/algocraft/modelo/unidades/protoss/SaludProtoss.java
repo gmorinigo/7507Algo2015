@@ -17,11 +17,38 @@ public class SaludProtoss extends Salud{
 		int ataqueEfectivo = this.absorverAtaque(ataque);
 		int vida = this.valorDeSalud();
 		
-		this.setValorDeSalud(vida - ataqueEfectivo);
+		if (vida >= ataqueEfectivo){
+			this.setValorDeSalud(vida - ataqueEfectivo);
+		}
+		else{
+			this.setValorDeSalud(0);	
+		}
 	}
 	
 	protected int absorverAtaque(int ataque) {
-		return (this.escudo > ataque) ? 0: this.escudo - ataque;
+		int ataqueEfectivo = 0;
+		if (this.escudo > ataque){
+			this.escudo = this.escudo - ataque;
+		}
+		else {
+			ataqueEfectivo = ataque - this.escudo;
+			this.escudo = 0;
+		}
+		return ataqueEfectivo;
+	}
+
+	public void regenerarEscudo(int cantidadDeEscudoARegenerar) {
+		if ((this.escudo + cantidadDeEscudoARegenerar) > this.hp ){
+			this.escudo = this.hp;
+		}
+		else {
+			this.escudo = this.escudo + cantidadDeEscudoARegenerar;
+		}
+	}
+
+	public int porcentajeEscudo() {
+		return (this.escudo *100) / this.hp;
 	}
 	
 }
+
