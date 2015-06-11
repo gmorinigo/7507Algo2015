@@ -5,12 +5,15 @@ import fiuba.algo3.algocraft.modelo.unidades.Salud;
 import fiuba.algo3.algocraft.modelo.unidades.UnidadCuatro;
 
 public class NaveCiencia extends UnidadCuatro {
-
+    private int energia;    
 	
 	private String nombre;
 
+	
+	
 	public NaveCiencia(String nombre/*, DisparoStrategy disparoStrategy*/){
 		this.nombre=nombre;
+		this.energia =  50;   
 		//this.disparoStrategy=disparoStrategy;
 		//this.disparoStrategy.setUnidad(this);
 	}
@@ -39,4 +42,6 @@ public class NaveCiencia extends UnidadCuatro {
 		return new ProgresoCreacion(10, this);
 	}
 	
+	public void acumularEnergia(){ this.energia += 10; }
+	public int getEnergia(){return this.energia;}
 }
