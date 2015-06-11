@@ -2,6 +2,7 @@ package fiuba.algo3.algocraft.modelo;
 
 import java.util.ArrayList;
 
+import fiuba.algo3.algocraft.modelo.construciones.Barraca;
 import fiuba.algo3.algocraft.modelo.construciones.Construccion;
 import fiuba.algo3.algocraft.modelo.excepciones.JugadorConNombreDemasiadoCortoException;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
@@ -69,7 +70,7 @@ public class Jugador {
 	}
 	
 	public boolean verificarPoblacion() {
-	return ((unidadesTerminadas.size() + 1) <= 200);
+	return ((unidadesTerminadas.size() + 1) <= this.dameLimiteDePoblacion());
 		
 	}
 
@@ -82,6 +83,10 @@ public class Jugador {
 	}
 	public Raza dameRaza() {
 		return this.raza;
+	}
+
+	public int dameLimiteDePoblacion() {
+		return raza.dameCapacidadDePoblacion(this.dameConstruccionesTerminadas());
 	}
 	
 }
