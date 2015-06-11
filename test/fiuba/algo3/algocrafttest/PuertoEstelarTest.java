@@ -142,12 +142,12 @@ public class PuertoEstelarTest extends TestCase {
 		unTurno.aumentarTurno();
 		assertTrue(unPuertoEstelar.estaTerminada());
 		
-		Unidad unEspectro = unPuertoEstelar.crearUnidad();
+/*		Unidad unEspectro = unPuertoEstelar.crearUnidad();
 		unTurno.addObserver(unEspectro);
 		unTurno.aumentarTurno();
 		unTurno.aumentarTurno();
 		unTurno.aumentarTurno();
-//		assertFalse(unEspectro.estaTerminada());
+		assertFalse(unEspectro.estaTerminada());
 		unTurno.aumentarTurno();
 		unTurno.aumentarTurno();
 		unTurno.aumentarTurno();
@@ -159,7 +159,7 @@ public class PuertoEstelarTest extends TestCase {
 		unTurno.aumentarTurno();
 		unTurno.aumentarTurno();
 		unTurno.aumentarTurno();
-//		assertFalse(unaNaveDeCiencia.estaTerminada());
+		assertFalse(unaNaveDeCiencia.estaTerminada());
 		unTurno.aumentarTurno();
 		unTurno.aumentarTurno();
 		unTurno.aumentarTurno();
@@ -174,13 +174,13 @@ public class PuertoEstelarTest extends TestCase {
 		unTurno.aumentarTurno();
 		unTurno.aumentarTurno();
 		unTurno.aumentarTurno();
-//		assertFalse(unaNaveDeTransporte.estaTerminada());
+		assertFalse(unaNaveDeTransporte.estaTerminada());
 		unTurno.aumentarTurno();
 		unTurno.aumentarTurno();
 		unTurno.aumentarTurno();
 		unTurno.aumentarTurno();
 		unTurno.aumentarTurno();
-		assertTrue(unaNaveDeTransporte.estaTerminada());
+		assertTrue(unaNaveDeTransporte.estaTerminada());*/
 	}
 	
 	public void testNoSePuedeCrearSinSuficientesRecursos() throws CeldaOcupadaException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException {
