@@ -10,12 +10,12 @@ import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 
-public class Barraca extends Construccion {
+public class Fabrica extends Construccion {
 
 	protected ArrayList<Unidad> unidadesEnProceso;
 	protected ArrayList<Unidad> unidadesFinalizadas;
 	
-	public Barraca(Posicion unaPosicion, Jugador jugador){
+	public Fabrica(Posicion unaPosicion, Jugador jugador) {
 		super(unaPosicion, jugador);
 		this.unidadesEnProceso = new ArrayList<Unidad>();
 		this.unidadesFinalizadas = new ArrayList<Unidad>();
@@ -44,12 +44,13 @@ public class Barraca extends Construccion {
 		this.unidadesFinalizadas.remove(unidad);
 		return unidad;
 	}
-
 	@Override
 	public boolean reuneLosRequisitos(Jugador jugador) {
+		Almacen almacenGas = jugador.dameAlmacenGas();
 		Almacen almacenMineral = jugador.dameAlmacenMineral();
 		try {
-			almacenMineral.consumirRecurso(this.costoMineral());	
+			almacenGas.consumirRecurso(this.costoGas());	
+			almacenMineral.consumirRecurso(this.costoMineral());
 		} catch (Exception e) {
 			return false;
 		}
@@ -58,16 +59,17 @@ public class Barraca extends Construccion {
 
 	@Override
 	public int costoGas() {
-		return 0;
+		return 100;
 	}
 
 	@Override
 	public int costoMineral() {
-		return 150;
+		return 200;
 	}
 
 	@Override
 	protected ProgresoCreacion progresoCreacion() {
 		return new ProgresoCreacion(12, this);
 	}
+
 }

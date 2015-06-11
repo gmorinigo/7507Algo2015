@@ -7,9 +7,6 @@ import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 
 public class Refineria extends ExtractorDeGas{
 	
-	//private int tamanio = 2;
-
-	
 	public Refineria(Posicion unaPosicion, Jugador jugador){
 		super(unaPosicion, jugador);
 	}
