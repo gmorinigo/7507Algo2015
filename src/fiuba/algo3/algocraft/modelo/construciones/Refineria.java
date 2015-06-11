@@ -44,7 +44,6 @@ public class Refineria extends ExtractorDeGas{
 		if( ! this.reuneLosRequisitos(jugador)) {
 			throw new NoReuneLosRequisitosException();
 		}
-		
 		unTurno.addObserver(this);
 		//Mapa.getInstance().agregarConstruccion(this);
 		jugador.agregarConstruccion(this);

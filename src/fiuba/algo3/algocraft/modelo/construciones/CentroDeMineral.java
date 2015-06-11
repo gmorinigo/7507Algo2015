@@ -24,7 +24,7 @@ public class CentroDeMineral extends ExtractorDeMineral{
 
 	@Override
 	protected ProgresoCreacion progresoCreacion() {
-		return new ProgresoCreacion(8, this);
+		return new ProgresoCreacion(4, this);
 	}
 
 	@Override
@@ -35,31 +35,9 @@ public class CentroDeMineral extends ExtractorDeMineral{
 		if( ! this.reuneLosRequisitos(jugador)) {
 			throw new NoReuneLosRequisitosException();
 		}
-		
 		unTurno.addObserver(this);
 		//Mapa.getInstance().agregarConstruccion(this);
 		jugador.agregarConstruccion(this);
 	}
-		
-
-	
-	/* lo paso a la clase madre
-	@Override
-	public boolean reuneLosRequisitos(Jugador jugador) {
-		return true;
-	}
-
-	@Override
-	public int costoGas() {
-		return 0;
-	}
-
-	@Override
-	public int costoMineral() {
-		return 100;
-	}
-*/
-
-
 
 }

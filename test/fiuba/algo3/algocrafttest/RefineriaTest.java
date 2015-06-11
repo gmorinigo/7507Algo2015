@@ -2,8 +2,7 @@ package fiuba.algo3.algocrafttest;
 
 import fiuba.algo3.algocraft.modelo.Almacen;
 import fiuba.algo3.algocraft.modelo.Jugador;
-import fiuba.algo3.algocraft.modelo.RazaProtoss;
-import fiuba.algo3.algocraft.modelo.construciones.Barraca;
+import fiuba.algo3.algocraft.modelo.RazaTerran;
 import fiuba.algo3.algocraft.modelo.construciones.Construccion;
 import fiuba.algo3.algocraft.modelo.construciones.Refineria;
 import fiuba.algo3.algocraft.modelo.excepciones.CeldaOcupadaException;
@@ -18,13 +17,13 @@ public class RefineriaTest extends TestBase {
 
 	public void testCrearUnaRefineria() throws JugadorConNombreDemasiadoCortoException{
 		Posicion posicion64 = new Posicion(6,4);
-		Construccion refineria = new Refineria(posicion64, new Jugador("unNombre",new RazaProtoss(),"Rojo"));
+		Construccion refineria = new Refineria(posicion64, new Jugador("unNombre",new RazaTerran(),"Rojo"));
 		assertNotNull(refineria);
 	}
 	
 	public void testCrearUnaRefineriaAl12TurnosEstaCreada() throws CeldaOcupadaException, NoReuneLosRequisitosException, JugadorConNombreDemasiadoCortoException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException{
 		Posicion posicion99 = new Posicion(9,9);
-		Jugador unJugador = new Jugador("unNombre",new RazaProtoss(),"Azul");
+		Jugador unJugador = new Jugador("unNombre",new RazaTerran(),"Azul");
 		Construccion refineria = new Refineria(posicion99,unJugador );
 		Turno unTurno = new Turno(unJugador);
 	
@@ -43,7 +42,7 @@ public class RefineriaTest extends TestBase {
 	
 	public void testComanzarARecolectar() throws CeldaOcupadaException, NoReuneLosRequisitosException, JugadorConNombreDemasiadoCortoException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException {
 		Posicion posicion99 = new Posicion(9,9);
-		Jugador unJugador = new Jugador("unNombre",new RazaProtoss(),"Azul");
+		Jugador unJugador = new Jugador("unNombre",new RazaTerran(),"Azul");
 		Refineria refineria = new Refineria(posicion99, unJugador);
 		Turno unTurno = new Turno(unJugador);
 		
@@ -74,7 +73,7 @@ public class RefineriaTest extends TestBase {
 		Almacen gas = new Almacen(0);
 		Almacen mineral = new Almacen(0);
 		
-		Jugador jugador = new Jugador(new RazaProtoss(),mineral, gas);
+		Jugador jugador = new Jugador(new RazaTerran(),mineral, gas);
 		Refineria unaRefineria = new Refineria(posicion123, jugador);
 		Turno unTurno = new Turno(jugador);
 	
