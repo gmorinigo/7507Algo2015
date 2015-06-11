@@ -71,6 +71,7 @@ public class BarracaTest extends TestBase {
 		unTurno.aumentarTurno();
 		unTurno.aumentarTurno();
 		unTurno.aumentarTurno();
+		assertTrue(unaBarraca.estaTerminada());
 		
 		Unidad marine = unaBarraca.crearUnidad();
 		unTurno.addObserver(marine);

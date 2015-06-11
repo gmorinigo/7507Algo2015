@@ -194,15 +194,14 @@ public class MapaTest extends TestBase {
 		unTurno.aumentarTurno();
 		unTurno.aumentarTurno();
 		
-		Turno turnoParaUnidad = unaBarraca.crearMarine();
+		Unidad marine = unaBarraca.crearUnidad();
+		unTurno.addObserver(marine);
 		
-		turnoParaUnidad.aumentarTurno();
-		turnoParaUnidad.aumentarTurno();
-		turnoParaUnidad.aumentarTurno();
+		unTurno.aumentarTurno();
+		unTurno.aumentarTurno();
+		unTurno.aumentarTurno();
 				
-		Unidad unidad = unaBarraca.dameUnidad();
-
-		unMapa.agregarUnidad(posicion1715, unidad);
+		unMapa.agregarUnidad(posicion1715, marine);
 		
 		assertTrue(unMapa.verificarCeldaOcupada(posicion1715));
 	}

@@ -5,13 +5,10 @@ import java.util.ArrayList;
 import fiuba.algo3.algocraft.modelo.Almacen;
 import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.ProgresoCreacion;
-import fiuba.algo3.algocraft.modelo.RazaProtoss;
 import fiuba.algo3.algocraft.modelo.excepciones.JugadorConNombreDemasiadoCortoException;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
-import fiuba.algo3.algocraft.modelo.turnos.Turno;
 import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
-import fiuba.algo3.algocraft.modelo.unidades.UnidadFactoryTerran;
 
 public class Barraca extends Construccion {
 	
@@ -27,7 +24,6 @@ public class Barraca extends Construccion {
 	
 	public Unidad crearUnidad() throws JugadorConNombreDemasiadoCortoException {
 		// Obtener dinamicamente la factory
-		
 		AbstractUnidadFactory factoryUnidades = this.jugador.dameRaza().getFactoryUnidades();
 		//new UnidadFactoryTerran();//getFactoryUnidades();
 		Unidad unaUnidad = (Unidad) factoryUnidades.crearUnidad("Marine");

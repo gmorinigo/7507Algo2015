@@ -1,6 +1,6 @@
 package fiuba.algo3.algocraft.modelo.unidades.terran;
 
-import fiuba.algo3.algocraft.modelo.turnos.Turno;
+import fiuba.algo3.algocraft.modelo.ProgresoCreacion;
 import fiuba.algo3.algocraft.modelo.unidades.Salud;
 import fiuba.algo3.algocraft.modelo.unidades.UnidadDos;
 
@@ -32,8 +32,7 @@ public class Golliat extends UnidadDos {
 	}
 
 	@Override
-	public void finDeTurno(Turno turno) {
-		// TODO Auto-generated method stub
-		
+	protected ProgresoCreacion progresoCreacion() {
+		return new ProgresoCreacion(6, this);
 	} 
 }

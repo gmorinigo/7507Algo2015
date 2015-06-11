@@ -1,8 +1,8 @@
 package fiuba.algo3.algocraft.modelo.construciones;
 
 import fiuba.algo3.algocraft.modelo.Jugador;
+import fiuba.algo3.algocraft.modelo.ProgresoCreacion;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
-import fiuba.algo3.algocraft.modelo.turnos.Turno;
 
 public class ExtractorDeGas extends Construccion{
 	public ExtractorDeGas(Posicion unaPosicion, Jugador jugador){
@@ -28,9 +28,8 @@ public class ExtractorDeGas extends Construccion{
 	}
 
 	@Override
-	public void finDeTurno(Turno turno) {
-		// TODO Auto-generated method stub
-		
+	protected ProgresoCreacion progresoCreacion() {
+		return new ProgresoCreacion(12, this);
 	}
 
 }
