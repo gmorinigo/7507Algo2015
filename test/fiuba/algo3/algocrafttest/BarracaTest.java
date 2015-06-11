@@ -62,6 +62,7 @@ public class BarracaTest extends TestBase {
 		unTurno.aumentarTurno();
 		unTurno.aumentarTurno();
 		unTurno.aumentarTurno();
+		assertFalse(unaBarraca.estaTerminada());
 		unTurno.aumentarTurno();
 		unTurno.aumentarTurno();
 		unTurno.aumentarTurno();

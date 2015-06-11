@@ -42,9 +42,4 @@ public class Turno {
     	return this.jugador; 	
     }
 
-	public void setObserver(Construccion construccion) {
-		// TODO Auto-generated method stub
-		
-	} 
-
 }

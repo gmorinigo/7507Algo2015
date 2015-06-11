@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import fiuba.algo3.algocraft.modelo.Almacen;
 import fiuba.algo3.algocraft.modelo.Jugador;
+import fiuba.algo3.algocraft.modelo.ProgresoCreacion;
 import fiuba.algo3.algocraft.modelo.RazaProtoss;
 import fiuba.algo3.algocraft.modelo.excepciones.JugadorConNombreDemasiadoCortoException;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
@@ -71,9 +72,7 @@ public class Barraca extends Construccion {
 	}
 
 	@Override
-	public void finDeTurno(Turno turno) {
-		// TODO Auto-generated method stub
-		
+	protected ProgresoCreacion progresoCreacion() {
+		return new ProgresoCreacion(12, this);
 	}
-
 }
