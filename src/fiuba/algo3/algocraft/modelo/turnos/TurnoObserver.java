@@ -4,5 +4,5 @@ public interface TurnoObserver {
 	/*
 	 * 
 	 */
-	public void finDeTurno();
+	public void finDeTurno(Turno turno);
 }

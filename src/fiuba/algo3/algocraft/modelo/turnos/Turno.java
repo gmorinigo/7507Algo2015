@@ -1,37 +1,38 @@
 package fiuba.algo3.algocraft.modelo.turnos;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+
 
 public class Turno {
-
-	private int turno = 1;
-	protected int cantidad;
-	protected boolean estaFinalizado;
+	
+	protected int turno;
+	
+	protected ArrayList<TurnoObserver> observadores;
+	
 	protected TurnoObserver observer;
 	
-	public Turno(int cantidad) {
-		this.cantidad = cantidad;
-		this.estaFinalizado = false;
-	}
-
-	public int dameTurno() {
-		return turno;
+	public Turno() {
+		this.turno = 1;
+		this.observadores = new ArrayList<TurnoObserver>();
 	}
 
 	public void aumentarTurno() {
-		turno += 1;
-		if(this.turno == this.cantidad) {
-			this.estaFinalizado = true;
-			this.observer.finDeTurno();
+		Iterator<TurnoObserver> it = this.observadores.iterator();
+		
+		while (it.hasNext()) {
+			it.next().finDeTurno(this);
 		}
-	}
-	
-	public int estaFinalizado() {
-		return this.estaFinalizado();
+		
+		this.turno++;
 	}
 
-
-	public void setObserver(TurnoObserver observer) {
+	public void addObserver(TurnoObserver observer) {
 		this.observer = observer;
+	}
+
+	public int dameTurno() {
+		return this.turno;
 	}
 
 }
