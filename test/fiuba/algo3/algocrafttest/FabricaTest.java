@@ -4,6 +4,7 @@ import junit.framework.TestCase;
 import fiuba.algo3.algocraft.modelo.Almacen;
 import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.RazaProtoss;
+import fiuba.algo3.algocraft.modelo.construciones.Barraca;
 import fiuba.algo3.algocraft.modelo.construciones.Construccion;
 import fiuba.algo3.algocraft.modelo.construciones.Fabrica;
 import fiuba.algo3.algocraft.modelo.excepciones.CeldaOcupadaException;
@@ -26,9 +27,26 @@ public class FabricaTest extends TestCase {
 	public void testCrearUnaFabricaAlPasar12TurnosEstaCreada() 
 	throws CeldaOcupadaException, NoReuneLosRequisitosException, JugadorConNombreDemasiadoCortoException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException{
 		Posicion posicion175 = new Posicion(17,5);
+		Posicion posicion305 = new Posicion(30,5);
 		Jugador unJugador = new Jugador("unNombre",new RazaProtoss(),"Azul");
+		Construccion unaBarraca = new Barraca(posicion305,unJugador);
 		Construccion unaFabrica = new Fabrica(posicion175, unJugador );
 		Turno unTurno = new Turno(unJugador);
+		unaBarraca.crearEstructura(unTurno);
+		
+		unTurno.aumentarTurno();
+		unTurno.aumentarTurno();
+		unTurno.aumentarTurno();
+		unTurno.aumentarTurno();
+		unTurno.aumentarTurno();
+		unTurno.aumentarTurno();
+		unTurno.aumentarTurno();
+		unTurno.aumentarTurno();
+		unTurno.aumentarTurno();
+		unTurno.aumentarTurno();
+		unTurno.aumentarTurno();
+		unTurno.aumentarTurno();
+		assertTrue(unJugador.dameConstruccionesTerminadas().contains(unaBarraca));
 		
 		unaFabrica.crearEstructura(unTurno);
 		
@@ -52,10 +70,27 @@ public class FabricaTest extends TestCase {
 	public void testCrearGolliatAlPasarTurnosEstaCreadaEstaFinalizada() 
 	throws CeldaOcupadaException, NoReuneLosRequisitosException, JugadorConNombreDemasiadoCortoException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException{
 		Posicion posicion123 = new Posicion(12,3);
+		Posicion posicion1273 = new Posicion(12,73);
 		Jugador unJugador = new Jugador("unNombre",new RazaProtoss(),"Azul");
 		Fabrica unaFabrica = new Fabrica(posicion123, unJugador);
+		Construccion unaBarraca = new Barraca(posicion1273,unJugador);
 		Turno unTurno = new Turno(unJugador);
-	
+		unaBarraca.crearEstructura(unTurno);
+		
+		unTurno.aumentarTurno();
+		unTurno.aumentarTurno();
+		unTurno.aumentarTurno();
+		unTurno.aumentarTurno();
+		unTurno.aumentarTurno();
+		unTurno.aumentarTurno();
+		unTurno.aumentarTurno();
+		unTurno.aumentarTurno();
+		unTurno.aumentarTurno();
+		unTurno.aumentarTurno();
+		unTurno.aumentarTurno();
+		unTurno.aumentarTurno();
+		assertTrue(unJugador.dameConstruccionesTerminadas().contains(unaBarraca));
+		
 		unaFabrica.crearEstructura(unTurno);
 		
 		unTurno.aumentarTurno();
@@ -99,6 +134,19 @@ public class FabricaTest extends TestCase {
 			fail("Deberia lanzar Exception");
 		} catch (NoReuneLosRequisitosException e) {
 			
+		}
+	}
+	
+	public void testNoSePuedeCrearSiNoSeCreoUnaBarracaPreviamente() throws NoReuneLosRequisitosException, JugadorConNombreDemasiadoCortoException, CeldaOcupadaException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException{
+		Posicion posicion666 = new Posicion(66,6);
+		Jugador unJugador = new Jugador("unNombre",new RazaProtoss(),"Azul");
+		Fabrica unaFabrica = new Fabrica(posicion666, unJugador);	
+		Turno unTurno = new Turno(unJugador);
+	
+		try{
+			unaFabrica.crearEstructura(unTurno);
+			fail("Deberia lanzar Exception porque no se creo la Barraca");
+		} catch(NoReuneLosRequisitosException e){
 		}
 	}
 }

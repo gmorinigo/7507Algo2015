@@ -11,7 +11,7 @@ public class Jugador {
 	private String nombreJugador;
 	private String colorJugador;
 	protected Raza raza;
-	protected ArrayList<Construccion> contruccionesTerminadas;
+	protected ArrayList<Construccion> construccionesTerminadas;
 	protected ArrayList<Unidad> unidadesTerminadas;
 	private Almacen almacenGas;
 	private Almacen almacenMineral;
@@ -22,7 +22,7 @@ public class Jugador {
 		}
 		
 		this.raza = raza;
-		this.contruccionesTerminadas = new ArrayList<Construccion>();
+		this.construccionesTerminadas = new ArrayList<Construccion>();
 		this.unidadesTerminadas = new ArrayList<Unidad>();
 		this.almacenGas = new Almacen(500);
 		this.almacenMineral = new Almacen(500);
@@ -36,8 +36,8 @@ public class Jugador {
 		this.almacenMineral = mineral;
 	}
 
-	public ArrayList<Construccion> dameContruccionesTerminadas() {
-		return this.contruccionesTerminadas;
+	public ArrayList<Construccion> dameConstruccionesTerminadas() {
+		return this.construccionesTerminadas;
 	}
 	
 	public ArrayList<Unidad> dameUnidadesTerminadas() {
@@ -49,7 +49,7 @@ public class Jugador {
 	}
 	
 	public void agregarConstruccion(Construccion construccion) {
-		this.contruccionesTerminadas.add(construccion);
+		this.construccionesTerminadas.add(construccion);
 	}
 
 	public Almacen dameAlmacenGas() {

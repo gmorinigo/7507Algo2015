@@ -5,8 +5,13 @@ import java.util.ArrayList;
 import fiuba.algo3.algocraft.modelo.Almacen;
 import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.ProgresoCreacion;
+import fiuba.algo3.algocraft.modelo.excepciones.CeldaOcupadaException;
+import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException;
+import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException;
 import fiuba.algo3.algocraft.modelo.excepciones.JugadorConNombreDemasiadoCortoException;
+import fiuba.algo3.algocraft.modelo.excepciones.NoReuneLosRequisitosException;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
+import fiuba.algo3.algocraft.modelo.turnos.Turno;
 import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 
@@ -21,6 +26,10 @@ public class Barraca extends Construccion {
 		this.unidadesFinalizadas = new ArrayList<Unidad>();
 	}
 	
+	public Barraca() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public Unidad crearUnidad() throws JugadorConNombreDemasiadoCortoException {
 		// Obtener dinamicamente la factory
 		AbstractUnidadFactory factoryUnidades = this.jugador.dameRaza().getFactoryUnidades();
@@ -70,4 +79,18 @@ public class Barraca extends Construccion {
 	protected ProgresoCreacion progresoCreacion() {
 		return new ProgresoCreacion(12, this);
 	}
+
+	@Override
+	public void crearEstructura(Turno unTurno) throws CeldaOcupadaException,NoReuneLosRequisitosException,ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException,ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException {
+		
+		if( ! this.reuneLosRequisitos(jugador)) {
+			throw new NoReuneLosRequisitosException();
+		}
+		
+		unTurno.addObserver(this);
+		//Mapa.getInstance().agregarConstruccion(this);
+		jugador.agregarConstruccion(this);
+	}
+		
+	
 }

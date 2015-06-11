@@ -34,6 +34,9 @@ public abstract class Construccion implements TurnoObserver, Construible{
 		this.progresoCreacion = this.progresoCreacion();
 	}
 
+	public Construccion(){
+		
+	}
 	
 	public boolean estaTerminada() {
 		return this.estaOperativa && !this.naciendo;
@@ -52,15 +55,7 @@ public abstract class Construccion implements TurnoObserver, Construible{
 	}
 	
 
-	public void crearEstructura(Turno unTurno) throws CeldaOcupadaException, NoReuneLosRequisitosException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException{
-		if( ! this.reuneLosRequisitos(this.jugador)) {
-			throw new NoReuneLosRequisitosException();
-		}
-		
-		unTurno.addObserver(this);
-		//Mapa.getInstance().agregarConstruccion(this);
-		this.jugador.agregarConstruccion(this);
-	}
+	public abstract void crearEstructura(Turno unTurno) throws CeldaOcupadaException, NoReuneLosRequisitosException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException;
 	
 	abstract public boolean reuneLosRequisitos(Jugador jugador);
 	abstract public int costoGas();
