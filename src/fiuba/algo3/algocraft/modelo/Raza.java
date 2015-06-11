@@ -2,7 +2,7 @@ package fiuba.algo3.algocraft.modelo;
 
 import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory;
 
-public class Raza {
+public abstract class Raza {
 	
 	AbstractUnidadFactory factoryUnidades = getFactoryUnidades();
 	

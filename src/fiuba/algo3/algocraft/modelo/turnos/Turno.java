@@ -17,16 +17,17 @@ public class Turno {
 	
 	//Jugador unJugador = new Jugador("NombreJugador", new Raza(), "unColor");
 	
-	public Turno() {
+	public Turno(Jugador unJugador) {
 		this.turno = 1;
 		this.observadores = new ArrayList<TurnoObserver>();
+		this.jugador = unJugador;
 	}
 
 	public void aumentarTurno() {
 		Iterator<TurnoObserver> it = this.observadores.iterator();
 		
 		while (it.hasNext()) {
-			it.next().finDeTurno(this);
+			it.next().finDeTurno(this);	
 		}
 		
 		this.turno++;
@@ -40,7 +41,7 @@ public class Turno {
 		return this.turno;
 	}
     public Jugador dameJugador(){
-    return this.dameJugador(); 	
+    	return this.jugador; 	
     }
 
 	public void setObserver(Construccion construccion) {

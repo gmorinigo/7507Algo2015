@@ -23,4 +23,7 @@ public class Scout extends UnidadTres {
 		
 	} 
 
+	public boolean esUnidadAerea(){
+		return true;
+	}
 }

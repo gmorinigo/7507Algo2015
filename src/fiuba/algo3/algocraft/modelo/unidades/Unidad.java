@@ -6,10 +6,15 @@ abstract public class Unidad implements TurnoObserver{
 	
 	protected boolean naciendo;
 	protected Salud salud;
-
+	
 	public abstract void disparar();
 	public abstract String getName();
+	
 	//public boolean estaTerminado();
+	
+	public boolean esUnidadAerea(){
+		return false;
+	}
 	
 	public Unidad() {
 		this.naciendo = true;

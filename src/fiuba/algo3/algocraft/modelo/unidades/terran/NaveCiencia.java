@@ -32,7 +32,10 @@ public class NaveCiencia extends UnidadCuatro {
 		return null;
 	}
 
-
+	public boolean esUnidadAerea(){
+		return true;
+	}
+	
 	@Override
 	public void finDeTurno(Turno turno) {
 		// TODO Auto-generated method stub

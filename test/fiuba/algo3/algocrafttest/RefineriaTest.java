@@ -3,6 +3,7 @@ package fiuba.algo3.algocrafttest;
 import fiuba.algo3.algocraft.modelo.Almacen;
 import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.Raza;
+import fiuba.algo3.algocraft.modelo.RazaProtoss;
 import fiuba.algo3.algocraft.modelo.construciones.Construccion;
 import fiuba.algo3.algocraft.modelo.construciones.Refineria;
 import fiuba.algo3.algocraft.modelo.excepciones.CeldaOcupadaException;
@@ -17,14 +18,15 @@ public class RefineriaTest extends TestBase {
 
 	public void testCrearUnaRefineria() throws JugadorConNombreDemasiadoCortoException{
 		Posicion posicion64 = new Posicion(6,4);
-		Construccion refineria = new Refineria(posicion64, new Jugador("unNombre",new Raza(),"Rojo"));
+		Construccion refineria = new Refineria(posicion64, new Jugador("unNombre",new RazaProtoss(),"Rojo"));
 		assertNotNull(refineria);
 	}
 	
 	public void testCrearUnaRefineriaAl12TurnosEstaCreada() throws CeldaOcupadaException, NoReuneLosRequisitosException, JugadorConNombreDemasiadoCortoException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException{
 		Posicion posicion99 = new Posicion(9,9);
-		Construccion refineria = new Refineria(posicion99, new Jugador("unNombre",new Raza(),"Azul"));
-		Turno unTurno = new Turno();
+		Jugador unJugador = new Jugador("unNombre",new RazaProtoss(),"Azul");
+		Construccion refineria = new Refineria(posicion99,unJugador );
+		Turno unTurno = new Turno(unJugador);
 	
 		refineria.crearEstructura(unTurno);
 		
@@ -43,8 +45,9 @@ public class RefineriaTest extends TestBase {
 	
 	public void testComanzarARecolectar() throws CeldaOcupadaException, NoReuneLosRequisitosException, JugadorConNombreDemasiadoCortoException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException {
 		Posicion posicion99 = new Posicion(9,9);
-		Refineria refineria = new Refineria(posicion99, new Jugador("unNombre",new Raza(),"Azul"));
-		Turno unTurno = new Turno();
+		Jugador unJugador = new Jugador("unNombre",new RazaProtoss(),"Azul");
+		Refineria refineria = new Refineria(posicion99, unJugador);
+		Turno unTurno = new Turno(unJugador);
 		
 		refineria.crearEstructura(unTurno);
 		

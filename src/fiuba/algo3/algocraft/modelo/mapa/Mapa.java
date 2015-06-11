@@ -7,6 +7,7 @@ import fiuba.algo3.algocraft.modelo.excepciones.CeldaOcupadaException;
 import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException;
 import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException;
 //import fiuba.algo3.algocraft.modelo.recursos.Recurso;
+import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 
 public class Mapa {
 
@@ -126,15 +127,6 @@ public class Mapa {
 		return matriz[fila][columna];
 	}
 
-	/*public void agregarRecurso(Recurso unRecurso) {
-		recursos.add(unRecurso);
-	}
-
-	public ArrayList<Recurso> dameRecursos() {
-		return recursos;
-	}
-	*/
-	
 	public ArrayList<Construccion> dameConstrucciones() {
 		return this.construcciones;
 	}
@@ -191,6 +183,15 @@ public class Mapa {
 		}
 	}
 	
+	
+	private void verificarCeldasOcupadas(Posicion unaPosicion) throws CeldaOcupadaException {
+
+		if (this.matriz[unaPosicion.dameFila()][unaPosicion.dameColumna()].celdaOcupada()) 
+		{
+			throw new CeldaOcupadaException(); 
+		}
+	}
+	
 	public boolean verificarCeldaOcupada(Posicion unaPosicion){
 		return (this.matriz[unaPosicion.dameFila()][unaPosicion.dameColumna()].celdaOcupada());
 	}
@@ -225,5 +226,28 @@ public class Mapa {
 		INSTANCE = null;
 	}
 
+	public void agregarUnidad(Posicion unaPosicion, Unidad unaUnidad) throws CeldaOcupadaException {
+		Celda unaCelda = this.matriz[unaPosicion.dameFila()][unaPosicion.dameColumna()];
+
+		try {
+			this.verificarCeldasOcupadas(unaPosicion);
+		} catch (CeldaOcupadaException e) {
+			throw e;
+		}
+		this.verificarSiCorrespondeLaUnidadEnLaCelda(unaUnidad, unaCelda);
+		this.agregarUnidadALaCelda(unaUnidad, unaCelda);
+		// Ver si es necesario asignar las celdas a la unidad
+		//this.asignarCeldas(unaUnidad);
+		
+	}
+
+	private void verificarSiCorrespondeLaUnidadEnLaCelda(Unidad unaUnidad, Celda unaCelda){
+		unaCelda.puedeMoverse(unaUnidad);
+	}
+	
+
+	private void agregarUnidadALaCelda(Unidad unaUnidad, Celda unaCelda){
+		unaCelda.agregarUnidad(unaUnidad);
+	}
 }
 

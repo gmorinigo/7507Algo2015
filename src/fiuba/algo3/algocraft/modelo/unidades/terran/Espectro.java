@@ -32,7 +32,10 @@ public class Espectro extends UnidadTres {
 		return null;
 	}
 
-
+	public boolean esUnidadAerea(){
+		return true;
+	}
+	
 	@Override
 	public void finDeTurno(Turno turno) {
 		// TODO Auto-generated method stub

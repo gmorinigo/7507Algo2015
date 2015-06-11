@@ -49,7 +49,7 @@ public abstract class Construccion implements TurnoObserver{
 		}
 		
 		unTurno.setObserver(this);
-		Mapa.getInstance().agregarConstruccion(this);
+		//Mapa.getInstance().agregarConstruccion(this);
 		this.jugador.agregarConstruccion(this);
 	}
 	
