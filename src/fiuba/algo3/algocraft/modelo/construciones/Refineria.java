@@ -30,21 +30,10 @@ public class Refineria extends ExtractorDeGas{
 		}
 		return true;
 	}
-/* lo mando a la clase madre
-	@Override
-	public int costoGas() {
-		return 0;
-	}
-
-	@Override
-	public int costoMineral() {
-		return 100;
-	}
-*/
 
 	@Override
 	protected ProgresoCreacion progresoCreacion() {
-		return new ProgresoCreacion(8, this);
+		return new ProgresoCreacion(6, this);
 	}
 
 	@Override

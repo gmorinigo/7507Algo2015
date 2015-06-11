@@ -3,6 +3,7 @@ package fiuba.algo3.algocrafttest;
 import fiuba.algo3.algocraft.modelo.Almacen;
 import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.RazaProtoss;
+import fiuba.algo3.algocraft.modelo.construciones.Barraca;
 import fiuba.algo3.algocraft.modelo.construciones.Construccion;
 import fiuba.algo3.algocraft.modelo.construciones.Refineria;
 import fiuba.algo3.algocraft.modelo.excepciones.CeldaOcupadaException;
@@ -34,8 +35,6 @@ public class RefineriaTest extends TestBase {
 		unTurno.aumentarTurno();
 		unTurno.aumentarTurno();
 		unTurno.aumentarTurno();
-		unTurno.aumentarTurno();
-		unTurno.aumentarTurno();
 		assertFalse(refineria.estaTerminada());
 		unTurno.aumentarTurno();
 		unTurno.aumentarTurno();
@@ -55,8 +54,6 @@ public class RefineriaTest extends TestBase {
 		unTurno.aumentarTurno();
 		unTurno.aumentarTurno();
 		unTurno.aumentarTurno();
-		unTurno.aumentarTurno();
-		unTurno.aumentarTurno();
 		assertFalse(refineria.estaTerminada());
 		unTurno.aumentarTurno();
 		unTurno.aumentarTurno();
@@ -69,7 +66,24 @@ public class RefineriaTest extends TestBase {
 		refineria.recolectar(almacen);
 		refineria.recolectar(almacen);
 
-		assertTrue(almacen.cantidad() == 40);
-		
+		assertTrue(almacen.cantidad() == 40);	
 	}
+	
+	public void testNoSePuedeCrearSinSuficientesRecursos() throws CeldaOcupadaException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException {
+		Posicion posicion123 = new Posicion(12,3);
+		Almacen gas = new Almacen(0);
+		Almacen mineral = new Almacen(0);
+		
+		Jugador jugador = new Jugador(new RazaProtoss(),mineral, gas);
+		Refineria unaRefineria = new Refineria(posicion123, jugador);
+		Turno unTurno = new Turno(jugador);
+	
+		try {
+			unaRefineria.crearEstructura(unTurno);
+			fail("Deberia lanzar Exception");
+		} catch (NoReuneLosRequisitosException e) {
+			
+		}
+	}
+	
 }
