@@ -24,18 +24,14 @@ public class Barraca extends Construccion {
 		this.unidadesFinalizadas = new ArrayList<Unidad>();
 	}
 	
-	public Turno crearMarine() throws JugadorConNombreDemasiadoCortoException {
-		Turno turno = new Turno(this.jugador);
+	public Unidad crearUnidad() throws JugadorConNombreDemasiadoCortoException {
 		// Obtener dinamicamente la factory
 		
-		AbstractUnidadFactory factoryUnidades = turno.dameJugador().dameRaza().getFactoryUnidades();
+		AbstractUnidadFactory factoryUnidades = this.jugador.dameRaza().getFactoryUnidades();
 		//new UnidadFactoryTerran();//getFactoryUnidades();
 		Unidad unaUnidad = (Unidad) factoryUnidades.crearUnidad("Marine");
-		//unaUnidad.crearUnidad(turno);
 		
-		this.unidadesEnProceso.add(unaUnidad);
-		
-		return turno;
+		return unaUnidad;
 	}
 
 	public boolean estaTrabajando() {

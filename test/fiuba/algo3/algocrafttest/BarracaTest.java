@@ -71,15 +71,13 @@ public class BarracaTest extends TestBase {
 		unTurno.aumentarTurno();
 		unTurno.aumentarTurno();
 		
-		Turno turnoParaUnidad = unaBarraca.crearMarine();
-		assertTrue(unaBarraca.estaTrabajando());
-		turnoParaUnidad.aumentarTurno();
-		turnoParaUnidad.aumentarTurno();
-		turnoParaUnidad.aumentarTurno();
-		assertFalse(unaBarraca.estaTrabajando());
+		Unidad marine = unaBarraca.crearUnidad();
+		unTurno.addObserver(marine);
+		unTurno.aumentarTurno();
+		unTurno.aumentarTurno();
+		unTurno.aumentarTurno();
 		
-		Unidad unidad = unaBarraca.dameUnidad();
-		//assertTrue(unidad.estaTerminado());
+		assertTrue(marine.estaTerminada());
 		
 	}
 	

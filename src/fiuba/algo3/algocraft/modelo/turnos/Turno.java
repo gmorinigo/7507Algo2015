@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import fiuba.algo3.algocraft.modelo.Jugador;
-import fiuba.algo3.algocraft.modelo.Raza;
 import fiuba.algo3.algocraft.modelo.construciones.Construccion;
 
 
@@ -12,7 +11,6 @@ public class Turno {
 	
 	protected int turno;	
 	protected ArrayList<TurnoObserver> observadores;
-	protected TurnoObserver observer;	
 	public Jugador jugador; 
 	
 	//Jugador unJugador = new Jugador("NombreJugador", new Raza(), "unColor");
@@ -34,7 +32,7 @@ public class Turno {
 	}
 
 	public void addObserver(TurnoObserver observer) {
-		this.observer = observer;
+		this.observadores.add(observer);
 	}
 
 	public int dameTurno() {
