@@ -14,7 +14,6 @@ public class Zealot extends UnidadUno{
 	
 	@Override
 	protected Salud saludInicial() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 	@Override

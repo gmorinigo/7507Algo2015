@@ -27,7 +27,6 @@ public class Golliat extends UnidadDos {
 
 	@Override
 	protected Salud saludInicial() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

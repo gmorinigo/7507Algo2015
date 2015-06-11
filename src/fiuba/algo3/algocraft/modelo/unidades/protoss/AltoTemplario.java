@@ -13,7 +13,6 @@ public class AltoTemplario extends UnidadCuatro {
 	
 	@Override
 	protected Salud saludInicial() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

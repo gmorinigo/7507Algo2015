@@ -28,7 +28,6 @@ public class Espectro extends UnidadTres {
 
 	@Override
 	protected Salud saludInicial() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

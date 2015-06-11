@@ -18,7 +18,6 @@ public class NaveCiencia extends UnidadCuatro {
 	
 	@Override
 	public void disparar() {
-		// TODO Auto-generated method stub
 
 	}
 
@@ -28,7 +27,6 @@ public class NaveCiencia extends UnidadCuatro {
 
 	@Override
 	protected Salud saludInicial() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

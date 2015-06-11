@@ -8,7 +8,6 @@ abstract public class ExtractorDeGas extends Construccion{
 		super(unaPosicion, jugador);
 	}
 
-	// TODO ME PARECE QUE FALTA ESTO
 	public boolean reuneLosRequisitos(Jugador jugador) {
 		return true;
 	}

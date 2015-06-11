@@ -25,11 +25,8 @@ public class Barraca extends Construccion {
 		this.unidadesEnProceso = new ArrayList<Unidad>();
 		this.unidadesFinalizadas = new ArrayList<Unidad>();
 	}
-	
-	public Barraca() {
-		// TODO Auto-generated constructor stub
-	}
 
+	
 	public Unidad crearUnidad() throws JugadorConNombreDemasiadoCortoException {
 		// Obtener dinamicamente la factory
 		AbstractUnidadFactory factoryUnidades = this.jugador.dameRaza().getFactoryUnidades();

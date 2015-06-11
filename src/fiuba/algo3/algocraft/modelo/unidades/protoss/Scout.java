@@ -14,7 +14,6 @@ public class Scout extends UnidadTres {
 	
 	@Override
 	protected Salud saludInicial() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
