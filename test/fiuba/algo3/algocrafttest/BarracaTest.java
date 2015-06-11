@@ -27,7 +27,7 @@ public class BarracaTest extends TestBase {
 	throws CeldaOcupadaException, NoReuneLosRequisitosException, JugadorConNombreDemasiadoCortoException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException{
 		Posicion posicion14 = new Posicion(1,4);
 		Construccion unaBarraca = new Barraca(posicion14, new Jugador("unNombre",new Raza(),"Azul"));
-		Turno unTurno = new Turno(12);
+		Turno unTurno = new Turno();
 		
 		unaBarraca.crearEstructura(unTurno);
 		
@@ -52,7 +52,7 @@ public class BarracaTest extends TestBase {
 	throws CeldaOcupadaException, NoReuneLosRequisitosException, JugadorConNombreDemasiadoCortoException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException{
 		Posicion posicion123 = new Posicion(12,3);
 		Barraca unaBarraca = new Barraca(posicion123, new Jugador("unNombre",new Raza(),"Azul"));
-		Turno unTurno = new Turno(12);
+		Turno unTurno = new Turno();
 	
 		unaBarraca.crearEstructura(unTurno);
 		
@@ -88,7 +88,7 @@ public class BarracaTest extends TestBase {
 		
 		Jugador jugador = new Jugador(new Raza(),mineral, gas);
 		Barraca unaBarraca = new Barraca(posicion123, jugador);
-		Turno unTurno = new Turno(12);
+		Turno unTurno = new Turno();
 	
 		try {
 			unaBarraca.crearEstructura(unTurno);

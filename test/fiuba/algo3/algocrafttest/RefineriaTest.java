@@ -24,7 +24,7 @@ public class RefineriaTest extends TestBase {
 	public void testCrearUnaRefineriaAl12TurnosEstaCreada() throws CeldaOcupadaException, NoReuneLosRequisitosException, JugadorConNombreDemasiadoCortoException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException{
 		Posicion posicion99 = new Posicion(9,9);
 		Construccion refineria = new Refineria(posicion99, new Jugador("unNombre",new Raza(),"Azul"));
-		Turno unTurno = new Turno(8);
+		Turno unTurno = new Turno();
 	
 		refineria.crearEstructura(unTurno);
 		
@@ -44,7 +44,7 @@ public class RefineriaTest extends TestBase {
 	public void testComanzarARecolectar() throws CeldaOcupadaException, NoReuneLosRequisitosException, JugadorConNombreDemasiadoCortoException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException {
 		Posicion posicion99 = new Posicion(9,9);
 		Refineria refineria = new Refineria(posicion99, new Jugador("unNombre",new Raza(),"Azul"));
-		Turno unTurno = new Turno(8);
+		Turno unTurno = new Turno();
 		
 		refineria.crearEstructura(unTurno);
 		

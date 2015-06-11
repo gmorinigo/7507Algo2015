@@ -23,9 +23,11 @@ public class Barraca extends Construccion {
 	}
 	
 	public Turno crearMarine() {
-		Turno turno = new Turno(3);
+		Turno turno = new Turno();
 		// Obtener dinamicamente la factory
-		AbstractUnidadFactory factoryUnidades = new UnidadFactoryTerran();//getFactoryUnidades();
+		
+		AbstractUnidadFactory factoryUnidades = turno.dameJugador().dameRaza().getFactoryUnidades();
+		//new UnidadFactoryTerran();//getFactoryUnidades();
 		Unidad unaUnidad = (Unidad) factoryUnidades.crearUnidad("Marine");
 		//unaUnidad.crearUnidad(turno);
 		
@@ -68,6 +70,12 @@ public class Barraca extends Construccion {
 	@Override
 	public int costoMineral() {
 		return 150;
+	}
+
+	@Override
+	public void finDeTurno(Turno turno) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

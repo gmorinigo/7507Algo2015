@@ -36,8 +36,7 @@ public void testCrearUnidadEspectroNoEsCualquierCosaSinoLaUnidadQuePasoEnConstru
 
 
 public static AbstractUnidadFactory getFactoryUnidades(){
-  
-  
+    
    return new UnidadFactoryTerran();
 } 
 

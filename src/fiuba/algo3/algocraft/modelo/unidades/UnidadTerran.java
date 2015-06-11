@@ -1,6 +1,5 @@
 package fiuba.algo3.algocraft.modelo.unidades;
 
-
 public class UnidadTerran implements Unidad {
 
 	private String nombre;

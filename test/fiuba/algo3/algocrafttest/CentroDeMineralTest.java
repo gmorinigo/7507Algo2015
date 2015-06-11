@@ -24,7 +24,7 @@ public class CentroDeMineralTest extends TestBase {
 	public void testCrearUnCentroMineralAl8TurnosEstaCreada() throws CeldaOcupadaException, NoReuneLosRequisitosException, JugadorConNombreDemasiadoCortoException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException{
 		Posicion posicion911 = new Posicion(9,11);
 		Construccion centroMineral = new CentroDeMineral(posicion911, new Jugador("unNombre",new Raza(),"Azul"));
-		Turno unTurno = new Turno(8);
+		Turno unTurno = new Turno();
 	
 		centroMineral.crearEstructura(unTurno);
 		
@@ -44,7 +44,7 @@ public class CentroDeMineralTest extends TestBase {
 	public void testComanzarARecolectar() throws CeldaOcupadaException, NoReuneLosRequisitosException, JugadorConNombreDemasiadoCortoException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException {
 		Posicion posicion911 = new Posicion(9,11);
 		CentroDeMineral centroMineral = new CentroDeMineral(posicion911, new Jugador("unNombre",new Raza(),"Azul"));
-		Turno unTurno = new Turno(8);
+		Turno unTurno = new Turno();
 		
 		centroMineral.crearEstructura(unTurno);
 		

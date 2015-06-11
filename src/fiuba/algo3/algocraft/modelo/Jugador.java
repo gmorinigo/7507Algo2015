@@ -80,4 +80,8 @@ public class Jugador {
 	public String dameColor() {
 		return this.colorJugador;
 	}
+	public Raza dameRaza() {
+		return this.raza;
+	}
+	
 }

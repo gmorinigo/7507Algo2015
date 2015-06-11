@@ -1,5 +1,6 @@
 package fiuba.algo3.algocraft.modelo.unidades.protoss;
 
+import fiuba.algo3.algocraft.modelo.turnos.Turno;
 import fiuba.algo3.algocraft.modelo.unidades.Salud;
 import fiuba.algo3.algocraft.modelo.unidades.UnidadDos;
 
@@ -22,6 +23,12 @@ public class Dragon extends UnidadDos {
 	protected Salud saludInicial() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public void finDeTurno(Turno turno) {
+		// TODO Auto-generated method stub
+		
 	} 
 	
 }

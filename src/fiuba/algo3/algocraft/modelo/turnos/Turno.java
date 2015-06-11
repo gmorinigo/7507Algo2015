@@ -3,14 +3,19 @@ package fiuba.algo3.algocraft.modelo.turnos;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import fiuba.algo3.algocraft.modelo.Jugador;
+import fiuba.algo3.algocraft.modelo.Raza;
+import fiuba.algo3.algocraft.modelo.construciones.Construccion;
+
 
 public class Turno {
 	
-	protected int turno;
-	
+	protected int turno;	
 	protected ArrayList<TurnoObserver> observadores;
+	protected TurnoObserver observer;	
+	public Jugador jugador; 
 	
-	protected TurnoObserver observer;
+	//Jugador unJugador = new Jugador("NombreJugador", new Raza(), "unColor");
 	
 	public Turno() {
 		this.turno = 1;
@@ -34,5 +39,13 @@ public class Turno {
 	public int dameTurno() {
 		return this.turno;
 	}
+    public Jugador dameJugador(){
+    return this.dameJugador(); 	
+    }
+
+	public void setObserver(Construccion construccion) {
+		// TODO Auto-generated method stub
+		
+	} 
 
 }
