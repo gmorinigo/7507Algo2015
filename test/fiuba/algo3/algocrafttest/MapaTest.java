@@ -5,9 +5,9 @@ import java.util.ArrayList;
 
 import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.RazaProtoss;
-import fiuba.algo3.algocraft.modelo.construciones.Barraca;
-import fiuba.algo3.algocraft.modelo.construciones.CentroDeMineral;
-import fiuba.algo3.algocraft.modelo.construciones.Refineria;
+import fiuba.algo3.algocraft.modelo.construciones.terran.Barraca;
+import fiuba.algo3.algocraft.modelo.construciones.terran.CentroDeMineral;
+import fiuba.algo3.algocraft.modelo.construciones.terran.Refineria;
 import fiuba.algo3.algocraft.modelo.excepciones.CeldaOcupadaException;
 import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException;
 import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException;

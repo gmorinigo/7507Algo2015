@@ -1,4 +1,4 @@
-package fiuba.algo3.algocraft.modelo.construciones;
+package fiuba.algo3.algocraft.modelo.construciones.terran;
 
 import java.rmi.NoSuchObjectException;
 import java.util.ArrayList;
@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import fiuba.algo3.algocraft.modelo.Almacen;
 import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.ProgresoCreacion;
+import fiuba.algo3.algocraft.modelo.construciones.Construccion;
 import fiuba.algo3.algocraft.modelo.excepciones.CeldaOcupadaException;
 import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException;
 import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException;
@@ -17,21 +18,23 @@ import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory;
 import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory.TipoUnidad;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 
-public class Fabrica extends Construccion {
+public class Barraca extends Construccion {
 
 	protected ArrayList<Unidad> unidadesEnProceso;
 	protected ArrayList<Unidad> unidadesFinalizadas;
 	
-	public Fabrica(Posicion unaPosicion, Jugador jugador) {
+	public Barraca(Posicion unaPosicion, Jugador jugador){
 		super(unaPosicion, jugador);
 		this.unidadesEnProceso = new ArrayList<Unidad>();
 		this.unidadesFinalizadas = new ArrayList<Unidad>();
 	}
+
 	
 	public Unidad crearUnidad() throws JugadorConNombreDemasiadoCortoException, NoSuchObjectException {
+		// Obtener dinamicamente la factory
 		AbstractUnidadFactory factoryUnidades = this.jugador.dameRaza().getFactoryUnidades();
 		TipoUnidad unTipoDeUnidad = null;
-		Unidad unaUnidad = (Unidad) factoryUnidades.crearUnidad(unTipoDeUnidad.terrestre2);
+		Unidad unaUnidad = (Unidad) factoryUnidades.crearUnidad(unTipoDeUnidad.terrestre1);
 		
 		return unaUnidad;
 	}
@@ -50,13 +53,12 @@ public class Fabrica extends Construccion {
 		this.unidadesFinalizadas.remove(unidad);
 		return unidad;
 	}
+
 	@Override
 	public boolean reuneLosRequisitos(Jugador jugador) {
-		Almacen almacenGas = jugador.dameAlmacenGas();
 		Almacen almacenMineral = jugador.dameAlmacenMineral();
 		try {
-			almacenGas.consumirRecurso(this.costoGas());	
-			almacenMineral.consumirRecurso(this.costoMineral());
+			almacenMineral.consumirRecurso(this.costoMineral());	
 		} catch (Exception e) {
 			return false;
 		}
@@ -65,12 +67,12 @@ public class Fabrica extends Construccion {
 
 	@Override
 	public int costoGas() {
-		return 100;
+		return 0;
 	}
 
 	@Override
 	public int costoMineral() {
-		return 200;
+		return 150;
 	}
 
 	@Override
@@ -79,12 +81,9 @@ public class Fabrica extends Construccion {
 	}
 
 	@Override
-	public void crearEstructura(Turno unTurno) throws CeldaOcupadaException,
-			NoReuneLosRequisitosException,
-			ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException,
-			ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException {
+	public void crearEstructura(Turno unTurno) throws CeldaOcupadaException,NoReuneLosRequisitosException,ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException,ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException {
 		
-		if( (! this.reuneLosRequisitos(jugador)) || (! this.hayBarraca())) {
+		if( ! this.reuneLosRequisitos(jugador)) {
 			throw new NoReuneLosRequisitosException();
 		}
 		
@@ -93,11 +92,5 @@ public class Fabrica extends Construccion {
 		jugador.agregarConstruccion(this);
 	}
 		
-	public boolean hayBarraca(){
-		for(Construccion unaConstruccion: jugador.dameConstruccionesTerminadas()){
-			if (unaConstruccion instanceof Barraca) return true;
-		}
-		return false;
-	}
-
+	
 }

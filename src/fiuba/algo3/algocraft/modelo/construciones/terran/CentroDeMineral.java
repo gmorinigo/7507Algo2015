@@ -1,8 +1,9 @@
-package fiuba.algo3.algocraft.modelo.construciones;
+package fiuba.algo3.algocraft.modelo.construciones.terran;
 
 import fiuba.algo3.algocraft.modelo.Almacen;
 import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.ProgresoCreacion;
+import fiuba.algo3.algocraft.modelo.construciones.ExtractorDeMineral;
 import fiuba.algo3.algocraft.modelo.excepciones.CeldaOcupadaException;
 import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException;
 import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException;

@@ -2,6 +2,7 @@ package fiuba.algo3.algocrafttest;
 
 import fiuba.algo3.algocraft.modelo.Almacen;
 import fiuba.algo3.algocraft.modelo.Jugador;
+import fiuba.algo3.algocraft.modelo.RazaProtoss;
 import fiuba.algo3.algocraft.modelo.RazaTerran;
 import fiuba.algo3.algocraft.modelo.construciones.Construccion;
 import fiuba.algo3.algocraft.modelo.construciones.terran.CentroDeMineral;
@@ -12,18 +13,20 @@ import fiuba.algo3.algocraft.modelo.excepciones.JugadorConNombreDemasiadoCortoEx
 import fiuba.algo3.algocraft.modelo.excepciones.NoReuneLosRequisitosException;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.turnos.Turno;
+import junit.framework.TestCase;
 
-public class CentroDeMineralTest extends TestBase {
+public class NexoMineralTest extends TestCase{
+
 
 	public void testCrearUnCentroMineral() throws JugadorConNombreDemasiadoCortoException{
 		Posicion posicion64 = new Posicion(6,4);
-		Construccion centroMineral = new CentroDeMineral(posicion64, new Jugador("unNombre",new RazaTerran(),"Azul"));
+		Construccion centroMineral = new CentroDeMineral(posicion64, new Jugador("OtroNombre",new RazaProtoss(),"Rojo"));
 		assertNotNull(centroMineral);
 	}
 	
 	public void testCrearUnCentroMineralAl8TurnosEstaCreada() throws CeldaOcupadaException, NoReuneLosRequisitosException, JugadorConNombreDemasiadoCortoException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException{
 		Posicion posicion911 = new Posicion(9,11);
-		Jugador unJugador = new Jugador("unNombre",new RazaTerran(),"Azul");
+		Jugador unJugador = new Jugador("OtroNombre",new RazaProtoss(),"Rojo");
 		Construccion centroMineral = new CentroDeMineral(posicion911, unJugador );
 		Turno unTurno = new Turno(unJugador);
 	
@@ -40,7 +43,7 @@ public class CentroDeMineralTest extends TestBase {
 	
 	public void testComanzarARecolectar() throws CeldaOcupadaException, NoReuneLosRequisitosException, JugadorConNombreDemasiadoCortoException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException {
 		Posicion posicion911 = new Posicion(9,11);
-		Jugador unJugador = new Jugador("unNombre",new RazaTerran(),"Azul");
+		Jugador unJugador = new Jugador("OtroNombre",new RazaProtoss(),"Rojo");
 		CentroDeMineral centroMineral = new CentroDeMineral(posicion911, unJugador);
 		Turno unTurno = new Turno(unJugador);
 		
