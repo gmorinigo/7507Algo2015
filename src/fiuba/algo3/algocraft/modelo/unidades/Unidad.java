@@ -47,5 +47,4 @@ abstract public class Unidad implements TurnoObserver, Construible{
 	abstract protected Salud saludInicial();
 	abstract protected ProgresoCreacion progresoCreacion();
 	
-	
 }

@@ -1,5 +1,6 @@
 package fiuba.algo3.algocrafttest;
 
+import java.rmi.NoSuchObjectException;
 import java.util.ArrayList;
 
 import fiuba.algo3.algocraft.modelo.Jugador;
@@ -167,7 +168,7 @@ public class MapaTest extends TestBase {
 		assertTrue(celdas.get(3).obtenerPosicion().compararPosicion(posicion33));
 	}
 	
-	public void testAgregarUnaTropaAlMapa() throws JugadorConNombreDemasiadoCortoException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException, CeldaOcupadaException, NoReuneLosRequisitosException{
+	public void testAgregarUnaTropaAlMapa() throws JugadorConNombreDemasiadoCortoException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException, CeldaOcupadaException, NoReuneLosRequisitosException, NoSuchObjectException{
 		Posicion posicion1515 = new Posicion(15,15);
 		Posicion posicion1715 = new Posicion(17,15);
 		Mapa unMapa = Mapa.getInstance();
