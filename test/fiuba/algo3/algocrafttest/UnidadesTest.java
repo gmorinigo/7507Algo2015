@@ -33,21 +33,6 @@ public void testCrearUnidadEspectroNoEsCualquierCosaSinoLaUnidadQuePasoEnConstru
 	assertNotSame(unaUnidad.getName(), "lalala");
 }
 
-public void testCrearNaveCiencia(){	
-	AbstractUnidadFactory factoryUnidades = getFactoryUnidades();	
-	Unidad unaUnidad = (Unidad) factoryUnidades.crearUnidad("NaveCiencia"/*,new DisparoSuperStrategy()*/);
-	assertEquals(unaUnidad.getName(), "NaveCiencia");
-}
-
-
-public void testCrearNaveCienciaCreadaCon50DeEnergia(){	
-	AbstractUnidadFactory factoryUnidades = getFactoryUnidades();	
-	Unidad unaUnidad = (Unidad) factoryUnidades.crearUnidad("NaveCiencia"/*,new DisparoSuperStrategy()*/);
-	NaveCiencia unaNaveCiencia = (NaveCiencia) unaUnidad;	
-	assertEquals(unaNaveCiencia.getEnergia(), 50);
-}
-
-
 public static AbstractUnidadFactory getFactoryUnidades(){
     
    return new UnidadFactoryTerran();

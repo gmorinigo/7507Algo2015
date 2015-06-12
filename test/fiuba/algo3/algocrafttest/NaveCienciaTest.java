@@ -1,0 +1,55 @@
+package fiuba.algo3.algocrafttest;
+
+import fiuba.algo3.algocraft.modelo.Jugador;
+import fiuba.algo3.algocraft.modelo.RazaProtoss;
+import fiuba.algo3.algocraft.modelo.excepciones.JugadorConNombreDemasiadoCortoException;
+import fiuba.algo3.algocraft.modelo.turnos.Turno;
+import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory;
+import fiuba.algo3.algocraft.modelo.unidades.Unidad;
+import fiuba.algo3.algocraft.modelo.unidades.UnidadFactoryTerran;
+import fiuba.algo3.algocraft.modelo.unidades.terran.NaveCiencia;
+
+public class NaveCienciaTest extends TestBase{
+		
+public void testCrearNaveCiencia(){	
+	AbstractUnidadFactory factoryUnidades = getFactoryUnidades();	
+	Unidad unaUnidad = (Unidad) factoryUnidades.crearUnidad("NaveCiencia"/*,new DisparoSuperStrategy()*/);
+	assertEquals(unaUnidad.getName(), "NaveCiencia");
+}
+
+
+public void testCrearNaveCienciaCreadaCon50DeEnergia(){	
+	AbstractUnidadFactory factoryUnidades = getFactoryUnidades();	
+	Unidad unaUnidad = (Unidad) factoryUnidades.crearUnidad("NaveCiencia"/*,new DisparoSuperStrategy()*/);
+	NaveCiencia unaNaveCiencia = (NaveCiencia) unaUnidad;	
+	assertEquals(unaNaveCiencia.getEnergia(), 50);
+}
+
+public void testCrearNaveCienciaCreadaacumula100DeEnergiaEn5Turnos() throws JugadorConNombreDemasiadoCortoException{	
+	AbstractUnidadFactory factoryUnidades = getFactoryUnidades();	
+	Unidad unaUnidad = (Unidad) factoryUnidades.crearUnidad("NaveCiencia"/*,new DisparoSuperStrategy()*/);
+	NaveCiencia unaNaveCiencia = (NaveCiencia) unaUnidad;	
+	Turno unTurno = new Turno(new Jugador("unNombre",new RazaProtoss(),"Azul"));
+	
+
+	unTurno.addObserver(unaNaveCiencia);
+	unaNaveCiencia.finalizarCreacion();
+	
+	
+	for(int i = 1 ; i <= 4; i++) 
+	unTurno.aumentarTurno();
+	assertTrue(unTurno.dameTurno() == 5);
+	assertEquals(unaNaveCiencia.getEnergia(), 100);
+}
+
+
+public static AbstractUnidadFactory getFactoryUnidades(){
+    
+   return new UnidadFactoryTerran();
+} 
+
+}
+
+
+	
+	

@@ -8,11 +8,9 @@ public class NaveCiencia extends UnidadCuatro {
     private int energia;    
 	
 	private String nombre;
-
 	
-	
-	public NaveCiencia(String nombre/*, DisparoStrategy disparoStrategy*/){
-		this.nombre=nombre;
+	public NaveCiencia(){
+		this.nombre="Nave Ciencia";
 		this.energia =  50;   
 		//this.disparoStrategy=disparoStrategy;
 		//this.disparoStrategy.setUnidad(this);

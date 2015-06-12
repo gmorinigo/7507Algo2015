@@ -9,10 +9,8 @@ public class Espectro extends UnidadTres {
 	private String nombre;
 
 	
-	public Espectro(String nombre/*, DisparoStrategy disparoStrategy*/){
-		this.nombre=nombre;
-		//this.disparoStrategy=disparoStrategy;
-		//this.disparoStrategy.setUnidad(this);
+	public Espectro(){
+		this.nombre="Espectro";
 	}
 	
 	

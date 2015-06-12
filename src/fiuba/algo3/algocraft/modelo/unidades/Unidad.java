@@ -33,6 +33,9 @@ abstract public class Unidad implements TurnoObserver, Construible{
 		if(this.naciendo) {
 			this.progresoCreacion.avanzarProgreso();
 		}
+		else {
+			//this.comportamiento();
+		}
 			
 	}
 	
