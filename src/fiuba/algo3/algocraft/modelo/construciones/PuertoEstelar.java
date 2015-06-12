@@ -13,6 +13,7 @@ import fiuba.algo3.algocraft.modelo.excepciones.NoReuneLosRequisitosException;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.turnos.Turno;
 import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory;
+import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory.TipoUnidad;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 
 public class PuertoEstelar extends Construccion {
@@ -27,10 +28,10 @@ public class PuertoEstelar extends Construccion {
 	}
 	
 	public Unidad crearUnidad() throws JugadorConNombreDemasiadoCortoException {
-		// Obtener dinamicamente la factory
+		
 		AbstractUnidadFactory factoryUnidades = this.jugador.dameRaza().getFactoryUnidades();
-		//new UnidadFactoryTerran();//getFactoryUnidades();
-		Unidad unaUnidad = (Unidad) factoryUnidades.crearUnidad("Marine");
+		TipoUnidad unTipoDeUnidad = null;
+		Unidad unaUnidad = (Unidad) factoryUnidades.crearUnidad(unTipoDeUnidad.especial1);
 		
 		return unaUnidad;
 	}
