@@ -15,7 +15,7 @@ public class UnidadFactoryTerran extends AbstractUnidadFactory {
 		case especial1:	return new NaveCiencia();
 		case terrestre1: return new Marine();
 		case terrestre2:return new Golliat();
-		case volador1:return new NaveCiencia();
+		case volador1:return new Espectro();
 		case volador2:return new NaveTransporte();
 		default:throw new NoSuchObjectException("Objeto Sin Tipo");
 		}
