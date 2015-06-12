@@ -3,6 +3,8 @@ package fiuba.algo3.algocraft.modelo;
 import java.util.ArrayList;
 
 import fiuba.algo3.algocraft.modelo.construciones.Construccion;
+import fiuba.algo3.algocraft.modelo.construciones.protoss.Pilon;
+import fiuba.algo3.algocraft.modelo.construciones.terran.DepositoDeSuministro;
 import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory;
 import fiuba.algo3.algocraft.modelo.unidades.UnidadFactoryTerran;
 
@@ -14,8 +16,11 @@ public class RazaProtoss extends Raza {
 
 	@Override
 	public int dameCapacidadDePoblacion(ArrayList<Construccion> construccionesTerminadas) {
-		//Idem Terran
-		return 0;
+		int contador = 0;
+		for(Construccion construccion: construccionesTerminadas){
+			if (construccion instanceof Pilon) contador += 5;
+		}
+		return contador;
 	}
 	    		  
 }

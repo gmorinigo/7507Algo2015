@@ -5,6 +5,7 @@ import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.RazaProtoss;
 import fiuba.algo3.algocraft.modelo.RazaTerran;
 import fiuba.algo3.algocraft.modelo.construciones.Construccion;
+import fiuba.algo3.algocraft.modelo.construciones.protoss.NexoMineral;
 import fiuba.algo3.algocraft.modelo.construciones.terran.CentroDeMineral;
 import fiuba.algo3.algocraft.modelo.excepciones.CeldaOcupadaException;
 import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException;
@@ -27,42 +28,42 @@ public class NexoMineralTest extends TestCase{
 	public void testCrearUnCentroMineralAl8TurnosEstaCreada() throws CeldaOcupadaException, NoReuneLosRequisitosException, JugadorConNombreDemasiadoCortoException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException{
 		Posicion posicion911 = new Posicion(9,11);
 		Jugador unJugador = new Jugador("OtroNombre",new RazaProtoss(),"Rojo");
-		Construccion centroMineral = new CentroDeMineral(posicion911, unJugador );
+		Construccion unNexo = new NexoMineral(posicion911, unJugador );
 		Turno unTurno = new Turno(unJugador);
 	
-		centroMineral.crearEstructura(unTurno);
+		unNexo.crearEstructura(unTurno);
 		
-		assertFalse(centroMineral.estaTerminada());
+		assertFalse(unNexo.estaTerminada());
 		unTurno.aumentarTurno();
 		unTurno.aumentarTurno();
 		unTurno.aumentarTurno();
-		assertFalse(centroMineral.estaTerminada());
+		assertFalse(unNexo.estaTerminada());
 		unTurno.aumentarTurno();
-		assertTrue(centroMineral.estaTerminada());
+		assertTrue(unNexo.estaTerminada());
 	}
 	
 	public void testComanzarARecolectar() throws CeldaOcupadaException, NoReuneLosRequisitosException, JugadorConNombreDemasiadoCortoException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException {
 		Posicion posicion911 = new Posicion(9,11);
 		Jugador unJugador = new Jugador("OtroNombre",new RazaProtoss(),"Rojo");
-		CentroDeMineral centroMineral = new CentroDeMineral(posicion911, unJugador);
+		NexoMineral unNexo = new NexoMineral(posicion911, unJugador);
 		Turno unTurno = new Turno(unJugador);
 		
-		centroMineral.crearEstructura(unTurno);
+		unNexo.crearEstructura(unTurno);
 		
-		assertFalse(centroMineral.estaTerminada());
+		assertFalse(unNexo.estaTerminada());
 		unTurno.aumentarTurno();
 		unTurno.aumentarTurno();
-		assertFalse(centroMineral.estaTerminada());
+		assertFalse(unNexo.estaTerminada());
 		unTurno.aumentarTurno();
 		unTurno.aumentarTurno();
-		assertTrue(centroMineral.estaTerminada());
+		assertTrue(unNexo.estaTerminada());
 		
 		Almacen almacen = new Almacen();
 		
-		centroMineral.recolectar(almacen);
-		centroMineral.recolectar(almacen);
-		centroMineral.recolectar(almacen);
-		centroMineral.recolectar(almacen);
+		unNexo.recolectar(almacen);
+		unNexo.recolectar(almacen);
+		unNexo.recolectar(almacen);
+		unNexo.recolectar(almacen);
 		assertTrue(almacen.cantidad() == 40);
 	}
 }
