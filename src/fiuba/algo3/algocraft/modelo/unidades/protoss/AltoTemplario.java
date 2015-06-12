@@ -6,10 +6,11 @@ import fiuba.algo3.algocraft.modelo.unidades.UnidadCuatro;
 
 public class AltoTemplario extends UnidadCuatro {
 
-	private String nombre;
-	public AltoTemplario(String nombre) {	}
+	public AltoTemplario() {
+
+	}
+	
 	public void disparar() {}
-	public String getName(){ return this.nombre; }
 	
 	@Override
 	protected Salud saludInicial() {

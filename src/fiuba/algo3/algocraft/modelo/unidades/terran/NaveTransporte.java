@@ -6,19 +6,14 @@ import fiuba.algo3.algocraft.modelo.unidades.UnidadCinco;
 
 public class NaveTransporte extends UnidadCinco {
 
-	private String nombre;
+	public NaveTransporte(){
 
-	public NaveTransporte(String nombre/*, DisparoStrategy disparoStrategy*/){
-		this.nombre=nombre;
 		//this.disparoStrategy=disparoStrategy;
 		//this.disparoStrategy.setUnidad(this);
 	}
 	
 	@Override
 	public void disparar() {}
-
-	@Override
-	public String getName() {return this.nombre;}
 
 	@Override
 	protected Salud saludInicial() {

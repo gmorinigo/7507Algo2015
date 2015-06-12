@@ -6,11 +6,8 @@ import fiuba.algo3.algocraft.modelo.unidades.UnidadTres;
 
 public class Scout extends UnidadTres {
 
-	private String nombre;
-	public Scout(String nombre) {	}
+	public Scout() {	}
 	public void disparar() {}
-	public String getName(){ return this.nombre; }
-	
 	
 	@Override
 	protected Salud saludInicial() {

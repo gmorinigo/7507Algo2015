@@ -1,5 +1,6 @@
 package fiuba.algo3.algocraft.modelo.construciones;
 
+import java.rmi.NoSuchObjectException;
 import java.util.ArrayList;
 
 import fiuba.algo3.algocraft.modelo.Almacen;
@@ -28,7 +29,7 @@ public class Barraca extends Construccion {
 	}
 
 	
-	public Unidad crearUnidad() throws JugadorConNombreDemasiadoCortoException {
+	public Unidad crearUnidad() throws JugadorConNombreDemasiadoCortoException, NoSuchObjectException {
 		// Obtener dinamicamente la factory
 		AbstractUnidadFactory factoryUnidades = this.jugador.dameRaza().getFactoryUnidades();
 		TipoUnidad unTipoDeUnidad = null;

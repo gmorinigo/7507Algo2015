@@ -7,24 +7,18 @@ import fiuba.algo3.algocraft.modelo.unidades.UnidadUno;
 
 public class Marine extends UnidadUno {
 
-	private String nombre;
 	//private DisparoStrategy disparoStrategy;
-	
-	public Marine(String nombre/*, DisparoStrategy disparoStrategy*/){
-		this.nombre=nombre;
+
+
+	public Marine() {
 //		this.disparoStrategy=disparoStrategy;
 //		this.disparoStrategy.setUnidad(this);
 	}
-	
+
 	public void disparar()
 	{
 //		this.disparoStrategy.disparar();
 	}
-	
-	public String toString(){
-		return "Unidad "+nombre;
-	}
-	public String getName(){ return this.nombre; }
 
 	@Override
 	protected Salud saludInicial() {
@@ -34,5 +28,5 @@ public class Marine extends UnidadUno {
 	@Override
 	protected ProgresoCreacion progresoCreacion() {
 		return new ProgresoCreacion(3, this);
-	} 
+	}
 }

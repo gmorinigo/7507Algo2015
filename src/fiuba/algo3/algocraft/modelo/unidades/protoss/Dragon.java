@@ -6,15 +6,12 @@ import fiuba.algo3.algocraft.modelo.unidades.UnidadDos;
 
 public class Dragon extends UnidadDos {
 
-	private String nombre;
-	
-	public Dragon(String nombre) {
+	public Dragon() {
 	}
 
 	@Override
 	public void disparar() {
 	}
-	public String getName(){ return this.nombre; }
 
 	@Override
 	protected Salud saludInicial() {

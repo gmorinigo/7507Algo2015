@@ -6,11 +6,10 @@ import fiuba.algo3.algocraft.modelo.unidades.UnidadUno;
 
 public class Zealot extends UnidadUno{
 
-	private String nombre;
-	public Zealot(String nombre) {	}
-	public void disparar() {}
-	public String getName(){ return this.nombre; }
+	public Zealot() {	
+	}
 	
+	public void disparar() {}
 	
 	@Override
 	protected Salud saludInicial() {

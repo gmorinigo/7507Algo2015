@@ -6,11 +6,8 @@ import fiuba.algo3.algocraft.modelo.unidades.UnidadTres;
 
 public class Espectro extends UnidadTres {
 
-	private String nombre;
-
 	
 	public Espectro(){
-		this.nombre="Espectro";
 	}
 	
 	
@@ -19,11 +16,6 @@ public class Espectro extends UnidadTres {
 		//		this.disparoStrategy.disparar();
 		}
 	
-	
-	@Override
-	public String getName(){ return this.nombre; }
-
-
 	@Override
 	protected Salud saludInicial() {
 		return null;
@@ -32,7 +24,6 @@ public class Espectro extends UnidadTres {
 	public boolean esUnidadAerea(){
 		return true;
 	}
-
 
 	@Override
 	protected ProgresoCreacion progresoCreacion() {

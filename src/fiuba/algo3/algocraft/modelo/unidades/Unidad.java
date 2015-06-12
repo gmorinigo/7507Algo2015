@@ -12,7 +12,6 @@ abstract public class Unidad implements TurnoObserver, Construible{
 	private ProgresoCreacion progresoCreacion;
 	
 	public abstract void disparar();
-	public abstract String getName();
 	
 	public boolean estaTerminada() {
 		return ! this.naciendo; 
