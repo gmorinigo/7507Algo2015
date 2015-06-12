@@ -22,7 +22,7 @@ public class PilonTest extends TestCase{
 		assertNotNull(unPilon);
 	}
 	
-	public void testCrearUnDepositoDeSuministrosAlPasar6TurnosEstaCreada() 
+	public void testCrearUnPilonAlPasar5TurnosEstaCreada() 
 			throws CeldaOcupadaException, NoReuneLosRequisitosException, JugadorConNombreDemasiadoCortoException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException{
 				Posicion posicion124 = new Posicion(12,4);
 				Jugador unJugador = new Jugador("otroNombre",new RazaProtoss(),"Rojo");
@@ -31,7 +31,6 @@ public class PilonTest extends TestCase{
 				
 				unPilon.crearEstructura(unTurno);
 				assertFalse(unPilon.estaTerminada());
-				unTurno.aumentarTurno();
 				unTurno.aumentarTurno();
 				unTurno.aumentarTurno();
 				unTurno.aumentarTurno();
@@ -58,7 +57,7 @@ public class PilonTest extends TestCase{
 		}
 	}
 	
-	public void testAlCrear2DepositosDeSuministrosElLimiteDePoblacionAumenta10() throws CeldaOcupadaException, NoReuneLosRequisitosException, JugadorConNombreDemasiadoCortoException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException{
+	public void testAlCrear2PilonElLimiteDePoblacionAumenta10() throws CeldaOcupadaException, NoReuneLosRequisitosException, JugadorConNombreDemasiadoCortoException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException{
 			Posicion posicion124 = new Posicion(12,4);
 			Jugador unJugador = new Jugador("otroNombre",new RazaProtoss(),"Rojo");
 			Pilon unPilon = new Pilon(posicion124, unJugador );

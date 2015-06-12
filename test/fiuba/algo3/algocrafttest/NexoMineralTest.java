@@ -19,13 +19,13 @@ import junit.framework.TestCase;
 public class NexoMineralTest extends TestCase{
 
 
-	public void testCrearUnCentroMineral() throws JugadorConNombreDemasiadoCortoException{
+	public void testCrearUnNexoMineral() throws JugadorConNombreDemasiadoCortoException{
 		Posicion posicion64 = new Posicion(6,4);
 		Construccion centroMineral = new CentroDeMineral(posicion64, new Jugador("OtroNombre",new RazaProtoss(),"Rojo"));
 		assertNotNull(centroMineral);
 	}
 	
-	public void testCrearUnCentroMineralAl8TurnosEstaCreada() throws CeldaOcupadaException, NoReuneLosRequisitosException, JugadorConNombreDemasiadoCortoException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException{
+	public void testCrearUnNexoMineralAl8TurnosEstaCreada() throws CeldaOcupadaException, NoReuneLosRequisitosException, JugadorConNombreDemasiadoCortoException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException{
 		Posicion posicion911 = new Posicion(9,11);
 		Jugador unJugador = new Jugador("OtroNombre",new RazaProtoss(),"Rojo");
 		Construccion unNexo = new NexoMineral(posicion911, unJugador );
