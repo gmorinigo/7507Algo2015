@@ -8,12 +8,12 @@ import fiuba.algo3.algocraft.modelo.turnos.Turno;
 public class TurnoTest extends TestBase {
 	
 	public void testCrearUnTurnoEsElPrimero() throws JugadorConNombreDemasiadoCortoException{
-		Turno unTurno = new Turno(new Jugador("unNombre",new RazaProtoss(),"Azul"));
+		Turno unTurno = new Turno(new Jugador("unNombre",new RazaProtoss(),"Azul"),new Jugador("otroNombre",new RazaProtoss(),"Rojo"));
 		assertTrue(unTurno.dameTurno() == 1);
 	}
 	
 	public void testAumentarUnTurnoAumentaElTurno() throws JugadorConNombreDemasiadoCortoException{
-		Turno unTurno = new Turno(new Jugador("unNombre",new RazaProtoss(),"Azul"));
+		Turno unTurno = new Turno(new Jugador("unNombre",new RazaProtoss(),"Azul"),new Jugador("otroNombre",new RazaProtoss(),"Rojo"));
 		unTurno.avanzarTurno();
 		assertTrue(unTurno.dameTurno() == 2);
 	}

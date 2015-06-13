@@ -29,8 +29,9 @@ public class NexoMineralTest extends TestCase{
 		Posicion posicion911 = new Posicion(9,11);
 		Jugador unJugador = new Jugador("OtroNombre",new RazaProtoss(),"Rojo");
 		Construccion unNexo = new NexoMineral(posicion911, unJugador );
-		Turno unTurno = new Turno(unJugador);
-	
+		Jugador otroJugador = new Jugador("Nombre2",new RazaProtoss(),"Rojo");
+		Turno unTurno = new Turno(unJugador,otroJugador);
+		
 		unNexo.crearEstructura(unTurno);
 		
 		assertFalse(unNexo.estaTerminada());
@@ -46,7 +47,8 @@ public class NexoMineralTest extends TestCase{
 		Posicion posicion911 = new Posicion(9,11);
 		Jugador unJugador = new Jugador("OtroNombre",new RazaProtoss(),"Rojo");
 		NexoMineral unNexo = new NexoMineral(posicion911, unJugador);
-		Turno unTurno = new Turno(unJugador);
+		Jugador otroJugador = new Jugador("Nombre2",new RazaProtoss(),"Rojo");
+		Turno unTurno = new Turno(unJugador,otroJugador);
 		
 		unNexo.crearEstructura(unTurno);
 		

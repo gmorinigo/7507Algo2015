@@ -181,27 +181,29 @@ public class MapaTest extends TestBase {
 		} catch (CeldaOcupadaException e) {
 		}
 		
-		Turno unTurno = new Turno(unJugador);
+		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
+		Turno unTurno = new Turno(unJugador,otroJugador);
+		
 		
 		unaBarraca.crearEstructura(unTurno);
 		
-		unTurno.aumentarTurno();
-		unTurno.aumentarTurno();
-		unTurno.aumentarTurno();
-		unTurno.aumentarTurno();
-		unTurno.aumentarTurno();
-		unTurno.aumentarTurno();
-		unTurno.aumentarTurno();
-		unTurno.aumentarTurno();
-		unTurno.aumentarTurno();
-		unTurno.aumentarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
 		
 		Unidad marine = unaBarraca.crearUnidad();
 		unTurno.addObserver(marine);
 		
-		unTurno.aumentarTurno();
-		unTurno.aumentarTurno();
-		unTurno.aumentarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
 				
 		unMapa.agregarUnidad(posicion1715, marine);
 		
@@ -265,7 +267,9 @@ public class MapaTest extends TestBase {
 		} catch (CeldaOcupadaException e) {
 		}
 		
-		Turno unTurno = new Turno(unJugador);
+		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
+		Turno unTurno = new Turno(unJugador,otroJugador);
+		
 		
 		unaBarraca.crearEstructura(unTurno);
 		

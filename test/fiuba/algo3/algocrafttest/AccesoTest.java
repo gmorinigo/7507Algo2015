@@ -27,7 +27,8 @@ public class AccesoTest extends TestCase{
 		Posicion posicion14 = new Posicion(1,4);
 		Jugador unJugador = new Jugador("otroNombre",new RazaProtoss(),"Rojo");
 		Construccion unAcceso = new Acceso(posicion14, unJugador );
-		Turno unTurno = new Turno(unJugador);
+		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
+		Turno unTurno = new Turno(unJugador,otroJugador);
 		
 		unAcceso.crearEstructura(unTurno);
 		
@@ -49,8 +50,9 @@ public class AccesoTest extends TestCase{
 		Posicion posicion123 = new Posicion(12,3);
 		Jugador unJugador = new Jugador("otroNombre",new RazaProtoss(),"Rojo");
 		Acceso unAcceso = new Acceso(posicion123, unJugador);
-		Turno unTurno = new Turno(unJugador);
-	
+		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
+		Turno unTurno = new Turno(unJugador,otroJugador);
+		
 		unAcceso.crearEstructura(unTurno);
 		
 		unTurno.avanzarTurno();
@@ -78,15 +80,16 @@ public class AccesoTest extends TestCase{
 		
 	}
 	
-	public void testNoSePuedeCrearSinSuficientesRecursos() throws CeldaOcupadaException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException {
+	public void testNoSePuedeCrearSinSuficientesRecursos() throws CeldaOcupadaException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException, JugadorConNombreDemasiadoCortoException {
 		Posicion posicion123 = new Posicion(12,3);
 		Almacen gas = new Almacen(0);
 		Almacen mineral = new Almacen(0);
 		
 		Jugador jugador = new Jugador(new RazaProtoss(),mineral, gas);
 		Acceso unAcceso = new Acceso(posicion123, jugador);
-		Turno unTurno = new Turno(jugador);
-	
+		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
+		Turno unTurno = new Turno(jugador,otroJugador);
+		
 		try {
 			unAcceso.crearEstructura(unTurno);
 			fail("Deberia lanzar Exception");

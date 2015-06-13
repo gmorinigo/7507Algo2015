@@ -27,7 +27,8 @@ public class PilonTest extends TestCase{
 				Posicion posicion124 = new Posicion(12,4);
 				Jugador unJugador = new Jugador("otroNombre",new RazaProtoss(),"Rojo");
 				Construccion unPilon = new Pilon(posicion124, unJugador );
-				Turno unTurno = new Turno(unJugador);
+				Jugador otroJugador = new Jugador("Nombre2",new RazaProtoss(),"Rojo");
+				Turno unTurno = new Turno(unJugador,otroJugador);
 				
 				unPilon.crearEstructura(unTurno);
 				assertFalse(unPilon.estaTerminada());
@@ -40,15 +41,16 @@ public class PilonTest extends TestCase{
 				assertTrue(unPilon.estaTerminada());
 			}
 	
-	public void testNoSePuedeCrearSinSuficientesRecursos() throws CeldaOcupadaException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException {
+	public void testNoSePuedeCrearSinSuficientesRecursos() throws CeldaOcupadaException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException, JugadorConNombreDemasiadoCortoException {
 		Posicion posicion123 = new Posicion(12,3);
 		Almacen gas = new Almacen(0);
 		Almacen mineral = new Almacen(0);
 		
 		Jugador jugador = new Jugador(new RazaProtoss(),mineral, gas);
 		Pilon unPilon = new Pilon(posicion123, jugador);
-		Turno unTurno = new Turno(jugador);
-	
+		Jugador otroJugador = new Jugador("Nombre2",new RazaProtoss(),"Rojo");
+		Turno unTurno = new Turno(jugador,otroJugador);
+		
 		try {
 			unPilon.crearEstructura(unTurno);
 			fail("Deberia lanzar Exception");
@@ -61,8 +63,9 @@ public class PilonTest extends TestCase{
 			Posicion posicion124 = new Posicion(12,4);
 			Jugador unJugador = new Jugador("otroNombre",new RazaProtoss(),"Rojo");
 			Pilon unPilon = new Pilon(posicion124, unJugador );
-			Turno unTurno = new Turno(unJugador);
-
+			Jugador otroJugador = new Jugador("Nombre2",new RazaProtoss(),"Rojo");
+			Turno unTurno = new Turno(unJugador,otroJugador);
+			
 			unPilon.crearEstructura(unTurno);
 			unTurno.avanzarTurno();
 			unTurno.avanzarTurno();

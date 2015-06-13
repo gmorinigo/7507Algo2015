@@ -2,6 +2,7 @@ package fiuba.algo3.algocrafttest;
 
 import fiuba.algo3.algocraft.modelo.Almacen;
 import fiuba.algo3.algocraft.modelo.Jugador;
+import fiuba.algo3.algocraft.modelo.RazaProtoss;
 import fiuba.algo3.algocraft.modelo.RazaTerran;
 import fiuba.algo3.algocraft.modelo.construciones.Construccion;
 import fiuba.algo3.algocraft.modelo.construciones.terran.Refineria;
@@ -25,7 +26,9 @@ public class RefineriaTest extends TestBase {
 		Posicion posicion99 = new Posicion(9,9);
 		Jugador unJugador = new Jugador("unNombre",new RazaTerran(),"Azul");
 		Construccion refineria = new Refineria(posicion99,unJugador );
-		Turno unTurno = new Turno(unJugador);
+		Jugador otroJugador = new Jugador("Nombre2",new RazaProtoss(),"Rojo");
+		Turno unTurno = new Turno(unJugador,otroJugador);
+		
 	
 		refineria.crearEstructura(unTurno);
 		
@@ -44,7 +47,9 @@ public class RefineriaTest extends TestBase {
 		Posicion posicion99 = new Posicion(9,9);
 		Jugador unJugador = new Jugador("unNombre",new RazaTerran(),"Azul");
 		Refineria refineria = new Refineria(posicion99, unJugador);
-		Turno unTurno = new Turno(unJugador);
+		Jugador otroJugador = new Jugador("Nombre2",new RazaProtoss(),"Rojo");
+		Turno unTurno = new Turno(unJugador,otroJugador);
+		
 		
 		refineria.crearEstructura(unTurno);
 		
@@ -68,14 +73,16 @@ public class RefineriaTest extends TestBase {
 		assertTrue(almacen.cantidad() == 40);	
 	}
 	
-	public void testNoSePuedeCrearSinSuficientesRecursos() throws CeldaOcupadaException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException {
+	public void testNoSePuedeCrearSinSuficientesRecursos() throws CeldaOcupadaException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException, JugadorConNombreDemasiadoCortoException {
 		Posicion posicion123 = new Posicion(12,3);
 		Almacen gas = new Almacen(0);
 		Almacen mineral = new Almacen(0);
 		
 		Jugador jugador = new Jugador(new RazaTerran(),mineral, gas);
 		Refineria unaRefineria = new Refineria(posicion123, jugador);
-		Turno unTurno = new Turno(jugador);
+		Jugador otroJugador = new Jugador("Nombre2",new RazaProtoss(),"Rojo");
+		Turno unTurno = new Turno(jugador,otroJugador);
+		
 	
 		try {
 			unaRefineria.crearEstructura(unTurno);

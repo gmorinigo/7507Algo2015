@@ -2,6 +2,7 @@ package fiuba.algo3.algocrafttest;
 
 import fiuba.algo3.algocraft.modelo.Almacen;
 import fiuba.algo3.algocraft.modelo.Jugador;
+import fiuba.algo3.algocraft.modelo.RazaProtoss;
 import fiuba.algo3.algocraft.modelo.RazaTerran;
 import fiuba.algo3.algocraft.modelo.construciones.Construccion;
 import fiuba.algo3.algocraft.modelo.construciones.terran.CentroDeMineral;
@@ -25,8 +26,9 @@ public class CentroDeMineralTest extends TestBase {
 		Posicion posicion911 = new Posicion(9,11);
 		Jugador unJugador = new Jugador("unNombre",new RazaTerran(),"Azul");
 		Construccion centroMineral = new CentroDeMineral(posicion911, unJugador );
-		Turno unTurno = new Turno(unJugador);
-	
+		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
+		Turno unTurno = new Turno(unJugador,otroJugador);
+		
 		centroMineral.crearEstructura(unTurno);
 		
 		assertFalse(centroMineral.estaTerminada());
@@ -42,7 +44,8 @@ public class CentroDeMineralTest extends TestBase {
 		Posicion posicion911 = new Posicion(9,11);
 		Jugador unJugador = new Jugador("unNombre",new RazaTerran(),"Azul");
 		CentroDeMineral centroMineral = new CentroDeMineral(posicion911, unJugador);
-		Turno unTurno = new Turno(unJugador);
+		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
+		Turno unTurno = new Turno(unJugador,otroJugador);
 		
 		centroMineral.crearEstructura(unTurno);
 		

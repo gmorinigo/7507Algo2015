@@ -2,6 +2,7 @@ package fiuba.algo3.algocrafttest;
 
 import fiuba.algo3.algocraft.modelo.Almacen;
 import fiuba.algo3.algocraft.modelo.Jugador;
+import fiuba.algo3.algocraft.modelo.RazaProtoss;
 import fiuba.algo3.algocraft.modelo.RazaTerran;
 import fiuba.algo3.algocraft.modelo.construciones.Construccion;
 import fiuba.algo3.algocraft.modelo.construciones.terran.Barraca;
@@ -28,7 +29,9 @@ public class BarracaTest extends TestBase {
 		Posicion posicion14 = new Posicion(1,4);
 		Jugador unJugador = new Jugador("unNombre",new RazaTerran(),"Azul");
 		Construccion unaBarraca = new Barraca(posicion14, unJugador );
-		Turno unTurno = new Turno(unJugador);
+		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
+		Turno unTurno = new Turno(unJugador,otroJugador);
+		
 		
 		unaBarraca.crearEstructura(unTurno);
 		
@@ -54,7 +57,9 @@ public class BarracaTest extends TestBase {
 		Posicion posicion123 = new Posicion(12,3);
 		Jugador unJugador = new Jugador("unNombre",new RazaTerran(),"Azul");
 		Barraca unaBarraca = new Barraca(posicion123, unJugador);
-		Turno unTurno = new Turno(unJugador);
+		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
+		Turno unTurno = new Turno(unJugador,otroJugador);
+		
 	
 		unaBarraca.crearEstructura(unTurno);
 		
@@ -83,14 +88,16 @@ public class BarracaTest extends TestBase {
 		
 	}
 	
-	public void testNoSePuedeCrearSinSuficientesRecursos() throws CeldaOcupadaException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException {
+	public void testNoSePuedeCrearSinSuficientesRecursos() throws CeldaOcupadaException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException, JugadorConNombreDemasiadoCortoException {
 		Posicion posicion123 = new Posicion(12,3);
 		Almacen gas = new Almacen(0);
 		Almacen mineral = new Almacen(0);
 		
 		Jugador jugador = new Jugador(new RazaTerran(),mineral, gas);
 		Barraca unaBarraca = new Barraca(posicion123, jugador);
-		Turno unTurno = new Turno(jugador);
+		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
+		Turno unTurno = new Turno(jugador,otroJugador);
+		
 	
 		try {
 			unaBarraca.crearEstructura(unTurno);

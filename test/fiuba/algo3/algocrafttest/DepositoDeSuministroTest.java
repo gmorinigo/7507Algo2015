@@ -2,6 +2,7 @@ package fiuba.algo3.algocrafttest;
 
 import fiuba.algo3.algocraft.modelo.Almacen;
 import fiuba.algo3.algocraft.modelo.Jugador;
+import fiuba.algo3.algocraft.modelo.RazaProtoss;
 import fiuba.algo3.algocraft.modelo.RazaTerran;
 import fiuba.algo3.algocraft.modelo.construciones.Construccion;
 import fiuba.algo3.algocraft.modelo.construciones.terran.Barraca;
@@ -28,7 +29,8 @@ public class DepositoDeSuministroTest extends TestCase {
 				Posicion posicion124 = new Posicion(12,4);
 				Jugador unJugador = new Jugador("unNombre",new RazaTerran(),"Azul");
 				Construccion unDeposito = new DepositoDeSuministro(posicion124, unJugador );
-				Turno unTurno = new Turno(unJugador);
+				Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
+				Turno unTurno = new Turno(unJugador,otroJugador);
 				
 				unDeposito.crearEstructura(unTurno);
 				assertFalse(unDeposito.estaTerminada());
@@ -42,14 +44,16 @@ public class DepositoDeSuministroTest extends TestCase {
 				assertTrue(unDeposito.estaTerminada());
 			}
 	
-	public void testNoSePuedeCrearSinSuficientesRecursos() throws CeldaOcupadaException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException {
+	public void testNoSePuedeCrearSinSuficientesRecursos() throws CeldaOcupadaException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException, JugadorConNombreDemasiadoCortoException {
 		Posicion posicion123 = new Posicion(12,3);
 		Almacen gas = new Almacen(0);
 		Almacen mineral = new Almacen(0);
 		
 		Jugador jugador = new Jugador(new RazaTerran(),mineral, gas);
 		DepositoDeSuministro unDeposito = new DepositoDeSuministro(posicion123, jugador);
-		Turno unTurno = new Turno(jugador);
+		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
+		Turno unTurno = new Turno(jugador,otroJugador);
+		
 	
 		try {
 			unDeposito.crearEstructura(unTurno);
@@ -63,7 +67,9 @@ public class DepositoDeSuministroTest extends TestCase {
 			Posicion posicion124 = new Posicion(12,4);
 			Jugador unJugador = new Jugador("unNombre",new RazaTerran(),"Azul");
 			Construccion unDeposito = new DepositoDeSuministro(posicion124, unJugador );
-			Turno unTurno = new Turno(unJugador);
+			Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
+			Turno unTurno = new Turno(unJugador,otroJugador);
+			
 
 			unDeposito.crearEstructura(unTurno);
 			unTurno.avanzarTurno();

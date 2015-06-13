@@ -33,7 +33,8 @@ public class ArchivosTemplariosTest extends TestCase{
 		Construccion unAcceso = new Acceso(posicion305,unJugador);
 		Construccion unPuertoEstelar = new PuertoEstelarP(posicion999,unJugador);
 		Construccion unArchivoTemplario = new ArchivosTemplarios(posicion443,unJugador);
-		Turno unTurno = new Turno(unJugador);
+		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
+		Turno unTurno = new Turno(unJugador,otroJugador);
 		
 		unAcceso.crearEstructura(unTurno);
 		
@@ -76,15 +77,16 @@ public class ArchivosTemplariosTest extends TestCase{
 	}
 	
 	
-	public void testNoSePuedeCrearSinSuficientesRecursos() throws CeldaOcupadaException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException {
+	public void testNoSePuedeCrearSinSuficientesRecursos() throws CeldaOcupadaException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException, JugadorConNombreDemasiadoCortoException {
 		Posicion posicion123 = new Posicion(12,3);
 		Almacen gas = new Almacen(0);
 		Almacen mineral = new Almacen(0);
 		
 		Jugador jugador = new Jugador(new RazaProtoss(),mineral, gas);
 		ArchivosTemplarios unArchivoTemplario = new ArchivosTemplarios(posicion123, jugador);
-		Turno unTurno = new Turno(jugador);
-	
+		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
+		Turno unTurno = new Turno(jugador,otroJugador);
+		
 		try {
 			unArchivoTemplario.crearEstructura(unTurno);
 			fail("Deberia lanzar Exception");
@@ -97,7 +99,9 @@ public class ArchivosTemplariosTest extends TestCase{
 		Posicion posicion666 = new Posicion(66,6);
 		Jugador unJugador = new Jugador("otroNombre",new RazaProtoss(),"Rojo");
 		ArchivosTemplarios unArchivoTemplario = new ArchivosTemplarios(posicion666, unJugador);	
-		Turno unTurno = new Turno(unJugador);
+		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
+		Turno unTurno = new Turno(unJugador,otroJugador);
+		
 	
 		try{
 			unArchivoTemplario.crearEstructura(unTurno);

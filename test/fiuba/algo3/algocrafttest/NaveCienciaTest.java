@@ -38,12 +38,13 @@ public class NaveCienciaTest extends TestBase {
 		AbstractUnidadFactory factoryUnidades = new UnidadFactoryTerran();
 		;
 		TipoUnidad unTipo = null;
-		Unidad unaUnidad = (Unidad) factoryUnidades
-				.crearUnidad(unTipo.especial1/* ,new DisparoSuperStrategy() */);
+		Unidad unaUnidad = (Unidad) factoryUnidades.crearUnidad(unTipo.especial1/* ,new DisparoSuperStrategy() */);
 		System.out.println(unaUnidad.getClass());
 		NaveCiencia unaNaveCiencia = (NaveCiencia) unaUnidad;
-		Turno unTurno = new Turno(new Jugador("unNombre", new RazaProtoss(),
-				"Azul"));
+		Jugador unJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
+		Jugador otroJugador = new Jugador("Nombre2",new RazaProtoss(),"Rojo");
+		Turno unTurno = new Turno(unJugador,otroJugador);
+		
 
 		unTurno.addObserver(unaNaveCiencia);
 		unaNaveCiencia.finalizarCreacion();

@@ -26,8 +26,10 @@ public class AsimiladorTest extends TestCase{
 		Posicion posicion99 = new Posicion(9,9);
 		Jugador unJugador = new Jugador("otroNombre",new RazaProtoss(),"Rojo");
 		Construccion asimilador = new Asimilador(posicion99,unJugador );
-		Turno unTurno = new Turno(unJugador);
-	
+		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
+		Turno unTurno = new Turno(unJugador,otroJugador);
+		
+
 		asimilador.crearEstructura(unTurno);
 		
 		assertFalse(asimilador.estaTerminada());
@@ -45,8 +47,10 @@ public class AsimiladorTest extends TestCase{
 		Posicion posicion99 = new Posicion(9,9);
 		Jugador unJugador = new Jugador("otroNombre",new RazaProtoss(),"Rojo");
 		Asimilador asimilador = new Asimilador(posicion99, unJugador);
-		Turno unTurno = new Turno(unJugador);
+		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
+		Turno unTurno = new Turno(unJugador,otroJugador);
 		
+	
 		asimilador.crearEstructura(unTurno);
 		
 		assertFalse(asimilador.estaTerminada());
@@ -69,14 +73,16 @@ public class AsimiladorTest extends TestCase{
 		assertTrue(almacen.cantidad() == 40);	
 	}
 	
-	public void testNoSePuedeCrearSinSuficientesRecursos() throws CeldaOcupadaException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException {
+	public void testNoSePuedeCrearSinSuficientesRecursos() throws CeldaOcupadaException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException, JugadorConNombreDemasiadoCortoException {
 		Posicion posicion123 = new Posicion(12,3);
 		Almacen gas = new Almacen(0);
 		Almacen mineral = new Almacen(0);
 		
 		Jugador jugador = new Jugador(new RazaProtoss(),mineral, gas);
 		Asimilador asimilador = new Asimilador(posicion123, jugador);
-		Turno unTurno = new Turno(jugador);
+		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
+		Turno unTurno = new Turno(jugador,otroJugador);
+		
 	
 		try {
 			asimilador.crearEstructura(unTurno);
