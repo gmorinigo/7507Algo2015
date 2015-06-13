@@ -10,4 +10,5 @@ abstract public class UnidadEstado {
 	
 	abstract public void avanzarEnElTurno();
 	abstract public boolean esPosibleRealizarAccion();
+	abstract public boolean estaOperativa();
 }

@@ -37,6 +37,10 @@ abstract public class Unidad implements TurnoObserver{
 		// TODO Aca va la logica para posicionar a la unidad en el mapa
 	}
 	
+	public boolean estaOperativa() {
+		return this.estado.estaOperativa();
+	}
+	
 	/*
 	 * Aca hay que preguntar al estado si se puede realizar accion
 	 * Cuando se termina la accion hay que cambiar el estado a UnidadEstadoDesancansando

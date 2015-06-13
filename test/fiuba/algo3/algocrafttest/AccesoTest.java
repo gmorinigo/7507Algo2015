@@ -1,5 +1,7 @@
 package fiuba.algo3.algocrafttest;
 
+import java.rmi.NoSuchObjectException;
+
 import fiuba.algo3.algocraft.modelo.Almacen;
 import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.RazaProtoss;
@@ -12,6 +14,7 @@ import fiuba.algo3.algocraft.modelo.excepciones.JugadorConNombreDemasiadoCortoEx
 import fiuba.algo3.algocraft.modelo.excepciones.NoReuneLosRequisitosException;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.turnos.Turno;
+import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 import junit.framework.TestCase;
 
 public class AccesoTest extends TestCase{
@@ -30,36 +33,38 @@ public class AccesoTest extends TestCase{
 		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
 		Turno unTurno = new Turno(unJugador,otroJugador);
 		
-		unAcceso.crearEstructura(unTurno);
+		unJugador.agregarConstruccion(unAcceso);
+		unTurno.addObserver(unAcceso);
 		
-		assertFalse(unAcceso.estaTerminada());
+		
+		assertFalse(unAcceso.estaOperativa());
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
-		assertFalse(unAcceso.estaTerminada());
+		assertFalse(unAcceso.estaOperativa());
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
-		assertTrue(unAcceso.estaTerminada());
+		assertTrue(unAcceso.estaOperativa());
 	}
 	
-	public void testCrearMarineAlPasar3TurnosEstaCreadaEstaFinalizada() 
-	throws CeldaOcupadaException, NoReuneLosRequisitosException, JugadorConNombreDemasiadoCortoException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException{
+	public void testCrearMarineAlPasar3TurnosEstaCreadaEstaFinalizada() throws JugadorConNombreDemasiadoCortoException, NoSuchObjectException {
 		Posicion posicion123 = new Posicion(12,3);
 		Jugador unJugador = new Jugador("otroNombre",new RazaProtoss(),"Rojo");
 		Acceso unAcceso = new Acceso(posicion123, unJugador);
 		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
 		Turno unTurno = new Turno(unJugador,otroJugador);
 		
-		unAcceso.crearEstructura(unTurno);
+		unJugador.agregarConstruccion(unAcceso);
+		unTurno.addObserver(unAcceso);
 		
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
-		assertFalse(unAcceso.estaTerminada());
+		assertFalse(unAcceso.estaOperativa());
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
@@ -68,15 +73,16 @@ public class AccesoTest extends TestCase{
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
-		assertTrue(unAcceso.estaTerminada());
+		assertTrue(unAcceso.estaOperativa());
 		
-/*		Unidad marine = unaBarraca.crearUnidad();
-		unTurno.addObserver(marine);
-		unTurno.aumentarTurno();
-		unTurno.aumentarTurno();
-		unTurno.aumentarTurno();
+		Unidad unidad = unAcceso.crearUnidad();
+		unTurno.addObserver(unidad);
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
 		
-		assertTrue(marine.estaTerminada());*/
+		assertTrue(unidad.estaOperativa());
 		
 	}
 	
@@ -86,15 +92,10 @@ public class AccesoTest extends TestCase{
 		Almacen mineral = new Almacen(0);
 		
 		Jugador jugador = new Jugador(new RazaProtoss(),mineral, gas);
-		Acceso unAcceso = new Acceso(posicion123, jugador);
 		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
 		Turno unTurno = new Turno(jugador,otroJugador);
 		
-		try {
-			unAcceso.crearEstructura(unTurno);
-			fail("Deberia lanzar Exception");
-		} catch (NoReuneLosRequisitosException e) {
-			
-		}
+		// Aca se deberia testear el factory puedeCrearse()
+		
 	}
 }

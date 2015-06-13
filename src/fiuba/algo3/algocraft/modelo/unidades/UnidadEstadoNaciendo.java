@@ -21,4 +21,9 @@ public class UnidadEstadoNaciendo extends UnidadEstado{
 		return false;
 	}
 
+	@Override
+	public boolean estaOperativa() {
+		return false;
+	}
+
 }

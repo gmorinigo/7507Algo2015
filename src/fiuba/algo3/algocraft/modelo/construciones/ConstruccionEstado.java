@@ -10,6 +10,5 @@ abstract public class ConstruccionEstado {
 	
 	abstract public void avanzarEnElTurno();
 	abstract public boolean esPosibleRealizarAccion();
-
 	abstract public boolean estaOperativa();
 }

@@ -1,9 +1,10 @@
 package fiuba.algo3.algocraft.modelo.construciones.protoss;
 
 import java.rmi.NoSuchObjectException;
-import java.util.ArrayList;
+
 import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.construciones.Construccion;
+import fiuba.algo3.algocraft.modelo.construciones.ConstruccionEstadoTrabajando;
 import fiuba.algo3.algocraft.modelo.excepciones.JugadorConNombreDemasiadoCortoException;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory;
@@ -11,13 +12,9 @@ import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory.TipoUnidad;
 
 public class Acceso extends Construccion{
-	protected ArrayList<Unidad> unidadesEnProceso;
-	protected ArrayList<Unidad> unidadesFinalizadas;
 	
 	public Acceso(Posicion unaPosicion, Jugador jugador){
 		super(unaPosicion, jugador);
-		this.unidadesEnProceso = new ArrayList<Unidad>();
-		this.unidadesFinalizadas = new ArrayList<Unidad>();
 	}
 
 	
@@ -25,23 +22,9 @@ public class Acceso extends Construccion{
 		// Obtener dinamicamente la factory
 		AbstractUnidadFactory factoryUnidades = this.jugador.dameRaza().getFactoryUnidades();
 		Unidad unaUnidad = (Unidad) factoryUnidades.crearUnidad(TipoUnidad.terrestre1);
+		this.estado = new ConstruccionEstadoTrabajando(unaUnidad.turnosNecesariosParaCreacion(), this);
 		
 		return unaUnidad;
-	}
-
-	public boolean estaTrabajando() {
-		return ! this.unidadesEnProceso.isEmpty(); 
-	}
-
-	public void finalizarUnidad(Unidad unidad) {
-		this.unidadesEnProceso.remove(unidad);
-		this.unidadesFinalizadas.add(unidad);
-	}
-
-	public Unidad dameUnidad() {
-		Unidad unidad = this.unidadesFinalizadas.get(this.unidadesFinalizadas.size()-1);
-		this.unidadesFinalizadas.remove(unidad);
-		return unidad;
 	}
 
 	@Override

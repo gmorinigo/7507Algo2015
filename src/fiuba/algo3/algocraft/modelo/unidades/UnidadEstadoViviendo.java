@@ -15,4 +15,9 @@ public class UnidadEstadoViviendo extends UnidadEstado{
 	public boolean esPosibleRealizarAccion() {
 		return true;
 	}
+
+	@Override
+	public boolean estaOperativa() {
+		return true;
+	}
 }

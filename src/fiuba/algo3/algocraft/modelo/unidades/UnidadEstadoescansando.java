@@ -15,4 +15,9 @@ public class UnidadEstadoescansando extends UnidadEstado{
 	public boolean esPosibleRealizarAccion() {
 		return false;
 	}
+
+	@Override
+	public boolean estaOperativa() {
+		return true;
+	}
 }
