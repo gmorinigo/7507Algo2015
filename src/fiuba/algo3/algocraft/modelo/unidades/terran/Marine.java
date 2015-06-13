@@ -1,11 +1,10 @@
 package fiuba.algo3.algocraft.modelo.unidades.terran;
 
-import fiuba.algo3.algocraft.modelo.ProgresoCreacion;
 import fiuba.algo3.algocraft.modelo.unidades.Salud;
-import fiuba.algo3.algocraft.modelo.unidades.UnidadUno;
+import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 
 
-public class Marine extends UnidadUno {
+public class Marine extends Unidad {
 
 	//private DisparoStrategy disparoStrategy;
 
@@ -27,7 +26,20 @@ public class Marine extends UnidadUno {
 	}
 
 	@Override
-	protected ProgresoCreacion progresoCreacion() {
-		return new ProgresoCreacion(3, this);
+	public void mover(int posicionX, int posicionY) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void atacar(int posicionX, int posicionY) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected int turnosNecesariosParaCreacion() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }

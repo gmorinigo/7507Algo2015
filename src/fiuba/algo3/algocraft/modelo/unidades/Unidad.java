@@ -1,10 +1,9 @@
 package fiuba.algo3.algocraft.modelo.unidades;
 
-import fiuba.algo3.algocraft.modelo.Construible;
 import fiuba.algo3.algocraft.modelo.turnos.Turno;
 import fiuba.algo3.algocraft.modelo.turnos.TurnoObserver;
 
-abstract public class Unidad implements TurnoObserver, Construible{
+abstract public class Unidad implements TurnoObserver{
 	
 	protected Salud salud;
 	protected boolean accioinRealizada;

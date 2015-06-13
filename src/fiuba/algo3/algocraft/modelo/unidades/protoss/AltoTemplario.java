@@ -1,10 +1,9 @@
 package fiuba.algo3.algocraft.modelo.unidades.protoss;
 
-import fiuba.algo3.algocraft.modelo.ProgresoCreacion;
 import fiuba.algo3.algocraft.modelo.unidades.Salud;
-import fiuba.algo3.algocraft.modelo.unidades.UnidadCuatro;
+import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 
-public class AltoTemplario extends UnidadCuatro {
+public class AltoTemplario extends Unidad {
 
 	public AltoTemplario() {
 		this.tamanioTransporte = 2;
@@ -18,8 +17,21 @@ public class AltoTemplario extends UnidadCuatro {
 	}
 
 	@Override
-	protected ProgresoCreacion progresoCreacion() {
-		return new ProgresoCreacion(5, this);
+	public void mover(int posicionX, int posicionY) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void atacar(int posicionX, int posicionY) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected int turnosNecesariosParaCreacion() {
+		// TODO Auto-generated method stub
+		return 0;
 	} 
 
 }

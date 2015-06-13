@@ -1,10 +1,9 @@
 package fiuba.algo3.algocraft.modelo.unidades.terran;
 
-import fiuba.algo3.algocraft.modelo.ProgresoCreacion;
 import fiuba.algo3.algocraft.modelo.unidades.Salud;
-import fiuba.algo3.algocraft.modelo.unidades.UnidadDos;
+import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 
-public class Golliat extends UnidadDos {
+public class Golliat extends Unidad {
 
 	//private DisparoStrategy disparoStrategy;
 	
@@ -25,7 +24,20 @@ public class Golliat extends UnidadDos {
 	}
 
 	@Override
-	protected ProgresoCreacion progresoCreacion() {
-		return new ProgresoCreacion(6, this);
+	public void mover(int posicionX, int posicionY) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void atacar(int posicionX, int posicionY) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected int turnosNecesariosParaCreacion() {
+		// TODO Auto-generated method stub
+		return 0;
 	} 
 }

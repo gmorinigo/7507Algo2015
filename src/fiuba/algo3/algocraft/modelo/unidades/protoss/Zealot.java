@@ -1,10 +1,9 @@
 package fiuba.algo3.algocraft.modelo.unidades.protoss;
 
-import fiuba.algo3.algocraft.modelo.ProgresoCreacion;
 import fiuba.algo3.algocraft.modelo.unidades.Salud;
-import fiuba.algo3.algocraft.modelo.unidades.UnidadUno;
+import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 
-public class Zealot extends UnidadUno{
+public class Zealot extends Unidad{
 
 	public Zealot() {
 		this.tamanioTransporte = 2;
@@ -16,9 +15,23 @@ public class Zealot extends UnidadUno{
 	protected Salud saludInicial() {
 		return null;
 	}
+
 	@Override
-	protected ProgresoCreacion progresoCreacion() {
-		return new ProgresoCreacion(4, this);
+	public void mover(int posicionX, int posicionY) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void atacar(int posicionX, int posicionY) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected int turnosNecesariosParaCreacion() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 	
 	
