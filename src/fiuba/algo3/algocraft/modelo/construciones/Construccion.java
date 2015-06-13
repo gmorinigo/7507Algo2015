@@ -3,10 +3,6 @@ package fiuba.algo3.algocraft.modelo.construciones;
 import java.util.ArrayList;
 
 import fiuba.algo3.algocraft.modelo.Jugador;
-import fiuba.algo3.algocraft.modelo.excepciones.CeldaOcupadaException;
-import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException;
-import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException;
-import fiuba.algo3.algocraft.modelo.excepciones.NoReuneLosRequisitosException;
 import fiuba.algo3.algocraft.modelo.mapa.Celda;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.turnos.Turno;
@@ -32,9 +28,6 @@ public abstract class Construccion implements TurnoObserver{
 		this.estado.avanzarEnElTurno();
 	}
 
-	public abstract void crearEstructura(Turno unTurno) throws CeldaOcupadaException, NoReuneLosRequisitosException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException;
-	
-	abstract public boolean reuneLosRequisitos(Jugador jugador);
 	abstract public int costoGas();
 	abstract public int costoMineral();
 	

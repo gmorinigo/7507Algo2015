@@ -33,7 +33,7 @@ public class Marine extends Unidad {
 		
 	}
 
-	protected int turnosNecesariosParaCreacion() {
+	public int turnosNecesariosParaCreacion() {
 		return 3;
 	}
 

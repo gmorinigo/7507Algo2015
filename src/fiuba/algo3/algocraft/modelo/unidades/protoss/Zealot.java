@@ -27,7 +27,7 @@ public class Zealot extends Unidad{
 		
 	}
 
-	protected int turnosNecesariosParaCreacion() {
+	public int turnosNecesariosParaCreacion() {
 		return 4;
 	}
 

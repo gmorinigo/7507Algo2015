@@ -13,7 +13,6 @@ import fiuba.algo3.algocraft.modelo.excepciones.JugadorConNombreDemasiadoCortoEx
 import fiuba.algo3.algocraft.modelo.excepciones.NoReuneLosRequisitosException;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.turnos.Turno;
-import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 
 public class BarracaTest extends TestBase {
 	
@@ -32,8 +31,9 @@ public class BarracaTest extends TestBase {
 		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
 		Turno unTurno = new Turno(unJugador,otroJugador);
 		
+		unJugador.agregarConstruccion(unaBarraca);
+		unTurno.addObserver(unaBarraca);
 		
-		unaBarraca.crearEstructura(unTurno);
 		
 		assertFalse(unaBarraca.estaOperativa());
 		unTurno.avanzarTurno();
@@ -60,14 +60,14 @@ public class BarracaTest extends TestBase {
 		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
 		Turno unTurno = new Turno(unJugador,otroJugador);
 		
-	
-		unaBarraca.crearEstructura(unTurno);
+		unJugador.agregarConstruccion(unaBarraca);
+		unTurno.addObserver(unaBarraca);
 		
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
-		assertFalse(unaBarraca.estaTerminada());
+		assertFalse(unaBarraca.estaOperativa());
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
@@ -76,7 +76,7 @@ public class BarracaTest extends TestBase {
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
-		assertTrue(unaBarraca.estaTerminada());
+		assertTrue(unaBarraca.estaOperativa());
 		
 /*		Unidad marine = unaBarraca.crearUnidad();
 		unTurno.addObserver(marine);
@@ -94,16 +94,9 @@ public class BarracaTest extends TestBase {
 		Almacen mineral = new Almacen(0);
 		
 		Jugador jugador = new Jugador(new RazaTerran(),mineral, gas);
-		Barraca unaBarraca = new Barraca(posicion123, jugador);
 		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
 		Turno unTurno = new Turno(jugador,otroJugador);
 		
-	
-		try {
-			unaBarraca.crearEstructura(unTurno);
-			fail("Deberia lanzar Exception");
-		} catch (NoReuneLosRequisitosException e) {
-			
-		}
+		//Testear el factory esPosibleCrear()
 	}
 }

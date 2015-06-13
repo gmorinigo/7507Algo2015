@@ -31,7 +31,7 @@ public class Golliat extends Unidad {
 		
 	}
 
-	protected int turnosNecesariosParaCreacion() {
+	public int turnosNecesariosParaCreacion() {
 		return 6;
 	}
 

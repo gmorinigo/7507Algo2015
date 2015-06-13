@@ -19,7 +19,7 @@ public class NaveTransporteProtoss extends NaveTransporte {
 	}
 
 	@Override
-	protected int turnosNecesariosParaCreacion() {
+	public int turnosNecesariosParaCreacion() {
 		return 8;
 	}
 

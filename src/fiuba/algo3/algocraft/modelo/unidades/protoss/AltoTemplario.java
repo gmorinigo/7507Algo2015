@@ -27,7 +27,7 @@ public class AltoTemplario extends Unidad {
 		
 	}
 
-	protected int turnosNecesariosParaCreacion() {
+	public int turnosNecesariosParaCreacion() {
 		return 7;
 	}
 

@@ -18,7 +18,7 @@ public class NaveTransporteTerran extends NaveTransporte {
 	}
 
 	@Override
-	protected int turnosNecesariosParaCreacion() {
+	public int turnosNecesariosParaCreacion() {
 		return 7;
 	}
 

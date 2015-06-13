@@ -27,7 +27,7 @@ public class Dragon extends Unidad {
 		
 	}
 
-	protected int turnosNecesariosParaCreacion() {
+	public int turnosNecesariosParaCreacion() {
 		return 6;
 	}
 

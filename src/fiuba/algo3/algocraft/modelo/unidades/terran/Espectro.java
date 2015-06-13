@@ -34,7 +34,7 @@ public class Espectro extends Unidad {
 		
 	}
 
-	protected int turnosNecesariosParaCreacion() {
+	public int turnosNecesariosParaCreacion() {
 		return 8;
 	}
 

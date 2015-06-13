@@ -29,7 +29,7 @@ public class Scout extends Unidad {
 		
 	}
 
-	protected int turnosNecesariosParaCreacion() {
+	public int turnosNecesariosParaCreacion() {
 		return 9;
 	}
 

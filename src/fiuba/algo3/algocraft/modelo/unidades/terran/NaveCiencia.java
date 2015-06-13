@@ -42,7 +42,7 @@ public class NaveCiencia extends Unidad {
 	}
 
 
-	protected int turnosNecesariosParaCreacion() {
+	public int turnosNecesariosParaCreacion() {
 		return 10;
 	}
 
