@@ -8,6 +8,7 @@ public class Espectro extends UnidadTres {
 
 	
 	public Espectro(){
+		this.tamanioTransporte = 0;
 	}
 	
 	

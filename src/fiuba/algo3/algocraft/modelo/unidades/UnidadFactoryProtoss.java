@@ -2,14 +2,9 @@ package fiuba.algo3.algocraft.modelo.unidades;
 
 import java.rmi.NoSuchObjectException;
 
-import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory.TipoUnidad;
 import fiuba.algo3.algocraft.modelo.unidades.protoss.AltoTemplario;
 import fiuba.algo3.algocraft.modelo.unidades.protoss.Dragon;
-import fiuba.algo3.algocraft.modelo.unidades.protoss.Scout;
 import fiuba.algo3.algocraft.modelo.unidades.protoss.Zealot;
-import fiuba.algo3.algocraft.modelo.unidades.terran.Golliat;
-import fiuba.algo3.algocraft.modelo.unidades.terran.Marine;
-import fiuba.algo3.algocraft.modelo.unidades.terran.NaveCiencia;
 import fiuba.algo3.algocraft.modelo.unidades.terran.NaveTransporte;
 
 public class UnidadFactoryProtoss extends AbstractUnidadFactory {

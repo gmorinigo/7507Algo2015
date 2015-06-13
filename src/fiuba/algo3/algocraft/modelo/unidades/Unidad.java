@@ -10,6 +10,12 @@ abstract public class Unidad implements TurnoObserver, Construible{
 	protected boolean naciendo;
 	protected Salud salud;
 	private ProgresoCreacion progresoCreacion;
+	protected int tamanioTransporte;
+
+	
+	public int getTamanioTransporte(){
+		return this.tamanioTransporte;
+	}
 	
 	public abstract void disparar();
 	

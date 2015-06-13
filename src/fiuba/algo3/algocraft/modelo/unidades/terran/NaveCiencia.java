@@ -9,7 +9,8 @@ public class NaveCiencia extends UnidadCuatro {
 
 	
 	public NaveCiencia(){
-		this.energia =  50;   
+		this.energia =  50;
+		this.tamanioTransporte = 0;
 		//this.disparoStrategy=disparoStrategy;
 		//this.disparoStrategy.setUnidad(this);
 	}

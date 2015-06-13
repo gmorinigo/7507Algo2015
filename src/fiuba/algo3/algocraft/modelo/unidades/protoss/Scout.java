@@ -6,7 +6,9 @@ import fiuba.algo3.algocraft.modelo.unidades.UnidadTres;
 
 public class Scout extends UnidadTres {
 
-	public Scout() {	}
+	public Scout() {	
+		this.tamanioTransporte = 0;
+	}
 	public void disparar() {}
 	
 	@Override

@@ -7,6 +7,7 @@ import fiuba.algo3.algocraft.modelo.unidades.UnidadDos;
 public class Dragon extends UnidadDos {
 
 	public Dragon() {
+		this.tamanioTransporte = 4;
 	}
 
 	@Override
