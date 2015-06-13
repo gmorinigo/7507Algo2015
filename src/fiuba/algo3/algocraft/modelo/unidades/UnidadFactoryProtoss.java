@@ -25,4 +25,16 @@ public class UnidadFactoryProtoss extends AbstractUnidadFactory {
 
 		return false;
 	}
+
+	@Override
+	public int dameCostoMineral(TipoUnidad tipo) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int dameCostoGas(TipoUnidad tipo) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }

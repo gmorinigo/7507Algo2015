@@ -25,4 +25,16 @@ public class UnidadFactoryTerran extends AbstractUnidadFactory {
 	public boolean puedeCrear(TipoUnidad tipo, int cantMineral, int cantGas) {
 		return false;
 	}
+
+	@Override
+	public int dameCostoMineral(TipoUnidad tipo) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int dameCostoGas(TipoUnidad tipo) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }

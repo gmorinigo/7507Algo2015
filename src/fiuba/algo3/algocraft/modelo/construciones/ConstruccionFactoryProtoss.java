@@ -1,6 +1,7 @@
 package fiuba.algo3.algocraft.modelo.construciones;
 
 import java.rmi.NoSuchObjectException;
+import java.util.ArrayList;
 
 import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.construciones.protoss.Acceso;
@@ -30,5 +31,24 @@ public class ConstruccionFactoryProtoss extends AbstractConstruccionFactory {
 	public boolean puedeCrear(TipoConstruccion tipo, int cantMineral, int cantGas) {
 
 		return false;
+	}
+
+	@Override
+	public int dameCostoMineral(TipoConstruccion tipo) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int dameCostoGas(TipoConstruccion tipo) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public ArrayList<TipoConstruccion> dameConstruccionRequeridasParaConstruir(
+			TipoConstruccion tipo) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
