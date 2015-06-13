@@ -7,7 +7,7 @@ import fiuba.algo3.algocraft.modelo.unidades.UnidadCuatro;
 public class AltoTemplario extends UnidadCuatro {
 
 	public AltoTemplario() {
-
+		this.tamanioTransporte = 2;
 	}
 	
 	public void disparar() {}

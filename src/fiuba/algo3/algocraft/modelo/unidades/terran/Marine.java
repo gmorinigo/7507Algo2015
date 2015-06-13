@@ -11,6 +11,7 @@ public class Marine extends UnidadUno {
 
 
 	public Marine() {
+		this.tamanioTransporte = 1;
 //		this.disparoStrategy=disparoStrategy;
 //		this.disparoStrategy.setUnidad(this);
 	}

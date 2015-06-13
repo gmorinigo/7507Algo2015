@@ -6,7 +6,8 @@ import fiuba.algo3.algocraft.modelo.unidades.UnidadUno;
 
 public class Zealot extends UnidadUno{
 
-	public Zealot() {	
+	public Zealot() {
+		this.tamanioTransporte = 2;
 	}
 	
 	public void disparar() {}

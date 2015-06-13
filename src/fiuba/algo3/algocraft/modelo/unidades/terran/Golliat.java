@@ -9,6 +9,7 @@ public class Golliat extends UnidadDos {
 	//private DisparoStrategy disparoStrategy;
 	
 	public Golliat() {
+		this.tamanioTransporte = 2;
 		//this.disparoStrategy=disparoStrategy;
 		//this.disparoStrategy.setUnidad(this);
 	}
