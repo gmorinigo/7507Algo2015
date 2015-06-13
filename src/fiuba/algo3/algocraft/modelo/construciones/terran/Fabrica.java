@@ -5,7 +5,6 @@ import java.util.ArrayList;
 
 import fiuba.algo3.algocraft.modelo.Almacen;
 import fiuba.algo3.algocraft.modelo.Jugador;
-import fiuba.algo3.algocraft.modelo.ProgresoCreacion;
 import fiuba.algo3.algocraft.modelo.construciones.Construccion;
 import fiuba.algo3.algocraft.modelo.excepciones.CeldaOcupadaException;
 import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException;
@@ -74,11 +73,6 @@ public class Fabrica extends Construccion {
 	}
 
 	@Override
-	protected ProgresoCreacion progresoCreacion() {
-		return new ProgresoCreacion(12, this);
-	}
-
-	@Override
 	public void crearEstructura(Turno unTurno) throws CeldaOcupadaException,
 			NoReuneLosRequisitosException,
 			ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException,
@@ -98,6 +92,17 @@ public class Fabrica extends Construccion {
 			if (unaConstruccion instanceof Barraca) return true;
 		}
 		return false;
+	}
+
+	@Override
+	protected int turnosNecesariosParaCreacion() {
+		return 12;
+	}
+
+	@Override
+	protected void vivir() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

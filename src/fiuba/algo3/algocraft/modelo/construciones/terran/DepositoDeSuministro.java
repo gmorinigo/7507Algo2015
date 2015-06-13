@@ -2,7 +2,6 @@ package fiuba.algo3.algocraft.modelo.construciones.terran;
 
 import fiuba.algo3.algocraft.modelo.Almacen;
 import fiuba.algo3.algocraft.modelo.Jugador;
-import fiuba.algo3.algocraft.modelo.ProgresoCreacion;
 import fiuba.algo3.algocraft.modelo.construciones.Construccion;
 import fiuba.algo3.algocraft.modelo.excepciones.CeldaOcupadaException;
 import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException;
@@ -49,8 +48,14 @@ public class DepositoDeSuministro extends Construccion {
 	}
 
 	@Override
-	protected ProgresoCreacion progresoCreacion() {
-		return new ProgresoCreacion(6, this);
+	protected int turnosNecesariosParaCreacion() {
+		return 6;
+	}
+
+	@Override
+	protected void vivir() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

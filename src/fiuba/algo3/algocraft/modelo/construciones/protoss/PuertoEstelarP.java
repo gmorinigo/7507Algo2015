@@ -5,7 +5,6 @@ import java.util.ArrayList;
 
 import fiuba.algo3.algocraft.modelo.Almacen;
 import fiuba.algo3.algocraft.modelo.Jugador;
-import fiuba.algo3.algocraft.modelo.ProgresoCreacion;
 import fiuba.algo3.algocraft.modelo.construciones.Construccion;
 import fiuba.algo3.algocraft.modelo.excepciones.CeldaOcupadaException;
 import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException;
@@ -83,9 +82,16 @@ public class PuertoEstelarP extends Construccion{
 		return 150;
 	}
 
+
 	@Override
-	protected ProgresoCreacion progresoCreacion() {
-		return new ProgresoCreacion(10, this);
+	protected int turnosNecesariosParaCreacion() {
+		return 10;
+	}
+
+	@Override
+	protected void vivir() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

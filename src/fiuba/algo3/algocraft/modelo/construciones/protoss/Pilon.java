@@ -2,7 +2,6 @@ package fiuba.algo3.algocraft.modelo.construciones.protoss;
 
 import fiuba.algo3.algocraft.modelo.Almacen;
 import fiuba.algo3.algocraft.modelo.Jugador;
-import fiuba.algo3.algocraft.modelo.ProgresoCreacion;
 import fiuba.algo3.algocraft.modelo.construciones.Construccion;
 import fiuba.algo3.algocraft.modelo.excepciones.CeldaOcupadaException;
 import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException;
@@ -49,7 +48,13 @@ public class Pilon extends Construccion{
 	}
 
 	@Override
-	protected ProgresoCreacion progresoCreacion() {
-		return new ProgresoCreacion(5, this);
+	protected int turnosNecesariosParaCreacion() {
+		return 5;
+	}
+
+	@Override
+	protected void vivir() {
+		// TODO Auto-generated method stub
+		
 	}
 }
