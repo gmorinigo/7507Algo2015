@@ -35,7 +35,7 @@ public class FabricaTest extends TestCase {
 		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
 		Turno unTurno = new Turno(unJugador,otroJugador);
 		
-		unaBarraca.crearEstructura(unTurno);
+		//unaBarraca.crearEstructura(unTurno);
 		
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
@@ -51,7 +51,7 @@ public class FabricaTest extends TestCase {
 		unTurno.avanzarTurno();
 		assertTrue(unJugador.dameConstruccionesTerminadas().contains(unaBarraca));
 		
-		unaFabrica.crearEstructura(unTurno);
+		//unaFabrica.crearEstructura(unTurno);
 		
 		assertFalse(unaFabrica.estaTerminada());
 		unTurno.avanzarTurno();

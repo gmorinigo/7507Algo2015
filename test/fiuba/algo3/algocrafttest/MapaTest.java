@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.RazaProtoss;
 import fiuba.algo3.algocraft.modelo.construciones.terran.Barraca;
-import fiuba.algo3.algocraft.modelo.construciones.terran.CentroDeMineral;
+import fiuba.algo3.algocraft.modelo.construciones.terran.CentroMineral;
 import fiuba.algo3.algocraft.modelo.construciones.terran.Refineria;
 import fiuba.algo3.algocraft.modelo.excepciones.CeldaOcupadaException;
 import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException;
@@ -82,7 +82,7 @@ public class MapaTest extends TestBase {
 		Posicion posicion1011 = new Posicion(10,11);
 		Posicion posicion1012 = new Posicion(10,12);
 		Mapa unMapa = Mapa.getInstance();
-		CentroDeMineral unCentroDeMineral = new CentroDeMineral(posicion911, new Jugador("unNombre",new RazaProtoss(),"Azul"));
+		CentroMineral unCentroDeMineral = new CentroMineral(posicion911, new Jugador("unNombre",new RazaProtoss(),"Azul"));
 		
 		try {
 			unMapa.agregarConstruccion(unCentroDeMineral);
@@ -100,7 +100,7 @@ public class MapaTest extends TestBase {
 		Posicion posicion912 = new Posicion(9,12);
 
 		Mapa unMapa = Mapa.getInstance();
-		CentroDeMineral unCentroDeMineral = new CentroDeMineral(posicion912, new Jugador("unNombre",new RazaProtoss(),"Azul"));
+		CentroMineral unCentroDeMineral = new CentroMineral(posicion912, new Jugador("unNombre",new RazaProtoss(),"Azul"));
 		
 		try {
 			unMapa.agregarConstruccion(unCentroDeMineral);
@@ -185,7 +185,7 @@ public class MapaTest extends TestBase {
 		Turno unTurno = new Turno(unJugador,otroJugador);
 		
 		
-		unaBarraca.crearEstructura(unTurno);
+		//unaBarraca.crearEstructura(unTurno);
 		
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
@@ -271,7 +271,7 @@ public class MapaTest extends TestBase {
 		Turno unTurno = new Turno(unJugador,otroJugador);
 		
 		
-		unaBarraca.crearEstructura(unTurno);
+		//unaBarraca.crearEstructura(unTurno);
 		
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();

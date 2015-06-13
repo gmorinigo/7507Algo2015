@@ -23,6 +23,21 @@ public abstract class Construccion implements TurnoObserver{
 		this.estado = new ConstruccionEstadoNaciendo(this.turnosNecesariosParaCreacion(), this);
 	}
 
+	public boolean estaTerminada(){
+		boolean estaTerminada = false;
+		if (this.estado instanceof ConstruccionEstadoNaciendo ){
+			estaTerminada=false;
+		}
+		if (this.estado instanceof ConstruccionEstadoTrabajando ){
+			estaTerminada=true;
+		}
+		if (this.estado instanceof ConstruccionEstadoViviendo ){
+			estaTerminada=true;
+		}
+
+		return estaTerminada;
+	}
+	
 	@Override
 	public void finDeTurno(Turno turno) {
 		this.estado.avanzarEnElTurno();

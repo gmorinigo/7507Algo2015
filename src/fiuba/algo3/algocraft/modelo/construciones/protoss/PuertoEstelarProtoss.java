@@ -1,4 +1,4 @@
-package fiuba.algo3.algocraft.modelo.construciones.terran;
+package fiuba.algo3.algocraft.modelo.construciones.protoss;
 
 import java.rmi.NoSuchObjectException;
 import java.util.ArrayList;
@@ -7,15 +7,14 @@ import fiuba.algo3.algocraft.modelo.construciones.Construccion;
 import fiuba.algo3.algocraft.modelo.excepciones.JugadorConNombreDemasiadoCortoException;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory;
-import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory.TipoUnidad;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
+import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory.TipoUnidad;
 
-public class PuertoEstelar extends Construccion {
-
+public class PuertoEstelarProtoss extends Construccion{
 	protected ArrayList<Unidad> unidadesEnProceso;
 	protected ArrayList<Unidad> unidadesFinalizadas;
 	
-	public PuertoEstelar(Posicion unaPosicion, Jugador jugador) {
+	public PuertoEstelarProtoss(Posicion unaPosicion, Jugador jugador) {
 		super(unaPosicion, jugador);
 		this.unidadesEnProceso = new ArrayList<Unidad>();
 		this.unidadesFinalizadas = new ArrayList<Unidad>();
@@ -31,13 +30,14 @@ public class PuertoEstelar extends Construccion {
 
 	@Override
 	public int costoGas() {
-		return 100;
+		return 150;
 	}
 
 	@Override
 	public int costoMineral() {
 		return 150;
 	}
+
 
 	@Override
 	protected int turnosNecesariosParaCreacion() {

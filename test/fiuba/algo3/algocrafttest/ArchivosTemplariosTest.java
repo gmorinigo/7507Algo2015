@@ -6,7 +6,7 @@ import fiuba.algo3.algocraft.modelo.RazaProtoss;
 import fiuba.algo3.algocraft.modelo.construciones.Construccion;
 import fiuba.algo3.algocraft.modelo.construciones.protoss.Acceso;
 import fiuba.algo3.algocraft.modelo.construciones.protoss.ArchivosTemplarios;
-import fiuba.algo3.algocraft.modelo.construciones.protoss.PuertoEstelarP;
+import fiuba.algo3.algocraft.modelo.construciones.protoss.PuertoEstelarProtoss;
 import fiuba.algo3.algocraft.modelo.excepciones.CeldaOcupadaException;
 import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException;
 import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException;
@@ -31,12 +31,12 @@ public class ArchivosTemplariosTest extends TestCase{
 		Posicion posicion999 = new Posicion(99,9);
 		Jugador unJugador = new Jugador("otroNombre",new RazaProtoss(),"Rojo");
 		Construccion unAcceso = new Acceso(posicion305,unJugador);
-		Construccion unPuertoEstelar = new PuertoEstelarP(posicion999,unJugador);
+		Construccion unPuertoEstelar = new PuertoEstelarProtoss(posicion999,unJugador);
 		Construccion unArchivoTemplario = new ArchivosTemplarios(posicion443,unJugador);
 		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
 		Turno unTurno = new Turno(unJugador,otroJugador);
 		
-		unAcceso.crearEstructura(unTurno);
+		//unAcceso.crearEstructura(unTurno);
 		
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
@@ -48,7 +48,7 @@ public class ArchivosTemplariosTest extends TestCase{
 		unTurno.avanzarTurno();
 		assertTrue(unJugador.dameConstruccionesTerminadas().contains(unAcceso));
 
-		unPuertoEstelar.crearEstructura(unTurno);
+		//unPuertoEstelar.crearEstructura(unTurno);
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
@@ -61,7 +61,7 @@ public class ArchivosTemplariosTest extends TestCase{
 		unTurno.avanzarTurno();
 		assertTrue(unJugador.dameConstruccionesTerminadas().contains(unPuertoEstelar));
 		
-		unArchivoTemplario.crearEstructura(unTurno);
+		//unArchivoTemplario.crearEstructura(unTurno);
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();

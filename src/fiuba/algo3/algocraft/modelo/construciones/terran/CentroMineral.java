@@ -5,9 +5,9 @@ import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.construciones.ExtractorDeMineral;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 
-public class CentroDeMineral extends ExtractorDeMineral{
+public class CentroMineral extends ExtractorDeMineral{
 	
-	public CentroDeMineral(Posicion unaPosicion, Jugador jugador){
+	public CentroMineral(Posicion unaPosicion, Jugador jugador){
 		super(unaPosicion, jugador);
 	}
 

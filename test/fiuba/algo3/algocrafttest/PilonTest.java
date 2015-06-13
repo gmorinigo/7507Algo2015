@@ -30,7 +30,7 @@ public class PilonTest extends TestCase{
 				Jugador otroJugador = new Jugador("Nombre2",new RazaProtoss(),"Rojo");
 				Turno unTurno = new Turno(unJugador,otroJugador);
 				
-				unPilon.crearEstructura(unTurno);
+				//unPilon.crearEstructura(unTurno);
 				assertFalse(unPilon.estaTerminada());
 				unTurno.avanzarTurno();
 				unTurno.avanzarTurno();

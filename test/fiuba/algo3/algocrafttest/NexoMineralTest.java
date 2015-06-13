@@ -6,7 +6,7 @@ import fiuba.algo3.algocraft.modelo.RazaProtoss;
 import fiuba.algo3.algocraft.modelo.RazaTerran;
 import fiuba.algo3.algocraft.modelo.construciones.Construccion;
 import fiuba.algo3.algocraft.modelo.construciones.protoss.NexoMineral;
-import fiuba.algo3.algocraft.modelo.construciones.terran.CentroDeMineral;
+import fiuba.algo3.algocraft.modelo.construciones.terran.CentroMineral;
 import fiuba.algo3.algocraft.modelo.excepciones.CeldaOcupadaException;
 import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException;
 import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException;
@@ -21,7 +21,7 @@ public class NexoMineralTest extends TestCase{
 
 	public void testCrearUnNexoMineral() throws JugadorConNombreDemasiadoCortoException{
 		Posicion posicion64 = new Posicion(6,4);
-		Construccion centroMineral = new CentroDeMineral(posicion64, new Jugador("OtroNombre",new RazaProtoss(),"Rojo"));
+		Construccion centroMineral = new CentroMineral(posicion64, new Jugador("OtroNombre",new RazaProtoss(),"Rojo"));
 		assertNotNull(centroMineral);
 	}
 	
@@ -32,7 +32,7 @@ public class NexoMineralTest extends TestCase{
 		Jugador otroJugador = new Jugador("Nombre2",new RazaProtoss(),"Rojo");
 		Turno unTurno = new Turno(unJugador,otroJugador);
 		
-		unNexo.crearEstructura(unTurno);
+		//unNexo.crearEstructura(unTurno);
 		
 		assertFalse(unNexo.estaTerminada());
 		unTurno.avanzarTurno();
@@ -50,7 +50,7 @@ public class NexoMineralTest extends TestCase{
 		Jugador otroJugador = new Jugador("Nombre2",new RazaProtoss(),"Rojo");
 		Turno unTurno = new Turno(unJugador,otroJugador);
 		
-		unNexo.crearEstructura(unTurno);
+		//unNexo.crearEstructura(unTurno);
 		
 		assertFalse(unNexo.estaTerminada());
 		unTurno.avanzarTurno();

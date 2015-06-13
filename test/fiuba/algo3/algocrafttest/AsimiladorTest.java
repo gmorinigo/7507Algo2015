@@ -30,7 +30,7 @@ public class AsimiladorTest extends TestCase{
 		Turno unTurno = new Turno(unJugador,otroJugador);
 		
 
-		asimilador.crearEstructura(unTurno);
+		//asimilador.crearEstructura(unTurno);
 		
 		assertFalse(asimilador.estaTerminada());
 		unTurno.avanzarTurno();
@@ -51,7 +51,7 @@ public class AsimiladorTest extends TestCase{
 		Turno unTurno = new Turno(unJugador,otroJugador);
 		
 	
-		asimilador.crearEstructura(unTurno);
+		//asimilador.crearEstructura(unTurno);
 		
 		assertFalse(asimilador.estaTerminada());
 		unTurno.avanzarTurno();

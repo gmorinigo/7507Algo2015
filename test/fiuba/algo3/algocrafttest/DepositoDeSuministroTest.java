@@ -32,7 +32,7 @@ public class DepositoDeSuministroTest extends TestCase {
 				Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
 				Turno unTurno = new Turno(unJugador,otroJugador);
 				
-				unDeposito.crearEstructura(unTurno);
+				//unDeposito.crearEstructura(unTurno);
 				assertFalse(unDeposito.estaTerminada());
 				unTurno.avanzarTurno();
 				unTurno.avanzarTurno();

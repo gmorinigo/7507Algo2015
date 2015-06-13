@@ -5,7 +5,7 @@ import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.RazaProtoss;
 import fiuba.algo3.algocraft.modelo.construciones.Construccion;
 import fiuba.algo3.algocraft.modelo.construciones.protoss.Acceso;
-import fiuba.algo3.algocraft.modelo.construciones.protoss.PuertoEstelarP;
+import fiuba.algo3.algocraft.modelo.construciones.protoss.PuertoEstelarProtoss;
 import fiuba.algo3.algocraft.modelo.excepciones.CeldaOcupadaException;
 import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException;
 import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException;
@@ -20,7 +20,7 @@ public class PuertoEstelarPTest extends TestCase{
 	
 	public void testCrearUnPuertoEstelar() throws JugadorConNombreDemasiadoCortoException{
 		Posicion posicion45 = new Posicion(4,5);
-		Construccion unPuertoEstelar = new PuertoEstelarP(posicion45, new Jugador("otroNombre",new RazaProtoss(),"Rojo"));
+		Construccion unPuertoEstelar = new PuertoEstelarProtoss(posicion45, new Jugador("otroNombre",new RazaProtoss(),"Rojo"));
 		assertNotNull(unPuertoEstelar);
 	}
 	
@@ -30,11 +30,11 @@ public class PuertoEstelarPTest extends TestCase{
 		Posicion posicion443 = new Posicion(44,3);
 		Jugador unJugador = new Jugador("otroNombre",new RazaProtoss(),"Rojo");
 		Construccion unAcceso = new Acceso(posicion305,unJugador);
-		Construccion unPuertoEstelar = new PuertoEstelarP(posicion443,unJugador);
+		Construccion unPuertoEstelar = new PuertoEstelarProtoss(posicion443,unJugador);
 		Jugador otroJugador = new Jugador("Nombre2",new RazaProtoss(),"Rojo");
 		Turno unTurno = new Turno(unJugador,otroJugador);
 		
-		unAcceso.crearEstructura(unTurno);
+		//unAcceso.crearEstructura(unTurno);
 		
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
@@ -67,7 +67,7 @@ public class PuertoEstelarPTest extends TestCase{
 		Posicion posicion1276 = new Posicion(12,76);
 		Jugador unJugador = new Jugador("otroNombre",new RazaProtoss(),"Rojo");
 		Acceso unAcceso = new Acceso(posicion123, unJugador);
-		PuertoEstelarP unPuertoEstelar = new PuertoEstelarP(posicion1276,unJugador);
+		PuertoEstelarProtoss unPuertoEstelar = new PuertoEstelarProtoss(posicion1276,unJugador);
 		
 		Jugador otroJugador = new Jugador("Nombre2",new RazaProtoss(),"Rojo");
 		Turno unTurno = new Turno(unJugador,otroJugador);
@@ -149,7 +149,7 @@ public class PuertoEstelarPTest extends TestCase{
 		Almacen mineral = new Almacen(0);
 		
 		Jugador jugador = new Jugador(new RazaProtoss(),mineral, gas);
-		PuertoEstelarP unPuertoEstelar = new PuertoEstelarP(posicion123, jugador);
+		PuertoEstelarProtoss unPuertoEstelar = new PuertoEstelarProtoss(posicion123, jugador);
 		Jugador otroJugador = new Jugador("Nombre2",new RazaProtoss(),"Rojo");
 		Turno unTurno = new Turno(jugador,otroJugador);
 		
@@ -165,7 +165,7 @@ public class PuertoEstelarPTest extends TestCase{
 	public void testNoSePuedeCrearSiNoSeCreoUnaBarracaPreviamente() throws NoReuneLosRequisitosException, JugadorConNombreDemasiadoCortoException, CeldaOcupadaException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException{
 		Posicion posicion666 = new Posicion(66,6);
 		Jugador unJugador = new Jugador("otroNombre",new RazaProtoss(),"Rojo");
-		PuertoEstelarP unPuertoEstelar = new PuertoEstelarP(posicion666, unJugador);	
+		PuertoEstelarProtoss unPuertoEstelar = new PuertoEstelarProtoss(posicion666, unJugador);	
 		Jugador otroJugador = new Jugador("Nombre2",new RazaProtoss(),"Rojo");
 		Turno unTurno = new Turno(unJugador,otroJugador);
 		

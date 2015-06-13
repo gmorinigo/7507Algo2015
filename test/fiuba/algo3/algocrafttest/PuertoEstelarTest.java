@@ -7,7 +7,7 @@ import fiuba.algo3.algocraft.modelo.RazaTerran;
 import fiuba.algo3.algocraft.modelo.construciones.Construccion;
 import fiuba.algo3.algocraft.modelo.construciones.terran.Barraca;
 import fiuba.algo3.algocraft.modelo.construciones.terran.Fabrica;
-import fiuba.algo3.algocraft.modelo.construciones.terran.PuertoEstelar;
+import fiuba.algo3.algocraft.modelo.construciones.terran.PuertoEstelarTerran;
 import fiuba.algo3.algocraft.modelo.excepciones.CeldaOcupadaException;
 import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException;
 import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException;
@@ -22,7 +22,7 @@ public class PuertoEstelarTest extends TestCase {
 	
 	public void testCrearUnPuertoEstelar() throws JugadorConNombreDemasiadoCortoException{
 		Posicion posicion45 = new Posicion(4,5);
-		Construccion unPuertoEstelar = new PuertoEstelar(posicion45, new Jugador("unNombre",new RazaTerran(),"Azul"));
+		Construccion unPuertoEstelar = new PuertoEstelarTerran(posicion45, new Jugador("unNombre",new RazaTerran(),"Azul"));
 		assertNotNull(unPuertoEstelar);
 	}
 	
@@ -34,11 +34,11 @@ public class PuertoEstelarTest extends TestCase {
 		Jugador unJugador = new Jugador("unNombre",new RazaTerran(),"Azul");
 		Construccion unaBarraca = new Barraca(posicion305,unJugador);
 		Construccion unaFabrica = new Fabrica(posicion175, unJugador );
-		Construccion unPuertoEstelar = new PuertoEstelar(posicion443,unJugador);
+		Construccion unPuertoEstelar = new PuertoEstelarTerran(posicion443,unJugador);
 		Jugador otroJugador = new Jugador("Nombre2",new RazaProtoss(),"Rojo");
 		Turno unTurno = new Turno(unJugador,otroJugador);
 		
-		unaBarraca.crearEstructura(unTurno);
+		//unaBarraca.crearEstructura(unTurno);
 		
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
@@ -95,7 +95,7 @@ public class PuertoEstelarTest extends TestCase {
 		Jugador unJugador = new Jugador("unNombre",new RazaTerran(),"Azul");
 		Fabrica unaFabrica = new Fabrica(posicion123, unJugador);
 		Construccion unaBarraca = new Barraca(posicion1273,unJugador);
-		PuertoEstelar unPuertoEstelar = new PuertoEstelar(posicion1276,unJugador);
+		PuertoEstelarTerran unPuertoEstelar = new PuertoEstelarTerran(posicion1276,unJugador);
 		
 		Jugador otroJugador = new Jugador("Nombre2",new RazaProtoss(),"Rojo");
 		Turno unTurno = new Turno(unJugador,otroJugador);
@@ -194,7 +194,7 @@ public class PuertoEstelarTest extends TestCase {
 		Almacen mineral = new Almacen(0);
 		
 		Jugador jugador = new Jugador(new RazaTerran(),mineral, gas);
-		PuertoEstelar unPuertoEstelar = new PuertoEstelar(posicion123, jugador);
+		PuertoEstelarTerran unPuertoEstelar = new PuertoEstelarTerran(posicion123, jugador);
 		Jugador otroJugador = new Jugador("Nombre2",new RazaProtoss(),"Rojo");
 		Turno unTurno = new Turno(jugador,otroJugador);
 		
@@ -210,7 +210,7 @@ public class PuertoEstelarTest extends TestCase {
 	public void testNoSePuedeCrearSiNoSeCreoUnaBarracaPreviamente() throws NoReuneLosRequisitosException, JugadorConNombreDemasiadoCortoException, CeldaOcupadaException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException{
 		Posicion posicion666 = new Posicion(66,6);
 		Jugador unJugador = new Jugador("unNombre",new RazaTerran(),"Azul");
-		PuertoEstelar unPuertoEstelar = new PuertoEstelar(posicion666, unJugador);	
+		PuertoEstelarTerran unPuertoEstelar = new PuertoEstelarTerran(posicion666, unJugador);	
 		Jugador otroJugador = new Jugador("Nombre2",new RazaProtoss(),"Rojo");
 		Turno unTurno = new Turno(unJugador,otroJugador);
 		
