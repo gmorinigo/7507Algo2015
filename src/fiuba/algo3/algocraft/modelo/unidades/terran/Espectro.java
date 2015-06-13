@@ -10,12 +10,6 @@ public class Espectro extends Unidad {
 		this.tamanioTransporte = 0;
 	}
 	
-	
-	@Override
-	public void disparar() {  
-		//		this.disparoStrategy.disparar();
-		}
-	
 	@Override
 	protected Salud saludInicial() {
 		return null;

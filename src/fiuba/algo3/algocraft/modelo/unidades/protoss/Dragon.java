@@ -8,11 +8,7 @@ public class Dragon extends Unidad {
 	public Dragon() {
 		this.tamanioTransporte = 4;
 	}
-
-	@Override
-	public void disparar() {
-	}
-
+	
 	@Override
 	protected Salud saludInicial() {
 		return null;

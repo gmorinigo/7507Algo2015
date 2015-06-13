@@ -9,8 +9,6 @@ public class AltoTemplario extends Unidad {
 		this.tamanioTransporte = 2;
 	}
 	
-	public void disparar() {}
-	
 	@Override
 	protected Salud saludInicial() {
 		return null;

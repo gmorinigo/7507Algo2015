@@ -19,9 +19,6 @@ public class NaveTransporte extends Unidad {
 		//this.disparoStrategy=disparoStrategy;
 		//this.disparoStrategy.setUnidad(this);
 	}
-	
-	@Override
-	public void disparar() {}
 
 	@Override
 	protected Salud saludInicial() {

@@ -15,8 +15,6 @@ abstract public class Unidad implements TurnoObserver{
 		return this.tamanioTransporte;
 	}
 	
-	public abstract void disparar();
-	
 	public boolean esUnidadAerea(){
 		return false;
 	}

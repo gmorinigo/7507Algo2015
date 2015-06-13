@@ -12,11 +12,6 @@ public class Golliat extends Unidad {
 		//this.disparoStrategy=disparoStrategy;
 		//this.disparoStrategy.setUnidad(this);
 	}
-
-	public void disparar()
-	{
-//		this.disparoStrategy.disparar();
-	}
 	
 	@Override
 	protected Salud saludInicial() {

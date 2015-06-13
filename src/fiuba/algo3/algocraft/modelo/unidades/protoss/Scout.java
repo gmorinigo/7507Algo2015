@@ -8,7 +8,6 @@ public class Scout extends Unidad {
 	public Scout() {	
 		this.tamanioTransporte = 0;
 	}
-	public void disparar() {}
 	
 	@Override
 	protected Salud saludInicial() {
