@@ -1,5 +1,6 @@
 package fiuba.algo3.algocraft.modelo.unidades;
 
+import fiuba.algo3.algocraft.modelo.excepciones.NoSePuedeRealizarAccionException;
 import fiuba.algo3.algocraft.modelo.turnos.Turno;
 import fiuba.algo3.algocraft.modelo.turnos.TurnoObserver;
 
@@ -38,13 +39,13 @@ abstract public class Unidad implements TurnoObserver{
 	 * Aca hay que preguntar al estado si se puede realizar accion
 	 * Cuando se termina la accion hay que decirle al estado que termine la accion
 	 */
-	abstract public void mover(int posicionX, int posicionY);
+	abstract public void mover(int posicionX, int posicionY) throws NoSePuedeRealizarAccionException;
 	
 	/*
 	 * Aca hay que preguntar al estado si se puede realizar accion
 	 * Cuando se termina la accion hay que decirle al estado que termine la accion
 	 */
-	abstract public void atacar(int posicionX, int posicionY);
+	abstract public void atacar(int posicionX, int posicionY) throws NoSePuedeRealizarAccionException;
 	
 
 	abstract protected Salud saludInicial();
