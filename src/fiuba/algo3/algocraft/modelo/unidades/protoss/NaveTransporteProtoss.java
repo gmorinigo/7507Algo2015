@@ -1,18 +1,9 @@
 package fiuba.algo3.algocraft.modelo.unidades.protoss;
 
-import fiuba.algo3.algocraft.modelo.unidades.Salud;
-import fiuba.algo3.algocraft.modelo.unidades.Unidad;
+import fiuba.algo3.algocraft.modelo.unidades.NaveTransporte;
 
-public class Zealot extends Unidad{
 
-	public Zealot() {
-		this.tamanioTransporte = 2;
-	}
-	
-	@Override
-	protected Salud saludInicial() {
-		return null;
-	}
+public class NaveTransporteProtoss extends NaveTransporte {
 
 	@Override
 	public void mover(int posicionX, int posicionY) {
@@ -26,9 +17,9 @@ public class Zealot extends Unidad{
 		
 	}
 
+	@Override
 	protected int turnosNecesariosParaCreacion() {
-		return 4;
+		return 8;
 	}
-	
-	
+
 }

@@ -3,6 +3,7 @@ package fiuba.algo3.algocrafttest;
 import java.rmi.NoSuchObjectException;
 
 import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory;
+import fiuba.algo3.algocraft.modelo.unidades.NaveTransporte;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 import fiuba.algo3.algocraft.modelo.unidades.UnidadFactoryTerran;
 import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory.TipoUnidad;
@@ -10,7 +11,6 @@ import fiuba.algo3.algocraft.modelo.unidades.terran.Espectro;
 import fiuba.algo3.algocraft.modelo.unidades.terran.Golliat;
 import fiuba.algo3.algocraft.modelo.unidades.terran.Marine;
 import fiuba.algo3.algocraft.modelo.unidades.terran.NaveCiencia;
-import fiuba.algo3.algocraft.modelo.unidades.terran.NaveTransporte;
 
 public class UnidadesTest extends TestBase{
 	

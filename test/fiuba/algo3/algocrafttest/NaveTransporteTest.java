@@ -5,12 +5,12 @@ import java.rmi.NoSuchObjectException;
 import fiuba.algo3.algocraft.modelo.excepciones.MaximaCapacidadDeTransporteSuperadaException;
 import fiuba.algo3.algocraft.modelo.excepciones.NoSePuedeAgregarALaNaveDeTransporteUnaUnidadVoladora;
 import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory;
+import fiuba.algo3.algocraft.modelo.unidades.NaveTransporte;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 import fiuba.algo3.algocraft.modelo.unidades.UnidadFactoryTerran;
 import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory.TipoUnidad;
 import fiuba.algo3.algocraft.modelo.unidades.terran.Golliat;
 import fiuba.algo3.algocraft.modelo.unidades.terran.Marine;
-import fiuba.algo3.algocraft.modelo.unidades.terran.NaveTransporte;
 
 public class NaveTransporteTest extends TestBase {	
 	

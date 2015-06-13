@@ -6,7 +6,7 @@ import fiuba.algo3.algocraft.modelo.unidades.terran.Espectro;
 import fiuba.algo3.algocraft.modelo.unidades.terran.Golliat;
 import fiuba.algo3.algocraft.modelo.unidades.terran.Marine;
 import fiuba.algo3.algocraft.modelo.unidades.terran.NaveCiencia;
-import fiuba.algo3.algocraft.modelo.unidades.terran.NaveTransporte;
+import fiuba.algo3.algocraft.modelo.unidades.terran.NaveTransporteTerran;
 
 public class UnidadFactoryTerran extends AbstractUnidadFactory {
 	
@@ -16,7 +16,7 @@ public class UnidadFactoryTerran extends AbstractUnidadFactory {
 		case terrestre1: return new Marine();
 		case terrestre2:return new Golliat();
 		case volador1:return new Espectro();
-		case volador2:return new NaveTransporte();
+		case volador2:return new NaveTransporteTerran();
 		default:throw new NoSuchObjectException("Objeto Sin Tipo");
 		}
 	}

@@ -27,10 +27,9 @@ public class Scout extends Unidad {
 		// TODO Auto-generated method stub
 		
 	}
-	@Override
+
 	protected int turnosNecesariosParaCreacion() {
-		// TODO Auto-generated method stub
-		return 0;
+		return 9;
 	}
 
 }

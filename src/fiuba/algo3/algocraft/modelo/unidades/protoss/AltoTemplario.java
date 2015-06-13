@@ -26,10 +26,8 @@ public class AltoTemplario extends Unidad {
 		
 	}
 
-	@Override
 	protected int turnosNecesariosParaCreacion() {
-		// TODO Auto-generated method stub
-		return 0;
+		return 7;
 	} 
 
 }

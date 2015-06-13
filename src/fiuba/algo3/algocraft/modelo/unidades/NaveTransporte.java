@@ -1,12 +1,11 @@
-package fiuba.algo3.algocraft.modelo.unidades.terran;
+package fiuba.algo3.algocraft.modelo.unidades;
 
 import java.util.ArrayList;
+
 import fiuba.algo3.algocraft.modelo.excepciones.MaximaCapacidadDeTransporteSuperadaException;
 import fiuba.algo3.algocraft.modelo.excepciones.NoSePuedeAgregarALaNaveDeTransporteUnaUnidadVoladora;
-import fiuba.algo3.algocraft.modelo.unidades.Salud;
-import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 
-public class NaveTransporte extends Unidad {
+public abstract class NaveTransporte extends Unidad {
 	private ArrayList<Unidad> unidadesCargadas;
 	private int capacidadCargada;
 	private int capacidadMaximaCarga;
@@ -46,31 +45,10 @@ public class NaveTransporte extends Unidad {
 		if (unaUnidad.esUnidadAerea()){
 			throw new NoSePuedeAgregarALaNaveDeTransporteUnaUnidadVoladora();
 		}
-		
-		
 	}
 
 	public int getCapacidadOcupada(){
 		
 		return this.capacidadCargada;
 	}
-
-	@Override
-	public void mover(int posicionX, int posicionY) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void atacar(int posicionX, int posicionY) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	protected int turnosNecesariosParaCreacion() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
 }

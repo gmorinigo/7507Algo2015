@@ -4,8 +4,8 @@ import java.rmi.NoSuchObjectException;
 
 import fiuba.algo3.algocraft.modelo.unidades.protoss.AltoTemplario;
 import fiuba.algo3.algocraft.modelo.unidades.protoss.Dragon;
+import fiuba.algo3.algocraft.modelo.unidades.protoss.NaveTransporteProtoss;
 import fiuba.algo3.algocraft.modelo.unidades.protoss.Zealot;
-import fiuba.algo3.algocraft.modelo.unidades.terran.NaveTransporte;
 
 public class UnidadFactoryProtoss extends AbstractUnidadFactory {
 	
@@ -15,7 +15,7 @@ public class UnidadFactoryProtoss extends AbstractUnidadFactory {
 		case terrestre1: return new Zealot();
 		case terrestre2:return new Dragon();
 		case volador1:return new AltoTemplario();
-		case volador2:return new NaveTransporte();
+		case volador2:return new NaveTransporteProtoss();
 		default:throw new NoSuchObjectException("Objeto Sin Tipo");
 		}
 	}
