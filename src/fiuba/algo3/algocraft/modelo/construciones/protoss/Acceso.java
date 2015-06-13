@@ -32,8 +32,7 @@ public class Acceso extends Construccion{
 	public Unidad crearUnidad() throws JugadorConNombreDemasiadoCortoException, NoSuchObjectException {
 		// Obtener dinamicamente la factory
 		AbstractUnidadFactory factoryUnidades = this.jugador.dameRaza().getFactoryUnidades();
-		TipoUnidad unTipoDeUnidad = null;
-		Unidad unaUnidad = (Unidad) factoryUnidades.crearUnidad(unTipoDeUnidad.terrestre1);
+		Unidad unaUnidad = (Unidad) factoryUnidades.crearUnidad(TipoUnidad.terrestre1);
 		
 		return unaUnidad;
 	}

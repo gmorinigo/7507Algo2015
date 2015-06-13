@@ -3,7 +3,6 @@ package fiuba.algo3.algocraft.modelo;
 import java.util.ArrayList;
 
 import fiuba.algo3.algocraft.modelo.construciones.Construccion;
-import fiuba.algo3.algocraft.modelo.construciones.terran.Barraca;
 import fiuba.algo3.algocraft.modelo.excepciones.JugadorConNombreDemasiadoCortoException;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 

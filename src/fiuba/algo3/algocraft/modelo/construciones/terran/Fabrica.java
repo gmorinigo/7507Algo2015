@@ -31,8 +31,7 @@ public class Fabrica extends Construccion {
 	
 	public Unidad crearUnidad() throws JugadorConNombreDemasiadoCortoException, NoSuchObjectException {
 		AbstractUnidadFactory factoryUnidades = this.jugador.dameRaza().getFactoryUnidades();
-		TipoUnidad unTipoDeUnidad = null;
-		Unidad unaUnidad = (Unidad) factoryUnidades.crearUnidad(unTipoDeUnidad.terrestre2);
+		Unidad unaUnidad = (Unidad) factoryUnidades.crearUnidad(TipoUnidad.terrestre2);
 		
 		return unaUnidad;
 	}

@@ -31,8 +31,7 @@ public class PuertoEstelarP extends Construccion{
 	public Unidad crearUnidad() throws JugadorConNombreDemasiadoCortoException, NoSuchObjectException {
 		
 		AbstractUnidadFactory factoryUnidades = this.jugador.dameRaza().getFactoryUnidades();
-		TipoUnidad unTipoDeUnidad = null;
-		Unidad unaUnidad = (Unidad) factoryUnidades.crearUnidad(unTipoDeUnidad.especial1);
+		Unidad unaUnidad = (Unidad) factoryUnidades.crearUnidad(TipoUnidad.especial1);
 		
 		return unaUnidad;
 	}

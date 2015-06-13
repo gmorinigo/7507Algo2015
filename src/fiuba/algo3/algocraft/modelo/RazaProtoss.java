@@ -3,15 +3,14 @@ package fiuba.algo3.algocraft.modelo;
 import java.util.ArrayList;
 
 import fiuba.algo3.algocraft.modelo.construciones.Construccion;
+import fiuba.algo3.algocraft.modelo.construciones.ConstruccionFactoryProtoss;
 import fiuba.algo3.algocraft.modelo.construciones.protoss.Pilon;
-import fiuba.algo3.algocraft.modelo.construciones.terran.DepositoDeSuministro;
-import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory;
-import fiuba.algo3.algocraft.modelo.unidades.UnidadFactoryTerran;
+import fiuba.algo3.algocraft.modelo.unidades.UnidadFactoryProtoss;
 
 public class RazaProtoss extends Raza {
 
-	public  AbstractUnidadFactory getFactoryUnidades() {
-		return new UnidadFactoryTerran();
+	public RazaProtoss() {
+		super(new UnidadFactoryProtoss(), new ConstruccionFactoryProtoss());
 	}
 
 	@Override
