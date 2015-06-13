@@ -29,7 +29,8 @@ public class CentroDeMineralTest extends TestBase {
 		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
 		Turno unTurno = new Turno(unJugador,otroJugador);
 		
-		//centroMineral.crearEstructura(unTurno);
+		unJugador.agregarConstruccion(centroMineral);
+		unTurno.addObserver(centroMineral);
 		
 		assertFalse(centroMineral.estaTerminada());
 		unTurno.avanzarTurno();
@@ -47,7 +48,10 @@ public class CentroDeMineralTest extends TestBase {
 		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
 		Turno unTurno = new Turno(unJugador,otroJugador);
 		
-		centroMineral.crearEstructura(unTurno);
+		
+		unJugador.agregarConstruccion(centroMineral);
+		unTurno.addObserver(centroMineral);
+		
 		
 		assertFalse(centroMineral.estaTerminada());
 		unTurno.avanzarTurno();

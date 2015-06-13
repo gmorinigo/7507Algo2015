@@ -12,9 +12,8 @@ import fiuba.algo3.algocraft.modelo.excepciones.JugadorConNombreDemasiadoCortoEx
 import fiuba.algo3.algocraft.modelo.excepciones.NoReuneLosRequisitosException;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.turnos.Turno;
-import junit.framework.TestCase;
 
-public class AsimiladorTest extends TestCase{
+public class AsimiladorTest extends TestBase{
 	
 	public void testCrearUnAsimilador() throws JugadorConNombreDemasiadoCortoException{
 		Posicion posicion64 = new Posicion(6,4);
@@ -29,8 +28,8 @@ public class AsimiladorTest extends TestCase{
 		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
 		Turno unTurno = new Turno(unJugador,otroJugador);
 		
-
-		//asimilador.crearEstructura(unTurno);
+		unJugador.agregarConstruccion(asimilador);
+		unTurno.addObserver(asimilador);
 		
 		assertFalse(asimilador.estaTerminada());
 		unTurno.avanzarTurno();
@@ -50,8 +49,8 @@ public class AsimiladorTest extends TestCase{
 		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
 		Turno unTurno = new Turno(unJugador,otroJugador);
 		
-	
-		//asimilador.crearEstructura(unTurno);
+		unJugador.agregarConstruccion(asimilador);
+		unTurno.addObserver(asimilador);
 		
 		assertFalse(asimilador.estaTerminada());
 		unTurno.avanzarTurno();
@@ -79,17 +78,12 @@ public class AsimiladorTest extends TestCase{
 		Almacen mineral = new Almacen(0);
 		
 		Jugador jugador = new Jugador(new RazaProtoss(),mineral, gas);
-		Asimilador asimilador = new Asimilador(posicion123, jugador);
 		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
 		Turno unTurno = new Turno(jugador,otroJugador);
 		
-	
-		try {
-			asimilador.crearEstructura(unTurno);
-			fail("Deberia lanzar Exception");
-		} catch (NoReuneLosRequisitosException e) {
-			
-		}
+		//Validar construccion via factory
+		
+		
 	}
 	
 

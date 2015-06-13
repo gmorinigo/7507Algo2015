@@ -83,30 +83,25 @@ public class ArchivosTemplariosTest extends TestCase{
 		Almacen mineral = new Almacen(0);
 		
 		Jugador jugador = new Jugador(new RazaProtoss(),mineral, gas);
-		ArchivosTemplarios unArchivoTemplario = new ArchivosTemplarios(posicion123, jugador);
 		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
 		Turno unTurno = new Turno(jugador,otroJugador);
 		
-		try {
-			unArchivoTemplario.crearEstructura(unTurno);
-			fail("Deberia lanzar Exception");
-		} catch (NoReuneLosRequisitosException e) {
-			
-		}
+		//Usar el factory para validar
+//		jugador.dameRaza().getFactoryConstrucciones().crearConstruccion(tipo, unaPosicion, unJugador);
+		
+		
 	}
 	
 	public void testNoSePuedeCrearSiNoSeCreoUnPuertoEstelarPreviamente() throws NoReuneLosRequisitosException, JugadorConNombreDemasiadoCortoException, CeldaOcupadaException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException{
 		Posicion posicion666 = new Posicion(66,6);
-		Jugador unJugador = new Jugador("otroNombre",new RazaProtoss(),"Rojo");
-		ArchivosTemplarios unArchivoTemplario = new ArchivosTemplarios(posicion666, unJugador);	
+		Jugador unJugador = new Jugador("otroNombre",new RazaProtoss(),"Rojo");	
 		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
 		Turno unTurno = new Turno(unJugador,otroJugador);
 		
-	
-		try{
-			unArchivoTemplario.crearEstructura(unTurno);
-			fail("Deberia lanzar Exception porque no se creo la Fabrica");
-		} catch(NoReuneLosRequisitosException e){
-		}
+		
+		//Usar el factory para validar
+//		jugador.dameRaza().getFactoryConstrucciones().crearConstruccion(tipo, unaPosicion, unJugador);
+		
+		
 	}
 }
