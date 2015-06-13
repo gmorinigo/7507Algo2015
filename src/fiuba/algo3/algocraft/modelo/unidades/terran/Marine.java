@@ -3,6 +3,7 @@ package fiuba.algo3.algocraft.modelo.unidades.terran;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.unidades.Salud;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
+import fiuba.algo3.algocraft.modelo.unidades.UnidadEstadoescansando;
 
 
 public class Marine extends Unidad {
@@ -23,8 +24,14 @@ public class Marine extends Unidad {
 
 	@Override
 	public void mover(int posicionX, int posicionY) {
-		// TODO Auto-generated method stub
+		if(!this.estado.esPosibleRealizarAccion()) {
+			//lanzar Exception
+		}
+	
+		//Realizar Movimiento
 		
+		//cambio el estado
+		this.estado = new UnidadEstadoescansando(this);
 	}
 
 	@Override
