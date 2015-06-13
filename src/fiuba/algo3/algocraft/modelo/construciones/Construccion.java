@@ -11,7 +11,6 @@ import fiuba.algo3.algocraft.modelo.turnos.TurnoObserver;
 public abstract class Construccion implements TurnoObserver{
 
 	protected ArrayList<Celda> celdas;
-	protected boolean estaOperativa;
 	protected Jugador jugador;
 	protected Posicion posicionCeldaSupIzquierda;
 	protected ConstruccionEstado estado;
@@ -24,18 +23,7 @@ public abstract class Construccion implements TurnoObserver{
 	}
 
 	public boolean estaTerminada(){
-		boolean estaTerminada = false;
-		if (this.estado instanceof ConstruccionEstadoNaciendo ){
-			estaTerminada=false;
-		}
-		if (this.estado instanceof ConstruccionEstadoTrabajando ){
-			estaTerminada=true;
-		}
-		if (this.estado instanceof ConstruccionEstadoViviendo ){
-			estaTerminada=true;
-		}
-
-		return estaTerminada;
+		return this.estaOperativa();
 	}
 	
 	@Override
