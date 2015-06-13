@@ -11,6 +11,7 @@ import fiuba.algo3.algocraft.modelo.construciones.terran.Refineria;
 import fiuba.algo3.algocraft.modelo.excepciones.CeldaOcupadaException;
 import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException;
 import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException;
+import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionNoPermitidaPorSalirseDelMapaException;
 import fiuba.algo3.algocraft.modelo.excepciones.JugadorConNombreDemasiadoCortoException;
 import fiuba.algo3.algocraft.modelo.excepciones.NoReuneLosRequisitosException;
 import fiuba.algo3.algocraft.modelo.mapa.Celda;
@@ -42,7 +43,7 @@ public class MapaTest extends TestBase {
 		assertNotSame(unMapa.dameCelda(posicion02),unMapa.dameCelda(posicion31));
 	}
 
-	public void testAgregarUnaConstruccionAlMapa() throws JugadorConNombreDemasiadoCortoException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException{
+	public void testAgregarUnaConstruccionAlMapa() throws JugadorConNombreDemasiadoCortoException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException, ConstruccionNoPermitidaPorSalirseDelMapaException{
 		Posicion posicion55 = new Posicion(5,5);
 		Mapa unMapa = Mapa.getInstance();
 		Barraca unaBarraca = new Barraca(posicion55, new Jugador("unNombre",new RazaProtoss(),"Azul"));
@@ -56,7 +57,7 @@ public class MapaTest extends TestBase {
 		assertTrue(unMapa.dameConstrucciones().contains(unaBarraca));
 	}
 
-	public void testAgregarUnaConstruccionAlMapaYVerificarLasCeldasOcupadas() throws JugadorConNombreDemasiadoCortoException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException{
+	public void testAgregarUnaConstruccionAlMapaYVerificarLasCeldasOcupadas() throws JugadorConNombreDemasiadoCortoException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException, ConstruccionNoPermitidaPorSalirseDelMapaException{
 		Posicion posicion22 = new Posicion(2,2);
 		Posicion posicion23 = new Posicion(2,3);
 		Posicion posicion32 = new Posicion(3,2);
@@ -75,7 +76,7 @@ public class MapaTest extends TestBase {
 		assertTrue(unMapa.verificarCeldaOcupada(posicion33));
 	}
 	
-	public void testAgregarUnExtractorDeMineralYVerificarLasCeldasOcupadas() throws JugadorConNombreDemasiadoCortoException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException{
+	public void testAgregarUnExtractorDeMineralYVerificarLasCeldasOcupadas() throws JugadorConNombreDemasiadoCortoException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException, ConstruccionNoPermitidaPorSalirseDelMapaException{
 		Posicion posicion911 = new Posicion(9,11);
 		Posicion posicion912 = new Posicion(9,12);
 		Posicion posicion1011 = new Posicion(10,11);
@@ -95,7 +96,7 @@ public class MapaTest extends TestBase {
 	}
 	
 	
-	public void testAgregarUnExtractorDeMineralEnUnaCeldaQueNoTieneMineral() throws JugadorConNombreDemasiadoCortoException, CeldaOcupadaException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException{
+	public void testAgregarUnExtractorDeMineralEnUnaCeldaQueNoTieneMineral() throws JugadorConNombreDemasiadoCortoException, CeldaOcupadaException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException, ConstruccionNoPermitidaPorSalirseDelMapaException{
 		Posicion posicion912 = new Posicion(9,12);
 
 		Mapa unMapa = Mapa.getInstance();
@@ -111,7 +112,7 @@ public class MapaTest extends TestBase {
 	}
 	
 	
-	public void testAgregarUnExtractorDeGasYVerificarLasCeldasOcupadas() throws JugadorConNombreDemasiadoCortoException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException{
+	public void testAgregarUnExtractorDeGasYVerificarLasCeldasOcupadas() throws JugadorConNombreDemasiadoCortoException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException, ConstruccionNoPermitidaPorSalirseDelMapaException{
 		Posicion posicion99 = new Posicion(9,9);
 		Posicion posicion910 = new Posicion(9,10);
 		Posicion posicion109 = new Posicion(10,9);
@@ -131,7 +132,7 @@ public class MapaTest extends TestBase {
 	}
 
 	
-	public void testAgregarUnExtractorDeGasEnUnaCeldaQueNoTieneGas() throws JugadorConNombreDemasiadoCortoException, CeldaOcupadaException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException{
+	public void testAgregarUnExtractorDeGasEnUnaCeldaQueNoTieneGas() throws JugadorConNombreDemasiadoCortoException, CeldaOcupadaException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionNoPermitidaPorSalirseDelMapaException{
 		Posicion posicion910 = new Posicion(9,10);
 
 		Mapa unMapa = Mapa.getInstance();
@@ -147,7 +148,7 @@ public class MapaTest extends TestBase {
 	}
 	
 	
-	public void testAgregarUnaConstruccionAlMapaYVerificarLasCeldasQueOcupa() throws JugadorConNombreDemasiadoCortoException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException{
+	public void testAgregarUnaConstruccionAlMapaYVerificarLasCeldasQueOcupa() throws JugadorConNombreDemasiadoCortoException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException, ConstruccionNoPermitidaPorSalirseDelMapaException{
 		Posicion posicion22 = new Posicion(2,2);
 		Posicion posicion23 = new Posicion(2,3);
 		Posicion posicion32 = new Posicion(3,2);
@@ -168,7 +169,91 @@ public class MapaTest extends TestBase {
 		assertTrue(celdas.get(3).obtenerPosicion().compararPosicion(posicion33));
 	}
 	
-	public void testAgregarUnaTropaAlMapa() throws JugadorConNombreDemasiadoCortoException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException, CeldaOcupadaException, NoReuneLosRequisitosException, NoSuchObjectException{
+	public void testAgregarUnaTropaAlMapa() throws JugadorConNombreDemasiadoCortoException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException, CeldaOcupadaException, NoReuneLosRequisitosException, NoSuchObjectException, ConstruccionNoPermitidaPorSalirseDelMapaException{
+		Posicion posicion1515 = new Posicion(15,15);
+		Posicion posicion1715 = new Posicion(17,15);
+		Mapa unMapa = Mapa.getInstance();
+		Jugador unJugador = new Jugador("unNombre",new RazaProtoss(),"Azul");
+		Barraca unaBarraca = new Barraca(posicion1515, unJugador );
+		
+		try {
+			unMapa.agregarConstruccion(unaBarraca);
+		} catch (CeldaOcupadaException e) {
+		}
+		
+		Turno unTurno = new Turno(unJugador);
+		
+		unaBarraca.crearEstructura(unTurno);
+		
+		unTurno.aumentarTurno();
+		unTurno.aumentarTurno();
+		unTurno.aumentarTurno();
+		unTurno.aumentarTurno();
+		unTurno.aumentarTurno();
+		unTurno.aumentarTurno();
+		unTurno.aumentarTurno();
+		unTurno.aumentarTurno();
+		unTurno.aumentarTurno();
+		unTurno.aumentarTurno();
+		
+		Unidad marine = unaBarraca.crearUnidad();
+		unTurno.addObserver(marine);
+		
+		unTurno.aumentarTurno();
+		unTurno.aumentarTurno();
+		unTurno.aumentarTurno();
+				
+		unMapa.agregarUnidad(posicion1715, marine);
+		
+		assertTrue(unMapa.verificarCeldaOcupada(posicion1715));
+	}
+	
+	
+	public void testAgregarUnaEstructuraGrandeAlBordeDerechoDelMapaTieneQueDevolverExcepcion() throws JugadorConNombreDemasiadoCortoException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException, CeldaOcupadaException{
+		Posicion posicion_1_199 = new Posicion(1,199);
+		Mapa unMapa = Mapa.getInstance();
+		Barraca unaBarraca = new Barraca(posicion_1_199, new Jugador("unNombre",new RazaProtoss(),"Azul"));
+		
+		try {
+			unMapa.agregarConstruccion(unaBarraca);
+		} catch (ConstruccionNoPermitidaPorSalirseDelMapaException e) {
+			return;
+		}
+		
+		fail();
+	}
+	
+
+	public void testAgregarUnaEstructuraGrandeAlBordeInferiorDelMapaTieneQueDevolverExcepcion() throws JugadorConNombreDemasiadoCortoException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException, CeldaOcupadaException{
+		Posicion posicion_1_199 = new Posicion(199,1);
+		Mapa unMapa = Mapa.getInstance();
+		Barraca unaBarraca = new Barraca(posicion_1_199, new Jugador("unNombre",new RazaProtoss(),"Azul"));
+		
+		try {
+			unMapa.agregarConstruccion(unaBarraca);
+		} catch (ConstruccionNoPermitidaPorSalirseDelMapaException e) {
+			return;
+		}
+		
+		fail();
+	}
+	
+	public void testAgregarUnaEstructuraGrandeAlBordeInferiorDerechoDelMapaTieneQueDevolverExcepcion() throws JugadorConNombreDemasiadoCortoException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException, CeldaOcupadaException{
+		Posicion posicion_1_199 = new Posicion(199,199);
+		Mapa unMapa = Mapa.getInstance();
+		Barraca unaBarraca = new Barraca(posicion_1_199, new Jugador("unNombre",new RazaProtoss(),"Azul"));
+		
+		try {
+			unMapa.agregarConstruccion(unaBarraca);
+		} catch (ConstruccionNoPermitidaPorSalirseDelMapaException e) {
+			return;
+		}
+		
+		fail();
+	}
+	
+	public void testAgregarUnaNaveDeTransporteAlMapaCargarleUnaUnidadPasarPorElEspacioYDejarlaDelOtroLado() throws JugadorConNombreDemasiadoCortoException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException, CeldaOcupadaException, NoReuneLosRequisitosException, NoSuchObjectException, ConstruccionNoPermitidaPorSalirseDelMapaException{
+		// TODO: Agregar la funcionalidad de este test
 		Posicion posicion1515 = new Posicion(15,15);
 		Posicion posicion1715 = new Posicion(17,15);
 		Mapa unMapa = Mapa.getInstance();

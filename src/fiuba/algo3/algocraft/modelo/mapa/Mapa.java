@@ -6,6 +6,7 @@ import fiuba.algo3.algocraft.modelo.construciones.Construccion;
 import fiuba.algo3.algocraft.modelo.excepciones.CeldaOcupadaException;
 import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException;
 import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException;
+import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionNoPermitidaPorSalirseDelMapaException;
 //import fiuba.algo3.algocraft.modelo.recursos.Recurso;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 
@@ -14,9 +15,13 @@ public class Mapa {
 	private static Mapa INSTANCE = null;
 	private Celda[][] matriz;
 	private ArrayList<Construccion> construcciones;
+	private int nroColumnaMaxima;
+	private int nroFilaMaxima;
 
 	public Mapa() {
 		this.matriz = new Celda[200][200];
+		this.nroColumnaMaxima = 199;
+		this.nroFilaMaxima = 199;
 		
 		this.agregarCeldasFilas_0_a_9_Columnas_0_a_199();
 		this.agregarCeldasFilas_190_a_199_Columnas_0_a_199();		
@@ -132,12 +137,13 @@ public class Mapa {
 	}
 
 
-	public void agregarConstruccion(Construccion construccion) throws CeldaOcupadaException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException{
+	public void agregarConstruccion(Construccion construccion) throws CeldaOcupadaException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException, ConstruccionNoPermitidaPorSalirseDelMapaException{
 
 		Posicion unaPosicion = construccion.damePosicionCeldaSupIzquierda();
 		Celda unaCelda = this.matriz[unaPosicion.dameFila()][unaPosicion.dameColumna()];
 
 		try {
+			this.verificarFinDeMapa(construccion, unaPosicion);
 			this.verificarCeldasOcupadas(construccion, unaPosicion);
 			this.verificarSiCorrespondeLaConstruccionEnLaCelda(construccion, unaCelda);
 		} catch (CeldaOcupadaException e) {
@@ -148,6 +154,13 @@ public class Mapa {
 		this.asignarCeldas(construccion);
 		this.construcciones.add(construccion);
 
+	}
+
+	private void verificarFinDeMapa(Construccion construccion, Posicion unaPosicion) throws ConstruccionNoPermitidaPorSalirseDelMapaException {
+		if (!construccion.construccionRecolectoraDeGas() && !construccion.construccionRecolectoraDeMineral() 
+		&& (unaPosicion.dameColumna() == this.nroColumnaMaxima || unaPosicion.dameFila() == this.nroFilaMaxima) ){
+			throw new ConstruccionNoPermitidaPorSalirseDelMapaException();
+		}
 	}
 
 	private void verificarSiCorrespondeLaConstruccionEnLaCelda(Construccion construccion, Celda unaCelda) throws ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException{
@@ -236,7 +249,7 @@ public class Mapa {
 		}
 		this.verificarSiCorrespondeLaUnidadEnLaCelda(unaUnidad, unaCelda);
 		this.agregarUnidadALaCelda(unaUnidad, unaCelda);
-		// Ver si es necesario asignar las celdas a la unidad
+		// TODO: Ver si es necesario asignar las celdas a la unidad
 		//this.asignarCeldas(unaUnidad);
 		
 	}
