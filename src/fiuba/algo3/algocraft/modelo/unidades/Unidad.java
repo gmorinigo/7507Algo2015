@@ -30,6 +30,10 @@ abstract public class Unidad implements TurnoObserver{
 		this.estado = this.estado.avanzarEnElTurno();	
 	}
 	
+	public void finalizarCreacion() {
+		this.estado = new UnidadEstadoViviendo(this);
+	}
+	
 	/*
 	 * Aca hay que preguntar al estado si se puede realizar accion
 	 * Cuando se termina la accion hay que decirle al estado que termine la accion
