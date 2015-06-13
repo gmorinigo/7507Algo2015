@@ -1,5 +1,6 @@
 package fiuba.algo3.algocraft.modelo.construciones;
 
+import fiuba.algo3.algocraft.modelo.Almacen;
 import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 
@@ -22,5 +23,14 @@ abstract public class ExtractorDeMineral extends Construccion {
 
 	public boolean construccionRecolectoraDeMineral(){
 		return true;
+	}
+	
+	abstract public void recolectar(Almacen almacen);
+	
+	
+	
+	@Override
+	protected void vivir() {
+		this.recolectar(this.jugador.dameAlmacenMineral());
 	}
 }

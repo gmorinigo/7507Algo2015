@@ -9,19 +9,16 @@ public class Asimilador extends ExtractorDeGas{
 	public Asimilador(Posicion unaPosicion, Jugador jugador){
 		super(unaPosicion, jugador);
 	}
-
-	public void recolectar(Almacen almacen) {
-		almacen.almacenarRecurso(10);
-	}
+	
 
 	@Override
 	protected int turnosNecesariosParaCreacion() {
 		return 6;
 	}
 
+
 	@Override
-	protected void vivir() {
-		// TODO Auto-generated method stub
-		
+	public void recolectar(Almacen almacen) {
+		almacen.almacenarRecurso(10);
 	}
 }

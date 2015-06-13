@@ -11,19 +11,13 @@ public class NexoMineral extends ExtractorDeMineral {
 		super(unaPosicion, jugador);
 	}
 
-	public void recolectar(Almacen almacen) {
-		almacen.almacenarRecurso(10);		
-	}
-
 	@Override
 	protected int turnosNecesariosParaCreacion() {
 		return 4;
 	}
-
+	
 	@Override
-	protected void vivir() {
-		// TODO Auto-generated method stub
-		
+	public void recolectar(Almacen almacen) {
+		almacen.almacenarRecurso(10);
 	}
-
 }
