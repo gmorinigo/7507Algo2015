@@ -63,5 +63,21 @@ public class SaludProtossTest extends TestBase {
 		assertTrue(unaSaludProtoss.porcentajeEscudo() == 20);
 	}
 	
+	public void testVerificarRecuperacionDelEscudoConElPasoDeLosTurnosYLaRegeneracionMaximaDelMismo(){
+		SaludProtoss unaSaludProtoss = new SaludProtoss(100,100);
+		unaSaludProtoss.atacar(10);
+		assertTrue(unaSaludProtoss.valorEscudo() == 90);
+		unaSaludProtoss.pasarTurno();
+		assertTrue(unaSaludProtoss.valorEscudo() == 95);
+		unaSaludProtoss.pasarTurno();
+		assertTrue(unaSaludProtoss.valorEscudo() == 100);
+		unaSaludProtoss.pasarTurno();
+		assertTrue(unaSaludProtoss.valorEscudo() == 100);
+		unaSaludProtoss.pasarTurno();
+		assertTrue(unaSaludProtoss.valorEscudo() == 100);
+		unaSaludProtoss.pasarTurno();
+		assertTrue(unaSaludProtoss.valorEscudo() == 100);
+	}
+	
 }
 

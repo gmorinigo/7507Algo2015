@@ -46,8 +46,16 @@ public class SaludProtoss extends Salud{
 		}
 	}
 
+	public int valorEscudo() {
+		return (this.escudo);
+	}
+	
 	public int porcentajeEscudo() {
 		return (this.escudo *100) / this.hp;
+	}
+
+	public void pasarTurno() {
+		this.regenerarEscudo(5);
 	}
 	
 }
