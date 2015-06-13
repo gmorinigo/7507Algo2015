@@ -39,13 +39,13 @@ abstract public class Unidad implements TurnoObserver{
 	
 	/*
 	 * Aca hay que preguntar al estado si se puede realizar accion
-	 * Cuando se termina la accion hay que decirle al estado que termine la accion
+	 * Cuando se termina la accion hay que cambiar el estado a UnidadEstadoDesancansando
 	 */
 	abstract public void mover(int posicionX, int posicionY) throws NoSePuedeRealizarAccionException;
 	
 	/*
 	 * Aca hay que preguntar al estado si se puede realizar accion
-	 * Cuando se termina la accion hay que decirle al estado que termine la accion
+	 * Cuando se termina la accion hay que cambiar el estado a UnidadEstadoDesancansando
 	 */
 	abstract public void atacar(Posicion posicion) throws NoSePuedeRealizarAccionException;
 	

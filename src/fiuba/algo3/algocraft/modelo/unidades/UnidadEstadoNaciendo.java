@@ -21,8 +21,4 @@ public class UnidadEstadoNaciendo extends UnidadEstado{
 		return false;
 	}
 
-	@Override
-	public void terminarAccion() {
-		// TODO Auto-generated method stub
-	}
 }

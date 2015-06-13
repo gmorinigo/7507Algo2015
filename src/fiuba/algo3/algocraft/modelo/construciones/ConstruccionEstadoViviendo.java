@@ -1,12 +1,9 @@
 package fiuba.algo3.algocraft.modelo.construciones;
 
 public class ConstruccionEstadoViviendo extends ConstruccionEstado {
-	
-	protected boolean accionRealizada;
 
 	public ConstruccionEstadoViviendo(Construccion contexto) {
 		super(contexto);
-		this.accionRealizada = false;
 	}
 
 	@Override
@@ -16,13 +13,12 @@ public class ConstruccionEstadoViviendo extends ConstruccionEstado {
 
 	@Override
 	public boolean esPosibleRealizarAccion() {
-		return !this.accionRealizada;
+		return true;
 	}
 
 	@Override
-	public void terminarAccion() {
-		this.accionRealizada = true;
+	public boolean estaOperativa() {
+		return true;
 	}
-
 
 }

@@ -66,6 +66,18 @@ public abstract class Construccion implements TurnoObserver{
 		this.estado = new ConstruccionEstadoViviendo(this);
 	}
 	
+	public void terminarTrabajo() {
+		this.estado = new ConstruccionEstadoViviendo(this);
+	}
+	
+	public void destruir() {
+		//TODO
+	}
+	
+	public boolean estaOperativa() {
+		return this.estado.estaOperativa();
+	}
+	
 	abstract protected int turnosNecesariosParaCreacion();
 	abstract protected void vivir();
 

@@ -22,8 +22,8 @@ public class ConstruccionEstadoNaciendo extends ConstruccionEstado{
 	}
 
 	@Override
-	public void terminarAccion() {
-		// TODO Auto-generated method stub
+	public boolean estaOperativa() {
+		return false;
 	}
 
 }

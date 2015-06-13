@@ -1,8 +1,8 @@
 package fiuba.algo3.algocraft.modelo.unidades;
 
-public class UnidadEstadoViviendo extends UnidadEstado{
+public class UnidadEstadoescansando extends UnidadEstado{
 
-	public UnidadEstadoViviendo(Unidad contexto) {
+	public UnidadEstadoescansando(Unidad contexto) {
 		super(contexto);
 	}
 
@@ -13,6 +13,6 @@ public class UnidadEstadoViviendo extends UnidadEstado{
 
 	@Override
 	public boolean esPosibleRealizarAccion() {
-		return true;
+		return false;
 	}
 }

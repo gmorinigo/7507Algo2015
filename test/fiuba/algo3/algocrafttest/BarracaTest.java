@@ -35,7 +35,7 @@ public class BarracaTest extends TestBase {
 		
 		unaBarraca.crearEstructura(unTurno);
 		
-		assertFalse(unaBarraca.estaTerminada());
+		assertFalse(unaBarraca.estaOperativa());
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
@@ -46,10 +46,10 @@ public class BarracaTest extends TestBase {
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
-		assertFalse(unaBarraca.estaTerminada());
+		assertFalse(unaBarraca.estaOperativa());
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
-		assertTrue(unaBarraca.estaTerminada());
+		assertTrue(unaBarraca.estaOperativa());
 	}
 	
 	public void testCrearMarineAlPasar3TurnosEstaCreadaEstaFinalizada() 
