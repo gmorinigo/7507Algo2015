@@ -18,7 +18,7 @@ public class NaveCienciaTest extends TestBase {
 		AbstractUnidadFactory factoryUnidades = new UnidadFactoryTerran();
 		TipoUnidad unTipo = null;
 		Unidad unaUnidad = (Unidad) factoryUnidades
-				.crearUnidad(unTipo.especial1/* ,new DisparoSuperStrategy() */);
+				.crearUnidad(TipoUnidad.especial1/* ,new DisparoSuperStrategy() */);
 		assertNotNull(unaUnidad);
 	}
 
@@ -47,7 +47,7 @@ public class NaveCienciaTest extends TestBase {
 		
 
 		unTurno.addObserver(unaNaveCiencia);
-		unaNaveCiencia.finalizarCreacion();
+		unaNaveCiencia.finalizarNacimiento();
 
 		for (int i = 1; i <= 4; i++)
 			unTurno.avanzarTurno();

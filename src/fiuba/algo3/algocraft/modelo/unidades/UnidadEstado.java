@@ -8,7 +8,7 @@ abstract public class UnidadEstado {
 		this.contexto = contexto;
 	}
 	
-	abstract public UnidadEstado avanzarEnElTurno();
+	abstract public void avanzarEnElTurno();
 	abstract public boolean esPosibleRealizarAccion();
 	abstract public void terminarAccion();
 }

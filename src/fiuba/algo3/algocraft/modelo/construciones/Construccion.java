@@ -2,9 +2,7 @@ package fiuba.algo3.algocraft.modelo.construciones;
 
 import java.util.ArrayList;
 
-import fiuba.algo3.algocraft.modelo.Construible;
 import fiuba.algo3.algocraft.modelo.Jugador;
-import fiuba.algo3.algocraft.modelo.ProgresoCreacion;
 import fiuba.algo3.algocraft.modelo.excepciones.CeldaOcupadaException;
 import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException;
 import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException;
@@ -14,46 +12,25 @@ import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.turnos.Turno;
 import fiuba.algo3.algocraft.modelo.turnos.TurnoObserver;
 
-public abstract class Construccion implements TurnoObserver, Construible{
+public abstract class Construccion implements TurnoObserver{
 
 	protected ArrayList<Celda> celdas;
 	protected boolean estaOperativa;
-	//protected Celda celdaSupIzquierda;
 	protected Jugador jugador;
 	protected Posicion posicionCeldaSupIzquierda;
-	private ProgresoCreacion progresoCreacion;
-	private boolean naciendo;
+	protected ConstruccionEstado estado;
 	
 	public Construccion(Posicion unaPosicion, Jugador jugador) {
 		this.celdas = new ArrayList<Celda>();
-		this.perteneceA(jugador);
-		this.estaOperativa = false;
-		this.naciendo = true;
-		//this.celdaSupIzquierda = new CeldaTerrestre(unaPosicion.dameFila(),unaPosicion.dameColumna());
+		this.jugador = jugador;
 		this.posicionCeldaSupIzquierda = unaPosicion;
-		this.progresoCreacion = this.progresoCreacion();
-	}
-
-	public Construccion(){
-		
-	}
-	
-	public boolean estaTerminada() {
-		return this.estaOperativa && !this.naciendo;
+		this.estado = new ConstruccionEstadoNaciendo(this.turnosNecesariosParaCreacion(), this);
 	}
 
 	@Override
 	public void finDeTurno(Turno turno) {
-		if(this.naciendo) {
-			this.progresoCreacion.avanzarProgreso();
-		}
+		this.estado.avanzarEnElTurno();
 	}
-
-	public void terminarConstruccion() {
-		this.estaOperativa = true;
-		this.naciendo = false;
-	}
-	
 
 	public abstract void crearEstructura(Turno unTurno) throws CeldaOcupadaException, NoReuneLosRequisitosException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException;
 	
@@ -73,11 +50,6 @@ public abstract class Construccion implements TurnoObserver, Construible{
 		return celdas;
 	}
 	
-	/*
-	public Celda dameCeldaSupIzquierda(){
-		return this.celdaSupIzquierda;
-	}*/
-	
 	public Posicion damePosicionCeldaSupIzquierda(){
 		return this.posicionCeldaSupIzquierda;
 	}
@@ -86,17 +58,15 @@ public abstract class Construccion implements TurnoObserver, Construible{
 		this.celdas = celdas;
 	}
 	
-	protected void perteneceA(Jugador jugador) {
-		this.jugador = jugador;
+	public void finalizarNacimiento() {
+		this.estado = new ConstruccionEstadoViviendo(this);
 	}
 	
-	abstract protected ProgresoCreacion progresoCreacion();
-	
-	@Override
 	public void finalizarCreacion() {
-		this.terminarConstruccion();
+		this.estado = new ConstruccionEstadoViviendo(this);
 	}
 	
-	
+	abstract protected int turnosNecesariosParaCreacion();
+	abstract protected void vivir();
 
 }

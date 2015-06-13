@@ -1,5 +1,6 @@
 package fiuba.algo3.algocraft.modelo.unidades.terran;
 
+import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.unidades.Salud;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 
@@ -28,13 +29,19 @@ public class Espectro extends Unidad {
 
 
 	@Override
-	public void atacar(int posicionX, int posicionY) {
+	public void atacar(Posicion posicion) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	protected int turnosNecesariosParaCreacion() {
 		return 8;
+	}
+
+	@Override
+	protected void vivir() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 

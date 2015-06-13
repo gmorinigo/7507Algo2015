@@ -1,5 +1,6 @@
 package fiuba.algo3.algocraft.modelo.unidades.protoss;
 
+import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.unidades.NaveTransporte;
 
 
@@ -12,7 +13,7 @@ public class NaveTransporteProtoss extends NaveTransporte {
 	}
 
 	@Override
-	public void atacar(int posicionX, int posicionY) {
+	public void atacar(Posicion posicion) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -20,6 +21,12 @@ public class NaveTransporteProtoss extends NaveTransporte {
 	@Override
 	protected int turnosNecesariosParaCreacion() {
 		return 8;
+	}
+
+	@Override
+	protected void vivir() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

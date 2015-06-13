@@ -1,14 +1,14 @@
-package fiuba.algo3.algocraft.modelo.unidades;
+package fiuba.algo3.algocraft.modelo.construciones;
 
-public class UnidadEstadoNaciendo extends UnidadEstado{
-
-	protected int turnosNecesariosParaCreacion;
+public class ConstruccionEstadoNaciendo extends ConstruccionEstado{
 	
-	public UnidadEstadoNaciendo(int turnosNecesariosParaCreacion, Unidad contexto) {
+	protected int turnosNecesariosParaCreacion;
+
+	public ConstruccionEstadoNaciendo(int turnosNecesariosParaCreacion, Construccion contexto) {
 		super(contexto);
 		this.turnosNecesariosParaCreacion = turnosNecesariosParaCreacion;
 	}
-	
+
 	@Override
 	public void avanzarEnElTurno() {
 		this.turnosNecesariosParaCreacion--;
@@ -25,4 +25,5 @@ public class UnidadEstadoNaciendo extends UnidadEstado{
 	public void terminarAccion() {
 		// TODO Auto-generated method stub
 	}
+
 }

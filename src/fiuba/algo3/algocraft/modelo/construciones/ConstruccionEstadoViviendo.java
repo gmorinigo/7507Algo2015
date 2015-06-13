@@ -1,10 +1,10 @@
-package fiuba.algo3.algocraft.modelo.unidades;
+package fiuba.algo3.algocraft.modelo.construciones;
 
-public class UnidadEstadoViviendo extends UnidadEstado{
+public class ConstruccionEstadoViviendo extends ConstruccionEstado {
 	
 	protected boolean accionRealizada;
 
-	public UnidadEstadoViviendo(Unidad contexto) {
+	public ConstruccionEstadoViviendo(Construccion contexto) {
 		super(contexto);
 		this.accionRealizada = false;
 	}
@@ -23,5 +23,6 @@ public class UnidadEstadoViviendo extends UnidadEstado{
 	public void terminarAccion() {
 		this.accionRealizada = true;
 	}
+
 
 }

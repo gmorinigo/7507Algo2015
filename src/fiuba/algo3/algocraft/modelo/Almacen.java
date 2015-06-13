@@ -23,6 +23,10 @@ public class Almacen {
 		return cantidad;
 	}
 	
+	public boolean puedeConsumir(int cantidadAConsumir) {
+		return (this.cantidad >= cantidadAConsumir) ? true: false;
+	}
+	
 	public void consumirRecurso(int cantidad) throws NoHaySuficientesRecursos {
 		if(cantidad > this.cantidad)
 			throw new NoHaySuficientesRecursos();
