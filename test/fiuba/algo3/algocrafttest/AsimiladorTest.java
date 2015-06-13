@@ -1,6 +1,5 @@
 package fiuba.algo3.algocrafttest;
 
-import fiuba.algo3.algocraft.modelo.Almacen;
 import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.RazaProtoss;
 import fiuba.algo3.algocraft.modelo.construciones.Construccion;
@@ -62,29 +61,10 @@ public class AsimiladorTest extends TestBase{
 		unTurno.avanzarTurno();
 		assertTrue(asimilador.estaTerminada());
 		
-		Almacen almacen = new Almacen();
+		for (int i = 0; i < 8; i++) {
+			unTurno.avanzarTurno();
+		}
 		
-		asimilador.recolectar(almacen);
-		asimilador.recolectar(almacen);
-		asimilador.recolectar(almacen);
-		asimilador.recolectar(almacen);
-
-		assertTrue(almacen.cantidad() == 40);	
+		assertTrue(unJugador.dameAlmacenGas().cantidad() == 580);	
 	}
-	
-	public void testNoSePuedeCrearSinSuficientesRecursos() throws CeldaOcupadaException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException, JugadorConNombreDemasiadoCortoException {
-		Posicion posicion123 = new Posicion(12,3);
-		Almacen gas = new Almacen(0);
-		Almacen mineral = new Almacen(0);
-		
-		Jugador jugador = new Jugador(new RazaProtoss(),mineral, gas);
-		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
-		Turno unTurno = new Turno(jugador,otroJugador);
-		
-		//Validar construccion via factory
-		
-		
-	}
-	
-
 }
