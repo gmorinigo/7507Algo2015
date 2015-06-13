@@ -14,7 +14,7 @@ public class TurnoTest extends TestBase {
 	
 	public void testAumentarUnTurnoAumentaElTurno() throws JugadorConNombreDemasiadoCortoException{
 		Turno unTurno = new Turno(new Jugador("unNombre",new RazaProtoss(),"Azul"));
-		unTurno.aumentarTurno();
+		unTurno.avanzarTurno();
 		assertTrue(unTurno.dameTurno() == 2);
 	}
 }

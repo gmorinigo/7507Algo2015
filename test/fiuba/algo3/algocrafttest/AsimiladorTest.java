@@ -31,13 +31,13 @@ public class AsimiladorTest extends TestCase{
 		asimilador.crearEstructura(unTurno);
 		
 		assertFalse(asimilador.estaTerminada());
-		unTurno.aumentarTurno();
-		unTurno.aumentarTurno();
-		unTurno.aumentarTurno();
-		unTurno.aumentarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
 		assertFalse(asimilador.estaTerminada());
-		unTurno.aumentarTurno();
-		unTurno.aumentarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
 		assertTrue(asimilador.estaTerminada());
 	}
 	
@@ -50,13 +50,13 @@ public class AsimiladorTest extends TestCase{
 		asimilador.crearEstructura(unTurno);
 		
 		assertFalse(asimilador.estaTerminada());
-		unTurno.aumentarTurno();
-		unTurno.aumentarTurno();
-		unTurno.aumentarTurno();
-		unTurno.aumentarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
 		assertFalse(asimilador.estaTerminada());
-		unTurno.aumentarTurno();
-		unTurno.aumentarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
 		assertTrue(asimilador.estaTerminada());
 		
 		Almacen almacen = new Almacen();

@@ -34,11 +34,11 @@ public class NexoMineralTest extends TestCase{
 		unNexo.crearEstructura(unTurno);
 		
 		assertFalse(unNexo.estaTerminada());
-		unTurno.aumentarTurno();
-		unTurno.aumentarTurno();
-		unTurno.aumentarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
 		assertFalse(unNexo.estaTerminada());
-		unTurno.aumentarTurno();
+		unTurno.avanzarTurno();
 		assertTrue(unNexo.estaTerminada());
 	}
 	
@@ -51,11 +51,11 @@ public class NexoMineralTest extends TestCase{
 		unNexo.crearEstructura(unTurno);
 		
 		assertFalse(unNexo.estaTerminada());
-		unTurno.aumentarTurno();
-		unTurno.aumentarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
 		assertFalse(unNexo.estaTerminada());
-		unTurno.aumentarTurno();
-		unTurno.aumentarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
 		assertTrue(unNexo.estaTerminada());
 		
 		Almacen almacen = new Almacen();

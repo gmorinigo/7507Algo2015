@@ -30,13 +30,13 @@ public class RefineriaTest extends TestBase {
 		refineria.crearEstructura(unTurno);
 		
 		assertFalse(refineria.estaTerminada());
-		unTurno.aumentarTurno();
-		unTurno.aumentarTurno();
-		unTurno.aumentarTurno();
-		unTurno.aumentarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
 		assertFalse(refineria.estaTerminada());
-		unTurno.aumentarTurno();
-		unTurno.aumentarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
 		assertTrue(refineria.estaTerminada());
 	}
 	
@@ -49,13 +49,13 @@ public class RefineriaTest extends TestBase {
 		refineria.crearEstructura(unTurno);
 		
 		assertFalse(refineria.estaTerminada());
-		unTurno.aumentarTurno();
-		unTurno.aumentarTurno();
-		unTurno.aumentarTurno();
-		unTurno.aumentarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
 		assertFalse(refineria.estaTerminada());
-		unTurno.aumentarTurno();
-		unTurno.aumentarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
 		assertTrue(refineria.estaTerminada());
 		
 		Almacen almacen = new Almacen();

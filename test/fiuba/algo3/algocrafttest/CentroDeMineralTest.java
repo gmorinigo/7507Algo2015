@@ -30,11 +30,11 @@ public class CentroDeMineralTest extends TestBase {
 		centroMineral.crearEstructura(unTurno);
 		
 		assertFalse(centroMineral.estaTerminada());
-		unTurno.aumentarTurno();
-		unTurno.aumentarTurno();
-		unTurno.aumentarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
 		assertFalse(centroMineral.estaTerminada());
-		unTurno.aumentarTurno();
+		unTurno.avanzarTurno();
 		assertTrue(centroMineral.estaTerminada());
 	}
 	
@@ -47,11 +47,11 @@ public class CentroDeMineralTest extends TestBase {
 		centroMineral.crearEstructura(unTurno);
 		
 		assertFalse(centroMineral.estaTerminada());
-		unTurno.aumentarTurno();
-		unTurno.aumentarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
 		assertFalse(centroMineral.estaTerminada());
-		unTurno.aumentarTurno();
-		unTurno.aumentarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
 		assertTrue(centroMineral.estaTerminada());
 		
 		Almacen almacen = new Almacen();

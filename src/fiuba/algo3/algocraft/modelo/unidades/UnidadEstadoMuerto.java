@@ -1,12 +1,9 @@
 package fiuba.algo3.algocraft.modelo.unidades;
 
-public class UnidadEstadoViviendo extends UnidadEstado{
-	
-	protected boolean accionRealizada;
+public class UnidadEstadoMuerto extends UnidadEstado{
 
-	public UnidadEstadoViviendo(Unidad contexto) {
+	public UnidadEstadoMuerto(Unidad contexto) {
 		super(contexto);
-		this.accionRealizada = false;
 	}
 
 	@Override
@@ -16,12 +13,13 @@ public class UnidadEstadoViviendo extends UnidadEstado{
 
 	@Override
 	public boolean esPosibleRealizarAccion() {
-		return !this.accionRealizada;
+		return false;
 	}
 
 	@Override
 	public void terminarAccion() {
-		this.accionRealizada = true;
+		// TODO Auto-generated method stub
+		
 	}
 
 }

@@ -32,13 +32,13 @@ public class DepositoDeSuministroTest extends TestCase {
 				
 				unDeposito.crearEstructura(unTurno);
 				assertFalse(unDeposito.estaTerminada());
-				unTurno.aumentarTurno();
-				unTurno.aumentarTurno();
-				unTurno.aumentarTurno();
-				unTurno.aumentarTurno();
+				unTurno.avanzarTurno();
+				unTurno.avanzarTurno();
+				unTurno.avanzarTurno();
+				unTurno.avanzarTurno();
 				assertFalse(unDeposito.estaTerminada());
-				unTurno.aumentarTurno();
-				unTurno.aumentarTurno();
+				unTurno.avanzarTurno();
+				unTurno.avanzarTurno();
 				assertTrue(unDeposito.estaTerminada());
 			}
 	
@@ -66,20 +66,20 @@ public class DepositoDeSuministroTest extends TestCase {
 			Turno unTurno = new Turno(unJugador);
 
 			unDeposito.crearEstructura(unTurno);
-			unTurno.aumentarTurno();
-			unTurno.aumentarTurno();
-			unTurno.aumentarTurno();
-			unTurno.aumentarTurno();
-			unTurno.aumentarTurno();
-			unTurno.aumentarTurno();			
+			unTurno.avanzarTurno();
+			unTurno.avanzarTurno();
+			unTurno.avanzarTurno();
+			unTurno.avanzarTurno();
+			unTurno.avanzarTurno();
+			unTurno.avanzarTurno();			
 
 			unDeposito.crearEstructura(unTurno);
-			unTurno.aumentarTurno();
-			unTurno.aumentarTurno();
-			unTurno.aumentarTurno();
-			unTurno.aumentarTurno();
-			unTurno.aumentarTurno();
-			unTurno.aumentarTurno();
+			unTurno.avanzarTurno();
+			unTurno.avanzarTurno();
+			unTurno.avanzarTurno();
+			unTurno.avanzarTurno();
+			unTurno.avanzarTurno();
+			unTurno.avanzarTurno();
 			assertTrue(unJugador.dameLimiteDePoblacion() == 10);
 	}
 }

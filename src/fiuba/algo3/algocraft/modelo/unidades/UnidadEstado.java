@@ -2,6 +2,13 @@ package fiuba.algo3.algocraft.modelo.unidades;
 
 abstract public class UnidadEstado {
 	
-	abstract public UnidadEstado avanzarEnElTurno();
+	protected Unidad contexto;
 	
+	public UnidadEstado(Unidad contexto) {
+		this.contexto = contexto;
+	}
+	
+	abstract public UnidadEstado avanzarEnElTurno();
+	abstract public boolean esPosibleRealizarAccion();
+	abstract public void terminarAccion();
 }

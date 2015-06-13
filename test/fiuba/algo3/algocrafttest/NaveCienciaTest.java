@@ -49,7 +49,7 @@ public class NaveCienciaTest extends TestBase {
 		unaNaveCiencia.finalizarCreacion();
 
 		for (int i = 1; i <= 4; i++)
-			unTurno.aumentarTurno();
+			unTurno.avanzarTurno();
 		assertTrue(unTurno.dameTurno() == 5);
 		// assertEquals(unaNaveCiencia.getEnergia(), 100);
 	}

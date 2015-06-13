@@ -31,12 +31,12 @@ public class PilonTest extends TestCase{
 				
 				unPilon.crearEstructura(unTurno);
 				assertFalse(unPilon.estaTerminada());
-				unTurno.aumentarTurno();
-				unTurno.aumentarTurno();
-				unTurno.aumentarTurno();
+				unTurno.avanzarTurno();
+				unTurno.avanzarTurno();
+				unTurno.avanzarTurno();
 				assertFalse(unPilon.estaTerminada());
-				unTurno.aumentarTurno();
-				unTurno.aumentarTurno();
+				unTurno.avanzarTurno();
+				unTurno.avanzarTurno();
 				assertTrue(unPilon.estaTerminada());
 			}
 	
@@ -64,20 +64,20 @@ public class PilonTest extends TestCase{
 			Turno unTurno = new Turno(unJugador);
 
 			unPilon.crearEstructura(unTurno);
-			unTurno.aumentarTurno();
-			unTurno.aumentarTurno();
-			unTurno.aumentarTurno();
-			unTurno.aumentarTurno();
-			unTurno.aumentarTurno();
-			unTurno.aumentarTurno();			
+			unTurno.avanzarTurno();
+			unTurno.avanzarTurno();
+			unTurno.avanzarTurno();
+			unTurno.avanzarTurno();
+			unTurno.avanzarTurno();
+			unTurno.avanzarTurno();			
 
 			unPilon.crearEstructura(unTurno);
-			unTurno.aumentarTurno();
-			unTurno.aumentarTurno();
-			unTurno.aumentarTurno();
-			unTurno.aumentarTurno();
-			unTurno.aumentarTurno();
-			unTurno.aumentarTurno();
+			unTurno.avanzarTurno();
+			unTurno.avanzarTurno();
+			unTurno.avanzarTurno();
+			unTurno.avanzarTurno();
+			unTurno.avanzarTurno();
+			unTurno.avanzarTurno();
 			assertTrue(unJugador.dameLimiteDePoblacion() == 10);
 	}
 }
