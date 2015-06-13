@@ -1,9 +1,7 @@
 package fiuba.algo3.algocrafttest;
 
-import fiuba.algo3.algocraft.modelo.Almacen;
 import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.RazaProtoss;
-import fiuba.algo3.algocraft.modelo.RazaTerran;
 import fiuba.algo3.algocraft.modelo.construciones.Construccion;
 import fiuba.algo3.algocraft.modelo.construciones.protoss.NexoMineral;
 import fiuba.algo3.algocraft.modelo.construciones.terran.CentroMineral;
@@ -25,14 +23,15 @@ public class NexoMineralTest extends TestCase{
 		assertNotNull(centroMineral);
 	}
 	
-	public void testCrearUnNexoMineralAl8TurnosEstaCreada() throws CeldaOcupadaException, NoReuneLosRequisitosException, JugadorConNombreDemasiadoCortoException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException{
+	public void testCrearUnNexoMineralAl4TurnosEstaCreada() throws CeldaOcupadaException, NoReuneLosRequisitosException, JugadorConNombreDemasiadoCortoException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException{
 		Posicion posicion911 = new Posicion(9,11);
 		Jugador unJugador = new Jugador("OtroNombre",new RazaProtoss(),"Rojo");
 		Construccion unNexo = new NexoMineral(posicion911, unJugador );
 		Jugador otroJugador = new Jugador("Nombre2",new RazaProtoss(),"Rojo");
 		Turno unTurno = new Turno(unJugador,otroJugador);
 		
-		//unNexo.crearEstructura(unTurno);
+		unJugador.agregarConstruccion(unNexo);
+		unTurno.addObserver(unNexo);
 		
 		assertFalse(unNexo.estaTerminada());
 		unTurno.avanzarTurno();
@@ -50,7 +49,8 @@ public class NexoMineralTest extends TestCase{
 		Jugador otroJugador = new Jugador("Nombre2",new RazaProtoss(),"Rojo");
 		Turno unTurno = new Turno(unJugador,otroJugador);
 		
-		//unNexo.crearEstructura(unTurno);
+		unJugador.agregarConstruccion(unNexo);
+		unTurno.addObserver(unNexo);
 		
 		assertFalse(unNexo.estaTerminada());
 		unTurno.avanzarTurno();
@@ -60,12 +60,11 @@ public class NexoMineralTest extends TestCase{
 		unTurno.avanzarTurno();
 		assertTrue(unNexo.estaTerminada());
 		
-		Almacen almacen = new Almacen();
-		
-		unNexo.recolectar(almacen);
-		unNexo.recolectar(almacen);
-		unNexo.recolectar(almacen);
-		unNexo.recolectar(almacen);
-		assertTrue(almacen.cantidad() == 40);
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		//Los jugadores empiezan con 500 de cada recurso
+		assertTrue(unJugador.dameAlmacenMineral().cantidad() == 540);
 	}
 }

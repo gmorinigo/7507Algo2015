@@ -1,6 +1,5 @@
 package fiuba.algo3.algocrafttest;
 
-import fiuba.algo3.algocraft.modelo.Almacen;
 import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.RazaProtoss;
 import fiuba.algo3.algocraft.modelo.RazaTerran;
@@ -29,8 +28,8 @@ public class RefineriaTest extends TestBase {
 		Jugador otroJugador = new Jugador("Nombre2",new RazaProtoss(),"Rojo");
 		Turno unTurno = new Turno(unJugador,otroJugador);
 		
-	
-		//refineria.crearEstructura(unTurno);
+		unJugador.agregarConstruccion(refineria);
+		unTurno.addObserver(refineria);
 		
 		assertFalse(refineria.estaTerminada());
 		unTurno.avanzarTurno();
@@ -50,8 +49,8 @@ public class RefineriaTest extends TestBase {
 		Jugador otroJugador = new Jugador("Nombre2",new RazaProtoss(),"Rojo");
 		Turno unTurno = new Turno(unJugador,otroJugador);
 		
-		
-		//refineria.crearEstructura(unTurno);
+		unJugador.agregarConstruccion(refineria);
+		unTurno.addObserver(refineria);
 		
 		assertFalse(refineria.estaTerminada());
 		unTurno.avanzarTurno();
@@ -63,34 +62,10 @@ public class RefineriaTest extends TestBase {
 		unTurno.avanzarTurno();
 		assertTrue(refineria.estaTerminada());
 		
-		Almacen almacen = new Almacen();
-		
-		refineria.recolectar(almacen);
-		refineria.recolectar(almacen);
-		refineria.recolectar(almacen);
-		refineria.recolectar(almacen);
-
-		assertTrue(almacen.cantidad() == 40);	
-	}
-	/*
-	public void testNoSePuedeCrearSinSuficientesRecursos() throws CeldaOcupadaException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException, JugadorConNombreDemasiadoCortoException {
-		Posicion posicion123 = new Posicion(12,3);
-		Almacen gas = new Almacen(0);
-		Almacen mineral = new Almacen(0);
-		
-		Jugador jugador = new Jugador(new RazaTerran(),mineral, gas);
-		Refineria unaRefineria = new Refineria(posicion123, jugador);
-		Jugador otroJugador = new Jugador("Nombre2",new RazaProtoss(),"Rojo");
-		Turno unTurno = new Turno(jugador,otroJugador);
-		
-	
-		try {
-			unaRefineria.crearEstructura(unTurno);
-			fail("Deberia lanzar Exception");
-		} catch (NoReuneLosRequisitosException e) {
-			
+		for (int i = 0; i < 6; i++) {
+			unTurno.avanzarTurno();
 		}
+		
+		assertTrue(unJugador.dameAlmacenGas().cantidad() == 560);	
 	}
-	*/
-	
 }
