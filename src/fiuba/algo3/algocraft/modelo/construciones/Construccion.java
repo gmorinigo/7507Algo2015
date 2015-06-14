@@ -3,6 +3,7 @@ package fiuba.algo3.algocraft.modelo.construciones;
 import java.util.ArrayList;
 
 import fiuba.algo3.algocraft.modelo.Jugador;
+import fiuba.algo3.algocraft.modelo.construciones.AbstractConstruccionFactory.TipoConstruccion;
 import fiuba.algo3.algocraft.modelo.mapa.Celda;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.turnos.Turno;
@@ -14,12 +15,14 @@ public abstract class Construccion implements TurnoObserver{
 	protected Jugador jugador;
 	protected Posicion posicionCeldaSupIzquierda;
 	protected ConstruccionEstado estado;
+	protected TipoConstruccion tipoConstruccion;
 	
-	public Construccion(Posicion unaPosicion, Jugador jugador) {
+	public Construccion(Posicion unaPosicion, Jugador jugador, TipoConstruccion unTipo) {
 		this.celdas = new ArrayList<Celda>();
 		this.jugador = jugador;
 		this.posicionCeldaSupIzquierda = unaPosicion;
 		this.estado = new ConstruccionEstadoNaciendo(this.turnosNecesariosParaCreacion(), this);
+		this.tipoConstruccion = unTipo;
 	}
 
 	public boolean estaTerminada(){
@@ -76,5 +79,9 @@ public abstract class Construccion implements TurnoObserver{
 	
 	abstract protected int turnosNecesariosParaCreacion();
 	abstract protected void vivir();
+
+	public boolean verificarTipoConstruccion(TipoConstruccion tipo) {
+		return (this.tipoConstruccion == tipo);
+	}
 
 }

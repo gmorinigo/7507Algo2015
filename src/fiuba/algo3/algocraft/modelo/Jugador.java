@@ -1,8 +1,13 @@
 package fiuba.algo3.algocraft.modelo;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
+import fiuba.algo3.algocraft.modelo.construciones.AbstractConstruccionFactory.TipoConstruccion;
 import fiuba.algo3.algocraft.modelo.construciones.Construccion;
+import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException;
+import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException;
+import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException;
 import fiuba.algo3.algocraft.modelo.excepciones.JugadorConNombreDemasiadoCortoException;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 
@@ -84,8 +89,42 @@ public class Jugador {
 		return this.raza;
 	}
 
+	public int dameCantidadGas() {
+		return this.almacenGas.cantidad();
+	}
+	
+	public int dameCantidadMineral() {
+		return this.almacenMineral.cantidad();
+	}
+	
 	public int dameLimiteDePoblacion() {
 		return raza.dameCapacidadDePoblacion(this.dameConstruccionesTerminadas());
 	}
-	
+
+	public void verificarConstruccionCreada(TipoConstruccion tipo) throws ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException {
+		Iterator<Construccion> it = construccionesTerminadas.iterator();
+		boolean construccionEncontrada = false;
+		
+		while (it.hasNext() || construccionEncontrada ) {
+			construccionEncontrada = it.next().verificarTipoConstruccion(tipo);	
+		}
+		
+		if (!construccionEncontrada){
+			switch (tipo){
+			case creadorUnidadesVoladoras: 
+				throw new ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException();
+			case creadorUnidadesBasicas: 
+				if (this.raza instanceof RazaProtoss){
+					throw new ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException();
+				}
+				else{
+					throw new ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException();
+				}
+			default:
+				break;
+			}			
+		}
+		
+	}
+
 }
