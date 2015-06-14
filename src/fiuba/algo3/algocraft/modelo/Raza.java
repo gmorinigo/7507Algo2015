@@ -11,7 +11,7 @@ public abstract class Raza {
 	protected AbstractUnidadFactory unidadFactory;
 	protected AbstractConstruccionFactory construccionFactory;
 	
-	public Raza(AbstractUnidadFactory unidadFactory, AbstractConstruccionFactory construccionFactory) {
+	public Raza(AbstractConstruccionFactory construccionFactory, AbstractUnidadFactory unidadFactory) {
 		this.unidadFactory = unidadFactory;
 		this.construccionFactory = construccionFactory;
 	}

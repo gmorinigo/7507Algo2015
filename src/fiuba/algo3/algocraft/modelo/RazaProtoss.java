@@ -10,7 +10,7 @@ import fiuba.algo3.algocraft.modelo.unidades.UnidadFactoryProtoss;
 public class RazaProtoss extends Raza {
 
 	public RazaProtoss() {
-		super(new UnidadFactoryProtoss(), new ConstruccionFactoryProtoss());
+		super(new ConstruccionFactoryProtoss(), new UnidadFactoryProtoss());
 	}
 
 	@Override
