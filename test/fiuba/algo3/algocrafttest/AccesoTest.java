@@ -7,6 +7,7 @@ import fiuba.algo3.algocraft.modelo.RazaProtoss;
 import fiuba.algo3.algocraft.modelo.construciones.AbstractConstruccionFactory;
 import fiuba.algo3.algocraft.modelo.construciones.Construccion;
 import fiuba.algo3.algocraft.modelo.construciones.AbstractConstruccionFactory.TipoConstruccion;
+import fiuba.algo3.algocraft.modelo.construciones.protoss.Acceso;
 import fiuba.algo3.algocraft.modelo.excepciones.CantidadDeGasInsuficienteException;
 import fiuba.algo3.algocraft.modelo.excepciones.CantidadDeMineralInsuficienteException;
 import fiuba.algo3.algocraft.modelo.excepciones.CeldaOcupadaException;
@@ -22,7 +23,6 @@ import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.turnos.Turno;
 import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
-import fiuba.algo3.algocraft.modelo.unidades.UnidadFactoryProtoss;
 import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory.TipoUnidad;
 import junit.framework.TestCase;
 
@@ -40,7 +40,8 @@ public class AccesoTest extends TestCase{
 		
 		Construccion unaConstruccion = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesBasicas, unaPosicion, unJugador);		
 
-		assertNotNull(unaConstruccion);
+		assertTrue(unaConstruccion instanceof Acceso);
+
 	}
 	
 	public void testCrearUnAccesoAlPasar8TurnosEstaCreada() 
@@ -53,7 +54,7 @@ public class AccesoTest extends TestCase{
 		Posicion unaPosicion = new Posicion(6,4);
 		
 		Construccion unaConstruccion = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesBasicas, unaPosicion, unJugador);
-		
+				
 		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
 		Turno unTurno = new Turno(unJugador,otroJugador);
 		
@@ -106,7 +107,7 @@ public class AccesoTest extends TestCase{
 		assertTrue(unaConstruccion.estaOperativa());
 		
 		
-		AbstractUnidadFactory factoryUnidades = getFactoryUnidades();
+		AbstractUnidadFactory factoryUnidades = unaRaza.getFactoryUnidades();
 		TipoUnidad unTipoUnidad = null;
 		Unidad unaUnidad = (Unidad) factoryUnidades.crearUnidad(unTipoUnidad.terrestre1,unJugador);
 		
@@ -159,9 +160,5 @@ public class AccesoTest extends TestCase{
 		}
 		fail();
 		
-	}
-	public static AbstractUnidadFactory getFactoryUnidades(){
-	    
-		return new UnidadFactoryProtoss();
 	}
 }
