@@ -84,6 +84,14 @@ public class Jugador {
 		return this.raza;
 	}
 
+	public int dameCantidadGas() {
+		return this.almacenGas.cantidad();
+	}
+	
+	public int dameCantidadMineral() {
+		return this.almacenMineral.cantidad();
+	}
+	
 	public int dameLimiteDePoblacion() {
 		return raza.dameCapacidadDePoblacion(this.dameConstruccionesTerminadas());
 	}

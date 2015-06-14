@@ -4,6 +4,8 @@ import java.rmi.NoSuchObjectException;
 
 import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.RazaProtoss;
+import fiuba.algo3.algocraft.modelo.excepciones.CantidadDeGasInsuficienteException;
+import fiuba.algo3.algocraft.modelo.excepciones.CantidadDeMineralInsuficienteException;
 import fiuba.algo3.algocraft.modelo.excepciones.JugadorConNombreDemasiadoCortoException;
 import fiuba.algo3.algocraft.modelo.turnos.Turno;
 import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory;
@@ -14,31 +16,29 @@ import fiuba.algo3.algocraft.modelo.unidades.terran.NaveCiencia;
 
 public class NaveCienciaTest extends TestBase {
 
-	public void testCrearNaveCiencia() throws NoSuchObjectException {
+	public void testCrearNaveCiencia() throws NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException {
 		AbstractUnidadFactory factoryUnidades = new UnidadFactoryTerran();
 		TipoUnidad unTipo = null;
-		Unidad unaUnidad = (Unidad) factoryUnidades
-				.crearUnidad(TipoUnidad.especial1/* ,new DisparoSuperStrategy() */);
+		Unidad unaUnidad = (Unidad) factoryUnidades.crearUnidad(TipoUnidad.especial1,500,500/* ,new DisparoSuperStrategy() */);
 		assertNotNull(unaUnidad);
 	}
 
 	public void testCrearNaveCienciaCreadaCon50DeEnergia()
-			throws NoSuchObjectException {
+			throws NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException {
 		AbstractUnidadFactory factoryUnidades = new UnidadFactoryTerran();
 		TipoUnidad unTipo = null;
-		Unidad unaUnidad = (Unidad) factoryUnidades
-				.crearUnidad(unTipo.especial1/* ,new DisparoSuperStrategy() */);
+		Unidad unaUnidad = (Unidad) factoryUnidades.crearUnidad(unTipo.especial1,500,500/* ,new DisparoSuperStrategy() */);
 		NaveCiencia unaNaveCiencia = (NaveCiencia) unaUnidad;
 		assertEquals(unaNaveCiencia.getEnergia(), 50);
 	}
 
 	public void testCrearNaveCienciaCreadaacumula100DeEnergiaEn5Turnos()
 			throws JugadorConNombreDemasiadoCortoException,
-			NoSuchObjectException {
+			NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException {
 		AbstractUnidadFactory factoryUnidades = new UnidadFactoryTerran();
 		;
 		TipoUnidad unTipo = null;
-		Unidad unaUnidad = (Unidad) factoryUnidades.crearUnidad(unTipo.especial1/* ,new DisparoSuperStrategy() */);
+		Unidad unaUnidad = (Unidad) factoryUnidades.crearUnidad(unTipo.especial1,500,500/* ,new DisparoSuperStrategy() */);
 		System.out.println(unaUnidad.getClass());
 		NaveCiencia unaNaveCiencia = (NaveCiencia) unaUnidad;
 		Jugador unJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");

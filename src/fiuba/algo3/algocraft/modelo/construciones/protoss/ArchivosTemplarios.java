@@ -5,6 +5,8 @@ import java.util.ArrayList;
 
 import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.construciones.Construccion;
+import fiuba.algo3.algocraft.modelo.excepciones.CantidadDeGasInsuficienteException;
+import fiuba.algo3.algocraft.modelo.excepciones.CantidadDeMineralInsuficienteException;
 import fiuba.algo3.algocraft.modelo.excepciones.JugadorConNombreDemasiadoCortoException;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory;
@@ -22,25 +24,14 @@ public class ArchivosTemplarios extends Construccion{
 		this.unidadesFinalizadas = new ArrayList<Unidad>();
 	}
 	
-	public Unidad crearUnidad() throws JugadorConNombreDemasiadoCortoException, NoSuchObjectException {
+	public Unidad crearUnidad(int cantMineral, int cantGas) throws JugadorConNombreDemasiadoCortoException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException {
 		
 		AbstractUnidadFactory factoryUnidades = this.jugador.dameRaza().getFactoryUnidades();
-		Unidad unaUnidad = (Unidad) factoryUnidades.crearUnidad(TipoUnidad.especial1);
+		Unidad unaUnidad = (Unidad) factoryUnidades.crearUnidad(TipoUnidad.especial1, cantMineral, cantGas);
 		
 		return unaUnidad;
 	}
 
-	@Override
-	public int costoGas() {
-		return 200;
-	}
-
-	@Override
-	public int costoMineral() {
-		return 150;
-	}
-
-	@Override
 	protected int turnosNecesariosParaCreacion() {
 		return 9;
 	}
@@ -49,5 +40,17 @@ public class ArchivosTemplarios extends Construccion{
 	protected void vivir() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public int costoGas() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int costoMineral() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }

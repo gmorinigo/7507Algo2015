@@ -2,6 +2,8 @@ package fiuba.algo3.algocrafttest;
 
 import java.rmi.NoSuchObjectException;
 
+import fiuba.algo3.algocraft.modelo.excepciones.CantidadDeGasInsuficienteException;
+import fiuba.algo3.algocraft.modelo.excepciones.CantidadDeMineralInsuficienteException;
 import fiuba.algo3.algocraft.modelo.excepciones.MaximaCapacidadDeTransporteSuperadaException;
 import fiuba.algo3.algocraft.modelo.excepciones.NoSePuedeAgregarALaNaveDeTransporteUnaUnidadVoladora;
 import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory;
@@ -14,21 +16,21 @@ import fiuba.algo3.algocraft.modelo.unidades.terran.Marine;
 
 public class NaveTransporteTest extends TestBase {	
 	
-	public void testCrearUnidadNaveTransporte() throws NoSuchObjectException{	
+	public void testCrearUnidadNaveTransporte() throws NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException{	
 		AbstractUnidadFactory factoryUnidades = getFactoryUnidades();
 		TipoUnidad unTipo = null;
-		Unidad unaUnidad = (Unidad) factoryUnidades.crearUnidad(unTipo.volador2/*,new DisparoSuperStrategy()*/);
+		Unidad unaUnidad = (Unidad) factoryUnidades.crearUnidad(unTipo.volador2,500,500/*,new DisparoSuperStrategy()*/);
 		assertTrue(unaUnidad instanceof NaveTransporte);
 	}
 
 	
-	public void testAgregarUnidadALaNaveDeTransporte() throws MaximaCapacidadDeTransporteSuperadaException, NoSuchObjectException, NoSePuedeAgregarALaNaveDeTransporteUnaUnidadVoladora{	
+	public void testAgregarUnidadALaNaveDeTransporte() throws MaximaCapacidadDeTransporteSuperadaException, NoSuchObjectException, NoSePuedeAgregarALaNaveDeTransporteUnaUnidadVoladora, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException{	
 		AbstractUnidadFactory factoryUnidades = getFactoryUnidades();
 		TipoUnidad unTipo = null;
-		NaveTransporte unaNaveTrasporte = (NaveTransporte) factoryUnidades.crearUnidad(unTipo.volador2/*,new DisparoSuperStrategy()*/);
+		NaveTransporte unaNaveTrasporte = (NaveTransporte) factoryUnidades.crearUnidad(unTipo.volador2,500,500/*,new DisparoSuperStrategy()*/);
 		assertTrue(unaNaveTrasporte instanceof NaveTransporte);
 		
-		Unidad unMarine = (Unidad) factoryUnidades.crearUnidad(unTipo.terrestre1/*,new DisparoSuperStrategy()*/);
+		Unidad unMarine = (Unidad) factoryUnidades.crearUnidad(unTipo.terrestre1,500,500/*,new DisparoSuperStrategy()*/);
 		assertTrue(unMarine instanceof Marine);
 		
 		unaNaveTrasporte.cargarUnidad(unMarine);
@@ -37,17 +39,17 @@ public class NaveTransporteTest extends TestBase {
 	}
 
 	
-	public void testAgregar3UnidadesALaNaveDeTransporte() throws MaximaCapacidadDeTransporteSuperadaException, NoSuchObjectException, NoSePuedeAgregarALaNaveDeTransporteUnaUnidadVoladora{	
+	public void testAgregar3UnidadesALaNaveDeTransporte() throws MaximaCapacidadDeTransporteSuperadaException, NoSuchObjectException, NoSePuedeAgregarALaNaveDeTransporteUnaUnidadVoladora, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException{	
 		AbstractUnidadFactory factoryUnidades = getFactoryUnidades();
 		TipoUnidad unTipo = null;
-		NaveTransporte unaNaveTrasporte = (NaveTransporte) factoryUnidades.crearUnidad(unTipo.volador2/*,new DisparoSuperStrategy()*/);
+		NaveTransporte unaNaveTrasporte = (NaveTransporte) factoryUnidades.crearUnidad(unTipo.volador2,500,500/*,new DisparoSuperStrategy()*/);
 		
-		Unidad unMarine = (Unidad) factoryUnidades.crearUnidad(unTipo.terrestre1/*,new DisparoSuperStrategy()*/);
+		Unidad unMarine = (Unidad) factoryUnidades.crearUnidad(unTipo.terrestre1,500,500/*,new DisparoSuperStrategy()*/);
 
-		Unidad unGoliat = (Unidad) factoryUnidades.crearUnidad(unTipo.terrestre2/*,new DisparoSuperStrategy()*/);
+		Unidad unGoliat = (Unidad) factoryUnidades.crearUnidad(unTipo.terrestre2,500,500/*,new DisparoSuperStrategy()*/);
 		assertTrue(unGoliat instanceof Golliat);
-				
-		Unidad otroGoliat = (Unidad) factoryUnidades.crearUnidad(unTipo.terrestre2/*,new DisparoSuperStrategy()*/);
+		
+		Unidad otroGoliat = (Unidad) factoryUnidades.crearUnidad(unTipo.terrestre2,500,500/*,new DisparoSuperStrategy()*/);
 		
 		unaNaveTrasporte.cargarUnidad(unMarine);
 		unaNaveTrasporte.cargarUnidad(unGoliat);
@@ -56,17 +58,17 @@ public class NaveTransporteTest extends TestBase {
 		assertEquals(unaNaveTrasporte.getCapacidadOcupada(), 5);
 	}
 
-	public void testLlenarNaveTransporteYAgregarOtraUnidadSeEsperaExcepcion() throws NoSuchObjectException, MaximaCapacidadDeTransporteSuperadaException, NoSePuedeAgregarALaNaveDeTransporteUnaUnidadVoladora{	
+	public void testLlenarNaveTransporteYAgregarOtraUnidadSeEsperaExcepcion() throws NoSuchObjectException, MaximaCapacidadDeTransporteSuperadaException, NoSePuedeAgregarALaNaveDeTransporteUnaUnidadVoladora, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException{	
 		AbstractUnidadFactory factoryUnidades = getFactoryUnidades();
 		TipoUnidad unTipo = null;
-		NaveTransporte unaNaveTrasporte = (NaveTransporte) factoryUnidades.crearUnidad(unTipo.volador2/*,new DisparoSuperStrategy()*/);
+		NaveTransporte unaNaveTrasporte = (NaveTransporte) factoryUnidades.crearUnidad(unTipo.volador2,500,500/*,new DisparoSuperStrategy()*/);
 		
-		Unidad unMarine = (Unidad) factoryUnidades.crearUnidad(unTipo.terrestre1/*,new DisparoSuperStrategy()*/);
+		Unidad unMarine = (Unidad) factoryUnidades.crearUnidad(unTipo.terrestre1,500,500/*,new DisparoSuperStrategy()*/);
 
-		Unidad golliat1 = (Unidad) factoryUnidades.crearUnidad(unTipo.terrestre2/*,new DisparoSuperStrategy()*/);
-		Unidad golliat2 = (Unidad) factoryUnidades.crearUnidad(unTipo.terrestre2/*,new DisparoSuperStrategy()*/);
-		Unidad golliat3 = (Unidad) factoryUnidades.crearUnidad(unTipo.terrestre2/*,new DisparoSuperStrategy()*/);
-		Unidad golliat4 = (Unidad) factoryUnidades.crearUnidad(unTipo.terrestre2/*,new DisparoSuperStrategy()*/);
+		Unidad golliat1 = (Unidad) factoryUnidades.crearUnidad(unTipo.terrestre2,500,500/*,new DisparoSuperStrategy()*/);
+		Unidad golliat2 = (Unidad) factoryUnidades.crearUnidad(unTipo.terrestre2,500,500/*,new DisparoSuperStrategy()*/);
+		Unidad golliat3 = (Unidad) factoryUnidades.crearUnidad(unTipo.terrestre2,500,500/*,new DisparoSuperStrategy()*/);
+		Unidad golliat4 = (Unidad) factoryUnidades.crearUnidad(unTipo.terrestre2,500,500/*,new DisparoSuperStrategy()*/);
 		
 
 		unaNaveTrasporte.cargarUnidad(golliat1);
@@ -87,12 +89,12 @@ public class NaveTransporteTest extends TestBase {
 	}
 	
 	
-	public void testAgregarUnaUnidadVoladoraSeEsperaExcepcion() throws NoSuchObjectException, MaximaCapacidadDeTransporteSuperadaException{	
+	public void testAgregarUnaUnidadVoladoraSeEsperaExcepcion() throws NoSuchObjectException, MaximaCapacidadDeTransporteSuperadaException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException{	
 		AbstractUnidadFactory factoryUnidades = getFactoryUnidades();
 		TipoUnidad unTipo = null;
-		NaveTransporte unaNaveTrasporte = (NaveTransporte) factoryUnidades.crearUnidad(unTipo.volador2/*,new DisparoSuperStrategy()*/);
+		NaveTransporte unaNaveTrasporte = (NaveTransporte) factoryUnidades.crearUnidad(unTipo.volador2,500,500/*,new DisparoSuperStrategy()*/);
 		
-		Unidad unEspectro = (Unidad) factoryUnidades.crearUnidad(unTipo.volador1/*,new DisparoSuperStrategy()*/);
+		Unidad unEspectro = (Unidad) factoryUnidades.crearUnidad(unTipo.volador1,500,500/*,new DisparoSuperStrategy()*/);
 
 		try{
 			unaNaveTrasporte.cargarUnidad(unEspectro);

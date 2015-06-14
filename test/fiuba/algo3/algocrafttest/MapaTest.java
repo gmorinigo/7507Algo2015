@@ -8,6 +8,8 @@ import fiuba.algo3.algocraft.modelo.RazaProtoss;
 import fiuba.algo3.algocraft.modelo.construciones.terran.Barraca;
 import fiuba.algo3.algocraft.modelo.construciones.terran.CentroMineral;
 import fiuba.algo3.algocraft.modelo.construciones.terran.Refineria;
+import fiuba.algo3.algocraft.modelo.excepciones.CantidadDeGasInsuficienteException;
+import fiuba.algo3.algocraft.modelo.excepciones.CantidadDeMineralInsuficienteException;
 import fiuba.algo3.algocraft.modelo.excepciones.CeldaOcupadaException;
 import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException;
 import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException;
@@ -169,7 +171,7 @@ public class MapaTest extends TestBase {
 		assertTrue(celdas.get(3).obtenerPosicion().compararPosicion(posicion33));
 	}
 	
-	public void testAgregarUnaTropaAlMapa() throws JugadorConNombreDemasiadoCortoException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException, CeldaOcupadaException, NoReuneLosRequisitosException, NoSuchObjectException, ConstruccionNoPermitidaPorSalirseDelMapaException{
+	public void testAgregarUnaTropaAlMapa() throws JugadorConNombreDemasiadoCortoException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException, CeldaOcupadaException, NoReuneLosRequisitosException, NoSuchObjectException, ConstruccionNoPermitidaPorSalirseDelMapaException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException{
 		Posicion posicion1515 = new Posicion(15,15);
 		Posicion posicion1715 = new Posicion(17,15);
 		Mapa unMapa = Mapa.getInstance();
@@ -198,7 +200,7 @@ public class MapaTest extends TestBase {
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		
-		Unidad marine = unaBarraca.crearUnidad();
+		Unidad marine = unaBarraca.crearUnidad(unJugador.dameCantidadMineral(),unJugador.dameCantidadGas());
 		unTurno.addObserver(marine);
 		
 		unTurno.avanzarTurno();
@@ -254,7 +256,7 @@ public class MapaTest extends TestBase {
 		fail();
 	}
 	
-	public void testAgregarUnaNaveDeTransporteAlMapaCargarleUnaUnidadPasarPorElEspacioYDejarlaDelOtroLado() throws JugadorConNombreDemasiadoCortoException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException, CeldaOcupadaException, NoReuneLosRequisitosException, NoSuchObjectException, ConstruccionNoPermitidaPorSalirseDelMapaException{
+	public void testAgregarUnaNaveDeTransporteAlMapaCargarleUnaUnidadPasarPorElEspacioYDejarlaDelOtroLado() throws JugadorConNombreDemasiadoCortoException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException, CeldaOcupadaException, NoReuneLosRequisitosException, NoSuchObjectException, ConstruccionNoPermitidaPorSalirseDelMapaException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException{
 		// TODO: Agregar la funcionalidad de este test
 		Posicion posicion1515 = new Posicion(15,15);
 		Posicion posicion1715 = new Posicion(17,15);
@@ -284,7 +286,7 @@ public class MapaTest extends TestBase {
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		
-		Unidad marine = unaBarraca.crearUnidad();
+		Unidad marine = unaBarraca.crearUnidad(unJugador.dameCantidadMineral(),unJugador.dameCantidadGas());
 		unTurno.addObserver(marine);
 		
 		unTurno.avanzarTurno();
