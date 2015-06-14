@@ -4,6 +4,7 @@ import fiuba.algo3.algocraft.modelo.excepciones.NoSePuedeRealizarAccionException
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.turnos.Turno;
 import fiuba.algo3.algocraft.modelo.turnos.TurnoObserver;
+import fiuba.algo3.algocraft.modelo.unidades.movimientos.Movimiento;
 
 abstract public class Unidad implements TurnoObserver{
 	
@@ -11,6 +12,7 @@ abstract public class Unidad implements TurnoObserver{
 	protected boolean accioinRealizada;
 	protected UnidadEstado estado;
 	protected int tamanioTransporte;
+	protected Movimiento movimiento;
 
 	
 	public int getTamanioTransporte(){
@@ -39,6 +41,10 @@ abstract public class Unidad implements TurnoObserver{
 	
 	public boolean estaOperativa() {
 		return this.estado.estaOperativa();
+	}
+	
+	public Movimiento dameMovimiento() {
+		return this.movimiento;
 	}
 	
 	/*

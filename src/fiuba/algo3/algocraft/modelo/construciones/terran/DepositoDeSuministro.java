@@ -2,12 +2,13 @@ package fiuba.algo3.algocraft.modelo.construciones.terran;
 
 import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.construciones.Construccion;
+import fiuba.algo3.algocraft.modelo.construciones.AbstractConstruccionFactory.TipoConstruccion;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 
 public class DepositoDeSuministro extends Construccion {
 
-	public DepositoDeSuministro(Posicion unaPosicion, Jugador jugador) {
-		super(unaPosicion, jugador);
+	public DepositoDeSuministro(Posicion unaPosicion, Jugador jugador, TipoConstruccion unTipo) {
+		super(unaPosicion, jugador, unTipo);
 	}
 
 
