@@ -1,7 +1,5 @@
 package fiuba.algo3.algocraft.modelo.recursos;
 
-import java.util.ArrayList;
-
 import fiuba.algo3.algocraft.modelo.mapa.Celda;
 import fiuba.algo3.algocraft.modelo.mapa.CeldaTerrestre;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
