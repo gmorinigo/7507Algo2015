@@ -7,7 +7,8 @@ public class CeldaTerrestre extends Celda {
 		super(fila, columna);
 	}
 
-	public boolean puedeMoverse(Unidad unaUnidad) {
-		return true;
+	@Override
+	public void aceptarUnidad(Unidad unidad) {
+		unidad.dameMovimiento().mover(this);
 	}
 }

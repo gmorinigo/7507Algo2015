@@ -3,7 +3,7 @@ package fiuba.algo3.algocraft.modelo.mapa;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 
 
-public abstract class Celda {
+public abstract class Celda implements ICeldaVisitable{
 	private Posicion posicion;
 	private boolean estaOcupada;
 	@SuppressWarnings("unused")
@@ -40,8 +40,6 @@ public abstract class Celda {
 		return false;
 	}
 
-	public abstract boolean puedeMoverse(Unidad unaUnidad);
-	
 	public boolean tieneMineral(){
 		return false;
 	}
