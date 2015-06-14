@@ -54,4 +54,10 @@ public abstract class Celda implements ICeldaVisitable{
 		this.unidad = null;
 		this.desocuparCelda();
 	}
+
+
+	public void puedeMoverse(Unidad unaUnidad) {
+		// TODO Auto-generated method stub
+		
+	}
 }

@@ -1,4 +1,4 @@
-package fiuba.algo3.algocrafttest;
+package fiuba.algo3.algocraftTestObligatorios;
 
 import java.rmi.NoSuchObjectException;
 
@@ -14,6 +14,7 @@ import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory.TipoUnidad;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 import fiuba.algo3.algocraft.modelo.unidades.UnidadFactoryTerran;
 import fiuba.algo3.algocraft.modelo.unidades.terran.NaveCiencia;
+import fiuba.algo3.algocrafttest.TestBase;
 
 @SuppressWarnings("static-access")
 public class NaveCienciaTest extends TestBase {
