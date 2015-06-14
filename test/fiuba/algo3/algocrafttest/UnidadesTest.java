@@ -11,7 +11,7 @@ import fiuba.algo3.algocraft.modelo.excepciones.NoHaySuficientesRecursos;
 import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory;
 import fiuba.algo3.algocraft.modelo.unidades.NaveTransporte;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
-import fiuba.algo3.algocraft.modelo.unidades.UnidadFactoryTerran;
+import fiuba.algo3.algocraft.modelo.unidades.UnidadFactoryProtoss;
 import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory.TipoUnidad;
 import fiuba.algo3.algocraft.modelo.unidades.terran.Espectro;
 import fiuba.algo3.algocraft.modelo.unidades.terran.Golliat;
@@ -76,7 +76,7 @@ public class UnidadesTest extends TestBase{
 	
 	public static AbstractUnidadFactory getFactoryUnidades(){
     
-		return new UnidadFactoryTerran();
+		return new UnidadFactoryProtoss();
 	} 
 
 }
