@@ -1,7 +1,9 @@
 package fiuba.algo3.algocraft.modelo;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
+import fiuba.algo3.algocraft.modelo.construciones.AbstractConstruccionFactory.TipoConstruccion;
 import fiuba.algo3.algocraft.modelo.construciones.Construccion;
 import fiuba.algo3.algocraft.modelo.excepciones.JugadorConNombreDemasiadoCortoException;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
@@ -95,5 +97,19 @@ public class Jugador {
 	public int dameLimiteDePoblacion() {
 		return raza.dameCapacidadDePoblacion(this.dameConstruccionesTerminadas());
 	}
-	
+/*
+	public void verificarConstruccionCreada(TipoConstruccion tipo) {
+		Iterator<Construccion> it = construccionesTerminadas.iterator();
+		boolean construccionEncontrada = false;
+		
+		while (it.hasNext() || construccionEncontrada ) {
+			construccionEncontrada = it.next().verificarTipoConstruccion(tipo);	
+		}
+		
+		if (!construccionEncontrada){
+			
+		}
+		
+	}
+*/
 }
