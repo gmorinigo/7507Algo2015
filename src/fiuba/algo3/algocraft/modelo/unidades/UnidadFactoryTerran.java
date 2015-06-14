@@ -2,8 +2,10 @@ package fiuba.algo3.algocraft.modelo.unidades;
 
 import java.rmi.NoSuchObjectException;
 
+import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.excepciones.CantidadDeGasInsuficienteException;
 import fiuba.algo3.algocraft.modelo.excepciones.CantidadDeMineralInsuficienteException;
+import fiuba.algo3.algocraft.modelo.excepciones.NoHaySuficientesRecursos;
 import fiuba.algo3.algocraft.modelo.unidades.terran.Espectro;
 import fiuba.algo3.algocraft.modelo.unidades.terran.Golliat;
 import fiuba.algo3.algocraft.modelo.unidades.terran.Marine;
@@ -12,8 +14,11 @@ import fiuba.algo3.algocraft.modelo.unidades.terran.NaveTransporteTerran;
 
 public class UnidadFactoryTerran extends AbstractUnidadFactory {
 	
-	public Unidad crearUnidad(TipoUnidad tipo, int cantMineral, int cantGas) throws NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException{
-		this.verificarRecursosParaPoderCrear(tipo, cantMineral, cantGas);
+	public Unidad crearUnidad(TipoUnidad tipo, Jugador unJugador) throws NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, NoHaySuficientesRecursos{
+		this.verificarRecursosParaPoderCrear(tipo, unJugador);
+
+		unJugador.dameAlmacenMineral().consumirRecurso(this.dameCostoMineral(tipo));
+		unJugador.dameAlmacenGas().consumirRecurso(this.dameCostoGas(tipo));
 		
 		switch(tipo){
 		case terrestre1: return new Marine();
@@ -23,6 +28,7 @@ public class UnidadFactoryTerran extends AbstractUnidadFactory {
 		case especial1:	return new NaveCiencia();
 		default:throw new NoSuchObjectException("Objeto Sin Tipo");
 		}
+		
 	}
 
 	protected int dameCostoMineral(TipoUnidad tipo) {

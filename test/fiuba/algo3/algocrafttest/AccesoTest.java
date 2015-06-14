@@ -13,6 +13,7 @@ import fiuba.algo3.algocraft.modelo.excepciones.CeldaOcupadaException;
 import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException;
 import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException;
 import fiuba.algo3.algocraft.modelo.excepciones.JugadorConNombreDemasiadoCortoException;
+import fiuba.algo3.algocraft.modelo.excepciones.NoHaySuficientesRecursos;
 import fiuba.algo3.algocraft.modelo.excepciones.NoReuneLosRequisitosException;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.turnos.Turno;
@@ -52,7 +53,7 @@ public class AccesoTest extends TestCase{
 		assertTrue(unAcceso.estaOperativa());
 	}
 	
-	public void testCrearMarineAlPasar3TurnosEstaCreadaEstaFinalizada() throws JugadorConNombreDemasiadoCortoException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException {
+	public void testCrearMarineAlPasar3TurnosEstaCreadaEstaFinalizada() throws JugadorConNombreDemasiadoCortoException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, NoHaySuficientesRecursos {
 		Posicion posicion123 = new Posicion(12,3);
 		Jugador unJugador = new Jugador("otroNombre",new RazaProtoss(),"Rojo");
 		Acceso unAcceso = new Acceso(posicion123, unJugador);
@@ -77,7 +78,7 @@ public class AccesoTest extends TestCase{
 		unTurno.avanzarTurno();
 		assertTrue(unAcceso.estaOperativa());
 		
-		Unidad unidad = unAcceso.crearUnidad(unJugador.dameCantidadMineral(),unJugador.dameCantidadGas());
+		Unidad unidad = unAcceso.crearUnidad(unJugador);
 		unTurno.addObserver(unidad);
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();

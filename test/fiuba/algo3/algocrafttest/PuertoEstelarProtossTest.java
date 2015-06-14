@@ -15,7 +15,7 @@ import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.turnos.Turno;
 import junit.framework.TestCase;
 
-public class PuertoEstelarPTest extends TestCase{
+public class PuertoEstelarProtossTest extends TestCase{
 
 	
 	public void testCrearUnPuertoEstelar() throws JugadorConNombreDemasiadoCortoException{

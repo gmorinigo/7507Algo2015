@@ -18,7 +18,7 @@ import fiuba.algo3.algocraft.modelo.turnos.Turno;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 import junit.framework.TestCase;
 
-public class PuertoEstelarTest extends TestCase {
+public class PuertoEstelarTerranTest extends TestCase {
 	
 	public void testCrearUnPuertoEstelar() throws JugadorConNombreDemasiadoCortoException{
 		Posicion posicion45 = new Posicion(4,5);
