@@ -5,6 +5,7 @@ import java.rmi.NoSuchObjectException;
 import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.construciones.Construccion;
 import fiuba.algo3.algocraft.modelo.construciones.ConstruccionEstadoTrabajando;
+import fiuba.algo3.algocraft.modelo.construciones.AbstractConstruccionFactory.TipoConstruccion;
 import fiuba.algo3.algocraft.modelo.excepciones.CantidadDeGasInsuficienteException;
 import fiuba.algo3.algocraft.modelo.excepciones.CantidadDeMineralInsuficienteException;
 import fiuba.algo3.algocraft.modelo.excepciones.JugadorConNombreDemasiadoCortoException;
@@ -16,8 +17,8 @@ import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory.TipoUnidad;
 
 public class Acceso extends Construccion{
 	
-	public Acceso(Posicion unaPosicion, Jugador jugador){
-		super(unaPosicion, jugador);
+	public Acceso(Posicion unaPosicion, Jugador jugador, TipoConstruccion unTipo){
+		super(unaPosicion, jugador, unTipo);
 	}
 	
 	public Unidad crearUnidad(Jugador unJugador) throws JugadorConNombreDemasiadoCortoException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, NoHaySuficientesRecursos {

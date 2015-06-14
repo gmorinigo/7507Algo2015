@@ -2,12 +2,13 @@ package fiuba.algo3.algocraft.modelo.construciones.protoss;
 
 import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.construciones.Construccion;
+import fiuba.algo3.algocraft.modelo.construciones.AbstractConstruccionFactory.TipoConstruccion;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 
 public class Pilon extends Construccion{
 	
-	public Pilon(Posicion unaPosicion, Jugador jugador) {
-		super(unaPosicion, jugador);
+	public Pilon(Posicion unaPosicion, Jugador jugador, TipoConstruccion unTipo) {
+		super(unaPosicion, jugador, unTipo);
 	}
 
 

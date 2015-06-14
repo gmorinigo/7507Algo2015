@@ -11,22 +11,25 @@ import fiuba.algo3.algocraft.modelo.construciones.terran.PuertoEstelarTerran;
 import fiuba.algo3.algocraft.modelo.construciones.terran.Refineria;
 import fiuba.algo3.algocraft.modelo.excepciones.CantidadDeGasInsuficienteException;
 import fiuba.algo3.algocraft.modelo.excepciones.CantidadDeMineralInsuficienteException;
+import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException;
+import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException;
+import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 
 public class ConstruccionFactoryTerran extends AbstractConstruccionFactory {
-	public Construccion crearConstruccion(TipoConstruccion tipo, Posicion unaPosicion, Jugador unJugador) throws NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException{
+	public Construccion crearConstruccion(TipoConstruccion tipo, Posicion unaPosicion, Jugador unJugador) throws NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException{
 		this.verificarRecursosParaPoderCrear(tipo, unJugador);
 		
 		this.verificarConstruccionesParaPoderCrear(tipo, unJugador);
 		
 		
 		switch(tipo){
-		case creadorUnidadesBasicas: return new Barraca(unaPosicion, unJugador);
-		case creadorUnidadesNivel2: return new Fabrica(unaPosicion, unJugador);
-		case creadorUnidadesVoladoras: return new PuertoEstelarTerran(unaPosicion, unJugador); 
-		case expansorPoblacion: return new DepositoDeSuministro(unaPosicion, unJugador);
-		case extractorGas: return new Refineria(unaPosicion, unJugador);
-		case extractorMineral: return new CentroMineral(unaPosicion, unJugador);
+		case creadorUnidadesBasicas: return new Barraca(unaPosicion, unJugador, tipo);
+		case creadorUnidadesNivel2: return new Fabrica(unaPosicion, unJugador, tipo);
+		case creadorUnidadesVoladoras: return new PuertoEstelarTerran(unaPosicion, unJugador, tipo); 
+		case expansorPoblacion: return new DepositoDeSuministro(unaPosicion, unJugador, tipo);
+		case extractorGas: return new Refineria(unaPosicion, unJugador, tipo);
+		case extractorMineral: return new CentroMineral(unaPosicion, unJugador, tipo);
 		default: throw new NoSuchObjectException("Objeto Sin Tipo");
 		
 		}

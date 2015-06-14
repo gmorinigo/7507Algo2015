@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.construciones.Construccion;
+import fiuba.algo3.algocraft.modelo.construciones.AbstractConstruccionFactory.TipoConstruccion;
 import fiuba.algo3.algocraft.modelo.excepciones.CantidadDeGasInsuficienteException;
 import fiuba.algo3.algocraft.modelo.excepciones.CantidadDeMineralInsuficienteException;
 import fiuba.algo3.algocraft.modelo.excepciones.JugadorConNombreDemasiadoCortoException;
@@ -18,8 +19,8 @@ public class PuertoEstelarProtoss extends Construccion{
 	protected ArrayList<Unidad> unidadesEnProceso;
 	protected ArrayList<Unidad> unidadesFinalizadas;
 	
-	public PuertoEstelarProtoss(Posicion unaPosicion, Jugador jugador) {
-		super(unaPosicion, jugador);
+	public PuertoEstelarProtoss(Posicion unaPosicion, Jugador jugador, TipoConstruccion unTipo) {
+		super(unaPosicion, jugador, unTipo);
 		this.unidadesEnProceso = new ArrayList<Unidad>();
 		this.unidadesFinalizadas = new ArrayList<Unidad>();
 	}

@@ -5,11 +5,14 @@ import java.rmi.NoSuchObjectException;
 import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.excepciones.CantidadDeGasInsuficienteException;
 import fiuba.algo3.algocraft.modelo.excepciones.CantidadDeMineralInsuficienteException;
+import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException;
+import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException;
+import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 
 abstract public class AbstractConstruccionFactory {
 	public enum TipoConstruccion{extractorMineral,extractorGas,expansorPoblacion,creadorUnidadesBasicas,creadorUnidadesNivel2,creadorUnidadesVoladoras}
-	protected abstract Construccion crearConstruccion(TipoConstruccion tipo, Posicion unaPosicion, Jugador unJugador) throws NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException;
+	protected abstract Construccion crearConstruccion(TipoConstruccion tipo, Posicion unaPosicion, Jugador unJugador) throws NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException;
 
 	protected void verificarRecursosParaPoderCrear(TipoConstruccion tipo, Jugador unJugador) 
 	throws CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException {
@@ -26,13 +29,11 @@ abstract public class AbstractConstruccionFactory {
 	protected abstract int dameCostoMineral(TipoConstruccion tipo);
 	protected abstract int dameCostoGas(TipoConstruccion tipo);
 	
-	protected void verificarConstruccionesParaPoderCrear(TipoConstruccion tipo, Jugador unJugador) {
+	protected void verificarConstruccionesParaPoderCrear(TipoConstruccion tipo, Jugador unJugador) throws ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException {
 		TipoConstruccion construccionesRequeridas = dameConstruccionRequeridasParaConstruir(tipo); 
-		// TODO AGREGAR LA VALIDACION DE CONSTRUCCIONES REQUERIDAS
-		/*		if ( construccionesRequeridas != null ){
+		if ( construccionesRequeridas != null ){
 			unJugador.verificarConstruccionCreada(tipo);
 		}
-*/
 	}
 	
 	@SuppressWarnings("static-access")
