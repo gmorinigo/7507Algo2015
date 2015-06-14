@@ -150,8 +150,8 @@ public class AccesoTest extends TestCase{
 		AbstractConstruccionFactory factoryConstrucciones = unaRaza.getFactoryConstrucciones();
 		Posicion unaPosicion = new Posicion(12,3);
 		
-
 		unJugador.dameAlmacenMineral().consumirRecurso(500);
+		
 		try{
 			Construccion unaConstruccion = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesBasicas, unaPosicion, unJugador);
 		}

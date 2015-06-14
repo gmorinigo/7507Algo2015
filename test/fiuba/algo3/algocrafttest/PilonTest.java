@@ -1,86 +1,121 @@
 package fiuba.algo3.algocrafttest;
 
+import java.rmi.NoSuchObjectException;
+
 import junit.framework.TestCase;
-import fiuba.algo3.algocraft.modelo.Almacen;
 import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.RazaProtoss;
-import fiuba.algo3.algocraft.modelo.RazaTerran;
+import fiuba.algo3.algocraft.modelo.construciones.AbstractConstruccionFactory;
 import fiuba.algo3.algocraft.modelo.construciones.Construccion;
+import fiuba.algo3.algocraft.modelo.construciones.AbstractConstruccionFactory.TipoConstruccion;
 import fiuba.algo3.algocraft.modelo.construciones.protoss.Pilon;
+import fiuba.algo3.algocraft.modelo.excepciones.CantidadDeGasInsuficienteException;
+import fiuba.algo3.algocraft.modelo.excepciones.CantidadDeMineralInsuficienteException;
 import fiuba.algo3.algocraft.modelo.excepciones.CeldaOcupadaException;
 import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException;
 import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException;
+import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException;
+import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException;
+import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException;
 import fiuba.algo3.algocraft.modelo.excepciones.JugadorConNombreDemasiadoCortoException;
+import fiuba.algo3.algocraft.modelo.excepciones.NoHaySuficientesRecursos;
 import fiuba.algo3.algocraft.modelo.excepciones.NoReuneLosRequisitosException;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.turnos.Turno;
 
+@SuppressWarnings("static-access")
 public class PilonTest extends TestCase{
-	public void testCrearUnDepositoDeSuministro() throws JugadorConNombreDemasiadoCortoException{
-		Posicion posicion64 = new Posicion(6,4);
-		Construccion unPilon = new Pilon(posicion64, new Jugador("unNombre",new RazaTerran(),"Azul"));
-		assertNotNull(unPilon);
+	public void testCrearUnDepositoDeSuministro() throws JugadorConNombreDemasiadoCortoException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException{
+		RazaProtoss unaRaza = new RazaProtoss(); 
+		TipoConstruccion unTipo = null;
+		Jugador unJugador = new Jugador("unNombre",unaRaza,"Azul");
+		
+		AbstractConstruccionFactory factoryConstrucciones = unaRaza.getFactoryConstrucciones();
+		Posicion unaPosicion = new Posicion(6,4);
+		
+		
+		Construccion unaConstruccion = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.expansorPoblacion, unaPosicion, unJugador);		
+
+		assertTrue(unaConstruccion instanceof Pilon);
 	}
 	
 	public void testCrearUnPilonAlPasar5TurnosEstaCreada() 
-			throws CeldaOcupadaException, NoReuneLosRequisitosException, JugadorConNombreDemasiadoCortoException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException{
-				Posicion posicion124 = new Posicion(12,4);
-				Jugador unJugador = new Jugador("otroNombre",new RazaProtoss(),"Rojo");
-				Construccion unPilon = new Pilon(posicion124, unJugador );
-				Jugador otroJugador = new Jugador("Nombre2",new RazaProtoss(),"Rojo");
-				Turno unTurno = new Turno(unJugador,otroJugador);
-				
-				//unPilon.crearEstructura(unTurno);
-				assertFalse(unPilon.estaTerminada());
-				unTurno.avanzarTurno();
-				unTurno.avanzarTurno();
-				unTurno.avanzarTurno();
-				assertFalse(unPilon.estaTerminada());
-				unTurno.avanzarTurno();
-				unTurno.avanzarTurno();
-				assertTrue(unPilon.estaTerminada());
-			}
-	
-	public void testNoSePuedeCrearSinSuficientesRecursos() throws CeldaOcupadaException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException, JugadorConNombreDemasiadoCortoException {
-		Posicion posicion123 = new Posicion(12,3);
-		Almacen gas = new Almacen(0);
-		Almacen mineral = new Almacen(0);
+	throws CeldaOcupadaException, NoReuneLosRequisitosException, JugadorConNombreDemasiadoCortoException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException{
+		RazaProtoss unaRaza = new RazaProtoss(); 
+		TipoConstruccion unTipo = null;
+		Jugador unJugador = new Jugador("unNombre",unaRaza,"Azul");
 		
-		Jugador jugador = new Jugador(new RazaProtoss(),mineral, gas);
-		Pilon unPilon = new Pilon(posicion123, jugador);
-		Jugador otroJugador = new Jugador("Nombre2",new RazaProtoss(),"Rojo");
-		Turno unTurno = new Turno(jugador,otroJugador);
+		AbstractConstruccionFactory factoryConstrucciones = unaRaza.getFactoryConstrucciones();
+		Posicion unaPosicion = new Posicion(6,4);
 		
-		try {
-			unPilon.crearEstructura(unTurno);
-			fail("Deberia lanzar Exception");
-		} catch (NoReuneLosRequisitosException e) {
-			
-		}
+		Construccion unaConstruccion = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.expansorPoblacion, unaPosicion, unJugador);
+		
+		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
+		Turno unTurno = new Turno(unJugador,otroJugador);
+		
+		unJugador.agregarConstruccion(unaConstruccion);
+		unTurno.addObserver(unaConstruccion);
+		
+		
+		assertFalse(unaConstruccion.estaOperativa());
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		assertFalse(unaConstruccion.estaOperativa());
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		assertTrue(unaConstruccion.estaOperativa());
 	}
 	
-	public void testAlCrear2PilonElLimiteDePoblacionAumenta10() throws CeldaOcupadaException, NoReuneLosRequisitosException, JugadorConNombreDemasiadoCortoException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException{
-			Posicion posicion124 = new Posicion(12,4);
-			Jugador unJugador = new Jugador("otroNombre",new RazaProtoss(),"Rojo");
-			Pilon unPilon = new Pilon(posicion124, unJugador );
-			Jugador otroJugador = new Jugador("Nombre2",new RazaProtoss(),"Rojo");
-			Turno unTurno = new Turno(unJugador,otroJugador);
-			
-			unPilon.crearEstructura(unTurno);
-			unTurno.avanzarTurno();
-			unTurno.avanzarTurno();
-			unTurno.avanzarTurno();
-			unTurno.avanzarTurno();
-			unTurno.avanzarTurno();
-			unTurno.avanzarTurno();			
+	@SuppressWarnings("unused")
+	public void testCantidadDeMineralInsuficiente() throws NoSuchObjectException, CantidadDeGasInsuficienteException, JugadorConNombreDemasiadoCortoException, NoHaySuficientesRecursos, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException{	
+		RazaProtoss unaRaza = new RazaProtoss(); 
+		TipoConstruccion unTipo = null;
+		Jugador unJugador = new Jugador("unNombre",unaRaza,"Azul");
+		
+		AbstractConstruccionFactory factoryConstrucciones = unaRaza.getFactoryConstrucciones();
+		Posicion unaPosicion = new Posicion(12,3);
+		
 
-			unPilon.crearEstructura(unTurno);
-			unTurno.avanzarTurno();
-			unTurno.avanzarTurno();
-			unTurno.avanzarTurno();
-			unTurno.avanzarTurno();
-			unTurno.avanzarTurno();
-			unTurno.avanzarTurno();
-			assertTrue(unJugador.dameLimiteDePoblacion() == 10);
+		unJugador.dameAlmacenMineral().consumirRecurso(500);
+		
+		try{
+			Construccion unaConstruccion = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.expansorPoblacion, unaPosicion, unJugador);
+		}
+		catch (CantidadDeMineralInsuficienteException e){
+			return;
+		}
+		fail();
+		
+	}
+	
+	public void testAlCrear2PilonElLimiteDePoblacionAumenta10() throws CeldaOcupadaException, NoReuneLosRequisitosException, JugadorConNombreDemasiadoCortoException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException{
+		RazaProtoss unaRaza = new RazaProtoss(); 
+		TipoConstruccion unTipo = null;
+		Jugador unJugador = new Jugador("unNombre",unaRaza,"Azul");
+		
+		AbstractConstruccionFactory factoryConstrucciones = unaRaza.getFactoryConstrucciones();
+		Posicion unaPosicion = new Posicion(6,4);
+		
+		Construccion unaConstruccion = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.expansorPoblacion, unaPosicion, unJugador);
+		Construccion otraConstruccion = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.expansorPoblacion, unaPosicion, unJugador);
+		
+		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
+		Turno unTurno = new Turno(unJugador,otroJugador);
+			
+
+		unJugador.agregarConstruccion(unaConstruccion);
+		unTurno.addObserver(unaConstruccion);
+		unJugador.agregarConstruccion(otraConstruccion);
+		unTurno.addObserver(otraConstruccion);
+		
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		
+		assertTrue(unJugador.dameLimiteDePoblacion() == 10);
 	}
 }
