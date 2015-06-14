@@ -1,4 +1,4 @@
-package fiuba.algo3.algocraftTestObligatorios;
+package fiuba.algo3.algocraftTestObligatoriosMapaYCreacionDeUnidades;
 
 import fiuba.algo3.algocraft.modelo.AlgoCraft;
 import fiuba.algo3.algocraft.modelo.Raza;

@@ -1,7 +1,8 @@
-package fiuba.algo3.algocrafttest;
+package fiuba.algo3.algocraftTestObligatoriosPruebasEdificiosDeRecoleccion;
 
 import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.RazaProtoss;
+import fiuba.algo3.algocraft.modelo.construciones.AbstractConstruccionFactory.TipoConstruccion;
 import fiuba.algo3.algocraft.modelo.construciones.Construccion;
 import fiuba.algo3.algocraft.modelo.construciones.protoss.Asimilador;
 import fiuba.algo3.algocraft.modelo.excepciones.CeldaOcupadaException;
@@ -11,19 +12,20 @@ import fiuba.algo3.algocraft.modelo.excepciones.JugadorConNombreDemasiadoCortoEx
 import fiuba.algo3.algocraft.modelo.excepciones.NoReuneLosRequisitosException;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.turnos.Turno;
+import fiuba.algo3.algocrafttest.TestBase;
 
 public class AsimiladorTest extends TestBase{
 	
 	public void testCrearUnAsimilador() throws JugadorConNombreDemasiadoCortoException{
 		Posicion posicion64 = new Posicion(6,4);
-		Construccion asimilador = new Asimilador(posicion64, new Jugador("otroNombre",new RazaProtoss(),"Rojo"));
+		Construccion asimilador = new Asimilador(posicion64, new Jugador("otroNombre",new RazaProtoss(),"Rojo"),TipoConstruccion.extractorGas);
 		assertNotNull(asimilador);
 	}
 	
 	public void testCrearUnAsimiladorALos6TurnosEstaCreada() throws CeldaOcupadaException, NoReuneLosRequisitosException, JugadorConNombreDemasiadoCortoException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException{
 		Posicion posicion99 = new Posicion(9,9);
 		Jugador unJugador = new Jugador("otroNombre",new RazaProtoss(),"Rojo");
-		Construccion asimilador = new Asimilador(posicion99,unJugador );
+		Construccion asimilador = new Asimilador(posicion99,unJugador,TipoConstruccion.extractorGas );
 		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
 		Turno unTurno = new Turno(unJugador,otroJugador);
 		
@@ -44,7 +46,7 @@ public class AsimiladorTest extends TestBase{
 	public void testComanzarARecolectar() throws CeldaOcupadaException, NoReuneLosRequisitosException, JugadorConNombreDemasiadoCortoException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException {
 		Posicion posicion99 = new Posicion(9,9);
 		Jugador unJugador = new Jugador("otroNombre",new RazaProtoss(),"Rojo");
-		Asimilador asimilador = new Asimilador(posicion99, unJugador);
+		Asimilador asimilador = new Asimilador(posicion99, unJugador,TipoConstruccion.extractorGas);
 		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
 		Turno unTurno = new Turno(unJugador,otroJugador);
 		

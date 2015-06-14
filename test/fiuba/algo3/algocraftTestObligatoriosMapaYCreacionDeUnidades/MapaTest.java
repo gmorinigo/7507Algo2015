@@ -1,4 +1,4 @@
-package fiuba.algo3.algocraftTestObligatorios;
+package fiuba.algo3.algocraftTestObligatoriosMapaYCreacionDeUnidades;
 
 import java.rmi.NoSuchObjectException;
 import java.util.ArrayList;
