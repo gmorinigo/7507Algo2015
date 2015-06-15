@@ -7,10 +7,10 @@ import fiuba.algo3.algocraft.modelo.mapa.CeldaTerrestre;
 
 public class MovimientoTerrestre extends Movimiento {
 
-	public MovimientoTerrestre(int cantidadPasosPorTurno) {
-		super(cantidadPasosPorTurno);
+	public MovimientoTerrestre(/*int cantidadPasosPorTurno*/) {
+		//super(cantidadPasosPorTurno);
 	}
-
+/*
 	@Override
 	public void mover(CeldaAcuatica celda) {
 		// TODO Auto-generated method stub
@@ -34,5 +34,5 @@ public class MovimientoTerrestre extends Movimiento {
 		// TODO Auto-generated method stub
 		
 	}
-
+*/
 }

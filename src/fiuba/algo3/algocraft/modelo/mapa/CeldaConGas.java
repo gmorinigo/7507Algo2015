@@ -11,8 +11,8 @@ public class CeldaConGas extends Celda {
 		return true;
 	}
 
-	@Override
+	/*@Override
 	public void aceptarUnidad(Unidad unidad) {
 		unidad.dameMovimiento().mover(this);
-	}
+	}*/
 }
