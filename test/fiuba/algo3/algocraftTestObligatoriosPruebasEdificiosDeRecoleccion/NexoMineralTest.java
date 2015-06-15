@@ -31,7 +31,6 @@ public class NexoMineralTest extends TestCase{
 		Jugador otroJugador = new Jugador("Nombre2",new RazaProtoss(),"Rojo");
 		Turno unTurno = new Turno(unJugador,otroJugador);
 		
-		unJugador.agregarConstruccion(unNexo);
 		unTurno.addObserver(unNexo);
 		
 		assertFalse(unNexo.estaTerminada());
@@ -50,7 +49,6 @@ public class NexoMineralTest extends TestCase{
 		Jugador otroJugador = new Jugador("Nombre2",new RazaProtoss(),"Rojo");
 		Turno unTurno = new Turno(unJugador,otroJugador);
 		
-		unJugador.agregarConstruccion(unNexo);
 		unTurno.addObserver(unNexo);
 		
 		assertFalse(unNexo.estaTerminada());

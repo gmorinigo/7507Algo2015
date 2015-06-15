@@ -26,7 +26,7 @@ import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 @SuppressWarnings("static-access")
 public class BarracaTest extends TestBase {
 		
-	public void testCrearUnaBarraca() throws JugadorConNombreDemasiadoCortoException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException{
+	public void testCrearUnaBarraca() throws JugadorConNombreDemasiadoCortoException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoHaySuficientesRecursos{
 		RazaTerran unaRaza = new RazaTerran(); 
 		TipoConstruccion unTipo = null;
 		Jugador unJugador = new Jugador("unNombre",unaRaza,"Azul");
@@ -42,7 +42,7 @@ public class BarracaTest extends TestBase {
 	
 	
 	public void testCrearUnaBarracaAlPasar12TurnosEstaCreada() 
-	throws CeldaOcupadaException, NoReuneLosRequisitosException, JugadorConNombreDemasiadoCortoException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException{
+	throws CeldaOcupadaException, NoReuneLosRequisitosException, JugadorConNombreDemasiadoCortoException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoHaySuficientesRecursos{
 		RazaTerran unaRaza = new RazaTerran(); 
 		TipoConstruccion unTipo = null;
 		Jugador unJugador = new Jugador("unNombre",unaRaza,"Azul");
@@ -55,7 +55,7 @@ public class BarracaTest extends TestBase {
 		Jugador otroJugador = new Jugador("Nombre",new RazaTerran(),"Azul");
 		Turno unTurno = new Turno(unJugador,otroJugador);
 		
-		unJugador.agregarConstruccion(unaConstruccion);
+
 		unTurno.addObserver(unaConstruccion);
 		
 		
@@ -90,7 +90,7 @@ public class BarracaTest extends TestBase {
 		Jugador otroJugador = new Jugador("Nombre",new RazaTerran(),"Azul");
 		Turno unTurno = new Turno(unJugador,otroJugador);
 		
-		unJugador.agregarConstruccion(unaConstruccion);
+
 		unTurno.addObserver(unaConstruccion);
 		
 		unTurno.avanzarTurno();

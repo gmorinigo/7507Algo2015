@@ -25,7 +25,7 @@ import fiuba.algo3.algocraft.modelo.turnos.Turno;
 @SuppressWarnings("static-access")
 public class FabricaTest extends TestCase {
 
-	public void testCrearUnArchivoTemplario() throws JugadorConNombreDemasiadoCortoException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException{
+	public void testCrearUnArchivoTemplario() throws JugadorConNombreDemasiadoCortoException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, NoHaySuficientesRecursos{
 		RazaTerran unaRaza = new RazaTerran(); 
 		TipoConstruccion unTipo = null;
 		Jugador unJugador = new Jugador("unNombre",unaRaza,"Azul");
@@ -47,6 +47,9 @@ public class FabricaTest extends TestCase {
 		unJugador.agregarConstruccion(unPuertoEstelar);
 		for (int i = 0; i < 10 ;i++) unTurno.avanzarTurno();
 		
+		unJugador.dameAlmacenMineral().almacenarRecurso(1000);
+		unJugador.dameAlmacenGas().almacenarRecurso(1000);
+		
 		Construccion unaConstruccion = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesNivel2, unaPosicion, unJugador);		
 
 		assertTrue(unaConstruccion instanceof Fabrica);
@@ -54,7 +57,7 @@ public class FabricaTest extends TestCase {
 	}
 	
 	public void testCrearUnArchivoTemplarioAlPasar9TurnosEstaCreada() 
-	throws CeldaOcupadaException, NoReuneLosRequisitosException, JugadorConNombreDemasiadoCortoException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException,  ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException{
+	throws CeldaOcupadaException, NoReuneLosRequisitosException, JugadorConNombreDemasiadoCortoException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException,  ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, NoHaySuficientesRecursos{
 		RazaTerran unaRaza = new RazaTerran(); 
 		TipoConstruccion unTipo = null;
 		Jugador unJugador = new Jugador("unNombre",unaRaza,"Azul");
@@ -77,8 +80,11 @@ public class FabricaTest extends TestCase {
 		for (int i = 0; i < 10 ;i++) unTurno.avanzarTurno();
 		// Fin de agregado de Construcciones necesarias
 		
+		unJugador.dameAlmacenMineral().almacenarRecurso(1000);
+		unJugador.dameAlmacenGas().almacenarRecurso(1000);
+		
 		Construccion unaConstruccion = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesNivel2, unaPosicion, unJugador);
-		unJugador.agregarConstruccion(unaConstruccion);
+
 		unTurno.addObserver(unaConstruccion);
 			
 		assertFalse(unaConstruccion.estaOperativa());
@@ -123,8 +129,9 @@ public class FabricaTest extends TestCase {
 		for (int i = 0; i < 10 ;i++) unTurno.avanzarTurno();
 		// Fin de agregado de Construcciones necesarias
 		
-		unJugador.dameAlmacenGas().consumirRecurso(500);
-		
+		unJugador.dameAlmacenGas().consumirRecurso(400);
+		unJugador.dameAlmacenMineral().almacenarRecurso(1000);
+
 		try{
 			Construccion unaConstruccion = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesNivel2, unaPosicion, unJugador);
 		}
@@ -159,7 +166,7 @@ public class FabricaTest extends TestCase {
 		for (int i = 0; i < 10 ;i++) unTurno.avanzarTurno();
 		// Fin de agregado de Construcciones necesarias
 		
-		unJugador.dameAlmacenMineral().consumirRecurso(500);
+		//unJugador.dameAlmacenMineral().consumirRecurso(500);
 		
 		try{
 			Construccion unaConstruccion = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesNivel2, unaPosicion, unJugador);
@@ -172,7 +179,7 @@ public class FabricaTest extends TestCase {
 	}
 	
 	@SuppressWarnings("unused")
-	public void testNoSePuedeCrearSiNoSeCreoUnPuertoEstelarPreviamente() throws NoReuneLosRequisitosException, JugadorConNombreDemasiadoCortoException, CeldaOcupadaException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException{
+	public void testNoSePuedeCrearSiNoSeCreoUnPuertoEstelarPreviamente() throws NoReuneLosRequisitosException, JugadorConNombreDemasiadoCortoException, CeldaOcupadaException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, NoHaySuficientesRecursos{
 		RazaTerran unaRaza = new RazaTerran(); 
 		TipoConstruccion unTipo = null;
 		Jugador unJugador = new Jugador("unNombre",unaRaza,"Azul");

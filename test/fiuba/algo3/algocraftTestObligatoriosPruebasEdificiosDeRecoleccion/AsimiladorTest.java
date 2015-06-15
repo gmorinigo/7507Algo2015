@@ -29,7 +29,7 @@ public class AsimiladorTest extends TestBase{
 		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
 		Turno unTurno = new Turno(unJugador,otroJugador);
 		
-		unJugador.agregarConstruccion(asimilador);
+
 		unTurno.addObserver(asimilador);
 		
 		assertFalse(asimilador.estaTerminada());
@@ -50,7 +50,6 @@ public class AsimiladorTest extends TestBase{
 		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
 		Turno unTurno = new Turno(unJugador,otroJugador);
 		
-		unJugador.agregarConstruccion(asimilador);
 		unTurno.addObserver(asimilador);
 		
 		assertFalse(asimilador.estaTerminada());

@@ -8,14 +8,29 @@ import fiuba.algo3.algocraft.modelo.excepciones.CantidadDeMineralInsuficienteExc
 import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException;
 import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException;
 import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException;
+import fiuba.algo3.algocraft.modelo.excepciones.NoHaySuficientesRecursos;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 
 abstract public class AbstractConstruccionFactory {
 	public enum TipoConstruccion{extractorMineral,extractorGas,expansorPoblacion,creadorUnidadesBasicas,creadorUnidadesNivel2,creadorUnidadesVoladoras}
-	public abstract Construccion crearConstruccion(TipoConstruccion tipo, Posicion unaPosicion, Jugador unJugador) throws NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException;
+	public abstract Construccion crearConstruccion(TipoConstruccion tipo, Posicion unaPosicion, Jugador unJugador) throws NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoHaySuficientesRecursos;
 
 	protected void verificarRecursosParaPoderCrear(TipoConstruccion tipo, Jugador unJugador) 
 	throws CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException {
+		if (unJugador.dameCantidadMineral() < this.dameCostoMineral(tipo)){
+			throw new CantidadDeMineralInsuficienteException();
+		}
+		if (unJugador.dameCantidadGas() < this.dameCostoGas(tipo)){
+			throw new CantidadDeGasInsuficienteException();		
+		}
+		 
+	}
+	
+	protected void consumirRecursosJugador(TipoConstruccion tipo, Jugador unJugador) 
+	throws CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, NoHaySuficientesRecursos {
+		unJugador.dameAlmacenMineral().consumirRecurso(this.dameCostoMineral(tipo));
+		unJugador.dameAlmacenGas().consumirRecurso(this.dameCostoGas(tipo));
+		
 		if (unJugador.dameCantidadMineral() < this.dameCostoMineral(tipo)){
 			throw new CantidadDeMineralInsuficienteException();
 		}

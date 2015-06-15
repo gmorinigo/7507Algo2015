@@ -30,7 +30,6 @@ public class RefineriaTest extends TestBase {
 		Jugador otroJugador = new Jugador("Nombre2",new RazaProtoss(),"Rojo");
 		Turno unTurno = new Turno(unJugador,otroJugador);
 		
-		unJugador.agregarConstruccion(refineria);
 		unTurno.addObserver(refineria);
 		
 		assertFalse(refineria.estaTerminada());
@@ -51,7 +50,6 @@ public class RefineriaTest extends TestBase {
 		Jugador otroJugador = new Jugador("Nombre2",new RazaProtoss(),"Rojo");
 		Turno unTurno = new Turno(unJugador,otroJugador);
 		
-		unJugador.agregarConstruccion(refineria);
 		unTurno.addObserver(refineria);
 		
 		assertFalse(refineria.estaTerminada());

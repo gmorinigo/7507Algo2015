@@ -14,25 +14,41 @@ import fiuba.algo3.algocraft.modelo.excepciones.CantidadDeMineralInsuficienteExc
 import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException;
 import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException;
 import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException;
+import fiuba.algo3.algocraft.modelo.excepciones.NoHaySuficientesRecursos;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 
 
 
 public class ConstruccionFactoryProtoss extends AbstractConstruccionFactory {
-	public Construccion crearConstruccion(TipoConstruccion tipo, Posicion unaPosicion, Jugador unJugador) throws NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException{
+	public Construccion crearConstruccion(TipoConstruccion tipo, Posicion unaPosicion, Jugador unJugador) throws NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoHaySuficientesRecursos{
 		this.verificarRecursosParaPoderCrear(tipo, unJugador);
-		
 		this.verificarConstruccionesParaPoderCrear(tipo, unJugador);
-		
+		this.consumirRecursosJugador(tipo, unJugador);
+		Construccion unaConstruccion;
+
 		switch(tipo){
-		case creadorUnidadesBasicas: return new Acceso(unaPosicion, unJugador, tipo);
-		case creadorUnidadesNivel2: return new ArchivosTemplarios(unaPosicion, unJugador, tipo);
-		case creadorUnidadesVoladoras: return new PuertoEstelarProtoss(unaPosicion, unJugador, tipo); 
-		case expansorPoblacion: return new Pilon(unaPosicion, unJugador, tipo);
-		case extractorGas: return new Asimilador(unaPosicion, unJugador, tipo);
-		case extractorMineral: return new NexoMineral(unaPosicion, unJugador, tipo);
+		case creadorUnidadesBasicas: 
+			unaConstruccion = new Acceso(unaPosicion, unJugador, tipo);
+			break;
+		case creadorUnidadesNivel2: 
+			unaConstruccion = new ArchivosTemplarios(unaPosicion, unJugador, tipo);
+			break;
+		case creadorUnidadesVoladoras: 
+			unaConstruccion = new PuertoEstelarProtoss(unaPosicion, unJugador, tipo);
+			break;
+		case expansorPoblacion: 
+			unaConstruccion = new Pilon(unaPosicion, unJugador, tipo);
+			break;
+		case extractorGas: 
+			unaConstruccion = new Asimilador(unaPosicion, unJugador, tipo);
+			break;
+		case extractorMineral: 
+			unaConstruccion = new NexoMineral(unaPosicion, unJugador, tipo);
+			break;
 		default: throw new NoSuchObjectException("Objeto Sin Tipo");
 		}
+		unJugador.agregarConstruccion(unaConstruccion);
+		return unaConstruccion;
 	}
 
 	protected int dameCostoMineral(TipoConstruccion tipo) {

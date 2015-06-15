@@ -25,7 +25,7 @@ import junit.framework.TestCase;
 @SuppressWarnings("static-access")
 public class ArchivosTemplariosTest extends TestCase{
 
-	public void testCrearUnArchivoTemplario() throws JugadorConNombreDemasiadoCortoException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException{
+	public void testCrearUnArchivoTemplario() throws JugadorConNombreDemasiadoCortoException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoHaySuficientesRecursos{
 		RazaProtoss unaRaza = new RazaProtoss(); 
 		TipoConstruccion unTipo = null;
 		Jugador unJugador = new Jugador("unNombre",unaRaza,"Azul");
@@ -47,6 +47,8 @@ public class ArchivosTemplariosTest extends TestCase{
 		unJugador.agregarConstruccion(unPuertoEstelar);
 		for (int i = 0; i < 10 ;i++) unTurno.avanzarTurno();
 		
+		unJugador.dameAlmacenMineral().almacenarRecurso(1000);
+		unJugador.dameAlmacenGas().almacenarRecurso(1000);
 		Construccion unaConstruccion = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesNivel2, unaPosicion, unJugador);		
 
 		assertTrue(unaConstruccion instanceof ArchivosTemplarios);
@@ -54,7 +56,7 @@ public class ArchivosTemplariosTest extends TestCase{
 	}
 	
 	public void testCrearUnArchivoTemplarioAlPasar9TurnosEstaCreada() 
-	throws CeldaOcupadaException, NoReuneLosRequisitosException, JugadorConNombreDemasiadoCortoException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException{
+	throws CeldaOcupadaException, NoReuneLosRequisitosException, JugadorConNombreDemasiadoCortoException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoHaySuficientesRecursos{
 		RazaProtoss unaRaza = new RazaProtoss(); 
 		TipoConstruccion unTipo = null;
 		Jugador unJugador = new Jugador("unNombre",unaRaza,"Azul");
@@ -77,8 +79,10 @@ public class ArchivosTemplariosTest extends TestCase{
 		for (int i = 0; i < 10 ;i++) unTurno.avanzarTurno();
 		// Fin de agregado de Construcciones necesarias
 		
+		unJugador.dameAlmacenMineral().almacenarRecurso(1000);
+		unJugador.dameAlmacenGas().almacenarRecurso(1000);
 		Construccion unaConstruccion = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesNivel2, unaPosicion, unJugador);
-		unJugador.agregarConstruccion(unaConstruccion);
+
 		unTurno.addObserver(unaConstruccion);
 			
 		assertFalse(unaConstruccion.estaOperativa());
@@ -122,8 +126,8 @@ public class ArchivosTemplariosTest extends TestCase{
 		unJugador.agregarConstruccion(unPuertoEstelar);
 		for (int i = 0; i < 10 ;i++) unTurno.avanzarTurno();
 		// Fin de agregado de Construcciones necesarias
-		
-		unJugador.dameAlmacenGas().consumirRecurso(500);
+
+		unJugador.dameAlmacenMineral().almacenarRecurso(1000);
 		
 		try{
 			Construccion unaConstruccion = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesNivel2, unaPosicion, unJugador);
@@ -159,7 +163,7 @@ public class ArchivosTemplariosTest extends TestCase{
 		for (int i = 0; i < 10 ;i++) unTurno.avanzarTurno();
 		// Fin de agregado de Construcciones necesarias
 		
-		unJugador.dameAlmacenMineral().consumirRecurso(500);
+		//unJugador.dameAlmacenMineral().consumirRecurso(500);
 		
 		try{
 			Construccion unaConstruccion = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesNivel2, unaPosicion, unJugador);
@@ -172,7 +176,7 @@ public class ArchivosTemplariosTest extends TestCase{
 	}
 	
 	@SuppressWarnings("unused")
-	public void testNoSePuedeCrearSiNoSeCreoUnPuertoEstelarPreviamente() throws NoReuneLosRequisitosException, JugadorConNombreDemasiadoCortoException, CeldaOcupadaException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException{
+	public void testNoSePuedeCrearSiNoSeCreoUnPuertoEstelarPreviamente() throws NoReuneLosRequisitosException, JugadorConNombreDemasiadoCortoException, CeldaOcupadaException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoHaySuficientesRecursos{
 		RazaProtoss unaRaza = new RazaProtoss(); 
 		TipoConstruccion unTipo = null;
 		Jugador unJugador = new Jugador("unNombre",unaRaza,"Azul");
