@@ -59,7 +59,7 @@ public class Fabrica extends Construccion {
 	}
 
 	public boolean hayBarraca(){
-		for(Construccion unaConstruccion: jugador.dameConstruccionesTerminadas()){
+		for(Construccion unaConstruccion: jugador.dameConstrucciones()){
 			if (unaConstruccion instanceof Barraca) return true;
 		}
 		return false;

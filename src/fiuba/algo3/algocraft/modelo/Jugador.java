@@ -16,7 +16,7 @@ public class Jugador {
 	private String nombreJugador;
 	private String colorJugador;
 	protected Raza raza;
-	protected ArrayList<Construccion> construccionesTerminadas;
+	protected ArrayList<Construccion> construcciones;
 	protected ArrayList<Unidad> unidadesTerminadas;
 	private Almacen almacenGas;
 	private Almacen almacenMineral;
@@ -27,7 +27,7 @@ public class Jugador {
 		}
 		
 		this.raza = raza;
-		this.construccionesTerminadas = new ArrayList<Construccion>();
+		this.construcciones = new ArrayList<Construccion>();
 		this.unidadesTerminadas = new ArrayList<Unidad>();
 		this.almacenGas = new Almacen(500);
 		this.almacenMineral = new Almacen(500);
@@ -41,8 +41,8 @@ public class Jugador {
 		this.almacenMineral = mineral;
 	}
 
-	public ArrayList<Construccion> dameConstruccionesTerminadas() {
-		return this.construccionesTerminadas;
+	public ArrayList<Construccion> dameConstrucciones() {
+		return this.construcciones;
 	}
 	
 	public ArrayList<Unidad> dameUnidadesTerminadas() {
@@ -54,7 +54,7 @@ public class Jugador {
 	}
 	
 	public void agregarConstruccion(Construccion construccion) {
-		this.construccionesTerminadas.add(construccion);
+		this.construcciones.add(construccion);
 	}
 
 	public Almacen dameAlmacenGas() {
@@ -98,15 +98,19 @@ public class Jugador {
 	}
 	
 	public int dameLimiteDePoblacion() {
-		return raza.dameCapacidadDePoblacion(this.dameConstruccionesTerminadas());
+		return raza.dameCapacidadDePoblacion(this.dameConstrucciones());
 	}
 
 	public void verificarConstruccionCreada(TipoConstruccion tipo) throws ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException {
-		Iterator<Construccion> it = construccionesTerminadas.iterator();
+		Iterator<Construccion> it = construcciones.iterator();
 		boolean construccionEncontrada = false;
 		
 		while (it.hasNext() && !construccionEncontrada ) {
-			construccionEncontrada = it.next().verificarTipoConstruccion(tipo);	
+			Construccion unaConstruccion = it.next();
+			if (unaConstruccion.verificarTipoConstruccion(tipo)){
+				if (unaConstruccion.estaTerminada())
+				construccionEncontrada = true;
+			}
 		}
 		
 		if (!construccionEncontrada){

@@ -41,7 +41,7 @@ public class PuertoEstelarProtossTest extends TestCase{
 		Construccion unAcceso = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesBasicas, unaPosicion, unJugador);
 		unTurno.addObserver(unAcceso);
 		unJugador.agregarConstruccion(unAcceso);
-		//for (int i = 0; i < 8 ;i++) unTurno.avanzarTurno();
+		for (int i = 0; i < 8 ;i++) unTurno.avanzarTurno();
 		
 		Construccion unaConstruccion = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesVoladoras, unaPosicion, unJugador);		
 
@@ -64,7 +64,7 @@ public class PuertoEstelarProtossTest extends TestCase{
 		Construccion unAcceso = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesBasicas, unaPosicion, unJugador);
 		unTurno.addObserver(unAcceso);
 		unJugador.agregarConstruccion(unAcceso);
-		//for (int i = 0; i < 8 ;i++) unTurno.avanzarTurno();
+		for (int i = 0; i < 8 ;i++) unTurno.avanzarTurno();
 				
 		Construccion unaConstruccion = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesVoladoras, unaPosicion, unJugador);
 		
@@ -102,7 +102,7 @@ public class PuertoEstelarProtossTest extends TestCase{
 		Construccion unAcceso = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesBasicas, unaPosicion, unJugador);
 		unTurno.addObserver(unAcceso);
 		unJugador.agregarConstruccion(unAcceso);
-		//for (int i = 0; i < 8 ;i++) unTurno.avanzarTurno();
+		for (int i = 0; i < 8 ;i++) unTurno.avanzarTurno();
 		
 		PuertoEstelarProtoss unaConstruccion = (PuertoEstelarProtoss) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesVoladoras, unaPosicion, unJugador);
 	

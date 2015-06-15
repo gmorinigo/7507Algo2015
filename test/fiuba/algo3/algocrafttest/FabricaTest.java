@@ -40,7 +40,7 @@ public class FabricaTest extends TestCase {
 		Construccion unaBarraca = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesBasicas, unaPosicion, unJugador);
 		unTurno.addObserver(unaBarraca);
 		unJugador.agregarConstruccion(unaBarraca);
-		for (int i = 0; i < 8 ;i++) unTurno.avanzarTurno();
+		for (int i = 0; i < 12 ;i++) unTurno.avanzarTurno();
 
 		Construccion unPuertoEstelar = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesVoladoras, unaPosicion, unJugador);
 		unTurno.addObserver(unPuertoEstelar);
@@ -69,7 +69,7 @@ public class FabricaTest extends TestCase {
 		Construccion unaBarraca = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesBasicas, unaPosicion, unJugador);
 		unTurno.addObserver(unaBarraca);
 		unJugador.agregarConstruccion(unaBarraca);
-		for (int i = 0; i < 8 ;i++) unTurno.avanzarTurno();
+		for (int i = 0; i < 12 ;i++) unTurno.avanzarTurno();
 
 		Construccion unPuertoEstelar = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesVoladoras, unaPosicion, unJugador);
 		unTurno.addObserver(unPuertoEstelar);
@@ -115,7 +115,7 @@ public class FabricaTest extends TestCase {
 		Construccion unaBarraca = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesBasicas, unaPosicion, unJugador);
 		unTurno.addObserver(unaBarraca);
 		unJugador.agregarConstruccion(unaBarraca);
-		for (int i = 0; i < 8 ;i++) unTurno.avanzarTurno();
+		for (int i = 0; i < 12 ;i++) unTurno.avanzarTurno();
 
 		Construccion unPuertoEstelar = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesVoladoras, unaPosicion, unJugador);
 		unTurno.addObserver(unPuertoEstelar);
@@ -151,7 +151,7 @@ public class FabricaTest extends TestCase {
 		Construccion unaBarraca = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesBasicas, unaPosicion, unJugador);
 		unTurno.addObserver(unaBarraca);
 		unJugador.agregarConstruccion(unaBarraca);
-		for (int i = 0; i < 8 ;i++) unTurno.avanzarTurno();
+		for (int i = 0; i < 12 ;i++) unTurno.avanzarTurno();
 
 		Construccion unPuertoEstelar = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesVoladoras, unaPosicion, unJugador);
 		unTurno.addObserver(unPuertoEstelar);
