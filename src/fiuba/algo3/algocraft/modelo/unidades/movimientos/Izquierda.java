@@ -6,15 +6,14 @@ import fiuba.algo3.algocraft.modelo.mapa.Mapa;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 
-public class Derecha extends Movimiento{
-	
+public class Izquierda extends Movimiento{
 	public void mover(Unidad unaUnidad) {
         Mapa mapa = Mapa.getInstance();
         Celda celda = unaUnidad.dameCelda();
         Posicion posActual = celda.obtenerPosicion();
-        Posicion posNueva = new Posicion(posActual.dameFila(),posActual.dameColumna()+1);
+        Posicion posNueva = new Posicion(posActual.dameFila(),posActual.dameColumna()-1);
         celda.eliminarUnidad();
-        celda = new CeldaTerrestre(posActual.dameFila() ,posActual.dameColumna()+1);
+        celda = new CeldaTerrestre(posActual.dameFila() ,posActual.dameColumna()-1);
         celda.agregarUnidad(unaUnidad);
         unaUnidad.mover(mapa.dameCelda(posNueva));
 	}
