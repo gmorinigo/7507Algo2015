@@ -21,9 +21,7 @@ import fiuba.algo3.algocraft.modelo.excepciones.NoHaySuficientesRecursos;
 import fiuba.algo3.algocraft.modelo.excepciones.NoReuneLosRequisitosException;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.turnos.Turno;
-import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
-import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory.TipoUnidad;
 
 @SuppressWarnings("static-access")
 public class BarracaTest extends TestBase {
@@ -87,7 +85,7 @@ public class BarracaTest extends TestBase {
 		AbstractConstruccionFactory factoryConstrucciones = unaRaza.getFactoryConstrucciones();
 		Posicion unaPosicion = new Posicion(12,3);
 		
-		Construccion unaConstruccion = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesBasicas, unaPosicion, unJugador);
+		Barraca unaConstruccion = (Barraca) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesBasicas, unaPosicion, unJugador);
 		
 		Jugador otroJugador = new Jugador("Nombre",new RazaTerran(),"Azul");
 		Turno unTurno = new Turno(unJugador,otroJugador);
@@ -110,10 +108,7 @@ public class BarracaTest extends TestBase {
 		unTurno.avanzarTurno();
 		assertTrue(unaConstruccion.estaOperativa());
 		
-		
-		AbstractUnidadFactory factoryUnidades = unaRaza.getFactoryUnidades();
-		TipoUnidad unTipoUnidad = null;
-		Unidad unaUnidad = (Unidad) factoryUnidades.crearUnidad(unTipoUnidad.terrestre1,unJugador);
+		Unidad unaUnidad = (Unidad) unaConstruccion.crearUnidad(unJugador);
 		
 		unTurno.addObserver(unaUnidad);
 		unTurno.avanzarTurno();

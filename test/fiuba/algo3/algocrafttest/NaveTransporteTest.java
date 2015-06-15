@@ -72,6 +72,9 @@ public class NaveTransporteTest extends TestBase {
 		TipoUnidad unTipo = null;
 		Jugador unJugador = new Jugador("unNombre",new RazaProtoss(),"Azul");
 
+		// Sumo mas mineral para poder crear todos los golliats
+		unJugador.dameAlmacenMineral().almacenarRecurso(500);
+		
 		NaveTransporte unaNaveTrasporte = (NaveTransporte) factoryUnidades.crearUnidad(unTipo.volador2,unJugador/*,new DisparoSuperStrategy()*/);
 		
 		Unidad unMarine = (Unidad) factoryUnidades.crearUnidad(unTipo.terrestre1,unJugador/*,new DisparoSuperStrategy()*/);
