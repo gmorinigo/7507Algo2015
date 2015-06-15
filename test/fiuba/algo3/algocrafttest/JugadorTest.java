@@ -8,8 +8,10 @@ import fiuba.algo3.algocraft.modelo.RazaTerran;
 import fiuba.algo3.algocraft.modelo.construciones.AbstractConstruccionFactory;
 import fiuba.algo3.algocraft.modelo.construciones.Construccion;
 import fiuba.algo3.algocraft.modelo.construciones.AbstractConstruccionFactory.TipoConstruccion;
+//import fiuba.algo3.algocraft.modelo.construciones.terran.Barraca;
 import fiuba.algo3.algocraft.modelo.excepciones.CantidadDeGasInsuficienteException;
 import fiuba.algo3.algocraft.modelo.excepciones.CantidadDeMineralInsuficienteException;
+//import fiuba.algo3.algocraft.modelo.excepciones.CapacidadDePoblacionMaximaSuperada;
 import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException;
 import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException;
 import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException;
@@ -17,6 +19,7 @@ import fiuba.algo3.algocraft.modelo.excepciones.JugadorConNombreDemasiadoCortoEx
 import fiuba.algo3.algocraft.modelo.excepciones.NoHaySuficientesRecursos;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.turnos.Turno;
+//import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 
 @SuppressWarnings("static-access")
 public class JugadorTest extends TestBase {
@@ -189,9 +192,34 @@ public class JugadorTest extends TestBase {
 		assertTrue(unJugador.dameLimiteDePoblacion() == 200);
 	}
 	
-	
-	public void testVerificarCantidadDePoblacionSegunLaCantidadDConstruccionesPilon() throws JugadorConNombreDemasiadoCortoException{
-		Jugador unJugador = new Jugador("NombreJugador", new RazaProtoss(), "unColor");
-		assertEquals("unColor", unJugador.dameColor());
-	}
+	/*
+	public void testContarConLimiteDePoblacionParaCrearUnaUnidad() throws JugadorConNombreDemasiadoCortoException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoHaySuficientesRecursos{
+		RazaTerran unaRaza = new RazaTerran(); 
+		TipoConstruccion unTipo = null;
+		Jugador unJugador = new Jugador("unNombre",unaRaza,"Azul");
+		
+		AbstractConstruccionFactory factoryConstrucciones = unaRaza.getFactoryConstrucciones();
+		Posicion unaPosicion = new Posicion(12,3);
+		
+		Barraca unaConstruccion = (Barraca) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesBasicas, unaPosicion, unJugador);
+		
+		Jugador otroJugador = new Jugador("Nombre",new RazaTerran(),"Azul");
+		Turno unTurno = new Turno(unJugador,otroJugador);
+		
+		assertTrue(unJugador.dameLimiteDePoblacion() == 0);
+
+		unTurno.addObserver(unaConstruccion);
+		
+		for (int i=0; i<12;i++) unTurno.avanzarTurno();
+				
+		try{
+			Unidad unaUnidad = (Unidad) unaConstruccion.crearUnidad(unJugador);
+			unTurno.addObserver(unaUnidad);
+			unJugador.agregarUnidad(unaUnidad);
+		}
+		catch (CapacidadDePoblacionMaximaSuperada e){
+			return;
+		}
+		fail();
+	}*/	
 }
