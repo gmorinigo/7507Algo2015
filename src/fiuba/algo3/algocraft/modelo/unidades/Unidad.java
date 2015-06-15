@@ -62,7 +62,8 @@ abstract public class Unidad implements TurnoObserver{
 
 	abstract protected Salud saludInicial();
 	public abstract int turnosNecesariosParaCreacion();
-	
+	protected boolean construccionValidaParaUnidad(){
+		return true;}	
 	/*
 	 * Regenera salud, escudo, etc.
 	 */
