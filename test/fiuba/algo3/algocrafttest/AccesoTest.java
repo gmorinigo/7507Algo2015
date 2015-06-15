@@ -37,7 +37,6 @@ public class AccesoTest extends TestCase{
 		AbstractConstruccionFactory factoryConstrucciones = unaRaza.getFactoryConstrucciones();
 		Posicion unaPosicion = new Posicion(6,4);
 		
-		
 		Construccion unaConstruccion = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesBasicas, unaPosicion, unJugador);		
 
 		assertTrue(unaConstruccion instanceof Acceso);

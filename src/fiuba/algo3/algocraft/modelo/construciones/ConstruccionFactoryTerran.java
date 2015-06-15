@@ -22,7 +22,6 @@ public class ConstruccionFactoryTerran extends AbstractConstruccionFactory {
 		
 		this.verificarConstruccionesParaPoderCrear(tipo, unJugador);
 		
-		
 		switch(tipo){
 		case creadorUnidadesBasicas: return new Barraca(unaPosicion, unJugador, tipo);
 		case creadorUnidadesNivel2: return new Fabrica(unaPosicion, unJugador, tipo);

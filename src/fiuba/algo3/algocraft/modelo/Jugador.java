@@ -105,7 +105,7 @@ public class Jugador {
 		Iterator<Construccion> it = construccionesTerminadas.iterator();
 		boolean construccionEncontrada = false;
 		
-		while (it.hasNext() || construccionEncontrada ) {
+		while (it.hasNext() && !construccionEncontrada ) {
 			construccionEncontrada = it.next().verificarTipoConstruccion(tipo);	
 		}
 		

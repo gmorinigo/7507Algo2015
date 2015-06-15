@@ -32,7 +32,7 @@ abstract public class AbstractConstruccionFactory {
 	protected void verificarConstruccionesParaPoderCrear(TipoConstruccion tipo, Jugador unJugador) throws ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException {
 		TipoConstruccion construccionesRequeridas = dameConstruccionRequeridasParaConstruir(tipo); 
 		if ( construccionesRequeridas != null ){
-			unJugador.verificarConstruccionCreada(tipo);
+			unJugador.verificarConstruccionCreada(construccionesRequeridas);
 		}
 	}
 	
