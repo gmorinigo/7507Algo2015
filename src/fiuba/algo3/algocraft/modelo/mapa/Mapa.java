@@ -87,7 +87,7 @@ public class Mapa {
 	
 	private void agregarCeldasFilas_10_a_189_Columnas_80_a_119(int i) {
 		for (int j = 80; j < 120; j++) {
-			CeldaAcuatica unaCelda = new CeldaAcuatica(i, j);
+			CeldaAerea unaCelda = new CeldaAerea(i, j);
 			this.matriz[i][j] = unaCelda;
 		}
 	}

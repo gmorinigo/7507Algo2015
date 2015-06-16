@@ -1,6 +1,6 @@
 package fiuba.algo3.algocraft.modelo.unidades.movimientos;
 
-import fiuba.algo3.algocraft.modelo.mapa.CeldaAcuatica;
+import fiuba.algo3.algocraft.modelo.mapa.CeldaAerea;
 import fiuba.algo3.algocraft.modelo.mapa.CeldaConGas;
 import fiuba.algo3.algocraft.modelo.mapa.CeldaConMineral;
 import fiuba.algo3.algocraft.modelo.mapa.CeldaTerrestre;
