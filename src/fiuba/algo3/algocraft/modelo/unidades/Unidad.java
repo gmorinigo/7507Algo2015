@@ -30,7 +30,7 @@ abstract public class Unidad implements TurnoObserver{
 		this.estado = new UnidadEstadoNaciendo(this.turnosNecesariosParaCreacion(), this);
 		this.celda  = null;
 		this.movimiento = new Movimiento(this);
-		this.disparo = new DisparoNormal(this);
+		this.disparo = new DisparoNormal(this, 1);
 	}
 	
 

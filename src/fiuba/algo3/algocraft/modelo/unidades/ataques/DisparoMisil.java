@@ -4,16 +4,16 @@ import fiuba.algo3.algocraft.modelo.mapa.Celda;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 
 public class DisparoMisil extends AbstractDisparo{
-
-	protected int radio;
 	
 	public DisparoMisil(Unidad unidad, int radio) {
-		super(unidad);
+		super(unidad, radio);
 		this.radio = radio;
 	}
 
 	@Override
 	public boolean disparar(Celda objetivo) {
+		//verificar radio
+		
 		return false;
 	}
 
