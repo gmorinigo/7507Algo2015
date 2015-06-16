@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.RazaProtoss;
+import fiuba.algo3.algocraft.modelo.RazaTerran;
 import fiuba.algo3.algocraft.modelo.construciones.AbstractConstruccionFactory.TipoConstruccion;
 import fiuba.algo3.algocraft.modelo.construciones.terran.Barraca;
 import fiuba.algo3.algocraft.modelo.construciones.terran.CentroMineral;
@@ -178,7 +179,7 @@ public class MapaTest extends TestBase {
 		Posicion posicion1515 = new Posicion(15,15);
 		Posicion posicion1715 = new Posicion(17,15);
 		Mapa unMapa = Mapa.getInstance();
-		Jugador unJugador = new Jugador("unNombre",new RazaProtoss(),"Azul");
+		Jugador unJugador = new Jugador("unNombre",new RazaTerran(),"Azul");
 		Barraca unaBarraca = new Barraca(posicion1515, unJugador,TipoConstruccion.creadorUnidadesBasicas );
 		
 		try {
@@ -186,7 +187,7 @@ public class MapaTest extends TestBase {
 		} catch (CeldaOcupadaException e) {
 		}
 		
-		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
+		Jugador otroJugador = new Jugador("Nombre",new RazaTerran(),"Rojo");
 		Turno unTurno = new Turno(unJugador,otroJugador);
 		
 		
@@ -208,10 +209,8 @@ public class MapaTest extends TestBase {
 		
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
-		unTurno.avanzarTurno();
-				
-		unMapa.agregarUnidad(posicion1715, marine);
-		
+		unTurno.avanzarTurno();	
+		assertTrue(unMapa.agregarUnidad(posicion1715, marine));
 		assertTrue(unMapa.verificarCeldaOcupada(posicion1715));
 	}
 	
@@ -264,7 +263,7 @@ public class MapaTest extends TestBase {
 		Posicion posicion1515 = new Posicion(15,15);
 		Posicion posicion1715 = new Posicion(17,15);
 		Mapa unMapa = Mapa.getInstance();
-		Jugador unJugador = new Jugador("unNombre",new RazaProtoss(),"Azul");
+		Jugador unJugador = new Jugador("unNombre",new RazaTerran(),"Azul");
 		Barraca unaBarraca = new Barraca(posicion1515, unJugador,TipoConstruccion.creadorUnidadesBasicas );
 		
 		try {
@@ -272,7 +271,7 @@ public class MapaTest extends TestBase {
 		} catch (CeldaOcupadaException e) {
 		}
 		
-		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
+		Jugador otroJugador = new Jugador("Nombre",new RazaTerran(),"Rojo");
 		Turno unTurno = new Turno(unJugador,otroJugador);
 		
 		
@@ -296,8 +295,7 @@ public class MapaTest extends TestBase {
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 				
-		unMapa.agregarUnidad(posicion1715, marine);
-		
+		assertTrue(unMapa.agregarUnidad(posicion1715, marine));
 		assertTrue(unMapa.verificarCeldaOcupada(posicion1715));
 	}
 }
