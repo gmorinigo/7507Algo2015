@@ -50,7 +50,7 @@ public abstract class Celda {
 			return false;
 		}
 		this.unidad = unaUnidad;
-		this.unidad.mover(this);
+		this.unidad.setCelda(this);
 		this.ocuparCelda();
 		
 		return true;
@@ -66,8 +66,8 @@ public abstract class Celda {
 
 
 	public boolean esAtacable() {
-		// Si no atacable está redefinido el método en la clase particular.
-		// Al validar si es atacable tambien verifico que esté ocupada
+		// Si no atacable estï¿½ redefinido el mï¿½todo en la clase particular.
+		// Al validar si es atacable tambien verifico que estï¿½ ocupada
 		return this.celdaOcupada();
 	}
 

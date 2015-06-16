@@ -26,7 +26,7 @@ public class DiagonalArribaIzquierdaTest extends TestCase{
 		Jugador unJugador = new Jugador("unNombre",unaRaza,"Azul");
 		AbstractUnidadFactory factoryUnidades = unaRaza.getFactoryUnidades();
 		Unidad unaUnidad = (Unidad) factoryUnidades.crearUnidad(unTipo.terrestre1,unJugador);
-		moverdiagonal.mover(unaUnidad);
+		moverdiagonal.setCelda(unaUnidad);
 		assertNotSame(unaUnidad.dameCelda(),mapa.dameCelda(new Posicion(4,4)));
         assertEquals(unaUnidad.dameCelda(),mapa.dameCelda(new Posicion(3,3)));
     }

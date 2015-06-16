@@ -122,7 +122,7 @@ public class Movimiento {
         boolean agregado = nuevaCelda.agregarUnidad(this.unidad);
         if(agregado) {
         	celda.eliminarUnidad();
-        	this.unidad.mover(mapa.dameCelda(posNueva));
+        	this.unidad.setCelda(mapa.dameCelda(posNueva));
         	return true;
         }
         

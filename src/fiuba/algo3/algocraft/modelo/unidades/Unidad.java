@@ -5,6 +5,7 @@ import fiuba.algo3.algocraft.modelo.mapa.Celda;
 import fiuba.algo3.algocraft.modelo.turnos.Turno;
 import fiuba.algo3.algocraft.modelo.turnos.TurnoObserver;
 import fiuba.algo3.algocraft.modelo.unidades.movimientos.Movimiento;
+import fiuba.algo3.algocraft.modelo.unidades.movimientos.Movimiento.TipoDireccion;
 
 abstract public class Unidad implements TurnoObserver{
 	
@@ -72,8 +73,22 @@ abstract public class Unidad implements TurnoObserver{
 		return celda;
 	}
 
-	public void mover(Celda unaCelda) {
+	public void setCelda(Celda unaCelda) {
 		this.celda = unaCelda;
+	}
+	
+	public boolean mover(TipoDireccion direccion) {
+		if(! this.estado.esPosibleRealizarAccion()) {
+			return false;
+		}
+		
+		boolean movAplicado = this.movimiento.mover(direccion);
+		if( ! movAplicado ) {
+			return false;
+		}
+		
+		this.estado = new UnidadEstadoescansando(this);
+		return true;
 	}
 
 	public abstract void recibirataque(Unidad unaUnidadAtacante);
