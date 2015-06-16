@@ -23,6 +23,7 @@ public abstract class Construccion implements TurnoObserver{
 		this.posicionCeldaSupIzquierda = unaPosicion;
 		this.estado = new ConstruccionEstadoNaciendo(this.turnosNecesariosParaCreacion(), this);
 		this.tipoConstruccion = unTipo;
+		this.jugador.agregarConstruccion(this);
 	}
 
 	public boolean estaTerminada(){

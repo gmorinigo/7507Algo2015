@@ -47,7 +47,6 @@ public class ConstruccionFactoryProtoss extends AbstractConstruccionFactory {
 			break;
 		default: throw new NoSuchObjectException("Objeto Sin Tipo");
 		}
-		unJugador.agregarConstruccion(unaConstruccion);
 		return unaConstruccion;
 	}
 

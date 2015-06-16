@@ -45,7 +45,6 @@ public class ConstruccionFactoryTerran extends AbstractConstruccionFactory {
 			break;
 		default: throw new NoSuchObjectException("Objeto Sin Tipo");
 		}
-		unJugador.agregarConstruccion(unaConstruccion);
 		return unaConstruccion;
 	}
 
