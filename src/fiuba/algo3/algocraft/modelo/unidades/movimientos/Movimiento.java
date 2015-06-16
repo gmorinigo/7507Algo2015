@@ -1,5 +1,8 @@
 package fiuba.algo3.algocraft.modelo.unidades.movimientos;
 
+import fiuba.algo3.algocraft.modelo.mapa.Celda;
+import fiuba.algo3.algocraft.modelo.mapa.Mapa;
+import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 
 public class Movimiento {
@@ -46,21 +49,59 @@ public class Movimiento {
 
 
 	protected boolean moverArriba() {
-		return true;
+        Mapa mapa = Mapa.getInstance();
+        Celda celda = this.unidad.dameCelda();
+        Posicion posActual = celda.obtenerPosicion();
+        Posicion posNueva = new Posicion(posActual.dameFila()-1,posActual.dameColumna());
+        celda.eliminarUnidad();
+        
+        celda = mapa.dameCelda(new Posicion(posActual.dameFila() +1,posActual.dameColumna()));
+        boolean agregado = celda.agregarUnidad(this.unidad);
+        this.unidad.mover(mapa.dameCelda(posNueva));
+		return agregado;
 	}
 	
 	protected boolean moverAbajo() {
-		return false;
+        Mapa mapa = Mapa.getInstance();
+        Celda celda = this.unidad.dameCelda();
+        Posicion posActual = celda.obtenerPosicion();
+        Posicion posNueva = new Posicion(posActual.dameFila() +1,posActual.dameColumna());
+        celda.eliminarUnidad();
+        
+        celda = mapa.dameCelda(new Posicion(posActual.dameFila() +1,posActual.dameColumna()));
+        boolean agregado = celda.agregarUnidad(this.unidad);
+        this.unidad.mover(mapa.dameCelda(posNueva));
+        
+		return agregado;
 		
 	}
 	
 	protected boolean moverDerecha() {
-		return false;
-		
+        Mapa mapa = Mapa.getInstance();
+        Celda celda = this.unidad.dameCelda();
+        Posicion posActual = celda.obtenerPosicion();
+        Posicion posNueva = new Posicion(posActual.dameFila(),posActual.dameColumna()+1);
+        celda.eliminarUnidad();
+        
+        celda = mapa.dameCelda(new Posicion(posActual.dameFila() ,posActual.dameColumna()+1));
+        boolean agregado = celda.agregarUnidad(this.unidad);
+        this.unidad.mover(mapa.dameCelda(posNueva));
+        
+        return agregado;
 	}
 	
 	protected boolean moverIzquierda() {
-		return false;
+		Mapa mapa = Mapa.getInstance();
+        Celda celda = this.unidad.dameCelda();
+        Posicion posActual = celda.obtenerPosicion();
+        Posicion posNueva = new Posicion(posActual.dameFila(),posActual.dameColumna()-1);
+        celda.eliminarUnidad();
+        
+        celda = mapa.dameCelda(new Posicion(posActual.dameFila() ,posActual.dameColumna()-1));
+        boolean agregado = celda.agregarUnidad(this.unidad);
+        this.unidad.mover(mapa.dameCelda(posNueva));
+        
+        return agregado;
 	}
 	
 	protected boolean moverDiagonalArribaDerecha() {
