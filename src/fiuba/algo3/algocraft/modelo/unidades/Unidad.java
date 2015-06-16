@@ -1,6 +1,5 @@
 package fiuba.algo3.algocraft.modelo.unidades;
 
-import fiuba.algo3.algocraft.modelo.excepciones.NoSePuedeRealizarAccionException;
 import fiuba.algo3.algocraft.modelo.mapa.Celda;
 import fiuba.algo3.algocraft.modelo.turnos.Turno;
 import fiuba.algo3.algocraft.modelo.turnos.TurnoObserver;
@@ -51,11 +50,16 @@ abstract public class Unidad implements TurnoObserver{
 	 * Aca hay que preguntar al estado si se puede realizar accion
 	 * Cuando se termina la accion hay que cambiar el estado a UnidadEstadoDesancansando
 	 */
-	public boolean atacar(Celda unaCelda)throws NoSePuedeRealizarAccionException {
+	public boolean atacar(Celda unaCelda) {
 		if (!unaCelda.esAtacable()) return false;
 		
-		unaCelda.atacarUnidadDeLaCeldaConUnidad(this);
+		if (!this.estado.esPosibleRealizarAccion()) {
+			return false;
+		}
 		
+		unaCelda.atacarUnidadDeLaCeldaConUnidad(this);
+
+		this.estado = new UnidadEstadoescansando(this);
 		return true;
 
 	}
