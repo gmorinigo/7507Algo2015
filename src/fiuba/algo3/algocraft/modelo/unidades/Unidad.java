@@ -3,6 +3,8 @@ package fiuba.algo3.algocraft.modelo.unidades;
 import fiuba.algo3.algocraft.modelo.mapa.Celda;
 import fiuba.algo3.algocraft.modelo.turnos.Turno;
 import fiuba.algo3.algocraft.modelo.turnos.TurnoObserver;
+import fiuba.algo3.algocraft.modelo.unidades.ataques.AbstractDisparo;
+import fiuba.algo3.algocraft.modelo.unidades.ataques.DisparoNormal;
 import fiuba.algo3.algocraft.modelo.unidades.movimientos.Movimiento;
 import fiuba.algo3.algocraft.modelo.unidades.movimientos.Movimiento.TipoDireccion;
 
@@ -13,7 +15,8 @@ abstract public class Unidad implements TurnoObserver{
 	protected int tamanioTransporte;
 	protected Movimiento movimiento;
 	protected Celda celda;
-
+	protected AbstractDisparo disparo;
+	
 	public int getTamanioTransporte(){
 		return this.tamanioTransporte;
 	}
@@ -27,6 +30,7 @@ abstract public class Unidad implements TurnoObserver{
 		this.estado = new UnidadEstadoNaciendo(this.turnosNecesariosParaCreacion(), this);
 		this.celda  = null;
 		this.movimiento = new Movimiento(this);
+		this.disparo = new DisparoNormal(this);
 	}
 	
 
@@ -64,8 +68,6 @@ abstract public class Unidad implements TurnoObserver{
 	
 	abstract protected Salud saludInicial();
 	public abstract int turnosNecesariosParaCreacion();
-	protected boolean construccionValidaParaUnidad(){
-		return true;}	
 	/*
 	 * Regenera salud, escudo, etc.
 	 */
