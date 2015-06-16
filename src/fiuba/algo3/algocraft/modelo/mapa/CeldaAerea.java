@@ -6,9 +6,9 @@ public class CeldaAerea extends Celda {
 	public CeldaAerea(int fila, int columna){
 		super(fila, columna);
 	}
-/*
+
 	@Override
-	public void aceptarUnidad(Unidad unidad) {
-		unidad.dameMovimiento().mover(this);
-	}*/
+	public boolean puedeMoverse(Unidad unaUnidad) {
+		return unaUnidad.esUnidadAerea();
+	}
 }

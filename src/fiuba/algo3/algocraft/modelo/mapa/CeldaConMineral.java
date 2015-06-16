@@ -10,9 +10,9 @@ public class CeldaConMineral extends Celda {
 	public boolean tieneMineral(){
 		return true;
 	}
-/*
+
 	@Override
-	public void aceptarUnidad(Unidad unidad) {
-		unidad.dameMovimiento().mover(this);
-	}*/
+	public boolean puedeMoverse(Unidad unaUnidad) {
+		return false;
+	}
 }

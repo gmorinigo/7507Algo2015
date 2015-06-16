@@ -248,6 +248,8 @@ public class Mapa {
 			throw e;
 		}
 		this.verificarSiCorrespondeLaUnidadEnLaCelda(unaUnidad, unaCelda);
+		
+		//validar el retorno de esta funcion
 		this.agregarUnidadALaCelda(unaUnidad, unaCelda);
 		// TODO: Ver si es necesario asignar las celdas a la unidad
 		//this.asignarCeldas(unaUnidad);
@@ -259,8 +261,8 @@ public class Mapa {
 	}
 	
 
-	private void agregarUnidadALaCelda(Unidad unaUnidad, Celda unaCelda){
-		unaCelda.agregarUnidad(unaUnidad);
+	private boolean agregarUnidadALaCelda(Unidad unaUnidad, Celda unaCelda){
+		return unaCelda.agregarUnidad(unaUnidad);
 	}
 }
 
