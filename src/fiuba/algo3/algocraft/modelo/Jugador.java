@@ -35,12 +35,6 @@ public class Jugador {
 		this.colorJugador = unColor;
 	}
 
-	public Jugador(Raza raza, Almacen mineral, Almacen gas) {
-		this.raza = raza;
-		this.almacenGas = gas;
-		this.almacenMineral = mineral;
-	}
-
 	public ArrayList<Construccion> dameConstrucciones() {
 		return this.construcciones;
 	}
