@@ -14,12 +14,6 @@ public class Zealot extends UnidadProtoss{
 		return null;
 	}
 
-	@Override
-	public void mover(int posicionX, int posicionY) {
-		// TODO Auto-generated method stub
-		
-	}
-
 	public int turnosNecesariosParaCreacion() {
 		return 4;
 	}

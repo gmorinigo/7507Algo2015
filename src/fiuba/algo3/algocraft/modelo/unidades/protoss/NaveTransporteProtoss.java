@@ -15,12 +15,6 @@ public class NaveTransporteProtoss extends NaveTransporte {
 		return new SaludProtoss(40,40);
 	}
 
-	@Override
-	public void mover(int posicionX, int posicionY) {
-		// TODO Auto-generated method stub
-		
-	}
-
 	public int turnosNecesariosParaCreacion() {
 		return 8;
 	}

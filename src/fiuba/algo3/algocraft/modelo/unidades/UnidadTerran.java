@@ -11,11 +11,6 @@ public abstract class UnidadTerran extends Unidad {
 		return false;
 	}
 
-	@Override
-	public void mover(int posicionX, int posicionY) throws NoSePuedeRealizarAccionException {
-		// TODO Auto-generated method stub
-	}
-
 	protected abstract Salud saludInicial();
 
 	public 	abstract int turnosNecesariosParaCreacion();

@@ -28,6 +28,7 @@ abstract public class Unidad implements TurnoObserver{
 		this.salud = this.saludInicial();
 		this.estado = new UnidadEstadoNaciendo(this.turnosNecesariosParaCreacion(), this);
 		this.celda  = null;
+		this.movimiento = new Movimiento(this);
 	}
 	
 
@@ -57,16 +58,6 @@ abstract public class Unidad implements TurnoObserver{
 		return true;
 
 	}
-	
-	public Movimiento dameMovimiento() {
-		return this.movimiento;
-	}
-	
-	/*
-	 * Aca hay que preguntar al estado si se puede realizar accion
-	 * Cuando se termina la accion hay que cambiar el estado a UnidadEstadoDesancansando
-	 */
-	abstract public void mover(int posicionX, int posicionY) throws NoSePuedeRealizarAccionException;
 	
 	abstract protected Salud saludInicial();
 	public abstract int turnosNecesariosParaCreacion();

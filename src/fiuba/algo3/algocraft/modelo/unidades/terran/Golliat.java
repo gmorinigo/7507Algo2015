@@ -18,12 +18,6 @@ public class Golliat extends UnidadTerran {
 		return new SaludTerran(125);
 	}
 
-	@Override
-	public void mover(int posicionX, int posicionY) {
-		// TODO Auto-generated method stub
-		
-	}
-
 	public int turnosNecesariosParaCreacion() {
 		return 6;
 	}

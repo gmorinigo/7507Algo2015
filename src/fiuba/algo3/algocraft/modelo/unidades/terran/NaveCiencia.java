@@ -28,13 +28,6 @@ public class NaveCiencia extends UnidadTerran {
 	public int getEnergia(){return this.energia;}
 
 
-	@Override
-	public void mover(int posicionX, int posicionY) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
 	public int turnosNecesariosParaCreacion() {
 		return 10;
 	}

@@ -19,12 +19,6 @@ public class Espectro extends UnidadTerran {
 	}
 
 
-	@Override
-	public void mover(int posicionX, int posicionY) {
-		// TODO Auto-generated method stub
-		
-	}
-
 	public int turnosNecesariosParaCreacion() {
 		return 8;
 	}

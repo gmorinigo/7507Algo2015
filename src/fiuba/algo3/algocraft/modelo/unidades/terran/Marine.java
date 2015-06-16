@@ -20,18 +20,6 @@ public class Marine extends UnidadTerran {
 		return new SaludTerran(40);
 	}
 
-	@Override
-	public void mover(int posicionX, int posicionY) {
-		if(!this.estado.esPosibleRealizarAccion()) {
-			//lanzar Exception
-		}
-	
-		//Realizar Movimiento
-		
-		//cambio el estado
-		this.estado = new UnidadEstadoescansando(this);
-	}
-
 	public int turnosNecesariosParaCreacion() {
 		return 3;
 	}

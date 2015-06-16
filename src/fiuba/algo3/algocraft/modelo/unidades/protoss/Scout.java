@@ -17,11 +17,6 @@ public class Scout extends UnidadProtoss {
 	public boolean esUnidadAerea(){
 		return true;
 	}
-	@Override
-	public void mover(int posicionX, int posicionY) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	public int turnosNecesariosParaCreacion() {
 		return 9;

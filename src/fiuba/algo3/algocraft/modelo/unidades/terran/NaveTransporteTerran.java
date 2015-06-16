@@ -13,12 +13,6 @@ public class NaveTransporteTerran extends NaveTransporte {
 	protected Salud saludInicial() {
 		return new SaludTerran(150);
 	}
-	
-	@Override
-	public void mover(int posicionX, int posicionY) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public int turnosNecesariosParaCreacion() {

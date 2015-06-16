@@ -13,12 +13,6 @@ public class Dragon extends UnidadProtoss {
 		return new SaludProtoss(80,100);
 	}
 
-	@Override
-	public void mover(int posicionX, int posicionY) {
-		// TODO Auto-generated method stub
-		
-	}
-
 	public int turnosNecesariosParaCreacion() {
 		return 6;
 	}
