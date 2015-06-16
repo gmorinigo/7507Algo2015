@@ -8,6 +8,8 @@ import fiuba.algo3.algocraft.modelo.excepciones.CantidadDeGasInsuficienteExcepti
 import fiuba.algo3.algocraft.modelo.excepciones.CantidadDeMineralInsuficienteException;
 import fiuba.algo3.algocraft.modelo.excepciones.JugadorConNombreDemasiadoCortoException;
 import fiuba.algo3.algocraft.modelo.excepciones.NoHaySuficientesRecursos;
+import fiuba.algo3.algocraft.modelo.mapa.Celda;
+import fiuba.algo3.algocraft.modelo.mapa.CeldaConMineral;
 import fiuba.algo3.algocraft.modelo.mapa.Mapa;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory;
@@ -44,5 +46,35 @@ public class AbajoTest extends TestBase{
         assertNotSame(unaUnidad.dameCelda(),mapa.dameCelda(new Posicion(8,4)));
         assertEquals(unaUnidad.dameCelda(),mapa.dameCelda(new Posicion(5,4)));
     }
-
+    
+    public void testNosePuedeMoverUnaUnidadAUnaPosicionYaOcupada() throws JugadorConNombreDemasiadoCortoException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, NoHaySuficientesRecursos{
+        Mapa mapa = Mapa.getInstance();
+		RazaProtoss unaRaza = new RazaProtoss(); 
+		Jugador unJugador = new Jugador("unNombre",unaRaza,"Azul");
+		AbstractUnidadFactory factoryUnidades = unaRaza.getFactoryUnidades();
+		Unidad unaUnidad = (Unidad) factoryUnidades.crearUnidad(TipoUnidad.terrestre1,unJugador);
+		Unidad otraUnidad = (Unidad) factoryUnidades.crearUnidad(TipoUnidad.terrestre2,unJugador);
+		unaUnidad.finalizarNacimiento();
+		otraUnidad.finalizarNacimiento();
+		assertTrue(mapa.agregarUnidad(new Posicion(4,4), unaUnidad));
+		assertTrue(mapa.agregarUnidad(new Posicion(5,4), otraUnidad));
+		assertFalse(unaUnidad.mover(TipoDireccion.Abajo));
+    }
+    
+    public void testNosePuedeMoverUnaUnidadAUnaPosicionYaOcupadaPorOtroJugador() throws JugadorConNombreDemasiadoCortoException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, NoHaySuficientesRecursos{
+        Mapa mapa = Mapa.getInstance();
+		RazaProtoss unaRaza = new RazaProtoss(); 
+		Jugador unJugador = new Jugador("unNombre",unaRaza,"Azul");
+		Jugador otroJugador = new Jugador("elNombre",unaRaza,"Rojo");
+		AbstractUnidadFactory factoryUnidades = unaRaza.getFactoryUnidades();
+		Unidad unaUnidad = (Unidad) factoryUnidades.crearUnidad(TipoUnidad.terrestre1,unJugador);
+		Unidad otraUnidad = (Unidad) factoryUnidades.crearUnidad(TipoUnidad.terrestre1,otroJugador);
+		unaUnidad.finalizarNacimiento();
+		otraUnidad.finalizarNacimiento();
+		assertTrue(mapa.agregarUnidad(new Posicion(4,4), unaUnidad));
+		assertTrue(mapa.agregarUnidad(new Posicion(5,4), otraUnidad));
+		assertFalse(unaUnidad.mover(TipoDireccion.Abajo));
+    }
+    
+    
 }
