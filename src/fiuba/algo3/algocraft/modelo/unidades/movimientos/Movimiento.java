@@ -49,59 +49,38 @@ public class Movimiento {
 
 
 	protected boolean moverArriba() {
-        Mapa mapa = Mapa.getInstance();
         Celda celda = this.unidad.dameCelda();
         Posicion posActual = celda.obtenerPosicion();
         Posicion posNueva = new Posicion(posActual.dameFila()-1,posActual.dameColumna());
-        celda.eliminarUnidad();
         
-        celda = mapa.dameCelda(new Posicion(posActual.dameFila() +1,posActual.dameColumna()));
-        boolean agregado = celda.agregarUnidad(this.unidad);
-        this.unidad.mover(mapa.dameCelda(posNueva));
-		return agregado;
+        return aplicarMovimiento(celda, posNueva);
 	}
 	
 	protected boolean moverAbajo() {
-        Mapa mapa = Mapa.getInstance();
+        
         Celda celda = this.unidad.dameCelda();
         Posicion posActual = celda.obtenerPosicion();
         Posicion posNueva = new Posicion(posActual.dameFila() +1,posActual.dameColumna());
-        celda.eliminarUnidad();
         
-        celda = mapa.dameCelda(new Posicion(posActual.dameFila() +1,posActual.dameColumna()));
-        boolean agregado = celda.agregarUnidad(this.unidad);
-        this.unidad.mover(mapa.dameCelda(posNueva));
-        
-		return agregado;
+        return aplicarMovimiento(celda, posNueva);
 		
 	}
 	
 	protected boolean moverDerecha() {
-        Mapa mapa = Mapa.getInstance();
         Celda celda = this.unidad.dameCelda();
         Posicion posActual = celda.obtenerPosicion();
         Posicion posNueva = new Posicion(posActual.dameFila(),posActual.dameColumna()+1);
-        celda.eliminarUnidad();
+
+        return this.aplicarMovimiento(celda, posNueva);
         
-        celda = mapa.dameCelda(new Posicion(posActual.dameFila() ,posActual.dameColumna()+1));
-        boolean agregado = celda.agregarUnidad(this.unidad);
-        this.unidad.mover(mapa.dameCelda(posNueva));
-        
-        return agregado;
 	}
 	
 	protected boolean moverIzquierda() {
-		Mapa mapa = Mapa.getInstance();
         Celda celda = this.unidad.dameCelda();
         Posicion posActual = celda.obtenerPosicion();
         Posicion posNueva = new Posicion(posActual.dameFila(),posActual.dameColumna()-1);
-        celda.eliminarUnidad();
         
-        celda = mapa.dameCelda(new Posicion(posActual.dameFila() ,posActual.dameColumna()-1));
-        boolean agregado = celda.agregarUnidad(this.unidad);
-        this.unidad.mover(mapa.dameCelda(posNueva));
-        
-        return agregado;
+        return this.aplicarMovimiento(celda, posNueva);
 	}
 	
 	protected boolean moverDiagonalArribaDerecha() {
@@ -121,4 +100,17 @@ public class Movimiento {
 		return false;	
 	}
 
+	protected boolean aplicarMovimiento(Celda celda, Posicion posNueva) {
+		Mapa mapa = Mapa.getInstance();
+		Celda nuevaCelda = mapa.dameCelda(posNueva);
+        boolean agregado = nuevaCelda.agregarUnidad(this.unidad);
+        if(agregado) {
+        	celda.eliminarUnidad();
+        	this.unidad.mover(mapa.dameCelda(posNueva));
+        	return true;
+        }
+        
+		return false;
+	}
+	
 }
