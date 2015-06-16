@@ -1,15 +1,8 @@
 package fiuba.algo3.algocraft.modelo.unidades;
 
-import fiuba.algo3.algocraft.modelo.excepciones.NoSePuedeRealizarAccionException;
-import fiuba.algo3.algocraft.modelo.mapa.Celda;
+import fiuba.algo3.algocraft.modelo.unidades.protoss.SaludProtoss;
 
 public abstract class UnidadProtoss extends Unidad {
-
-	@Override
-	public boolean atacar(Celda unaCelda) throws NoSePuedeRealizarAccionException {
-		// TODO Auto-generated method stub
-		return false;
-	}
 
 	protected abstract Salud saludInicial();
 
@@ -26,6 +19,9 @@ public abstract class UnidadProtoss extends Unidad {
 	public void recibirataque(Unidad unaUnidadAtacante){
 		this.salud.atacar(unaUnidadAtacante.DanioAtaque());
 	}
-
-
+	
+	public int obtenerCantidadEscudo(){
+		SaludProtoss unaSalud = (SaludProtoss) this.salud;
+		return unaSalud.valorEscudo();
+	}
 }

@@ -31,6 +31,6 @@ public class AltoTemplario extends UnidadProtoss {
 
 	public int DanioAtaque() {
 		return 0;
-	} 
-
+	}
+	
 }

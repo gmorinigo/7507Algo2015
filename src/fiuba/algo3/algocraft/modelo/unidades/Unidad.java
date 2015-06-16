@@ -98,4 +98,8 @@ abstract public class Unidad implements TurnoObserver{
 		return this.salud.tieneVida();
 	}
 	
+	public int obtenerCantidadVida(){
+		return this.salud.valorDeSalud();
+	}	
+	
 }

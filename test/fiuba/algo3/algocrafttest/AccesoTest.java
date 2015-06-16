@@ -72,7 +72,7 @@ public class AccesoTest extends TestCase{
 		assertTrue(unaConstruccion.estaOperativa());
 	}
 	
-	public void testCrearMarineAlPasar3TurnosEstaCreadaEstaFinalizada() throws JugadorConNombreDemasiadoCortoException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, NoHaySuficientesRecursos, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException {
+	public void testCrearZealotYDragonAlPasar6TurnosEstanFinalizados() throws JugadorConNombreDemasiadoCortoException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, NoHaySuficientesRecursos, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException {
 		RazaProtoss unaRaza = new RazaProtoss(); 
 		TipoConstruccion unTipo = null;
 		Jugador unJugador = new Jugador("unNombre",unaRaza,"Azul");

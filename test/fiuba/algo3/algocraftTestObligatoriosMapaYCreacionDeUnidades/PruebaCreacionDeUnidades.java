@@ -12,15 +12,25 @@ import fiuba.algo3.algocraft.modelo.excepciones.NoHaySuficientesRecursos;
 import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory;
 import fiuba.algo3.algocraft.modelo.unidades.NaveTransporte;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
+import fiuba.algo3.algocraft.modelo.unidades.UnidadFactoryProtoss;
 import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory.TipoUnidad;
 import fiuba.algo3.algocraft.modelo.unidades.terran.Espectro;
 import fiuba.algo3.algocraft.modelo.unidades.terran.Golliat;
+import fiuba.algo3.algocraft.modelo.unidades.protoss.Dragon;
 import fiuba.algo3.algocraft.modelo.unidades.protoss.Zealot;
 import fiuba.algo3.algocraft.modelo.unidades.terran.NaveCiencia;
 import fiuba.algo3.algocrafttest.TestBase;
 
 @SuppressWarnings("static-access")
 public class PruebaCreacionDeUnidades extends TestBase{
+	
+	public void testCrearUnidadDragon() throws NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, JugadorConNombreDemasiadoCortoException, NoHaySuficientesRecursos{	
+		AbstractUnidadFactory factoryUnidades = getFactoryUnidades();
+		TipoUnidad unTipo = null;
+		Jugador unJugador = new Jugador("unNombre",new RazaProtoss(),"Azul");
+		Unidad unaUnidad = (Unidad) factoryUnidades.crearUnidad(unTipo.terrestre2,unJugador);
+		assertTrue(unaUnidad instanceof Dragon);
+	}
 	
 	public void testCrearUnidadZealot() throws NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, JugadorConNombreDemasiadoCortoException, NoHaySuficientesRecursos{	
 		RazaProtoss unaRaza = new RazaProtoss(); 
@@ -74,7 +84,11 @@ public class PruebaCreacionDeUnidades extends TestBase{
 		Unidad unaUnidad = (Unidad) factoryUnidades.crearUnidad(unTipo.volador2,unJugador/*,new DisparoSuperStrategy()*/);
 		assertTrue(unaUnidad instanceof NaveTransporte);
 	}
-	
+
+	public static AbstractUnidadFactory getFactoryUnidades(){
+	    
+		return new UnidadFactoryProtoss();
+	}
 }
 
 
