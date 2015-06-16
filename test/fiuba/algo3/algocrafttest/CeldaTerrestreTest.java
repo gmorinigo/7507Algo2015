@@ -22,6 +22,6 @@ public class CeldaTerrestreTest extends TestBase {
 		unaCelda.ocuparCelda();
 		assertTrue(unaCelda.celdaOcupada());
 		unaCelda.desocuparCelda();
-		assertTrue(unaCelda.celdaLibre());
+		assertFalse(unaCelda.celdaOcupada());
 	}
 }

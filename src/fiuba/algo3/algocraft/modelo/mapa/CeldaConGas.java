@@ -1,5 +1,6 @@
 package fiuba.algo3.algocraft.modelo.mapa;
 
+import fiuba.algo3.algocraft.modelo.construciones.Construccion;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 
 public class CeldaConGas extends Celda {
@@ -17,5 +18,20 @@ public class CeldaConGas extends Celda {
 	
 	public boolean esAtacable() {
 		return false;
+	}
+
+	@Override
+	public boolean agregarConstruccion(Construccion construccion) {
+		if( ! construccion.construccionRecolectoraDeGas() || this.celdaOcupada())
+			return false;
+		
+		this.ocuparCelda();
+		this.construccion = construccion;
+		return true;
+	}
+
+	@Override
+	public boolean esPosbibleConstruir(Construccion construccion) {
+		return (construccion.construccionRecolectoraDeGas() && ! this.celdaOcupada());
 	}
 }

@@ -8,7 +8,6 @@ import fiuba.algo3.algocraft.modelo.construciones.AbstractConstruccionFactory.Ti
 import fiuba.algo3.algocraft.modelo.construciones.protoss.Acceso;
 import fiuba.algo3.algocraft.modelo.excepciones.CantidadDeGasInsuficienteException;
 import fiuba.algo3.algocraft.modelo.excepciones.CantidadDeMineralInsuficienteException;
-import fiuba.algo3.algocraft.modelo.excepciones.CeldaOcupadaException;
 import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException;
 import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException;
 import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionNoPermitidaPorSalirseDelMapaException;
@@ -87,10 +86,8 @@ public class ArribaTest extends TestBase{
 		Posicion posicion54 = new Posicion(5,4);
 		Acceso unaConstruccion = new Acceso(posicion54, unJugador,TipoConstruccion.creadorUnidadesBasicas );
 		
-		try {
-			mapa.agregarConstruccion(unaConstruccion);
-		} catch (CeldaOcupadaException e) {
-		}
+
+		assertTrue(mapa.agregarConstruccion(unaConstruccion));
 		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Rojo");
 		
 		Turno unTurno = new Turno(unJugador,otroJugador);

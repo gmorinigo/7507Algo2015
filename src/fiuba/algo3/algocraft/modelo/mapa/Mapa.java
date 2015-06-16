@@ -3,10 +3,6 @@ package fiuba.algo3.algocraft.modelo.mapa;
 import java.util.ArrayList;
 
 import fiuba.algo3.algocraft.modelo.construciones.Construccion;
-import fiuba.algo3.algocraft.modelo.excepciones.CeldaOcupadaException;
-import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException;
-import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException;
-import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionNoPermitidaPorSalirseDelMapaException;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 
 public class Mapa {
@@ -136,76 +132,69 @@ public class Mapa {
 	}
 
 
-	public void agregarConstruccion(Construccion construccion) throws CeldaOcupadaException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException, ConstruccionNoPermitidaPorSalirseDelMapaException{
+	public boolean agregarConstruccion(Construccion construccion) {
 
 		Posicion unaPosicion = construccion.damePosicionCeldaSupIzquierda();
 		Celda unaCelda = this.matriz[unaPosicion.dameFila()][unaPosicion.dameColumna()];
-
-		try {
-			this.verificarFinDeMapa(construccion, unaPosicion);
-			this.verificarCeldasOcupadas(construccion, unaPosicion);
-			this.verificarSiCorrespondeLaConstruccionEnLaCelda(construccion, unaCelda);
-		} catch (CeldaOcupadaException e) {
-			throw e;
-		}
 		
-		this.ocuparCeldasConstruccion(construccion, unaCelda.obtenerPosicion());
+		if(! this.verificarFinDeMapa(construccion, unaPosicion) 
+				|| ! this.verificarSiPuedoConstruir(construccion, unaCelda))
+			return false;
+		
+		this.agregarCeldasConstruccion(construccion, unaCelda.obtenerPosicion());
 		this.asignarCeldas(construccion);
 		this.construcciones.add(construccion);
 
+		return true;
 	}
 
-	private void verificarFinDeMapa(Construccion construccion, Posicion unaPosicion) throws ConstruccionNoPermitidaPorSalirseDelMapaException {
+	private boolean verificarSiPuedoConstruir(Construccion construccion, Celda celda) {
+		//Para construccion de una sola celda
+		if (!construccion.construccionRecolectoraDeMineral() &&
+			!construccion.construccionRecolectoraDeGas())
+			return celda.esPosbibleConstruir(construccion);
+		
+		//Para construcciones de 4celdas
+		Posicion unaPosicion = celda.obtenerPosicion();
+		if( !this.matriz[unaPosicion.dameFila()][unaPosicion.dameColumna()].esPosbibleConstruir(construccion)){
+			return false;	
+		}
+		if ( ! this.matriz[unaPosicion.dameFila() + 1][unaPosicion.dameColumna()].esPosbibleConstruir(construccion)) 
+		{
+			return false;
+		}
+		if (! this.matriz[unaPosicion.dameFila()][unaPosicion.dameColumna() + 1].esPosbibleConstruir(construccion)) 
+		{
+			return false;
+		}
+		if (!this.matriz[unaPosicion.dameFila()+1][unaPosicion.dameColumna() + 1].esPosbibleConstruir(construccion)) 
+		{
+			return false ;
+		}
+		return true;
+		
+	}
+	
+	private boolean verificarFinDeMapa(Construccion construccion, Posicion unaPosicion)  {
 		if (!construccion.construccionRecolectoraDeGas() && !construccion.construccionRecolectoraDeMineral() 
 		&& (unaPosicion.dameColumna() == this.nroColumnaMaxima || unaPosicion.dameFila() == this.nroFilaMaxima) ){
-			throw new ConstruccionNoPermitidaPorSalirseDelMapaException();
+			return false;
 		}
-	}
-
-	private void verificarSiCorrespondeLaConstruccionEnLaCelda(Construccion construccion, Celda unaCelda) throws ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException{
-		if ((construccion.construccionRecolectoraDeMineral()) && !(unaCelda.tieneMineral())){
-			throw new ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException();
-		}
-		if ((construccion.construccionRecolectoraDeGas()) && !(unaCelda.tieneGas())){
-			throw new ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException();
-		}
+		return true;
 	}
 	
-	
-	private void verificarCeldasOcupadas(Construccion construccion, Posicion unaPosicion) throws CeldaOcupadaException {
-
-		if (this.matriz[unaPosicion.dameFila()][unaPosicion.dameColumna()].celdaOcupada()) 
-		{
-			throw new CeldaOcupadaException(); 
-		}
-		
-		if (!construccion.construccionRecolectoraDeGas() && !construccion.construccionRecolectoraDeMineral()){
-			if (this.matriz[unaPosicion.dameFila() + 1][unaPosicion.dameColumna()].celdaOcupada()) 
-			{
-				throw new CeldaOcupadaException(); 
-			}
-			if (this.matriz[unaPosicion.dameFila()][unaPosicion.dameColumna() + 1].celdaOcupada()) 
-			{
-				throw new CeldaOcupadaException(); 
-			}
-			if (this.matriz[unaPosicion.dameFila()+1][unaPosicion.dameColumna() + 1].celdaOcupada()) 
-			{
-				throw new CeldaOcupadaException(); 
-			}
-		}
-	}
 	
 	public boolean verificarCeldaOcupada(Posicion unaPosicion){
 		return (this.matriz[unaPosicion.dameFila()][unaPosicion.dameColumna()].celdaOcupada());
 	}
 	
-	private void ocuparCeldasConstruccion(Construccion construccion, Posicion unaPosicion){
-		this.matriz[unaPosicion.dameFila()][unaPosicion.dameColumna()].ocuparCelda();
+	private void agregarCeldasConstruccion(Construccion construccion, Posicion unaPosicion){
+		this.matriz[unaPosicion.dameFila()][unaPosicion.dameColumna()].agregarConstruccion(construccion);
 		
 		if (!construccion.construccionRecolectoraDeGas() && !construccion.construccionRecolectoraDeMineral()){
-			this.matriz[unaPosicion.dameFila()+1][unaPosicion.dameColumna()].ocuparCelda();
-			this.matriz[unaPosicion.dameFila()][unaPosicion.dameColumna()+1].ocuparCelda();
-			this.matriz[unaPosicion.dameFila()+1][unaPosicion.dameColumna()+1].ocuparCelda();
+			this.matriz[unaPosicion.dameFila()+1][unaPosicion.dameColumna()].agregarConstruccion(construccion);
+			this.matriz[unaPosicion.dameFila()][unaPosicion.dameColumna()+1].agregarConstruccion(construccion);
+			this.matriz[unaPosicion.dameFila()+1][unaPosicion.dameColumna()+1].agregarConstruccion(construccion);
 		}
 	}
 
@@ -215,10 +204,14 @@ public class Mapa {
 
 		ArrayList<Celda> celdas = new ArrayList<>();
 		
+		
 		celdas.add(this.matriz[unaPosicion.dameFila()][unaPosicion.dameColumna()]);
-		celdas.add(this.matriz[unaPosicion.dameFila()+1][unaPosicion.dameColumna()]);
-		celdas.add(this.matriz[unaPosicion.dameFila()][unaPosicion.dameColumna()+1]);
-		celdas.add(this.matriz[unaPosicion.dameFila()+1][unaPosicion.dameColumna()+1]);
+		
+		if (!construccion.construccionRecolectoraDeGas() && !construccion.construccionRecolectoraDeMineral()){
+			celdas.add(this.matriz[unaPosicion.dameFila()+1][unaPosicion.dameColumna()]);
+			celdas.add(this.matriz[unaPosicion.dameFila()][unaPosicion.dameColumna()+1]);
+			celdas.add(this.matriz[unaPosicion.dameFila()+1][unaPosicion.dameColumna()+1]);	
+		}
 		
 		construccion.agregarCeldas(celdas);
 

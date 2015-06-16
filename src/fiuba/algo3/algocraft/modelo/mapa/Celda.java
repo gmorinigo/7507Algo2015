@@ -1,5 +1,6 @@
 package fiuba.algo3.algocraft.modelo.mapa;
 
+import fiuba.algo3.algocraft.modelo.construciones.Construccion;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 
 
@@ -7,6 +8,7 @@ public abstract class Celda {
 	private Posicion posicion;
 	private boolean estaOcupada;
 	private Unidad unidad;
+	protected Construccion construccion;
 	
 	public Celda(int fila, int columna) {
 		Posicion unaPosicion = new Posicion(fila,columna);
@@ -30,10 +32,6 @@ public abstract class Celda {
 	public void desocuparCelda(){
 		this.unidad = null;
 		this.estaOcupada = false;  
-	}
-	
-	public boolean celdaLibre(){
-		return (!this.estaOcupada);  
 	}
 	
 	public boolean tieneGas(){
@@ -66,13 +64,9 @@ public abstract class Celda {
 
 
 	abstract public boolean esAtacable();
-//	//Hacer este metodo abstract
-//	public boolean esAtacable() {
-//		// Si no atacable est� redefinido el m�todo en la clase particular.
-//		// Al validar si es atacable tambien verifico que est� ocupada
-//		return this.celdaOcupada();
-//	}
-
+	
+	abstract public boolean esPosbibleConstruir(Construccion construccion);
+	abstract public boolean agregarConstruccion(Construccion construccion);
 
 	public boolean atacarUnidadDeLaCeldaConUnidad(Unidad unaUnidadAtacante) {
 		if(!this.esAtacable())
