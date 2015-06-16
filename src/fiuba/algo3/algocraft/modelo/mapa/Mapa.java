@@ -239,18 +239,18 @@ public class Mapa {
 		INSTANCE = null;
 	}
 
-	public void agregarUnidad(Posicion unaPosicion, Unidad unaUnidad) throws CeldaOcupadaException {
+	public boolean agregarUnidad(Posicion unaPosicion, Unidad unaUnidad) {
 		Celda unaCelda = this.matriz[unaPosicion.dameFila()][unaPosicion.dameColumna()];
 
 		try {
 			this.verificarCeldasOcupadas(unaPosicion);
 		} catch (CeldaOcupadaException e) {
-			throw e;
+			return false;
 		}
 		this.verificarSiCorrespondeLaUnidadEnLaCelda(unaUnidad, unaCelda);
 		
 		//validar el retorno de esta funcion
-		this.agregarUnidadALaCelda(unaUnidad, unaCelda);
+		return this.agregarUnidadALaCelda(unaUnidad, unaCelda);
 		// TODO: Ver si es necesario asignar las celdas a la unidad
 		//this.asignarCeldas(unaUnidad);
 		
