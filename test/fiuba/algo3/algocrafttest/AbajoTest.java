@@ -13,12 +13,11 @@ import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory;
 import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory.TipoUnidad;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
-import fiuba.algo3.algocraft.modelo.unidades.movimientos.Movimiento;
 import fiuba.algo3.algocraft.modelo.unidades.movimientos.Movimiento.TipoDireccion;
 
 public class AbajoTest extends TestBase{
 	
-    public void testAbajoDeberiaMoverLaUnidadUnaPosicionParaAbajo() throws JugadorConNombreDemasiadoCortoException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, NoHaySuficientesRecursos{
+    public void testAbajoDeberiaMoverLaUnidadUnaPosicionParaAbajoUnaVezPorTurno() throws JugadorConNombreDemasiadoCortoException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, NoHaySuficientesRecursos{
        
         Mapa mapa = Mapa.getInstance();
 		RazaProtoss unaRaza = new RazaProtoss(); 
@@ -26,19 +25,24 @@ public class AbajoTest extends TestBase{
 		AbstractUnidadFactory factoryUnidades = unaRaza.getFactoryUnidades();
 		Unidad unaUnidad = (Unidad) factoryUnidades.crearUnidad(TipoUnidad.terrestre1,unJugador);
 		
-		mapa.agregarUnidad(new Posicion(4,4), unaUnidad);
-
-		Movimiento mov = new Movimiento(unaUnidad);
 		
-        mov.mover(TipoDireccion.Abajo);
+		//Unidad esta naciendo. Por lo tanto no puede colocarse en el mapa
+		assertFalse(mapa.agregarUnidad(new Posicion(4,4), unaUnidad));
+		
+		unaUnidad.finalizarNacimiento();
+		assertTrue(mapa.agregarUnidad(new Posicion(4,4), unaUnidad));
+		
+        unaUnidad.mover(TipoDireccion.Abajo);
 		assertNotSame(unaUnidad.dameCelda(),mapa.dameCelda(new Posicion(4,4)));
         assertEquals(unaUnidad.dameCelda(),mapa.dameCelda(new Posicion(5,4)));
         
-        mov.mover(TipoDireccion.Abajo);
-        mov.mover(TipoDireccion.Abajo);
-        mov.mover(TipoDireccion.Abajo);
+        unaUnidad.mover(TipoDireccion.Abajo);
+        unaUnidad.mover(TipoDireccion.Abajo);
+        unaUnidad.mover(TipoDireccion.Abajo);
         
-        assertEquals(unaUnidad.dameCelda(),mapa.dameCelda(new Posicion(8,4)));
+        //La unidad ya realizo la accion del turno
+        assertNotSame(unaUnidad.dameCelda(),mapa.dameCelda(new Posicion(8,4)));
+        assertEquals(unaUnidad.dameCelda(),mapa.dameCelda(new Posicion(5,4)));
     }
 
 }

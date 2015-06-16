@@ -196,15 +196,6 @@ public class Mapa {
 		}
 	}
 	
-	
-	private void verificarCeldasOcupadas(Posicion unaPosicion) throws CeldaOcupadaException {
-
-		if (this.matriz[unaPosicion.dameFila()][unaPosicion.dameColumna()].celdaOcupada()) 
-		{
-			throw new CeldaOcupadaException(); 
-		}
-	}
-	
 	public boolean verificarCeldaOcupada(Posicion unaPosicion){
 		return (this.matriz[unaPosicion.dameFila()][unaPosicion.dameColumna()].celdaOcupada());
 	}
@@ -242,27 +233,8 @@ public class Mapa {
 	public boolean agregarUnidad(Posicion unaPosicion, Unidad unaUnidad) {
 		Celda unaCelda = this.matriz[unaPosicion.dameFila()][unaPosicion.dameColumna()];
 
-		try {
-			this.verificarCeldasOcupadas(unaPosicion);
-		} catch (CeldaOcupadaException e) {
-			return false;
-		}
-		this.verificarSiCorrespondeLaUnidadEnLaCelda(unaUnidad, unaCelda);
-		
-		//validar el retorno de esta funcion
-		return this.agregarUnidadALaCelda(unaUnidad, unaCelda);
-		// TODO: Ver si es necesario asignar las celdas a la unidad
-		//this.asignarCeldas(unaUnidad);
-		
-	}
-
-	private void verificarSiCorrespondeLaUnidadEnLaCelda(Unidad unaUnidad, Celda unaCelda){
-		unaCelda.puedeMoverse(unaUnidad);
-	}
-	
-
-	private boolean agregarUnidadALaCelda(Unidad unaUnidad, Celda unaCelda){
 		return unaCelda.agregarUnidad(unaUnidad);
+		
 	}
 }
 

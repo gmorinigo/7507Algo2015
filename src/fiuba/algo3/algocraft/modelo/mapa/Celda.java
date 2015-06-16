@@ -46,7 +46,7 @@ public abstract class Celda {
 
 
 	public boolean agregarUnidad(Unidad unaUnidad) {
-		if (!this.puedeMoverse(unaUnidad) && this.celdaOcupada()) {
+		if (!this.puedeMoverse(unaUnidad) || this.celdaOcupada() || !unaUnidad.estaOperativa()) {
 			return false;
 		}
 		this.unidad = unaUnidad;
