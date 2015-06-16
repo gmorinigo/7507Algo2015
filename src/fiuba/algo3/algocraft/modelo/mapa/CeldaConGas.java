@@ -11,8 +11,11 @@ public class CeldaConGas extends Celda {
 		return true;
 	}
 
-	@Override
 	public boolean puedeMoverse(Unidad unaUnidad) {
+		return false;
+	}
+	
+	public boolean esAtacable() {
 		return false;
 	}
 }

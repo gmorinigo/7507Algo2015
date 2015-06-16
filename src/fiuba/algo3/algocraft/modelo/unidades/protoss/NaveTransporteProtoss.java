@@ -1,7 +1,8 @@
 package fiuba.algo3.algocraft.modelo.unidades.protoss;
 
-import fiuba.algo3.algocraft.modelo.mapa.Posicion;
+import fiuba.algo3.algocraft.modelo.mapa.Celda;
 import fiuba.algo3.algocraft.modelo.unidades.NaveTransporte;
+import fiuba.algo3.algocraft.modelo.unidades.Salud;
 
 
 public class NaveTransporteProtoss extends NaveTransporte {
@@ -10,19 +11,16 @@ public class NaveTransporteProtoss extends NaveTransporte {
 		return true;
 	}
 	
+	protected Salud saludInicial() {
+		return new SaludProtoss(40,40);
+	}
+
 	@Override
 	public void mover(int posicionX, int posicionY) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
-	public void atacar(Posicion posicion) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public int turnosNecesariosParaCreacion() {
 		return 8;
 	}
@@ -32,5 +30,13 @@ public class NaveTransporteProtoss extends NaveTransporte {
 		// TODO Auto-generated method stub
 		
 	}
+
+	public boolean atacar(Celda unaCelda) {
+		return false;
+	} 
+
+	public int DanioAtaque() {
+		return 0;
+	} 
 
 }

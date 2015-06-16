@@ -1,10 +1,9 @@
 package fiuba.algo3.algocraft.modelo.unidades.protoss;
 
-import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.unidades.Salud;
-import fiuba.algo3.algocraft.modelo.unidades.Unidad;
+import fiuba.algo3.algocraft.modelo.unidades.UnidadProtoss;
 
-public class Scout extends Unidad {
+public class Scout extends UnidadProtoss {
 
 	public Scout() {	
 		this.tamanioTransporte = 0;
@@ -23,11 +22,6 @@ public class Scout extends Unidad {
 		// TODO Auto-generated method stub
 		
 	}
-	@Override
-	public void atacar(Posicion posicion) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	public int turnosNecesariosParaCreacion() {
 		return 9;
@@ -38,5 +32,9 @@ public class Scout extends Unidad {
 		// TODO Auto-generated method stub
 		
 	}
+
+	public int DanioAtaque() {
+		return 14;
+	} 
 
 }

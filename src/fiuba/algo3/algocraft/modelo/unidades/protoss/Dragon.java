@@ -1,28 +1,20 @@
 package fiuba.algo3.algocraft.modelo.unidades.protoss;
 
-import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.unidades.Salud;
-import fiuba.algo3.algocraft.modelo.unidades.Unidad;
+import fiuba.algo3.algocraft.modelo.unidades.UnidadProtoss;
 
-public class Dragon extends Unidad {
+public class Dragon extends UnidadProtoss {
 
 	public Dragon() {
 		this.tamanioTransporte = 4;
 	}
 	
-	@Override
 	protected Salud saludInicial() {
-		return null;
+		return new SaludProtoss(80,100);
 	}
 
 	@Override
 	public void mover(int posicionX, int posicionY) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void atacar(Posicion posicion) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -36,5 +28,9 @@ public class Dragon extends Unidad {
 		// TODO Auto-generated method stub
 		
 	}
+
+	public int DanioAtaque() {
+		return 20;
+	} 
 
 }

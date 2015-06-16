@@ -3,7 +3,7 @@ package fiuba.algo3.algocraft.modelo.mapa;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 
 
-public abstract class Celda /*implements ICeldaVisitable*/{
+public abstract class Celda {
 	private Posicion posicion;
 	private boolean estaOcupada;
 	private Unidad unidad;
@@ -63,4 +63,21 @@ public abstract class Celda /*implements ICeldaVisitable*/{
 
 
 	abstract public boolean puedeMoverse(Unidad unaUnidad);
+
+
+	public boolean esAtacable() {
+		// Si no atacable está redefinido el método en la clase particular.
+		// Al validar si es atacable tambien verifico que esté ocupada
+		return this.celdaOcupada();
+	}
+
+
+	public void atacarUnidadDeLaCeldaConUnidad(Unidad unaUnidadAtacante) {
+		this.unidad.recibirataque(unaUnidadAtacante);
+		if (!this.unidad.estaViva()){
+			// Hay que eliminar la unidad del jugador y que reste la cantidad de poblacion
+			// this.unidad.obtenerJugador.eliminarUnidad();
+			this.eliminarUnidad();
+		}
+	}
 }

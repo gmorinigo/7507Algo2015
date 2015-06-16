@@ -1,10 +1,10 @@
 package fiuba.algo3.algocraft.modelo.unidades.terran;
 
-import fiuba.algo3.algocraft.modelo.mapa.Posicion;
+import fiuba.algo3.algocraft.modelo.mapa.Celda;
 import fiuba.algo3.algocraft.modelo.unidades.Salud;
-import fiuba.algo3.algocraft.modelo.unidades.Unidad;
+import fiuba.algo3.algocraft.modelo.unidades.UnidadTerran;
 
-public class NaveCiencia extends Unidad {
+public class NaveCiencia extends UnidadTerran {
     private int energia;    
 
 	
@@ -17,7 +17,7 @@ public class NaveCiencia extends Unidad {
 
 	@Override
 	protected Salud saludInicial() {
-		return null;
+		return new SaludTerran(200);
 	}
 
 	public boolean esUnidadAerea(){
@@ -35,13 +35,6 @@ public class NaveCiencia extends Unidad {
 	}
 
 
-	@Override
-	public void atacar(Posicion posicion) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
 	public int turnosNecesariosParaCreacion() {
 		return 10;
 	}
@@ -51,4 +44,12 @@ public class NaveCiencia extends Unidad {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	public boolean atacar(Celda unaCelda) {
+		return false;
+	}
+	
+	public int DanioAtaque() {
+		return 0;
+	} 
 }

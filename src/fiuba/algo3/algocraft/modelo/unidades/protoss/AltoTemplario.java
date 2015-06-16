@@ -1,28 +1,22 @@
 package fiuba.algo3.algocraft.modelo.unidades.protoss;
 
-import fiuba.algo3.algocraft.modelo.mapa.Posicion;
+import fiuba.algo3.algocraft.modelo.mapa.Celda;
 import fiuba.algo3.algocraft.modelo.unidades.Salud;
-import fiuba.algo3.algocraft.modelo.unidades.Unidad;
+import fiuba.algo3.algocraft.modelo.unidades.UnidadProtoss;
 
-public class AltoTemplario extends Unidad {
+public class AltoTemplario extends UnidadProtoss {
 
 	public AltoTemplario() {
 		this.tamanioTransporte = 2;
 	}
 	
-	@Override
+	
 	protected Salud saludInicial() {
-		return null;
+		return new SaludProtoss(40,40);
 	}
 
 	@Override
 	public void mover(int posicionX, int posicionY) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void atacar(Posicion posicion) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -35,6 +29,14 @@ public class AltoTemplario extends Unidad {
 	protected void vivir() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	public boolean atacar(Celda unaCelda) {
+		return false;
+	}
+
+	public int DanioAtaque() {
+		return 0;
 	} 
 
 }

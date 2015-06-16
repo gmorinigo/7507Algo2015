@@ -1,7 +1,8 @@
 package fiuba.algo3.algocraft.modelo.unidades.terran;
 
-import fiuba.algo3.algocraft.modelo.mapa.Posicion;
+import fiuba.algo3.algocraft.modelo.mapa.Celda;
 import fiuba.algo3.algocraft.modelo.unidades.NaveTransporte;
+import fiuba.algo3.algocraft.modelo.unidades.Salud;
 
 public class NaveTransporteTerran extends NaveTransporte {
 
@@ -9,14 +10,12 @@ public class NaveTransporteTerran extends NaveTransporte {
 		return true;
 	}
 	
+	protected Salud saludInicial() {
+		return new SaludTerran(150);
+	}
+	
 	@Override
 	public void mover(int posicionX, int posicionY) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void atacar(Posicion posicion) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -32,4 +31,11 @@ public class NaveTransporteTerran extends NaveTransporte {
 		
 	}
 	
+	public boolean atacar(Celda unaCelda) {
+		return false;
+	}
+	
+	public int DanioAtaque() {
+		return 0;
+	} 
 }

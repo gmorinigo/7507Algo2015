@@ -1,11 +1,10 @@
 package fiuba.algo3.algocraft.modelo.unidades;
 
 import java.util.ArrayList;
-
 import fiuba.algo3.algocraft.modelo.excepciones.MaximaCapacidadDeTransporteSuperadaException;
 import fiuba.algo3.algocraft.modelo.excepciones.NoSePuedeAgregarALaNaveDeTransporteUnaUnidadVoladora;
 
-public abstract class NaveTransporte extends Unidad {
+public abstract class NaveTransporte extends UnidadTerran {
 	private ArrayList<Unidad> unidadesCargadas;
 	private int capacidadCargada;
 	private int capacidadMaximaCarga;
@@ -19,7 +18,6 @@ public abstract class NaveTransporte extends Unidad {
 		//this.disparoStrategy.setUnidad(this);
 	}
 
-	@Override
 	protected Salud saludInicial() {
 		return null;
 	}

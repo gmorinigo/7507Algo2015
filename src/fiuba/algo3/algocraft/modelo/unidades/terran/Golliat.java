@@ -1,10 +1,9 @@
 package fiuba.algo3.algocraft.modelo.unidades.terran;
 
-import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.unidades.Salud;
-import fiuba.algo3.algocraft.modelo.unidades.Unidad;
+import fiuba.algo3.algocraft.modelo.unidades.UnidadTerran;
 
-public class Golliat extends Unidad {
+public class Golliat extends UnidadTerran {
 
 	//private DisparoStrategy disparoStrategy;
 	
@@ -16,17 +15,11 @@ public class Golliat extends Unidad {
 	
 	@Override
 	protected Salud saludInicial() {
-		return null;
+		return new SaludTerran(125);
 	}
 
 	@Override
 	public void mover(int posicionX, int posicionY) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void atacar(Posicion posicion) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -39,5 +32,9 @@ public class Golliat extends Unidad {
 	protected void vivir() {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public int DanioAtaque() {
+		return 10;
 	} 
 }

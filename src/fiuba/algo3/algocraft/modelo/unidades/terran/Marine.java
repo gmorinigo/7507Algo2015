@@ -1,12 +1,11 @@
 package fiuba.algo3.algocraft.modelo.unidades.terran;
 
-import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.unidades.Salud;
-import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 import fiuba.algo3.algocraft.modelo.unidades.UnidadEstadoescansando;
+import fiuba.algo3.algocraft.modelo.unidades.UnidadTerran;
 
 
-public class Marine extends Unidad {
+public class Marine extends UnidadTerran {
 
 	//private DisparoStrategy disparoStrategy;
 
@@ -17,9 +16,8 @@ public class Marine extends Unidad {
 //		this.disparoStrategy.setUnidad(this);
 	}
 	
-	@Override
 	protected Salud saludInicial() {
-		return null;
+		return new SaludTerran(40);
 	}
 
 	@Override
@@ -34,12 +32,6 @@ public class Marine extends Unidad {
 		this.estado = new UnidadEstadoescansando(this);
 	}
 
-	@Override
-	public void atacar(Posicion posicion) {
-		// TODO Auto-generated method stub
-		
-	}
-
 	public int turnosNecesariosParaCreacion() {
 		return 3;
 	}
@@ -48,4 +40,8 @@ public class Marine extends Unidad {
 	protected void vivir() {
 		// TODO Auto-generated method stub
 	}
+	
+	public int DanioAtaque() {
+		return 6;
+	} 
 }

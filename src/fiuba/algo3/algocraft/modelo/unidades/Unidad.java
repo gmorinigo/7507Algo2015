@@ -2,7 +2,6 @@ package fiuba.algo3.algocraft.modelo.unidades;
 
 import fiuba.algo3.algocraft.modelo.excepciones.NoSePuedeRealizarAccionException;
 import fiuba.algo3.algocraft.modelo.mapa.Celda;
-import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.turnos.Turno;
 import fiuba.algo3.algocraft.modelo.turnos.TurnoObserver;
 import fiuba.algo3.algocraft.modelo.unidades.movimientos.Movimiento;
@@ -16,7 +15,6 @@ abstract public class Unidad implements TurnoObserver{
 	protected Movimiento movimiento;
 	protected Celda celda;
 
-	
 	public int getTamanioTransporte(){
 		return this.tamanioTransporte;
 	}
@@ -32,6 +30,7 @@ abstract public class Unidad implements TurnoObserver{
 		this.celda  = null;
 	}
 	
+
 	@Override
 	public void finDeTurno(Turno turno) {
 		this.estado.avanzarEnElTurno();	
@@ -46,6 +45,19 @@ abstract public class Unidad implements TurnoObserver{
 		return this.estado.estaOperativa();
 	}
 	
+	/*
+	 * Aca hay que preguntar al estado si se puede realizar accion
+	 * Cuando se termina la accion hay que cambiar el estado a UnidadEstadoDesancansando
+	 */
+	public boolean atacar(Celda unaCelda)throws NoSePuedeRealizarAccionException {
+		if (!unaCelda.esAtacable()) return false;
+		
+		unaCelda.atacarUnidadDeLaCeldaConUnidad(this);
+		
+		return true;
+
+	}
+	
 	public Movimiento dameMovimiento() {
 		return this.movimiento;
 	}
@@ -56,13 +68,6 @@ abstract public class Unidad implements TurnoObserver{
 	 */
 	abstract public void mover(int posicionX, int posicionY) throws NoSePuedeRealizarAccionException;
 	
-	/*
-	 * Aca hay que preguntar al estado si se puede realizar accion
-	 * Cuando se termina la accion hay que cambiar el estado a UnidadEstadoDesancansando
-	 */
-	abstract public void atacar(Posicion posicion) throws NoSePuedeRealizarAccionException;
-	
-
 	abstract protected Salud saludInicial();
 	public abstract int turnosNecesariosParaCreacion();
 	protected boolean construccionValidaParaUnidad(){
@@ -78,6 +83,13 @@ abstract public class Unidad implements TurnoObserver{
 
 	public void mover(Celda unaCelda) {
 		this.celda = unaCelda;
+	}
+
+	public abstract void recibirataque(Unidad unaUnidadAtacante);
+	public abstract int DanioAtaque();
+	
+	public boolean estaViva(){
+		return this.salud.tieneVida();
 	}
 	
 }
