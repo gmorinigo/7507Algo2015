@@ -1,6 +1,7 @@
 package fiuba.algo3.algocrafttest;
 
 import java.rmi.NoSuchObjectException;
+
 import junit.framework.TestCase;
 import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.RazaTerran;
@@ -19,13 +20,14 @@ import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionInvalidaPrimeroDebeC
 import fiuba.algo3.algocraft.modelo.excepciones.JugadorConNombreDemasiadoCortoException;
 import fiuba.algo3.algocraft.modelo.excepciones.NoHaySuficientesRecursos;
 import fiuba.algo3.algocraft.modelo.excepciones.NoReuneLosRequisitosException;
+import fiuba.algo3.algocraft.modelo.excepciones.NoSePudoConstruirException;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.turnos.Turno;
 
 @SuppressWarnings("static-access")
 public class FabricaTest extends TestCase {
 
-	public void testCrearUnArchivoTemplario() throws JugadorConNombreDemasiadoCortoException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, NoHaySuficientesRecursos{
+	public void testCrearUnArchivoTemplario() throws JugadorConNombreDemasiadoCortoException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, NoHaySuficientesRecursos, NoSePudoConstruirException{
 		RazaTerran unaRaza = new RazaTerran(); 
 		TipoConstruccion unTipo = null;
 		Jugador unJugador = new Jugador("unNombre",unaRaza,"Azul");
@@ -57,7 +59,7 @@ public class FabricaTest extends TestCase {
 	}
 	
 	public void testCrearUnArchivoTemplarioAlPasar9TurnosEstaCreada() 
-	throws CeldaOcupadaException, NoReuneLosRequisitosException, JugadorConNombreDemasiadoCortoException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException,  ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, NoHaySuficientesRecursos{
+	throws CeldaOcupadaException, NoReuneLosRequisitosException, JugadorConNombreDemasiadoCortoException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException,  ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, NoHaySuficientesRecursos, NoSePudoConstruirException{
 		RazaTerran unaRaza = new RazaTerran(); 
 		TipoConstruccion unTipo = null;
 		Jugador unJugador = new Jugador("unNombre",unaRaza,"Azul");
@@ -106,7 +108,7 @@ public class FabricaTest extends TestCase {
 	
 	
 	@SuppressWarnings("unused")
-	public void testCantidadDeGasInsuficiente() throws NoSuchObjectException, CantidadDeMineralInsuficienteException, JugadorConNombreDemasiadoCortoException, NoHaySuficientesRecursos, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException{	
+	public void testCantidadDeGasInsuficiente() throws NoSuchObjectException, CantidadDeMineralInsuficienteException, JugadorConNombreDemasiadoCortoException, NoHaySuficientesRecursos, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, NoSePudoConstruirException{	
 		RazaTerran unaRaza = new RazaTerran(); 
 		TipoConstruccion unTipo = null;
 		Jugador unJugador = new Jugador("unNombre",unaRaza,"Azul");
@@ -143,7 +145,7 @@ public class FabricaTest extends TestCase {
 	}
 	
 	@SuppressWarnings("unused")
-	public void testCantidadDeMineralInsuficiente() throws NoSuchObjectException, CantidadDeGasInsuficienteException, JugadorConNombreDemasiadoCortoException, NoHaySuficientesRecursos, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, CantidadDeMineralInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException{	
+	public void testCantidadDeMineralInsuficiente() throws NoSuchObjectException, CantidadDeGasInsuficienteException, JugadorConNombreDemasiadoCortoException, NoHaySuficientesRecursos, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, CantidadDeMineralInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, NoSePudoConstruirException{	
 		RazaTerran unaRaza = new RazaTerran(); 
 		TipoConstruccion unTipo = null;
 		Jugador unJugador = new Jugador("unNombre",unaRaza,"Azul");
@@ -179,7 +181,7 @@ public class FabricaTest extends TestCase {
 	}
 	
 	@SuppressWarnings("unused")
-	public void testNoSePuedeCrearSiNoSeCreoUnPuertoEstelarPreviamente() throws NoReuneLosRequisitosException, JugadorConNombreDemasiadoCortoException, CeldaOcupadaException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, NoHaySuficientesRecursos{
+	public void testNoSePuedeCrearSiNoSeCreoUnPuertoEstelarPreviamente() throws NoReuneLosRequisitosException, JugadorConNombreDemasiadoCortoException, CeldaOcupadaException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, NoHaySuficientesRecursos, NoSePudoConstruirException{
 		RazaTerran unaRaza = new RazaTerran(); 
 		TipoConstruccion unTipo = null;
 		Jugador unJugador = new Jugador("unNombre",unaRaza,"Azul");

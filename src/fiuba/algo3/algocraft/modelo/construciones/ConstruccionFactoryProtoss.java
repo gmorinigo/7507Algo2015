@@ -15,15 +15,16 @@ import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionInvalidaPrimeroDebeC
 import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException;
 import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException;
 import fiuba.algo3.algocraft.modelo.excepciones.NoHaySuficientesRecursos;
+import fiuba.algo3.algocraft.modelo.excepciones.NoSePudoConstruirException;
+import fiuba.algo3.algocraft.modelo.mapa.Mapa;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 
 
 
 public class ConstruccionFactoryProtoss extends AbstractConstruccionFactory {
-	public Construccion crearConstruccion(TipoConstruccion tipo, Posicion unaPosicion, Jugador unJugador) throws NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoHaySuficientesRecursos{
+	public Construccion crearConstruccion(TipoConstruccion tipo, Posicion unaPosicion, Jugador unJugador) throws NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoHaySuficientesRecursos, NoSePudoConstruirException{
 		this.verificarRecursosParaPoderCrear(tipo, unJugador);
 		this.verificarConstruccionesParaPoderCrear(tipo, unJugador);
-		this.consumirRecursosJugador(tipo, unJugador);
 		Construccion unaConstruccion;
 
 		switch(tipo){
@@ -47,6 +48,12 @@ public class ConstruccionFactoryProtoss extends AbstractConstruccionFactory {
 			break;
 		default: throw new NoSuchObjectException("Objeto Sin Tipo");
 		}
+		
+		if(! Mapa.getInstance().agregarConstruccion(unaConstruccion))
+			throw new NoSePudoConstruirException();
+		
+		this.consumirRecursosJugador(tipo, unJugador);
+		unJugador.agregarConstruccion(unaConstruccion);
 		return unaConstruccion;
 	}
 

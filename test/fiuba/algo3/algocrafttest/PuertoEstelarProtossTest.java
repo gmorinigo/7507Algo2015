@@ -1,6 +1,7 @@
 package fiuba.algo3.algocrafttest;
 
 import java.rmi.NoSuchObjectException;
+
 import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.RazaProtoss;
 import fiuba.algo3.algocraft.modelo.construciones.AbstractConstruccionFactory;
@@ -18,21 +19,22 @@ import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionInvalidaPrimeroDebeC
 import fiuba.algo3.algocraft.modelo.excepciones.JugadorConNombreDemasiadoCortoException;
 import fiuba.algo3.algocraft.modelo.excepciones.NoHaySuficientesRecursos;
 import fiuba.algo3.algocraft.modelo.excepciones.NoReuneLosRequisitosException;
+import fiuba.algo3.algocraft.modelo.excepciones.NoSePudoConstruirException;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.turnos.Turno;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory.TipoUnidad;
-import junit.framework.TestCase;
 
 @SuppressWarnings("static-access")
-public class PuertoEstelarProtossTest extends TestCase{
-	public void testCrearUnPuertoEstelar() throws JugadorConNombreDemasiadoCortoException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoHaySuficientesRecursos{
+public class PuertoEstelarProtossTest extends TestBase{
+	public void testCrearUnPuertoEstelar() throws JugadorConNombreDemasiadoCortoException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoHaySuficientesRecursos, NoSePudoConstruirException{
 		RazaProtoss unaRaza = new RazaProtoss(); 
 		TipoConstruccion unTipo = null;
 		Jugador unJugador = new Jugador("unNombre",unaRaza,"Azul");
 		
 		AbstractConstruccionFactory factoryConstrucciones = unaRaza.getFactoryConstrucciones();
 		Posicion unaPosicion = new Posicion(6,4);
+		Posicion otraPosicion = new Posicion(15,7);
 		
 		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
 		Turno unTurno = new Turno(unJugador,otroJugador);
@@ -43,19 +45,20 @@ public class PuertoEstelarProtossTest extends TestCase{
 		unJugador.agregarConstruccion(unAcceso);
 		for (int i = 0; i < 8 ;i++) unTurno.avanzarTurno();
 		
-		Construccion unaConstruccion = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesVoladoras, unaPosicion, unJugador);		
+		Construccion unaConstruccion = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesVoladoras, otraPosicion, unJugador);		
 
 		assertTrue(unaConstruccion instanceof PuertoEstelarProtoss);
 	}
 	
 	public void testCrearUnPuertoEstelarAlPasar10TurnosEstaCreada() 
-	throws CeldaOcupadaException, NoReuneLosRequisitosException, JugadorConNombreDemasiadoCortoException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoHaySuficientesRecursos{
+	throws CeldaOcupadaException, NoReuneLosRequisitosException, JugadorConNombreDemasiadoCortoException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoHaySuficientesRecursos, NoSePudoConstruirException{
 		RazaProtoss unaRaza = new RazaProtoss(); 
 		TipoConstruccion unTipo = null;
 		Jugador unJugador = new Jugador("unNombre",unaRaza,"Azul");
 		
 		AbstractConstruccionFactory factoryConstrucciones = unaRaza.getFactoryConstrucciones();
 		Posicion unaPosicion = new Posicion(6,4);
+		Posicion otraPosicion = new Posicion(15,7);
 
 		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
 		Turno unTurno = new Turno(unJugador,otroJugador);
@@ -66,7 +69,7 @@ public class PuertoEstelarProtossTest extends TestCase{
 		unJugador.agregarConstruccion(unAcceso);
 		for (int i = 0; i < 8 ;i++) unTurno.avanzarTurno();
 				
-		Construccion unaConstruccion = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesVoladoras, unaPosicion, unJugador);
+		Construccion unaConstruccion = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesVoladoras, otraPosicion, unJugador);
 		
 
 		unTurno.addObserver(unaConstruccion);
@@ -87,13 +90,14 @@ public class PuertoEstelarProtossTest extends TestCase{
 	}
 	
 	public void testCrearScoutYNavesAlPasarTurnosEstaCreadaEstaFinalizada() 
-	throws CeldaOcupadaException, NoReuneLosRequisitosException, JugadorConNombreDemasiadoCortoException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, NoHaySuficientesRecursos, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException{
+	throws CeldaOcupadaException, NoReuneLosRequisitosException, JugadorConNombreDemasiadoCortoException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, NoHaySuficientesRecursos, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoSePudoConstruirException{
 		RazaProtoss unaRaza = new RazaProtoss(); 
 		TipoConstruccion unTipo = null;
 		Jugador unJugador = new Jugador("unNombre",unaRaza,"Azul");
 		
 		AbstractConstruccionFactory factoryConstrucciones = unaRaza.getFactoryConstrucciones();
 		Posicion unaPosicion = new Posicion(12,3);
+		Posicion otraPosicion = new Posicion(15,7);
 		
 		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
 		Turno unTurno = new Turno(unJugador,otroJugador);
@@ -101,10 +105,9 @@ public class PuertoEstelarProtossTest extends TestCase{
 		// Agrego las construcciones necesarias para crear la construccion actual
 		Construccion unAcceso = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesBasicas, unaPosicion, unJugador);
 		unTurno.addObserver(unAcceso);
-		unJugador.agregarConstruccion(unAcceso);
 		for (int i = 0; i < 8 ;i++) unTurno.avanzarTurno();
 		
-		PuertoEstelarProtoss unaConstruccion = (PuertoEstelarProtoss) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesVoladoras, unaPosicion, unJugador);
+		PuertoEstelarProtoss unaConstruccion = (PuertoEstelarProtoss) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesVoladoras, otraPosicion, unJugador);
 	
 		unTurno.addObserver(unaConstruccion);
 		
@@ -137,7 +140,7 @@ public class PuertoEstelarProtossTest extends TestCase{
 	
 	
 	@SuppressWarnings("unused")
-	public void testCantidadDeGasInsuficiente() throws NoSuchObjectException, CantidadDeMineralInsuficienteException, JugadorConNombreDemasiadoCortoException, NoHaySuficientesRecursos, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException{	
+	public void testCantidadDeGasInsuficiente() throws NoSuchObjectException, CantidadDeMineralInsuficienteException, JugadorConNombreDemasiadoCortoException, NoHaySuficientesRecursos, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoSePudoConstruirException{	
 		RazaProtoss unaRaza = new RazaProtoss(); 
 		TipoConstruccion unTipo = null;
 		Jugador unJugador = new Jugador("unNombre",unaRaza,"Azul");
@@ -158,7 +161,7 @@ public class PuertoEstelarProtossTest extends TestCase{
 	}
 	
 	@SuppressWarnings("unused")
-	public void testCantidadDeMineralInsuficiente() throws NoSuchObjectException, CantidadDeGasInsuficienteException, JugadorConNombreDemasiadoCortoException, NoHaySuficientesRecursos, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException{	
+	public void testCantidadDeMineralInsuficiente() throws NoSuchObjectException, CantidadDeGasInsuficienteException, JugadorConNombreDemasiadoCortoException, NoHaySuficientesRecursos, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoSePudoConstruirException{	
 		RazaProtoss unaRaza = new RazaProtoss(); 
 		TipoConstruccion unTipo = null;
 		Jugador unJugador = new Jugador("unNombre",unaRaza,"Azul");
@@ -179,7 +182,7 @@ public class PuertoEstelarProtossTest extends TestCase{
 	}
 	
 	@SuppressWarnings("unused")
-	public void testNoSePuedeCrearSiNoSeCreoUnAccesoPreviamente() throws NoReuneLosRequisitosException, JugadorConNombreDemasiadoCortoException, CeldaOcupadaException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoHaySuficientesRecursos{
+	public void testNoSePuedeCrearSiNoSeCreoUnAccesoPreviamente() throws NoReuneLosRequisitosException, JugadorConNombreDemasiadoCortoException, CeldaOcupadaException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoHaySuficientesRecursos, NoSePudoConstruirException{
 		RazaProtoss unaRaza = new RazaProtoss(); 
 		TipoConstruccion unTipo = null;
 		Jugador unJugador = new Jugador("unNombre",unaRaza,"Azul");

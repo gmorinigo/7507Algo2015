@@ -1,6 +1,7 @@
 package fiuba.algo3.algocrafttest;
 
 import java.rmi.NoSuchObjectException;
+
 import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.RazaProtoss;
 import fiuba.algo3.algocraft.modelo.construciones.AbstractConstruccionFactory;
@@ -13,6 +14,7 @@ import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionInvalidaPrimeroDebeC
 import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException;
 import fiuba.algo3.algocraft.modelo.excepciones.JugadorConNombreDemasiadoCortoException;
 import fiuba.algo3.algocraft.modelo.excepciones.NoHaySuficientesRecursos;
+import fiuba.algo3.algocraft.modelo.excepciones.NoSePudoConstruirException;
 import fiuba.algo3.algocraft.modelo.excepciones.NoSePuedeRealizarAccionException;
 import fiuba.algo3.algocraft.modelo.mapa.Mapa;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
@@ -23,7 +25,7 @@ import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory.TipoUnidad;
 
 @SuppressWarnings("static-access")
 public class DanioAtaqueTest extends TestBase {
-	public void testPruebaDeAtaqueTerrestreDelZealot() throws NoSuchObjectException, CantidadDeMineralInsuficienteException, JugadorConNombreDemasiadoCortoException, NoHaySuficientesRecursos, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoSePuedeRealizarAccionException{	
+	public void testPruebaDeAtaqueTerrestreDelZealot() throws NoSuchObjectException, CantidadDeMineralInsuficienteException, JugadorConNombreDemasiadoCortoException, NoHaySuficientesRecursos, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoSePuedeRealizarAccionException, NoSePudoConstruirException{	
         Mapa mapa = Mapa.getInstance();
 		RazaProtoss unaRaza = new RazaProtoss(); 
 		TipoConstruccion unTipo = null;
@@ -31,12 +33,13 @@ public class DanioAtaqueTest extends TestBase {
 		
 		AbstractConstruccionFactory factoryConstrucciones = unaRaza.getFactoryConstrucciones();
 		Posicion unaPosicion = new Posicion(12,3);
+		Posicion otraPosicion = new Posicion(15,7);
 		
 		Acceso unaConstruccion = (Acceso) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesBasicas, unaPosicion, unJugador);
 		
 		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
 		
-		Acceso otraConstruccion = (Acceso) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesBasicas, unaPosicion, otroJugador);
+		Acceso otraConstruccion = (Acceso) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesBasicas, otraPosicion, otroJugador);
 		
 		Turno unTurno = new Turno(unJugador,otroJugador);
 
@@ -74,7 +77,7 @@ public class DanioAtaqueTest extends TestBase {
 	}
 
 	
-	public void testPruebaDeAtaqueTerrestreDelDragon() throws NoSuchObjectException, CantidadDeMineralInsuficienteException, JugadorConNombreDemasiadoCortoException, NoHaySuficientesRecursos, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoSePuedeRealizarAccionException{	
+	public void testPruebaDeAtaqueTerrestreDelDragon() throws NoSuchObjectException, CantidadDeMineralInsuficienteException, JugadorConNombreDemasiadoCortoException, NoHaySuficientesRecursos, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoSePuedeRealizarAccionException, NoSePudoConstruirException{	
         Mapa mapa = Mapa.getInstance();
 		RazaProtoss unaRaza = new RazaProtoss(); 
 		TipoConstruccion unTipo = null;
@@ -82,12 +85,13 @@ public class DanioAtaqueTest extends TestBase {
 		
 		AbstractConstruccionFactory factoryConstrucciones = unaRaza.getFactoryConstrucciones();
 		Posicion unaPosicion = new Posicion(12,3);
+		Posicion otraPosicion = new Posicion(15,7);
 		
 		Acceso unaConstruccion = (Acceso) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesBasicas, unaPosicion, unJugador);
 		
 		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
 		
-		Acceso otraConstruccion = (Acceso) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesBasicas, unaPosicion, otroJugador);
+		Acceso otraConstruccion = (Acceso) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesBasicas, otraPosicion, otroJugador);
 		
 		Turno unTurno = new Turno(unJugador,otroJugador);
 
@@ -124,7 +128,7 @@ public class DanioAtaqueTest extends TestBase {
 		assertEquals(60,otraUnidad.obtenerCantidadEscudo());	
 	}
 
-	public void testPruebaDeAtaqueAereoDelDragon() throws NoSuchObjectException, CantidadDeMineralInsuficienteException, JugadorConNombreDemasiadoCortoException, NoHaySuficientesRecursos, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoSePuedeRealizarAccionException{	
+	public void testPruebaDeAtaqueAereoDelDragon() throws NoSuchObjectException, CantidadDeMineralInsuficienteException, JugadorConNombreDemasiadoCortoException, NoHaySuficientesRecursos, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoSePuedeRealizarAccionException, NoSePudoConstruirException{	
         Mapa mapa = Mapa.getInstance();
 		RazaProtoss unaRaza = new RazaProtoss(); 
 		TipoConstruccion unTipo = null;
@@ -132,12 +136,13 @@ public class DanioAtaqueTest extends TestBase {
 		
 		AbstractConstruccionFactory factoryConstrucciones = unaRaza.getFactoryConstrucciones();
 		Posicion unaPosicion = new Posicion(12,3);
+		Posicion otraPosicion = new Posicion(15,7);
 		
 		Acceso unaConstruccion = (Acceso) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesBasicas, unaPosicion, unJugador);
 		
 		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
 		
-		Acceso otraConstruccion = (Acceso) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesBasicas, unaPosicion, otroJugador);
+		Acceso otraConstruccion = (Acceso) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesBasicas, otraPosicion, otroJugador);
 		
 		Turno unTurno = new Turno(unJugador,otroJugador);
 
