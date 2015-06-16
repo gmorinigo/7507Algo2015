@@ -9,9 +9,8 @@ public class Zealot extends UnidadProtoss{
 		this.tamanioTransporte = 2;
 	}
 	
-	@Override
 	protected Salud saludInicial() {
-		return null;
+		return new SaludProtoss(100,60);
 	}
 
 	public int turnosNecesariosParaCreacion() {

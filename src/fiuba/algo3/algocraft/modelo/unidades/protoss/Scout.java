@@ -9,9 +9,8 @@ public class Scout extends UnidadProtoss {
 		this.tamanioTransporte = 0;
 	}
 	
-	@Override
 	protected Salud saludInicial() {
-		return null;
+		return new SaludProtoss(150,100);
 	}
 
 	public boolean esUnidadAerea(){

@@ -12,7 +12,6 @@ public class SaludProtoss extends Salud{
 		this.escudo = escudo;
 	}
 
-	@Override
 	public void atacar(int ataque) {
 		int ataqueEfectivo = this.absorverAtaque(ataque);
 		int vida = this.valorDeSalud();

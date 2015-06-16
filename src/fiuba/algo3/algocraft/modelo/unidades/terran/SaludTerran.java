@@ -8,7 +8,6 @@ public class SaludTerran extends Salud {
 		super(hp, hp);
 	}
 
-	@Override
 	public void atacar(int ataque) {
 		int vida = this.valorDeSalud();
 		if (vida >= ataque){

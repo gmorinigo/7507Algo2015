@@ -12,7 +12,7 @@ public class NaveTransporteProtoss extends NaveTransporte {
 	}
 	
 	protected Salud saludInicial() {
-		return new SaludProtoss(40,40);
+		return new SaludProtoss(80,60);
 	}
 
 	public int turnosNecesariosParaCreacion() {

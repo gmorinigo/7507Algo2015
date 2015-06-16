@@ -10,7 +10,7 @@ public class Dragon extends UnidadProtoss {
 	}
 	
 	protected Salud saludInicial() {
-		return new SaludProtoss(80,100);
+		return new SaludProtoss(100,80);
 	}
 
 	public int turnosNecesariosParaCreacion() {
