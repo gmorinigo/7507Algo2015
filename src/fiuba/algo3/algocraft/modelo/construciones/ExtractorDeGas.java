@@ -32,6 +32,8 @@ abstract public class ExtractorDeGas extends Construccion{
 	
 	@Override
 	protected void vivir() {
-		this.recolectar(this.jugador.dameAlmacenGas());
+		if(this.celdas.get(0).tieneGas()) {
+			this.recolectar(this.jugador.dameAlmacenGas());	
+		}
 	}
 }

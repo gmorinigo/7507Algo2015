@@ -11,6 +11,7 @@ import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionExtractorDeGasEnCeld
 import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException;
 import fiuba.algo3.algocraft.modelo.excepciones.JugadorConNombreDemasiadoCortoException;
 import fiuba.algo3.algocraft.modelo.excepciones.NoReuneLosRequisitosException;
+import fiuba.algo3.algocraft.modelo.mapa.Mapa;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.turnos.Turno;
 import fiuba.algo3.algocrafttest.TestBase;
@@ -51,6 +52,7 @@ public class RefineriaTest extends TestBase {
 		Turno unTurno = new Turno(unJugador,otroJugador);
 		
 		unTurno.addObserver(refineria);
+		Mapa.getInstance().agregarConstruccion(refineria);
 		
 		assertFalse(refineria.estaTerminada());
 		unTurno.avanzarTurno();

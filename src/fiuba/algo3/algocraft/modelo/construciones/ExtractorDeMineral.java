@@ -32,6 +32,8 @@ abstract public class ExtractorDeMineral extends Construccion {
 	
 	@Override
 	protected void vivir() {
-		this.recolectar(this.jugador.dameAlmacenMineral());
+		if(this.celdas.get(0).tieneMineral()) {
+			this.recolectar(this.jugador.dameAlmacenMineral());	
+		}
 	}
 }
