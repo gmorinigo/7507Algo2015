@@ -12,8 +12,9 @@ public abstract class UnidadTerran extends Unidad {
 
 	}
 	
-	public void recibirataque(Unidad unaUnidadAtacante){
+	public boolean recibirataque(Unidad unaUnidadAtacante){
 		this.salud.atacar(unaUnidadAtacante.DanioAtaque(this));
+		return false;
 	}
 
 

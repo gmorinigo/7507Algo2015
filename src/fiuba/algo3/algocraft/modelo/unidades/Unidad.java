@@ -53,14 +53,16 @@ abstract public class Unidad implements TurnoObserver{
 	 * Cuando se termina la accion hay que cambiar el estado a UnidadEstadoDesancansando
 	 */
 	public boolean atacar(Celda unaCelda) {
-		if (!unaCelda.esAtacable(this)) return false;
-		
 		if (!this.estado.esPosibleRealizarAccion()) {
 			return false;
 		}
 		
-		unaCelda.atacarUnidadDeLaCeldaConUnidad(this);
-
+//		unaCelda.atacarUnidadDeLaCeldaConUnidad(this);
+		boolean disparoRealizado = this.disparo.disparar(unaCelda);
+		
+		if(! disparoRealizado)
+			return false;
+		
 		this.estado = new UnidadEstadoDescansando(this);
 		return true;
 
@@ -95,7 +97,7 @@ abstract public class Unidad implements TurnoObserver{
 		return true;
 	}
 
-	public abstract void recibirataque(Unidad unaUnidadAtacante);
+	public abstract boolean recibirataque(Unidad unaUnidadAtacante);
 	public abstract int DanioAtaque(Unidad unaUnidadAtacada);
 	
 	public boolean estaViva(){

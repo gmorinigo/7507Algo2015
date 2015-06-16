@@ -11,4 +11,9 @@ public class CeldaTerrestre extends Celda {
 	public boolean puedeMoverse(Unidad unaUnidad) {
 		return true;
 	}
+
+	@Override
+	public boolean esAtacable() {
+		return this.celdaOcupada();
+	}
 }

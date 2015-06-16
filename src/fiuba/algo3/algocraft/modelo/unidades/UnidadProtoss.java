@@ -14,8 +14,12 @@ public abstract class UnidadProtoss extends Unidad {
 
 	}
 	
-	public void recibirataque(Unidad unaUnidadAtacante){
+	public boolean recibirataque(Unidad unaUnidadAtacante){
+		if(! this.verificarSiPuedeAtacar(unaUnidadAtacante))
+			return false;
+		
 		this.salud.atacar(unaUnidadAtacante.DanioAtaque(this));
+		return true;
 	}
 	
 	public int obtenerCantidadEscudo(){

@@ -11,4 +11,9 @@ public class CeldaAerea extends Celda {
 	public boolean puedeMoverse(Unidad unaUnidad) {
 		return unaUnidad.esUnidadAerea();
 	}
+
+	@Override
+	public boolean esAtacable() {
+		return this.celdaOcupada();
+	}
 }

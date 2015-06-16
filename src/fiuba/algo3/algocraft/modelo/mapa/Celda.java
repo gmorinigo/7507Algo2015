@@ -65,22 +65,19 @@ public abstract class Celda {
 	abstract public boolean puedeMoverse(Unidad unaUnidad);
 
 
-	public boolean esAtacable(Unidad unaUnidad) {
-		if (!unaUnidad.verificarSiPuedeAtacar(this.unidad)) return false;
-		
-		// Si no atacable est� redefinido el m�todo en la clase particular.
-		// Al validar si es atacable tambien verifico que est� ocupada
-		
-		return this.celdaOcupada();
-	}
+	abstract public boolean esAtacable();
+//	//Hacer este metodo abstract
+//	public boolean esAtacable() {
+//		// Si no atacable est� redefinido el m�todo en la clase particular.
+//		// Al validar si es atacable tambien verifico que est� ocupada
+//		return this.celdaOcupada();
+//	}
 
 
-	public void atacarUnidadDeLaCeldaConUnidad(Unidad unaUnidadAtacante) {
-		this.unidad.recibirataque(unaUnidadAtacante);
-		if (!this.unidad.estaViva()){
-			// Hay que eliminar la unidad del jugador y que reste la cantidad de poblacion
-			// this.unidad.obtenerJugador.eliminarUnidad();
-			this.eliminarUnidad();
-		}
+	public boolean atacarUnidadDeLaCeldaConUnidad(Unidad unaUnidadAtacante) {
+		if(!this.esAtacable())
+			return false;
+		
+		return this.unidad.recibirataque(unaUnidadAtacante);
 	}
 }

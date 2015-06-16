@@ -11,6 +11,6 @@ public class DisparoNormal extends AbstractDisparo{
 
 	@Override
 	public boolean disparar(Celda objetivo) {
-		return false;	
+		return objetivo.atacarUnidadDeLaCeldaConUnidad(this.unidad);
 	}
 }
