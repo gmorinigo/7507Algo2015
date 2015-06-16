@@ -1,6 +1,7 @@
 package fiuba.algo3.algocraft.modelo.unidades.terran;
 
 import fiuba.algo3.algocraft.modelo.unidades.Salud;
+import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 import fiuba.algo3.algocraft.modelo.unidades.UnidadTerran;
 
 public class Golliat extends UnidadTerran {
@@ -27,8 +28,17 @@ public class Golliat extends UnidadTerran {
 		// TODO Auto-generated method stub
 		
 	}
+
+	public int DanioAtaque(Unidad unaUnidadAtacada) {
+		if (unaUnidadAtacada.esUnidadAerea()){
+			return 10;
+		}
+		else {
+			return 12;			
+		}
+	} 
 	
-	public int DanioAtaque() {
-		return 10;
+	protected boolean atacaUnidadesAereas() {
+		return true;
 	} 
 }

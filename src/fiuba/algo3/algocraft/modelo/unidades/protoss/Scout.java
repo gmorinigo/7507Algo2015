@@ -1,6 +1,7 @@
 package fiuba.algo3.algocraft.modelo.unidades.protoss;
 
 import fiuba.algo3.algocraft.modelo.unidades.Salud;
+import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 import fiuba.algo3.algocraft.modelo.unidades.UnidadProtoss;
 
 public class Scout extends UnidadProtoss {
@@ -27,8 +28,16 @@ public class Scout extends UnidadProtoss {
 		
 	}
 
-	public int DanioAtaque() {
-		return 14;
+	public int DanioAtaque(Unidad unaUnidadAtacada) {
+		if (unaUnidadAtacada.esUnidadAerea()){
+			return 14;
+		}
+		else {
+			return 8;			
+		}
 	} 
-
+	
+	protected boolean atacaUnidadesAereas() {
+		return true;
+	} 
 }

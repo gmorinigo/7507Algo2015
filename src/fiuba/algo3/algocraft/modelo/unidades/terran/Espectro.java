@@ -1,6 +1,7 @@
 package fiuba.algo3.algocraft.modelo.unidades.terran;
 
 import fiuba.algo3.algocraft.modelo.unidades.Salud;
+import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 import fiuba.algo3.algocraft.modelo.unidades.UnidadTerran;
 
 public class Espectro extends UnidadTerran {
@@ -29,8 +30,16 @@ public class Espectro extends UnidadTerran {
 		
 	}
 
-	public int DanioAtaque() {
-		return 20;
+	public int DanioAtaque(Unidad unaUnidadAtacada) {
+		if (unaUnidadAtacada.esUnidadAerea()){
+			return 20;
+		}
+		else {
+			return 8;			
+		}
 	} 
-
+	
+	protected boolean atacaUnidadesAereas() {
+		return true;
+	} 
 }

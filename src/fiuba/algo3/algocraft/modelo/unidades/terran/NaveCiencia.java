@@ -2,6 +2,7 @@ package fiuba.algo3.algocraft.modelo.unidades.terran;
 
 import fiuba.algo3.algocraft.modelo.mapa.Celda;
 import fiuba.algo3.algocraft.modelo.unidades.Salud;
+import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 import fiuba.algo3.algocraft.modelo.unidades.UnidadTerran;
 
 public class NaveCiencia extends UnidadTerran {
@@ -42,7 +43,11 @@ public class NaveCiencia extends UnidadTerran {
 		return false;
 	}
 	
-	public int DanioAtaque() {
+	public int DanioAtaque(Unidad unaUnidadAtacada) {
 		return 0;
 	} 
+	
+	protected boolean atacaUnidadesAereas() {
+		return false;
+	}
 }

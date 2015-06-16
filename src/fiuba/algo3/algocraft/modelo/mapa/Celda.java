@@ -65,9 +65,12 @@ public abstract class Celda {
 	abstract public boolean puedeMoverse(Unidad unaUnidad);
 
 
-	public boolean esAtacable() {
+	public boolean esAtacable(Unidad unaUnidad) {
+		if (!unaUnidad.verificarSiPuedeAtacar(this.unidad)) return false;
+		
 		// Si no atacable est� redefinido el m�todo en la clase particular.
 		// Al validar si es atacable tambien verifico que est� ocupada
+		
 		return this.celdaOcupada();
 	}
 

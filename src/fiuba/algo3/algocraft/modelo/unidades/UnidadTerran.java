@@ -12,10 +12,8 @@ public abstract class UnidadTerran extends Unidad {
 
 	}
 	
-	public abstract int DanioAtaque();
-
 	public void recibirataque(Unidad unaUnidadAtacante){
-		this.salud.atacar(unaUnidadAtacante.DanioAtaque());
+		this.salud.atacar(unaUnidadAtacante.DanioAtaque(this));
 	}
 
 

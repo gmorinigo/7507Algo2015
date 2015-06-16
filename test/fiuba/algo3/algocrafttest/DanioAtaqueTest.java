@@ -22,8 +22,8 @@ import fiuba.algo3.algocraft.modelo.unidades.UnidadProtoss;
 import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory.TipoUnidad;
 
 @SuppressWarnings("static-access")
-public class TestDanioAtaque extends TestBase {
-	public void testNoSePuedeAtacar2VecesEn1Turno() throws NoSuchObjectException, CantidadDeMineralInsuficienteException, JugadorConNombreDemasiadoCortoException, NoHaySuficientesRecursos, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException{	
+public class DanioAtaqueTest extends TestBase {
+	public void testPruebaDeAtaqueTerrestreDelZealot() throws NoSuchObjectException, CantidadDeMineralInsuficienteException, JugadorConNombreDemasiadoCortoException, NoHaySuficientesRecursos, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoSePuedeRealizarAccionException{	
         Mapa mapa = Mapa.getInstance();
 		RazaProtoss unaRaza = new RazaProtoss(); 
 		TipoConstruccion unTipo = null;
@@ -48,8 +48,8 @@ public class TestDanioAtaque extends TestBase {
 		assertTrue(unaConstruccion.estaOperativa());
 		
 		TipoUnidad unTipoUnidad = null;
-		Unidad unaUnidad = (Unidad) unaConstruccion.crearUnidad(unJugador,unTipoUnidad.terrestre2);
-		UnidadProtoss otraUnidad = (UnidadProtoss) unaConstruccion.crearUnidad(unJugador,unTipoUnidad.terrestre2);
+		Unidad unaUnidad = (Unidad) unaConstruccion.crearUnidad(unJugador,unTipoUnidad.terrestre1);
+		UnidadProtoss otraUnidad = (UnidadProtoss) unaConstruccion.crearUnidad(otroJugador,unTipoUnidad.terrestre1);
 		
 		unTurno.addObserver(unaUnidad);
 		unTurno.addObserver(otraUnidad);
@@ -65,18 +65,14 @@ public class TestDanioAtaque extends TestBase {
 		mapa.agregarUnidad(new Posicion(4,4), unaUnidad);
 		mapa.agregarUnidad(new Posicion(5,5), otraUnidad);
 		assertEquals(100, otraUnidad.obtenerCantidadVida());
-		assertEquals(80,otraUnidad.obtenerCantidadEscudo());
+		assertEquals(60,otraUnidad.obtenerCantidadEscudo());
 		
 		unaUnidad.atacar(otraUnidad.dameCelda());
 		
 		assertEquals(100, otraUnidad.obtenerCantidadVida());
-		assertEquals(60,otraUnidad.obtenerCantidadEscudo());
-		
-		for (int i=0;i<5;i++) unaUnidad.atacar(otraUnidad.dameCelda());
-		
-		assertEquals(100, otraUnidad.obtenerCantidadVida());
-		assertEquals(60,otraUnidad.obtenerCantidadEscudo());	
+		assertEquals(52,otraUnidad.obtenerCantidadEscudo());	
 	}
+
 	
 	public void testPruebaDeAtaqueTerrestreDelDragon() throws NoSuchObjectException, CantidadDeMineralInsuficienteException, JugadorConNombreDemasiadoCortoException, NoHaySuficientesRecursos, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoSePuedeRealizarAccionException{	
         Mapa mapa = Mapa.getInstance();
@@ -104,7 +100,7 @@ public class TestDanioAtaque extends TestBase {
 		
 		TipoUnidad unTipoUnidad = null;
 		Unidad unaUnidad = (Unidad) unaConstruccion.crearUnidad(unJugador,unTipoUnidad.terrestre2);
-		UnidadProtoss otraUnidad = (UnidadProtoss) unaConstruccion.crearUnidad(unJugador,unTipoUnidad.terrestre2);
+		UnidadProtoss otraUnidad = (UnidadProtoss) unaConstruccion.crearUnidad(otroJugador,unTipoUnidad.terrestre2);
 		
 		unTurno.addObserver(unaUnidad);
 		unTurno.addObserver(otraUnidad);
@@ -127,9 +123,8 @@ public class TestDanioAtaque extends TestBase {
 		assertEquals(100, otraUnidad.obtenerCantidadVida());
 		assertEquals(60,otraUnidad.obtenerCantidadEscudo());	
 	}
-	
-	
-	public void testPruebaDeAtaqueTerrestreDelZealot() throws NoSuchObjectException, CantidadDeMineralInsuficienteException, JugadorConNombreDemasiadoCortoException, NoHaySuficientesRecursos, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoSePuedeRealizarAccionException{	
+
+	public void testPruebaDeAtaqueAereoDelDragon() throws NoSuchObjectException, CantidadDeMineralInsuficienteException, JugadorConNombreDemasiadoCortoException, NoHaySuficientesRecursos, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoSePuedeRealizarAccionException{	
         Mapa mapa = Mapa.getInstance();
 		RazaProtoss unaRaza = new RazaProtoss(); 
 		TipoConstruccion unTipo = null;
@@ -146,16 +141,17 @@ public class TestDanioAtaque extends TestBase {
 		
 		Turno unTurno = new Turno(unJugador,otroJugador);
 
-		
 		unTurno.addObserver(unaConstruccion);
 		unTurno.addObserver(otraConstruccion);
+
+		otroJugador.dameAlmacenMineral().almacenarRecurso(500);
 		
 		for (int i = 0; i<12;i++) unTurno.avanzarTurno();
 		assertTrue(unaConstruccion.estaOperativa());
 		
 		TipoUnidad unTipoUnidad = null;
-		Unidad unaUnidad = (Unidad) unaConstruccion.crearUnidad(unJugador,unTipoUnidad.terrestre1);
-		UnidadProtoss otraUnidad = (UnidadProtoss) unaConstruccion.crearUnidad(unJugador,unTipoUnidad.terrestre1);
+		Unidad unaUnidad = (Unidad) unaConstruccion.crearUnidad(unJugador,unTipoUnidad.terrestre2);
+		UnidadProtoss otraUnidad = (UnidadProtoss) unaConstruccion.crearUnidad(otroJugador,unTipoUnidad.volador1);
 		
 		unTurno.addObserver(unaUnidad);
 		unTurno.addObserver(otraUnidad);
@@ -166,16 +162,20 @@ public class TestDanioAtaque extends TestBase {
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		assertTrue(unaUnidad.estaOperativa());
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
 		assertTrue(otraUnidad.estaOperativa());
 		
 		mapa.agregarUnidad(new Posicion(4,4), unaUnidad);
 		mapa.agregarUnidad(new Posicion(5,5), otraUnidad);
-		assertEquals(100, otraUnidad.obtenerCantidadVida());
-		assertEquals(60,otraUnidad.obtenerCantidadEscudo());
+		assertEquals(150, otraUnidad.obtenerCantidadVida());
+		assertEquals(100,otraUnidad.obtenerCantidadEscudo());
 		
 		unaUnidad.atacar(otraUnidad.dameCelda());
 		
-		assertEquals(100, otraUnidad.obtenerCantidadVida());
-		assertEquals(52,otraUnidad.obtenerCantidadEscudo());	
+		assertEquals(150, otraUnidad.obtenerCantidadVida());
+		assertEquals(80,otraUnidad.obtenerCantidadEscudo());	
 	}
+	
 }

@@ -3,6 +3,7 @@ package fiuba.algo3.algocraft.modelo.unidades.protoss;
 import fiuba.algo3.algocraft.modelo.mapa.Celda;
 import fiuba.algo3.algocraft.modelo.unidades.NaveTransporte;
 import fiuba.algo3.algocraft.modelo.unidades.Salud;
+import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 
 
 public class NaveTransporteProtoss extends NaveTransporte {
@@ -29,8 +30,11 @@ public class NaveTransporteProtoss extends NaveTransporte {
 		return false;
 	} 
 
-	public int DanioAtaque() {
+	public int DanioAtaque(Unidad unaUnidadAtacada) {
 		return 0;
 	} 
-
+	
+	protected boolean atacaUnidadesAereas() {
+		return false;
+	} 
 }

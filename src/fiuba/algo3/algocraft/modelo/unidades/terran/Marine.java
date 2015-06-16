@@ -1,6 +1,7 @@
 package fiuba.algo3.algocraft.modelo.unidades.terran;
 
 import fiuba.algo3.algocraft.modelo.unidades.Salud;
+import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 import fiuba.algo3.algocraft.modelo.unidades.UnidadTerran;
 
 
@@ -28,7 +29,12 @@ public class Marine extends UnidadTerran {
 		// TODO Auto-generated method stub
 	}
 	
-	public int DanioAtaque() {
+	public int DanioAtaque(Unidad unaUnidadAtacada) {
 		return 6;
+	} 
+
+	
+	protected boolean atacaUnidadesAereas() {
+		return true;
 	} 
 }

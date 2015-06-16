@@ -14,10 +14,8 @@ public abstract class UnidadProtoss extends Unidad {
 
 	}
 	
-	public abstract int DanioAtaque();
-
 	public void recibirataque(Unidad unaUnidadAtacante){
-		this.salud.atacar(unaUnidadAtacante.DanioAtaque());
+		this.salud.atacar(unaUnidadAtacante.DanioAtaque(this));
 	}
 	
 	public int obtenerCantidadEscudo(){

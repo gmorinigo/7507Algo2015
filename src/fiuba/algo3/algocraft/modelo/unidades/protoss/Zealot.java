@@ -1,6 +1,7 @@
 package fiuba.algo3.algocraft.modelo.unidades.protoss;
 
 import fiuba.algo3.algocraft.modelo.unidades.Salud;
+import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 import fiuba.algo3.algocraft.modelo.unidades.UnidadProtoss;
 
 public class Zealot extends UnidadProtoss{
@@ -23,8 +24,11 @@ public class Zealot extends UnidadProtoss{
 		
 	}
 	
-	public int DanioAtaque() {
+	public int DanioAtaque(Unidad unaUnidadAtacada) {
 		return 8;
 	} 
 
+	protected boolean atacaUnidadesAereas() {
+		return false;
+	} 
 }
