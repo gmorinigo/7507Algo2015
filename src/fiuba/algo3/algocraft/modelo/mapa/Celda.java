@@ -29,6 +29,7 @@ public abstract class Celda /*implements ICeldaVisitable*/{
 	}
 
 	public void desocuparCelda(){
+		this.unidad = null;
 		this.estaOcupada = false;  
 	}
 	
@@ -46,7 +47,7 @@ public abstract class Celda /*implements ICeldaVisitable*/{
 
 
 	public boolean agregarUnidad(Unidad unaUnidad) {
-		if (!this.puedeMoverse(unaUnidad)) {
+		if (!this.puedeMoverse(unaUnidad) && this.celdaOcupada()) {
 			return false;
 		}
 		this.unidad = unaUnidad;
