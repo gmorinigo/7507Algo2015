@@ -2,7 +2,6 @@ package fiuba.algo3.algocraft.modelo.unidades;
 
 import fiuba.algo3.algocraft.modelo.excepciones.NoSePuedeRealizarAccionException;
 import fiuba.algo3.algocraft.modelo.mapa.Celda;
-import fiuba.algo3.algocraft.modelo.mapa.CeldaTerrestre;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.turnos.Turno;
 import fiuba.algo3.algocraft.modelo.turnos.TurnoObserver;
@@ -30,7 +29,7 @@ abstract public class Unidad implements TurnoObserver{
 		this.accioinRealizada = false;
 		this.salud = this.saludInicial();
 		this.estado = new UnidadEstadoNaciendo(this.turnosNecesariosParaCreacion(), this);
-		this.celda  = new CeldaTerrestre(4,4);
+		this.celda  = null;
 	}
 	
 	@Override

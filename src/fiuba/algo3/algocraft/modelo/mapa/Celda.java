@@ -6,7 +6,6 @@ import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 public abstract class Celda /*implements ICeldaVisitable*/{
 	private Posicion posicion;
 	private boolean estaOcupada;
-	@SuppressWarnings("unused")
 	private Unidad unidad;
 	
 	public Celda(int fila, int columna) {
@@ -51,6 +50,7 @@ public abstract class Celda /*implements ICeldaVisitable*/{
 			return false;
 		}
 		this.unidad = unaUnidad;
+		this.unidad.mover(this);
 		this.ocuparCelda();
 		
 		return true;
