@@ -13,6 +13,7 @@ public class UnidadEstadoViviendo extends UnidadEstado{
 
 	@Override
 	public boolean esPosibleRealizarAccion() {
+//		this.contexto.d
 		return true;
 	}
 

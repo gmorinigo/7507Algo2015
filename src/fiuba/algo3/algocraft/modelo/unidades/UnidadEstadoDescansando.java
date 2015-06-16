@@ -1,8 +1,8 @@
 package fiuba.algo3.algocraft.modelo.unidades;
 
-public class UnidadEstadoescansando extends UnidadEstado{
+public class UnidadEstadoDescansando extends UnidadEstado{
 
-	public UnidadEstadoescansando(Unidad contexto) {
+	public UnidadEstadoDescansando(Unidad contexto) {
 		super(contexto);
 	}
 

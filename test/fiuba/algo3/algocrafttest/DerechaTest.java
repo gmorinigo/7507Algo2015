@@ -21,7 +21,6 @@ import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory.TipoUnidad;
 import fiuba.algo3.algocraft.modelo.unidades.movimientos.Movimiento.TipoDireccion;
-import junit.framework.TestCase;
 
 public class DerechaTest extends TestBase{
 	

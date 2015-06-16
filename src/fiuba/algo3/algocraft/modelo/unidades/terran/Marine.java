@@ -1,7 +1,6 @@
 package fiuba.algo3.algocraft.modelo.unidades.terran;
 
 import fiuba.algo3.algocraft.modelo.unidades.Salud;
-import fiuba.algo3.algocraft.modelo.unidades.UnidadEstadoescansando;
 import fiuba.algo3.algocraft.modelo.unidades.UnidadTerran;
 
 

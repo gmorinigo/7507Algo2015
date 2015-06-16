@@ -9,7 +9,6 @@ import fiuba.algo3.algocraft.modelo.unidades.movimientos.Movimiento.TipoDireccio
 abstract public class Unidad implements TurnoObserver{
 	
 	protected Salud salud;
-	protected boolean accioinRealizada;
 	protected UnidadEstado estado;
 	protected int tamanioTransporte;
 	protected Movimiento movimiento;
@@ -24,7 +23,6 @@ abstract public class Unidad implements TurnoObserver{
 	}
 	
 	public Unidad() {
-		this.accioinRealizada = false;
 		this.salud = this.saludInicial();
 		this.estado = new UnidadEstadoNaciendo(this.turnosNecesariosParaCreacion(), this);
 		this.celda  = null;
@@ -59,7 +57,7 @@ abstract public class Unidad implements TurnoObserver{
 		
 		unaCelda.atacarUnidadDeLaCeldaConUnidad(this);
 
-		this.estado = new UnidadEstadoescansando(this);
+		this.estado = new UnidadEstadoDescansando(this);
 		return true;
 
 	}
@@ -91,7 +89,7 @@ abstract public class Unidad implements TurnoObserver{
 			return false;
 		}
 		
-		this.estado = new UnidadEstadoescansando(this);
+		this.estado = new UnidadEstadoDescansando(this);
 		return true;
 	}
 

@@ -191,8 +191,6 @@ public class MapaTest extends TestBase {
 		Turno unTurno = new Turno(unJugador,otroJugador);
 		
 		
-		//unaBarraca.crearEstructura(unTurno);
-		
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
@@ -274,8 +272,6 @@ public class MapaTest extends TestBase {
 		Jugador otroJugador = new Jugador("Nombre",new RazaTerran(),"Rojo");
 		Turno unTurno = new Turno(unJugador,otroJugador);
 		
-		
-		//unaBarraca.crearEstructura(unTurno);
 		
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();

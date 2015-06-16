@@ -7,7 +7,6 @@ import fiuba.algo3.algocraft.modelo.excepciones.CeldaOcupadaException;
 import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException;
 import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException;
 import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionNoPermitidaPorSalirseDelMapaException;
-//import fiuba.algo3.algocraft.modelo.recursos.Recurso;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 
 public class Mapa {

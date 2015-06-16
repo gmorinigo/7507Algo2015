@@ -45,7 +45,6 @@ public class NaveCienciaTest extends TestBase {
 		
 		TipoUnidad unTipo = null;
 		Unidad unaUnidad = (Unidad) factoryUnidades.crearUnidad(unTipo.especial1,unJugador/* ,new DisparoSuperStrategy() */);
-		System.out.println(unaUnidad.getClass());
 		NaveCiencia unaNaveCiencia = (NaveCiencia) unaUnidad;
 
 		Turno unTurno = new Turno(unJugador,otroJugador);

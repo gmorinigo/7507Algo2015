@@ -2,7 +2,6 @@ package fiuba.algo3.algocrafttest;
 
 import java.rmi.NoSuchObjectException;
 
-import junit.framework.TestCase;
 import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.RazaProtoss;
 import fiuba.algo3.algocraft.modelo.construciones.AbstractConstruccionFactory.TipoConstruccion;

@@ -51,14 +51,12 @@ abstract public class AbstractConstruccionFactory {
 		}
 	}
 	
-	@SuppressWarnings("static-access")
 	protected TipoConstruccion dameConstruccionRequeridasParaConstruir(TipoConstruccion tipo) {
-		TipoConstruccion unTipoDeConstruccionRequerida = null;
 		
 		switch(tipo){
 		case creadorUnidadesBasicas: return null; 
-		case creadorUnidadesNivel2: return unTipoDeConstruccionRequerida.creadorUnidadesVoladoras;
-		case creadorUnidadesVoladoras: return unTipoDeConstruccionRequerida.creadorUnidadesBasicas;
+		case creadorUnidadesNivel2: return TipoConstruccion.creadorUnidadesVoladoras;
+		case creadorUnidadesVoladoras: return TipoConstruccion.creadorUnidadesBasicas;
 		case expansorPoblacion: return null;
 		case extractorGas: return null; 
 		case extractorMineral: return null;
