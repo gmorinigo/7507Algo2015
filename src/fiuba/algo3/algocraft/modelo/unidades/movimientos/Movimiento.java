@@ -84,20 +84,36 @@ public class Movimiento {
 	}
 	
 	protected boolean moverDiagonalArribaDerecha() {
-		return false;
+		Celda celda = this.unidad.dameCelda();
+        Posicion posActual = celda.obtenerPosicion();
+        Posicion posNueva = new Posicion(posActual.dameFila()-1,posActual.dameColumna()+1);
+        
+        return this.aplicarMovimiento(celda, posNueva);
 	}
 	
 	protected boolean moverDiagonalArribaIzquierda() {
-		return false;
-		
+		Celda celda = this.unidad.dameCelda();
+        Posicion posActual = celda.obtenerPosicion();
+        Posicion posNueva = new Posicion(posActual.dameFila()-1,posActual.dameColumna()-1);
+        
+        return this.aplicarMovimiento(celda, posNueva);
 	}
 	
 	protected boolean moverDiagonalAbajoDerecha() {
-		return false;
+        Celda celda = this.unidad.dameCelda();
+        Posicion posActual = celda.obtenerPosicion();
+        Posicion posNueva = new Posicion(posActual.dameFila()+1,posActual.dameColumna()+1);
+        
+        return this.aplicarMovimiento(celda, posNueva);
+        
 	}
 	
 	protected boolean moverDiagonalAbajoIzquierda() {
-		return false;	
+		Celda celda = this.unidad.dameCelda();
+        Posicion posActual = celda.obtenerPosicion();
+        Posicion posNueva = new Posicion(posActual.dameFila()+1,posActual.dameColumna()-1);
+        
+        return aplicarMovimiento(celda, posNueva);
 	}
 
 	protected boolean aplicarMovimiento(Celda celda, Posicion posNueva) {
