@@ -6,6 +6,10 @@ import fiuba.algo3.algocraft.modelo.unidades.NaveTransporte;
 
 public class NaveTransporteProtoss extends NaveTransporte {
 
+	public boolean esUnidadAerea(){
+		return true;
+	}
+	
 	@Override
 	public void mover(int posicionX, int posicionY) {
 		// TODO Auto-generated method stub
