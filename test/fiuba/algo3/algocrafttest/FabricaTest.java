@@ -2,7 +2,6 @@ package fiuba.algo3.algocrafttest;
 
 import java.rmi.NoSuchObjectException;
 
-import junit.framework.TestCase;
 import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.RazaTerran;
 import fiuba.algo3.algocraft.modelo.construciones.AbstractConstruccionFactory;
@@ -25,7 +24,7 @@ import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.turnos.Turno;
 
 @SuppressWarnings("static-access")
-public class FabricaTest extends TestCase {
+public class FabricaTest extends TestBase {
 
 	public void testCrearUnArchivoTemplario() throws JugadorConNombreDemasiadoCortoException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, NoHaySuficientesRecursos, NoSePudoConstruirException{
 		RazaTerran unaRaza = new RazaTerran(); 
@@ -34,6 +33,8 @@ public class FabricaTest extends TestCase {
 		
 		AbstractConstruccionFactory factoryConstrucciones = unaRaza.getFactoryConstrucciones();
 		Posicion unaPosicion = new Posicion(6,4);
+		Posicion otraPosicion = new Posicion(15,7);
+		Posicion terceraPosicion = new Posicion(20,9);
 		
 		Jugador otroJugador = new Jugador("Nombre",new RazaTerran(),"Azul");
 		Turno unTurno = new Turno(unJugador,otroJugador);
@@ -41,18 +42,16 @@ public class FabricaTest extends TestCase {
 		// Agrego las construcciones necesarias para crear la construccion actual
 		Construccion unaBarraca = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesBasicas, unaPosicion, unJugador);
 		unTurno.addObserver(unaBarraca);
-		unJugador.agregarConstruccion(unaBarraca);
 		for (int i = 0; i < 12 ;i++) unTurno.avanzarTurno();
 
-		Construccion unPuertoEstelar = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesVoladoras, unaPosicion, unJugador);
+		Construccion unPuertoEstelar = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesVoladoras, otraPosicion, unJugador);
 		unTurno.addObserver(unPuertoEstelar);
-		unJugador.agregarConstruccion(unPuertoEstelar);
 		for (int i = 0; i < 10 ;i++) unTurno.avanzarTurno();
 		
 		unJugador.dameAlmacenMineral().almacenarRecurso(1000);
 		unJugador.dameAlmacenGas().almacenarRecurso(1000);
 		
-		Construccion unaConstruccion = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesNivel2, unaPosicion, unJugador);		
+		Construccion unaConstruccion = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesNivel2, terceraPosicion, unJugador);		
 
 		assertTrue(unaConstruccion instanceof Fabrica);
 
@@ -66,6 +65,8 @@ public class FabricaTest extends TestCase {
 		
 		AbstractConstruccionFactory factoryConstrucciones = unaRaza.getFactoryConstrucciones();
 		Posicion unaPosicion = new Posicion(6,4);
+		Posicion otraPosicion = new Posicion(15,7);
+		Posicion terceraPosicion = new Posicion(20,9);
 		
 		Jugador otroJugador = new Jugador("Nombre",new RazaTerran(),"Azul");
 		Turno unTurno = new Turno(unJugador,otroJugador);
@@ -73,19 +74,17 @@ public class FabricaTest extends TestCase {
 		// Agrego las construcciones necesarias para crear la construccion actual
 		Construccion unaBarraca = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesBasicas, unaPosicion, unJugador);
 		unTurno.addObserver(unaBarraca);
-		unJugador.agregarConstruccion(unaBarraca);
 		for (int i = 0; i < 12 ;i++) unTurno.avanzarTurno();
 
-		Construccion unPuertoEstelar = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesVoladoras, unaPosicion, unJugador);
+		Construccion unPuertoEstelar = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesVoladoras, otraPosicion, unJugador);
 		unTurno.addObserver(unPuertoEstelar);
-		unJugador.agregarConstruccion(unPuertoEstelar);
 		for (int i = 0; i < 10 ;i++) unTurno.avanzarTurno();
 		// Fin de agregado de Construcciones necesarias
 		
 		unJugador.dameAlmacenMineral().almacenarRecurso(1000);
 		unJugador.dameAlmacenGas().almacenarRecurso(1000);
 		
-		Construccion unaConstruccion = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesNivel2, unaPosicion, unJugador);
+		Construccion unaConstruccion = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesNivel2, terceraPosicion, unJugador);
 
 		unTurno.addObserver(unaConstruccion);
 			
@@ -115,6 +114,8 @@ public class FabricaTest extends TestCase {
 		
 		AbstractConstruccionFactory factoryConstrucciones = unaRaza.getFactoryConstrucciones();
 		Posicion unaPosicion = new Posicion(12,3);
+		Posicion otraPosicion = new Posicion(15,7);
+		Posicion terceraPosicion = new Posicion(20,9);
 		
 		Jugador otroJugador = new Jugador("Nombre",new RazaTerran(),"Azul");
 		Turno unTurno = new Turno(unJugador,otroJugador);
@@ -122,10 +123,9 @@ public class FabricaTest extends TestCase {
 		// Agrego las construcciones necesarias para crear la construccion actual
 		Construccion unaBarraca = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesBasicas, unaPosicion, unJugador);
 		unTurno.addObserver(unaBarraca);
-		unJugador.agregarConstruccion(unaBarraca);
 		for (int i = 0; i < 12 ;i++) unTurno.avanzarTurno();
 
-		Construccion unPuertoEstelar = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesVoladoras, unaPosicion, unJugador);
+		Construccion unPuertoEstelar = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesVoladoras, otraPosicion, unJugador);
 		unTurno.addObserver(unPuertoEstelar);
 		unJugador.agregarConstruccion(unPuertoEstelar);
 		for (int i = 0; i < 10 ;i++) unTurno.avanzarTurno();
@@ -135,7 +135,7 @@ public class FabricaTest extends TestCase {
 		unJugador.dameAlmacenMineral().almacenarRecurso(1000);
 
 		try{
-			Construccion unaConstruccion = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesNivel2, unaPosicion, unJugador);
+			Construccion unaConstruccion = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesNivel2, terceraPosicion, unJugador);
 		}
 		catch (CantidadDeGasInsuficienteException e){
 			return;
@@ -152,6 +152,8 @@ public class FabricaTest extends TestCase {
 		
 		AbstractConstruccionFactory factoryConstrucciones = unaRaza.getFactoryConstrucciones();
 		Posicion unaPosicion = new Posicion(12,3);
+		Posicion otraPosicion = new Posicion(15,7);
+		Posicion terceraPosicion = new Posicion(20,9);
 		
 		Jugador otroJugador = new Jugador("Nombre",new RazaTerran(),"Azul");
 		Turno unTurno = new Turno(unJugador,otroJugador);
@@ -159,19 +161,17 @@ public class FabricaTest extends TestCase {
 		// Agrego las construcciones necesarias para crear la construccion actual
 		Construccion unaBarraca = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesBasicas, unaPosicion, unJugador);
 		unTurno.addObserver(unaBarraca);
-		unJugador.agregarConstruccion(unaBarraca);
 		for (int i = 0; i < 12 ;i++) unTurno.avanzarTurno();
 
-		Construccion unPuertoEstelar = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesVoladoras, unaPosicion, unJugador);
+		Construccion unPuertoEstelar = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesVoladoras, otraPosicion, unJugador);
 		unTurno.addObserver(unPuertoEstelar);
-		unJugador.agregarConstruccion(unPuertoEstelar);
 		for (int i = 0; i < 10 ;i++) unTurno.avanzarTurno();
 		// Fin de agregado de Construcciones necesarias
 		
 		//unJugador.dameAlmacenMineral().consumirRecurso(500);
 		
 		try{
-			Construccion unaConstruccion = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesNivel2, unaPosicion, unJugador);
+			Construccion unaConstruccion = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesNivel2, terceraPosicion, unJugador);
 		}
 		catch (CantidadDeMineralInsuficienteException e){
 			return;
