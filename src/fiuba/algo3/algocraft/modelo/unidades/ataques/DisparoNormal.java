@@ -9,9 +9,7 @@ public class DisparoNormal extends AbstractDisparo{
 		super(unidad, radio);
 	}
 
-	@Override
 	public boolean disparar(Celda objetivo) {
-		//validar el rando de disparo
 		return objetivo.atacarUnidadDeLaCeldaConUnidad(this.unidad);
 	}
 }

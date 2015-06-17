@@ -128,5 +128,7 @@ abstract public class Unidad implements TurnoObserver{
 	public boolean sonUnidadesDelMismoJugador(Unidad unaUnidadAtacante) {
 		return (this.jugador.verificarMismoJugador(unaUnidadAtacante.jugador));
 	}
+
+	public abstract int getRangoAtaque(Unidad unaUnidad);
 	
 }

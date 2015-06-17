@@ -42,5 +42,15 @@ public class Golliat extends UnidadTerran {
 	
 	protected boolean atacaUnidadesAereas() {
 		return true;
+	}
+
+	public int getRangoAtaque(Unidad unaUnidad) {
+		if (unaUnidad.esUnidadAerea()){
+			return 5;
+		}
+		else{
+			return 6;
+		}
+		
 	} 
 }

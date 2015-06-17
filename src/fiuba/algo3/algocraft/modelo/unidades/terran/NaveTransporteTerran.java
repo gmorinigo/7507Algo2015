@@ -41,5 +41,9 @@ public class NaveTransporteTerran extends NaveTransporte {
 	
 	protected boolean atacaUnidadesAereas() {
 		return false;
+	}
+
+	public int getRangoAtaque(Unidad unaUnidad) {
+		return 0;
 	} 
 }

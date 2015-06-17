@@ -52,4 +52,8 @@ public class NaveCiencia extends UnidadTerran {
 	protected boolean atacaUnidadesAereas() {
 		return false;
 	}
+
+	public int getRangoAtaque(Unidad unaUnidad) {
+		return 0;
+	}
 }

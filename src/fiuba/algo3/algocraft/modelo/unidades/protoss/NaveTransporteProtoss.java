@@ -41,5 +41,9 @@ public class NaveTransporteProtoss extends NaveTransporte {
 	
 	protected boolean atacaUnidadesAereas() {
 		return false;
+	}
+
+	public int getRangoAtaque(Unidad unidad) {
+		return 0;
 	} 
 }

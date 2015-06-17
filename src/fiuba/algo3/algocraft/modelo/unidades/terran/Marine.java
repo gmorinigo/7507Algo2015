@@ -38,5 +38,9 @@ public class Marine extends UnidadTerran {
 	
 	protected boolean atacaUnidadesAereas() {
 		return true;
+	}
+
+	public int getRangoAtaque(Unidad unaUnidad) {
+		return 4;
 	} 
 }

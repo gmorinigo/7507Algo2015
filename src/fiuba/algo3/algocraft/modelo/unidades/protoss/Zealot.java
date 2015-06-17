@@ -32,5 +32,9 @@ public class Zealot extends UnidadProtoss{
 
 	protected boolean atacaUnidadesAereas() {
 		return false;
+	}
+
+	public int getRangoAtaque(Unidad unidad) {
+		return 1;
 	} 
 }

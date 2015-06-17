@@ -43,5 +43,9 @@ public class Espectro extends UnidadTerran {
 	
 	protected boolean atacaUnidadesAereas() {
 		return true;
+	}
+
+	public int getRangoAtaque(Unidad unaUnidad) {
+		return 5;
 	} 
 }

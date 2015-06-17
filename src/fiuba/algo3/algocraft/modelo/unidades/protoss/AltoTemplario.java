@@ -39,6 +39,10 @@ public class AltoTemplario extends UnidadProtoss {
 	protected boolean atacaUnidadesAereas() {
 		return false;
 	}
+
+	public int getRangoAtaque(Unidad unidad) {
+		return 0;
+	}
 	
 	
 }

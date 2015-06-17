@@ -33,6 +33,10 @@ public class Dragon extends UnidadProtoss {
 
 	protected boolean atacaUnidadesAereas() {
 		return true;
+	}
+
+	public int getRangoAtaque(Unidad unidad) {
+		return 4;
 	} 
 
 }

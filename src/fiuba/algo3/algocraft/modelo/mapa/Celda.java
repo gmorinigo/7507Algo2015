@@ -72,10 +72,33 @@ public abstract class Celda {
 		if(!this.esAtacable())
 			return false;
 		
+		if (this.celdaFueraDelRangoDeAtaqueEnemigo(unaUnidadAtacante)) return false;
+		
 		if(this.unidad.sonUnidadesDelMismoJugador(unaUnidadAtacante)){
 			return false;
 		}
 		
 		return this.unidad.recibirataque(unaUnidadAtacante);
+	}
+
+
+	private boolean celdaFueraDelRangoDeAtaqueEnemigo(Unidad unaUnidadAtacante) {
+		int rango = unaUnidadAtacante.getRangoAtaque(this.unidad);
+		int posicionXUnidadAtacante = unaUnidadAtacante.dameCelda().obtenerPosicion().dameColumna();
+		int posicionYUnidadAtacante = unaUnidadAtacante.dameCelda().obtenerPosicion().dameFila();
+		
+		// esta a la derecha del rango
+		if (this.posicion.dameColumna() > (posicionXUnidadAtacante + rango)) return true;
+		
+		// esta a la izquierda del rango
+		if (this.posicion.dameColumna() < (posicionXUnidadAtacante - rango)) return true;
+		
+		// esta por encima del rango
+		if (this.posicion.dameFila() > (posicionYUnidadAtacante + rango)) return true;
+		
+		// esta por debajo del rango
+		if (this.posicion.dameFila() < (posicionYUnidadAtacante - rango)) return true;
+		
+		return false;
 	}
 }

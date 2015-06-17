@@ -41,5 +41,9 @@ public class Scout extends UnidadProtoss {
 	
 	protected boolean atacaUnidadesAereas() {
 		return true;
+	}
+
+	public int getRangoAtaque(Unidad unidad) {
+		return 4;
 	} 
 }
