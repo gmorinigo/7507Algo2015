@@ -3,6 +3,7 @@ package fiuba.algo3.algocrafttest;
 import java.rmi.NoSuchObjectException;
 
 import fiuba.algo3.algocraft.modelo.Jugador;
+import fiuba.algo3.algocraft.modelo.Raza;
 import fiuba.algo3.algocraft.modelo.RazaProtoss;
 import fiuba.algo3.algocraft.modelo.RazaTerran;
 import fiuba.algo3.algocraft.modelo.construciones.AbstractConstruccionFactory;
@@ -12,6 +13,7 @@ import fiuba.algo3.algocraft.modelo.construciones.protoss.PuertoEstelarProtoss;
 import fiuba.algo3.algocraft.modelo.construciones.terran.PuertoEstelarTerran;
 import fiuba.algo3.algocraft.modelo.excepciones.CantidadDeGasInsuficienteException;
 import fiuba.algo3.algocraft.modelo.excepciones.CantidadDeMineralInsuficienteException;
+import fiuba.algo3.algocraft.modelo.excepciones.CapacidadDePoblacionMaximaSuperada;
 import fiuba.algo3.algocraft.modelo.excepciones.CeldaOcupadaException;
 import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException;
 import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException;
@@ -91,7 +93,7 @@ public class PuertoEstelarTerranTest extends TestBase {
 	}
 	
 	public void testCrearEspectrosYNavesAlPasarTurnosEstaCreadaEstaFinalizada() 
-	throws CeldaOcupadaException, NoReuneLosRequisitosException, JugadorConNombreDemasiadoCortoException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoHaySuficientesRecursos, NoSePudoConstruirException{
+	throws CeldaOcupadaException, NoReuneLosRequisitosException, JugadorConNombreDemasiadoCortoException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoHaySuficientesRecursos, NoSePudoConstruirException, CapacidadDePoblacionMaximaSuperada{
 		RazaTerran unaRaza = new RazaTerran(); 
 		TipoConstruccion unTipo = null;
 		Jugador unJugador = new Jugador("unNombre",unaRaza,"Azul");
@@ -121,6 +123,17 @@ public class PuertoEstelarTerranTest extends TestBase {
 
 		unJugador.dameAlmacenMineral().almacenarRecurso(1000);
 		unJugador.dameAlmacenGas().almacenarRecurso(1000);
+		
+		TipoConstruccion unTipoConstruccion = null;
+		unJugador.dameAlmacenMineral().almacenarRecurso(1000);
+		Construccion unExpansor = (Construccion) factoryConstrucciones.crearConstruccion(unTipoConstruccion.expansorPoblacion, new Posicion(124,124), unJugador);
+		Construccion expansor3 = (Construccion) factoryConstrucciones.crearConstruccion(unTipoConstruccion.expansorPoblacion, new Posicion(130,130), unJugador);
+		Construccion expansor4 = (Construccion) factoryConstrucciones.crearConstruccion(unTipoConstruccion.expansorPoblacion, new Posicion(134,134), otroJugador);
+		unTurno.addObserver(unExpansor);
+		unTurno.addObserver(expansor3);
+		unTurno.addObserver(expansor4);
+		for (int i=0;i<6;i++) unTurno.avanzarTurno();
+		
 		
 		Unidad unEspectro = (Unidad) unaConstruccion.crearUnidad(unJugador,unTipoUnidad.volador1);
 		Unidad unaNaveDeTransporte = (Unidad) unaConstruccion.crearUnidad(unJugador,unTipoUnidad.volador2);

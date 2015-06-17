@@ -4,15 +4,22 @@ import java.rmi.NoSuchObjectException;
 
 import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.RazaProtoss;
+import fiuba.algo3.algocraft.modelo.construciones.AbstractConstruccionFactory;
+import fiuba.algo3.algocraft.modelo.construciones.Construccion;
 import fiuba.algo3.algocraft.modelo.construciones.AbstractConstruccionFactory.TipoConstruccion;
 import fiuba.algo3.algocraft.modelo.construciones.protoss.Acceso;
 import fiuba.algo3.algocraft.modelo.excepciones.CantidadDeGasInsuficienteException;
 import fiuba.algo3.algocraft.modelo.excepciones.CantidadDeMineralInsuficienteException;
+import fiuba.algo3.algocraft.modelo.excepciones.CapacidadDePoblacionMaximaSuperada;
 import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException;
 import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException;
+import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException;
+import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException;
+import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException;
 import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionNoPermitidaPorSalirseDelMapaException;
 import fiuba.algo3.algocraft.modelo.excepciones.JugadorConNombreDemasiadoCortoException;
 import fiuba.algo3.algocraft.modelo.excepciones.NoHaySuficientesRecursos;
+import fiuba.algo3.algocraft.modelo.excepciones.NoSePudoConstruirException;
 import fiuba.algo3.algocraft.modelo.mapa.Mapa;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.turnos.Turno;
@@ -23,10 +30,26 @@ import fiuba.algo3.algocraft.modelo.unidades.movimientos.Movimiento.TipoDireccio
 
 public class DiagonalArribaIzquierdaTest extends TestBase{
 	
-    public void testDeberiaMoverLaUnidadUnaPosicionParaArribaALaIzquierda() throws JugadorConNombreDemasiadoCortoException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, NoHaySuficientesRecursos{ 	
+    public void testDeberiaMoverLaUnidadUnaPosicionParaArribaALaIzquierda() throws JugadorConNombreDemasiadoCortoException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, NoHaySuficientesRecursos, CapacidadDePoblacionMaximaSuperada, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoSePudoConstruirException{ 	
             Mapa mapa = Mapa.getInstance();
     		RazaProtoss unaRaza = new RazaProtoss(); 
     		Jugador unJugador = new Jugador("unNombre",unaRaza,"Azul");
+    		
+    		TipoConstruccion unTipoConstruccion = null;
+    		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
+    		Turno unTurno = new Turno(unJugador,otroJugador);
+    		AbstractConstruccionFactory factoryConstrucciones = unaRaza.getFactoryConstrucciones();
+    		unJugador.dameAlmacenMineral().almacenarRecurso(1000);
+    		Construccion unExpansor = (Construccion) factoryConstrucciones.crearConstruccion(unTipoConstruccion.expansorPoblacion, new Posicion(124,124), unJugador);
+    		Construccion expansor3 = (Construccion) factoryConstrucciones.crearConstruccion(unTipoConstruccion.expansorPoblacion, new Posicion(130,130), unJugador);
+    		Construccion expansor4 = (Construccion) factoryConstrucciones.crearConstruccion(unTipoConstruccion.expansorPoblacion, new Posicion(134,134), otroJugador);
+    		Construccion expansor5 = (Construccion) factoryConstrucciones.crearConstruccion(unTipoConstruccion.expansorPoblacion, new Posicion(138,138), otroJugador);
+    		unTurno.addObserver(unExpansor);
+    		unTurno.addObserver(expansor3);
+    		unTurno.addObserver(expansor4);
+    		unTurno.addObserver(expansor5);
+    		for (int i=0;i<6;i++) unTurno.avanzarTurno();
+    		
     		AbstractUnidadFactory factoryUnidades = unaRaza.getFactoryUnidades();
     		Unidad unaUnidad = (Unidad) factoryUnidades.crearUnidad(TipoUnidad.terrestre1,unJugador);		
     		
@@ -48,10 +71,26 @@ public class DiagonalArribaIzquierdaTest extends TestBase{
             assertEquals(unaUnidad.dameCelda(),mapa.dameCelda(new Posicion(3,3)));
         }
         
-        public void testNosePuedeMoverUnaUnidadAUnaPosicionYaOcupada() throws JugadorConNombreDemasiadoCortoException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, NoHaySuficientesRecursos{
+        public void testNosePuedeMoverUnaUnidadAUnaPosicionYaOcupada() throws JugadorConNombreDemasiadoCortoException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, NoHaySuficientesRecursos, CapacidadDePoblacionMaximaSuperada, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoSePudoConstruirException{
             Mapa mapa = Mapa.getInstance();
     		RazaProtoss unaRaza = new RazaProtoss(); 
     		Jugador unJugador = new Jugador("unNombre",unaRaza,"Azul");
+    		
+    		TipoConstruccion unTipoConstruccion = null;
+    		AbstractConstruccionFactory factoryConstrucciones = unaRaza.getFactoryConstrucciones();
+    		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
+    		Turno unTurno = new Turno(unJugador,otroJugador);
+    		unJugador.dameAlmacenMineral().almacenarRecurso(1000);
+    		Construccion unExpansor = (Construccion) factoryConstrucciones.crearConstruccion(unTipoConstruccion.expansorPoblacion, new Posicion(124,124), unJugador);
+    		Construccion expansor3 = (Construccion) factoryConstrucciones.crearConstruccion(unTipoConstruccion.expansorPoblacion, new Posicion(130,130), unJugador);
+    		Construccion expansor4 = (Construccion) factoryConstrucciones.crearConstruccion(unTipoConstruccion.expansorPoblacion, new Posicion(134,134), otroJugador);
+    		Construccion expansor5 = (Construccion) factoryConstrucciones.crearConstruccion(unTipoConstruccion.expansorPoblacion, new Posicion(138,138), otroJugador);
+    		unTurno.addObserver(unExpansor);
+    		unTurno.addObserver(expansor3);
+    		unTurno.addObserver(expansor4);
+    		unTurno.addObserver(expansor5);
+    		for (int i=0;i<6;i++) unTurno.avanzarTurno();
+    		
     		AbstractUnidadFactory factoryUnidades = unaRaza.getFactoryUnidades();
     		Unidad unaUnidad = (Unidad) factoryUnidades.crearUnidad(TipoUnidad.terrestre1,unJugador);
     		Unidad otraUnidad = (Unidad) factoryUnidades.crearUnidad(TipoUnidad.terrestre2,unJugador);
@@ -62,11 +101,26 @@ public class DiagonalArribaIzquierdaTest extends TestBase{
     		assertFalse(unaUnidad.mover(TipoDireccion.DiagonalArribaIzquierda));
         }
         
-        public void testNosePuedeMoverUnaUnidadAUnaPosicionYaOcupadaPorOtroJugador() throws JugadorConNombreDemasiadoCortoException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, NoHaySuficientesRecursos{
+        public void testNosePuedeMoverUnaUnidadAUnaPosicionYaOcupadaPorOtroJugador() throws JugadorConNombreDemasiadoCortoException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, NoHaySuficientesRecursos, CapacidadDePoblacionMaximaSuperada, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoSePudoConstruirException{
             Mapa mapa = Mapa.getInstance();
     		RazaProtoss unaRaza = new RazaProtoss(); 
     		Jugador unJugador = new Jugador("unNombre",unaRaza,"Azul");
     		Jugador otroJugador = new Jugador("elNombre",unaRaza,"Rojo");
+    		
+    		TipoConstruccion unTipoConstruccion = null;
+    		AbstractConstruccionFactory factoryConstrucciones = unaRaza.getFactoryConstrucciones();
+    		Turno unTurno = new Turno(unJugador,otroJugador);
+    		unJugador.dameAlmacenMineral().almacenarRecurso(1000);
+    		Construccion unExpansor = (Construccion) factoryConstrucciones.crearConstruccion(unTipoConstruccion.expansorPoblacion, new Posicion(124,124), unJugador);
+    		Construccion expansor3 = (Construccion) factoryConstrucciones.crearConstruccion(unTipoConstruccion.expansorPoblacion, new Posicion(130,130), unJugador);
+    		Construccion expansor4 = (Construccion) factoryConstrucciones.crearConstruccion(unTipoConstruccion.expansorPoblacion, new Posicion(134,134), otroJugador);
+    		Construccion expansor5 = (Construccion) factoryConstrucciones.crearConstruccion(unTipoConstruccion.expansorPoblacion, new Posicion(138,138), otroJugador);
+    		unTurno.addObserver(unExpansor);
+    		unTurno.addObserver(expansor3);
+    		unTurno.addObserver(expansor4);
+    		unTurno.addObserver(expansor5);
+    		for (int i=0;i<6;i++) unTurno.avanzarTurno();
+    		
     		AbstractUnidadFactory factoryUnidades = unaRaza.getFactoryUnidades();
     		Unidad unaUnidad = (Unidad) factoryUnidades.crearUnidad(TipoUnidad.terrestre1,unJugador);
     		Unidad otraUnidad = (Unidad) factoryUnidades.crearUnidad(TipoUnidad.terrestre1,otroJugador);
@@ -77,7 +131,7 @@ public class DiagonalArribaIzquierdaTest extends TestBase{
     		assertFalse(unaUnidad.mover(TipoDireccion.DiagonalArribaIzquierda));
         }
         
-        public void testNoSePuedeMoverUnaUnidadAUnaPosicionDondeHayUnaConstruccion() throws JugadorConNombreDemasiadoCortoException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, NoHaySuficientesRecursos, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException, ConstruccionNoPermitidaPorSalirseDelMapaException{
+        public void testNoSePuedeMoverUnaUnidadAUnaPosicionDondeHayUnaConstruccion() throws JugadorConNombreDemasiadoCortoException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, NoHaySuficientesRecursos, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException, ConstruccionNoPermitidaPorSalirseDelMapaException, CapacidadDePoblacionMaximaSuperada, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoSePudoConstruirException{
             Mapa mapa = Mapa.getInstance();
     		RazaProtoss unaRaza = new RazaProtoss(); 
     		Jugador unJugador = new Jugador("unNombre",unaRaza,"Azul");
@@ -88,6 +142,20 @@ public class DiagonalArribaIzquierdaTest extends TestBase{
     		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Rojo");
     		
     		Turno unTurno = new Turno(unJugador,otroJugador);
+    		
+    		TipoConstruccion unTipoConstruccion = null;
+    		AbstractConstruccionFactory factoryConstrucciones = unaRaza.getFactoryConstrucciones();
+    		unJugador.dameAlmacenMineral().almacenarRecurso(1000);
+    		Construccion unExpansor = (Construccion) factoryConstrucciones.crearConstruccion(unTipoConstruccion.expansorPoblacion, new Posicion(124,124), unJugador);
+    		Construccion expansor3 = (Construccion) factoryConstrucciones.crearConstruccion(unTipoConstruccion.expansorPoblacion, new Posicion(130,130), unJugador);
+    		Construccion expansor4 = (Construccion) factoryConstrucciones.crearConstruccion(unTipoConstruccion.expansorPoblacion, new Posicion(134,134), otroJugador);
+    		Construccion expansor5 = (Construccion) factoryConstrucciones.crearConstruccion(unTipoConstruccion.expansorPoblacion, new Posicion(138,138), otroJugador);
+    		unTurno.addObserver(unExpansor);
+    		unTurno.addObserver(expansor3);
+    		unTurno.addObserver(expansor4);
+    		unTurno.addObserver(expansor5);
+    		for (int i=0;i<6;i++) unTurno.avanzarTurno();
+    		
     		AbstractUnidadFactory factoryUnidades = unaRaza.getFactoryUnidades();
     		Unidad unaUnidad = (Unidad) factoryUnidades.crearUnidad(TipoUnidad.terrestre1,unJugador);
     		unaUnidad.finalizarNacimiento();

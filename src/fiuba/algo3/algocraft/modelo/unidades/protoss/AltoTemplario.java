@@ -52,4 +52,8 @@ public class AltoTemplario extends UnidadProtoss {
 	public int getRangoAtaque(Construccion construccion) {
 		return 0;
 	}
+
+	public int obtenerOcupacionSuministro() {
+		return 2;
+	}
 }

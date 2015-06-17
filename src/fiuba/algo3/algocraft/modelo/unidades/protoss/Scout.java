@@ -54,5 +54,9 @@ public class Scout extends UnidadProtoss {
 
 	public int getRangoAtaque(Construccion construccion) {
 		return 4;
-	} 
+	}
+	
+	public int obtenerOcupacionSuministro() {
+		return 3;
+	}
 }

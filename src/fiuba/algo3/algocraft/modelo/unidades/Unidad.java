@@ -112,8 +112,8 @@ abstract public class Unidad implements TurnoObserver{
 		return this.salud.valorDeSalud();
 	}
 
-	public boolean verificarSiPuedeAtacar(Unidad unaUnidad) {
-		if (unaUnidad.esUnidadAerea() && !(this.atacaUnidadesAereas())){
+	public boolean verificarSiPuedeAtacar(Unidad unaUnidadAtacante) {
+		if (this.esUnidadAerea() && !(unaUnidadAtacante.atacaUnidadesAereas())){
 			return false;
 		}
 		return true;
@@ -135,4 +135,7 @@ abstract public class Unidad implements TurnoObserver{
 	public abstract int getRangoAtaque(Construccion construccion);
 
 	public abstract int DanioAtaque(Construccion construccion);
+
+	public abstract int obtenerOcupacionSuministro();
+	
 }

@@ -51,4 +51,8 @@ public class Zealot extends UnidadProtoss{
 	public int getRangoAtaque(Construccion construccion) {
 		return 1;
 	} 
+	
+	public int obtenerOcupacionSuministro() {
+		return 2;
+	}
 }

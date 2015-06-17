@@ -1,9 +1,11 @@
 package fiuba.algo3.algocraft.modelo.unidades;
 
 import java.rmi.NoSuchObjectException;
+
 import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.excepciones.CantidadDeGasInsuficienteException;
 import fiuba.algo3.algocraft.modelo.excepciones.CantidadDeMineralInsuficienteException;
+import fiuba.algo3.algocraft.modelo.excepciones.CapacidadDePoblacionMaximaSuperada;
 import fiuba.algo3.algocraft.modelo.excepciones.NoHaySuficientesRecursos;
 import fiuba.algo3.algocraft.modelo.unidades.terran.Espectro;
 import fiuba.algo3.algocraft.modelo.unidades.terran.Golliat;
@@ -13,8 +15,10 @@ import fiuba.algo3.algocraft.modelo.unidades.terran.NaveTransporteTerran;
 
 public class UnidadFactoryTerran extends AbstractUnidadFactory {
 	
-	public Unidad crearUnidad(TipoUnidad tipo, Jugador unJugador) throws NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, NoHaySuficientesRecursos{
+	public Unidad crearUnidad(TipoUnidad tipo, Jugador unJugador) throws NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, NoHaySuficientesRecursos, CapacidadDePoblacionMaximaSuperada{
 		this.verificarRecursosParaPoderCrear(tipo, unJugador);
+		this.verificarPoblacionParaCrearUnidad(tipo, unJugador);
+
 
 		unJugador.dameAlmacenMineral().consumirRecurso(this.dameCostoMineral(tipo));
 		unJugador.dameAlmacenGas().consumirRecurso(this.dameCostoGas(tipo));
@@ -65,6 +69,17 @@ public class UnidadFactoryTerran extends AbstractUnidadFactory {
 		case volador2:return 100;
 		case especial1:	return 225;
 		default: return 0;
+		}
+	}
+
+	protected int obtenerOcupacionSuministro(TipoUnidad tipo) {
+		switch(tipo){
+		case terrestre1: return 1;
+		case terrestre2:return 2;
+		case volador1:return 2;
+		case volador2:return 2;
+		case especial1:	return 2;
+		default: return 2;
 		}
 	}
 }

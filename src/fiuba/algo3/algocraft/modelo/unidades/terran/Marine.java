@@ -51,4 +51,8 @@ public class Marine extends UnidadTerran {
 	public int getRangoAtaque(Construccion construccion) {
 		return 4;
 	} 
+	
+	public int obtenerOcupacionSuministro() {
+		return 1;
+	}
 }

@@ -67,9 +67,18 @@ public class Jugador {
 		return (this.colorJugador == unColor);
 	}
 	
-	public boolean verificarPoblacion() {
-	return ((unidadesTerminadas.size() + 1) <= this.dameLimiteDePoblacion());
+	public int obtenerCantidadPoblacionDisponible() {
+		int poblacionOcupada = 0;
 		
+		Iterator<Unidad> it = unidadesTerminadas.iterator();
+		
+		while (it.hasNext()) {
+			Unidad unaUnidad = it.next();
+			if (unaUnidad.estaViva()){
+				poblacionOcupada += unaUnidad.obtenerOcupacionSuministro();
+			}
+		}
+		return (this.raza.dameCapacidadDePoblacion(construcciones) - poblacionOcupada);
 	}
 
 	public String dameNombre() {

@@ -18,7 +18,7 @@ public class RazaTerran extends Raza{
 	public int dameCapacidadDePoblacion(ArrayList<Construccion> construccionesTerminadas) {
 		int contador = 0;
 		for(Construccion construccion: construccionesTerminadas){
-			if ((construccion instanceof DepositoDeSuministro) && (contador < 200)) contador += 5;
+			if ((construccion instanceof DepositoDeSuministro) && (contador < 200) && (construccion.estaOperativa())) contador += 5;
 		}
 		return contador;
 	}

@@ -58,4 +58,8 @@ public class Espectro extends UnidadTerran {
 	public int getRangoAtaque(Construccion construccion) {
 		return 5;
 	} 
+	
+	public int obtenerOcupacionSuministro() {
+		return 2;
+	}
 }

@@ -65,4 +65,8 @@ public class NaveCiencia extends UnidadTerran {
 	public int getRangoAtaque(Construccion construccion) {
 		return 0;
 	}
+	
+	public int obtenerOcupacionSuministro() {
+		return 2;
+	}
 }

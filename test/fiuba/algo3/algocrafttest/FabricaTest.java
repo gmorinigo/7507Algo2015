@@ -33,7 +33,7 @@ public class FabricaTest extends TestBase {
 		
 		AbstractConstruccionFactory factoryConstrucciones = unaRaza.getFactoryConstrucciones();
 		Posicion unaPosicion = new Posicion(6,4);
-		Posicion otraPosicion = new Posicion(15,7);
+		//Posicion otraPosicion = new Posicion(15,7);
 		Posicion terceraPosicion = new Posicion(20,9);
 		
 		Jugador otroJugador = new Jugador("Nombre",new RazaTerran(),"Azul");
@@ -61,7 +61,7 @@ public class FabricaTest extends TestBase {
 		
 		AbstractConstruccionFactory factoryConstrucciones = unaRaza.getFactoryConstrucciones();
 		Posicion unaPosicion = new Posicion(6,4);
-		Posicion otraPosicion = new Posicion(15,7);
+		//Posicion otraPosicion = new Posicion(15,7);
 		Posicion terceraPosicion = new Posicion(20,9);
 		
 		Jugador otroJugador = new Jugador("Nombre",new RazaTerran(),"Azul");

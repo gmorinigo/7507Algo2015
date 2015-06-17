@@ -62,4 +62,8 @@ public class Golliat extends UnidadTerran {
 	public int getRangoAtaque(Construccion construccion) {
 		return 6;
 	} 
+	
+	public int obtenerOcupacionSuministro() {
+		return 2;
+	}
 }

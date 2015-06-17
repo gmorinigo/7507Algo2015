@@ -56,4 +56,8 @@ public class NaveTransporteTerran extends NaveTransporte {
 	public int getRangoAtaque(Construccion construccion) {
 		return 0;
 	} 
+	
+	public int obtenerOcupacionSuministro() {
+		return 2;
+	}
 }
