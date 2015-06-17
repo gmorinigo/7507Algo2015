@@ -13,6 +13,7 @@ import fiuba.algo3.algocraft.modelo.excepciones.NoHaySuficientesRecursos;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory;
 import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory.TipoUnidad;
+import fiuba.algo3.algocraft.modelo.unidades.Salud;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 
 public class Barraca extends Construccion {
@@ -54,6 +55,20 @@ public class Barraca extends Construccion {
 	public int costoMineral() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+
+	@Override
+	protected Salud saludInicial() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public boolean recibirataque(Unidad unaUnidadAtacante) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 		
 	

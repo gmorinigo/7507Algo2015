@@ -12,6 +12,7 @@ import fiuba.algo3.algocraft.modelo.excepciones.JugadorConNombreDemasiadoCortoEx
 import fiuba.algo3.algocraft.modelo.excepciones.NoHaySuficientesRecursos;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory;
+import fiuba.algo3.algocraft.modelo.unidades.Salud;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory.TipoUnidad;
 
@@ -54,5 +55,17 @@ public class ArchivosTemplarios extends Construccion{
 	public int costoMineral() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	protected Salud saludInicial() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean recibirataque(Unidad unaUnidadAtacante) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

@@ -4,6 +4,8 @@ import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.construciones.Construccion;
 import fiuba.algo3.algocraft.modelo.construciones.AbstractConstruccionFactory.TipoConstruccion;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
+import fiuba.algo3.algocraft.modelo.unidades.Salud;
+import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 
 public class DepositoDeSuministro extends Construccion {
 
@@ -31,6 +33,20 @@ public class DepositoDeSuministro extends Construccion {
 	protected void vivir() {
 		// TODO Auto-generated method stub
 		
+	}
+
+
+	@Override
+	protected Salud saludInicial() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public boolean recibirataque(Unidad unaUnidadAtacante) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

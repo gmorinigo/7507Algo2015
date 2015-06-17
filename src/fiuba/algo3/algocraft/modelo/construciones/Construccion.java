@@ -8,6 +8,8 @@ import fiuba.algo3.algocraft.modelo.mapa.Celda;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.turnos.Turno;
 import fiuba.algo3.algocraft.modelo.turnos.TurnoObserver;
+import fiuba.algo3.algocraft.modelo.unidades.Salud;
+import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 
 public abstract class Construccion implements TurnoObserver{
 
@@ -16,6 +18,7 @@ public abstract class Construccion implements TurnoObserver{
 	protected Posicion posicionCeldaSupIzquierda;
 	protected ConstruccionEstado estado;
 	protected TipoConstruccion tipoConstruccion;
+	protected Salud salud;
 	
 	public Construccion(Posicion unaPosicion, Jugador jugador, TipoConstruccion unTipo) {
 		this.celdas = new ArrayList<Celda>();
@@ -23,6 +26,7 @@ public abstract class Construccion implements TurnoObserver{
 		this.posicionCeldaSupIzquierda = unaPosicion;
 		this.estado = new ConstruccionEstadoNaciendo(this.turnosNecesariosParaCreacion(), this);
 		this.tipoConstruccion = unTipo;
+		this.salud = this.saludInicial();
 	}
 
 	public boolean estaTerminada(){
@@ -78,6 +82,8 @@ public abstract class Construccion implements TurnoObserver{
 	}
 	
 	abstract protected int turnosNecesariosParaCreacion();
+	abstract protected Salud saludInicial();
+	public abstract boolean recibirataque(Unidad unaUnidadAtacante);
 	abstract protected void vivir();
 
 	public boolean verificarTipoConstruccion(TipoConstruccion tipo) {
