@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.construciones.Construccion;
+import fiuba.algo3.algocraft.modelo.construciones.ConstruccionEstadoTrabajando;
 import fiuba.algo3.algocraft.modelo.construciones.AbstractConstruccionFactory.TipoConstruccion;
 import fiuba.algo3.algocraft.modelo.excepciones.CantidadDeGasInsuficienteException;
 import fiuba.algo3.algocraft.modelo.excepciones.CantidadDeMineralInsuficienteException;
@@ -31,6 +32,16 @@ public class Fabrica extends Construccion {
 	public Unidad crearUnidad(Jugador unJugador) throws JugadorConNombreDemasiadoCortoException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, NoHaySuficientesRecursos {
 		AbstractUnidadFactory factoryUnidades = this.jugador.dameRaza().getFactoryUnidades();
 		Unidad unaUnidad = (Unidad) factoryUnidades.crearUnidad(TipoUnidad.terrestre2, unJugador);
+		
+		return unaUnidad;
+	}
+	
+	
+	public Unidad crearUnidad(Jugador unJugador, TipoUnidad unTipo) throws JugadorConNombreDemasiadoCortoException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, NoHaySuficientesRecursos {
+		// Obtener dinamicamente la factory
+		AbstractUnidadFactory factoryUnidades = this.jugador.dameRaza().getFactoryUnidades();
+		Unidad unaUnidad = (Unidad) factoryUnidades.crearUnidad(unTipo, unJugador);
+		this.estado = new ConstruccionEstadoTrabajando(unaUnidad.turnosNecesariosParaCreacion(), this);
 		
 		return unaUnidad;
 	}

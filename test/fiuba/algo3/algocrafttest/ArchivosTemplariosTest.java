@@ -52,7 +52,7 @@ public class ArchivosTemplariosTest extends TestBase{
 		
 		unJugador.dameAlmacenMineral().almacenarRecurso(1000);
 		unJugador.dameAlmacenGas().almacenarRecurso(1000);
-		Construccion unaConstruccion = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesNivel2, terceraPosicion, unJugador);		
+		Construccion unaConstruccion = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesEspeciales, terceraPosicion, unJugador);		
 
 		assertTrue(unaConstruccion instanceof ArchivosTemplarios);
 
@@ -86,7 +86,7 @@ public class ArchivosTemplariosTest extends TestBase{
 		
 		unJugador.dameAlmacenMineral().almacenarRecurso(1000);
 		unJugador.dameAlmacenGas().almacenarRecurso(1000);
-		Construccion unaConstruccion = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesNivel2, terceraPosicion, unJugador);
+		Construccion unaConstruccion = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesEspeciales, terceraPosicion, unJugador);
 
 		unTurno.addObserver(unaConstruccion);
 			
@@ -137,8 +137,8 @@ public class ArchivosTemplariosTest extends TestBase{
 		unJugador.dameAlmacenMineral().almacenarRecurso(1000);
 		
 		try{
-			Construccion unaConstruccion = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesNivel2, terceraPosicion, unJugador);
-			Construccion otraConstruccion = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesNivel2, terceraPosicion, unJugador);
+			Construccion unaConstruccion = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesEspeciales, terceraPosicion, unJugador);
+			Construccion otraConstruccion = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesEspeciales, terceraPosicion, unJugador);
 		}
 		catch (CantidadDeGasInsuficienteException e){
 			return;
@@ -176,8 +176,8 @@ public class ArchivosTemplariosTest extends TestBase{
 		//unJugador.dameAlmacenMineral().consumirRecurso(500);
 		
 		try{
-			Construccion unaConstruccion = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesNivel2, terceraPosicion, unJugador);
-			Construccion otraConstruccion = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesNivel2, terceraPosicion, unJugador);
+			Construccion unaConstruccion = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesVoladoras, terceraPosicion, unJugador);
+			Construccion otraConstruccion = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesVoladoras, terceraPosicion, unJugador);
 		}
 		catch (CantidadDeMineralInsuficienteException e){
 			return;
@@ -196,7 +196,7 @@ public class ArchivosTemplariosTest extends TestBase{
 		Posicion unaPosicion = new Posicion(6,4);
 		
 		try{
-			Construccion unaConstruccion = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesNivel2, unaPosicion, unJugador);
+			Construccion unaConstruccion = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesEspeciales, unaPosicion, unJugador);
 		}
 		catch (ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException e){
 			return;

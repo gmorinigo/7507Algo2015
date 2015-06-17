@@ -47,7 +47,7 @@ public class PuertoEstelarTerranTest extends TestBase {
 		unTurno.addObserver(unaBarraca);
 		for (int i = 0; i < 12 ;i++) unTurno.avanzarTurno();
 		
-		Construccion unaConstruccion = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesVoladoras, otraPosicion, unJugador);		
+		Construccion unaConstruccion = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesEspecialesYVoladoras, otraPosicion, unJugador);		
 
 		assertTrue(unaConstruccion instanceof PuertoEstelarTerran);
 	}
@@ -70,7 +70,7 @@ public class PuertoEstelarTerranTest extends TestBase {
 		unTurno.addObserver(unaBarraca);
 		for (int i = 0; i < 12 ;i++) unTurno.avanzarTurno();
 				
-		Construccion unaConstruccion = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesVoladoras, otraPosicion, unJugador);
+		Construccion unaConstruccion = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesEspecialesYVoladoras, otraPosicion, unJugador);
 		
 
 		unTurno.addObserver(unaConstruccion);
@@ -109,7 +109,7 @@ public class PuertoEstelarTerranTest extends TestBase {
 		unJugador.agregarConstruccion(unaBarraca);
 		for (int i = 0; i < 12 ;i++) unTurno.avanzarTurno();
 		
-		PuertoEstelarTerran unaConstruccion = (PuertoEstelarTerran) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesVoladoras, otraPosicion, unJugador);
+		PuertoEstelarTerran unaConstruccion = (PuertoEstelarTerran) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesEspecialesYVoladoras, otraPosicion, unJugador);
 	
 		unTurno.addObserver(unaConstruccion);
 		
@@ -154,7 +154,7 @@ public class PuertoEstelarTerranTest extends TestBase {
 		unJugador.dameAlmacenGas().consumirRecurso(500);
 		
 		try{
-			Construccion unaConstruccion = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesVoladoras, unaPosicion, unJugador);
+			Construccion unaConstruccion = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesEspecialesYVoladoras, unaPosicion, unJugador);
 		}
 		catch (CantidadDeGasInsuficienteException e){
 			return;
@@ -175,7 +175,7 @@ public class PuertoEstelarTerranTest extends TestBase {
 		unJugador.dameAlmacenMineral().consumirRecurso(500);
 		
 		try{
-			Construccion unaConstruccion = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesVoladoras, unaPosicion, unJugador);
+			Construccion unaConstruccion = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesEspecialesYVoladoras, unaPosicion, unJugador);
 		}
 		catch (CantidadDeMineralInsuficienteException e){
 			return;

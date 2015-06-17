@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.construciones.Construccion;
+import fiuba.algo3.algocraft.modelo.construciones.ConstruccionEstadoTrabajando;
 import fiuba.algo3.algocraft.modelo.construciones.AbstractConstruccionFactory.TipoConstruccion;
 import fiuba.algo3.algocraft.modelo.excepciones.CantidadDeGasInsuficienteException;
 import fiuba.algo3.algocraft.modelo.excepciones.CantidadDeMineralInsuficienteException;
@@ -41,7 +42,7 @@ public class PuertoEstelarTerran extends Construccion {
 		return unaUnidad;
 	}
 
-
+	
 	protected int turnosNecesariosParaCreacion() {
 		return 10;
 	}

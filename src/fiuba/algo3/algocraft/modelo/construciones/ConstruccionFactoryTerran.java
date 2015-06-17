@@ -33,7 +33,7 @@ public class ConstruccionFactoryTerran extends AbstractConstruccionFactory {
 		case creadorUnidadesNivel2: 
 			unaConstruccion = new Fabrica(unaPosicion, unJugador, tipo);
 			break;
-		case creadorUnidadesVoladoras: 
+		case creadorUnidadesEspecialesYVoladoras: 
 			unaConstruccion = new PuertoEstelarTerran(unaPosicion, unJugador, tipo);
 			break;
 		case expansorPoblacion: 
@@ -60,7 +60,7 @@ public class ConstruccionFactoryTerran extends AbstractConstruccionFactory {
 		switch(tipo){
 		case creadorUnidadesBasicas: return 150;
 		case creadorUnidadesNivel2: return 200;
-		case creadorUnidadesVoladoras: return 150; 
+		case creadorUnidadesEspecialesYVoladoras: return 150; 
 		case expansorPoblacion: return 100;
 		case extractorGas: return 100;
 		case extractorMineral: return 50;
@@ -72,7 +72,7 @@ public class ConstruccionFactoryTerran extends AbstractConstruccionFactory {
 		switch(tipo){
 		case creadorUnidadesBasicas: return 0;
 		case creadorUnidadesNivel2: return 100;
-		case creadorUnidadesVoladoras: return 100; 
+		case creadorUnidadesEspecialesYVoladoras: return 100; 
 		case expansorPoblacion: return 0;
 		case extractorGas: return 0;
 		case extractorMineral: return 0;

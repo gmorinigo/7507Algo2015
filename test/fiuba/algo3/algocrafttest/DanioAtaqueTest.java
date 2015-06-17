@@ -104,7 +104,7 @@ public class DanioAtaqueTest extends TestBase {
 		
 		TipoUnidad unTipoUnidad = null;
 		Unidad unaUnidad = (Unidad) unaConstruccion.crearUnidad(unJugador,unTipoUnidad.terrestre2);
-		UnidadProtoss otraUnidad = (UnidadProtoss) unaConstruccion.crearUnidad(otroJugador,unTipoUnidad.terrestre2);
+		UnidadProtoss otraUnidad = (UnidadProtoss) otraConstruccion.crearUnidad(otroJugador,unTipoUnidad.terrestre2);
 		
 		unTurno.addObserver(unaUnidad);
 		unTurno.addObserver(otraUnidad);

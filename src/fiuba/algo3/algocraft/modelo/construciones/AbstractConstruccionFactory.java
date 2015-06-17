@@ -13,7 +13,7 @@ import fiuba.algo3.algocraft.modelo.excepciones.NoSePudoConstruirException;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 
 abstract public class AbstractConstruccionFactory {
-	public enum TipoConstruccion{extractorMineral,extractorGas,expansorPoblacion,creadorUnidadesBasicas,creadorUnidadesNivel2,creadorUnidadesVoladoras}
+	public enum TipoConstruccion{extractorMineral,extractorGas,expansorPoblacion,creadorUnidadesBasicas,creadorUnidadesNivel2,creadorUnidadesVoladoras,creadorUnidadesEspeciales,creadorUnidadesEspecialesYVoladoras}
 	public abstract Construccion crearConstruccion(TipoConstruccion tipo, Posicion unaPosicion, Jugador unJugador) throws NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoHaySuficientesRecursos, NoSePudoConstruirException;
 
 	protected void verificarRecursosParaPoderCrear(TipoConstruccion tipo, Jugador unJugador) 
@@ -38,9 +38,7 @@ abstract public class AbstractConstruccionFactory {
 		
 		unJugador.dameAlmacenMineral().consumirRecurso(this.dameCostoMineral(tipo));
 		unJugador.dameAlmacenGas().consumirRecurso(this.dameCostoGas(tipo));
-		
-
-		 
+	 
 	}
 	
 	
@@ -55,11 +53,12 @@ abstract public class AbstractConstruccionFactory {
 	}
 	
 	protected TipoConstruccion dameConstruccionRequeridasParaConstruir(TipoConstruccion tipo) {
-		
 		switch(tipo){
 		case creadorUnidadesBasicas: return null; 
-		case creadorUnidadesNivel2: return TipoConstruccion.creadorUnidadesVoladoras;
+		case creadorUnidadesNivel2: return TipoConstruccion.creadorUnidadesBasicas;
 		case creadorUnidadesVoladoras: return TipoConstruccion.creadorUnidadesBasicas;
+		case creadorUnidadesEspeciales:return TipoConstruccion.creadorUnidadesVoladoras;
+		case creadorUnidadesEspecialesYVoladoras: return TipoConstruccion.creadorUnidadesNivel2;
 		case expansorPoblacion: return null;
 		case extractorGas: return null; 
 		case extractorMineral: return null;

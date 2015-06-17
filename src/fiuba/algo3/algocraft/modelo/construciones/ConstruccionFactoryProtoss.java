@@ -31,7 +31,7 @@ public class ConstruccionFactoryProtoss extends AbstractConstruccionFactory {
 		case creadorUnidadesBasicas: 
 			unaConstruccion = new Acceso(unaPosicion, unJugador, tipo);
 			break;
-		case creadorUnidadesNivel2: 
+		case creadorUnidadesEspeciales: 
 			unaConstruccion = new ArchivosTemplarios(unaPosicion, unJugador, tipo);
 			break;
 		case creadorUnidadesVoladoras: 
@@ -60,7 +60,7 @@ public class ConstruccionFactoryProtoss extends AbstractConstruccionFactory {
 	protected int dameCostoMineral(TipoConstruccion tipo) {
 		switch(tipo){
 		case creadorUnidadesBasicas: return 150;
-		case creadorUnidadesNivel2: return 150;
+		case creadorUnidadesEspeciales: return 150;
 		case creadorUnidadesVoladoras: return 150; 
 		case expansorPoblacion: return 100;
 		case extractorGas: return 100;
@@ -72,7 +72,7 @@ public class ConstruccionFactoryProtoss extends AbstractConstruccionFactory {
 	protected int dameCostoGas(TipoConstruccion tipo) {
 		switch(tipo){
 		case creadorUnidadesBasicas: return 0;
-		case creadorUnidadesNivel2: return 200;
+		case creadorUnidadesEspeciales: return 200;
 		case creadorUnidadesVoladoras: return 150; 
 		case expansorPoblacion: return 0;
 		case extractorGas: return 0;
