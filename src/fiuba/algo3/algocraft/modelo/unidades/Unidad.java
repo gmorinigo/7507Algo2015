@@ -119,7 +119,8 @@ abstract public class Unidad implements TurnoObserver{
 	}	
 	
 	public void destruirUnidad() {
-		
+		this.jugador.quitarUnidad(this);
+		this.celda.desocuparCelda();
 	}
 	
 	protected abstract boolean atacaUnidadesAereas();

@@ -129,4 +129,8 @@ public class Jugador {
 		return ((this.nombreJugador == unJugador.nombreJugador) && (this.colorJugador == unJugador.colorJugador));
 	}
 
+	public void quitarUnidad(Unidad unidad) {
+		this.unidadesTerminadas.remove(unidad);
+	}
+
 }
