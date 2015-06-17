@@ -44,13 +44,13 @@ public class JugadorTest extends TestBase {
 		Posicion unaPosicion = new Posicion(1,1);
 		
 		unJugador.dameAlmacenMineral().almacenarRecurso(1000);
-		
-		Construccion DepositoDeSuministros1 = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.expansorPoblacion, unaPosicion, unJugador);
-		Construccion DepositoDeSuministros2 = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.expansorPoblacion, unaPosicion, unJugador);
-		Construccion DepositoDeSuministros3 = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.expansorPoblacion, unaPosicion, unJugador);
-		Construccion DepositoDeSuministros4 = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.expansorPoblacion, unaPosicion, unJugador);
-		Construccion DepositoDeSuministros5 = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.expansorPoblacion, unaPosicion, unJugador);
-		Construccion DepositoDeSuministros6 = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.expansorPoblacion, unaPosicion, unJugador);
+		int j = 3;
+		Construccion DepositoDeSuministros1 = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.expansorPoblacion, new Posicion(10,++j*4), unJugador);
+		Construccion DepositoDeSuministros2 = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.expansorPoblacion, new Posicion(10,++j*4), unJugador);
+		Construccion DepositoDeSuministros3 = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.expansorPoblacion, new Posicion(10,++j*4), unJugador);
+		Construccion DepositoDeSuministros4 = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.expansorPoblacion, new Posicion(10,++j*4), unJugador);
+		Construccion DepositoDeSuministros5 = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.expansorPoblacion, new Posicion(10,++j*4), unJugador);
+		Construccion DepositoDeSuministros6 = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.expansorPoblacion, new Posicion(10,++j*4), unJugador);
 		
 		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
 		Turno unTurno = new Turno(unJugador,otroJugador);
@@ -74,20 +74,22 @@ public class JugadorTest extends TestBase {
 		Jugador unJugador = new Jugador("unNombre",unaRaza,"Azul");
 		
 		AbstractConstruccionFactory factoryConstrucciones = unaRaza.getFactoryConstrucciones();
-		Posicion unaPosicion = new Posicion(1,1);
+		Posicion unaPosicion = new Posicion(0,0);
 		
 		unJugador.dameAlmacenMineral().almacenarRecurso(10000);
 		
 		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
 		Turno unTurno = new Turno(unJugador,otroJugador);
 			
-		for (int i = 0; i < 40; i++){ 
-			unTurno.addObserver((Construccion) factoryConstrucciones.crearConstruccion(unTipo.expansorPoblacion, unaPosicion, unJugador));
+		for (int i = 0; i < 80; i++){ 
+			
+			unTurno.addObserver((Construccion) factoryConstrucciones.crearConstruccion(unTipo.expansorPoblacion,  new Posicion(2,++i), unJugador));
 		}
 		
 		for (int i = 0 ; i < 6 ; i++) unTurno.avanzarTurno();
+		int cant = unJugador.dameLimiteDePoblacion();
+		assertTrue( cant == 200);
 		
-		assertTrue(unJugador.dameLimiteDePoblacion() == 200);
 	}
 	
 
@@ -105,7 +107,7 @@ public class JugadorTest extends TestBase {
 		Turno unTurno = new Turno(unJugador,otroJugador);
 			
 		for (int i = 0; i < 100; i++){ 
-			unTurno.addObserver((Construccion) factoryConstrucciones.crearConstruccion(unTipo.expansorPoblacion, unaPosicion, unJugador));
+			unTurno.addObserver((Construccion) factoryConstrucciones.crearConstruccion(unTipo.expansorPoblacion, new Posicion(2,++i), unJugador));
 		}
 		
 		for (int i = 0 ; i < 6 ; i++) unTurno.avanzarTurno();
@@ -123,13 +125,13 @@ public class JugadorTest extends TestBase {
 		Posicion unaPosicion = new Posicion(1,1);
 		
 		unJugador.dameAlmacenMineral().almacenarRecurso(1000);
-		
-		Construccion Pilon1 = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.expansorPoblacion, unaPosicion, unJugador);
-		Construccion Pilon2 = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.expansorPoblacion, unaPosicion, unJugador);
-		Construccion Pilon3 = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.expansorPoblacion, unaPosicion, unJugador);
-		Construccion Pilon4 = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.expansorPoblacion, unaPosicion, unJugador);
-		Construccion Pilon5 = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.expansorPoblacion, unaPosicion, unJugador);
-		Construccion Pilon6 = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.expansorPoblacion, unaPosicion, unJugador);
+		int w= 5;
+		Construccion Pilon1 = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.expansorPoblacion, new Posicion(2,++w*6), unJugador);
+		Construccion Pilon2 = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.expansorPoblacion, new Posicion(2,++w*6), unJugador);
+		Construccion Pilon3 = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.expansorPoblacion, new Posicion(2,++w*6), unJugador);
+		Construccion Pilon4 = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.expansorPoblacion, new Posicion(2,++w*6), unJugador);
+		Construccion Pilon5 = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.expansorPoblacion, new Posicion(2,++w*6), unJugador);
+		Construccion Pilon6 = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.expansorPoblacion, new Posicion(2,++w*6), unJugador);
 		
 		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
 		Turno unTurno = new Turno(unJugador,otroJugador);
@@ -160,8 +162,8 @@ public class JugadorTest extends TestBase {
 		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
 		Turno unTurno = new Turno(unJugador,otroJugador);
 			
-		for (int i = 0; i < 40; i++){ 
-			unTurno.addObserver((Construccion) factoryConstrucciones.crearConstruccion(unTipo.expansorPoblacion, unaPosicion, unJugador));
+		for (int i = 0; i < 80; i++){ 
+			unTurno.addObserver((Construccion) factoryConstrucciones.crearConstruccion(unTipo.expansorPoblacion, new Posicion(2,++i), unJugador));
 		}
 		
 		for (int i = 0 ; i < 6 ; i++) unTurno.avanzarTurno();
@@ -185,7 +187,7 @@ public class JugadorTest extends TestBase {
 		Turno unTurno = new Turno(unJugador,otroJugador);
 			
 		for (int i = 0; i < 100; i++){ 
-			unTurno.addObserver((Construccion) factoryConstrucciones.crearConstruccion(unTipo.expansorPoblacion, unaPosicion, unJugador));
+			unTurno.addObserver((Construccion) factoryConstrucciones.crearConstruccion(unTipo.expansorPoblacion, new Posicion(2,++i), unJugador));
 		}
 		
 		for (int i = 0 ; i < 6 ; i++) unTurno.avanzarTurno();
