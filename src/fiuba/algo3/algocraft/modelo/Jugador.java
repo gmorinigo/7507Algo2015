@@ -130,7 +130,12 @@ public class Jugador {
 	}
 
 	public void quitarUnidad(Unidad unidad) {
+		// Restar poblacion
 		this.unidadesTerminadas.remove(unidad);
+	}
+
+	public void quitarConstruccion(Construccion construccion) {
+		this.construcciones.remove(construccion);
 	}
 
 }

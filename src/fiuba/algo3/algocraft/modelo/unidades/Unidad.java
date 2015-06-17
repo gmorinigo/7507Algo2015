@@ -1,6 +1,7 @@
 package fiuba.algo3.algocraft.modelo.unidades;
 
 import fiuba.algo3.algocraft.modelo.Jugador;
+import fiuba.algo3.algocraft.modelo.construciones.Construccion;
 import fiuba.algo3.algocraft.modelo.mapa.Celda;
 import fiuba.algo3.algocraft.modelo.turnos.Turno;
 import fiuba.algo3.algocraft.modelo.turnos.TurnoObserver;
@@ -130,5 +131,8 @@ abstract public class Unidad implements TurnoObserver{
 	}
 
 	public abstract int getRangoAtaque(Unidad unaUnidad);
-	
+
+	public abstract int getRangoAtaque(Construccion construccion);
+
+	public abstract int DanioAtaque(Construccion construccion);
 }

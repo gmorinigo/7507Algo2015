@@ -1,6 +1,7 @@
 package fiuba.algo3.algocraft.modelo.construciones;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.construciones.AbstractConstruccionFactory.TipoConstruccion;
@@ -80,7 +81,24 @@ public abstract class Construccion implements TurnoObserver{
 	
 	abstract protected int turnosNecesariosParaCreacion();
 	abstract protected Salud saludInicial();
-	public abstract boolean recibirataque(Unidad unaUnidadAtacante);
+
+	public boolean recibirataque(Unidad unaUnidadAtacante){
+		this.salud.atacar(unaUnidadAtacante.DanioAtaque(this));
+		if(! this.salud.tieneVida()) {
+			this.destruirConstruccion();
+		}
+		return true;
+	}
+
+	public void destruirConstruccion() {
+		this.jugador.quitarConstruccion(this);
+		Iterator<Celda> it = celdas.iterator();
+
+		while (it.hasNext()) {
+			it.next().desocuparCelda();
+		}
+	}
+	
 	abstract protected void vivir();
 
 	public boolean verificarTipoConstruccion(TipoConstruccion tipo) {
