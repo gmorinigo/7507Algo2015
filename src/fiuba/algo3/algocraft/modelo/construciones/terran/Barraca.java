@@ -32,6 +32,15 @@ public class Barraca extends Construccion {
 		
 		return unaUnidad;
 	}
+	
+	public Unidad crearUnidad(Jugador unJugador, TipoUnidad unTipo) throws JugadorConNombreDemasiadoCortoException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, NoHaySuficientesRecursos {
+		// Obtener dinamicamente la factory
+		AbstractUnidadFactory factoryUnidades = this.jugador.dameRaza().getFactoryUnidades();
+		Unidad unaUnidad = (Unidad) factoryUnidades.crearUnidad(unTipo, unJugador);
+		this.estado = new ConstruccionEstadoTrabajando(unaUnidad.turnosNecesariosParaCreacion(), this);
+		
+		return unaUnidad;
+	}
 
 	@Override
 	protected int turnosNecesariosParaCreacion() {
