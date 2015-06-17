@@ -25,6 +25,9 @@ public abstract class UnidadProtoss extends Unidad {
 			return false;
 		
 		this.salud.atacar(unaUnidadAtacante.DanioAtaque(this));
+		if(! this.salud.tieneVida()) {
+			this.destruirUnidad();
+		}
 		return true;
 	}
 	

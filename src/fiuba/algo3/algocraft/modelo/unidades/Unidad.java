@@ -118,6 +118,10 @@ abstract public class Unidad implements TurnoObserver{
 		return true;
 	}	
 	
+	public void destruirUnidad() {
+		
+	}
+	
 	protected abstract boolean atacaUnidadesAereas();
 
 	public boolean sonUnidadesDelMismoJugador(Unidad unaUnidadAtacante) {

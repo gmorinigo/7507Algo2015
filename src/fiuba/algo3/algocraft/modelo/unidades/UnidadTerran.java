@@ -23,6 +23,9 @@ public abstract class UnidadTerran extends Unidad {
 			return false;
 		
 		this.salud.atacar(unaUnidadAtacante.DanioAtaque(this));
+		if(! this.salud.tieneVida()) {
+			this.destruirUnidad();
+		}
 		return true;
 	}
 
