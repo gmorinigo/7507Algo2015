@@ -1,11 +1,17 @@
 package fiuba.algo3.algocraft.modelo.unidades;
 
+import fiuba.algo3.algocraft.modelo.Jugador;
+
 public abstract class UnidadTerran extends Unidad {
 
 	protected abstract Salud saludInicial();
 
 	public 	abstract int turnosNecesariosParaCreacion();
 
+	public UnidadTerran(Jugador unJugador) {
+		super(unJugador);
+	}
+	
 	@Override
 	protected void vivir() {
 		// TODO Auto-generated method stub

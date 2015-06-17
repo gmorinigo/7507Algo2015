@@ -1,5 +1,6 @@
 package fiuba.algo3.algocraft.modelo.unidades.terran;
 
+import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.mapa.Celda;
 import fiuba.algo3.algocraft.modelo.unidades.Salud;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
@@ -9,7 +10,8 @@ public class NaveCiencia extends UnidadTerran {
     private int energia;    
 
 	
-	public NaveCiencia(){
+	public NaveCiencia(Jugador unJugador){
+		super(unJugador);
 		this.energia =  50;
 		this.tamanioTransporte = 0;
 		//this.disparoStrategy=disparoStrategy;

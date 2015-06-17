@@ -72,6 +72,10 @@ public abstract class Celda {
 		if(!this.esAtacable())
 			return false;
 		
+		if(this.unidad.sonUnidadesDelMismoJugador(unaUnidadAtacante)){
+			return false;
+		}
+		
 		return this.unidad.recibirataque(unaUnidadAtacante);
 	}
 }

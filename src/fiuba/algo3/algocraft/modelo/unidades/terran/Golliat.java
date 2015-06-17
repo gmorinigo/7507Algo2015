@@ -1,5 +1,6 @@
 package fiuba.algo3.algocraft.modelo.unidades.terran;
 
+import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.unidades.Salud;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 import fiuba.algo3.algocraft.modelo.unidades.UnidadTerran;
@@ -8,7 +9,8 @@ public class Golliat extends UnidadTerran {
 
 	//private DisparoStrategy disparoStrategy;
 	
-	public Golliat() {
+	public Golliat(Jugador unJugador) {
+		super(unJugador);
 		this.tamanioTransporte = 2;
 		//this.disparoStrategy=disparoStrategy;
 		//this.disparoStrategy.setUnidad(this);

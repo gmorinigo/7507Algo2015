@@ -125,4 +125,8 @@ public class Jugador {
 		
 	}
 
+	public boolean verificarMismoJugador(Jugador unJugador) {
+		return ((this.nombreJugador == unJugador.nombreJugador) && (this.colorJugador == unJugador.colorJugador));
+	}
+
 }

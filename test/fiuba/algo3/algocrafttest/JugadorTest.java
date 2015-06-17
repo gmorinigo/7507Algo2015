@@ -41,7 +41,7 @@ public class JugadorTest extends TestBase {
 		Jugador unJugador = new Jugador("unNombre",unaRaza,"Azul");
 		
 		AbstractConstruccionFactory factoryConstrucciones = unaRaza.getFactoryConstrucciones();
-		Posicion unaPosicion = new Posicion(1,1);
+		//Posicion unaPosicion = new Posicion(1,1);
 		
 		unJugador.dameAlmacenMineral().almacenarRecurso(1000);
 		int j = 3;
@@ -74,7 +74,7 @@ public class JugadorTest extends TestBase {
 		Jugador unJugador = new Jugador("unNombre",unaRaza,"Azul");
 		
 		AbstractConstruccionFactory factoryConstrucciones = unaRaza.getFactoryConstrucciones();
-		Posicion unaPosicion = new Posicion(0,0);
+		//Posicion unaPosicion = new Posicion(0,0);
 		
 		unJugador.dameAlmacenMineral().almacenarRecurso(10000);
 		
@@ -99,7 +99,7 @@ public class JugadorTest extends TestBase {
 		Jugador unJugador = new Jugador("unNombre",unaRaza,"Azul");
 		
 		AbstractConstruccionFactory factoryConstrucciones = unaRaza.getFactoryConstrucciones();
-		Posicion unaPosicion = new Posicion(1,1);
+		//Posicion unaPosicion = new Posicion(1,1);
 		
 		unJugador.dameAlmacenMineral().almacenarRecurso(10000);
 		
@@ -122,7 +122,7 @@ public class JugadorTest extends TestBase {
 		Jugador unJugador = new Jugador("unNombre",unaRaza,"Azul");
 		
 		AbstractConstruccionFactory factoryConstrucciones = unaRaza.getFactoryConstrucciones();
-		Posicion unaPosicion = new Posicion(1,1);
+		//Posicion unaPosicion = new Posicion(1,1);
 		
 		unJugador.dameAlmacenMineral().almacenarRecurso(1000);
 		int w= 5;
@@ -155,7 +155,7 @@ public class JugadorTest extends TestBase {
 		Jugador unJugador = new Jugador("unNombre",unaRaza,"Azul");
 		
 		AbstractConstruccionFactory factoryConstrucciones = unaRaza.getFactoryConstrucciones();
-		Posicion unaPosicion = new Posicion(1,1);
+		//Posicion unaPosicion = new Posicion(1,1);
 		
 		unJugador.dameAlmacenMineral().almacenarRecurso(10000);
 		
@@ -179,7 +179,7 @@ public class JugadorTest extends TestBase {
 		Jugador unJugador = new Jugador("unNombre",unaRaza,"Azul");
 		
 		AbstractConstruccionFactory factoryConstrucciones = unaRaza.getFactoryConstrucciones();
-		Posicion unaPosicion = new Posicion(1,1);
+		//Posicion unaPosicion = new Posicion(1,1);
 		
 		unJugador.dameAlmacenMineral().almacenarRecurso(10000);
 		

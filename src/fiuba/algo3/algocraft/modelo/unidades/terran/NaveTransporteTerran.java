@@ -1,11 +1,16 @@
 package fiuba.algo3.algocraft.modelo.unidades.terran;
 
+import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.mapa.Celda;
 import fiuba.algo3.algocraft.modelo.unidades.NaveTransporte;
 import fiuba.algo3.algocraft.modelo.unidades.Salud;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 
 public class NaveTransporteTerran extends NaveTransporte {
+
+	public NaveTransporteTerran(Jugador unJugador) {
+		super(unJugador);
+	}
 
 	public boolean esUnidadAerea(){
 		return true;

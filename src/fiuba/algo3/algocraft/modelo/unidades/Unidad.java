@@ -1,5 +1,6 @@
 package fiuba.algo3.algocraft.modelo.unidades;
 
+import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.mapa.Celda;
 import fiuba.algo3.algocraft.modelo.turnos.Turno;
 import fiuba.algo3.algocraft.modelo.turnos.TurnoObserver;
@@ -16,6 +17,7 @@ abstract public class Unidad implements TurnoObserver{
 	protected Movimiento movimiento;
 	protected Celda celda;
 	protected AbstractDisparo disparo;
+	protected Jugador jugador;
 	
 	public int getTamanioTransporte(){
 		return this.tamanioTransporte;
@@ -25,12 +27,13 @@ abstract public class Unidad implements TurnoObserver{
 		return false;
 	}
 	
-	public Unidad() {
+	public Unidad(Jugador unJugador) {
 		this.salud = this.saludInicial();
 		this.estado = new UnidadEstadoNaciendo(this.turnosNecesariosParaCreacion(), this);
 		this.celda  = null;
 		this.movimiento = new Movimiento(this);
 		this.disparo = new DisparoNormal(this, 1);
+		this.jugador = unJugador;
 	}
 	
 
@@ -116,5 +119,9 @@ abstract public class Unidad implements TurnoObserver{
 	}	
 	
 	protected abstract boolean atacaUnidadesAereas();
+
+	public boolean sonUnidadesDelMismoJugador(Unidad unaUnidadAtacante) {
+		return (this.jugador.verificarMismoJugador(unaUnidadAtacante.jugador));
+	}
 	
 }

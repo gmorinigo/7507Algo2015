@@ -1,5 +1,8 @@
 package fiuba.algo3.algocraft.modelo.unidades;
 
+import fiuba.algo3.algocraft.modelo.Jugador;
+import fiuba.algo3.algocraft.modelo.unidades.ataques.DisparoNormal;
+import fiuba.algo3.algocraft.modelo.unidades.movimientos.Movimiento;
 import fiuba.algo3.algocraft.modelo.unidades.protoss.SaludProtoss;
 
 public abstract class UnidadProtoss extends Unidad {
@@ -12,6 +15,9 @@ public abstract class UnidadProtoss extends Unidad {
 	protected void vivir() {
 		// TODO Auto-generated method stub
 
+	}
+	public UnidadProtoss(Jugador unJugador) {
+		super(unJugador);
 	}
 	
 	public boolean recibirataque(Unidad unaUnidadAtacante){

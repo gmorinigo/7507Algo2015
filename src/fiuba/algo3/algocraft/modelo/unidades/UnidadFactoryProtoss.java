@@ -20,14 +20,29 @@ public class UnidadFactoryProtoss extends AbstractUnidadFactory {
 		unJugador.dameAlmacenMineral().consumirRecurso(this.dameCostoMineral(tipo));
 		unJugador.dameAlmacenGas().consumirRecurso(this.dameCostoGas(tipo));
 		
+		Unidad unaUnidad;
+		
 		switch(tipo){
-		case terrestre1: return new Zealot();
-		case terrestre2:return new Dragon();
-		case volador1:return new Scout();
-		case volador2:return new NaveTransporteProtoss();
-		case especial1:	return new AltoTemplario();
+		case terrestre1: 
+			unaUnidad = new Zealot(unJugador);
+			break;
+		case terrestre2: 
+			unaUnidad = new Dragon(unJugador);
+			break;
+		case volador1: 
+			unaUnidad = new Scout(unJugador);
+			break;
+		case volador2: 
+			unaUnidad = new NaveTransporteProtoss(unJugador);
+			break;
+		case especial1:	
+			unaUnidad =  new AltoTemplario(unJugador);
+			break;
 		default:throw new NoSuchObjectException("Objeto Sin Tipo");
 		}
+		
+		unJugador.agregarUnidad(unaUnidad);
+		return unaUnidad;
 	}
 
 	protected int dameCostoMineral(TipoUnidad tipo) {

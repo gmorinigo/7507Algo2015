@@ -1,12 +1,15 @@
 package fiuba.algo3.algocraft.modelo.unidades.protoss;
 
+import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.unidades.Salud;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 import fiuba.algo3.algocraft.modelo.unidades.UnidadProtoss;
 
 public class Dragon extends UnidadProtoss {
 
-	public Dragon() {
+	public Dragon(Jugador unJugador) {
+		super(unJugador);
+
 		this.tamanioTransporte = 4;
 	}
 	
