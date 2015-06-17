@@ -1,8 +1,6 @@
 package fiuba.algo3.algocraft.modelo.unidades;
 
 import fiuba.algo3.algocraft.modelo.Jugador;
-import fiuba.algo3.algocraft.modelo.unidades.ataques.DisparoNormal;
-import fiuba.algo3.algocraft.modelo.unidades.movimientos.Movimiento;
 import fiuba.algo3.algocraft.modelo.unidades.protoss.SaludProtoss;
 
 public abstract class UnidadProtoss extends Unidad {
