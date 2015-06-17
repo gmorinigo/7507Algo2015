@@ -109,10 +109,10 @@ public class NaveCienciaTest extends TestBase {
 		unTurno.addObserver(unaNaveCiencia);
 		unaNaveCiencia.finalizarNacimiento();
 
-		for (int i = 1; i <= 4; i++)
+		for (int i = 0; i <= 4; i++)
 			unTurno.avanzarTurno();
 		
-		assertTrue(unTurno.dameTurno() == 11);
+		assertTrue(unTurno.dameTurno() == 12);
 		assertEquals(unaNaveCiencia.getEnergia(), 100);
 	}
 

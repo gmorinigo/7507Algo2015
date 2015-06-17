@@ -36,10 +36,8 @@ public class NaveCiencia extends UnidadTerran {
 		return 10;
 	}
 
-	@Override
 	protected void vivir() {
-		// TODO Auto-generated method stub
-		
+		this.acumularEnergia();		
 	}
 	
 	public boolean atacar(Celda unaCelda) {
