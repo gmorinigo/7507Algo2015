@@ -14,6 +14,7 @@ import fiuba.algo3.algocraft.modelo.excepciones.NoHaySuficientesRecursos;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory;
 import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory.TipoUnidad;
+import fiuba.algo3.algocraft.modelo.unidades.terran.SaludTerran;
 import fiuba.algo3.algocraft.modelo.unidades.Salud;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 
@@ -40,17 +41,7 @@ public class PuertoEstelarTerran extends Construccion {
 		return unaUnidad;
 	}
 
-	@Override
-	public int costoGas() {
-		return 100;
-	}
 
-	@Override
-	public int costoMineral() {
-		return 150;
-	}
-
-	@Override
 	protected int turnosNecesariosParaCreacion() {
 		return 10;
 	}
@@ -61,10 +52,8 @@ public class PuertoEstelarTerran extends Construccion {
 		
 	}
 
-	@Override
 	protected Salud saludInicial() {
-		// TODO Auto-generated method stub
-		return null;
+		return new SaludTerran(1300);
 	}
 
 	@Override

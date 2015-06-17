@@ -29,15 +29,17 @@ abstract public class AbstractConstruccionFactory {
 	
 	protected void consumirRecursosJugador(TipoConstruccion tipo, Jugador unJugador) 
 	throws CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, NoHaySuficientesRecursos {
-		unJugador.dameAlmacenMineral().consumirRecurso(this.dameCostoMineral(tipo));
-		unJugador.dameAlmacenGas().consumirRecurso(this.dameCostoGas(tipo));
-		
 		if (unJugador.dameCantidadMineral() < this.dameCostoMineral(tipo)){
 			throw new CantidadDeMineralInsuficienteException();
 		}
 		if (unJugador.dameCantidadGas() < this.dameCostoGas(tipo)){
 			throw new CantidadDeGasInsuficienteException();		
 		}
+		
+		unJugador.dameAlmacenMineral().consumirRecurso(this.dameCostoMineral(tipo));
+		unJugador.dameAlmacenGas().consumirRecurso(this.dameCostoGas(tipo));
+		
+
 		 
 	}
 	

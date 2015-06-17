@@ -13,6 +13,7 @@ import fiuba.algo3.algocraft.modelo.excepciones.NoHaySuficientesRecursos;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory;
 import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory.TipoUnidad;
+import fiuba.algo3.algocraft.modelo.unidades.terran.SaludTerran;
 import fiuba.algo3.algocraft.modelo.unidades.Salud;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 
@@ -49,16 +50,6 @@ public class Fabrica extends Construccion {
 		return unidad;
 	}
 
-	@Override
-	public int costoGas() {
-		return 100;
-	}
-
-	@Override
-	public int costoMineral() {
-		return 200;
-	}
-
 	public boolean hayBarraca(){
 		for(Construccion unaConstruccion: jugador.dameConstrucciones()){
 			if (unaConstruccion instanceof Barraca) return true;
@@ -66,7 +57,6 @@ public class Fabrica extends Construccion {
 		return false;
 	}
 
-	@Override
 	protected int turnosNecesariosParaCreacion() {
 		return 12;
 	}
@@ -77,10 +67,8 @@ public class Fabrica extends Construccion {
 		
 	}
 
-	@Override
 	protected Salud saludInicial() {
-		// TODO Auto-generated method stub
-		return null;
+		return new SaludTerran(1250);
 	}
 
 	@Override

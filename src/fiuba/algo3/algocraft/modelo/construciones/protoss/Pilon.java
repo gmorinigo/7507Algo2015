@@ -6,6 +6,7 @@ import fiuba.algo3.algocraft.modelo.construciones.AbstractConstruccionFactory.Ti
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.unidades.Salud;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
+import fiuba.algo3.algocraft.modelo.unidades.protoss.SaludProtoss;
 
 public class Pilon extends Construccion{
 	
@@ -13,18 +14,6 @@ public class Pilon extends Construccion{
 		super(unaPosicion, jugador, unTipo);
 	}
 
-
-	@Override
-	public int costoGas() {
-		return 0;
-	}
-
-	@Override
-	public int costoMineral() {	
-		return 100;
-	}
-
-	@Override
 	protected int turnosNecesariosParaCreacion() {
 		return 5;
 	}
@@ -35,11 +24,8 @@ public class Pilon extends Construccion{
 		
 	}
 
-
-	@Override
 	protected Salud saludInicial() {
-		// TODO Auto-generated method stub
-		return null;
+		return new SaludProtoss(300,300);
 	}
 
 

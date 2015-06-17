@@ -16,6 +16,7 @@ import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory;
 import fiuba.algo3.algocraft.modelo.unidades.Salud;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory.TipoUnidad;
+import fiuba.algo3.algocraft.modelo.unidades.protoss.SaludProtoss;
 
 public class PuertoEstelarProtoss extends Construccion{
 	protected ArrayList<Unidad> unidadesEnProceso;
@@ -39,18 +40,6 @@ public class PuertoEstelarProtoss extends Construccion{
 		return unaUnidad;
 	}
 
-	@Override
-	public int costoGas() {
-		return 150;
-	}
-
-	@Override
-	public int costoMineral() {
-		return 150;
-	}
-
-
-	@Override
 	protected int turnosNecesariosParaCreacion() {
 		return 10;
 	}
@@ -61,10 +50,8 @@ public class PuertoEstelarProtoss extends Construccion{
 		
 	}
 
-	@Override
 	protected Salud saludInicial() {
-		// TODO Auto-generated method stub
-		return null;
+		return new SaludProtoss(600,600);
 	}
 
 	@Override

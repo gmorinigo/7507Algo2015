@@ -6,6 +6,7 @@ import fiuba.algo3.algocraft.modelo.construciones.AbstractConstruccionFactory.Ti
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.unidades.Salud;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
+import fiuba.algo3.algocraft.modelo.unidades.terran.SaludTerran;
 
 public class DepositoDeSuministro extends Construccion {
 
@@ -14,17 +15,6 @@ public class DepositoDeSuministro extends Construccion {
 	}
 
 
-	@Override
-	public int costoGas() {
-		return 0;
-	}
-
-	@Override
-	public int costoMineral() {	
-		return 100;
-	}
-
-	@Override
 	protected int turnosNecesariosParaCreacion() {
 		return 6;
 	}
@@ -36,10 +26,9 @@ public class DepositoDeSuministro extends Construccion {
 	}
 
 
-	@Override
 	protected Salud saludInicial() {
-		// TODO Auto-generated method stub
-		return null;
+		return new SaludTerran(500);
+
 	}
 
 

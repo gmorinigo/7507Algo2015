@@ -172,6 +172,7 @@ public class FabricaTest extends TestBase {
 		
 		try{
 			Construccion unaConstruccion = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesNivel2, terceraPosicion, unJugador);
+			Construccion otraConstruccion = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesNivel2, terceraPosicion, unJugador);
 		}
 		catch (CantidadDeMineralInsuficienteException e){
 			return;

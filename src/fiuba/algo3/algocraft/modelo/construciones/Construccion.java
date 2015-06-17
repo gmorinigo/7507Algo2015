@@ -38,9 +38,6 @@ public abstract class Construccion implements TurnoObserver{
 		this.estado.avanzarEnElTurno();
 	}
 
-	abstract public int costoGas();
-	abstract public int costoMineral();
-	
 	public boolean construccionRecolectoraDeMineral(){
 		return false;
 	}

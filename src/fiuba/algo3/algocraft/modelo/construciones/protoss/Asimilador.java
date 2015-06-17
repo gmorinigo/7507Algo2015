@@ -7,6 +7,7 @@ import fiuba.algo3.algocraft.modelo.construciones.AbstractConstruccionFactory.Ti
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.unidades.Salud;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
+import fiuba.algo3.algocraft.modelo.unidades.protoss.SaludProtoss;
 
 public class Asimilador extends ExtractorDeGas{
 	public Asimilador(Posicion unaPosicion, Jugador jugador, TipoConstruccion unTipo){
@@ -14,22 +15,18 @@ public class Asimilador extends ExtractorDeGas{
 	}
 	
 
-	@Override
 	protected int turnosNecesariosParaCreacion() {
 		return 6;
 	}
 
 
-	@Override
 	public void recolectar(Almacen almacen) {
 		almacen.almacenarRecurso(10);
 	}
 
 
-	@Override
 	protected Salud saludInicial() {
-		// TODO Auto-generated method stub
-		return null;
+		return new SaludProtoss(450,450);
 	}
 
 

@@ -7,6 +7,7 @@ import fiuba.algo3.algocraft.modelo.construciones.AbstractConstruccionFactory.Ti
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.unidades.Salud;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
+import fiuba.algo3.algocraft.modelo.unidades.terran.SaludTerran;
 
 public class CentroMineral extends ExtractorDeMineral{
 	
@@ -14,20 +15,16 @@ public class CentroMineral extends ExtractorDeMineral{
 		super(unaPosicion, jugador, unTipo);
 	}
 
-	@Override
 	protected int turnosNecesariosParaCreacion() {
 		return 4;
 	}
 
-	@Override
 	public void recolectar(Almacen almacen) {
 		almacen.almacenarRecurso(10);
 	}
 
-	@Override
 	protected Salud saludInicial() {
-		// TODO Auto-generated method stub
-		return null;
+		return new SaludTerran(500);
 	}
 
 	@Override
