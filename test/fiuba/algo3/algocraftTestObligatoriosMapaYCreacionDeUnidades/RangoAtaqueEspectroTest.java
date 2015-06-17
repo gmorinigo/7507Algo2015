@@ -88,12 +88,12 @@ public class RangoAtaqueEspectroTest extends TestBase{
 		assertTrue(otraUnidad.estaOperativa());
 		
 		mapa.agregarUnidad(new Posicion(4,4), unaUnidad);
-		mapa.agregarUnidad(new Posicion(4,9), otraUnidad);
+		mapa.agregarUnidad(new Posicion(4,5), otraUnidad);
+		
 		assertEquals(100, otraUnidad.obtenerCantidadVida());
 		assertEquals(60,otraUnidad.obtenerCantidadEscudo());
-
-		unaUnidad.atacar(otraUnidad.dameCelda());
 		
+		unaUnidad.atacar(otraUnidad.dameCelda());
 		assertEquals(100, otraUnidad.obtenerCantidadVida());
 		assertEquals(52,otraUnidad.obtenerCantidadEscudo());	
 	}
