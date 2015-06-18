@@ -8,9 +8,11 @@ import fiuba.algo3.algocraft.modelo.RazaTerran;
 import fiuba.algo3.algocraft.modelo.construciones.AbstractConstruccionFactory;
 import fiuba.algo3.algocraft.modelo.construciones.Construccion;
 import fiuba.algo3.algocraft.modelo.construciones.AbstractConstruccionFactory.TipoConstruccion;
+import fiuba.algo3.algocraft.modelo.construciones.protoss.Acceso;
 //import fiuba.algo3.algocraft.modelo.construciones.terran.Barraca;
 import fiuba.algo3.algocraft.modelo.excepciones.CantidadDeGasInsuficienteException;
 import fiuba.algo3.algocraft.modelo.excepciones.CantidadDeMineralInsuficienteException;
+import fiuba.algo3.algocraft.modelo.excepciones.CapacidadDePoblacionMaximaSuperada;
 //import fiuba.algo3.algocraft.modelo.excepciones.CapacidadDePoblacionMaximaSuperada;
 import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException;
 import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException;
@@ -18,9 +20,14 @@ import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionInvalidaPrimeroDebeC
 import fiuba.algo3.algocraft.modelo.excepciones.JugadorConNombreDemasiadoCortoException;
 import fiuba.algo3.algocraft.modelo.excepciones.NoHaySuficientesRecursos;
 import fiuba.algo3.algocraft.modelo.excepciones.NoSePudoConstruirException;
+import fiuba.algo3.algocraft.modelo.excepciones.NoSePuedeRealizarAccionException;
+import fiuba.algo3.algocraft.modelo.mapa.Mapa;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.turnos.Turno;
 //import fiuba.algo3.algocraft.modelo.unidades.Unidad;
+import fiuba.algo3.algocraft.modelo.unidades.Unidad;
+import fiuba.algo3.algocraft.modelo.unidades.UnidadProtoss;
+import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory.TipoUnidad;
 
 @SuppressWarnings("static-access")
 public class JugadorTest extends TestBase {
@@ -195,34 +202,88 @@ public class JugadorTest extends TestBase {
 		assertTrue(unJugador.dameLimiteDePoblacion() == 200);
 	}
 	
-	/*
-	public void testContarConLimiteDePoblacionParaCrearUnaUnidad() throws JugadorConNombreDemasiadoCortoException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoHaySuficientesRecursos{
-		RazaTerran unaRaza = new RazaTerran(); 
+	public void testMatarUnaUnidadLaSacaDelJuegoYDisminuyeLaPoblacion() throws NoSuchObjectException, CantidadDeMineralInsuficienteException, JugadorConNombreDemasiadoCortoException, NoHaySuficientesRecursos, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoSePuedeRealizarAccionException, NoSePudoConstruirException, CapacidadDePoblacionMaximaSuperada{	
+        Mapa mapa = Mapa.getInstance();
+		RazaProtoss unaRaza = new RazaProtoss(); 
 		TipoConstruccion unTipo = null;
 		Jugador unJugador = new Jugador("unNombre",unaRaza,"Azul");
 		
 		AbstractConstruccionFactory factoryConstrucciones = unaRaza.getFactoryConstrucciones();
 		Posicion unaPosicion = new Posicion(12,3);
+		Posicion otraPosicion = new Posicion(15,7);
 		
-		Barraca unaConstruccion = (Barraca) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesBasicas, unaPosicion, unJugador);
+		Acceso unaConstruccion = (Acceso) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesBasicas, unaPosicion, unJugador);
 		
-		Jugador otroJugador = new Jugador("Nombre",new RazaTerran(),"Azul");
+		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
+		
+		Acceso otraConstruccion = (Acceso) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesBasicas, otraPosicion, otroJugador);
+		
 		Turno unTurno = new Turno(unJugador,otroJugador);
-		
-		assertTrue(unJugador.dameLimiteDePoblacion() == 0);
 
-		unTurno.addObserver(unaConstruccion);
 		
-		for (int i=0; i<12;i++) unTurno.avanzarTurno();
-				
-		try{
-			Unidad unaUnidad = (Unidad) unaConstruccion.crearUnidad(unJugador);
-			unTurno.addObserver(unaUnidad);
-			unJugador.agregarUnidad(unaUnidad);
+		unTurno.addObserver(unaConstruccion);
+		unTurno.addObserver(otraConstruccion);
+		
+		for (int i = 0; i<12;i++) unTurno.avanzarTurno();
+		assertTrue(unaConstruccion.estaOperativa());
+		
+		TipoConstruccion unTipoConstruccion = null;
+		unJugador.dameAlmacenMineral().almacenarRecurso(1000);
+		Construccion unExpansor = (Construccion) factoryConstrucciones.crearConstruccion(unTipoConstruccion.expansorPoblacion, new Posicion(124,124), unJugador);
+		Construccion expansor3 = (Construccion) factoryConstrucciones.crearConstruccion(unTipoConstruccion.expansorPoblacion, new Posicion(130,130), unJugador);
+		Construccion expansor4 = (Construccion) factoryConstrucciones.crearConstruccion(unTipoConstruccion.expansorPoblacion, new Posicion(134,134), otroJugador);
+		Construccion expansor5 = (Construccion) factoryConstrucciones.crearConstruccion(unTipoConstruccion.expansorPoblacion, new Posicion(138,138), otroJugador);
+		unTurno.addObserver(unExpansor);
+		unTurno.addObserver(expansor3);
+		unTurno.addObserver(expansor4);
+		unTurno.addObserver(expansor5);
+		for (int i=0;i<6;i++) unTurno.avanzarTurno();
+		
+		assertTrue(unJugador.dameLimiteDePoblacion() == 10);
+		assertTrue(otroJugador.dameLimiteDePoblacion() == 10);
+		assertTrue(unJugador.obtenerCantidadPoblacionDisponible() == 10);
+		assertTrue(otroJugador.obtenerCantidadPoblacionDisponible() == 10);
+		
+		TipoUnidad unTipoUnidad = null;
+		Unidad unaUnidad = (Unidad) unaConstruccion.crearUnidad(unJugador,unTipoUnidad.terrestre1);
+		UnidadProtoss otraUnidad = (UnidadProtoss) otraConstruccion.crearUnidad(otroJugador,unTipoUnidad.terrestre1);
+		
+		unTurno.addObserver(unaUnidad);
+		unTurno.addObserver(otraUnidad);
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		assertTrue(unaUnidad.estaOperativa());
+		assertTrue(otraUnidad.estaOperativa());
+	
+		Posicion posicion55 = new Posicion(5,5);
+		mapa.agregarUnidad(new Posicion(4,4), unaUnidad);
+		mapa.agregarUnidad(posicion55, otraUnidad);
+		
+		System.out.println(unJugador.obtenerCantidadPoblacionDisponible());
+		System.out.println(unJugador.obtenerCantidadPoblacionDisponible());
+		assertTrue(unJugador.obtenerCantidadPoblacionDisponible() == 8);
+		assertTrue(otroJugador.obtenerCantidadPoblacionDisponible() == 8);
+		
+		
+		assertEquals(100, otraUnidad.obtenerCantidadVida());
+		assertEquals(60,otraUnidad.obtenerCantidadEscudo());
+		
+		for(int i = 0; i < 20; i++){
+			unaUnidad.atacar(otraUnidad.dameCelda());
+			unTurno.avanzarTurno();
+			System.out.println(otraUnidad.obtenerCantidadVida());
+			System.out.println(otraUnidad.obtenerCantidadEscudo());
 		}
-		catch (CapacidadDePoblacionMaximaSuperada e){
-			return;
-		}
-		fail();
-	}*/	
+		
+		System.out.println(unJugador.obtenerCantidadPoblacionDisponible());
+		System.out.println(otroJugador.obtenerCantidadPoblacionDisponible());
+
+		assertTrue(unJugador.obtenerCantidadPoblacionDisponible() == 8);
+		assertTrue(otroJugador.obtenerCantidadPoblacionDisponible() == 10);
+		assertFalse(mapa.dameCelda(posicion55).celdaOcupada());
+	}
 }
