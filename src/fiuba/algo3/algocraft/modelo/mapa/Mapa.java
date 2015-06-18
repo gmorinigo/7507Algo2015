@@ -224,7 +224,7 @@ public class Mapa {
 
 	public boolean agregarUnidad(Posicion unaPosicion, Unidad unaUnidad) {
 		Celda unaCelda = this.matriz[unaPosicion.dameFila()][unaPosicion.dameColumna()];
-
+		unaUnidad.setCelda(unaCelda);
 		return unaCelda.agregarUnidad(unaUnidad);
 		
 	}

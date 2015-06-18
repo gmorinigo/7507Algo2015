@@ -220,7 +220,7 @@ public class CreacionDeUnidadesTest extends TestBase{
 		Unidad unaUnidad = (Unidad) factoryUnidades.crearUnidad(unTipo.volador2,unJugador);
 		assertTrue(unaUnidad instanceof NaveTransporte);
 	}
-	
+	/*
 	public void testCrecimientoYDecrecimientoDePoblacion() throws NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, JugadorConNombreDemasiadoCortoException, NoHaySuficientesRecursos, CapacidadDePoblacionMaximaSuperada, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoSePudoConstruirException{	
 		RazaTerran unaRaza = new RazaTerran(); 
 		RazaProtoss otraRaza = new RazaProtoss();
@@ -262,7 +262,7 @@ public class CreacionDeUnidadesTest extends TestBase{
 		assertFalse(unidadJugador1.estaViva());
 		
 		assertEquals(0, unJugador.dameLimiteDePoblacion());
-	}
+	}*/
 }
 
 

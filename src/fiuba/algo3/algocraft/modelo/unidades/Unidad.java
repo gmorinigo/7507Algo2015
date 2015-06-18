@@ -40,6 +40,7 @@ abstract public class Unidad implements TurnoObserver{
 
 	public void finDeTurno(Turno turno) {
 		this.estado.avanzarEnElTurno();	
+		this.estado = new UnidadEstadoViviendo(this);
 	}
 	
 	public void finalizarNacimiento() {

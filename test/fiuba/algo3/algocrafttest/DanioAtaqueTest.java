@@ -369,10 +369,10 @@ public class DanioAtaqueTest extends TestBase {
 		assertEquals(60,otraUnidad.obtenerCantidadEscudo());
 		
 		for(int i = 0; i < 20; i++){
-		unaUnidad.atacar(otraUnidad.dameCelda());
-		unTurno.avanzarTurno();
-		System.out.println(otraUnidad.obtenerCantidadVida());
-		System.out.println(otraUnidad.obtenerCantidadEscudo());
+			unaUnidad.atacar(otraUnidad.dameCelda());
+			unTurno.avanzarTurno();
+			System.out.println(otraUnidad.obtenerCantidadVida());
+			System.out.println(otraUnidad.obtenerCantidadEscudo());
 		}
 		
 		System.out.println(unJugador.obtenerCantidadPoblacionDisponible());
