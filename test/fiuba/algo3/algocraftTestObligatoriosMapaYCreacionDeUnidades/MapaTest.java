@@ -29,10 +29,9 @@ import fiuba.algo3.algocraft.modelo.turnos.Turno;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 import fiuba.algo3.algocrafttest.TestBase;
 
+@SuppressWarnings("static-access")
 public class MapaTest extends TestBase {
-
 	public void testMapaTieneQueContenerTodasLasCeldas(){
-		
 		Mapa unMapa = Mapa.getInstance();
 		Posicion posicion00 = new Posicion(0,0);
 		Posicion posicion024 = new Posicion(0,24);

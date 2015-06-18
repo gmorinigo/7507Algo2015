@@ -3,7 +3,6 @@ package fiuba.algo3.algocraftTestObligatoriosMapaYCreacionDeUnidades;
 import java.rmi.NoSuchObjectException;
 
 import fiuba.algo3.algocraft.modelo.Jugador;
-import fiuba.algo3.algocraft.modelo.Raza;
 import fiuba.algo3.algocraft.modelo.RazaProtoss;
 import fiuba.algo3.algocraft.modelo.RazaTerran;
 import fiuba.algo3.algocraft.modelo.construciones.AbstractConstruccionFactory;
@@ -184,31 +183,22 @@ public class PruebaCreacionDeUnidades extends TestBase{
 		return new UnidadFactoryProtoss();
 	}
 
-	public void testCrearUnaUnidadSinPoblacionDisponible() throws NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, JugadorConNombreDemasiadoCortoException, NoHaySuficientesRecursos, CapacidadDePoblacionMaximaSuperada, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoSePudoConstruirException{	
+	@SuppressWarnings("unused")
+	public void testCrearUnaUnidadSinPoblacionDisponibleSeEsperaExcepcion() throws NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, JugadorConNombreDemasiadoCortoException, NoHaySuficientesRecursos, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoSePudoConstruirException{	
 		RazaTerran unaRaza = new RazaTerran(); 
 		TipoUnidad unTipo = null;
 		Jugador unJugador = new Jugador("unNombre",unaRaza,"Azul");
 		AbstractUnidadFactory factoryUnidades = unaRaza.getFactoryUnidades();
 
-		TipoConstruccion unTipoConstruccion = null;
-		unJugador.dameAlmacenMineral().almacenarRecurso(1000);
-		AbstractConstruccionFactory factoryConstrucciones = unaRaza.getFactoryConstrucciones();
-		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
-		Turno unTurno = new Turno(unJugador,otroJugador);
-		Construccion unExpansor = (Construccion) factoryConstrucciones.crearConstruccion(unTipoConstruccion.expansorPoblacion, new Posicion(124,124), unJugador);
-		Construccion expansor3 = (Construccion) factoryConstrucciones.crearConstruccion(unTipoConstruccion.expansorPoblacion, new Posicion(130,130), unJugador);
-		Construccion expansor4 = (Construccion) factoryConstrucciones.crearConstruccion(unTipoConstruccion.expansorPoblacion, new Posicion(134,134), otroJugador);
-		unTurno.addObserver(unExpansor);
-		unTurno.addObserver(expansor3);
-		unTurno.addObserver(expansor4);
-		for (int i=0;i<6;i++) unTurno.avanzarTurno();
-		
-		Unidad unaUnidad = (Unidad) factoryUnidades.crearUnidad(unTipo.volador2,unJugador);
-		assertTrue(unaUnidad instanceof NaveTransporte);
+		try {
+			Unidad unaUnidad = (Unidad) factoryUnidades.crearUnidad(unTipo.volador2,unJugador);
+		} catch (CapacidadDePoblacionMaximaSuperada e) {
+			return;
+		}
+		fail();
 	}
 	
 	public void testCrearUnaUnidadConPoblacionDisponible() throws NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, JugadorConNombreDemasiadoCortoException, NoHaySuficientesRecursos, CapacidadDePoblacionMaximaSuperada, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoSePudoConstruirException{	
-		// TODO
 		RazaTerran unaRaza = new RazaTerran(); 
 		TipoUnidad unTipo = null;
 		Jugador unJugador = new Jugador("unNombre",unaRaza,"Azul");
@@ -226,7 +216,6 @@ public class PruebaCreacionDeUnidades extends TestBase{
 		unTurno.addObserver(expansor3);
 		unTurno.addObserver(expansor4);
 		for (int i=0;i<6;i++) unTurno.avanzarTurno();
-		
 		
 		Unidad unaUnidad = (Unidad) factoryUnidades.crearUnidad(unTipo.volador2,unJugador);
 		assertTrue(unaUnidad instanceof NaveTransporte);
