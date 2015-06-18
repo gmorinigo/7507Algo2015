@@ -12,7 +12,6 @@ import fiuba.algo3.algocraft.modelo.construciones.protoss.Acceso;
 import fiuba.algo3.algocraft.modelo.construciones.protoss.PuertoEstelarProtoss;
 import fiuba.algo3.algocraft.modelo.construciones.terran.Barraca;
 import fiuba.algo3.algocraft.modelo.construciones.terran.Fabrica;
-import fiuba.algo3.algocraft.modelo.construciones.terran.PuertoEstelarTerran;
 import fiuba.algo3.algocraft.modelo.excepciones.CantidadDeGasInsuficienteException;
 import fiuba.algo3.algocraft.modelo.excepciones.CantidadDeMineralInsuficienteException;
 import fiuba.algo3.algocraft.modelo.excepciones.CapacidadDePoblacionMaximaSuperada;
@@ -30,18 +29,17 @@ import fiuba.algo3.algocraft.modelo.unidades.UnidadProtoss;
 import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory.TipoUnidad;
 
 @SuppressWarnings("static-access")
-public class RangoAtaqueEspectroTest extends TestBase{
-	public void testRangoAtaquePorTierraUnidadEspectroDebeSer5() throws NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoHaySuficientesRecursos, NoSePudoConstruirException, JugadorConNombreDemasiadoCortoException, CapacidadDePoblacionMaximaSuperada{
+public class AtaqueGolliatTest extends TestBase{
+	public void testRangoAtaquePorTierraUnidadGolliatDebeSer6() throws NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoHaySuficientesRecursos, NoSePudoConstruirException, JugadorConNombreDemasiadoCortoException, CapacidadDePoblacionMaximaSuperada{
         Mapa mapa = Mapa.getInstance();
 		RazaTerran unaRaza = new RazaTerran(); 
 		RazaProtoss otraRaza = new RazaProtoss();
 		TipoConstruccion unTipo = null;
 		Jugador unJugador = new Jugador("unNombre",unaRaza,"Rojo");
-		unJugador.dameAlmacenMineral().almacenarRecurso(10000);
+		
 		Posicion unaPosicion = new Posicion(12,3);
 		Posicion unaPosicion2 = new Posicion(1,1);
 		Posicion otraPosicion = new Posicion(15,7);
-		Posicion posicion444 = new Posicion(44,4);
 		
 		AbstractConstruccionFactory factoryConstrucciones = unaRaza.getFactoryConstrucciones();	
 		Barraca unaConstruccion = (Barraca) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesBasicas, unaPosicion, unJugador);
@@ -66,24 +64,22 @@ public class RangoAtaqueEspectroTest extends TestBase{
 		for (int i = 0; i<12;i++) unTurno.avanzarTurno();
 		assertTrue(unaFabrica.estaOperativa());
 		
-		PuertoEstelarTerran unPuertoEstelar = (PuertoEstelarTerran) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesEspecialesYVoladoras, posicion444, unJugador);
 		
-		unTurno.addObserver(unPuertoEstelar);
-		for (int i = 0; i<10;i++) unTurno.avanzarTurno();
-		assertTrue(unPuertoEstelar.estaOperativa());
-		
-		Posicion posicion1010 = new Posicion(10,10);
-		Construccion unExpansor = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.expansorPoblacion, posicion1010, unJugador);
-		Construccion otroExpansor = (Construccion) otroFactoryConstrucciones.crearConstruccion(unTipo.expansorPoblacion, new Posicion(15,15), otroJugador);
+		TipoConstruccion unTipoConstruccion = null;
+		unJugador.dameAlmacenMineral().almacenarRecurso(1000);
+		Construccion unExpansor = (Construccion) factoryConstrucciones.crearConstruccion(unTipoConstruccion.expansorPoblacion, new Posicion(124,124), unJugador);
+		Construccion expansor3 = (Construccion) factoryConstrucciones.crearConstruccion(unTipoConstruccion.expansorPoblacion, new Posicion(130,130), unJugador);
+		Construccion expansor4 = (Construccion) otroFactoryConstrucciones.crearConstruccion(unTipoConstruccion.expansorPoblacion, new Posicion(134,134), otroJugador);
+		Construccion expansor5 = (Construccion) otroFactoryConstrucciones.crearConstruccion(unTipoConstruccion.expansorPoblacion, new Posicion(138,138), otroJugador);
 		unTurno.addObserver(unExpansor);
-		unTurno.addObserver(otroExpansor);
+		unTurno.addObserver(expansor3);
+		unTurno.addObserver(expansor4);
+		unTurno.addObserver(expansor5);
 		for (int i=0;i<6;i++) unTurno.avanzarTurno();
-		assertTrue(unExpansor.estaOperativa());
-		assertTrue(otroExpansor.estaOperativa());
-
+		
 		
 		TipoUnidad unTipoUnidad = null;
-		Unidad unaUnidad = (Unidad) unPuertoEstelar.crearUnidad(unJugador,unTipoUnidad.volador1);
+		Unidad unaUnidad = (Unidad) unaFabrica.crearUnidad(unJugador,unTipoUnidad.terrestre2);
 		UnidadProtoss otraUnidad = (UnidadProtoss) otraConstruccion.crearUnidad(otroJugador,unTipoUnidad.terrestre1);
 		
 		unTurno.addObserver(unaUnidad);
@@ -94,23 +90,21 @@ public class RangoAtaqueEspectroTest extends TestBase{
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
-		unTurno.avanzarTurno();
-		unTurno.avanzarTurno();
 		assertTrue(unaUnidad.estaOperativa());
 		assertTrue(otraUnidad.estaOperativa());
 		
 		mapa.agregarUnidad(new Posicion(4,4), unaUnidad);
-		mapa.agregarUnidad(new Posicion(4,5), otraUnidad);
-		
+		mapa.agregarUnidad(new Posicion(4,10), otraUnidad);
 		assertEquals(100, otraUnidad.obtenerCantidadVida());
 		assertEquals(60,otraUnidad.obtenerCantidadEscudo());
 		
 		unaUnidad.atacar(otraUnidad.dameCelda());
+		
 		assertEquals(100, otraUnidad.obtenerCantidadVida());
-		assertEquals(52,otraUnidad.obtenerCantidadEscudo());	
+		assertEquals(48,otraUnidad.obtenerCantidadEscudo());	
 	}
 
-	public void testRangoAtaquePorAireUnidadEspectroDebeSer5() throws NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoHaySuficientesRecursos, NoSePudoConstruirException, JugadorConNombreDemasiadoCortoException, CapacidadDePoblacionMaximaSuperada{
+	public void testRangoAtaquePorAireUnidadGolliatDebeSer5() throws NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoHaySuficientesRecursos, NoSePudoConstruirException, JugadorConNombreDemasiadoCortoException, CapacidadDePoblacionMaximaSuperada{
         Mapa mapa = Mapa.getInstance();
 		RazaTerran unaRaza = new RazaTerran(); 
 		RazaProtoss otraRaza = new RazaProtoss();
@@ -119,8 +113,7 @@ public class RangoAtaqueEspectroTest extends TestBase{
 		
 		Posicion unaPosicion = new Posicion(12,3);
 		Posicion unaPosicion2 = new Posicion(1,1);
-		Posicion posicion1414 = new Posicion(14,14);
-		Posicion posicion444 = new Posicion(44,4);
+		Posicion posicion1414= new Posicion(14,14);
 		Posicion otraPosicion = new Posicion(15,7);
 		
 		AbstractConstruccionFactory factoryConstrucciones = unaRaza.getFactoryConstrucciones();	
@@ -150,23 +143,22 @@ public class RangoAtaqueEspectroTest extends TestBase{
 		for (int i = 0; i<12;i++) unTurno.avanzarTurno();
 		assertTrue(unaFabrica.estaOperativa());
 		
-		PuertoEstelarTerran unPuertoEstelarTerran = (PuertoEstelarTerran) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesEspecialesYVoladoras, posicion444, unJugador);
 		
-		unTurno.addObserver(unPuertoEstelarTerran);
-		for (int i = 0; i<10;i++) unTurno.avanzarTurno();
-		assertTrue(unPuertoEstelarTerran.estaOperativa());
-		
-		Construccion unExpansor = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.expansorPoblacion, new Posicion(124,124), unJugador);
-		Construccion otroExpansor = (Construccion) otroFactoryConstrucciones.crearConstruccion(unTipo.expansorPoblacion, new Posicion(120,120), otroJugador);
+		TipoConstruccion unTipoConstruccion = null;
+		unJugador.dameAlmacenMineral().almacenarRecurso(1000);
+		Construccion unExpansor = (Construccion) factoryConstrucciones.crearConstruccion(unTipoConstruccion.expansorPoblacion, new Posicion(124,124), unJugador);
+		Construccion expansor3 = (Construccion) factoryConstrucciones.crearConstruccion(unTipoConstruccion.expansorPoblacion, new Posicion(130,130), unJugador);
+		Construccion expansor4 = (Construccion) otroFactoryConstrucciones.crearConstruccion(unTipoConstruccion.expansorPoblacion, new Posicion(134,134), otroJugador);
+		Construccion expansor5 = (Construccion) otroFactoryConstrucciones.crearConstruccion(unTipoConstruccion.expansorPoblacion, new Posicion(138,138), otroJugador);
 		unTurno.addObserver(unExpansor);
-		unTurno.addObserver(otroExpansor);
+		unTurno.addObserver(expansor3);
+		unTurno.addObserver(expansor4);
+		unTurno.addObserver(expansor5);
 		for (int i=0;i<6;i++) unTurno.avanzarTurno();
-		assertTrue(unExpansor.estaOperativa());
-		assertTrue(otroExpansor.estaOperativa());
 		
 		
 		TipoUnidad unTipoUnidad = null;
-		Unidad unaUnidad = (Unidad) unPuertoEstelarTerran.crearUnidad(unJugador,unTipoUnidad.volador1);
+		Unidad unaUnidad = (Unidad) unaFabrica.crearUnidad(unJugador,unTipoUnidad.terrestre2);
 		UnidadProtoss otraUnidad = (UnidadProtoss) unPuertoEstelar.crearUnidad(otroJugador,unTipoUnidad.volador1);
 		
 		unTurno.addObserver(unaUnidad);
@@ -191,10 +183,10 @@ public class RangoAtaqueEspectroTest extends TestBase{
 		unaUnidad.atacar(otraUnidad.dameCelda());
 		
 		assertEquals(150, otraUnidad.obtenerCantidadVida());
-		assertEquals(80,otraUnidad.obtenerCantidadEscudo());	
+		assertEquals(90,otraUnidad.obtenerCantidadEscudo());	
 	}
 	
-	public void testRangoNoAtaquaPorAireUnidadEspectroSiElEnemigoEstaAMasDe5Rangos() throws NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoHaySuficientesRecursos, NoSePudoConstruirException, JugadorConNombreDemasiadoCortoException, CapacidadDePoblacionMaximaSuperada{
+	public void testRangoNoAtaquePorAireUnidadGolliatSiElEnemigoEstaAMasDe5Rangos() throws NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoHaySuficientesRecursos, NoSePudoConstruirException, JugadorConNombreDemasiadoCortoException, CapacidadDePoblacionMaximaSuperada{
         Mapa mapa = Mapa.getInstance();
 		RazaTerran unaRaza = new RazaTerran(); 
 		RazaProtoss otraRaza = new RazaProtoss();
@@ -205,7 +197,6 @@ public class RangoAtaqueEspectroTest extends TestBase{
 		Posicion unaPosicion2 = new Posicion(1,1);
 		Posicion posicion1414= new Posicion(14,14);
 		Posicion otraPosicion = new Posicion(15,7);
-		Posicion posicion444 = new Posicion(44,4);
 		
 		AbstractConstruccionFactory factoryConstrucciones = unaRaza.getFactoryConstrucciones();	
 		Barraca unaConstruccion = (Barraca) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesBasicas, unaPosicion, unJugador);
@@ -234,23 +225,20 @@ public class RangoAtaqueEspectroTest extends TestBase{
 		for (int i = 0; i<12;i++) unTurno.avanzarTurno();
 		assertTrue(unaFabrica.estaOperativa());
 		
-		PuertoEstelarTerran unPuertoEstelarTerran = (PuertoEstelarTerran) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesEspecialesYVoladoras, posicion444, unJugador);
-		
-		unTurno.addObserver(unPuertoEstelarTerran);
-		for (int i = 0; i<10;i++) unTurno.avanzarTurno();
-		assertTrue(unPuertoEstelarTerran.estaOperativa());
-		
-		
-		Construccion unExpansor = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.expansorPoblacion, new Posicion(124,124), unJugador);
-		Construccion otroExpansor = (Construccion) otroFactoryConstrucciones.crearConstruccion(unTipo.expansorPoblacion, new Posicion(120,120), otroJugador);
+		TipoConstruccion unTipoConstruccion = null;
+		unJugador.dameAlmacenMineral().almacenarRecurso(1000);
+		Construccion unExpansor = (Construccion) factoryConstrucciones.crearConstruccion(unTipoConstruccion.expansorPoblacion, new Posicion(124,124), unJugador);
+		Construccion expansor3 = (Construccion) factoryConstrucciones.crearConstruccion(unTipoConstruccion.expansorPoblacion, new Posicion(130,130), unJugador);
+		Construccion expansor4 = (Construccion) otroFactoryConstrucciones.crearConstruccion(unTipoConstruccion.expansorPoblacion, new Posicion(134,134), otroJugador);
+		Construccion expansor5 = (Construccion) otroFactoryConstrucciones.crearConstruccion(unTipoConstruccion.expansorPoblacion, new Posicion(138,138), otroJugador);
 		unTurno.addObserver(unExpansor);
-		unTurno.addObserver(otroExpansor);
+		unTurno.addObserver(expansor3);
+		unTurno.addObserver(expansor4);
+		unTurno.addObserver(expansor5);
 		for (int i=0;i<6;i++) unTurno.avanzarTurno();
-		assertTrue(unExpansor.estaOperativa());
-		assertTrue(otroExpansor.estaOperativa());
 		
 		TipoUnidad unTipoUnidad = null;
-		Unidad unaUnidad = (Unidad) unPuertoEstelarTerran.crearUnidad(unJugador,unTipoUnidad.volador1);
+		Unidad unaUnidad = (Unidad) unaFabrica.crearUnidad(unJugador,unTipoUnidad.terrestre2);
 		UnidadProtoss otraUnidad = (UnidadProtoss) unPuertoEstelar.crearUnidad(otroJugador,unTipoUnidad.volador1);
 		
 		unTurno.addObserver(unaUnidad);
@@ -278,7 +266,7 @@ public class RangoAtaqueEspectroTest extends TestBase{
 		assertEquals(100,otraUnidad.obtenerCantidadEscudo());	
 	}
 	
-	public void testRangoAtaqueUnidadEspectroNoPuedeAtacarSiEstaAMasDe5() throws NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoHaySuficientesRecursos, NoSePudoConstruirException, JugadorConNombreDemasiadoCortoException, CapacidadDePoblacionMaximaSuperada{
+	public void testRangoAtaqueUnidadGolliatNoPuedeAtacarSiEstaAMasDe6() throws NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoHaySuficientesRecursos, NoSePudoConstruirException, JugadorConNombreDemasiadoCortoException, CapacidadDePoblacionMaximaSuperada{
         Mapa mapa = Mapa.getInstance();
 		RazaTerran unaRaza = new RazaTerran(); 
 		RazaProtoss otraRaza = new RazaProtoss();
@@ -288,14 +276,12 @@ public class RangoAtaqueEspectroTest extends TestBase{
 		Posicion unaPosicion = new Posicion(12,3);
 		Posicion unaPosicion2 = new Posicion(1,1);
 		Posicion otraPosicion = new Posicion(15,7);
-		Posicion posicion444 = new Posicion(44,4);
 		
 		AbstractConstruccionFactory factoryConstrucciones = unaRaza.getFactoryConstrucciones();	
 		Barraca unaConstruccion = (Barraca) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesBasicas, unaPosicion, unJugador);
 		
 		Jugador otroJugador = new Jugador("Nombre",otraRaza,"Azul");
-		unJugador.dameAlmacenMineral().almacenarRecurso(10000);
-		otroJugador.dameAlmacenMineral().almacenarRecurso(10000);
+		
 		AbstractConstruccionFactory otroFactoryConstrucciones = otraRaza.getFactoryConstrucciones();
 		Acceso otraConstruccion = (Acceso) otroFactoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesBasicas, otraPosicion, otroJugador);
 		
@@ -314,29 +300,24 @@ public class RangoAtaqueEspectroTest extends TestBase{
 		for (int i = 0; i<12;i++) unTurno.avanzarTurno();
 		assertTrue(unaFabrica.estaOperativa());
 		
-		PuertoEstelarTerran unPuertoEstelarTerran = (PuertoEstelarTerran) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesEspecialesYVoladoras, posicion444, unJugador);
-		
-		unTurno.addObserver(unPuertoEstelarTerran);
-		for (int i = 0; i<10;i++) unTurno.avanzarTurno();
-		assertTrue(unPuertoEstelarTerran.estaOperativa());
-		
-		
-		Construccion unExpansor = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.expansorPoblacion, new Posicion(124,124), unJugador);
-		Construccion otroExpansor = (Construccion) otroFactoryConstrucciones.crearConstruccion(unTipo.expansorPoblacion, new Posicion(120,120), otroJugador);
+		TipoConstruccion unTipoConstruccion = null;
+		unJugador.dameAlmacenMineral().almacenarRecurso(1000);
+		Construccion unExpansor = (Construccion) factoryConstrucciones.crearConstruccion(unTipoConstruccion.expansorPoblacion, new Posicion(124,124), unJugador);
+		Construccion expansor3 = (Construccion) factoryConstrucciones.crearConstruccion(unTipoConstruccion.expansorPoblacion, new Posicion(130,130), unJugador);
+		Construccion expansor4 = (Construccion) otroFactoryConstrucciones.crearConstruccion(unTipoConstruccion.expansorPoblacion, new Posicion(134,134), otroJugador);
+		Construccion expansor5 = (Construccion) otroFactoryConstrucciones.crearConstruccion(unTipoConstruccion.expansorPoblacion, new Posicion(138,138), otroJugador);
 		unTurno.addObserver(unExpansor);
-		unTurno.addObserver(otroExpansor);
+		unTurno.addObserver(expansor3);
+		unTurno.addObserver(expansor4);
+		unTurno.addObserver(expansor5);
 		for (int i=0;i<6;i++) unTurno.avanzarTurno();
-		assertTrue(unExpansor.estaOperativa());
-		assertTrue(otroExpansor.estaOperativa());
 		
 		TipoUnidad unTipoUnidad = null;
-		Unidad unaUnidad = (Unidad) unPuertoEstelarTerran.crearUnidad(unJugador,unTipoUnidad.volador1);
+		Unidad unaUnidad = (Unidad) unaFabrica.crearUnidad(unJugador,unTipoUnidad.terrestre2);
 		UnidadProtoss otraUnidad = (UnidadProtoss) otraConstruccion.crearUnidad(otroJugador,unTipoUnidad.terrestre1);
 		
 		unTurno.addObserver(unaUnidad);
 		unTurno.addObserver(otraUnidad);
-		unTurno.avanzarTurno();
-		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();

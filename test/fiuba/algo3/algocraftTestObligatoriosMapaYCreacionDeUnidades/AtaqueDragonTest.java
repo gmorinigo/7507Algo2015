@@ -8,7 +8,6 @@ import fiuba.algo3.algocraft.modelo.construciones.AbstractConstruccionFactory;
 import fiuba.algo3.algocraft.modelo.construciones.Construccion;
 import fiuba.algo3.algocraft.modelo.construciones.AbstractConstruccionFactory.TipoConstruccion;
 import fiuba.algo3.algocraft.modelo.construciones.protoss.Acceso;
-import fiuba.algo3.algocraft.modelo.construciones.protoss.PuertoEstelarProtoss;
 import fiuba.algo3.algocraft.modelo.excepciones.CantidadDeGasInsuficienteException;
 import fiuba.algo3.algocraft.modelo.excepciones.CantidadDeMineralInsuficienteException;
 import fiuba.algo3.algocraft.modelo.excepciones.CapacidadDePoblacionMaximaSuperada;
@@ -27,23 +26,20 @@ import fiuba.algo3.algocraft.modelo.unidades.UnidadProtoss;
 import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory.TipoUnidad;
 
 @SuppressWarnings("static-access")
-public class RangoAtaqueScout extends TestBase{
-	public void testRangoAtaqueUnidadScoutDebeSer4() throws NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoHaySuficientesRecursos, NoSePudoConstruirException, JugadorConNombreDemasiadoCortoException, CapacidadDePoblacionMaximaSuperada{	
+public class AtaqueDragonTest extends TestBase{
+	public void testRangoAtaqueUnidadDragonDebeSer4() throws NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoHaySuficientesRecursos, NoSePudoConstruirException, JugadorConNombreDemasiadoCortoException, CapacidadDePoblacionMaximaSuperada{	
         Mapa mapa = Mapa.getInstance();
 		RazaProtoss unaRaza = new RazaProtoss(); 
 		TipoConstruccion unTipo = null;
-		Jugador unJugador = new Jugador("unNombre",unaRaza,"Rojo");
+		Jugador unJugador = new Jugador("unNombre",unaRaza,"Azul");
 		
 		AbstractConstruccionFactory factoryConstrucciones = unaRaza.getFactoryConstrucciones();
 		Posicion unaPosicion = new Posicion(12,3);
 		Posicion otraPosicion = new Posicion(15,7);
-		Posicion posicion444 = new Posicion(44,4);
 		
 		Acceso unaConstruccion = (Acceso) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesBasicas, unaPosicion, unJugador);
 		
 		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
-		unJugador.dameAlmacenMineral().almacenarRecurso(10000);
-		otroJugador.dameAlmacenMineral().almacenarRecurso(10000);
 		
 		Acceso otraConstruccion = (Acceso) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesBasicas, otraPosicion, otroJugador);
 		
@@ -56,33 +52,22 @@ public class RangoAtaqueScout extends TestBase{
 		for (int i = 0; i<12;i++) unTurno.avanzarTurno();
 		assertTrue(unaConstruccion.estaOperativa());
 		
-		PuertoEstelarProtoss unPuertoEstelar = (PuertoEstelarProtoss) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesVoladoras, posicion444, unJugador);
-		
-		unTurno.addObserver(unPuertoEstelar);
-		
-		for (int i = 0; i<12;i++) unTurno.avanzarTurno();
-		assertTrue(unPuertoEstelar.estaOperativa());
-		
-		
-		
-		Construccion unExpansor = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.expansorPoblacion, new Posicion(124,124), unJugador);
-		Construccion otroExpansor = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.expansorPoblacion, new Posicion(120,120), otroJugador);
+		TipoConstruccion unTipoConstruccion = null;
+		unJugador.dameAlmacenMineral().almacenarRecurso(1000);
+		Construccion unExpansor = (Construccion) factoryConstrucciones.crearConstruccion(unTipoConstruccion.expansorPoblacion, new Posicion(124,124), unJugador);
+		Construccion expansor3 = (Construccion) factoryConstrucciones.crearConstruccion(unTipoConstruccion.expansorPoblacion, new Posicion(130,130), unJugador);
+		Construccion expansor4 = (Construccion) factoryConstrucciones.crearConstruccion(unTipoConstruccion.expansorPoblacion, new Posicion(134,134), otroJugador);
 		unTurno.addObserver(unExpansor);
-		unTurno.addObserver(otroExpansor);
+		unTurno.addObserver(expansor3);
+		unTurno.addObserver(expansor4);
 		for (int i=0;i<6;i++) unTurno.avanzarTurno();
-		assertTrue(unExpansor.estaOperativa());
-		assertTrue(otroExpansor.estaOperativa());
-		
 		
 		TipoUnidad unTipoUnidad = null;
-		Unidad unaUnidad = (Unidad) unPuertoEstelar.crearUnidad(unJugador,unTipoUnidad.volador1);
+		Unidad unaUnidad = (Unidad) unaConstruccion.crearUnidad(unJugador,unTipoUnidad.terrestre2);
 		UnidadProtoss otraUnidad = (UnidadProtoss) otraConstruccion.crearUnidad(otroJugador,unTipoUnidad.terrestre2);
 		
 		unTurno.addObserver(unaUnidad);
 		unTurno.addObserver(otraUnidad);
-		unTurno.avanzarTurno();
-		unTurno.avanzarTurno();
-		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
@@ -93,32 +78,29 @@ public class RangoAtaqueScout extends TestBase{
 		assertTrue(otraUnidad.estaOperativa());
 		
 		mapa.agregarUnidad(new Posicion(4,4), unaUnidad);
-		mapa.agregarUnidad(new Posicion(5,8), otraUnidad);
+		mapa.agregarUnidad(new Posicion(5,5), otraUnidad);
 		assertEquals(100, otraUnidad.obtenerCantidadVida());
 		assertEquals(80,otraUnidad.obtenerCantidadEscudo());
 		
 		unaUnidad.atacar(otraUnidad.dameCelda());
 		
 		assertEquals(100, otraUnidad.obtenerCantidadVida());
-		assertEquals(72,otraUnidad.obtenerCantidadEscudo());	
+		assertEquals(60,otraUnidad.obtenerCantidadEscudo());	
 	}
 	
-	public void testRangoAtaqueUnidadScoutNoCausaDañoSiEstaAMasDe4() throws NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoHaySuficientesRecursos, NoSePudoConstruirException, JugadorConNombreDemasiadoCortoException, CapacidadDePoblacionMaximaSuperada{	
+	public void testRangoAtaqueUnidadDragonNoCausaDañoSiEstaAMasDe4() throws NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoHaySuficientesRecursos, NoSePudoConstruirException, JugadorConNombreDemasiadoCortoException, CapacidadDePoblacionMaximaSuperada{	
         Mapa mapa = Mapa.getInstance();
 		RazaProtoss unaRaza = new RazaProtoss(); 
 		TipoConstruccion unTipo = null;
-		Jugador unJugador = new Jugador("unNombre",unaRaza,"Rojo");
+		Jugador unJugador = new Jugador("unNombre",unaRaza,"Azul");
 		
 		AbstractConstruccionFactory factoryConstrucciones = unaRaza.getFactoryConstrucciones();
 		Posicion unaPosicion = new Posicion(12,3);
 		Posicion otraPosicion = new Posicion(15,7);
-		Posicion posicion444 = new Posicion(44,4);
 		
 		Acceso unaConstruccion = (Acceso) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesBasicas, unaPosicion, unJugador);
 		
 		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
-		unJugador.dameAlmacenMineral().almacenarRecurso(10000);
-		otroJugador.dameAlmacenMineral().almacenarRecurso(10000);
 		
 		Acceso otraConstruccion = (Acceso) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesBasicas, otraPosicion, otroJugador);
 		
@@ -131,30 +113,23 @@ public class RangoAtaqueScout extends TestBase{
 		for (int i = 0; i<12;i++) unTurno.avanzarTurno();
 		assertTrue(unaConstruccion.estaOperativa());
 		
-		PuertoEstelarProtoss unPuertoEstelar = (PuertoEstelarProtoss) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesVoladoras, posicion444, unJugador);
 		
-		unTurno.addObserver(unPuertoEstelar);
-		
-		for (int i = 0; i<12;i++) unTurno.avanzarTurno();
-		assertTrue(unPuertoEstelar.estaOperativa());
-		
-		Construccion unExpansor = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.expansorPoblacion, new Posicion(124,124), unJugador);
-		Construccion otroExpansor = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.expansorPoblacion, new Posicion(120,120), otroJugador);
+		TipoConstruccion unTipoConstruccion = null;
+		unJugador.dameAlmacenMineral().almacenarRecurso(1000);
+		Construccion unExpansor = (Construccion) factoryConstrucciones.crearConstruccion(unTipoConstruccion.expansorPoblacion, new Posicion(124,124), unJugador);
+		Construccion expansor3 = (Construccion) factoryConstrucciones.crearConstruccion(unTipoConstruccion.expansorPoblacion, new Posicion(130,130), unJugador);
+		Construccion expansor4 = (Construccion) factoryConstrucciones.crearConstruccion(unTipoConstruccion.expansorPoblacion, new Posicion(134,134), otroJugador);
 		unTurno.addObserver(unExpansor);
-		unTurno.addObserver(otroExpansor);
+		unTurno.addObserver(expansor3);
+		unTurno.addObserver(expansor4);
 		for (int i=0;i<6;i++) unTurno.avanzarTurno();
-		assertTrue(unExpansor.estaOperativa());
-		assertTrue(otroExpansor.estaOperativa());
 		
 		TipoUnidad unTipoUnidad = null;
-		Unidad unaUnidad = (Unidad) unPuertoEstelar.crearUnidad(unJugador,unTipoUnidad.volador1);
+		Unidad unaUnidad = (Unidad) unaConstruccion.crearUnidad(unJugador,unTipoUnidad.terrestre2);
 		UnidadProtoss otraUnidad = (UnidadProtoss) otraConstruccion.crearUnidad(otroJugador,unTipoUnidad.terrestre2);
 		
 		unTurno.addObserver(unaUnidad);
 		unTurno.addObserver(otraUnidad);
-		unTurno.avanzarTurno();
-		unTurno.avanzarTurno();
-		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
@@ -175,7 +150,7 @@ public class RangoAtaqueScout extends TestBase{
 		assertEquals(80,otraUnidad.obtenerCantidadEscudo());	
 	}
 	
-	public void testRangoAtaqueDelScoutAUnidadAereaDebeSer4() throws NoSuchObjectException, CantidadDeMineralInsuficienteException, JugadorConNombreDemasiadoCortoException, NoHaySuficientesRecursos, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoSePuedeRealizarAccionException, NoSePudoConstruirException, CapacidadDePoblacionMaximaSuperada{	
+	public void testRangoAtaqueDelDragonAUnidadAereaDebeSer4() throws NoSuchObjectException, CantidadDeMineralInsuficienteException, JugadorConNombreDemasiadoCortoException, NoHaySuficientesRecursos, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoSePuedeRealizarAccionException, NoSePudoConstruirException, CapacidadDePoblacionMaximaSuperada{	
         Mapa mapa = Mapa.getInstance();
 		RazaProtoss unaRaza = new RazaProtoss(); 
 		TipoConstruccion unTipo = null;
@@ -184,7 +159,6 @@ public class RangoAtaqueScout extends TestBase{
 		AbstractConstruccionFactory factoryConstrucciones = unaRaza.getFactoryConstrucciones();
 		Posicion unaPosicion = new Posicion(12,3);
 		Posicion otraPosicion = new Posicion(15,7);
-		Posicion posicion444  = new Posicion(44,4);
 		
 		Acceso unaConstruccion = (Acceso) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesBasicas, unaPosicion, unJugador);
 		
@@ -196,31 +170,25 @@ public class RangoAtaqueScout extends TestBase{
 
 		unTurno.addObserver(unaConstruccion);
 		unTurno.addObserver(otraConstruccion);
-		
-		unJugador.dameAlmacenMineral().almacenarRecurso(1500);
+
 		otroJugador.dameAlmacenMineral().almacenarRecurso(500);
 		
 		for (int i = 0; i<12;i++) unTurno.avanzarTurno();
 		assertTrue(unaConstruccion.estaOperativa());
 		
-		PuertoEstelarProtoss unPuertoEstelar = (PuertoEstelarProtoss) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesVoladoras, posicion444, unJugador);
 		
-		unTurno.addObserver(unPuertoEstelar);
-		
-		for (int i = 0; i<12;i++) unTurno.avanzarTurno();
-		assertTrue(unPuertoEstelar.estaOperativa());
-		
-		Construccion unExpansor = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.expansorPoblacion, new Posicion(124,124), unJugador);
-		Construccion otroExpansor = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.expansorPoblacion, new Posicion(120,120), otroJugador);
+		TipoConstruccion unTipoConstruccion = null;
+		unJugador.dameAlmacenMineral().almacenarRecurso(1000);
+		Construccion unExpansor = (Construccion) factoryConstrucciones.crearConstruccion(unTipoConstruccion.expansorPoblacion, new Posicion(124,124), unJugador);
+		Construccion expansor3 = (Construccion) factoryConstrucciones.crearConstruccion(unTipoConstruccion.expansorPoblacion, new Posicion(130,130), unJugador);
+		Construccion expansor4 = (Construccion) factoryConstrucciones.crearConstruccion(unTipoConstruccion.expansorPoblacion, new Posicion(134,134), otroJugador);
 		unTurno.addObserver(unExpansor);
-		unTurno.addObserver(otroExpansor);
+		unTurno.addObserver(expansor3);
+		unTurno.addObserver(expansor4);
 		for (int i=0;i<6;i++) unTurno.avanzarTurno();
-		assertTrue(unExpansor.estaOperativa());
-		assertTrue(otroExpansor.estaOperativa());
-		
 		
 		TipoUnidad unTipoUnidad = null;
-		Unidad unaUnidad = (Unidad) unPuertoEstelar.crearUnidad(unJugador,unTipoUnidad.volador1);
+		Unidad unaUnidad = (Unidad) unaConstruccion.crearUnidad(unJugador,unTipoUnidad.terrestre2);
 		UnidadProtoss otraUnidad = (UnidadProtoss) unaConstruccion.crearUnidad(otroJugador,unTipoUnidad.volador1);
 		
 		unTurno.addObserver(unaUnidad);
@@ -231,24 +199,24 @@ public class RangoAtaqueScout extends TestBase{
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
+		assertTrue(unaUnidad.estaOperativa());
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		assertTrue(otraUnidad.estaOperativa());
-		assertTrue(unaUnidad.estaOperativa());
 		
 		mapa.agregarUnidad(new Posicion(4,4), unaUnidad);
-		mapa.agregarUnidad(new Posicion(5,8), otraUnidad);
+		mapa.agregarUnidad(new Posicion(5,5), otraUnidad);
 		assertEquals(150, otraUnidad.obtenerCantidadVida());
 		assertEquals(100,otraUnidad.obtenerCantidadEscudo());
 		
 		unaUnidad.atacar(otraUnidad.dameCelda());
 		
 		assertEquals(150, otraUnidad.obtenerCantidadVida());
-		assertEquals(86,otraUnidad.obtenerCantidadEscudo());	
+		assertEquals(80,otraUnidad.obtenerCantidadEscudo());	
 	}
 
-	public void testRangoAtaqueDelScoutAUnidadAereaNoDañaSiEstaAMasDe4() throws NoSuchObjectException, CantidadDeMineralInsuficienteException, JugadorConNombreDemasiadoCortoException, NoHaySuficientesRecursos, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoSePuedeRealizarAccionException, NoSePudoConstruirException, CapacidadDePoblacionMaximaSuperada{	
+	public void testRangoAtaqueDelDragonAUnidadAereaNoDañaSiEstaAMasDe4() throws NoSuchObjectException, CantidadDeMineralInsuficienteException, JugadorConNombreDemasiadoCortoException, NoHaySuficientesRecursos, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoSePuedeRealizarAccionException, NoSePudoConstruirException, CapacidadDePoblacionMaximaSuperada{	
         Mapa mapa = Mapa.getInstance();
 		RazaProtoss unaRaza = new RazaProtoss(); 
 		TipoConstruccion unTipo = null;
@@ -257,7 +225,6 @@ public class RangoAtaqueScout extends TestBase{
 		AbstractConstruccionFactory factoryConstrucciones = unaRaza.getFactoryConstrucciones();
 		Posicion unaPosicion = new Posicion(12,3);
 		Posicion otraPosicion = new Posicion(15,7);
-		Posicion posicion444  = new Posicion(44,4);
 		
 		Acceso unaConstruccion = (Acceso) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesBasicas, unaPosicion, unJugador);
 		
@@ -269,30 +236,24 @@ public class RangoAtaqueScout extends TestBase{
 
 		unTurno.addObserver(unaConstruccion);
 		unTurno.addObserver(otraConstruccion);
-		
-		unJugador.dameAlmacenMineral().almacenarRecurso(1500);
+
 		otroJugador.dameAlmacenMineral().almacenarRecurso(500);
 		
 		for (int i = 0; i<12;i++) unTurno.avanzarTurno();
 		assertTrue(unaConstruccion.estaOperativa());
 		
-		PuertoEstelarProtoss unPuertoEstelar = (PuertoEstelarProtoss) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesVoladoras, posicion444, unJugador);
-		
-		unTurno.addObserver(unPuertoEstelar);
-		
-		for (int i = 0; i<12;i++) unTurno.avanzarTurno();
-		assertTrue(unPuertoEstelar.estaOperativa());
-	
-		Construccion unExpansor = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.expansorPoblacion, new Posicion(124,124), unJugador);
-		Construccion otroExpansor = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.expansorPoblacion, new Posicion(120,120), otroJugador);
+		TipoConstruccion unTipoConstruccion = null;
+		unJugador.dameAlmacenMineral().almacenarRecurso(1000);
+		Construccion unExpansor = (Construccion) factoryConstrucciones.crearConstruccion(unTipoConstruccion.expansorPoblacion, new Posicion(124,124), unJugador);
+		Construccion expansor3 = (Construccion) factoryConstrucciones.crearConstruccion(unTipoConstruccion.expansorPoblacion, new Posicion(130,130), unJugador);
+		Construccion expansor4 = (Construccion) factoryConstrucciones.crearConstruccion(unTipoConstruccion.expansorPoblacion, new Posicion(134,134), otroJugador);
 		unTurno.addObserver(unExpansor);
-		unTurno.addObserver(otroExpansor);
+		unTurno.addObserver(expansor3);
+		unTurno.addObserver(expansor4);
 		for (int i=0;i<6;i++) unTurno.avanzarTurno();
-		assertTrue(unExpansor.estaOperativa());
-		assertTrue(otroExpansor.estaOperativa());
 		
 		TipoUnidad unTipoUnidad = null;
-		Unidad unaUnidad = (Unidad) unPuertoEstelar.crearUnidad(unJugador,unTipoUnidad.volador1);
+		Unidad unaUnidad = (Unidad) unaConstruccion.crearUnidad(unJugador,unTipoUnidad.terrestre2);
 		UnidadProtoss otraUnidad = (UnidadProtoss) unaConstruccion.crearUnidad(otroJugador,unTipoUnidad.volador1);
 		
 		unTurno.addObserver(unaUnidad);
@@ -303,21 +264,20 @@ public class RangoAtaqueScout extends TestBase{
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
+		assertTrue(unaUnidad.estaOperativa());
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		assertTrue(otraUnidad.estaOperativa());
-		assertTrue(unaUnidad.estaOperativa());
 		
 		mapa.agregarUnidad(new Posicion(4,4), unaUnidad);
-		mapa.agregarUnidad(new Posicion(5,10), otraUnidad);
+		mapa.agregarUnidad(new Posicion(5,9), otraUnidad);
 		assertEquals(150, otraUnidad.obtenerCantidadVida());
 		assertEquals(100,otraUnidad.obtenerCantidadEscudo());
 		
 		unaUnidad.atacar(otraUnidad.dameCelda());
 		
 		assertEquals(150, otraUnidad.obtenerCantidadVida());
-		assertEquals(100,otraUnidad.obtenerCantidadEscudo());
+		assertEquals(100,otraUnidad.obtenerCantidadEscudo());	
 	}
-
 }

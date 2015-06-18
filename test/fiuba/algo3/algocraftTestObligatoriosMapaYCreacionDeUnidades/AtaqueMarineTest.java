@@ -27,7 +27,7 @@ import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory.TipoUnidad;
 import fiuba.algo3.algocraft.modelo.unidades.UnidadProtoss;
 
 @SuppressWarnings("static-access")
-public class RangoAtaqueMarineTest extends TestBase{
+public class AtaqueMarineTest extends TestBase{
 	public void testRangoAtaqueUnidadMarineDebeSer4() throws NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoHaySuficientesRecursos, NoSePudoConstruirException, JugadorConNombreDemasiadoCortoException, CapacidadDePoblacionMaximaSuperada{
         Mapa mapa = Mapa.getInstance();
 		RazaTerran unaRaza = new RazaTerran(); 

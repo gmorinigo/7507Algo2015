@@ -25,7 +25,7 @@ import fiuba.algo3.algocraft.modelo.unidades.UnidadProtoss;
 import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory.TipoUnidad;
 
 @SuppressWarnings("static-access")
-public class RangoAtaqueZealotTest extends TestBase{
+public class AtaqueZealotTest extends TestBase{
 	public void testRangoAtaqueUnidadZealotDebeSer1() throws NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoHaySuficientesRecursos, NoSePudoConstruirException, JugadorConNombreDemasiadoCortoException, CapacidadDePoblacionMaximaSuperada{
     Mapa mapa = Mapa.getInstance();
 	RazaProtoss unaRaza = new RazaProtoss(); 
