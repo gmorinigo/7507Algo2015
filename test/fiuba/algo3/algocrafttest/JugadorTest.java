@@ -263,8 +263,8 @@ public class JugadorTest extends TestBase {
 		mapa.agregarUnidad(new Posicion(4,4), unaUnidad);
 		mapa.agregarUnidad(posicion55, otraUnidad);
 		
-		System.out.println(unJugador.obtenerCantidadPoblacionDisponible());
-		System.out.println(unJugador.obtenerCantidadPoblacionDisponible());
+		//System.out.println(unJugador.obtenerCantidadPoblacionDisponible());
+		//System.out.println(unJugador.obtenerCantidadPoblacionDisponible());
 		assertTrue(unJugador.obtenerCantidadPoblacionDisponible() == 8);
 		assertTrue(otroJugador.obtenerCantidadPoblacionDisponible() == 8);
 		
@@ -275,12 +275,12 @@ public class JugadorTest extends TestBase {
 		for(int i = 0; i < 20; i++){
 			unaUnidad.atacar(otraUnidad.dameCelda());
 			unTurno.avanzarTurno();
-			System.out.println(otraUnidad.obtenerCantidadVida());
-			System.out.println(otraUnidad.obtenerCantidadEscudo());
+			//System.out.println(otraUnidad.obtenerCantidadVida());
+			//System.out.println(otraUnidad.obtenerCantidadEscudo());
 		}
 		
-		System.out.println(unJugador.obtenerCantidadPoblacionDisponible());
-		System.out.println(otroJugador.obtenerCantidadPoblacionDisponible());
+		//System.out.println(unJugador.obtenerCantidadPoblacionDisponible());
+		//System.out.println(otroJugador.obtenerCantidadPoblacionDisponible());
 
 		assertTrue(unJugador.obtenerCantidadPoblacionDisponible() == 8);
 		assertTrue(otroJugador.obtenerCantidadPoblacionDisponible() == 10);
