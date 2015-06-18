@@ -23,12 +23,6 @@ public class AltoTemplario extends UnidadProtoss {
 		return 7;
 	}
 
-	@Override
-	protected void vivir() {
-		// TODO Auto-generated method stub
-		
-	}
-
 	public boolean atacar(Celda unaCelda) {
 		return false;
 	}

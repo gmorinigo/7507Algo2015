@@ -29,4 +29,6 @@ abstract public class Salud {
 	};
 	
 	abstract public void atacar(int ataque);
+
+	public abstract void regenerarEscudo();
 }

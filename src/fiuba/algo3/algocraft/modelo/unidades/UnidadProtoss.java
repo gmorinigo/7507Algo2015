@@ -9,11 +9,11 @@ public abstract class UnidadProtoss extends Unidad {
 
 	public 	abstract int turnosNecesariosParaCreacion();
 
-	@Override
 	protected void vivir() {
-		// TODO Auto-generated method stub
-
+		this.salud.regenerarEscudo();
+		this.estado = new UnidadEstadoViviendo(this);
 	}
+	
 	public UnidadProtoss(Jugador unJugador) {
 		super(unJugador);
 	}

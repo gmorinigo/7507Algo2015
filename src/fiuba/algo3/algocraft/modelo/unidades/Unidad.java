@@ -38,13 +38,18 @@ abstract public class Unidad implements TurnoObserver{
 	}
 	
 
-	@Override
 	public void finDeTurno(Turno turno) {
 		this.estado.avanzarEnElTurno();	
 	}
 	
 	public void finalizarNacimiento() {
 		this.estado = new UnidadEstadoViviendo(this);
+
+		boolean unidadAgregadaAlMapa = false;
+		
+		while (!unidadAgregadaAlMapa){
+						
+		}
 		// TODO Aca va la logica para posicionar a la unidad en el mapa
 	}
 	

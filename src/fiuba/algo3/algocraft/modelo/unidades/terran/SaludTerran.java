@@ -17,4 +17,8 @@ public class SaludTerran extends Salud {
 			this.setValorDeSalud(0);	
 		}
 	}
+
+	public void regenerarEscudo() {
+		// No regenero escudo, solamente en los protoss
+	}
 }

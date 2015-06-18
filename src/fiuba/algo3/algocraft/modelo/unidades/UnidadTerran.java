@@ -12,10 +12,8 @@ public abstract class UnidadTerran extends Unidad {
 		super(unJugador);
 	}
 	
-	@Override
 	protected void vivir() {
-		// TODO Auto-generated method stub
-
+		this.estado = new UnidadEstadoViviendo(this);
 	}
 	
 	public boolean recibirataque(Unidad unaUnidadAtacante){

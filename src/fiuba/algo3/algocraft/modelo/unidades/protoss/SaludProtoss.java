@@ -6,10 +6,12 @@ public class SaludProtoss extends Salud{
 	
 	protected int salud;
 	protected int escudo;
+	protected int escudoInicial;
 	
 	public SaludProtoss(int hp, int escudo) {
 		super(hp, hp);
 		this.escudo = escudo;
+		this.escudoInicial = escudo;
 	}
 
 	public void atacar(int ataque) {
@@ -56,6 +58,15 @@ public class SaludProtoss extends Salud{
 	public void pasarTurno() {
 		this.regenerarEscudo(5);
 	}
-	
+
+	public void regenerarEscudo() {
+		if (this.escudo == this.escudoInicial) return;
+		
+		if ((this.escudo + 5) >= this.escudoInicial){
+			this.escudo = escudoInicial;
+		} else {
+			this.escudo += 5;	
+		}
+	}
 }
 

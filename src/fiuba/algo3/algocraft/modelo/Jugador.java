@@ -147,4 +147,18 @@ public class Jugador {
 		this.construcciones.remove(construccion);
 	}
 
+	public Object dameCantidadPoblacion() {
+		int poblacionOcupada = 0;
+		
+		Iterator<Unidad> it = unidadesTerminadas.iterator();
+		
+		while (it.hasNext()) {
+			Unidad unaUnidad = it.next();
+			if (unaUnidad.estaViva()){
+				poblacionOcupada += unaUnidad.obtenerOcupacionSuministro();
+			}
+		}
+		return poblacionOcupada;
+	}
+
 }

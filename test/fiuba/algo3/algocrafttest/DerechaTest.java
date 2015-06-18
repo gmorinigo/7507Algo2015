@@ -181,4 +181,38 @@ public class DerechaTest extends TestBase{
 		assertTrue(unaConstruccion.estaOperativa());		
 		assertFalse(unaUnidad.mover(TipoDireccion.Derecha));
     }
+    
+    public void testNoSePuedeMoverUnaTerrestreAUnaCeldaAerea() throws JugadorConNombreDemasiadoCortoException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, NoHaySuficientesRecursos, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException, ConstruccionNoPermitidaPorSalirseDelMapaException, CapacidadDePoblacionMaximaSuperada, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoSePudoConstruirException{
+        Mapa mapa = Mapa.getInstance();
+		RazaProtoss unaRaza = new RazaProtoss(); 
+		Jugador unJugador = new Jugador("unNombre",unaRaza,"Azul");
+		Posicion posicion50_77 = new Posicion(50,77);
+		Posicion posicion50_79 = new Posicion(50,79);
+		Acceso unaConstruccion = new Acceso(posicion50_77, unJugador,TipoConstruccion.creadorUnidadesBasicas );
+		
+		assertTrue(mapa.agregarConstruccion(unaConstruccion));
+		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Rojo");
+		
+		Turno unTurno = new Turno(unJugador,otroJugador);
+		AbstractUnidadFactory factoryUnidades = unaRaza.getFactoryUnidades();
+		
+		
+		TipoConstruccion unTipoConstruccion = null;
+		unJugador.dameAlmacenMineral().almacenarRecurso(1000);
+		AbstractConstruccionFactory factoryConstrucciones = unaRaza.getFactoryConstrucciones();
+		Construccion unExpansor = (Construccion) factoryConstrucciones.crearConstruccion(unTipoConstruccion.expansorPoblacion, new Posicion(124,124), unJugador);
+		Construccion expansor3 = (Construccion) factoryConstrucciones.crearConstruccion(unTipoConstruccion.expansorPoblacion, new Posicion(130,130), unJugador);
+		Construccion expansor4 = (Construccion) factoryConstrucciones.crearConstruccion(unTipoConstruccion.expansorPoblacion, new Posicion(134,134), otroJugador);
+		unTurno.addObserver(unExpansor);
+		unTurno.addObserver(expansor3);
+		unTurno.addObserver(expansor4);
+		for (int i=0;i<6;i++) unTurno.avanzarTurno();
+		
+		
+		Unidad unaUnidad = (Unidad) factoryUnidades.crearUnidad(TipoUnidad.terrestre1,unJugador);
+		unaUnidad.finalizarNacimiento();
+		assertTrue(mapa.agregarUnidad(posicion50_79, unaUnidad));
+		
+		assertFalse(unaUnidad.mover(TipoDireccion.Derecha));
+    }
 }

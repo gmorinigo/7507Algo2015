@@ -242,16 +242,7 @@ public class MapaTest extends TestBase {
 		Turno unTurno = new Turno(unJugador,otroJugador);
 		
 		
-		unTurno.avanzarTurno();
-		unTurno.avanzarTurno();
-		unTurno.avanzarTurno();
-		unTurno.avanzarTurno();
-		unTurno.avanzarTurno();
-		unTurno.avanzarTurno();
-		unTurno.avanzarTurno();
-		unTurno.avanzarTurno();
-		unTurno.avanzarTurno();
-		unTurno.avanzarTurno();
+		for (int i = 0; i < 10; i++) unTurno.avanzarTurno();
 		
 		TipoConstruccion unTipoConstruccion = null;
 		RazaTerran unaRaza = new RazaTerran(); 
