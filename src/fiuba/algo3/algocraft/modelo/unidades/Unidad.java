@@ -45,12 +45,14 @@ abstract public class Unidad implements TurnoObserver{
 	public void finalizarNacimiento() {
 		this.estado = new UnidadEstadoViviendo(this);
 
+		// TODO Aca va la logica para posicionar a la unidad en el mapa
+		/*
 		boolean unidadAgregadaAlMapa = false;
 		
 		while (!unidadAgregadaAlMapa){
 						
 		}
-		// TODO Aca va la logica para posicionar a la unidad en el mapa
+		 */
 	}
 	
 	public boolean estaOperativa() {
