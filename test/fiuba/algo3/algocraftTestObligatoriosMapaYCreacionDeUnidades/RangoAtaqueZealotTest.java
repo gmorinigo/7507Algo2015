@@ -153,4 +153,67 @@ public class RangoAtaqueZealotTest extends TestBase{
 		assertEquals(60,otraUnidad.obtenerCantidadEscudo());	
 		}
 	
+	public void testUnidadZealotNoPuedeAtacarAUnaUnidadAerea() throws NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoHaySuficientesRecursos, NoSePudoConstruirException, JugadorConNombreDemasiadoCortoException, CapacidadDePoblacionMaximaSuperada{
+	    Mapa mapa = Mapa.getInstance();
+		RazaProtoss unaRaza = new RazaProtoss(); 
+		TipoConstruccion unTipo = null;
+		Jugador unJugador = new Jugador("unNombre",unaRaza,"Azul");
+		
+		AbstractConstruccionFactory factoryConstrucciones = unaRaza.getFactoryConstrucciones();
+		Posicion unaPosicion = new Posicion(12,3);
+		Posicion otraPosicion = new Posicion(15,7);
+		
+		Acceso unaConstruccion = (Acceso) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesBasicas, unaPosicion, unJugador);
+		
+		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
+		
+		Acceso otraConstruccion = (Acceso) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesBasicas, otraPosicion, otroJugador);
+		
+		Turno unTurno = new Turno(unJugador,otroJugador);
+
+		
+		unTurno.addObserver(unaConstruccion);
+		unTurno.addObserver(otraConstruccion);
+		
+		for (int i = 0; i<12;i++) unTurno.avanzarTurno();
+		assertTrue(unaConstruccion.estaOperativa());
+		
+		TipoConstruccion unTipoConstruccion = null;
+		unJugador.dameAlmacenMineral().almacenarRecurso(1000);
+		otroJugador.dameAlmacenMineral().almacenarRecurso(1000);
+		Construccion unExpansor = (Construccion) factoryConstrucciones.crearConstruccion(unTipoConstruccion.expansorPoblacion, new Posicion(124,124), unJugador);
+		Construccion expansor3 = (Construccion) factoryConstrucciones.crearConstruccion(unTipoConstruccion.expansorPoblacion, new Posicion(130,130), unJugador);
+		Construccion expansor4 = (Construccion) factoryConstrucciones.crearConstruccion(unTipoConstruccion.expansorPoblacion, new Posicion(134,134), otroJugador);
+		Construccion expansor5 = (Construccion) factoryConstrucciones.crearConstruccion(unTipoConstruccion.expansorPoblacion, new Posicion(138,138), otroJugador);
+		unTurno.addObserver(unExpansor);
+		unTurno.addObserver(expansor3);
+		unTurno.addObserver(expansor4);
+		unTurno.addObserver(expansor5);
+		for (int i=0;i<6;i++) unTurno.avanzarTurno();
+		
+		TipoUnidad unTipoUnidad = null;
+		Unidad unaUnidad = (Unidad) unaConstruccion.crearUnidad(unJugador,unTipoUnidad.terrestre1);
+		UnidadProtoss otraUnidad = (UnidadProtoss) otraConstruccion.crearUnidad(otroJugador,unTipoUnidad.volador1);
+		
+		unTurno.addObserver(unaUnidad);
+		unTurno.addObserver(otraUnidad);
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		assertTrue(unaUnidad.estaOperativa());
+		assertTrue(otraUnidad.estaOperativa());
+		
+		mapa.agregarUnidad(new Posicion(4,4), unaUnidad);
+		mapa.agregarUnidad(new Posicion(5,6), otraUnidad);
+		assertEquals(150, otraUnidad.obtenerCantidadVida());
+		assertEquals(100,otraUnidad.obtenerCantidadEscudo());
+		
+		unaUnidad.atacar(otraUnidad.dameCelda());
+		
+		assertEquals(150, otraUnidad.obtenerCantidadVida());
+		assertEquals(100,otraUnidad.obtenerCantidadEscudo());	
+		}
 }
