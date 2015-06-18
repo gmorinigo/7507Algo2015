@@ -26,7 +26,11 @@ import fiuba.algo3.algocraft.modelo.mapa.Celda;
 import fiuba.algo3.algocraft.modelo.mapa.Mapa;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.turnos.Turno;
+import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
+import fiuba.algo3.algocraft.modelo.unidades.UnidadFactoryTerran;
+import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory.TipoUnidad;
+import fiuba.algo3.algocraft.modelo.unidades.movimientos.Movimiento.TipoDireccion;
 import fiuba.algo3.algocrafttest.TestBase;
 
 @SuppressWarnings("static-access")
@@ -229,12 +233,12 @@ public class MapaTest extends TestBase {
 	}
 	
 	public void testAgregarUnaNaveDeTransporteAlMapaCargarleUnaUnidadPasarPorElEspacioYDejarlaDelOtroLado() throws JugadorConNombreDemasiadoCortoException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, NoHaySuficientesRecursos, NoSuchObjectException, CapacidadDePoblacionMaximaSuperada, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoSePudoConstruirException{
-		// TODO: Agregar la funcionalidad de este test
-		Posicion posicion1515 = new Posicion(15,15);
-		Posicion posicion1715 = new Posicion(17,15);
+		Posicion posicion3079 = new Posicion(30,79);
+		Posicion posicion3179 = new Posicion(31,79);
 		Mapa unMapa = Mapa.getInstance();
+		TipoConstruccion unTipoConstruccion = null;
 		Jugador unJugador = new Jugador("unNombre",new RazaTerran(),"Azul");
-		Barraca unaBarraca = new Barraca(posicion1515, unJugador,TipoConstruccion.creadorUnidadesBasicas );
+		Barraca unaBarraca = new Barraca(new Posicion(28,78), unJugador,unTipoConstruccion.creadorUnidadesBasicas);
 		
 		assertTrue(unMapa.agregarConstruccion(unaBarraca));
 		
@@ -244,7 +248,7 @@ public class MapaTest extends TestBase {
 		
 		for (int i = 0; i < 10; i++) unTurno.avanzarTurno();
 		
-		TipoConstruccion unTipoConstruccion = null;
+		AbstractUnidadFactory factoryUnidades = getFactoryUnidades();
 		RazaTerran unaRaza = new RazaTerran(); 
 		AbstractConstruccionFactory factoryConstrucciones = unaRaza.getFactoryConstrucciones();
 		unJugador.dameAlmacenMineral().almacenarRecurso(1000);
@@ -258,16 +262,47 @@ public class MapaTest extends TestBase {
 		unTurno.addObserver(expansor5);
 		for (int i=0;i<6;i++) unTurno.avanzarTurno();
 		
+		TipoUnidad unTipo = null;
 		Unidad marine = unaBarraca.crearUnidad(unJugador);
+		Unidad unaNaveTransporte = (Unidad) factoryUnidades.crearUnidad(unTipo.volador2,unJugador);
 		unTurno.addObserver(marine);
+		unTurno.addObserver(unaNaveTransporte);
+
 		
-		unTurno.avanzarTurno();
-		unTurno.avanzarTurno();
-		unTurno.avanzarTurno();
+		for (int i = 0 ; i < 8; i++) unTurno.avanzarTurno();
+
 				
-		assertTrue(unMapa.agregarUnidad(posicion1715, marine));
-		assertTrue(unMapa.verificarCeldaOcupada(posicion1715));
+		assertTrue(unMapa.agregarUnidad(posicion3079, marine));
+		assertTrue(unMapa.agregarUnidad(posicion3179, unaNaveTransporte));
+
+		assertTrue(unMapa.verificarCeldaOcupada(posicion3079));
+		assertTrue(unMapa.verificarCeldaOcupada(posicion3179));
+        
+		// TODO: Terminar el test
+		/*
+		marine.mover(TipoDireccion.Abajo);
+
+		assertFalse(unMapa.verificarCeldaOcupada(posicion3079));
+		
+		for (int i = 0; i < 42; i++){
+			assertEquals(marine.dameCelda().obtenerPosicion(), new Posicion(31,79+i));
+			assertEquals(unaNaveTransporte.dameCelda().obtenerPosicion(), new Posicion(31,79+i));
+			unaNaveTransporte.mover(TipoDireccion.Derecha);
+			unTurno.avanzarTurno();
+		}
+		
+		assertEquals(marine.dameCelda().obtenerPosicion(), new Posicion(31,120));
+		assertEquals(unaNaveTransporte.dameCelda().obtenerPosicion(), new Posicion(31,120));
+		
+		unaNaveTransporte.descargarUnidades();
+		assertEquals(marine.dameCelda().obtenerPosicion(), new Posicion(32,120));
+		*/
 	}
+	
+	public static AbstractUnidadFactory getFactoryUnidades(){
+	    
+		   return new UnidadFactoryTerran();
+	} 
 }
 
 
