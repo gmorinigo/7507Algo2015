@@ -1,18 +1,21 @@
 package vista;
-import java.awt.EventQueue;
 import java.awt.Color;
+import java.awt.EventQueue;
 import java.awt.GridLayout;
 import java.awt.Image;
-import java.awt.event.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPopupMenu;
 import javax.swing.border.EmptyBorder;
 
 
@@ -21,6 +24,7 @@ public class VentanaPrincipal extends JFrame{
     private JPanel panelTablero;
     private JButtonPos matriz[][];
     JLabel lblCantidadDeTurnos;
+    private int DIMENSION = 20;
     
     private ImageIcon tierra;
     
@@ -49,7 +53,7 @@ public class VentanaPrincipal extends JFrame{
     private void initialize() throws IOException{
         BufferedImage imTierra= ImageIO.read(this.getClass().getResource("tierra.png"));
         ImageIcon ictierra = new ImageIcon(imTierra);
-        this.tierra = (new ImageIcon(ictierra.getImage().getScaledInstance(35,30,Image.SCALE_SMOOTH)));        
+        this.tierra = (new ImageIcon(ictierra.getImage().getScaledInstance(75,70,Image.SCALE_SMOOTH)));        
         
         frame = new JFrame();
         frame.setForeground(new Color(0,0,0));
@@ -61,16 +65,92 @@ public class VentanaPrincipal extends JFrame{
         panelTablero = new JPanel();
         panelTablero.setBounds(100, 120, 800, 800);
         panelTablero.setBorder(new EmptyBorder(0, 0, 0, 0));
-        panelTablero.setLayout(new GridLayout(100,100));
-        matriz = new JButtonPos[100][100];
-        llenarMapaConLabels(matriz);
-        agregarLabels(matriz);
+        panelTablero.setLayout(new GridLayout(this.DIMENSION,this.DIMENSION));
+        panelTablero.setBackground(Color.blue);
+        panelTablero.addMouseListener(new MouseListener() {
+  
+			
+			@Override
+			public void mouseReleased(MouseEvent arg0) {
+				
+				JPopupMenu popupMenu = new JPopupMenu("Menu contextual");
+				JMenuItem mitem = popupMenu.add(String.format("Crear Deposito en %s %s",arg0.getX(),arg0.getY()));
+				popupMenu.addMouseListener(new MouseListener() {
+					
+					@Override
+					public void mouseReleased(MouseEvent arg0) {
+						// TODO Auto-generated method stub
+						
+					}
+					
+					@Override
+					public void mousePressed(MouseEvent arg0) {
+						// TODO Auto-generated method stub
+						
+					}
+					
+					@Override
+					public void mouseExited(MouseEvent arg0) {
+						// TODO Auto-generated method stub
+						
+					}
+					
+					@Override
+					public void mouseEntered(MouseEvent arg0) {
+						// TODO Auto-generated method stub
+						
+					}
+					
+					@Override
+					public void mouseClicked(MouseEvent arg0) {
+						JOptionPane.showMessageDialog(null,"presionaste el elemento del menu");
+						
+					}
+				});
+				popupMenu.add("Crear Fabrica");
+				popupMenu.setEnabled(true);
+				popupMenu.show(arg0.getComponent(), arg0.getX(), arg0.getY());
+
+
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+        
+        //matriz = new JButtonPos[this.DIMENSION][this.DIMENSION];
+        //llenarMapaConLabels(matriz);
+        //agregarLabels(matriz);
         frame.getContentPane().add(panelTablero);
+        
     }
     
     public void llenarMapaConLabels(JButtonPos unMapa[][]) throws IOException{
-        for (int i=0 ; i<100 ; i++){
-                for (int j=0 ; j<100 ; j++){     
+        for (int i=0 ; i<this.DIMENSION ; i++){
+                for (int j=0 ; j<this.DIMENSION ; j++){     
                         final JButtonPos unBoton = new JButtonPos(i,j);
                         unBoton.setIcon(this.tierra);
                         unMapa[i][j] = unBoton;
@@ -79,8 +159,8 @@ public class VentanaPrincipal extends JFrame{
     }
     
     public void agregarLabels(JButtonPos unMapa[][]){
-        for (int i=0 ; i<100 ; i++){
-                for (int j=0 ; j<100 ; j++){     
+        for (int i=0 ; i< this.DIMENSION ; i++){
+                for (int j=0 ; j<this.DIMENSION ; j++){     
                         panelTablero.add(unMapa[i][j]);                                
                 }
         }

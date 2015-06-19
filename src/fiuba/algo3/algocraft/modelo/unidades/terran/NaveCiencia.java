@@ -5,7 +5,9 @@ import fiuba.algo3.algocraft.modelo.construciones.Construccion;
 import fiuba.algo3.algocraft.modelo.mapa.Celda;
 import fiuba.algo3.algocraft.modelo.unidades.Salud;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
+import fiuba.algo3.algocraft.modelo.unidades.UnidadEstadoDescansando;
 import fiuba.algo3.algocraft.modelo.unidades.UnidadTerran;
+import fiuba.algo3.algocraft.modelo.unidades.ataques.AbstractDisparo;
 
 public class NaveCiencia extends UnidadTerran {
     private int energia;    
@@ -18,7 +20,6 @@ public class NaveCiencia extends UnidadTerran {
 		//this.disparoStrategy=disparoStrategy;
 		//this.disparoStrategy.setUnidad(this);
 	}
-
 	@Override
 	protected Salud saludInicial() {
 		return new SaludTerran(200);
@@ -66,5 +67,24 @@ public class NaveCiencia extends UnidadTerran {
 	
 	public int obtenerOcupacionSuministro() {
 		return 2;
+	}
+	
+	public boolean atacar(Celda unaCelda, AbstractDisparo unDisparo) {
+		return false;
+	/*	if (!this.estado.esPosibleRealizarAccion()) {
+			return false;
+		}*/
+	
+		
+//		unaCelda.atacarUnidadDeLaCeldaConUnidad(this);
+	/*	unDisparo.disparar(unaCelda);
+		boolean disparoRealizado = this.disparo.disparar(unaCelda);
+		
+		if(! disparoRealizado)
+			return false;
+		
+		this.estado = new UnidadEstadoDescansando(this);
+		return true;*/
+
 	}
 }
