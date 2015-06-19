@@ -28,7 +28,7 @@ public class Barraca extends Construccion {
 	public Unidad crearUnidad(Jugador unJugador) throws JugadorConNombreDemasiadoCortoException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, NoHaySuficientesRecursos, CapacidadDePoblacionMaximaSuperada {
 		// Obtener dinamicamente la factory
 		AbstractUnidadFactory factoryUnidades = this.jugador.dameRaza().getFactoryUnidades();
-		Unidad unaUnidad = (Unidad) factoryUnidades.crearUnidad(TipoUnidad.terrestre1, unJugador);
+		Unidad unaUnidad = (Unidad) factoryUnidades.crearUnidad(TipoUnidad.terrestre1, unJugador,this.damePosicionCeldaSupIzquierda());
 		this.estado = new ConstruccionEstadoTrabajando(unaUnidad.turnosNecesariosParaCreacion(), this);
 		
 		return unaUnidad;
@@ -37,7 +37,7 @@ public class Barraca extends Construccion {
 	public Unidad crearUnidad(Jugador unJugador, TipoUnidad unTipo) throws JugadorConNombreDemasiadoCortoException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, NoHaySuficientesRecursos, CapacidadDePoblacionMaximaSuperada {
 		// Obtener dinamicamente la factory
 		AbstractUnidadFactory factoryUnidades = this.jugador.dameRaza().getFactoryUnidades();
-		Unidad unaUnidad = (Unidad) factoryUnidades.crearUnidad(unTipo, unJugador);
+		Unidad unaUnidad = (Unidad) factoryUnidades.crearUnidad(unTipo, unJugador,this.damePosicionCeldaSupIzquierda());
 		this.estado = new ConstruccionEstadoTrabajando(unaUnidad.turnosNecesariosParaCreacion(), this);
 		
 		return unaUnidad;

@@ -3,6 +3,7 @@ package fiuba.algo3.algocraft.modelo.unidades.terran;
 import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.construciones.Construccion;
 import fiuba.algo3.algocraft.modelo.mapa.Celda;
+import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.unidades.Salud;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 import fiuba.algo3.algocraft.modelo.unidades.UnidadEstadoDescansando;
@@ -20,6 +21,14 @@ public class NaveCiencia extends UnidadTerran {
 		//this.disparoStrategy=disparoStrategy;
 		//this.disparoStrategy.setUnidad(this);
 	}
+	
+	public NaveCiencia(Jugador unJugador,Posicion posicionConstruccion){
+		super(unJugador);
+		this.energia =  50;
+		this.tamanioTransporte = 0;
+		posicionDeConstruccion = posicionConstruccion;
+	}
+	
 	@Override
 	protected Salud saludInicial() {
 		return new SaludTerran(200);

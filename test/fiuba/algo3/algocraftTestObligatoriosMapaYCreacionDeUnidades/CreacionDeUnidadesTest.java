@@ -8,6 +8,10 @@ import fiuba.algo3.algocraft.modelo.RazaTerran;
 import fiuba.algo3.algocraft.modelo.construciones.AbstractConstruccionFactory;
 import fiuba.algo3.algocraft.modelo.construciones.Construccion;
 import fiuba.algo3.algocraft.modelo.construciones.AbstractConstruccionFactory.TipoConstruccion;
+import fiuba.algo3.algocraft.modelo.construciones.protoss.Acceso;
+import fiuba.algo3.algocraft.modelo.construciones.terran.Barraca;
+import fiuba.algo3.algocraft.modelo.construciones.terran.Fabrica;
+import fiuba.algo3.algocraft.modelo.construciones.terran.PuertoEstelarTerran;
 import fiuba.algo3.algocraft.modelo.excepciones.CantidadDeGasInsuficienteException;
 import fiuba.algo3.algocraft.modelo.excepciones.CantidadDeMineralInsuficienteException;
 import fiuba.algo3.algocraft.modelo.excepciones.CapacidadDePoblacionMaximaSuperada;
@@ -52,8 +56,18 @@ public class CreacionDeUnidadesTest extends TestBase{
 		unTurno.addObserver(expansor3);
 		unTurno.addObserver(expansor4);
 		for (int i=0;i<6;i++) unTurno.avanzarTurno();
+		Acceso unaConstruccion = (Acceso) factoryConstrucciones.crearConstruccion(TipoConstruccion.creadorUnidadesBasicas, new Posicion(15,15), unJugador);
 		
-		Unidad unaUnidad = (Unidad) factoryUnidades.crearUnidad(unTipo.terrestre2,unJugador);
+		unTurno.addObserver(unaConstruccion);
+		
+		for (int i=0;i<6;i++) unTurno.avanzarTurno();
+		
+		Unidad unaUnidad = (Unidad) unaConstruccion.crearUnidad(unJugador,TipoUnidad.terrestre2);
+		
+		unTurno.addObserver(unaUnidad);
+
+		for (int i=0;i<8;i++) unTurno.avanzarTurno();
+		assertTrue(unaUnidad.estaOperativa());
 		assertTrue(unaUnidad instanceof Dragon);
 	}
 	
@@ -75,8 +89,16 @@ public class CreacionDeUnidadesTest extends TestBase{
 		unTurno.addObserver(expansor3);
 		unTurno.addObserver(expansor4);
 		for (int i=0;i<6;i++) unTurno.avanzarTurno();
+		Acceso unaConstruccion = (Acceso) factoryConstrucciones.crearConstruccion(TipoConstruccion.creadorUnidadesBasicas, new Posicion(15,15), unJugador);
+		unTurno.addObserver(unaConstruccion);
+		for (int i=0;i<6;i++) unTurno.avanzarTurno();
 		
-		Unidad unaUnidad = (Unidad) factoryUnidades.crearUnidad(unTipo.terrestre1,unJugador);		
+		Unidad unaUnidad = (Unidad) unaConstruccion.crearUnidad(unJugador,TipoUnidad.terrestre1);
+		
+		unTurno.addObserver(unaUnidad);
+
+		for (int i=0;i<7;i++) unTurno.avanzarTurno();
+		assertTrue(unaUnidad.estaOperativa());
 		assertTrue(unaUnidad instanceof Zealot);
 
 	}
@@ -100,7 +122,22 @@ public class CreacionDeUnidadesTest extends TestBase{
 		unTurno.addObserver(expansor4);
 		for (int i=0;i<6;i++) unTurno.avanzarTurno();
 		
-		Unidad unaUnidad = (Unidad) factoryUnidades.crearUnidad(unTipo.terrestre2,unJugador/*,new DisparoSuperStrategy()*/);
+		Barraca unaBarraca = (Barraca) factoryConstrucciones.crearConstruccion(TipoConstruccion.creadorUnidadesBasicas, new Posicion(15,15), unJugador);
+		
+		unTurno.addObserver(unaBarraca);
+		for (int i=0;i<12;i++) unTurno.avanzarTurno();
+		
+		Fabrica unaFabrica = (Fabrica) factoryConstrucciones.crearConstruccion(TipoConstruccion.creadorUnidadesNivel2, new Posicion(25,15), unJugador);
+		
+		unTurno.addObserver(unaFabrica);
+		for (int i=0;i<12;i++) unTurno.avanzarTurno();
+		
+		Unidad unaUnidad = (Unidad) unaFabrica.crearUnidad(unJugador,TipoUnidad.terrestre2);
+		
+		unTurno.addObserver(unaUnidad);
+		for (int i=0;i<7;i++) unTurno.avanzarTurno();
+		
+		assertTrue(unaUnidad.estaOperativa());
 		assertTrue(unaUnidad instanceof Golliat);
 
 	}
@@ -125,8 +162,28 @@ public class CreacionDeUnidadesTest extends TestBase{
 		unTurno.addObserver(expansor4);
 		for (int i=0;i<6;i++) unTurno.avanzarTurno();
 		
+		Barraca unaBarraca = (Barraca) factoryConstrucciones.crearConstruccion(TipoConstruccion.creadorUnidadesBasicas, new Posicion(15,15), unJugador);
 		
-		Unidad unaUnidad = (Unidad) factoryUnidades.crearUnidad(unTipo.volador1,unJugador/*,new DisparoSuperStrategy()*/);
+		unTurno.addObserver(unaBarraca);
+		for (int i=0;i<12;i++) unTurno.avanzarTurno();
+		
+		Fabrica unaFabrica = (Fabrica) factoryConstrucciones.crearConstruccion(TipoConstruccion.creadorUnidadesNivel2, new Posicion(25,15), unJugador);
+		
+		unTurno.addObserver(unaFabrica);
+		for (int i=0;i<12;i++) unTurno.avanzarTurno();
+		
+		PuertoEstelarTerran unPuerto = (PuertoEstelarTerran) factoryConstrucciones.crearConstruccion(TipoConstruccion.creadorUnidadesEspecialesYVoladoras, new Posicion(25,25), unJugador);
+		
+		unTurno.addObserver(unPuerto);
+		for (int i=0;i<10;i++) unTurno.avanzarTurno();
+		
+		Unidad unaUnidad = (Unidad) unPuerto.crearUnidad(unJugador,TipoUnidad.volador1);
+		
+		unTurno.addObserver(unaUnidad);
+		for (int i=0;i<8;i++) unTurno.avanzarTurno();
+		
+		assertTrue(unaUnidad.estaOperativa());
+		
 		assertTrue(unaUnidad instanceof Espectro);
 
 	}
@@ -149,8 +206,27 @@ public class CreacionDeUnidadesTest extends TestBase{
 		unTurno.addObserver(expansor3);
 		unTurno.addObserver(expansor4);
 		for (int i=0;i<6;i++) unTurno.avanzarTurno();
+		Barraca unaBarraca = (Barraca) factoryConstrucciones.crearConstruccion(TipoConstruccion.creadorUnidadesBasicas, new Posicion(15,15), unJugador);
 		
-		Unidad unaUnidad = (Unidad) factoryUnidades.crearUnidad(unTipo.especial1,unJugador);
+		unTurno.addObserver(unaBarraca);
+		for (int i=0;i<12;i++) unTurno.avanzarTurno();
+		
+		Fabrica unaFabrica = (Fabrica) factoryConstrucciones.crearConstruccion(TipoConstruccion.creadorUnidadesNivel2, new Posicion(25,15), unJugador);
+		
+		unTurno.addObserver(unaFabrica);
+		for (int i=0;i<12;i++) unTurno.avanzarTurno();
+		
+		PuertoEstelarTerran unPuerto = (PuertoEstelarTerran) factoryConstrucciones.crearConstruccion(TipoConstruccion.creadorUnidadesEspecialesYVoladoras, new Posicion(25,25), unJugador);
+		
+		unTurno.addObserver(unPuerto);
+		for (int i=0;i<10;i++) unTurno.avanzarTurno();
+		
+		Unidad unaUnidad = (Unidad) unPuerto.crearUnidad(unJugador,TipoUnidad.especial1);
+		
+		unTurno.addObserver(unaUnidad);
+		for (int i=0;i<10;i++) unTurno.avanzarTurno();
+		
+		assertTrue(unaUnidad.estaOperativa());
 		assertTrue(unaUnidad instanceof NaveCiencia);
 
 	}
@@ -159,7 +235,6 @@ public class CreacionDeUnidadesTest extends TestBase{
 		RazaTerran unaRaza = new RazaTerran(); 
 		TipoUnidad unTipo = null;
 		Jugador unJugador = new Jugador("unNombre",unaRaza,"Azul");
-		AbstractUnidadFactory factoryUnidades = unaRaza.getFactoryUnidades();
 		
 		TipoConstruccion unTipoConstruccion = null;
 		unJugador.dameAlmacenMineral().almacenarRecurso(1000);
@@ -174,7 +249,27 @@ public class CreacionDeUnidadesTest extends TestBase{
 		unTurno.addObserver(expansor4);
 		for (int i=0;i<6;i++) unTurno.avanzarTurno();
 		
-		Unidad unaUnidad = (Unidad) factoryUnidades.crearUnidad(unTipo.volador2,unJugador/*,new DisparoSuperStrategy()*/);
+		Barraca unaBarraca = (Barraca) factoryConstrucciones.crearConstruccion(TipoConstruccion.creadorUnidadesBasicas, new Posicion(15,15), unJugador);
+		
+		unTurno.addObserver(unaBarraca);
+		for (int i=0;i<12;i++) unTurno.avanzarTurno();
+		
+		Fabrica unaFabrica = (Fabrica) factoryConstrucciones.crearConstruccion(TipoConstruccion.creadorUnidadesNivel2, new Posicion(25,15), unJugador);
+		
+		unTurno.addObserver(unaFabrica);
+		for (int i=0;i<12;i++) unTurno.avanzarTurno();
+		
+		PuertoEstelarTerran unPuerto = (PuertoEstelarTerran) factoryConstrucciones.crearConstruccion(TipoConstruccion.creadorUnidadesEspecialesYVoladoras, new Posicion(25,25), unJugador);
+		
+		unTurno.addObserver(unPuerto);
+		for (int i=0;i<10;i++) unTurno.avanzarTurno();
+		
+		Unidad unaUnidad = (Unidad) unPuerto.crearUnidad(unJugador,TipoUnidad.volador2);
+		
+		unTurno.addObserver(unaUnidad);
+		for (int i=0;i<8;i++) unTurno.avanzarTurno();
+		
+		assertTrue(unaUnidad.estaOperativa());
 		assertTrue(unaUnidad instanceof NaveTransporte);
 	}
 
@@ -188,10 +283,18 @@ public class CreacionDeUnidadesTest extends TestBase{
 		RazaTerran unaRaza = new RazaTerran(); 
 		TipoUnidad unTipo = null;
 		Jugador unJugador = new Jugador("unNombre",unaRaza,"Azul");
-		AbstractUnidadFactory factoryUnidades = unaRaza.getFactoryUnidades();
+		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
+		Turno unTurno = new Turno(unJugador,otroJugador);
+		AbstractConstruccionFactory factoryConstrucciones = unaRaza.getFactoryConstrucciones();
+		
+		Barraca unaBarraca = (Barraca) factoryConstrucciones.crearConstruccion(TipoConstruccion.creadorUnidadesBasicas, new Posicion(15,15), unJugador);
+		
+		unTurno.addObserver(unaBarraca);
+		for (int i=0;i<6;i++) unTurno.avanzarTurno();
+		
 
 		try {
-			Unidad unaUnidad = (Unidad) factoryUnidades.crearUnidad(unTipo.volador2,unJugador);
+			Unidad unaUnidad = (Unidad) unaBarraca.crearUnidad(unJugador,TipoUnidad.terrestre1);
 		} catch (CapacidadDePoblacionMaximaSuperada e) {
 			return;
 		}
@@ -199,11 +302,11 @@ public class CreacionDeUnidadesTest extends TestBase{
 	}
 	
 	public void testCrearUnaUnidadConPoblacionDisponible() throws NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, JugadorConNombreDemasiadoCortoException, NoHaySuficientesRecursos, CapacidadDePoblacionMaximaSuperada, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoSePudoConstruirException{	
-		RazaTerran unaRaza = new RazaTerran(); 
+		AbstractUnidadFactory factoryUnidades = getFactoryUnidades();
 		TipoUnidad unTipo = null;
-		Jugador unJugador = new Jugador("unNombre",unaRaza,"Azul");
-		AbstractUnidadFactory factoryUnidades = unaRaza.getFactoryUnidades();
+		Jugador unJugador = new Jugador("unNombre",new RazaProtoss(),"Azul");
 		
+		RazaProtoss unaRaza = new RazaProtoss(); 
 		TipoConstruccion unTipoConstruccion = null;
 		unJugador.dameAlmacenMineral().almacenarRecurso(1000);
 		AbstractConstruccionFactory factoryConstrucciones = unaRaza.getFactoryConstrucciones();
@@ -216,9 +319,19 @@ public class CreacionDeUnidadesTest extends TestBase{
 		unTurno.addObserver(expansor3);
 		unTurno.addObserver(expansor4);
 		for (int i=0;i<6;i++) unTurno.avanzarTurno();
+		Acceso unaConstruccion = (Acceso) factoryConstrucciones.crearConstruccion(TipoConstruccion.creadorUnidadesBasicas, new Posicion(15,15), unJugador);
 		
-		Unidad unaUnidad = (Unidad) factoryUnidades.crearUnidad(unTipo.volador2,unJugador);
-		assertTrue(unaUnidad instanceof NaveTransporte);
+		unTurno.addObserver(unaConstruccion);
+		
+		for (int i=0;i<6;i++) unTurno.avanzarTurno();
+		
+		Unidad unaUnidad = (Unidad) unaConstruccion.crearUnidad(unJugador,TipoUnidad.terrestre2);
+		
+		unTurno.addObserver(unaUnidad);
+
+		for (int i=0;i<8;i++) unTurno.avanzarTurno();
+		assertTrue(unaUnidad.estaOperativa());
+		assertTrue(unaUnidad instanceof Dragon);
 	}
 	/*
 	public void testCrecimientoYDecrecimientoDePoblacion() throws NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, JugadorConNombreDemasiadoCortoException, NoHaySuficientesRecursos, CapacidadDePoblacionMaximaSuperada, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoSePudoConstruirException{	

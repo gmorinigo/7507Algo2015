@@ -3,6 +3,7 @@ package fiuba.algo3.algocraft.modelo.unidades.protoss;
 import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.construciones.Construccion;
 import fiuba.algo3.algocraft.modelo.mapa.Celda;
+import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.unidades.Salud;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 import fiuba.algo3.algocraft.modelo.unidades.UnidadProtoss;
@@ -12,6 +13,12 @@ public class AltoTemplario extends UnidadProtoss {
 	public AltoTemplario(Jugador unJugador) {
 		super(unJugador);
 		this.tamanioTransporte = 2;
+	}
+	
+	public AltoTemplario(Jugador unJugador,Posicion posicionConstruccion) {
+		super(unJugador);
+		this.tamanioTransporte = 2;
+		this.posicionDeConstruccion = posicionConstruccion;
 	}
 	
 	

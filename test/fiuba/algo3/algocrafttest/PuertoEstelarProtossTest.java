@@ -97,13 +97,12 @@ public class PuertoEstelarProtossTest extends TestBase{
 		Jugador unJugador = new Jugador("unNombre",unaRaza,"Azul");
 		
 		AbstractConstruccionFactory factoryConstrucciones = unaRaza.getFactoryConstrucciones();
-		Posicion unaPosicion = new Posicion(12,3);
-		Posicion otraPosicion = new Posicion(15,7);
+		Posicion unaPosicion = new Posicion(12,30);
+		Posicion otraPosicion = new Posicion(15,15);
 		
 		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
 		Turno unTurno = new Turno(unJugador,otroJugador);
 		
-		// Agrego las construcciones necesarias para crear la construccion actual
 		Construccion unAcceso = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesBasicas, unaPosicion, unJugador);
 		unTurno.addObserver(unAcceso);
 		for (int i = 0; i < 8 ;i++) unTurno.avanzarTurno();
@@ -144,8 +143,8 @@ public class PuertoEstelarProtossTest extends TestBase{
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
-		assertTrue(otraUnidad.estaOperativa());
-		
+    	assertTrue(otraUnidad.estaOperativa());
+    	
 		unTurno.avanzarTurno();
 		assertTrue(unaUnidad.estaOperativa());
 	}

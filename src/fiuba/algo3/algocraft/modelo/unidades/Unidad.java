@@ -3,6 +3,8 @@ package fiuba.algo3.algocraft.modelo.unidades;
 import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.construciones.Construccion;
 import fiuba.algo3.algocraft.modelo.mapa.Celda;
+import fiuba.algo3.algocraft.modelo.mapa.Mapa;
+import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.turnos.Turno;
 import fiuba.algo3.algocraft.modelo.turnos.TurnoObserver;
 import fiuba.algo3.algocraft.modelo.unidades.ataques.AbstractDisparo;
@@ -19,6 +21,7 @@ abstract public class Unidad implements TurnoObserver{
 	protected Celda celda;
 	protected AbstractDisparo disparo;
 	protected Jugador jugador;
+	protected Posicion posicionDeConstruccion;
 	
 	public int getTamanioTransporte(){
 		return this.tamanioTransporte;
@@ -40,20 +43,23 @@ abstract public class Unidad implements TurnoObserver{
 
 	public void finDeTurno(Turno turno) {
 		this.estado.avanzarEnElTurno();	
-		this.estado = new UnidadEstadoViviendo(this);
+//		this.estado = new UnidadEstadoViviendo(this);
 	}
 	
 	public void finalizarNacimiento() {
 		this.estado = new UnidadEstadoViviendo(this);
-
-		// TODO Aca va la logica para posicionar a la unidad en el mapa
-		/*
-		boolean unidadAgregadaAlMapa = false;
+		Posicion posicionOcupada = posicionDeConstruccion; 
+		Mapa mapa = Mapa.getInstance();
+		Celda unaCelda = mapa.dameCelda(posicionOcupada);
+		Posicion posNueva;
 		
-		while (!unidadAgregadaAlMapa){
-						
+		while (unaCelda.celdaOcupada()){
+	        posNueva = new Posicion(posicionOcupada.dameFila(),posicionOcupada.dameColumna()-1);
+			unaCelda = mapa.dameCelda(posNueva);
+			posicionOcupada = posNueva;
+			System.out.println("buscando celda libre");
 		}
-		 */
+		mapa.agregarUnidad(unaCelda.obtenerPosicion(), this);
 	}
 	
 	public boolean estaOperativa() {

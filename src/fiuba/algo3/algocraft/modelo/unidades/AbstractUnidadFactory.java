@@ -7,11 +7,13 @@ import fiuba.algo3.algocraft.modelo.excepciones.CantidadDeGasInsuficienteExcepti
 import fiuba.algo3.algocraft.modelo.excepciones.CantidadDeMineralInsuficienteException;
 import fiuba.algo3.algocraft.modelo.excepciones.CapacidadDePoblacionMaximaSuperada;
 import fiuba.algo3.algocraft.modelo.excepciones.NoHaySuficientesRecursos;
+import fiuba.algo3.algocraft.modelo.mapa.Posicion;
+import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory.TipoUnidad;
 
 public abstract class AbstractUnidadFactory {
 
 	public enum TipoUnidad{terrestre1,terrestre2,volador1,volador2,especial1}
-	public abstract Unidad crearUnidad(TipoUnidad tipo, Jugador unJugador) throws NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, NoHaySuficientesRecursos, CapacidadDePoblacionMaximaSuperada;
+	public abstract Unidad crearUnidad(TipoUnidad tipo, Jugador unJugador,Posicion posicionConstruccion) throws NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, NoHaySuficientesRecursos, CapacidadDePoblacionMaximaSuperada;
 		
 	protected void verificarRecursosParaPoderCrear(TipoUnidad tipo, Jugador unJugador) 
 	throws CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException {
@@ -37,4 +39,5 @@ public abstract class AbstractUnidadFactory {
 	protected abstract int dameCostoGas(TipoUnidad tipo);
 	
 	protected abstract int obtenerOcupacionSuministro(TipoUnidad tipo);
+
 }

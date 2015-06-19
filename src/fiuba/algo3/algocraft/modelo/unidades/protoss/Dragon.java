@@ -2,16 +2,22 @@ package fiuba.algo3.algocraft.modelo.unidades.protoss;
 
 import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.construciones.Construccion;
+import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.unidades.Salud;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 import fiuba.algo3.algocraft.modelo.unidades.UnidadProtoss;
 
 public class Dragon extends UnidadProtoss {
-
+	
 	public Dragon(Jugador unJugador) {
 		super(unJugador);
-
 		this.tamanioTransporte = 4;
+	}
+
+	public Dragon(Jugador unJugador,Posicion posicionConstruccion) {
+		super(unJugador);
+		this.tamanioTransporte = 4;
+		this.posicionDeConstruccion = posicionConstruccion;
 	}
 	
 	protected Salud saludInicial() {

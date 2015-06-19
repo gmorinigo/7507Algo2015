@@ -2,6 +2,7 @@ package fiuba.algo3.algocraft.modelo.unidades.protoss;
 
 import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.construciones.Construccion;
+import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.unidades.Salud;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 import fiuba.algo3.algocraft.modelo.unidades.UnidadProtoss;
@@ -11,6 +12,12 @@ public class Zealot extends UnidadProtoss{
 	public Zealot(Jugador unJugador) {
 		super(unJugador);
 		this.tamanioTransporte = 2;
+	}
+
+	public Zealot(Jugador unJugador,Posicion posicionConstruccion) {
+		super(unJugador);
+		this.tamanioTransporte = 2;
+		this.posicionDeConstruccion = posicionConstruccion;
 	}
 	
 	protected Salud saludInicial() {

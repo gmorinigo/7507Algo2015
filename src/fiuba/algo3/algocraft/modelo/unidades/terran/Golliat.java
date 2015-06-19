@@ -2,6 +2,7 @@ package fiuba.algo3.algocraft.modelo.unidades.terran;
 
 import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.construciones.Construccion;
+import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.unidades.Salud;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 import fiuba.algo3.algocraft.modelo.unidades.UnidadTerran;
@@ -15,6 +16,12 @@ public class Golliat extends UnidadTerran {
 		this.tamanioTransporte = 2;
 		//this.disparoStrategy=disparoStrategy;
 		//this.disparoStrategy.setUnidad(this);
+	}
+	
+	public Golliat(Jugador unJugador,Posicion posicionConstruccion) {
+		super(unJugador);
+		this.tamanioTransporte = 2;
+		posicionDeConstruccion = posicionConstruccion;
 	}
 	
 	@Override

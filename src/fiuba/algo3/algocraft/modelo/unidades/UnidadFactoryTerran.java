@@ -7,6 +7,7 @@ import fiuba.algo3.algocraft.modelo.excepciones.CantidadDeGasInsuficienteExcepti
 import fiuba.algo3.algocraft.modelo.excepciones.CantidadDeMineralInsuficienteException;
 import fiuba.algo3.algocraft.modelo.excepciones.CapacidadDePoblacionMaximaSuperada;
 import fiuba.algo3.algocraft.modelo.excepciones.NoHaySuficientesRecursos;
+import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.unidades.terran.Espectro;
 import fiuba.algo3.algocraft.modelo.unidades.terran.Golliat;
 import fiuba.algo3.algocraft.modelo.unidades.terran.Marine;
@@ -15,7 +16,7 @@ import fiuba.algo3.algocraft.modelo.unidades.terran.NaveTransporteTerran;
 
 public class UnidadFactoryTerran extends AbstractUnidadFactory {
 	
-	public Unidad crearUnidad(TipoUnidad tipo, Jugador unJugador) throws NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, NoHaySuficientesRecursos, CapacidadDePoblacionMaximaSuperada{
+	public Unidad crearUnidad(TipoUnidad tipo, Jugador unJugador,Posicion posicionConstruccion) throws NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, NoHaySuficientesRecursos, CapacidadDePoblacionMaximaSuperada{
 		this.verificarRecursosParaPoderCrear(tipo, unJugador);
 		this.verificarPoblacionParaCrearUnidad(tipo, unJugador);
 
@@ -27,19 +28,19 @@ public class UnidadFactoryTerran extends AbstractUnidadFactory {
 		
 		switch(tipo){
 		case terrestre1: 
-			unaUnidad = new Marine(unJugador);
+			unaUnidad = new Marine(unJugador,posicionConstruccion);
 			break;
 		case terrestre2:
-			unaUnidad = new Golliat(unJugador);
+			unaUnidad = new Golliat(unJugador,posicionConstruccion);
 			break;
 		case volador1: 
-			unaUnidad = new Espectro(unJugador);
+			unaUnidad = new Espectro(unJugador,posicionConstruccion);
 			break;
 		case volador2: 
-			unaUnidad = new NaveTransporteTerran(unJugador);
+			unaUnidad = new NaveTransporteTerran(unJugador,posicionConstruccion);
 			break;
 		case especial1:	
-			unaUnidad = new NaveCiencia(unJugador);
+			unaUnidad = new NaveCiencia(unJugador,posicionConstruccion);
 			break;
 		default:throw new NoSuchObjectException("Objeto Sin Tipo");
 		}

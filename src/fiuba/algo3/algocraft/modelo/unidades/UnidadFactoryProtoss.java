@@ -7,6 +7,7 @@ import fiuba.algo3.algocraft.modelo.excepciones.CantidadDeGasInsuficienteExcepti
 import fiuba.algo3.algocraft.modelo.excepciones.CantidadDeMineralInsuficienteException;
 import fiuba.algo3.algocraft.modelo.excepciones.CapacidadDePoblacionMaximaSuperada;
 import fiuba.algo3.algocraft.modelo.excepciones.NoHaySuficientesRecursos;
+import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.unidades.protoss.AltoTemplario;
 import fiuba.algo3.algocraft.modelo.unidades.protoss.Dragon;
 import fiuba.algo3.algocraft.modelo.unidades.protoss.NaveTransporteProtoss;
@@ -15,7 +16,7 @@ import fiuba.algo3.algocraft.modelo.unidades.protoss.Zealot;
 
 public class UnidadFactoryProtoss extends AbstractUnidadFactory {
 	
-	public Unidad crearUnidad(TipoUnidad tipo, Jugador unJugador) throws NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, NoHaySuficientesRecursos, CapacidadDePoblacionMaximaSuperada{
+	public Unidad crearUnidad(TipoUnidad tipo, Jugador unJugador,Posicion posicionConstruccion) throws NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, NoHaySuficientesRecursos, CapacidadDePoblacionMaximaSuperada{
 		this.verificarRecursosParaPoderCrear(tipo, unJugador);
 		this.verificarPoblacionParaCrearUnidad(tipo, unJugador);
 		
@@ -26,19 +27,19 @@ public class UnidadFactoryProtoss extends AbstractUnidadFactory {
 		
 		switch(tipo){
 		case terrestre1: 
-			unaUnidad = new Zealot(unJugador);
+			unaUnidad = new Zealot(unJugador,posicionConstruccion);
 			break;
 		case terrestre2: 
-			unaUnidad = new Dragon(unJugador);
+			unaUnidad = new Dragon(unJugador,posicionConstruccion);
 			break;
 		case volador1: 
-			unaUnidad = new Scout(unJugador);
+			unaUnidad = new Scout(unJugador,posicionConstruccion);
 			break;
 		case volador2: 
-			unaUnidad = new NaveTransporteProtoss(unJugador);
+			unaUnidad = new NaveTransporteProtoss(unJugador,posicionConstruccion);
 			break;
 		case especial1:	
-			unaUnidad =  new AltoTemplario(unJugador);
+			unaUnidad =  new AltoTemplario(unJugador,posicionConstruccion);
 			break;
 		default:throw new NoSuchObjectException("Objeto Sin Tipo");
 		}

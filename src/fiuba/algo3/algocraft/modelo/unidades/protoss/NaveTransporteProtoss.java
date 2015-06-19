@@ -3,15 +3,21 @@ package fiuba.algo3.algocraft.modelo.unidades.protoss;
 import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.construciones.Construccion;
 import fiuba.algo3.algocraft.modelo.mapa.Celda;
+import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.unidades.NaveTransporte;
 import fiuba.algo3.algocraft.modelo.unidades.Salud;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 
 
 public class NaveTransporteProtoss extends NaveTransporte {
-
+	
 	public NaveTransporteProtoss(Jugador unJugador) {
 		super(unJugador);
+	}
+
+	public NaveTransporteProtoss(Jugador unJugador,Posicion posicionConstruccion) {
+		super(unJugador);
+		this.posicionDeConstruccion = posicionConstruccion;
 	}
 
 	public boolean esUnidadAerea(){

@@ -7,6 +7,7 @@ import fiuba.algo3.algocraft.modelo.RazaProtoss;
 import fiuba.algo3.algocraft.modelo.construciones.AbstractConstruccionFactory;
 import fiuba.algo3.algocraft.modelo.construciones.Construccion;
 import fiuba.algo3.algocraft.modelo.construciones.AbstractConstruccionFactory.TipoConstruccion;
+import fiuba.algo3.algocraft.modelo.construciones.protoss.Acceso;
 import fiuba.algo3.algocraft.modelo.excepciones.CantidadDeGasInsuficienteException;
 import fiuba.algo3.algocraft.modelo.excepciones.CantidadDeMineralInsuficienteException;
 import fiuba.algo3.algocraft.modelo.excepciones.CapacidadDePoblacionMaximaSuperada;
@@ -31,7 +32,6 @@ public class MovimientoUnidadTerrestrePorEspacioAereoTest extends TestBase {
         Mapa mapa = Mapa.getInstance();
 		RazaProtoss unaRaza = new RazaProtoss(); 
 		Jugador unJugador = new Jugador("unNombre",unaRaza,"Azul");
-		AbstractUnidadFactory factoryUnidades = unaRaza.getFactoryUnidades();
 		
 		TipoConstruccion unTipoConstruccion = null;
 		unJugador.dameAlmacenMineral().almacenarRecurso(1000);
@@ -46,14 +46,18 @@ public class MovimientoUnidadTerrestrePorEspacioAereoTest extends TestBase {
 		unTurno.addObserver(expansor4);
 		for (int i=0;i<6;i++) unTurno.avanzarTurno();
 		
-		Unidad unaUnidad = (Unidad) factoryUnidades.crearUnidad(TipoUnidad.terrestre1,unJugador);
+		Acceso unaConstruccion = (Acceso) factoryConstrucciones.crearConstruccion(TipoConstruccion.creadorUnidadesBasicas, new Posicion(15,15), unJugador);
+		unTurno.addObserver(unaConstruccion);
+		for (int i=0;i<6;i++) unTurno.avanzarTurno();
 		
-		unaUnidad.finalizarNacimiento();
+		Unidad unaUnidad = (Unidad) unaConstruccion.crearUnidad(unJugador,TipoUnidad.terrestre1);
+		
+		unTurno.addObserver(unaUnidad);
 
-		assertTrue(mapa.agregarUnidad(new Posicion(50,79), unaUnidad));		
+		for (int i=0;i<7;i++) unTurno.avanzarTurno();
 		
-        unaUnidad.mover(TipoDireccion.Derecha);
-		assertNotSame(unaUnidad.dameCelda(),mapa.dameCelda(new Posicion(50,80)));
-        assertEquals(unaUnidad.dameCelda(),mapa.dameCelda(new Posicion(50,79)));
+        unaUnidad.mover(TipoDireccion.Izquierda);
+		assertNotSame(unaUnidad.dameCelda(),mapa.dameCelda(new Posicion(15,14)));
+        assertEquals(unaUnidad.dameCelda(),mapa.dameCelda(new Posicion(15,13)));
     }
 }

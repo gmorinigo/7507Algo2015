@@ -32,7 +32,7 @@ public class ArchivosTemplarios extends Construccion{
 	public Unidad crearUnidad(Jugador unJugador) throws JugadorConNombreDemasiadoCortoException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, NoHaySuficientesRecursos, CapacidadDePoblacionMaximaSuperada {
 		
 		AbstractUnidadFactory factoryUnidades = this.jugador.dameRaza().getFactoryUnidades();
-		Unidad unaUnidad = (Unidad) factoryUnidades.crearUnidad(TipoUnidad.especial1, unJugador);
+		Unidad unaUnidad = (Unidad) factoryUnidades.crearUnidad(TipoUnidad.especial1, unJugador,this.damePosicionCeldaSupIzquierda());
 		
 		return unaUnidad;
 	}

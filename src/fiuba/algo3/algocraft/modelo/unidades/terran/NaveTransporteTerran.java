@@ -3,6 +3,7 @@ package fiuba.algo3.algocraft.modelo.unidades.terran;
 import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.construciones.Construccion;
 import fiuba.algo3.algocraft.modelo.mapa.Celda;
+import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.unidades.NaveTransporte;
 import fiuba.algo3.algocraft.modelo.unidades.Salud;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
@@ -13,6 +14,11 @@ public class NaveTransporteTerran extends NaveTransporte {
 		super(unJugador);
 	}
 
+	public NaveTransporteTerran(Jugador unJugador,Posicion posicionConstruccion) {
+		super(unJugador);
+		posicionDeConstruccion = posicionConstruccion;
+	}
+	
 	public boolean esUnidadAerea(){
 		return true;
 	}
