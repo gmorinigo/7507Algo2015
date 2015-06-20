@@ -23,7 +23,6 @@ import fiuba.algo3.algocraft.modelo.excepciones.NoSePudoConstruirException;
 import fiuba.algo3.algocraft.modelo.mapa.Mapa;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.turnos.Turno;
-import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory.TipoUnidad;
 import fiuba.algo3.algocraft.modelo.unidades.movimientos.Movimiento.TipoDireccion;
@@ -65,19 +64,21 @@ public class DiagonalAbajoDerechaTest extends TestBase{
 
 		assertEquals(mapa.dameCelda(new Posicion(15,14)),unaUnidad.dameCelda());
 		
-        unaUnidad.mover(TipoDireccion.DiagonalAbajoDerecha);
-
-		
-		assertNotSame(unaUnidad.dameCelda(),mapa.dameCelda(new Posicion(15,14)));
+        unaUnidad.mover(TipoDireccion.Abajo);
+        unTurno.avanzarTurno();
         assertEquals(unaUnidad.dameCelda(),mapa.dameCelda(new Posicion(16,14)));
+
+        unaUnidad.mover(TipoDireccion.DiagonalAbajoDerecha);
+		
+        assertEquals(unaUnidad.dameCelda(),mapa.dameCelda(new Posicion(17,15)));
         
         unaUnidad.mover(TipoDireccion.DiagonalAbajoDerecha);
         unaUnidad.mover(TipoDireccion.DiagonalAbajoDerecha);
         unaUnidad.mover(TipoDireccion.DiagonalAbajoDerecha);
         
         //La unidad ya realizo la accion del turno
-        assertNotSame(unaUnidad.dameCelda(),mapa.dameCelda(new Posicion(15,14)));
-        assertEquals(unaUnidad.dameCelda(),mapa.dameCelda(new Posicion(16,14)));
+        assertNotSame(unaUnidad.dameCelda(),mapa.dameCelda(new Posicion(16,14)));
+        assertEquals(unaUnidad.dameCelda(),mapa.dameCelda(new Posicion(17,15)));
     }
    
     public void testNosePuedeMoverUnaUnidadAUnaPosicionYaOcupada() throws JugadorConNombreDemasiadoCortoException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, NoHaySuficientesRecursos, CapacidadDePoblacionMaximaSuperada, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoSePudoConstruirException{
@@ -118,12 +119,9 @@ public class DiagonalAbajoDerechaTest extends TestBase{
         assertEquals(unaUnidad.dameCelda(),mapa.dameCelda(new Posicion(15,14)));
         assertEquals(otraUnidad.dameCelda(),mapa.dameCelda(new Posicion(17,14)));
 		
-		assertTrue(unaUnidad.mover(TipoDireccion.DiagonalAbajoDerecha));
+		assertFalse(unaUnidad.mover(TipoDireccion.DiagonalAbajoDerecha));
 		
-        assertEquals(unaUnidad.dameCelda(),mapa.dameCelda(new Posicion(16,14)));
-        assertNotSame(otraUnidad.dameCelda(),mapa.dameCelda(new Posicion(15,14)));
-        
-        assertFalse(unaUnidad.mover(TipoDireccion.DiagonalAbajoDerecha));
+        assertEquals(unaUnidad.dameCelda(),mapa.dameCelda(new Posicion(15,14)));
     }
   /*
     public void testNosePuedeMoverUnaUnidadAUnaPosicionYaOcupadaPorOtroJugador() throws JugadorConNombreDemasiadoCortoException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, NoHaySuficientesRecursos, CapacidadDePoblacionMaximaSuperada, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoSePudoConstruirException{
@@ -180,7 +178,8 @@ public class DiagonalAbajoDerechaTest extends TestBase{
     }*/
     
     public void testNoSePuedeMoverUnaUnidadAUnaPosicionDondeHayUnaConstruccion() throws JugadorConNombreDemasiadoCortoException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, NoHaySuficientesRecursos, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException, ConstruccionNoPermitidaPorSalirseDelMapaException, CapacidadDePoblacionMaximaSuperada, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoSePudoConstruirException{
-        Mapa mapa = Mapa.getInstance();
+        @SuppressWarnings("unused")
+		Mapa mapa = Mapa.getInstance();
 		RazaProtoss unaRaza = new RazaProtoss(); 
 		Jugador unJugador = new Jugador("unNombre",unaRaza,"Azul");
 		

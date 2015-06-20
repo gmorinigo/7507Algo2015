@@ -6,12 +6,17 @@ import fiuba.algo3.algocraft.modelo.mapa.Celda;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.unidades.Salud;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
+import fiuba.algo3.algocraft.modelo.unidades.UnidadEstadoViviendo;
 import fiuba.algo3.algocraft.modelo.unidades.UnidadProtoss;
 
 public class AltoTemplario extends UnidadProtoss {
+    @SuppressWarnings("unused")
+	private int energia;    
 
+	
 	public AltoTemplario(Jugador unJugador) {
 		super(unJugador);
+		this.energia =  50;
 		this.tamanioTransporte = 2;
 	}
 	
@@ -26,6 +31,16 @@ public class AltoTemplario extends UnidadProtoss {
 		return new SaludProtoss(40,40);
 	}
 	
+	protected void vivir() {
+		this.salud.regenerarEscudo();
+		this.estado = new UnidadEstadoViviendo(this);
+		this.acumularEnergia();		
+	}
+	
+	public void acumularEnergia(){
+		this.energia += 10; 
+	}
+
 	public int turnosNecesariosParaCreacion() {
 		return 7;
 	}

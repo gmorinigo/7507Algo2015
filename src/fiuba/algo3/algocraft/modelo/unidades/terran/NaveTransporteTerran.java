@@ -27,15 +27,8 @@ public class NaveTransporteTerran extends NaveTransporte {
 		return new SaludTerran(150);
 	}
 
-	@Override
 	public int turnosNecesariosParaCreacion() {
 		return 7;
-	}
-
-	@Override
-	protected void vivir() {
-		// TODO Auto-generated method stub
-		
 	}
 	
 	public boolean atacar(Celda unaCelda) {

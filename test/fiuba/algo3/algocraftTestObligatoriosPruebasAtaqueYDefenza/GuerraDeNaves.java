@@ -17,22 +17,16 @@ import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionInvalidaPrimeroDebeC
 import fiuba.algo3.algocraft.modelo.excepciones.JugadorConNombreDemasiadoCortoException;
 import fiuba.algo3.algocraft.modelo.excepciones.NoHaySuficientesRecursos;
 import fiuba.algo3.algocraft.modelo.excepciones.NoSePudoConstruirException;
-import fiuba.algo3.algocraft.modelo.excepciones.NoSePuedeRealizarAccionException;
-import fiuba.algo3.algocraft.modelo.mapa.Mapa;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.turnos.Turno;
-import fiuba.algo3.algocraft.modelo.unidades.Unidad;
-import fiuba.algo3.algocraft.modelo.unidades.UnidadProtoss;
-import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory.TipoUnidad;
-import fiuba.algo3.algocraft.modelo.unidades.UnidadTerran;
 import fiuba.algo3.algocrafttest.TestBase;
 
-public class GuerraDeNaves extends TestBase{
 
-	@SuppressWarnings("null")
+@SuppressWarnings("static-access")
+public class GuerraDeNaves extends TestBase{
 	public void testSeSituaUnidadProtossZealotYSeLeAplicaMisilEMP() throws JugadorConNombreDemasiadoCortoException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, NoHaySuficientesRecursos, CapacidadDePoblacionMaximaSuperada, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoSePudoConstruirException{
 		
-			Mapa mapa = Mapa.getInstance();
+			//Mapa mapa = Mapa.getInstance();
 		
 			RazaProtoss unaRaza = new RazaProtoss(); 
 			TipoConstruccion unTipo = null;

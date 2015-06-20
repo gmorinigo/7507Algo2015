@@ -22,10 +22,8 @@ import fiuba.algo3.algocraft.modelo.excepciones.NoHaySuficientesRecursos;
 import fiuba.algo3.algocraft.modelo.excepciones.NoSePudoConstruirException;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.turnos.Turno;
-import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory;
 import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory.TipoUnidad;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
-import fiuba.algo3.algocraft.modelo.unidades.UnidadFactoryTerran;
 import fiuba.algo3.algocraft.modelo.unidades.terran.NaveCiencia;
 import fiuba.algo3.algocrafttest.TestBase;
 
@@ -34,9 +32,9 @@ public class NaveCienciaTest extends TestBase {
 
 	public void testCrearNaveCiencia() throws NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, NoHaySuficientesRecursos, JugadorConNombreDemasiadoCortoException, CapacidadDePoblacionMaximaSuperada, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoSePudoConstruirException {
 		RazaTerran unaRaza = new RazaTerran(); 
-		TipoUnidad unTipo = null;
+		//TipoUnidad unTipo = null;
 		Jugador unJugador = new Jugador("unNombre",unaRaza,"Azul");
-		AbstractUnidadFactory factoryUnidades = unaRaza.getFactoryUnidades();
+		//AbstractUnidadFactory factoryUnidades = unaRaza.getFactoryUnidades();
 
 		TipoConstruccion unTipoConstruccion = null;
 		unJugador.dameAlmacenMineral().almacenarRecurso(1000);

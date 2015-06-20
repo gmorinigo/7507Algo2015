@@ -36,12 +36,6 @@ public class Golliat extends UnidadTerran {
 	public int DanioAtaque(Construccion construccion) {
 		return 6;
 	}
-	
-	@Override
-	protected void vivir() {
-		// TODO Auto-generated method stub
-		
-	}
 
 	public int DanioAtaque(Unidad unaUnidadAtacada) {
 		if (unaUnidadAtacada.esUnidadAerea()){

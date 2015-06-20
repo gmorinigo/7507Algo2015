@@ -39,8 +39,8 @@ import fiuba.algo3.algocrafttest.TestBase;
 public class CreacionDeUnidadesTest extends TestBase{
 	
 	public void testCrearUnidadDragon() throws NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, JugadorConNombreDemasiadoCortoException, NoHaySuficientesRecursos, CapacidadDePoblacionMaximaSuperada, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoSePudoConstruirException{	
-		AbstractUnidadFactory factoryUnidades = getFactoryUnidades();
-		TipoUnidad unTipo = null;
+		//AbstractUnidadFactory factoryUnidades = getFactoryUnidades();
+		//TipoUnidad unTipo = null;
 		Jugador unJugador = new Jugador("unNombre",new RazaProtoss(),"Azul");
 		
 		RazaProtoss unaRaza = new RazaProtoss(); 
@@ -73,9 +73,9 @@ public class CreacionDeUnidadesTest extends TestBase{
 	
 	public void testCrearUnidadZealot() throws NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, JugadorConNombreDemasiadoCortoException, NoHaySuficientesRecursos, CapacidadDePoblacionMaximaSuperada, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoSePudoConstruirException{	
 		RazaProtoss unaRaza = new RazaProtoss(); 
-		TipoUnidad unTipo = null;
+		//TipoUnidad unTipo = null;
 		Jugador unJugador = new Jugador("unNombre",unaRaza,"Azul");
-		AbstractUnidadFactory factoryUnidades = unaRaza.getFactoryUnidades();
+		//AbstractUnidadFactory factoryUnidades = unaRaza.getFactoryUnidades();
 		
 		TipoConstruccion unTipoConstruccion = null;
 		unJugador.dameAlmacenMineral().almacenarRecurso(1000);
@@ -105,9 +105,9 @@ public class CreacionDeUnidadesTest extends TestBase{
 	
 	public void testCrearUnidadGolliat() throws NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, JugadorConNombreDemasiadoCortoException, NoHaySuficientesRecursos, CapacidadDePoblacionMaximaSuperada, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoSePudoConstruirException{	
 		RazaTerran unaRaza = new RazaTerran(); 
-		TipoUnidad unTipo = null;
+		//TipoUnidad unTipo = null;
 		Jugador unJugador = new Jugador("unNombre",unaRaza,"Azul");
-		AbstractUnidadFactory factoryUnidades = unaRaza.getFactoryUnidades();
+		//AbstractUnidadFactory factoryUnidades = unaRaza.getFactoryUnidades();
 		
 		TipoConstruccion unTipoConstruccion = null;
 		unJugador.dameAlmacenMineral().almacenarRecurso(1000);
@@ -144,9 +144,9 @@ public class CreacionDeUnidadesTest extends TestBase{
 
 	public void testCrearUnidadEspectro() throws NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, NoHaySuficientesRecursos, JugadorConNombreDemasiadoCortoException, CapacidadDePoblacionMaximaSuperada, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoSePudoConstruirException{	
 		RazaTerran unaRaza = new RazaTerran(); 
-		TipoUnidad unTipo = null;
+		//TipoUnidad unTipo = null;
 		Jugador unJugador = new Jugador("unNombre",unaRaza,"Azul");
-		AbstractUnidadFactory factoryUnidades = unaRaza.getFactoryUnidades();
+		//AbstractUnidadFactory factoryUnidades = unaRaza.getFactoryUnidades();
 
 		
 		TipoConstruccion unTipoConstruccion = null;
@@ -190,9 +190,9 @@ public class CreacionDeUnidadesTest extends TestBase{
 
 	public void testCrearUnidadNaveCiencia() throws NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, JugadorConNombreDemasiadoCortoException, NoHaySuficientesRecursos, CapacidadDePoblacionMaximaSuperada, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoSePudoConstruirException{	
 		RazaTerran unaRaza = new RazaTerran(); 
-		TipoUnidad unTipo = null;
+		//TipoUnidad unTipo = null;
 		Jugador unJugador = new Jugador("unNombre",unaRaza,"Azul");
-		AbstractUnidadFactory factoryUnidades = unaRaza.getFactoryUnidades();
+		//AbstractUnidadFactory factoryUnidades = unaRaza.getFactoryUnidades();
 
 		TipoConstruccion unTipoConstruccion = null;
 		unJugador.dameAlmacenMineral().almacenarRecurso(1000);
@@ -233,7 +233,7 @@ public class CreacionDeUnidadesTest extends TestBase{
 	
 	public void testCrearUnidadNaveTransporte() throws NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, JugadorConNombreDemasiadoCortoException, NoHaySuficientesRecursos, CapacidadDePoblacionMaximaSuperada, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoSePudoConstruirException{	
 		RazaTerran unaRaza = new RazaTerran(); 
-		TipoUnidad unTipo = null;
+		//TipoUnidad unTipo = null;
 		Jugador unJugador = new Jugador("unNombre",unaRaza,"Azul");
 		
 		TipoConstruccion unTipoConstruccion = null;
@@ -302,8 +302,8 @@ public class CreacionDeUnidadesTest extends TestBase{
 	}
 	
 	public void testCrearUnaUnidadConPoblacionDisponible() throws NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, JugadorConNombreDemasiadoCortoException, NoHaySuficientesRecursos, CapacidadDePoblacionMaximaSuperada, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoSePudoConstruirException{	
-		AbstractUnidadFactory factoryUnidades = getFactoryUnidades();
-		TipoUnidad unTipo = null;
+		//AbstractUnidadFactory factoryUnidades = getFactoryUnidades();
+		//TipoUnidad unTipo = null;
 		Jugador unJugador = new Jugador("unNombre",new RazaProtoss(),"Azul");
 		
 		RazaProtoss unaRaza = new RazaProtoss(); 

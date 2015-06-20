@@ -29,11 +29,11 @@ import fiuba.algo3.algocraft.modelo.mapa.Mapa;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.turnos.Turno;
 import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory;
-import fiuba.algo3.algocraft.modelo.unidades.NaveTransporte;
+//import fiuba.algo3.algocraft.modelo.unidades.NaveTransporte;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 import fiuba.algo3.algocraft.modelo.unidades.UnidadFactoryTerran;
 import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory.TipoUnidad;
-import fiuba.algo3.algocraft.modelo.unidades.movimientos.Movimiento.TipoDireccion;
+//import fiuba.algo3.algocraft.modelo.unidades.movimientos.Movimiento.TipoDireccion;
 import fiuba.algo3.algocrafttest.TestBase;
 
 @SuppressWarnings("static-access")
@@ -237,7 +237,7 @@ public class MapaTest extends TestBase {
 	
 	public void testAgregarUnaNaveDeTransporteAlMapaCargarleUnaUnidadPasarPorElEspacioYDejarlaDelOtroLado() throws JugadorConNombreDemasiadoCortoException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, NoHaySuficientesRecursos, NoSuchObjectException, CapacidadDePoblacionMaximaSuperada, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoSePudoConstruirException{
 		RazaTerran unaRaza = new RazaTerran(); 
-		TipoUnidad unTipo = null;
+		//TipoUnidad unTipo = null;
 		Jugador unJugador = new Jugador("unNombre",unaRaza,"Azul");
 		Mapa unMapa = Mapa.getInstance();
 		

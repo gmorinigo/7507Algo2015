@@ -23,7 +23,6 @@ import fiuba.algo3.algocraft.modelo.excepciones.NoSePudoConstruirException;
 import fiuba.algo3.algocraft.modelo.mapa.Mapa;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.turnos.Turno;
-import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory.TipoUnidad;
 import fiuba.algo3.algocraft.modelo.unidades.movimientos.Movimiento.TipoDireccion;
@@ -120,7 +119,10 @@ public class DerechaTest extends TestBase{
         assertEquals(unaUnidad.dameCelda(),mapa.dameCelda(new Posicion(15,14)));
         assertEquals(otraUnidad.dameCelda(),mapa.dameCelda(new Posicion(17,14)));
 		
-		assertTrue(unaUnidad.mover(TipoDireccion.Derecha));
+		assertTrue(unaUnidad.mover(TipoDireccion.Abajo));
+		unTurno.avanzarTurno();
+				
+        assertFalse(unaUnidad.mover(TipoDireccion.Derecha));
 		
         assertEquals(unaUnidad.dameCelda(),mapa.dameCelda(new Posicion(16,14)));
         assertNotSame(otraUnidad.dameCelda(),mapa.dameCelda(new Posicion(15,14)));
@@ -181,7 +183,8 @@ public class DerechaTest extends TestBase{
         assertFalse(unaUnidad.mover(TipoDireccion.Abajo));
     }*/
     
-    public void testNoSePuedeMoverUnaUnidadAUnaPosicionDondeHayUnaConstruccion() throws JugadorConNombreDemasiadoCortoException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, NoHaySuficientesRecursos, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException, ConstruccionNoPermitidaPorSalirseDelMapaException, CapacidadDePoblacionMaximaSuperada, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoSePudoConstruirException{
+    @SuppressWarnings("unused")
+	public void testNoSePuedeMoverUnaUnidadAUnaPosicionDondeHayUnaConstruccion() throws JugadorConNombreDemasiadoCortoException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, NoHaySuficientesRecursos, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException, ConstruccionNoPermitidaPorSalirseDelMapaException, CapacidadDePoblacionMaximaSuperada, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoSePudoConstruirException{
         Mapa mapa = Mapa.getInstance();
 		RazaProtoss unaRaza = new RazaProtoss(); 
 		Jugador unJugador = new Jugador("unNombre",unaRaza,"Azul");

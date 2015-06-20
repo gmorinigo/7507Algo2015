@@ -6,7 +6,7 @@ import fiuba.algo3.algocraft.modelo.mapa.Celda;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.unidades.Salud;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
-import fiuba.algo3.algocraft.modelo.unidades.UnidadEstadoDescansando;
+import fiuba.algo3.algocraft.modelo.unidades.UnidadEstadoViviendo;
 import fiuba.algo3.algocraft.modelo.unidades.UnidadTerran;
 import fiuba.algo3.algocraft.modelo.unidades.ataques.AbstractDisparo;
 
@@ -29,7 +29,6 @@ public class NaveCiencia extends UnidadTerran {
 		posicionDeConstruccion = posicionConstruccion;
 	}
 	
-	@Override
 	protected Salud saludInicial() {
 		return new SaludTerran(200);
 	}
@@ -47,6 +46,7 @@ public class NaveCiencia extends UnidadTerran {
 	}
 
 	protected void vivir() {
+		this.estado = new UnidadEstadoViviendo(this);
 		this.acumularEnergia();		
 	}
 	

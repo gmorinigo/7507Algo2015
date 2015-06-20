@@ -34,12 +34,6 @@ public class Espectro extends UnidadTerran {
 		return 8;
 	}
 
-	@Override
-	protected void vivir() {
-		// TODO Auto-generated method stub
-		
-	}
-
 	public int DanioAtaque(Unidad unaUnidadAtacada) {
 		if (unaUnidadAtacada.esUnidadAerea()){
 			return 20;

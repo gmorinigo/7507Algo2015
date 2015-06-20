@@ -33,11 +33,6 @@ public class Marine extends UnidadTerran {
 	public int turnosNecesariosParaCreacion() {
 		return 3;
 	}
-
-	@Override
-	protected void vivir() {
-		// TODO Auto-generated method stub
-	}
 	
 	public int DanioAtaque(Unidad unaUnidadAtacada) {
 		return 6;

@@ -32,12 +32,6 @@ public class Scout extends UnidadProtoss {
 		return 9;
 	}
 
-	@Override
-	protected void vivir() {
-		// TODO Auto-generated method stub
-		
-	}
-
 	public int DanioAtaque(Unidad unaUnidadAtacada) {
 		if (unaUnidadAtacada.esUnidadAerea()){
 			return 14;

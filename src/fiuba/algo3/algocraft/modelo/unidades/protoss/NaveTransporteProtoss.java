@@ -32,12 +32,6 @@ public class NaveTransporteProtoss extends NaveTransporte {
 		return 8;
 	}
 
-	@Override
-	protected void vivir() {
-		// TODO Auto-generated method stub
-		
-	}
-
 	public boolean atacar(Celda unaCelda) {
 		return false;
 	} 

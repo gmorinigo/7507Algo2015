@@ -28,12 +28,6 @@ public class Dragon extends UnidadProtoss {
 		return 6;
 	}
 
-	@Override
-	protected void vivir() {
-		// TODO Auto-generated method stub
-		
-	}
-
 	public int DanioAtaque(Unidad unaUnidadAtacada) {
 		return 20;
 	}

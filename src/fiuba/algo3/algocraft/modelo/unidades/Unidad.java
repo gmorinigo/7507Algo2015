@@ -57,7 +57,7 @@ abstract public class Unidad implements TurnoObserver{
 	        posNueva = new Posicion(posicionOcupada.dameFila(),posicionOcupada.dameColumna()-1);
 			unaCelda = mapa.dameCelda(posNueva);
 			posicionOcupada = posNueva;
-			System.out.println("buscando celda libre");
+			//System.out.println("buscando celda libre " + posNueva.dameFila() + " " + posNueva.dameColumna() );
 		}
 		mapa.agregarUnidad(unaCelda.obtenerPosicion(), this);
 	}

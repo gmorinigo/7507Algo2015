@@ -8,7 +8,6 @@ import fiuba.algo3.algocraft.modelo.excepciones.CantidadDeMineralInsuficienteExc
 import fiuba.algo3.algocraft.modelo.excepciones.CapacidadDePoblacionMaximaSuperada;
 import fiuba.algo3.algocraft.modelo.excepciones.NoHaySuficientesRecursos;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
-import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory.TipoUnidad;
 
 public abstract class AbstractUnidadFactory {
 

@@ -262,8 +262,6 @@ public class JugadorTest extends TestBase {
 		unTurno.avanzarTurno(); 
 		assertTrue(otraUnidad.estaOperativa());
 		
-		//System.out.println(unJugador.obtenerCantidadPoblacionDisponible());
-		//System.out.println(unJugador.obtenerCantidadPoblacionDisponible());
 		assertTrue(unJugador.obtenerCantidadPoblacionDisponible() == 9);
 		assertTrue(otroJugador.obtenerCantidadPoblacionDisponible() == 8);
 		
@@ -271,11 +269,14 @@ public class JugadorTest extends TestBase {
 		assertEquals(100, otraUnidad.obtenerCantidadVida());
 		assertEquals(60, otraUnidad.obtenerCantidadEscudo());
 		
-		for(int i = 0; i < 25; i++){
+		//System.out.println("Unidad 1: " + unaUnidad.dameCelda().obtenerPosicion().dameFila() + " " + unaUnidad.dameCelda().obtenerPosicion().dameFila() );
+		//System.out.println("Unidad 2: " + otraUnidad.dameCelda().obtenerPosicion().dameFila() + " " + unaUnidad.dameCelda().obtenerPosicion().dameFila() );
+		
+		for(int i = 0; i < 160; i++){
 			unaUnidad.atacar(otraUnidad.dameCelda());
 			unTurno.avanzarTurno();
-			System.out.println(otraUnidad.obtenerCantidadVida());
-			System.out.println(otraUnidad.obtenerCantidadEscudo());
+			//System.out.println(otraUnidad.obtenerCantidadVida());
+			//System.out.println(otraUnidad.obtenerCantidadEscudo());
 		}
 		
 		//System.out.println(unJugador.obtenerCantidadPoblacionDisponible());
