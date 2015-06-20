@@ -112,7 +112,7 @@ public class VentanaAplicacion extends JFrame {
                         jMenuItem2.setText("Acerca de");
                         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
                                 public void actionPerformed(java.awt.event.ActionEvent e) {
-                                        VentanaAcercaDe newFrame = new VentanaAcercaDe();
+                                        VentanaAcercaDe newFrame = new VentanaAcercaDe("AlgoCraft");
                                         newFrame.pack();
                                         newFrame.setVisible(true);
                                 }
