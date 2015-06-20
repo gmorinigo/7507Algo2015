@@ -20,6 +20,7 @@ public class Jugador {
 	protected ArrayList<Unidad> unidadesTerminadas;
 	private Almacen almacenGas;
 	private Almacen almacenMineral;
+	protected JugadorEstado estado;
 
 	public Jugador(String unNombre,Raza raza, String unColor) throws JugadorConNombreDemasiadoCortoException {
 		if (unNombre.length() < 4){
@@ -33,6 +34,7 @@ public class Jugador {
 		this.almacenMineral = new Almacen(500);
 		this.nombreJugador = unNombre;
 		this.colorJugador = unColor;
+		this.estado = new JugadorEstadoFueraDeJuego(this);
 	}
 
 	public ArrayList<Construccion> dameConstrucciones() {
