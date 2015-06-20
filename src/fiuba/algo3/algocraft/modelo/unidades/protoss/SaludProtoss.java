@@ -68,5 +68,12 @@ public class SaludProtoss extends Salud{
 			this.escudo += 5;	
 		}
 	}
-}
 
+	public void settearSaludAlucinacionAcero() {
+		this.hp = 0;
+		this.salud = 0;
+	}
+
+	public boolean tieneEscudo() {
+		return (escudo > 0);	}
+}

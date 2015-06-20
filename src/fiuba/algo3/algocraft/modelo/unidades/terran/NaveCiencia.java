@@ -40,7 +40,14 @@ public class NaveCiencia<TipoAtaqueNaveCiencia> extends UnidadTerran {
 		return true;
 	}
 	
-	public void acumularEnergia(){ this.energia += 10; }
+	public void acumularEnergia(){ 
+		if ((this.energia + 10) >= 200){
+			this.energia = 200;
+		}
+		else{
+			this.energia += 10;
+		}}
+	
 	public int getEnergia(){return this.energia;}
 
 

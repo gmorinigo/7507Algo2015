@@ -3,7 +3,6 @@ package fiuba.algo3.algocraft.modelo.mapa;
 import fiuba.algo3.algocraft.modelo.construciones.Construccion;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 
-
 public abstract class Celda {
 	private Posicion posicion;
 	private boolean estaOcupada;
@@ -128,18 +127,54 @@ public abstract class Celda {
 		return false;
 	}
 
-
-	public void atacarUnidadDelaCeldaConAlucionacion() {
-		// TODO Auto-generated method stub
-		
-	}
-
-
 	public boolean tieneUnidad() {
 		return (this.unidad != null);
 	}
 	
 	public boolean tieneConstruccion() {
 		return (this.construccion != null);
+	}
+
+	public boolean atacarUnidadDelaCeldaConAlucionacion(Unidad unaUnidadAtacante) {
+		if(!this.esAtacable())
+			return false;
+		
+		// ver el rango de la alucinacion
+		// if (this.celdaFueraDelRangoDeAtaqueEnemigo(unaUnidadAtacante)) return false;
+
+		if(!this.unidad.sonUnidadesDelMismoJugador(unaUnidadAtacante)){
+			return false;
+		}
+		
+		Mapa mapaDelJuego = Mapa.getInstance();
+		
+		Celda celdaAlucionacionIzquierada = mapaDelJuego.dameCelda(new Posicion(this.obtenerPosicion().dameFila(),this.obtenerPosicion().dameColumna()-1)); 
+		Celda celdaAlucionacionDerecha = mapaDelJuego.dameCelda(new Posicion(this.obtenerPosicion().dameFila(),this.obtenerPosicion().dameColumna()+1));
+		
+		while (celdaAlucionacionIzquierada.estaOcupada){
+			celdaAlucionacionIzquierada = mapaDelJuego.dameCelda(new Posicion(celdaAlucionacionIzquierada.obtenerPosicion().dameFila(), celdaAlucionacionIzquierada.obtenerPosicion().dameColumna()-1));
+		}
+		
+		while (celdaAlucionacionDerecha.estaOcupada){
+			celdaAlucionacionDerecha = mapaDelJuego.dameCelda(new Posicion(celdaAlucionacionDerecha.obtenerPosicion().dameFila(), celdaAlucionacionDerecha.obtenerPosicion().dameColumna()+1));
+		}
+
+		Unidad alucionacionIzquierda = this.unidad.crearAlucinacion();
+		Unidad alucionacionDerecha = this.unidad.crearAlucinacion();
+		celdaAlucionacionIzquierada.agregarUnidad(alucionacionIzquierda);
+		celdaAlucionacionDerecha.agregarUnidad(alucionacionDerecha);
+		
+		return true;
+	}
+
+	public boolean atacarUnidadDelaCeldaConTormentaPsionica() {
+		// TODO Auto-generated method stub
+		return true;
+		
+	}
+
+
+	public Unidad obtenerUnidad() {
+		return this.unidad;
 	}
 }

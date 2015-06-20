@@ -5,6 +5,7 @@ import fiuba.algo3.algocraft.modelo.construciones.Construccion;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.unidades.Salud;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
+import fiuba.algo3.algocraft.modelo.unidades.UnidadEstadoViviendo;
 import fiuba.algo3.algocraft.modelo.unidades.UnidadProtoss;
 
 public class Scout extends UnidadProtoss {
@@ -59,5 +60,12 @@ public class Scout extends UnidadProtoss {
 	
 	public int obtenerOcupacionSuministro() {
 		return 3;
+	}
+
+	public Unidad crearAlucinacion() {
+		Scout unaUnidad = (Scout) new Scout(this.jugador);
+		unaUnidad.marcarEstaUnidadComoAlucinacion();
+		unaUnidad.estado = new UnidadEstadoViviendo(this);
+		return unaUnidad;
 	}
 }

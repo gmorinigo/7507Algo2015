@@ -21,4 +21,12 @@ public class SaludTerran extends Salud {
 	public void regenerarEscudo() {
 		// No regenero escudo, solamente en los protoss
 	}
+
+	public void settearSaludAlucinacionAcero() {
+		// Este metodo no tiene sentido en los terran. Es para las alucionaciones de los protoss		
+	}
+
+	public boolean tieneEscudo() {
+		return false;
+	}
 }

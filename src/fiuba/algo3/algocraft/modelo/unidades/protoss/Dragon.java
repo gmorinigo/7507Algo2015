@@ -5,6 +5,7 @@ import fiuba.algo3.algocraft.modelo.construciones.Construccion;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.unidades.Salud;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
+import fiuba.algo3.algocraft.modelo.unidades.UnidadEstadoViviendo;
 import fiuba.algo3.algocraft.modelo.unidades.UnidadProtoss;
 
 public class Dragon extends UnidadProtoss {
@@ -52,4 +53,10 @@ public class Dragon extends UnidadProtoss {
 		return 2;
 	}
 
-}
+	public Unidad crearAlucinacion() {
+		Dragon unaUnidad = (Dragon) new Dragon(this.jugador);
+		unaUnidad.marcarEstaUnidadComoAlucinacion();
+		unaUnidad.estado = new UnidadEstadoViviendo(this);
+		return unaUnidad;
+	}
+	}

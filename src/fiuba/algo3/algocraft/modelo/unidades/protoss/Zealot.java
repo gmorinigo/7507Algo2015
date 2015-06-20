@@ -5,6 +5,7 @@ import fiuba.algo3.algocraft.modelo.construciones.Construccion;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.unidades.Salud;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
+import fiuba.algo3.algocraft.modelo.unidades.UnidadEstadoViviendo;
 import fiuba.algo3.algocraft.modelo.unidades.UnidadProtoss;
 
 public class Zealot extends UnidadProtoss{
@@ -56,4 +57,12 @@ public class Zealot extends UnidadProtoss{
 	public int obtenerOcupacionSuministro() {
 		return 2;
 	}
+
+	public Unidad crearAlucinacion() {
+		Zealot unaUnidad = (Zealot) new Zealot(this.jugador);
+		unaUnidad.marcarEstaUnidadComoAlucinacion();
+		unaUnidad.estado = new UnidadEstadoViviendo(this);
+		return unaUnidad;
+	}
+	
 }

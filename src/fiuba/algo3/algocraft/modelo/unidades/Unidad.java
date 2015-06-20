@@ -22,6 +22,7 @@ abstract public class Unidad implements TurnoObserver{
 	protected AbstractDisparo disparo;
 	protected Jugador jugador;
 	protected Posicion posicionDeConstruccion;
+	protected boolean esUnaAlucinacion;
 	
 	public int getTamanioTransporte(){
 		return this.tamanioTransporte;
@@ -35,6 +36,7 @@ abstract public class Unidad implements TurnoObserver{
 		this.salud = this.saludInicial();
 		this.estado = new UnidadEstadoNaciendo(this.turnosNecesariosParaCreacion(), this);
 		this.celda  = null;
+		this.esUnaAlucinacion = false;
 		this.movimiento = new Movimiento(this);
 		this.disparo = new DisparoNormal(this, 1);
 		this.jugador = unJugador;
@@ -70,21 +72,7 @@ abstract public class Unidad implements TurnoObserver{
 	 * Aca hay que preguntar al estado si se puede realizar accion
 	 * Cuando se termina la accion hay que cambiar el estado a UnidadEstadoDesancansando
 	 */
-	public boolean atacar(Celda unaCelda) {
-		if (!this.estado.esPosibleRealizarAccion()) {
-			return false;
-		}
-		
-//		unaCelda.atacarUnidadDeLaCeldaConUnidad(this);
-		boolean disparoRealizado = this.disparo.disparar(unaCelda);
-		
-		if(! disparoRealizado)
-			return false;
-		
-		this.estado = new UnidadEstadoDescansando(this);
-		return true;
-
-	}
+	public abstract boolean atacar(Celda unaCelda);
 	
 	abstract protected Salud saludInicial();
 	public abstract int turnosNecesariosParaCreacion();
@@ -152,8 +140,19 @@ abstract public class Unidad implements TurnoObserver{
 
 	public abstract int obtenerOcupacionSuministro();
 
+	public boolean esUnaAlucinacion(){
+		return this.esUnaAlucinacion;
+	}
+	
+	public void marcarEstaUnidadComoAlucinacion(){
+		this.esUnaAlucinacion = true;
+		this.salud.settearSaludAlucinacionAcero();
+	}
+	
 	public Jugador getJugador() {
 		return this.jugador;
 	}
+
+	public abstract Unidad crearAlucinacion();
 	
 }

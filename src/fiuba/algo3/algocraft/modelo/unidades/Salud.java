@@ -31,4 +31,8 @@ abstract public class Salud {
 	abstract public void atacar(int ataque);
 
 	public abstract void regenerarEscudo();
+
+	public abstract void settearSaludAlucinacionAcero();
+
+	public abstract boolean tieneEscudo();
 }

@@ -1,6 +1,7 @@
 package fiuba.algo3.algocraft.modelo.unidades;
 
 import fiuba.algo3.algocraft.modelo.Jugador;
+import fiuba.algo3.algocraft.modelo.mapa.Celda;
 
 public abstract class UnidadTerran extends Unidad {
 
@@ -27,5 +28,21 @@ public abstract class UnidadTerran extends Unidad {
 		return true;
 	}
 
+	public Unidad crearAlucinacion() {
+		return null;
+	}
 
+	public boolean atacar(Celda unaCelda) {
+		if (!this.estado.esPosibleRealizarAccion()) {
+			return false;
+		}
+		
+		boolean disparoRealizado = this.disparo.disparar(unaCelda);
+		
+		if(! disparoRealizado)
+			return false;
+		
+		this.estado = new UnidadEstadoDescansando(this);
+		return true;
+	}
 }

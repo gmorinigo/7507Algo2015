@@ -7,6 +7,7 @@ import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.unidades.NaveTransporte;
 import fiuba.algo3.algocraft.modelo.unidades.Salud;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
+import fiuba.algo3.algocraft.modelo.unidades.UnidadEstadoViviendo;
 
 
 public class NaveTransporteProtoss extends NaveTransporte {
@@ -58,5 +59,12 @@ public class NaveTransporteProtoss extends NaveTransporte {
 	
 	public int obtenerOcupacionSuministro() {
 		return 2;
+	}
+	
+	public Unidad crearAlucinacion() {
+		NaveTransporteProtoss unaUnidad = (NaveTransporteProtoss) new NaveTransporteProtoss(this.jugador);
+		unaUnidad.marcarEstaUnidadComoAlucinacion();
+		unaUnidad.estado = new UnidadEstadoViviendo(this);
+		return unaUnidad;
 	}
 }
