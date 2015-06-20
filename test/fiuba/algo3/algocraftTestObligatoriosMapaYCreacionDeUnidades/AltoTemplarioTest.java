@@ -24,8 +24,8 @@ import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.turnos.Turno;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory.TipoUnidad;
-import fiuba.algo3.algocraft.modelo.unidades.protoss.AltoTemplario2;
-import fiuba.algo3.algocraft.modelo.unidades.protoss.AltoTemplario2.TipoAtaqueAltoTemplario;
+import fiuba.algo3.algocraft.modelo.unidades.protoss.AltoTemplario;
+import fiuba.algo3.algocraft.modelo.unidades.protoss.AltoTemplario.TipoAtaqueAltoTemplario;
 
 
 @SuppressWarnings("static-access")
@@ -78,7 +78,7 @@ public class AltoTemplarioTest extends TestBase {
 		
 		Celda celdaAltoTemplario = unMapa.dameCelda(posicionAltoTemplario);
 		
-		assertTrue(celdaAltoTemplario.obtenerUnidad() instanceof AltoTemplario2);
+		assertTrue(celdaAltoTemplario.obtenerUnidad() instanceof AltoTemplario);
 	}
 
 	public void testCrearUnAltoTemplarioYVerificarLaCantidadDeEnergiaAcumuladaAlPasarLosTurnos() throws NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, JugadorConNombreDemasiadoCortoException, NoHaySuficientesRecursos, CapacidadDePoblacionMaximaSuperada, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoSePudoConstruirException{	
@@ -130,7 +130,7 @@ public class AltoTemplarioTest extends TestBase {
 		
 		Celda celdaAltoTemplario = unMapa.dameCelda(posicionAltoTemplario);
 		
-		AltoTemplario2 unAltoTemplario = (AltoTemplario2) celdaAltoTemplario.obtenerUnidad();
+		AltoTemplario unAltoTemplario = (AltoTemplario) celdaAltoTemplario.obtenerUnidad();
 		
 		for (int i= 0; i < 5; i++) unTurno.avanzarTurno();
 		
@@ -190,7 +190,7 @@ public class AltoTemplarioTest extends TestBase {
 		
 		Celda celdaAltoTemplario = unMapa.dameCelda(posicionAltoTemplario);
 		
-		AltoTemplario2 unAltoTemplario = (AltoTemplario2) celdaAltoTemplario.obtenerUnidad();
+		AltoTemplario unAltoTemplario = (AltoTemplario) celdaAltoTemplario.obtenerUnidad();
 		
 		for (int i= 0; i < 5; i++) unTurno.avanzarTurno();
 		

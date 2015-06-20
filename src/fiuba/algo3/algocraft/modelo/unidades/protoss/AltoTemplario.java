@@ -12,17 +12,17 @@ import fiuba.algo3.algocraft.modelo.unidades.UnidadProtoss;
 import fiuba.algo3.algocraft.modelo.unidades.ataques.DisparoAlucinacion;
 import fiuba.algo3.algocraft.modelo.unidades.ataques.DisparoTormentaPsionica;
 
-public class AltoTemplario2 extends UnidadProtoss {
+public class AltoTemplario extends UnidadProtoss {
 	private int energia;    
 	public enum TipoAtaqueAltoTemplario{TormentaPsionica, Alucinacion}
 	
-	public AltoTemplario2(Jugador unJugador) {
+	public AltoTemplario(Jugador unJugador) {
 		super(unJugador);
 		this.energia =  50;
 		this.tamanioTransporte = 2;
 	}
 	
-	public AltoTemplario2(Jugador unJugador,Posicion posicionConstruccion) {
+	public AltoTemplario(Jugador unJugador,Posicion posicionConstruccion) {
 		super(unJugador);
 		this.tamanioTransporte = 2;
 		this.energia =  50;
@@ -120,7 +120,7 @@ public class AltoTemplario2 extends UnidadProtoss {
 	}
 
 	public Unidad crearAlucinacion() {
-		AltoTemplario2 unaUnidad = (AltoTemplario2) new AltoTemplario2(this.jugador);
+		AltoTemplario unaUnidad = (AltoTemplario) new AltoTemplario(this.jugador);
 		unaUnidad.marcarEstaUnidadComoAlucinacion();
 		unaUnidad.estado = new UnidadEstadoViviendo(this);
 		return (Unidad)unaUnidad;
