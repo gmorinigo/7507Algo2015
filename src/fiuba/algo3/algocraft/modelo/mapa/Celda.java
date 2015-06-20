@@ -81,6 +81,19 @@ public abstract class Celda {
 		return this.unidad.recibirataque(unaUnidadAtacante);
 	}
 
+	
+	public boolean atacarConstruccionDeLaCeldaConUnidad(Unidad unaUnidadAtacante) {
+		if(!this.esAtacable())
+			return false;
+		
+		if (this.celdaFueraDelRangoDeAtaqueEnemigo(unaUnidadAtacante)) return false;
+		
+		if(this.construccion.sonUnidadesDelMismoJugador(unaUnidadAtacante)){
+			return false;
+		}
+		
+		return this.construccion.recibirataque(unaUnidadAtacante);
+	}
 
 	private boolean celdaFueraDelRangoDeAtaqueEnemigo(Unidad unaUnidadAtacante) {
 		int rango = unaUnidadAtacante.getRangoAtaque(this.unidad);
@@ -100,5 +113,20 @@ public abstract class Celda {
 		if (this.posicion.dameFila() < (posicionYUnidadAtacante - rango)) return true;
 		
 		return false;
+	}
+
+
+	public void atacarUnidadDelaCeldaConAlucionacion() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	public boolean tieneUnidad() {
+		return (this.unidad != null);
+	}
+	
+	public boolean tieneConstruccion() {
+		return (this.construccion != null);
 	}
 }

@@ -151,5 +151,9 @@ abstract public class Unidad implements TurnoObserver{
 	public abstract int DanioAtaque(Construccion construccion);
 
 	public abstract int obtenerOcupacionSuministro();
+
+	public Jugador getJugador() {
+		return this.jugador;
+	}
 	
 }

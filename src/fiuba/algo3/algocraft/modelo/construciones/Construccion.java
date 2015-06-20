@@ -105,4 +105,8 @@ public abstract class Construccion implements TurnoObserver{
 		return (this.tipoConstruccion == tipo);
 	}
 
+	public boolean sonUnidadesDelMismoJugador(Unidad unaUnidadAtacante) {
+		return (this.jugador.verificarMismoJugador(unaUnidadAtacante.getJugador()));
+	}
+
 }

@@ -9,7 +9,19 @@ public class DisparoNormal extends AbstractDisparo{
 		super(unidad, radio);
 	}
 
-	public boolean disparar(Celda objetivo) {
-		return objetivo.atacarUnidadDeLaCeldaConUnidad(this.unidad);
+	public boolean disparar(Celda objetivo) {	
+		if (objetivo.tieneUnidad()){
+			return objetivo.atacarUnidadDeLaCeldaConUnidad(this.unidad);			
+		}
+		else{
+			if (objetivo.tieneConstruccion()){
+				return objetivo.atacarConstruccionDeLaCeldaConUnidad(this.unidad);
+			}
+			else{
+				return false;
+			}
+			
+		}
+
 	}
 }
