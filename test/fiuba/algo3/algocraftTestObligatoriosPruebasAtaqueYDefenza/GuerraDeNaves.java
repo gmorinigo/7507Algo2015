@@ -4,10 +4,14 @@ import java.rmi.NoSuchObjectException;
 
 import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.RazaProtoss;
+import fiuba.algo3.algocraft.modelo.RazaTerran;
 import fiuba.algo3.algocraft.modelo.construciones.AbstractConstruccionFactory;
 import fiuba.algo3.algocraft.modelo.construciones.Construccion;
 import fiuba.algo3.algocraft.modelo.construciones.AbstractConstruccionFactory.TipoConstruccion;
 import fiuba.algo3.algocraft.modelo.construciones.protoss.Acceso;
+import fiuba.algo3.algocraft.modelo.construciones.terran.Barraca;
+import fiuba.algo3.algocraft.modelo.construciones.terran.Fabrica;
+import fiuba.algo3.algocraft.modelo.construciones.terran.PuertoEstelarTerran;
 import fiuba.algo3.algocraft.modelo.excepciones.CantidadDeGasInsuficienteException;
 import fiuba.algo3.algocraft.modelo.excepciones.CantidadDeMineralInsuficienteException;
 import fiuba.algo3.algocraft.modelo.excepciones.CapacidadDePoblacionMaximaSuperada;
@@ -17,27 +21,78 @@ import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionInvalidaPrimeroDebeC
 import fiuba.algo3.algocraft.modelo.excepciones.JugadorConNombreDemasiadoCortoException;
 import fiuba.algo3.algocraft.modelo.excepciones.NoHaySuficientesRecursos;
 import fiuba.algo3.algocraft.modelo.excepciones.NoSePudoConstruirException;
+import fiuba.algo3.algocraft.modelo.mapa.Mapa;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.turnos.Turno;
+import fiuba.algo3.algocraft.modelo.unidades.Unidad;
+import fiuba.algo3.algocraft.modelo.unidades.UnidadProtoss;
+import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory.TipoUnidad;
+import fiuba.algo3.algocraft.modelo.unidades.terran.NaveCiencia;
 import fiuba.algo3.algocrafttest.TestBase;
 
 
 @SuppressWarnings("static-access")
 public class GuerraDeNaves extends TestBase{
-	public void testSeSituaUnidadProtossZealotYSeLeAplicaMisilEMP() throws JugadorConNombreDemasiadoCortoException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, NoHaySuficientesRecursos, CapacidadDePoblacionMaximaSuperada, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoSePudoConstruirException{
+
+	public void testCrearNaveCienciaCreadaacumula100DeEnergiaEn5Turnos()
+			throws JugadorConNombreDemasiadoCortoException,
+			NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, NoHaySuficientesRecursos, CapacidadDePoblacionMaximaSuperada, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoSePudoConstruirException {
+		RazaTerran unaRaza = new RazaTerran(); 
+		Jugador unJugador = new Jugador("unNombre",unaRaza,"Azul");
+
+		TipoConstruccion unTipoConstruccion = null;
+		unJugador.dameAlmacenMineral().almacenarRecurso(1000);
+		AbstractConstruccionFactory factoryConstrucciones = unaRaza.getFactoryConstrucciones();
+		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
+		Turno unTurno = new Turno(unJugador,otroJugador);
+		Construccion unExpansor = (Construccion) factoryConstrucciones.crearConstruccion(unTipoConstruccion.expansorPoblacion, new Posicion(124,124), unJugador);
+		Construccion expansor3 = (Construccion) factoryConstrucciones.crearConstruccion(unTipoConstruccion.expansorPoblacion, new Posicion(130,130), unJugador);
+		Construccion expansor4 = (Construccion) factoryConstrucciones.crearConstruccion(unTipoConstruccion.expansorPoblacion, new Posicion(134,134), otroJugador);
+		unTurno.addObserver(unExpansor);
+		unTurno.addObserver(expansor3);
+		unTurno.addObserver(expansor4);
+		for (int i=0;i<6;i++) unTurno.avanzarTurno();
+		Barraca unaBarraca = (Barraca) factoryConstrucciones.crearConstruccion(TipoConstruccion.creadorUnidadesBasicas, new Posicion(15,15), unJugador);
 		
-			//Mapa mapa = Mapa.getInstance();
+		unTurno.addObserver(unaBarraca);
+		for (int i=0;i<12;i++) unTurno.avanzarTurno();
 		
+		Fabrica unaFabrica = (Fabrica) factoryConstrucciones.crearConstruccion(TipoConstruccion.creadorUnidadesNivel2, new Posicion(25,15), unJugador);
+		
+		unTurno.addObserver(unaFabrica);
+		for (int i=0;i<12;i++) unTurno.avanzarTurno();
+		
+		PuertoEstelarTerran unPuerto = (PuertoEstelarTerran) factoryConstrucciones.crearConstruccion(TipoConstruccion.creadorUnidadesEspecialesYVoladoras, new Posicion(25,25), unJugador);
+		
+		unTurno.addObserver(unPuerto);
+		for (int i=0;i<10;i++) unTurno.avanzarTurno();
+		
+		Unidad unaNaveCiencia = (Unidad) unPuerto.crearUnidad(unJugador,TipoUnidad.especial1);
+		
+		unTurno.addObserver(unaNaveCiencia);
+		for (int i=0;i<10;i++) unTurno.avanzarTurno();
+		assertEquals(((NaveCiencia) unaNaveCiencia).getEnergia(), 50);
+
+		for (int i = 0; i <= 4; i++)
+			unTurno.avanzarTurno();
+		assertEquals(((NaveCiencia) unaNaveCiencia).getEnergia(), 100);
+	}
+
+
+	@SuppressWarnings("static-access")
+	public class AtaqueZealotConMisilEMPTest extends TestBase{
+			public void testRangoAtaqueUnidadZealotDebeSer1() throws NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoHaySuficientesRecursos, NoSePudoConstruirException, JugadorConNombreDemasiadoCortoException, CapacidadDePoblacionMaximaSuperada{
+		    Mapa mapa = Mapa.getInstance();
 			RazaProtoss unaRaza = new RazaProtoss(); 
 			TipoConstruccion unTipo = null;
-			Jugador unJugador = new Jugador("unNombre",unaRaza,"Azul");
-			
+			Jugador unJugador = new Jugador("unNombre",unaRaza,"Azul");			
 			AbstractConstruccionFactory factoryConstrucciones = unaRaza.getFactoryConstrucciones();
 			Posicion unaPosicion = new Posicion(12,3);
-			Posicion otraPosicion = new Posicion(15,7);
 			
+			/*
 			Acceso unaConstruccion = (Acceso) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesBasicas, unaPosicion, unJugador);
-			
+			Posicion otraPosicion = new Posicion(15,7);
+					
 			Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
 			
 			Acceso otraConstruccion = (Acceso) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesBasicas, otraPosicion, otroJugador);
@@ -63,32 +118,32 @@ public class GuerraDeNaves extends TestBase{
 			unTurno.addObserver(expansor5);
 			for (int i=0;i<6;i++) unTurno.avanzarTurno();
 			
-		/*	TipoUnidad unTipoUnidad = null;
-			Unidad NaveCiencia = (UnidadTerran) unaConstruccion.crearUnidad(unJugador,unTipoUnidad.especial1);
-			UnidadProtoss Zealot= (UnidadProtoss) otraConstruccion.crearUnidad(otroJugador,unTipoUnidad.terrestre1);
 			
-			unTurno.addObserver(Zealot);
-			unTurno.addObserver(NaveCiencia);
-			unTurno.avanzarTurno();
-			unTurno.avanzarTurno();
-			unTurno.avanzarTurno();
-			unTurno.avanzarTurno();
-			unTurno.avanzarTurno();
-			unTurno.avanzarTurno();
-			assertTrue(Zealot.estaOperativa());
-			assertTrue(NaveCiencia.estaOperativa());
+			TipoUnidad unTipoUnidad = null;
+			Unidad unaUnidad = (Unidad) unaConstruccion.crearUnidad(unJugador,unTipoUnidad.terrestre1);
+			UnidadProtoss otraUnidad = (UnidadProtoss) otraConstruccion.crearUnidad(otroJugador,unTipoUnidad.terrestre1);
 			
-			mapa.agregarUnidad(new Posicion(4,4), Zealot);
-			mapa.agregarUnidad(new Posicion(5,5), NaveCiencia);
-			assertEquals(40, Zealot.obtenerCantidadVida());
-			assertEquals(40,Zealot.obtenerCantidadVida());
+			unTurno.addObserver(unaUnidad);
+			unTurno.addObserver(otraUnidad);
+			unTurno.avanzarTurno();
+			unTurno.avanzarTurno();
+			unTurno.avanzarTurno();
+			unTurno.avanzarTurno();
+			unTurno.avanzarTurno();
+			unTurno.avanzarTurno();
+			assertTrue(unaUnidad.estaOperativa());
+			assertTrue(otraUnidad.estaOperativa());
 			
-			NaveCiencia.atacar(Zealot.dameCelda());
+			mapa.agregarUnidad(new Posicion(4,4), unaUnidad);
+			mapa.agregarUnidad(new Posicion(5,5), otraUnidad);
+			assertEquals(100, otraUnidad.obtenerCantidadVida());
+			assertEquals(60,otraUnidad.obtenerCantidadEscudo());
 			
-			assertEquals(40, Zealot.obtenerCantidadVida());
-			assertEquals(40,Zealot.obtenerCantidadEscudo());		
-*/
-		
-
+			unaUnidad.atacar(otraUnidad.dameCelda());
+			
+			assertEquals(100, otraUnidad.obtenerCantidadVida());
+			assertEquals(52,otraUnidad.obtenerCantidadEscudo());
+			}*/
+		}
 	}
 }

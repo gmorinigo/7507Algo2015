@@ -6,13 +6,16 @@ import fiuba.algo3.algocraft.modelo.mapa.Celda;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.unidades.Salud;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
+import fiuba.algo3.algocraft.modelo.unidades.UnidadEstadoDescansando;
 import fiuba.algo3.algocraft.modelo.unidades.UnidadEstadoViviendo;
 import fiuba.algo3.algocraft.modelo.unidades.UnidadTerran;
 import fiuba.algo3.algocraft.modelo.unidades.ataques.AbstractDisparo;
+import fiuba.algo3.algocraft.modelo.unidades.ataques.DisparoConRadiacion;
+import fiuba.algo3.algocraft.modelo.unidades.ataques.DisparoEMP;
 
-public class NaveCiencia extends UnidadTerran {
+public class NaveCiencia<TipoAtaqueNaveCiencia> extends UnidadTerran {
     private int energia;    
-
+	public enum TipoAtaqueNaveCiencia{MisilEMP, Radiacion}
 	
 	public NaveCiencia(Jugador unJugador){
 		super(unJugador);
@@ -54,6 +57,49 @@ public class NaveCiencia extends UnidadTerran {
 		return false;
 	}
 	
+
+	public boolean atacar(Celda unaCelda, TipoAtaqueNaveCiencia unTipoDeAtaqueNaveCiencia) {
+		if (!this.estado.esPosibleRealizarAccion()) {
+			return false;
+		}		
+		boolean ataqueRealizado = false;
+				
+		switch (unTipoDeAtaqueNaveCiencia){
+		case MisilEMP:
+			ataqueRealizado = this.atacarConMisilEMP(unaCelda);
+		case Radiacion:
+			ataqueRealizado = this.atacarConRadiacion(unaCelda);
+		default:
+			break;
+		}
+
+		if(! ataqueRealizado)
+			return false;
+		
+		this.estado = new UnidadEstadoDescansando(this);
+		return true;
+	}
+	
+	
+	
+	private boolean atacarConRadiacion(Celda unaCelda) {
+		if((unaCelda.esAtacable())&&(this.getEnergia()>100)){
+		DisparoConRadiacion unaRadiacion = new DisparoConRadiacion(this, 0);
+		this.energia = this.energia - 75; 
+		return unaRadiacion.disparar(unaCelda);		
+				}
+		return false;
+	}
+
+	private boolean atacarConMisilEMP(Celda unaCelda) {		
+		if((unaCelda.esAtacable())&&(this.getEnergia()>100)){
+		DisparoEMP unMisilazo = new DisparoEMP(this, 2);  
+		this.energia = this.energia - 100;
+		return unMisilazo.disparar(unaCelda);
+				}
+		return false;
+	}
+
 	public int DanioAtaque(Unidad unaUnidadAtacada) {
 		return 0;
 	} 

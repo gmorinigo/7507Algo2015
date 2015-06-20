@@ -2,24 +2,18 @@ package vista;
 
 
 import java.awt.GridBagLayout;
-import java.awt.Panel;
+import java.awt.GridLayout;
 import java.awt.Rectangle;
-
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JToolBar;
 import javax.swing.SwingUtilities;
-
 import javax.swing.JLabel;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
-import javax.swing.JMenuBar;
+import javax.swing.border.EmptyBorder;
 import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import java.awt.Color;
 
 public class VentanaAplicacion extends JFrame {
@@ -30,7 +24,7 @@ public class VentanaAplicacion extends JFrame {
         private JMenuItem jMenuItem = null;
         private JMenuItem jMenuItem1 = null;
         private JMenuItem jMenuItem2 = null;
-        private Panel panel = null;
+        private JPanel panel = null;
         private Nivel ejemplo = null;
         private JPanel jPanelEstado = null;
         private JLabel jLabel = null;
@@ -48,6 +42,7 @@ public class VentanaAplicacion extends JFrame {
                         jJToolBarBar.add(getJMenuItem());
                         jJToolBarBar.add(getJMenuItem1());
                         jJToolBarBar.add(getJMenuItem2());
+                        
 
                 }
                 return jJToolBarBar;
@@ -127,15 +122,21 @@ public class VentanaAplicacion extends JFrame {
          *      
          * @return javax.swing.JPanel   
          */
-        private Panel getSuperficieDeDibujo() {
+        private JPanel getSuperficieDeDibujo() {
                 if (panel == null) {
-                        panel = new Panel();
+                        panel = new JPanel();
                         panel.setForeground(Color.BLACK);
                         panel.addKeyListener(new KeyAdapter() {
                         });
                         panel.setLayout(new GridBagLayout());
-                        panel.setBounds(new Rectangle(115, 39, 500, 500));
+                        panel.setBounds(new Rectangle(115, 39, 500, 500));                      
+                        panel.setBorder(new EmptyBorder(0, 0, 0, 0));                        
+                        panel.setLayout(new GridLayout(80,80));
+                        panel.setBackground(Color.blue);
+                        
                 }
+                
+                
                 return panel;
         }
 

@@ -2,9 +2,11 @@ package vista;
 
 import java.awt.Panel;
 
+import javax.swing.JPanel;
+
 public class Nivel {
 
-	public Nivel(Panel superficieDeDibujo) {
+	public Nivel(JPanel jPanel) {
 		// TODO Auto-generated constructor stub
 	}
 

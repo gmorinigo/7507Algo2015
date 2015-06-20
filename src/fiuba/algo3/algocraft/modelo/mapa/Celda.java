@@ -81,7 +81,20 @@ public abstract class Celda {
 		return this.unidad.recibirataque(unaUnidadAtacante);
 	}
 
+	public boolean atacarUnidadDeLaCeldaConUnidadConMisilEMP(Unidad unaUnidadAtacante) {
+		if(!this.esAtacable())
+			return false;
+		
+		if (this.celdaFueraDelRangoDeAtaqueEnemigo(unaUnidadAtacante)) return false;
+		
+		if(this.unidad.sonUnidadesDelMismoJugador(unaUnidadAtacante)){
+			return false;
+		}
+		
+		return this.unidad.recibirataque(unaUnidadAtacante);
+	}
 	
+		
 	public boolean atacarConstruccionDeLaCeldaConUnidad(Unidad unaUnidadAtacante) {
 		if(!this.esAtacable())
 			return false;

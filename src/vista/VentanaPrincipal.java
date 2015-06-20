@@ -69,8 +69,7 @@ public class VentanaPrincipal extends JFrame{
         frame.setForeground(new Color(0,0,0));
         frame.setBounds(200, 100, 900, 600);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.getContentPane().setLayout(null);
-        
+        frame.getContentPane().setLayout(null);     
 
         panelTablero = new JPanel();
         panelTablero.setBounds(100, 120, 800, 800);

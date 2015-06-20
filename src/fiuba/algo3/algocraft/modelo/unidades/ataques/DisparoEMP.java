@@ -5,14 +5,14 @@ import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 
 public class DisparoEMP extends AbstractDisparo{
 
-	public DisparoEMP(Unidad unidad, int radio) {
-		super(unidad, radio);
-		// TODO Auto-generated constructor stub
+	public DisparoEMP(Unidad unidadQueDispara, int radio) {
+		super(unidadQueDispara, radio);
+		
 	}
 
 	@Override
 	public boolean disparar(Celda objetivo) {
-		return objetivo.atacarUnidadDeLaCeldaConUnidad(this.unidad);
+		return objetivo.atacarUnidadDeLaCeldaConUnidadConMisilEMP(this.unidad);
 		
 		//return false;
 	}

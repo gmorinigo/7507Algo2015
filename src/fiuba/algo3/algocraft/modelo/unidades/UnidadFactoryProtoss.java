@@ -47,7 +47,9 @@ public class UnidadFactoryProtoss extends AbstractUnidadFactory {
 		unJugador.agregarUnidad(unaUnidad);
 		return unaUnidad;
 	}
-
+	public boolean recibirataque(Unidad unaUnidadAtacante){
+		return this.recibirataque(unaUnidadAtacante);
+	}
 	protected int dameCostoMineral(TipoUnidad tipo) {
 		switch(tipo){
 		case terrestre1: return 100;

@@ -17,7 +17,7 @@ package vista;
 	                textArea.setFont(new Font("Berlin Sans FB", Font.PLAIN, 15));
 	                textArea.setBackground(Color.LIGHT_GRAY);
 	                textArea.setEditable(false);
-	                textArea.setText("Bienvenido al AlgoTank! \r\nEl juego consiste en defender el cuartel argentino del ataque de los tanques enemigos. \r\nPara ello, tienes que dispararles a tus enemigos tratando de destruirlos. \r\nA lo largo del juego podras capturar distintos bonus que te ayudaran en la tarea. \r\n\r\nPara cumplir el objetivo tienes que superar una serie de misiones.\r\nBuena suerte! \r\n\r\nCOMO JUGAR: \r\n\r\nTecla UP: Mover arriba,\r\nTecla DOWN: Mover abajo,\r\nTecla RIGHT: Mover derecha,\r\nTecla LEFT: Mover izquierda,\r\nBARRA ESPACIADORA: disparar.");
+	                textArea.setText("Bienvenido al AlgoCiti! \r\nEl juego consiste .\r\nBuena suerte! \r\n\r\nCOMO JUGAR: \r\n\r\nTecla UP: Mover arriba,\r\nTecla DOWN: Mover abajo,\r\nTecla RIGHT: Mover derecha,\r\nTecla LEFT: Mover izquierda,\r\nBARRA ESPACIADORA: disparar.");
 	                getContentPane().add(textArea, BorderLayout.CENTER);
 	        }
 
