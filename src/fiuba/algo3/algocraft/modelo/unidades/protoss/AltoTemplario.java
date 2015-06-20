@@ -6,13 +6,14 @@ import fiuba.algo3.algocraft.modelo.mapa.Celda;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.unidades.Salud;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
+import fiuba.algo3.algocraft.modelo.unidades.UnidadEstadoDescansando;
 import fiuba.algo3.algocraft.modelo.unidades.UnidadEstadoViviendo;
 import fiuba.algo3.algocraft.modelo.unidades.UnidadProtoss;
 
 public class AltoTemplario extends UnidadProtoss {
     @SuppressWarnings("unused")
 	private int energia;    
-
+	public enum TipoAtaqueAltoTemplario{TormentaPsionica, Alucinacion}
 	
 	public AltoTemplario(Jugador unJugador) {
 		super(unJugador);
@@ -46,6 +47,42 @@ public class AltoTemplario extends UnidadProtoss {
 	}
 
 	public boolean atacar(Celda unaCelda) {
+		return false;
+	}
+
+	
+	public boolean atacar(Celda unaCelda, TipoAtaqueAltoTemplario unTipoDeAtaqueAltoTemplario) {
+		if (!this.estado.esPosibleRealizarAccion()) {
+			return false;
+		}
+		
+		boolean ataqueRealizado = false;
+				
+		switch (unTipoDeAtaqueAltoTemplario){
+		case Alucinacion:
+			ataqueRealizado = this.atacarConAlucinacion(unaCelda);
+		case TormentaPsionica:
+			ataqueRealizado = this.atacarConTormentaPsionica(unaCelda);
+		default:
+			break;
+		}
+
+		if(! ataqueRealizado)
+			return false;
+		
+		this.estado = new UnidadEstadoDescansando(this);
+		return true;
+	}
+	
+	
+	
+	private boolean atacarConTormentaPsionica(Celda unaCelda) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	private boolean atacarConAlucinacion(Celda unaCelda) {
+		// TODO Auto-generated method stub
 		return false;
 	}
 
