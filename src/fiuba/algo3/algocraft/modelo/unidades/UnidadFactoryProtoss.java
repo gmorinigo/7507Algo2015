@@ -8,7 +8,8 @@ import fiuba.algo3.algocraft.modelo.excepciones.CantidadDeMineralInsuficienteExc
 import fiuba.algo3.algocraft.modelo.excepciones.CapacidadDePoblacionMaximaSuperada;
 import fiuba.algo3.algocraft.modelo.excepciones.NoHaySuficientesRecursos;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
-import fiuba.algo3.algocraft.modelo.unidades.protoss.AltoTemplario;
+//import fiuba.algo3.algocraft.modelo.unidades.protoss.AltoTemplario;
+import fiuba.algo3.algocraft.modelo.unidades.protoss.AltoTemplario2;
 import fiuba.algo3.algocraft.modelo.unidades.protoss.Dragon;
 import fiuba.algo3.algocraft.modelo.unidades.protoss.NaveTransporteProtoss;
 import fiuba.algo3.algocraft.modelo.unidades.protoss.Scout;
@@ -39,7 +40,7 @@ public class UnidadFactoryProtoss extends AbstractUnidadFactory {
 			unaUnidad = new NaveTransporteProtoss(unJugador,posicionConstruccion);
 			break;
 		case especial1:	
-			unaUnidad =  new AltoTemplario(unJugador,posicionConstruccion);
+			unaUnidad =  new AltoTemplario2(unJugador,posicionConstruccion);
 			break;
 		default:throw new NoSuchObjectException("Objeto Sin Tipo");
 		}
