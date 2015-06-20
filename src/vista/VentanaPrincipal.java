@@ -1,14 +1,8 @@
 package vista;
 import java.awt.Color;
 import java.awt.EventQueue;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Image;
-import java.awt.Insets;
-import java.awt.Panel;
-import java.awt.Rectangle;
-import java.awt.event.KeyAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
@@ -22,8 +16,6 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
-import javax.swing.JToolBar;
-import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
 
 
@@ -35,31 +27,29 @@ public class VentanaPrincipal extends JFrame{
     private int DIMENSION = 20;
     
     private ImageIcon tierra;
-   
-    /**
-     * @param args
-     */
-    public static void main(String[] args) {
-            SwingUtilities.invokeLater(new Runnable() {
-                    public void run() {
-                    	VentanaPrincipal window = new VentanaPrincipal();
-                            window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                            window.setVisible(true);
+    
+    public static void main(String[] args){
+            EventQueue.invokeLater(new Runnable(){
+                    public void run(){
+                            try{
+                                    VentanaPrincipal window = new VentanaPrincipal();
+                                    window.frame.setVisible(true);
+                            }
+                            catch(Exception e){
+                                    e.printStackTrace();
+                            }
                     }
-            });
-    }  
-   
+            });     
+    }
     
     public VentanaPrincipal(){
             try{
-            	initialize();  
-                    
+                    initialize();
             }catch (IOException e){
                     e.printStackTrace();
-                  
             }
     }
-
+	
     private void initialize() throws IOException{
         BufferedImage imTierra= ImageIO.read(this.getClass().getResource("tierra.png"));
         ImageIcon ictierra = new ImageIcon(imTierra);
@@ -69,7 +59,8 @@ public class VentanaPrincipal extends JFrame{
         frame.setForeground(new Color(0,0,0));
         frame.setBounds(200, 100, 900, 600);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.getContentPane().setLayout(null);     
+        frame.getContentPane().setLayout(null);
+        
 
         panelTablero = new JPanel();
         panelTablero.setBounds(100, 120, 800, 800);
@@ -156,7 +147,7 @@ public class VentanaPrincipal extends JFrame{
         frame.getContentPane().add(panelTablero);
         
     }
-   
+    
     public void llenarMapaConLabels(JButtonPos unMapa[][]) throws IOException{
         for (int i=0 ; i<this.DIMENSION ; i++){
                 for (int j=0 ; j<this.DIMENSION ; j++){     
@@ -174,6 +165,4 @@ public class VentanaPrincipal extends JFrame{
                 }
         }
 }
-    
-
 }
