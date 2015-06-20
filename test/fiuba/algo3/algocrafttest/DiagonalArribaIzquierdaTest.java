@@ -70,15 +70,15 @@ public class DiagonalArribaIzquierdaTest extends TestBase{
 
 		
 		assertNotSame(unaUnidad.dameCelda(),mapa.dameCelda(new Posicion(15,14)));
-        assertEquals(unaUnidad.dameCelda(),mapa.dameCelda(new Posicion(16,14)));
+        assertEquals(unaUnidad.dameCelda(),mapa.dameCelda(new Posicion(14,13)));
         
         unaUnidad.mover(TipoDireccion.DiagonalArribaIzquierda);
         unaUnidad.mover(TipoDireccion.DiagonalArribaIzquierda);
         unaUnidad.mover(TipoDireccion.DiagonalArribaIzquierda);
         
         //La unidad ya realizo la accion del turno
-        assertNotSame(unaUnidad.dameCelda(),mapa.dameCelda(new Posicion(15,14)));
-        assertEquals(unaUnidad.dameCelda(),mapa.dameCelda(new Posicion(16,14)));
+        assertNotSame(unaUnidad.dameCelda(),mapa.dameCelda(new Posicion(13,12)));
+        assertEquals(unaUnidad.dameCelda(),mapa.dameCelda(new Posicion(14,13)));
     }
    
     public void testNosePuedeMoverUnaUnidadAUnaPosicionYaOcupada() throws JugadorConNombreDemasiadoCortoException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, NoHaySuficientesRecursos, CapacidadDePoblacionMaximaSuperada, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoSePudoConstruirException{
@@ -92,8 +92,8 @@ public class DiagonalArribaIzquierdaTest extends TestBase{
 		AbstractConstruccionFactory factoryConstrucciones = unaRaza.getFactoryConstrucciones();
 		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
 		Turno unTurno = new Turno(unJugador,otroJugador);
-		Acceso unaConstruccion = (Acceso) factoryConstrucciones.crearConstruccion(TipoConstruccion.creadorUnidadesBasicas, new Posicion(15,15), unJugador);
-		Acceso otraConstruccion = (Acceso) factoryConstrucciones.crearConstruccion(TipoConstruccion.creadorUnidadesBasicas, new Posicion(17,15), unJugador);
+		Acceso unaConstruccion = (Acceso) factoryConstrucciones.crearConstruccion(TipoConstruccion.creadorUnidadesBasicas, new Posicion(13,15), unJugador);
+		Acceso otraConstruccion = (Acceso) factoryConstrucciones.crearConstruccion(TipoConstruccion.creadorUnidadesBasicas, new Posicion(11,14), unJugador);
 		Construccion unExpansor = (Construccion) factoryConstrucciones.crearConstruccion(unTipoConstruccion.expansorPoblacion, new Posicion(124,124), unJugador);
 		Construccion expansor3 = (Construccion) factoryConstrucciones.crearConstruccion(unTipoConstruccion.expansorPoblacion, new Posicion(130,130), unJugador);
 		Construccion expansor4 = (Construccion) factoryConstrucciones.crearConstruccion(unTipoConstruccion.expansorPoblacion, new Posicion(134,134), otroJugador);
@@ -116,13 +116,13 @@ public class DiagonalArribaIzquierdaTest extends TestBase{
 		assertTrue(unaUnidad.estaOperativa());
 		assertTrue(otraUnidad.estaOperativa());
 		
-        assertEquals(unaUnidad.dameCelda(),mapa.dameCelda(new Posicion(15,14)));
-        assertEquals(otraUnidad.dameCelda(),mapa.dameCelda(new Posicion(17,14)));
+        assertEquals(unaUnidad.dameCelda(),mapa.dameCelda(new Posicion(13,14)));
+        assertEquals(otraUnidad.dameCelda(),mapa.dameCelda(new Posicion(11,13)));
 		
-		assertTrue(unaUnidad.mover(TipoDireccion.DiagonalArribaIzquierda));
+		assertTrue(otraUnidad.mover(TipoDireccion.Abajo));
 		
-        assertEquals(unaUnidad.dameCelda(),mapa.dameCelda(new Posicion(16,14)));
-        assertNotSame(otraUnidad.dameCelda(),mapa.dameCelda(new Posicion(15,14)));
+        assertEquals(otraUnidad.dameCelda(),mapa.dameCelda(new Posicion(12,13)));
+        assertNotSame(otraUnidad.dameCelda(),mapa.dameCelda(new Posicion(11,13)));
         
         assertFalse(unaUnidad.mover(TipoDireccion.DiagonalArribaIzquierda));
     }
@@ -200,8 +200,8 @@ public class DiagonalArribaIzquierdaTest extends TestBase{
 		unTurno.addObserver(expansor4);
 		for (int i=0;i<6;i++) unTurno.avanzarTurno();
 		
-		Acceso unaConstruccion = (Acceso) factoryConstrucciones.crearConstruccion(TipoConstruccion.creadorUnidadesBasicas, new Posicion(15,15), unJugador);
-		Acceso otraConstruccion = (Acceso) factoryConstrucciones.crearConstruccion(TipoConstruccion.creadorUnidadesBasicas, new Posicion(16,13), unJugador);
+		Acceso unaConstruccion = (Acceso) factoryConstrucciones.crearConstruccion(TipoConstruccion.creadorUnidadesBasicas, new Posicion(13,14), unJugador);
+		Acceso otraConstruccion = (Acceso) factoryConstrucciones.crearConstruccion(TipoConstruccion.creadorUnidadesBasicas, new Posicion(11,11), unJugador);
 		unTurno.addObserver(unaConstruccion);
 		unTurno.addObserver(otraConstruccion);
 		for (int i=0;i<6;i++) unTurno.avanzarTurno();

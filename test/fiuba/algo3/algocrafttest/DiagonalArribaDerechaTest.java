@@ -70,15 +70,15 @@ public class DiagonalArribaDerechaTest extends TestBase{
 
 		
 		assertNotSame(unaUnidad.dameCelda(),mapa.dameCelda(new Posicion(15,14)));
-        assertEquals(unaUnidad.dameCelda(),mapa.dameCelda(new Posicion(16,14)));
+        assertEquals(unaUnidad.dameCelda(),mapa.dameCelda(new Posicion(14,15)));
         
         unaUnidad.mover(TipoDireccion.DiagonalArribaDerecha);
         unaUnidad.mover(TipoDireccion.DiagonalArribaDerecha);
         unaUnidad.mover(TipoDireccion.DiagonalArribaDerecha);
         
         //La unidad ya realizo la accion del turno
-        assertNotSame(unaUnidad.dameCelda(),mapa.dameCelda(new Posicion(15,14)));
-        assertEquals(unaUnidad.dameCelda(),mapa.dameCelda(new Posicion(16,14)));
+        assertNotSame(unaUnidad.dameCelda(),mapa.dameCelda(new Posicion(13,16)));
+        assertEquals(unaUnidad.dameCelda(),mapa.dameCelda(new Posicion(14,15)));
     }
    
     public void testNosePuedeMoverUnaUnidadAUnaPosicionYaOcupada() throws JugadorConNombreDemasiadoCortoException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, NoHaySuficientesRecursos, CapacidadDePoblacionMaximaSuperada, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoSePudoConstruirException{

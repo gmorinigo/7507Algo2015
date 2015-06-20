@@ -116,13 +116,21 @@ public class DiagonalAbajoIzquierdaTest extends TestBase{
 		assertTrue(otraUnidad.estaOperativa());
 		
         assertEquals(unaUnidad.dameCelda(),mapa.dameCelda(new Posicion(15,14)));
-        assertEquals(otraUnidad.dameCelda(),mapa.dameCelda(new Posicion(16,13)));
+        assertEquals(otraUnidad.dameCelda(),mapa.dameCelda(new Posicion(17,14)));
 		
 		assertTrue(unaUnidad.mover(TipoDireccion.DiagonalAbajoIzquierda));
+		unTurno.avanzarTurno();
 		
-        assertEquals(unaUnidad.dameCelda(),mapa.dameCelda(new Posicion(16,14)));
-        assertNotSame(otraUnidad.dameCelda(),mapa.dameCelda(new Posicion(15,14)));
+        assertEquals(unaUnidad.dameCelda(),mapa.dameCelda(new Posicion(16,13)));
+        assertNotSame(unaUnidad.dameCelda(),mapa.dameCelda(new Posicion(15,14)));
+        otraUnidad.mover((TipoDireccion.Izquierda));
+        assertEquals(otraUnidad.dameCelda(),mapa.dameCelda(new Posicion(17,13)));
+        assertNotSame(otraUnidad.dameCelda(),mapa.dameCelda(new Posicion(17,14)));
+        unTurno.avanzarTurno();
+        otraUnidad.mover((TipoDireccion.Izquierda));     
         
+        assertEquals(otraUnidad.dameCelda(),mapa.dameCelda(new Posicion(17,12)));
+        assertNotSame(otraUnidad.dameCelda(),mapa.dameCelda(new Posicion(17,13)));
         assertFalse(unaUnidad.mover(TipoDireccion.DiagonalAbajoIzquierda));
     }
   /*

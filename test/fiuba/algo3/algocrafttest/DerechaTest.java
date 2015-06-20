@@ -66,19 +66,20 @@ public class DerechaTest extends TestBase{
 
 		assertEquals(mapa.dameCelda(new Posicion(15,14)),unaUnidad.dameCelda());
 		
-        unaUnidad.mover(TipoDireccion.Derecha);
+        unaUnidad.mover(TipoDireccion.Arriba);
+        unTurno.avanzarTurno();
 
-		
-		assertNotSame(unaUnidad.dameCelda(),mapa.dameCelda(new Posicion(15,14)));
-        assertEquals(unaUnidad.dameCelda(),mapa.dameCelda(new Posicion(16,14)));
+		unaUnidad.mover(TipoDireccion.Derecha);
+		assertNotSame(unaUnidad.dameCelda(),mapa.dameCelda(new Posicion(14,14)));
+        assertEquals(unaUnidad.dameCelda(),mapa.dameCelda(new Posicion(14,15)));
         
         unaUnidad.mover(TipoDireccion.Derecha);
         unaUnidad.mover(TipoDireccion.Derecha);
         unaUnidad.mover(TipoDireccion.Derecha);
         
         //La unidad ya realizo la accion del turno
-        assertNotSame(unaUnidad.dameCelda(),mapa.dameCelda(new Posicion(15,14)));
-        assertEquals(unaUnidad.dameCelda(),mapa.dameCelda(new Posicion(16,14)));
+        assertNotSame(unaUnidad.dameCelda(),mapa.dameCelda(new Posicion(14,18)));
+        assertEquals(unaUnidad.dameCelda(),mapa.dameCelda(new Posicion(14,15)));
     }
    
     public void testNosePuedeMoverUnaUnidadAUnaPosicionYaOcupada() throws JugadorConNombreDemasiadoCortoException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, NoHaySuficientesRecursos, CapacidadDePoblacionMaximaSuperada, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoSePudoConstruirException{
