@@ -108,5 +108,14 @@ public abstract class Construccion implements TurnoObserver{
 	public boolean sonUnidadesDelMismoJugador(Unidad unaUnidadAtacante) {
 		return (this.jugador.verificarMismoJugador(unaUnidadAtacante.getJugador()));
 	}
+	
+	public boolean estaViva() {
+		return this.salud.tieneVida();
+	}
+	
+	public int obtenerCantidadVida(){
+		return this.salud.valorDeSalud();
+	}
+
 
 }

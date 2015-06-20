@@ -24,7 +24,7 @@ public class Turno {
 	}
 
 	public void avanzarTurno() {
-		if(this.partidaEnProceso && this.jugadoresEstanEnJuego())
+		if(this.partidaEnProceso && !this.jugadoresEstanEnJuego())
 			return;
 		Iterator<TurnoObserver> it = this.observadores.iterator();
 		
