@@ -177,4 +177,7 @@ public class Jugador {
 		return this.estado.dameEstadoActual();
 	}
 	
+	public boolean estaEnJuego() {
+		return this.estado.dameEstadoActual() == EstadoDelJugador.Jugando;
+	}
 }

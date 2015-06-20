@@ -37,7 +37,7 @@ public class Turno {
 	}
 	
 	protected boolean jugadoresEstanEnJuego() {
-		return false;
+		return (this.jugador1.estaEnJuego() && this.jugador2.estaEnJuego());
 	}
 
 	public void addObserver(TurnoObserver observer) {
