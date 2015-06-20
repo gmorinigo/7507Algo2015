@@ -38,7 +38,7 @@ public class AltoTemplario extends UnidadProtoss {
 	}
 	
 	public void acumularEnergia(){
-		this.energia += 10; 
+		this.energia += 15; 
 	}
 
 	public int turnosNecesariosParaCreacion() {
