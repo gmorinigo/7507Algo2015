@@ -3,7 +3,7 @@ package fiuba.algo3.algocraft.modelo;
 abstract public class JugadorEstado {
 
 	protected Jugador jugador;
-	public enum EstadoDelJugador{Ganador, Jugando, Perdedor}
+	public enum EstadoDelJugador{FueraDeJuego, Ganador, Jugando, Perdedor}
 
 	public JugadorEstado(Jugador jugador) {
 		this.jugador = jugador;

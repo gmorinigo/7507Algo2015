@@ -4,19 +4,23 @@ public class JugadorEstadoJugando extends JugadorEstado{
 
 	public JugadorEstadoJugando(Jugador jugador) {
 		super(jugador);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public JugadorEstado nextEstado() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		if(this.jugador.dameConstrucciones().isEmpty() &&
+		this.jugador.dameUnidadesTerminadas().isEmpty()) {
+			return new JugadorEstadoPerdedor(this.jugador);
+		}
+		
+		return this;
+		
 	}
 
 	@Override
 	public EstadoDelJugador dameEstadoActual() {
-		// TODO Auto-generated method stub
-		return null;
+		return EstadoDelJugador.Jugando;
 	}
 
 }

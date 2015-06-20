@@ -9,14 +9,12 @@ public class JugadorEstadoFueraDeJuego extends JugadorEstado{
 
 	@Override
 	public JugadorEstado nextEstado() {
-		// TODO Auto-generated method stub
-		return null;
+		return this;
 	}
 
 	@Override
 	public EstadoDelJugador dameEstadoActual() {
-		// TODO Auto-generated method stub
-		return null;
+		return EstadoDelJugador.FueraDeJuego;
 	}
 
 }

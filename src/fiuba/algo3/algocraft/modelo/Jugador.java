@@ -3,6 +3,7 @@ package fiuba.algo3.algocraft.modelo;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import fiuba.algo3.algocraft.modelo.JugadorEstado.EstadoDelJugador;
 import fiuba.algo3.algocraft.modelo.construciones.AbstractConstruccionFactory.TipoConstruccion;
 import fiuba.algo3.algocraft.modelo.construciones.Construccion;
 import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException;
@@ -143,10 +144,15 @@ public class Jugador {
 	public void quitarUnidad(Unidad unidad) {
 		// Restar poblacion
 		this.unidadesTerminadas.remove(unidad);
+		
+		this.estado = this.estado.nextEstado();
 	}
 
 	public void quitarConstruccion(Construccion construccion) {
 		this.construcciones.remove(construccion);
+		
+		this.estado = this.estado.nextEstado();
+		
 	}
 
 	public Object dameCantidadPoblacion() {
@@ -162,5 +168,13 @@ public class Jugador {
 		}
 		return poblacionOcupada;
 	}
-
+	
+	public void empezarPartida() {
+		this.estado = new JugadorEstadoJugando(this);
+	}
+	
+	public EstadoDelJugador dameEstadoActual() {
+		return this.estado.dameEstadoActual();
+	}
+	
 }
