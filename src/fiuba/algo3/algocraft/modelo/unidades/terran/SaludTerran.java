@@ -29,4 +29,6 @@ public class SaludTerran extends Salud {
 	public boolean tieneEscudo() {
 		return false;
 	}
+	public void SacarmeTodaLaEnergia(){this.setValorDeSalud(0);}
+	public void destruirEscudo() {	}
 }

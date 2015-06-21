@@ -76,4 +76,12 @@ public class SaludProtoss extends Salud{
 
 	public boolean tieneEscudo() {
 		return (escudo > 0);	}
+	
+	public void destruirEscudo(){
+		this.escudo = 0;
+	}	
+	
+	public void SacarmeTodaLaEnergia(){			
+	}
+	
 }
