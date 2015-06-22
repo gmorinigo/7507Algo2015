@@ -60,5 +60,11 @@ public abstract class UnidadProtoss extends Unidad {
 		this.estado = new UnidadEstadoDescansando(this);
 		return true;
 	}
+	public boolean recibirataqueMisilEMP(Unidad unaUnidadAtacante){
+		if(! this.verificarSiPuedeAtacar(unaUnidadAtacante))
+			return false;	
+		this.salud.destruirEscudo();
+		return true; 
+	}	
 
 }

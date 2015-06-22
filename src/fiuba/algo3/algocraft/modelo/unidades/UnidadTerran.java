@@ -45,4 +45,6 @@ public abstract class UnidadTerran extends Unidad {
 		this.estado = new UnidadEstadoDescansando(this);
 		return true;
 	}
+
+		
 }

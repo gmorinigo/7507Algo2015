@@ -133,6 +133,12 @@ public class NaveCiencia<TipoAtaqueNaveCiencia> extends UnidadTerran {
 	
 	public boolean atacar(Celda unaCelda, AbstractDisparo unDisparo) {
 		return false;
+		}	
+	public boolean recibirataqueMisilEMP(Unidad unaUnidadAtacante){
+		if(! this.verificarSiPuedeAtacar(unaUnidadAtacante))
+			return false;
+		this.salud.SacarmeTodaLaEnergia();
+	return false;
 	/*	if (!this.estado.esPosibleRealizarAccion()) {
 			return false;
 		}*/
