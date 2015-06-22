@@ -43,7 +43,6 @@ public class Barraca extends Construccion {
 		return unaUnidad;
 	}
 
-	@Override
 	protected int turnosNecesariosParaCreacion() {
 		return 12;
 	}
@@ -60,11 +59,4 @@ public class Barraca extends Construccion {
 	}
 
 
-	@Override
-	public boolean recibirataque(Unidad unaUnidadAtacante) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-		
-	
 }

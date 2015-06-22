@@ -47,20 +47,10 @@ public class PuertoEstelarTerran extends Construccion {
 		return 10;
 	}
 
-	@Override
 	protected void vivir() {
-		// TODO Auto-generated method stub
-		
 	}
 
 	protected Salud saludInicial() {
 		return new SaludTerran(1300);
 	}
-
-	@Override
-	public boolean recibirataque(Unidad unaUnidadAtacante) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
 }

@@ -55,10 +55,5 @@ public class PuertoEstelarProtoss extends Construccion{
 		return new SaludProtoss(600,600);
 	}
 
-	@Override
-	public boolean recibirataque(Unidad unaUnidadAtacante) {
-		// TODO Auto-generated method stub
-		return false;
-	}
 
 }

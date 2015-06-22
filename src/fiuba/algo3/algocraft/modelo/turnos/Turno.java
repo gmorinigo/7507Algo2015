@@ -7,12 +7,20 @@ import fiuba.algo3.algocraft.modelo.Jugador;
 
 public class Turno {
 	
+	private static Turno INSTANCE = null;
+
 	protected int turno;	
 	protected Jugador jugador1;
 	protected Jugador jugador2;
 	protected Jugador jugadorConTurno;
 	protected ArrayList<TurnoObserver> observadores;
 	protected boolean partidaEnProceso;
+	
+	public synchronized static Turno getInstance(Jugador jugador1, Jugador jugador2) {
+		if (INSTANCE == null)
+			INSTANCE = new Turno(jugador1, jugador2);
+		return INSTANCE;
+	}
 	
 	public Turno(Jugador jugador1, Jugador jugador2) {
 		this.turno = 1;

@@ -48,9 +48,4 @@ public class Acceso extends Construccion{
 		return new SaludProtoss(500,500);
 	}
 
-	@Override
-	public boolean recibirataque(Unidad unaUnidadAtacante) {
-		// TODO Auto-generated method stub
-		return false;
-	}
 }

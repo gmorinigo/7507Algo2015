@@ -66,20 +66,11 @@ public class Fabrica extends Construccion {
 		return 12;
 	}
 
-	@Override
 	protected void vivir() {
-		// TODO Auto-generated method stub
-		
 	}
 
 	protected Salud saludInicial() {
 		return new SaludTerran(1250);
-	}
-
-	@Override
-	public boolean recibirataque(Unidad unaUnidadAtacante) {
-		// TODO Auto-generated method stub
-		return false;
 	}
 
 }

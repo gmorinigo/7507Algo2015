@@ -6,7 +6,6 @@ import fiuba.algo3.algocraft.modelo.construciones.ExtractorDeGas;
 import fiuba.algo3.algocraft.modelo.construciones.AbstractConstruccionFactory.TipoConstruccion;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.unidades.Salud;
-import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 import fiuba.algo3.algocraft.modelo.unidades.terran.SaludTerran;
 
 public class Refineria extends ExtractorDeGas{
@@ -28,9 +27,4 @@ public class Refineria extends ExtractorDeGas{
 		return new SaludTerran(750);
 	}
 
-	@Override
-	public boolean recibirataque(Unidad unaUnidadAtacante) {
-		// TODO Auto-generated method stub
-		return false;
-	}	
 }

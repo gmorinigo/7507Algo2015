@@ -6,7 +6,6 @@ import fiuba.algo3.algocraft.modelo.construciones.ExtractorDeMineral;
 import fiuba.algo3.algocraft.modelo.construciones.AbstractConstruccionFactory.TipoConstruccion;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.unidades.Salud;
-import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 import fiuba.algo3.algocraft.modelo.unidades.protoss.SaludProtoss;
 
 public class NexoMineral extends ExtractorDeMineral {
@@ -27,9 +26,4 @@ public class NexoMineral extends ExtractorDeMineral {
 		return new SaludProtoss(250,250);
 	}
 
-	@Override
-	public boolean recibirataque(Unidad unaUnidadAtacante) {
-		// TODO Auto-generated method stub
-		return false;
-	}
 }
