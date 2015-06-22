@@ -67,4 +67,10 @@ public class NaveTransporteProtoss extends NaveTransporte {
 		unaUnidad.estado = new UnidadEstadoViviendo(this);
 		return unaUnidad;
 	}
+
+	@Override
+	public boolean recibirataqueMisilEMP(Unidad unaUnidadAtacante) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

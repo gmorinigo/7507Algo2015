@@ -90,7 +90,7 @@ public abstract class Celda {
 			return false;
 		}
 		
-		return this.unidad.recibirataque(unaUnidadAtacante);
+		return this.unidad.recibirataqueMisilEMP(unaUnidadAtacante);
 	}
 	
 		

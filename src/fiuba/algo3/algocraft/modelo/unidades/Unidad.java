@@ -104,6 +104,7 @@ abstract public class Unidad implements TurnoObserver{
 	}
 
 	public abstract boolean recibirataque(Unidad unaUnidadAtacante);
+	public abstract boolean recibirataqueMisilEMP(Unidad unaUnidadAtacante);
 	public abstract int DanioAtaque(Unidad unaUnidadAtacada);
 	
 	public boolean estaViva(){
@@ -151,8 +152,20 @@ abstract public class Unidad implements TurnoObserver{
 	
 	public Jugador getJugador() {
 		return this.jugador;
+	}	
+	/**
+	 * Afecta a una unidad en particular y la consume lentamente hasta matarla.
+	 *  Cualquier otra unidad que esté exactamente al lado, también pierde vida
+	 *   mientras esté a distancia 1 del irradiado. (Cuesta 75 de energía)
+	 **/
+	public boolean recibirAtaqueRadiacion (Unidad unaUnidadAtacante){
+		if(! this.verificarSiPuedeAtacar(unaUnidadAtacante))
+			return false;
+		this.salud.SacarmeTodaLaEnergia();
+		if(this.salud.tieneVida()) this.destruirUnidad();
+		return true;
 	}
-
+	
 	public abstract Unidad crearAlucinacion();
 	
 }

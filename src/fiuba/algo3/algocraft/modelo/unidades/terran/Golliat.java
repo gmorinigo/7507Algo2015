@@ -67,4 +67,10 @@ public class Golliat extends UnidadTerran {
 	public int obtenerOcupacionSuministro() {
 		return 2;
 	}
+
+	@Override
+	public boolean recibirataqueMisilEMP(Unidad unaUnidadAtacante) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }
