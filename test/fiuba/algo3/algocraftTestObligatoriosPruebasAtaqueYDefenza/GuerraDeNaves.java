@@ -8,7 +8,6 @@ import fiuba.algo3.algocraft.modelo.RazaTerran;
 import fiuba.algo3.algocraft.modelo.construciones.AbstractConstruccionFactory;
 import fiuba.algo3.algocraft.modelo.construciones.Construccion;
 import fiuba.algo3.algocraft.modelo.construciones.AbstractConstruccionFactory.TipoConstruccion;
-import fiuba.algo3.algocraft.modelo.construciones.protoss.Acceso;
 import fiuba.algo3.algocraft.modelo.construciones.terran.Barraca;
 import fiuba.algo3.algocraft.modelo.construciones.terran.Fabrica;
 import fiuba.algo3.algocraft.modelo.construciones.terran.PuertoEstelarTerran;
@@ -25,7 +24,6 @@ import fiuba.algo3.algocraft.modelo.mapa.Mapa;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.turnos.Turno;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
-import fiuba.algo3.algocraft.modelo.unidades.UnidadProtoss;
 import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory.TipoUnidad;
 import fiuba.algo3.algocraft.modelo.unidades.terran.NaveCiencia;
 import fiuba.algo3.algocrafttest.TestBase;
@@ -79,8 +77,8 @@ public class GuerraDeNaves extends TestBase{
 	}
 
 
-	@SuppressWarnings("static-access")
 	public class AtaqueZealotConMisilEMPTest extends TestBase{
+			@SuppressWarnings("unused")
 			public void testRangoAtaqueUnidadZealotDebeSer1() throws NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoHaySuficientesRecursos, NoSePudoConstruirException, JugadorConNombreDemasiadoCortoException, CapacidadDePoblacionMaximaSuperada{
 		    Mapa mapa = Mapa.getInstance();
 			RazaProtoss unaRaza = new RazaProtoss(); 

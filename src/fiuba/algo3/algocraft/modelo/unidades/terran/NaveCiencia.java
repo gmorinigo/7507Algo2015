@@ -13,7 +13,7 @@ import fiuba.algo3.algocraft.modelo.unidades.ataques.AbstractDisparo;
 import fiuba.algo3.algocraft.modelo.unidades.ataques.DisparoConRadiacion;
 import fiuba.algo3.algocraft.modelo.unidades.ataques.DisparoEMP;
 
-public class NaveCiencia<TipoAtaqueNaveCiencia> extends UnidadTerran {
+public class NaveCiencia extends UnidadTerran {
     private int energia;    
 	public enum TipoAtaqueNaveCiencia{MisilEMP, Radiacion}
 	
