@@ -9,18 +9,27 @@ public class DisparoTormentaPsionica extends AbstractDisparo implements TurnoObs
 
 	private Celda celdaObjetivo;
 	private int turnosRestantes = 2;
+	private boolean primerAtaqueRealizado;
+	private boolean esperarTurno;
 	
 	public DisparoTormentaPsionica(Unidad unidad, int radio, Celda unaCelda) {
 		super(unidad, radio);
 		this.celdaObjetivo = unaCelda;
-		
+		this.primerAtaqueRealizado = false;
+		this.esperarTurno = true;
 	}
 
 	public boolean disparar(Celda celdaObjetivo) {
 		boolean retornoAtaque = false;
 		if (this.turnosRestantes > 0){
+			if (this.esperarTurno && this.primerAtaqueRealizado){
+				this.esperarTurno = false;
+				return false;
+			}
+			
 			retornoAtaque = celdaObjetivo.atacarRadioDelaCeldaConTormentaPsionica(this.unidad);
 			if (retornoAtaque){
+				if (!this.primerAtaqueRealizado) this.primerAtaqueRealizado = true;
 				this.turnosRestantes--;
 			}
 		}
@@ -32,3 +41,4 @@ public class DisparoTormentaPsionica extends AbstractDisparo implements TurnoObs
 	}
 
 }
+

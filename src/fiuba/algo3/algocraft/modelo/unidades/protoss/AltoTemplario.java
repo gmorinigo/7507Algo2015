@@ -99,8 +99,11 @@ public class AltoTemplario extends UnidadProtoss {
 	}
 
 	private boolean atacarConTormentaPsionica(Celda unaCelda) {
+		if (!this.cantidadMagiaDisponible(TipoAtaqueAltoTemplario.TormentaPsionica)){
+			return false;
+		}
 		boolean retornoAtaqueTormentaPsionica = false;
-		DisparoTormentaPsionica unaTormentaPsionica = new DisparoTormentaPsionica(this,2,unaCelda);
+		DisparoTormentaPsionica unaTormentaPsionica = new DisparoTormentaPsionica(this,1,unaCelda);
 		retornoAtaqueTormentaPsionica = unaTormentaPsionica.disparar(unaCelda);
 		if (retornoAtaqueTormentaPsionica){
 			Turno unTurno = Turno.getInstance();
@@ -108,12 +111,30 @@ public class AltoTemplario extends UnidadProtoss {
 		}
 		return retornoAtaqueTormentaPsionica;
 	}
-
+	
 	private boolean atacarConAlucinacion(Celda unaCelda) {
+		if (!this.cantidadMagiaDisponible(TipoAtaqueAltoTemplario.Alucinacion)){
+			return false;
+		}
 		DisparoAlucinacion unDisparoAlucinacion = new DisparoAlucinacion(this,2);
 		return (unDisparoAlucinacion.disparar(unaCelda));
 	}
 
+
+	private boolean cantidadMagiaDisponible(TipoAtaqueAltoTemplario tipoAtaque) {
+		switch(tipoAtaque){
+		case Alucinacion:
+			if (this.energia >= 100) return true;
+			break;
+		case TormentaPsionica:
+			if (this.energia >= 75) return true;
+			break;
+		default:
+			break;
+		}
+		return false;
+	}
+	
 	public int DanioAtaque(Unidad unaUnidadAtacada) {
 		return 0;
 	}

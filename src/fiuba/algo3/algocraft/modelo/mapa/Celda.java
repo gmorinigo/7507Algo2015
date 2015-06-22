@@ -171,8 +171,8 @@ public abstract class Celda {
 		if (this.celdaFueraDelRangoDeAtaqueEnemigo(unaUnidadAtacante)) return false;
 
 		Mapa mapaDelJuego = Mapa.getInstance();
-		for (int i = (this.posicion.dameFila()-2); i <=(this.posicion.dameFila()+2);i++){
-			for (int j = (this.posicion.dameColumna()-2); j <=(this.posicion.dameColumna()+2);j++){
+		for (int i = (this.posicion.dameFila()-1); i <=(this.posicion.dameFila()+1);i++){
+			for (int j = (this.posicion.dameColumna()-1); j <=(this.posicion.dameColumna()+1);j++){
 				Celda unaCelda = mapaDelJuego.dameCelda(new Posicion(i,j));
 				if (unaCelda.esAtacable()){
 					unaCelda.atacarCeldaConTormentaPsionica();

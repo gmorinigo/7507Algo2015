@@ -212,5 +212,79 @@ public class AltoTemplarioTest extends TestBase {
 		assertTrue(alucinacionDerecha.esUnaAlucinacion());
 		assertTrue(alucinacionIzquierda.esUnaAlucinacion());
 	}
+	
+	public void testTormentaPsionica() throws NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, JugadorConNombreDemasiadoCortoException, NoHaySuficientesRecursos, CapacidadDePoblacionMaximaSuperada, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoSePudoConstruirException{	
+		Mapa unMapa = Mapa.getInstance();
+		RazaProtoss unaRaza = new RazaProtoss(); 
+		TipoConstruccion unTipo = null;
+		Jugador unJugador = new Jugador("unNombre",unaRaza,"Azul");
+		
+		AbstractConstruccionFactory factoryConstrucciones = unaRaza.getFactoryConstrucciones();
+		Posicion posicionAccesoJug1 = new Posicion(17,7);
+
+		Posicion posicionAcceso = new Posicion(20,7);
+		Posicion posicionPuertoEstelar = new Posicion(15,7);
+		Posicion posicionArchivosTemplarios = new Posicion(20,9);
+		
+		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
+		Turno unTurno = Turno.getInstance(unJugador,otroJugador);
+		
+		// Agrego las construcciones necesarias para crear la construccion actua
+		Posicion posicionExpPob = new Posicion(12,3);		
+		factoryConstrucciones.crearConstruccion(unTipo.expansorPoblacion, posicionExpPob , unJugador);
+
+		factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesBasicas, posicionAccesoJug1, unJugador);
+
+		for (int i = 0; i < 8 ;i++) unTurno.avanzarTurno();
+
+		Construccion unPuertoEstelar = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesVoladoras, posicionPuertoEstelar, unJugador);
+		unTurno.addObserver(unPuertoEstelar);
+		unJugador.agregarConstruccion(unPuertoEstelar);
+		for (int i = 0; i < 10 ;i++) unTurno.avanzarTurno();
+		// Fin de agregado de Construcciones necesarias
+		
+		unJugador.dameAlmacenMineral().almacenarRecurso(1000);
+		unJugador.dameAlmacenGas().almacenarRecurso(1000);
+		ArchivosTemplarios unArchivoTemplario = (ArchivosTemplarios) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesEspeciales, posicionArchivosTemplarios, unJugador);
+
+		Posicion posicionExpPobJug2 = new Posicion(20,20);		
+		factoryConstrucciones.crearConstruccion(unTipo.expansorPoblacion, posicionExpPobJug2 , otroJugador);
+
+		Acceso accesoJug2 = (Acceso) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesBasicas, posicionAcceso, unJugador);
+			
+		assertFalse(unArchivoTemplario.estaOperativa());
+		for (int i = 0; i<9 ;i++) unTurno.avanzarTurno();
+		assertTrue(unArchivoTemplario.estaOperativa());
+
+		AltoTemplario unAltoTemplario = (AltoTemplario) unArchivoTemplario.crearUnidad(unJugador);
+
+		TipoUnidad unTipoUnidad = TipoUnidad.terrestre1;
+		Unidad unaUnidad = (Unidad) accesoJug2.crearUnidad(unJugador, unTipoUnidad);
+		
+		for (int i = 0; i<7 ;i++) unTurno.avanzarTurno();
+		
+		for (int i= 0; i < 5; i++) unTurno.avanzarTurno();
+
+		assertEquals(125,unAltoTemplario.obtenerCantidadEnergia());
+		
+        assertEquals(unaUnidad.dameCelda(),unMapa.dameCelda(new Posicion(20,6)));
+
+		unaUnidad.mover(TipoDireccion.Abajo);
+		unTurno.avanzarTurno();
+		unaUnidad.mover(TipoDireccion.Abajo);
+		unTurno.avanzarTurno();
+		
+        assertEquals(unaUnidad.dameCelda(),unMapa.dameCelda(new Posicion(22,6)));
+
+		assertTrue(unAltoTemplario.atacar(unaUnidad.dameCelda(), TipoAtaqueAltoTemplario.TormentaPsionica));
+		assertEquals(60, unaUnidad.obtenerCantidadVida());
+		assertEquals(0, unaUnidad.obtenerCantidadEscudo());
+		unTurno.avanzarTurno();
+		assertEquals(60, unaUnidad.obtenerCantidadVida());
+		assertEquals(5, unaUnidad.obtenerCantidadEscudo());
+		unTurno.avanzarTurno();
+		assertFalse(unaUnidad.estaViva());
+	}
+
 }
 

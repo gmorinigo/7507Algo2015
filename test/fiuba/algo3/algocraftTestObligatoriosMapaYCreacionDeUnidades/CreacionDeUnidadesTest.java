@@ -42,13 +42,14 @@ public class CreacionDeUnidadesTest extends TestBase{
 		//AbstractUnidadFactory factoryUnidades = getFactoryUnidades();
 		//TipoUnidad unTipo = null;
 		Jugador unJugador = new Jugador("unNombre",new RazaProtoss(),"Azul");
+		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
+		Turno unTurno = Turno.getInstance(unJugador,otroJugador);
 		
 		RazaProtoss unaRaza = new RazaProtoss(); 
 		TipoConstruccion unTipoConstruccion = null;
 		unJugador.dameAlmacenMineral().almacenarRecurso(1000);
 		AbstractConstruccionFactory factoryConstrucciones = unaRaza.getFactoryConstrucciones();
-		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
-		Turno unTurno = new Turno(unJugador,otroJugador);
+
 		Construccion unExpansor = (Construccion) factoryConstrucciones.crearConstruccion(unTipoConstruccion.expansorPoblacion, new Posicion(124,124), unJugador);
 		Construccion expansor3 = (Construccion) factoryConstrucciones.crearConstruccion(unTipoConstruccion.expansorPoblacion, new Posicion(130,130), unJugador);
 		Construccion expansor4 = (Construccion) factoryConstrucciones.crearConstruccion(unTipoConstruccion.expansorPoblacion, new Posicion(134,134), otroJugador);

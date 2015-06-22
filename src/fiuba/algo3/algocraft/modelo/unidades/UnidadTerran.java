@@ -46,5 +46,7 @@ public abstract class UnidadTerran extends Unidad {
 		return true;
 	}
 
-		
+	public int obtenerCantidadEscudo(){
+		return 0;
+	}
 }

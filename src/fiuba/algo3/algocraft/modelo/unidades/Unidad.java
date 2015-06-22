@@ -24,6 +24,7 @@ abstract public class Unidad implements TurnoObserver{
 	protected Posicion posicionDeConstruccion;
 	protected boolean esUnaAlucinacion;
 	
+	
 	public int getTamanioTransporte(){
 		return this.tamanioTransporte;
 	}
@@ -174,5 +175,6 @@ abstract public class Unidad implements TurnoObserver{
 			this.destruirUnidad();
 		}
 	}
-	
+
+	public abstract int obtenerCantidadEscudo();
 }
