@@ -12,7 +12,7 @@ public class DisparoEMP extends AbstractDisparo{
 
 	@Override
 	public boolean disparar(Celda objetivo) {
-		return objetivo.atacarUnidadDeLaCeldaConUnidadConMisilEMP(this.unidad);
+		return objetivo.atacarUnidadDeLaCeldaConRadiacion(this.unidad);
 		
 		//return false;
 	}

@@ -177,4 +177,18 @@ public abstract class Celda {
 	public Unidad obtenerUnidad() {
 		return this.unidad;
 	}
+
+
+	public boolean atacarUnidadDeLaCeldaConRadiacion(Unidad unaUnidadAtacante) {
+		if(!this.esAtacable())
+			return false;
+		
+		if (this.celdaFueraDelRangoDeAtaqueEnemigo(unaUnidadAtacante)) return false;
+		
+		if(this.unidad.sonUnidadesDelMismoJugador(unaUnidadAtacante)){
+			return false;
+		}
+		
+		return this.unidad.recibirAtaqueRadiacion(unaUnidadAtacante);
+	}
 }
