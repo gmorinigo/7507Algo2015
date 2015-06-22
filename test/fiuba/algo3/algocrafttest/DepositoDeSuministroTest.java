@@ -31,12 +31,15 @@ public class DepositoDeSuministroTest extends TestBase {
 		RazaTerran unaRaza = new RazaTerran(); 
 		TipoConstruccion unTipo = null;
 		Jugador unJugador = new Jugador("unNombre",unaRaza,"Azul");
+		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
+		Turno unTurno = Turno.getInstance(unJugador,otroJugador);
 		
 		AbstractConstruccionFactory factoryConstrucciones = unaRaza.getFactoryConstrucciones();
-		Posicion unaPosicion = new Posicion(6,4);
-				
+		Posicion unaPosicion = new Posicion(8,6);
+			
 		Construccion unaConstruccion = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.expansorPoblacion, unaPosicion, unJugador);		
 
+		
 		assertTrue(unaConstruccion instanceof DepositoDeSuministro);
 	}
 	
