@@ -101,7 +101,7 @@ public class PuertoEstelarProtossTest extends TestBase{
 		Posicion otraPosicion = new Posicion(15,15);
 		
 		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
-		Turno unTurno = new Turno(unJugador,otroJugador);
+		Turno unTurno = Turno.getInstance(unJugador, otroJugador);
 		
 		Construccion unAcceso = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesBasicas, unaPosicion, unJugador);
 		unTurno.addObserver(unAcceso);

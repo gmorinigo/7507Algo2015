@@ -16,6 +16,9 @@ public class Turno {
 	protected ArrayList<TurnoObserver> observadores;
 	protected boolean partidaEnProceso;
 	
+	public synchronized static Turno getInstance() {
+		return INSTANCE;
+	}
 	public synchronized static Turno getInstance(Jugador jugador1, Jugador jugador2) {
 		if (INSTANCE == null)
 			INSTANCE = new Turno(jugador1, jugador2);

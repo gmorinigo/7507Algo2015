@@ -8,6 +8,7 @@ import fiuba.algo3.algocraft.modelo.excepciones.CantidadDeMineralInsuficienteExc
 import fiuba.algo3.algocraft.modelo.excepciones.CapacidadDePoblacionMaximaSuperada;
 import fiuba.algo3.algocraft.modelo.excepciones.NoHaySuficientesRecursos;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
+import fiuba.algo3.algocraft.modelo.turnos.Turno;
 //import fiuba.algo3.algocraft.modelo.unidades.protoss.AltoTemplario;
 import fiuba.algo3.algocraft.modelo.unidades.protoss.AltoTemplario;
 import fiuba.algo3.algocraft.modelo.unidades.protoss.Dragon;
@@ -46,8 +47,11 @@ public class UnidadFactoryProtoss extends AbstractUnidadFactory {
 		}
 		
 		unJugador.agregarUnidad(unaUnidad);
+		Turno unTurno = Turno.getInstance();
+		unTurno.addObserver(unaUnidad);
 		return unaUnidad;
 	}
+	
 	public boolean recibirataque(Unidad unaUnidadAtacante){
 		return this.recibirataque(unaUnidadAtacante);
 	}
