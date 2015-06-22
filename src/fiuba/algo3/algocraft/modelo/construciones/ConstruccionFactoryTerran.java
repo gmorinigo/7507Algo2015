@@ -18,6 +18,7 @@ import fiuba.algo3.algocraft.modelo.excepciones.NoHaySuficientesRecursos;
 import fiuba.algo3.algocraft.modelo.excepciones.NoSePudoConstruirException;
 import fiuba.algo3.algocraft.modelo.mapa.Mapa;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
+import fiuba.algo3.algocraft.modelo.turnos.Turno;
 
 public class ConstruccionFactoryTerran extends AbstractConstruccionFactory {
 	public Construccion crearConstruccion(TipoConstruccion tipo, Posicion unaPosicion, Jugador unJugador) throws NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoHaySuficientesRecursos, NoSePudoConstruirException{
@@ -53,6 +54,8 @@ public class ConstruccionFactoryTerran extends AbstractConstruccionFactory {
 		
 		this.consumirRecursosJugador(tipo, unJugador);
 		unJugador.agregarConstruccion(unaConstruccion);
+		Turno unTurno = Turno.getInstance();
+		unTurno.addObserver(unaConstruccion);
 		return unaConstruccion;
 	}
 

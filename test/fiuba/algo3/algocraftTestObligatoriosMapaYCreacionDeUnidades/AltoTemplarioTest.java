@@ -24,7 +24,9 @@ import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.turnos.Turno;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory.TipoUnidad;
+import fiuba.algo3.algocraft.modelo.unidades.movimientos.Movimiento.TipoDireccion;
 import fiuba.algo3.algocraft.modelo.unidades.protoss.AltoTemplario;
+import fiuba.algo3.algocraft.modelo.unidades.protoss.Zealot;
 import fiuba.algo3.algocraft.modelo.unidades.protoss.AltoTemplario.TipoAtaqueAltoTemplario;
 
 
@@ -94,7 +96,7 @@ public class AltoTemplarioTest extends TestBase {
 		Posicion posicionAltoTemplario = new Posicion(20,8);
 		
 		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
-		Turno unTurno = new Turno(unJugador,otroJugador);
+		Turno unTurno = Turno.getInstance(unJugador,otroJugador);
 		
 		// Agrego las construcciones necesarias para crear la construccion actua
 		Posicion posicion3 = new Posicion(12,3);		
@@ -123,7 +125,8 @@ public class AltoTemplarioTest extends TestBase {
 		for (int i = 0; i<9 ;i++) unTurno.avanzarTurno();
 		assertTrue(unArchivoTemplario.estaOperativa());
 
-		unTurno.addObserver(unArchivoTemplario.crearUnidad(unJugador));
+		unArchivoTemplario.crearUnidad(unJugador);
+		//unTurno.addObserver();
 
 		
 		for (int i = 0; i<7 ;i++) unTurno.avanzarTurno();
@@ -145,26 +148,22 @@ public class AltoTemplarioTest extends TestBase {
 		Jugador unJugador = new Jugador("unNombre",unaRaza,"Azul");
 		
 		AbstractConstruccionFactory factoryConstrucciones = unaRaza.getFactoryConstrucciones();
-		Posicion unaPosicion = new Posicion(6,4);
-		Posicion otraPosicion = new Posicion(15,7);
-		Posicion terceraPosicion = new Posicion(20,9);
-		Posicion posicionAltoTemplario = new Posicion(20,8);
+		Posicion posicionAcceso = new Posicion(20,7);
+		Posicion posicionPuertoEstelar = new Posicion(15,7);
+		Posicion posicionArchivosTemplarios = new Posicion(20,9);
 		
 		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
-		Turno unTurno = new Turno(unJugador,otroJugador);
+		Turno unTurno = Turno.getInstance(unJugador,otroJugador);
 		
 		// Agrego las construcciones necesarias para crear la construccion actua
-		Posicion posicion3 = new Posicion(12,3);		
-		Construccion unaConstruccion = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.expansorPoblacion, posicion3 , unJugador);
+		Posicion posicionExpPob = new Posicion(12,3);		
+		factoryConstrucciones.crearConstruccion(unTipo.expansorPoblacion, posicionExpPob , unJugador);
 
-		Acceso unAcceso = (Acceso) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesBasicas, unaPosicion, unJugador);
-		unTurno.addObserver(unaConstruccion);
-		
-		unTurno.addObserver(unAcceso);
-		unJugador.agregarConstruccion(unAcceso);
+		Acceso unAcceso = (Acceso) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesBasicas, posicionAcceso, unJugador);
+
 		for (int i = 0; i < 8 ;i++) unTurno.avanzarTurno();
 
-		Construccion unPuertoEstelar = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesVoladoras, otraPosicion, unJugador);
+		Construccion unPuertoEstelar = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesVoladoras, posicionPuertoEstelar, unJugador);
 		unTurno.addObserver(unPuertoEstelar);
 		unJugador.agregarConstruccion(unPuertoEstelar);
 		for (int i = 0; i < 10 ;i++) unTurno.avanzarTurno();
@@ -172,31 +171,46 @@ public class AltoTemplarioTest extends TestBase {
 		
 		unJugador.dameAlmacenMineral().almacenarRecurso(1000);
 		unJugador.dameAlmacenGas().almacenarRecurso(1000);
-		ArchivosTemplarios unArchivoTemplario = (ArchivosTemplarios) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesEspeciales, terceraPosicion, unJugador);
+		ArchivosTemplarios unArchivoTemplario = (ArchivosTemplarios) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesEspeciales, posicionArchivosTemplarios, unJugador);
 
-		unTurno.addObserver(unArchivoTemplario);
+		//unTurno.addObserver(unArchivoTemplario);
 			
 		assertFalse(unArchivoTemplario.estaOperativa());
 		for (int i = 0; i<9 ;i++) unTurno.avanzarTurno();
 		assertTrue(unArchivoTemplario.estaOperativa());
 
-		unTurno.addObserver(unArchivoTemplario.crearUnidad(unJugador));
+		AltoTemplario unAltoTemplario = (AltoTemplario) unArchivoTemplario.crearUnidad(unJugador);
 
 		TipoUnidad unTipoUnidad = TipoUnidad.terrestre1;
 		Unidad unaUnidad = (Unidad) unAcceso.crearUnidad(unJugador, unTipoUnidad);
-		unTurno.addObserver(unaUnidad);
 		
 		for (int i = 0; i<7 ;i++) unTurno.avanzarTurno();
 		
-		Celda celdaAltoTemplario = unMapa.dameCelda(posicionAltoTemplario);
-		
-		AltoTemplario unAltoTemplario = (AltoTemplario) celdaAltoTemplario.obtenerUnidad();
-		
 		for (int i= 0; i < 5; i++) unTurno.avanzarTurno();
-		
+
 		assertEquals(125,unAltoTemplario.obtenerCantidadEnergia());
 		
-		assertTrue(unAltoTemplario.atacar(unaUnidad.dameCelda(), TipoAtaqueAltoTemplario.Alucinacion));
-	}
+        assertEquals(unaUnidad.dameCelda(),unMapa.dameCelda(new Posicion(20,6)));
 
+		unaUnidad.mover(TipoDireccion.Abajo);
+		unTurno.avanzarTurno();
+		unaUnidad.mover(TipoDireccion.Abajo);
+		unTurno.avanzarTurno();
+		
+        assertEquals(unaUnidad.dameCelda(),unMapa.dameCelda(new Posicion(22,6)));
+
+		assertTrue(unAltoTemplario.atacar(unaUnidad.dameCelda(), TipoAtaqueAltoTemplario.Alucinacion));
+		
+		Zealot alucinacionIzquierda = (Zealot) unMapa.dameCelda(new Posicion(22,5)).obtenerUnidad();
+		Zealot alucinacionDerecha = (Zealot) unMapa.dameCelda(new Posicion(22,7)).obtenerUnidad();
+		
+		assertTrue(unMapa.dameCelda(new Posicion(22,5)).celdaOcupada());
+		assertTrue(unMapa.dameCelda(new Posicion(22,5)).obtenerUnidad() instanceof Zealot);
+		assertTrue(unMapa.dameCelda(new Posicion(22,7)).celdaOcupada());
+		assertTrue(unMapa.dameCelda(new Posicion(22,7)).obtenerUnidad() instanceof Zealot);
+		
+		assertTrue(alucinacionDerecha.esUnaAlucinacion());
+		assertTrue(alucinacionIzquierda.esUnaAlucinacion());
+	}
 }
+

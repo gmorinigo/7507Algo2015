@@ -4,6 +4,7 @@ import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.construciones.Construccion;
 import fiuba.algo3.algocraft.modelo.mapa.Celda;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
+import fiuba.algo3.algocraft.modelo.turnos.Turno;
 import fiuba.algo3.algocraft.modelo.unidades.Salud;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 import fiuba.algo3.algocraft.modelo.unidades.UnidadEstadoDescansando;
@@ -68,9 +69,11 @@ public class AltoTemplario extends UnidadProtoss {
 		switch (unTipoAtaqueAltoTemplario){
 		case Alucinacion:
 			ataqueRealizado = this.atacarConAlucinacion(unaCelda);
+			if (ataqueRealizado) this.restarEnergia(100);
 			break;
 		case TormentaPsionica:
 			ataqueRealizado = this.atacarConTormentaPsionica(unaCelda);
+			if (ataqueRealizado) this.restarEnergia(75);
 			break;
 		default:
 			break;
@@ -85,9 +88,25 @@ public class AltoTemplario extends UnidadProtoss {
 	
 	
 	
+	private void restarEnergia(int cantidadEnergiaARestar) {
+		if ((this.energia - cantidadEnergiaARestar) < 0){
+			this.energia = 0;
+		}
+		else{
+			this.energia -= cantidadEnergiaARestar;
+		}
+		
+	}
+
 	private boolean atacarConTormentaPsionica(Celda unaCelda) {
-		DisparoTormentaPsionica unaTormentaPsionica = new DisparoTormentaPsionica(this,2);
-		return (unaTormentaPsionica.disparar(unaCelda));
+		boolean retornoAtaqueTormentaPsionica = false;
+		DisparoTormentaPsionica unaTormentaPsionica = new DisparoTormentaPsionica(this,2,unaCelda);
+		retornoAtaqueTormentaPsionica = unaTormentaPsionica.disparar(unaCelda);
+		if (retornoAtaqueTormentaPsionica){
+			Turno unTurno = Turno.getInstance();
+			unTurno.addObserver(unaTormentaPsionica);
+		}
+		return retornoAtaqueTormentaPsionica;
 	}
 
 	private boolean atacarConAlucinacion(Celda unaCelda) {
@@ -108,11 +127,11 @@ public class AltoTemplario extends UnidadProtoss {
 	}
 
 	public int getRangoAtaque(Unidad unidad) {
-		return 0;
+		return 5;
 	}
 
 	public int getRangoAtaque(Construccion construccion) {
-		return 0;
+		return 5;
 	}
 
 	public int obtenerOcupacionSuministro() {

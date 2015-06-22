@@ -7,21 +7,28 @@ import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 
 public class DisparoTormentaPsionica extends AbstractDisparo implements TurnoObserver{
 
-	public DisparoTormentaPsionica(Unidad unidad, int radio) {
+	private Celda celdaObjetivo;
+	private int turnosRestantes = 2;
+	
+	public DisparoTormentaPsionica(Unidad unidad, int radio, Celda unaCelda) {
 		super(unidad, radio);
-		// TODO Auto-generated constructor stub
-	}
-
-	@Override
-	public boolean disparar(Celda objetivo) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public void finDeTurno(Turno turno) {
-		// TODO Auto-generated method stub
+		this.celdaObjetivo = unaCelda;
 		
+	}
+
+	public boolean disparar(Celda celdaObjetivo) {
+		boolean retornoAtaque = false;
+		if (this.turnosRestantes > 0){
+			retornoAtaque = celdaObjetivo.atacarRadioDelaCeldaConTormentaPsionica(this.unidad);
+			if (retornoAtaque){
+				this.turnosRestantes--;
+			}
+		}
+		return retornoAtaque;
+	}
+
+	public void finDeTurno(Turno turno) {
+		this.disparar(celdaObjetivo);
 	}
 
 }

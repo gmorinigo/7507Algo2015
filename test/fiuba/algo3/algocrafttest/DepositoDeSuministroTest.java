@@ -94,6 +94,9 @@ public class DepositoDeSuministroTest extends TestBase {
 		RazaTerran unaRaza = new RazaTerran(); 
 		TipoConstruccion unTipo = null;
 		Jugador unJugador = new Jugador("unNombre",unaRaza,"Azul");
+
+		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
+		Turno unTurno = Turno.getInstance(unJugador,otroJugador);
 		
 		AbstractConstruccionFactory factoryConstrucciones = unaRaza.getFactoryConstrucciones();
 		Posicion unaPosicion = new Posicion(6,4);
@@ -102,9 +105,7 @@ public class DepositoDeSuministroTest extends TestBase {
 		Construccion unaConstruccion = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.expansorPoblacion, unaPosicion, unJugador);
 		Construccion otraConstruccion = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.expansorPoblacion, otraPosicion, unJugador);
 		
-		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
-		Turno unTurno = new Turno(unJugador,otroJugador);
-			
+		
 		unTurno.addObserver(unaConstruccion);
 		unTurno.addObserver(otraConstruccion);
 		

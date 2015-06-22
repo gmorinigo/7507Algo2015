@@ -167,5 +167,12 @@ abstract public class Unidad implements TurnoObserver{
 	}
 	
 	public abstract Unidad crearAlucinacion();
+
+	public void atacarConTormentaPsionica() {
+		this.salud.atacar(100);
+		if(! this.salud.tieneVida()) {
+			this.destruirUnidad();
+		}
+	}
 	
 }

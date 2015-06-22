@@ -139,8 +139,8 @@ public abstract class Celda {
 		if(!this.esAtacable())
 			return false;
 		
-		// ver el rango de la alucinacion
-		// if (this.celdaFueraDelRangoDeAtaqueEnemigo(unaUnidadAtacante)) return false;
+
+		if (this.celdaFueraDelRangoDeAtaqueEnemigo(unaUnidadAtacante)) return false;
 
 		if(!this.unidad.sonUnidadesDelMismoJugador(unaUnidadAtacante)){
 			return false;
@@ -167,9 +167,31 @@ public abstract class Celda {
 		return true;
 	}
 
-	public boolean atacarUnidadDelaCeldaConTormentaPsionica() {
-		// TODO Auto-generated method stub
+	public boolean atacarRadioDelaCeldaConTormentaPsionica(Unidad unaUnidadAtacante) {
+		if (this.celdaFueraDelRangoDeAtaqueEnemigo(unaUnidadAtacante)) return false;
+
+		Mapa mapaDelJuego = Mapa.getInstance();
+		for (int i = (this.posicion.dameFila()-2); i <=(this.posicion.dameFila()+2);i++){
+			for (int j = (this.posicion.dameColumna()-2); j <=(this.posicion.dameColumna()+2);j++){
+				Celda unaCelda = mapaDelJuego.dameCelda(new Posicion(i,j));
+				if (unaCelda.esAtacable()){
+					unaCelda.atacarCeldaConTormentaPsionica();
+				}
+			}
+		}
 		return true;
+		
+	}
+
+
+	private void atacarCeldaConTormentaPsionica() {
+		if (this.unidad != null){
+			this.unidad.atacarConTormentaPsionica();
+		}
+		
+		if (this.construccion != null){
+			this.construccion.atacarConTormentaPsionica();
+		}
 		
 	}
 

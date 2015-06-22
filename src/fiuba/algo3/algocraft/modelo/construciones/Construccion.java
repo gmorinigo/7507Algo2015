@@ -117,5 +117,12 @@ public abstract class Construccion implements TurnoObserver{
 		return this.salud.valorDeSalud();
 	}
 
+	public void atacarConTormentaPsionica() {
+		this.salud.atacar(100);
+		if(! this.salud.tieneVida()) {
+			this.destruirConstruccion();
+		}
+	}
+
 
 }
