@@ -223,6 +223,16 @@ public class Mapa {
 	public void reset() {
 		INSTANCE = null;
 	}
+	
+	public void nuevoMapa(int tamanio) {
+		this.matriz = new Celda[tamanio][tamanio];
+		this.nroColumnaMaxima = tamanio-1;
+		this.nroFilaMaxima = tamanio-1;
+	}
+	
+	public void agregarCelda(Celda celda, Posicion posicion) {
+		
+	}
 
 	public boolean agregarUnidad(Posicion unaPosicion, Unidad unaUnidad) {
 		Celda unaCelda = this.matriz[unaPosicion.dameFila()][unaPosicion.dameColumna()];
