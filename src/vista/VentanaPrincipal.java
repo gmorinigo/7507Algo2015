@@ -22,7 +22,6 @@ import javax.swing.border.EmptyBorder;
 public class VentanaPrincipal extends JFrame{
     private JFrame frame;
     private JPanel panelTablero;
-    private JButtonPos matriz[][];
     JLabel lblCantidadDeTurnos;
     private int DIMENSION = 20;
     
@@ -148,21 +147,4 @@ public class VentanaPrincipal extends JFrame{
         
     }
     
-    public void llenarMapaConLabels(JButtonPos unMapa[][]) throws IOException{
-        for (int i=0 ; i<this.DIMENSION ; i++){
-                for (int j=0 ; j<this.DIMENSION ; j++){     
-                        final JButtonPos unBoton = new JButtonPos(i,j);
-                        unBoton.setIcon(this.tierra);
-                        unMapa[i][j] = unBoton;
-                }
-        }
-    }
-    
-    public void agregarLabels(JButtonPos unMapa[][]){
-        for (int i=0 ; i< this.DIMENSION ; i++){
-                for (int j=0 ; j<this.DIMENSION ; j++){     
-                        panelTablero.add(unMapa[i][j]);                                
-                }
-        }
-}
 }

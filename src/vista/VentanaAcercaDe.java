@@ -13,12 +13,12 @@ package vista;
 
 	        public VentanaAcercaDe(String string) {
 	                
-	                TextArea textArea = new TextArea();
-	                textArea.setFont(new Font("Berlin Sans FB", Font.PLAIN, 15));
-	                textArea.setBackground(Color.LIGHT_GRAY);
-	                textArea.setEditable(false);
-	                textArea.setText("Bienvenido al AlgoCiti! \r\nEl juego consiste .\r\nBuena suerte! \r\n\r\nCOMO JUGAR: \r\n\r\nTecla UP: Mover arriba,\r\nTecla DOWN: Mover abajo,\r\nTecla RIGHT: Mover derecha,\r\nTecla LEFT: Mover izquierda,\r\nBARRA ESPACIADORA: disparar.");
-	                getContentPane().add(textArea, BorderLayout.CENTER);
-	        }
+	            TextArea textArea = new TextArea();
+	            textArea.setFont(new Font("Berlin Sans FB", Font.PLAIN, 15));
+	            textArea.setBackground(Color.LIGHT_GRAY);
+	            textArea.setEditable(false);
+	            textArea.setText("Bienvenido a AlgoCraft, Creadores Leonardo,Gustavo,Josue y Damian");
+	            getContentPane().add(textArea, BorderLayout.CENTER);
+	    }
 
 	}
