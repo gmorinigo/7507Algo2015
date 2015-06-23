@@ -171,4 +171,10 @@ public class AltoTemplario extends UnidadProtoss {
 	public int obtenerCantidadEnergia() {
 		return this.energia;
 	}
+	
+	public boolean recibirataqueMisilEMP(){
+		this.salud.destruirEscudo();
+		this.energia=0;
+		return true;
+	}
 }

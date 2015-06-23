@@ -81,7 +81,4 @@ public class SaludProtoss extends Salud{
 		this.escudo = 0;
 	}	
 	
-	public void SacarmeTodaLaEnergia(){			
-	}
-	
 }

@@ -107,7 +107,7 @@ abstract public class Unidad implements TurnoObserver{
 	}
 
 	public abstract boolean recibirataque(Unidad unaUnidadAtacante);
-	public abstract boolean recibirataqueMisilEMP(Unidad unaUnidadAtacante);
+	public abstract boolean recibirataqueMisilEMP();
 	public abstract int DanioAtaque(Unidad unaUnidadAtacada);
 	
 	public boolean estaViva(){
@@ -164,9 +164,9 @@ abstract public class Unidad implements TurnoObserver{
 	 *   mientras esté a distancia 1 del irradiado. (Cuesta 75 de energía)
 	 **/
 	public boolean recibirAtaqueRadiacion (Unidad unaUnidadAtacante){
+		// TODO HACER OTRA VEZ LA LOGICA DE ESTE TEST
 		if(! this.verificarSiPuedeAtacar(unaUnidadAtacante))
 			return false;
-		this.salud.SacarmeTodaLaEnergia();
 		if(this.salud.tieneVida()) this.destruirUnidad();
 		return true;
 	}

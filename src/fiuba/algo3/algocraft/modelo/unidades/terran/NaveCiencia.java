@@ -74,8 +74,12 @@ public class NaveCiencia extends UnidadTerran {
 		switch (unTipoDeAtaqueNaveCiencia){
 		case MisilEMP:
 			ataqueRealizado = this.atacarConMisilEMP(unaCelda);
+			if (ataqueRealizado) this.restarEnergia(100);
+			break;
 		case Radiacion:
 			ataqueRealizado = this.atacarConRadiacion(unaCelda);
+			if (ataqueRealizado) this.restarEnergia(100);
+			break;
 		default:
 			break;
 		}
@@ -88,22 +92,19 @@ public class NaveCiencia extends UnidadTerran {
 	}
 	
 	
-	
 	private boolean atacarConRadiacion(Celda unaCelda) {
-		if((unaCelda.esAtacable())&&(this.getEnergia()>100)){
-		DisparoConRadiacion unaRadiacion = new DisparoConRadiacion(this, 0);
-		this.energia = this.energia - 75; 
-		return unaRadiacion.disparar(unaCelda);		
-				}
+		if(this.getEnergia()>=75){
+			DisparoConRadiacion unaRadiacion = new DisparoConRadiacion(this, 0);
+			return unaRadiacion.disparar(unaCelda);		
+		}
 		return false;
 	}
 
 	private boolean atacarConMisilEMP(Celda unaCelda) {		
-		if((unaCelda.esAtacable())&&(this.getEnergia()>100)){
-		DisparoEMP unMisilazo = new DisparoEMP(this, 2);  
-		this.energia = this.energia - 100;
-		return unMisilazo.disparar(unaCelda);
-				}
+		if(this.getEnergia() >= 100){
+			DisparoEMP unMisilazo = new DisparoEMP(this, 2);  
+			return unMisilazo.disparar(unaCelda);
+		}
 		return false;
 	}
 
@@ -120,11 +121,11 @@ public class NaveCiencia extends UnidadTerran {
 	}
 
 	public int getRangoAtaque(Unidad unaUnidad) {
-		return 0;
+		return 5;
 	}
 
 	public int getRangoAtaque(Construccion construccion) {
-		return 0;
+		return 5;
 	}
 	
 	public int obtenerOcupacionSuministro() {
@@ -133,26 +134,20 @@ public class NaveCiencia extends UnidadTerran {
 	
 	public boolean atacar(Celda unaCelda, AbstractDisparo unDisparo) {
 		return false;
-		}	
-	public boolean recibirataqueMisilEMP(Unidad unaUnidadAtacante){
-		if(! this.verificarSiPuedeAtacar(unaUnidadAtacante))
-			return false;
-		this.salud.SacarmeTodaLaEnergia();
-	return false;
-	/*	if (!this.estado.esPosibleRealizarAccion()) {
-			return false;
-		}*/
-	
-		
-//		unaCelda.atacarUnidadDeLaCeldaConUnidad(this);
-	/*	unDisparo.disparar(unaCelda);
-		boolean disparoRealizado = this.disparo.disparar(unaCelda);
-		
-		if(! disparoRealizado)
-			return false;
-		
-		this.estado = new UnidadEstadoDescansando(this);
-		return true;*/
+	}	
 
+	public boolean recibirataqueMisilEMP(){
+		this.energia=0;
+		return true;
+	}
+	
+	private void restarEnergia(int cantidadEnergiaARestar) {
+		if ((this.energia - cantidadEnergiaARestar) < 0){
+			this.energia = 0;
+		}
+		else{
+			this.energia -= cantidadEnergiaARestar;
+		}
+		
 	}
 }

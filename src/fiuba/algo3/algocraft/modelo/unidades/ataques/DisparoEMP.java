@@ -9,14 +9,9 @@ public class DisparoEMP extends AbstractDisparo{
 		super(unidadQueDispara, radio);
 		
 	}
-
-	@Override
+ 
 	public boolean disparar(Celda objetivo) {
-
-		return objetivo.atacarUnidadDeLaCeldaConRadiacion(this.unidad);
-	
-		
-		//return false;
+		return objetivo.atacarRadioDeLaCeldaConMisilEMP(this.unidad);
 	}
 
 }

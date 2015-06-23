@@ -68,9 +68,9 @@ public class NaveTransporteProtoss extends NaveTransporte {
 		return unaUnidad;
 	}
 
-	@Override
-	public boolean recibirataqueMisilEMP(Unidad unaUnidadAtacante) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean recibirataqueMisilEMP() {
+		this.salud.destruirEscudo();
+		return true; 
 	}
+	
 }

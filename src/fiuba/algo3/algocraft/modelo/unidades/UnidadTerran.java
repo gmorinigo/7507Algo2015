@@ -58,4 +58,8 @@ public abstract class UnidadTerran extends Unidad {
 	public int obtenerCantidadEscudo(){
 		return 0;
 	}
+	
+	public boolean recibirataqueMisilEMP() {
+		return false;
+	}
 }

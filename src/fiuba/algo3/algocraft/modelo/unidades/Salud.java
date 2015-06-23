@@ -33,6 +33,4 @@ abstract public class Salud {
 	public abstract void settearSaludAlucinacionAcero();
 	public abstract boolean tieneEscudo();
 	public abstract void destruirEscudo();
-	public abstract void SacarmeTodaLaEnergia();
-
 }

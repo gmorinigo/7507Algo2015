@@ -117,20 +117,6 @@ public abstract class Celda {
 		return this.unidad.recibirataque(unaUnidadAtacante);
 	}
 
-	public boolean atacarUnidadDeLaCeldaConUnidadConMisilEMP(Unidad unaUnidadAtacante) {
-		if(!this.esAtacable())
-			return false;
-		
-		if (this.celdaFueraDelRangoDeAtaqueEnemigo(unaUnidadAtacante)) return false;
-		
-		if(this.unidad.sonUnidadesDelMismoJugador(unaUnidadAtacante)){
-			return false;
-		}
-		
-		return this.unidad.recibirataqueMisilEMP(unaUnidadAtacante);
-	}
-	
-		
 	public boolean atacarConstruccionDeLaCeldaConUnidad(Unidad unaUnidadAtacante) {
 		if(!this.esAtacable())
 			return false;
@@ -219,7 +205,23 @@ public abstract class Celda {
 		
 	}
 
-
+	
+	public boolean atacarRadioDeLaCeldaConMisilEMP(Unidad unaUnidadAtacante) {
+		if (this.celdaFueraDelRangoDeAtaqueEnemigo(unaUnidadAtacante)) return false;
+		
+		Mapa mapaDelJuego = Mapa.getInstance();
+		for (int i = (this.posicion.dameFila()-1); i <=(this.posicion.dameFila()+1);i++){
+			for (int j = (this.posicion.dameColumna()-1); j <=(this.posicion.dameColumna()+1);j++){
+				Celda unaCelda = mapaDelJuego.dameCelda(new Posicion(i,j));
+				if (unaCelda.esAtacable()){
+					unaCelda.atacarCeldaConMisilEMP();
+				}
+			}
+		}
+		
+		return true;
+	}
+	
 	private void atacarCeldaConTormentaPsionica() {
 		if (this.unidad != null){
 			this.unidad.recibirAtaqueTormentaPsionica();
@@ -231,6 +233,11 @@ public abstract class Celda {
 		
 	}
 
+	private void atacarCeldaConMisilEMP() {
+		if (this.unidad != null){
+			this.unidad.recibirataqueMisilEMP();
+		}
+	}
 
 	public Unidad obtenerUnidad() {
 		return this.unidad;
