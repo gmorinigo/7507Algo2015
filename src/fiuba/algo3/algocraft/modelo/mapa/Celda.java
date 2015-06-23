@@ -243,18 +243,26 @@ public abstract class Celda {
 		return this.unidad;
 	}
 
-
-	public boolean atacarUnidadDeLaCeldaConRadiacion(Unidad unaUnidadAtacante) {
-		if(!this.esAtacable())
-			return false;
-		
+	public boolean atacarRadioDeLaCeldaConRadiacion(Unidad unaUnidadAtacante) {
 		if (this.celdaFueraDelRangoDeAtaqueEnemigo(unaUnidadAtacante)) return false;
 		
-		if(this.unidad.sonUnidadesDelMismoJugador(unaUnidadAtacante)){
-			return false;
+		Mapa mapaDelJuego = Mapa.getInstance();
+		for (int i = (this.posicion.dameFila()-1); i <=(this.posicion.dameFila()+1);i++){
+			for (int j = (this.posicion.dameColumna()-1); j <=(this.posicion.dameColumna()+1);j++){
+				Celda unaCelda = mapaDelJuego.dameCelda(new Posicion(i,j));
+				if (unaCelda.esAtacable()){
+					unaCelda.atacarCeldaConRadiacion();
+				}
+			}
 		}
 		
-		return this.unidad.recibirAtaqueRadiacion(unaUnidadAtacante);
+		return true;
+	}
+	
+	private void atacarCeldaConRadiacion() {
+		if (this.unidad != null){
+			this.unidad.recibirAtaqueRadiacion();
+		}
 	}
 
 

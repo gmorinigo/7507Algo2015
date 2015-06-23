@@ -4,6 +4,7 @@ import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.construciones.Construccion;
 import fiuba.algo3.algocraft.modelo.mapa.Celda;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
+import fiuba.algo3.algocraft.modelo.turnos.Turno;
 import fiuba.algo3.algocraft.modelo.unidades.Salud;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 import fiuba.algo3.algocraft.modelo.unidades.UnidadEstadoDescansando;
@@ -77,8 +78,8 @@ public class NaveCiencia extends UnidadTerran {
 			if (ataqueRealizado) this.restarEnergia(100);
 			break;
 		case Radiacion:
-			ataqueRealizado = this.atacarConRadiacion(unaCelda);
-			if (ataqueRealizado) this.restarEnergia(100);
+			ataqueRealizado = this.atacarConRadiacion(unaCelda.obtenerUnidad());
+			if (ataqueRealizado) this.restarEnergia(75);
 			break;
 		default:
 			break;
@@ -92,10 +93,15 @@ public class NaveCiencia extends UnidadTerran {
 	}
 	
 	
-	private boolean atacarConRadiacion(Celda unaCelda) {
+	private boolean atacarConRadiacion(Unidad unaUnidad) {
 		if(this.getEnergia()>=75){
-			DisparoConRadiacion unaRadiacion = new DisparoConRadiacion(this, 0);
-			return unaRadiacion.disparar(unaCelda);		
+			DisparoConRadiacion unaRadiacion = new DisparoConRadiacion(this, 0, unaUnidad );
+			boolean retornoAtaqueTormentaPsionica = unaRadiacion.disparar();	
+			if (retornoAtaqueTormentaPsionica){
+				Turno unTurno = Turno.getInstance();
+				unTurno.addObserver(unaRadiacion);
+			}
+			return retornoAtaqueTormentaPsionica;
 		}
 		return false;
 	}

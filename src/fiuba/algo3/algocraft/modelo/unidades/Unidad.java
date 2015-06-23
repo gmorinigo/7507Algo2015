@@ -158,19 +158,7 @@ abstract public class Unidad implements TurnoObserver{
 	public Jugador getJugador() {
 		return this.jugador;
 	}	
-	/**
-	 * Afecta a una unidad en particular y la consume lentamente hasta matarla.
-	 *  Cualquier otra unidad que esté exactamente al lado, también pierde vida
-	 *   mientras esté a distancia 1 del irradiado. (Cuesta 75 de energía)
-	 **/
-	public boolean recibirAtaqueRadiacion (Unidad unaUnidadAtacante){
-		// TODO HACER OTRA VEZ LA LOGICA DE ESTE TEST
-		if(! this.verificarSiPuedeAtacar(unaUnidadAtacante))
-			return false;
-		if(this.salud.tieneVida()) this.destruirUnidad();
-		return true;
-	}
-	
+
 	public abstract Unidad crearAlucinacion();
 
 	public void recibirAtaqueTormentaPsionica() {
@@ -185,5 +173,18 @@ abstract public class Unidad implements TurnoObserver{
 
 	public boolean esUnaNaveTransporte() {
 		return false;
+	}
+
+	/**
+	 * Afecta a una unidad en particular y la consume lentamente hasta matarla.
+	 *  Cualquier otra unidad que esté exactamente al lado, también pierde vida
+	 *   mientras esté a distancia 1 del irradiado. (Cuesta 75 de energía)
+	 **/
+	public void recibirAtaqueRadiacion() {
+		this.salud.atacar(20);
+		if(! this.salud.tieneVida()) {
+			this.jugador.quitarUnidad(this);
+			this.celda.desocuparCelda();
+		}
 	}
 }
