@@ -29,6 +29,8 @@ public class Turno {
 		this.turno = 1;
 		this.jugador1 = jugador1;
 		this.jugador2 = jugador2;
+		jugador1.setRival(jugador2);
+		jugador2.setRival(jugador1);
 		this.jugadorConTurno = jugador1;
 		this.observadores = new ArrayList<TurnoObserver>();
 		this.partidaEnProceso = false;

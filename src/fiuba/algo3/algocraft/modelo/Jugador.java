@@ -22,6 +22,7 @@ public class Jugador {
 	private Almacen almacenGas;
 	private Almacen almacenMineral;
 	protected JugadorEstado estado;
+	protected Jugador rival;
 
 	public Jugador(String unNombre,Raza raza, String unColor) throws JugadorConNombreDemasiadoCortoException {
 		if (unNombre.length() < 4){
@@ -180,4 +181,17 @@ public class Jugador {
 	public boolean estaEnJuego() {
 		return this.estado.dameEstadoActual() == EstadoDelJugador.Jugando;
 	}
+	
+	public void setRival(Jugador rival) {
+		this.rival = rival;
+	}
+	
+	public Jugador dameRival() {
+		return this.rival;
+	}
+	
+	public void darVictoria() {
+		this.estado = new JugadorEstadoGanador(this);
+	}
+	
 }

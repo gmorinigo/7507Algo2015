@@ -11,6 +11,7 @@ public class JugadorEstadoJugando extends JugadorEstado{
 		
 		if(this.jugador.dameConstrucciones().isEmpty() &&
 		this.jugador.dameUnidadesTerminadas().isEmpty()) {
+			this.jugador.dameRival().darVictoria();
 			return new JugadorEstadoPerdedor(this.jugador);
 		}
 		

@@ -5,10 +5,10 @@ import java.rmi.NoSuchObjectException;
 import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.RazaProtoss;
 import fiuba.algo3.algocraft.modelo.RazaTerran;
+import fiuba.algo3.algocraft.modelo.JugadorEstado.EstadoDelJugador;
 import fiuba.algo3.algocraft.modelo.construciones.AbstractConstruccionFactory.TipoConstruccion;
 import fiuba.algo3.algocraft.modelo.construciones.Construccion;
 import fiuba.algo3.algocraft.modelo.construciones.protoss.Acceso;
-import fiuba.algo3.algocraft.modelo.construciones.terran.Barraca;
 import fiuba.algo3.algocraft.modelo.excepciones.CantidadDeGasInsuficienteException;
 import fiuba.algo3.algocraft.modelo.excepciones.CantidadDeMineralInsuficienteException;
 import fiuba.algo3.algocraft.modelo.excepciones.CapacidadDePoblacionMaximaSuperada;
@@ -42,10 +42,6 @@ public class AtaqueAUnaContruccionTest extends TestBase{
 		
 		Construccion c2 = jug2.dameRaza().getFactoryConstrucciones().crearConstruccion(TipoConstruccion.creadorUnidadesBasicas, new Posicion(15,15), jug2);
 		
-		turno.addObserver(c1);
-		turno.addObserver(pilon1);
-		turno.addObserver(c2);
-		
 		for (int i = 0; i < 20; i++) {
 			turno.avanzarTurno();
 		}
@@ -53,6 +49,8 @@ public class AtaqueAUnaContruccionTest extends TestBase{
 		assertTrue(c1.estaOperativa());
 		assertTrue(pilon1.estaOperativa());
 		assertTrue(c2.estaOperativa());
+		
+		turno.comenzar();
 		
 		assertTrue(mapa.verificarCeldaOcupada(new Posicion(10,10)));
 		assertTrue(mapa.verificarCeldaOcupada(new Posicion(11,10)));
@@ -110,7 +108,6 @@ public class AtaqueAUnaContruccionTest extends TestBase{
 		turno.avanzarTurno();
 
 		assertTrue(unidad.dameCelda().obtenerPosicion().compararPosicion(new Posicion(12,15)));
-//		System.out.println(c2.obtenerCantidadVida());
 
 		//13 15
 		unidad.mover(TipoDireccion.Abajo);
@@ -122,28 +119,16 @@ public class AtaqueAUnaContruccionTest extends TestBase{
 		
 		Celda celdaObjetivo = Mapa.getInstance().dameCelda(new Posicion(15,15));
 		
-		c2.recibirataque(unidad);
-		c2.recibirataque(unidad);
-		c2.recibirataque(unidad);
-		c2.recibirataque(unidad);
+		assertTrue(jug2.dameEstadoActual() == EstadoDelJugador.Jugando);
 		
+		for (int i = 0; i < 130; i++) {
+			unidad.atacar(celdaObjetivo);
+			turno.avanzarTurno();
+		}
 		
-//		System.out.println(c2.obtenerCantidadVida());
-
+		assertTrue(jug1.dameEstadoActual() == EstadoDelJugador.Ganador);
+		assertTrue(jug2.dameEstadoActual() == EstadoDelJugador.Perdedor);
 		
-		// c2 esta en (15,15)
-//		assertTrue(unidad.)
-//		assertTrue(unidad.atacar(celdaObjetivo));
-//		turno.avanzarTurno();
-//		System.out.println(c2.obtenerCantidadVida());
-//		
-//		assertTrue(unidad.atacar(celdaObjetivo));
-//		turno.avanzarTurno();
-//		System.out.println(c2.obtenerCantidadVida());
-//		
-//		assertTrue(unidad.atacar(celdaObjetivo));
-//		turno.avanzarTurno();
-//		System.out.println(c2.obtenerCantidadVida());
 	}
 
 }

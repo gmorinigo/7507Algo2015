@@ -47,9 +47,6 @@ public class JugadorGanadorTest extends TestBase{
 		Acceso unaConstruccion = (Acceso) factoryConstruccionesP.crearConstruccion(TipoConstruccion.creadorUnidadesBasicas, unaPosicion, unJugador);
 		Barraca otraConstruccion = (Barraca) factoryConstruccionesT.crearConstruccion(TipoConstruccion.creadorUnidadesBasicas, otraPosicion, otroJugador);
 
-//		unTurno.addObserver(unaConstruccion);
-//		unTurno.addObserver(otraConstruccion);
-//		
 		for (int i = 0; i<18;i++) unTurno.avanzarTurno();
 		assertTrue(unaConstruccion.estaOperativa());
 		
@@ -60,10 +57,6 @@ public class JugadorGanadorTest extends TestBase{
 		Construccion expansor3 = (Construccion) factoryConstruccionesP.crearConstruccion(TipoConstruccion.expansorPoblacion, new Posicion(130,130), unJugador);
 		Construccion expansor4 = (Construccion) factoryConstruccionesT.crearConstruccion(TipoConstruccion.expansorPoblacion, new Posicion(134,134), otroJugador);
 		Construccion expansor5 = (Construccion) factoryConstruccionesT.crearConstruccion(TipoConstruccion.expansorPoblacion, new Posicion(138,138), otroJugador);
-//		unTurno.addObserver(unExpansor);
-//		unTurno.addObserver(expansor3);
-//		unTurno.addObserver(expansor4);
-//		unTurno.addObserver(expansor5);
 		for (int i=0;i<10;i++) unTurno.avanzarTurno();
 	
 		assertTrue(unExpansor.estaOperativa());
