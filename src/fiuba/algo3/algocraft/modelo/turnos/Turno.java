@@ -32,6 +32,7 @@ public class Turno {
 		this.jugadorConTurno = jugador1;
 		this.observadores = new ArrayList<TurnoObserver>();
 		this.partidaEnProceso = false;
+		INSTANCE = this;
 	}
 
 	public void avanzarTurno() {
@@ -67,6 +68,10 @@ public class Turno {
     	this.partidaEnProceso = true;;
 		this.jugador1.empezarPartida();
 		this.jugador2.empezarPartida();
+	}
+    
+    public synchronized static void reset() {
+		INSTANCE = null;
 	}
 
 }
