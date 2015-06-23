@@ -90,8 +90,6 @@ public class ArchivosTemplariosTest extends TestBase{
 		unJugador.dameAlmacenGas().almacenarRecurso(1000);
 		Construccion unaConstruccion = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesEspeciales, terceraPosicion, unJugador);
 
-		unTurno.addObserver(unaConstruccion);
-			
 		assertFalse(unaConstruccion.estaOperativa());
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();

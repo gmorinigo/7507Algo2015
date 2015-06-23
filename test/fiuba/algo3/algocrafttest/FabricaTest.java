@@ -53,6 +53,7 @@ public class FabricaTest extends TestBase {
 
 	}
 	
+	@SuppressWarnings("unused")
 	public void testCrearUnaFabricaAlPasar9TurnosEstaCreada() 
 	throws CeldaOcupadaException, NoReuneLosRequisitosException, JugadorConNombreDemasiadoCortoException, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException,  ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, NoHaySuficientesRecursos, NoSePudoConstruirException{
 		RazaTerran unaRaza = new RazaTerran(); 
@@ -69,15 +70,12 @@ public class FabricaTest extends TestBase {
 		
 		// Agrego las construcciones necesarias para crear la construccion actual
 		Construccion unaBarraca = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesBasicas, unaPosicion, unJugador);
-		unTurno.addObserver(unaBarraca);
 		for (int i = 0; i < 12 ;i++) unTurno.avanzarTurno();
 		
 		unJugador.dameAlmacenMineral().almacenarRecurso(1000);
 		unJugador.dameAlmacenGas().almacenarRecurso(1000);
 		
 		Construccion unaConstruccion = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesNivel2, terceraPosicion, unJugador);
-
-		unTurno.addObserver(unaConstruccion);
 			
 		assertFalse(unaConstruccion.estaOperativa());
 		unTurno.avanzarTurno();

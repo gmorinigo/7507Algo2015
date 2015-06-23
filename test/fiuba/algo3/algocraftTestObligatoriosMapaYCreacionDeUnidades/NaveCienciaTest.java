@@ -70,6 +70,7 @@ public class NaveCienciaTest extends TestBase {
 		assertNotNull(unaUnidad);
 	}
 
+	@SuppressWarnings("unused")
 	public void testCrearNaveCienciaCreadaCon50DeEnergia()
 			throws NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, JugadorConNombreDemasiadoCortoException, NoHaySuficientesRecursos, CapacidadDePoblacionMaximaSuperada, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoSePudoConstruirException {
 		RazaTerran unaRaza = new RazaTerran(); 
@@ -89,22 +90,18 @@ public class NaveCienciaTest extends TestBase {
 		for (int i=0;i<6;i++) unTurno.avanzarTurno();
 		Barraca unaBarraca = (Barraca) factoryConstrucciones.crearConstruccion(TipoConstruccion.creadorUnidadesBasicas, new Posicion(15,15), unJugador);
 		
-		unTurno.addObserver(unaBarraca);
 		for (int i=0;i<12;i++) unTurno.avanzarTurno();
 		
 		Fabrica unaFabrica = (Fabrica) factoryConstrucciones.crearConstruccion(TipoConstruccion.creadorUnidadesNivel2, new Posicion(25,15), unJugador);
 		
-		unTurno.addObserver(unaFabrica);
 		for (int i=0;i<12;i++) unTurno.avanzarTurno();
 		
 		PuertoEstelarTerran unPuerto = (PuertoEstelarTerran) factoryConstrucciones.crearConstruccion(TipoConstruccion.creadorUnidadesEspecialesYVoladoras, new Posicion(25,25), unJugador);
 		
-		unTurno.addObserver(unPuerto);
 		for (int i=0;i<10;i++) unTurno.avanzarTurno();
 		
 		Unidad unaNaveCiencia = (Unidad) unPuerto.crearUnidad(unJugador,TipoUnidad.especial1);
 		
-		unTurno.addObserver(unaNaveCiencia);
 		for (int i=0;i<10;i++) unTurno.avanzarTurno();
 		assertEquals(((NaveCiencia) unaNaveCiencia).getEnergia(), 50);
 	}
@@ -129,22 +126,18 @@ public class NaveCienciaTest extends TestBase {
 		for (int i=0;i<6;i++) unTurno.avanzarTurno();
 		Barraca unaBarraca = (Barraca) factoryConstrucciones.crearConstruccion(TipoConstruccion.creadorUnidadesBasicas, new Posicion(15,15), unJugador);
 		
-		unTurno.addObserver(unaBarraca);
 		for (int i=0;i<12;i++) unTurno.avanzarTurno();
 		
 		Fabrica unaFabrica = (Fabrica) factoryConstrucciones.crearConstruccion(TipoConstruccion.creadorUnidadesNivel2, new Posicion(25,15), unJugador);
 		
-		unTurno.addObserver(unaFabrica);
 		for (int i=0;i<12;i++) unTurno.avanzarTurno();
 		
 		PuertoEstelarTerran unPuerto = (PuertoEstelarTerran) factoryConstrucciones.crearConstruccion(TipoConstruccion.creadorUnidadesEspecialesYVoladoras, new Posicion(25,25), unJugador);
 		
-		unTurno.addObserver(unPuerto);
 		for (int i=0;i<10;i++) unTurno.avanzarTurno();
 		
 		Unidad unaNaveCiencia = (Unidad) unPuerto.crearUnidad(unJugador,TipoUnidad.especial1);
 		
-		unTurno.addObserver(unaNaveCiencia);
 		for (int i=0;i<10;i++) unTurno.avanzarTurno();
 		assertEquals(((NaveCiencia) unaNaveCiencia).getEnergia(), 50);
 

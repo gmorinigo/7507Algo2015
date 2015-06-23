@@ -32,6 +32,7 @@ import fiuba.algo3.algocrafttest.TestBase;
 @SuppressWarnings("static-access")
 public class GuerraDeNaves extends TestBase{
 
+	@SuppressWarnings("unused")
 	public void testCrearNaveCienciaCreadaacumula100DeEnergiaEn5Turnos()
 			throws JugadorConNombreDemasiadoCortoException,
 			NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, NoHaySuficientesRecursos, CapacidadDePoblacionMaximaSuperada, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoSePudoConstruirException {
@@ -52,22 +53,18 @@ public class GuerraDeNaves extends TestBase{
 		for (int i=0;i<6;i++) unTurno.avanzarTurno();
 		Barraca unaBarraca = (Barraca) factoryConstrucciones.crearConstruccion(TipoConstruccion.creadorUnidadesBasicas, new Posicion(15,15), unJugador);
 		
-		unTurno.addObserver(unaBarraca);
 		for (int i=0;i<12;i++) unTurno.avanzarTurno();
 		
 		Fabrica unaFabrica = (Fabrica) factoryConstrucciones.crearConstruccion(TipoConstruccion.creadorUnidadesNivel2, new Posicion(25,15), unJugador);
 		
-		unTurno.addObserver(unaFabrica);
 		for (int i=0;i<12;i++) unTurno.avanzarTurno();
 		
 		PuertoEstelarTerran unPuerto = (PuertoEstelarTerran) factoryConstrucciones.crearConstruccion(TipoConstruccion.creadorUnidadesEspecialesYVoladoras, new Posicion(25,25), unJugador);
 		
-		unTurno.addObserver(unPuerto);
 		for (int i=0;i<10;i++) unTurno.avanzarTurno();
 		
 		Unidad unaNaveCiencia = (Unidad) unPuerto.crearUnidad(unJugador,TipoUnidad.especial1);
 		
-		unTurno.addObserver(unaNaveCiencia);
 		for (int i=0;i<10;i++) unTurno.avanzarTurno();
 		assertEquals(((NaveCiencia) unaNaveCiencia).getEnergia(), 50);
 

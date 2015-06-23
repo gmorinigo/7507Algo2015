@@ -73,7 +73,7 @@ public class PuertoEstelarProtossTest extends TestBase{
 		Construccion unaConstruccion = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesVoladoras, otraPosicion, unJugador);
 		
 
-		unTurno.addObserver(unaConstruccion);
+		//unTurno.addObserver(unaConstruccion);
 				
 		assertFalse(unaConstruccion.estaOperativa());
 		unTurno.avanzarTurno();

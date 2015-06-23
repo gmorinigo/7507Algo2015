@@ -74,7 +74,7 @@ public class PuertoEstelarTerranTest extends TestBase {
 		Construccion unaConstruccion = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesEspecialesYVoladoras, otraPosicion, unJugador);
 		
 
-		unTurno.addObserver(unaConstruccion);
+		//unTurno.addObserver(unaConstruccion);
 				
 		assertFalse(unaConstruccion.estaOperativa());
 		unTurno.avanzarTurno();

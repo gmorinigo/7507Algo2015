@@ -30,10 +30,13 @@ import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 @SuppressWarnings("static-access")
 public class BarracaTest extends TestBase {
 		
+	@SuppressWarnings("unused")
 	public void testCrearUnaBarraca() throws JugadorConNombreDemasiadoCortoException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoHaySuficientesRecursos, NoSePudoConstruirException{
 		RazaTerran unaRaza = new RazaTerran(); 
 		TipoConstruccion unTipo = null;
 		Jugador unJugador = new Jugador("unNombre",unaRaza,"Azul");
+		Jugador otroJugador = new Jugador("Nombre",new RazaTerran(),"Azul");
+		Turno unTurno = Turno.getInstance(unJugador,otroJugador);
 		
 		AbstractConstruccionFactory factoryConstrucciones = unaRaza.getFactoryConstrucciones();
 		Posicion unaPosicion = new Posicion(6,4);
@@ -50,19 +53,14 @@ public class BarracaTest extends TestBase {
 		RazaTerran unaRaza = new RazaTerran(); 
 		TipoConstruccion unTipo = null;
 		Jugador unJugador = new Jugador("unNombre",unaRaza,"Azul");
+		Jugador otroJugador = new Jugador("Nombre",new RazaTerran(),"Azul");
+		Turno unTurno = Turno.getInstance(unJugador,otroJugador);
 		
 		AbstractConstruccionFactory factoryConstrucciones = unaRaza.getFactoryConstrucciones();
 		Posicion unaPosicion = new Posicion(6,4);
 		
 		Construccion unaConstruccion = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesBasicas, unaPosicion, unJugador);
 				
-		Jugador otroJugador = new Jugador("Nombre",new RazaTerran(),"Azul");
-		Turno unTurno = new Turno(unJugador,otroJugador);
-		
-
-		unTurno.addObserver(unaConstruccion);
-		
-		
 		assertFalse(unaConstruccion.estaOperativa());
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
@@ -85,18 +83,14 @@ public class BarracaTest extends TestBase {
 		RazaTerran unaRaza = new RazaTerran(); 
 		TipoConstruccion unTipo = null;
 		Jugador unJugador = new Jugador("unNombre",unaRaza,"Azul");
+		Jugador otroJugador = new Jugador("Nombre",new RazaTerran(),"Azul");
+		Turno unTurno = Turno.getInstance(unJugador,otroJugador);
 		
 		AbstractConstruccionFactory factoryConstrucciones = unaRaza.getFactoryConstrucciones();
 		Posicion unaPosicion = new Posicion(12,3);
 		
 		Barraca unaConstruccion = (Barraca) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesBasicas, unaPosicion, unJugador);
-		
-		Jugador otroJugador = new Jugador("Nombre",new RazaTerran(),"Azul");
-		Turno unTurno = new Turno(unJugador,otroJugador);
-		
 
-		unTurno.addObserver(unaConstruccion);
-		
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();

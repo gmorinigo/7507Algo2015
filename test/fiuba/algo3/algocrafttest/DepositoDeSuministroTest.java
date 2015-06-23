@@ -52,14 +52,13 @@ public class DepositoDeSuministroTest extends TestBase {
 		
 		AbstractConstruccionFactory factoryConstrucciones = unaRaza.getFactoryConstrucciones();
 		Posicion unaPosicion = new Posicion(6,4);
+		Jugador otroJugador = new Jugador("Nombre",new RazaTerran(),"Azul");
+		Turno unTurno = Turno.getInstance(unJugador,otroJugador);
 		
 		Construccion unaConstruccion = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.expansorPoblacion, unaPosicion, unJugador);
-				
-		Jugador otroJugador = new Jugador("Nombre",new RazaTerran(),"Azul");
-		Turno unTurno = new Turno(unJugador,otroJugador);
 		
-		unJugador.agregarConstruccion(unaConstruccion);
-		unTurno.addObserver(unaConstruccion);
+		//unJugador.agregarConstruccion(unaConstruccion);
+		//unTurno.addObserver(unaConstruccion);
 		
 		
 		assertFalse(unaConstruccion.estaOperativa());

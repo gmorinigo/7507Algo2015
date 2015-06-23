@@ -33,22 +33,16 @@ public class DanioAtaqueTest extends TestBase {
 		RazaProtoss unaRaza = new RazaProtoss(); 
 		TipoConstruccion unTipo = null;
 		Jugador unJugador = new Jugador("unNombre",unaRaza,"Azul");
+		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
+		Turno unTurno = Turno.getInstance(unJugador,otroJugador);
 		
 		AbstractConstruccionFactory factoryConstrucciones = unaRaza.getFactoryConstrucciones();
 		Posicion unaPosicion = new Posicion(12,3);
 		Posicion otraPosicion = new Posicion(15,7);
 		
 		Acceso unaConstruccion = (Acceso) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesBasicas, unaPosicion, unJugador);
-		
-		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
-		
+				
 		Acceso otraConstruccion = (Acceso) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesBasicas, otraPosicion, otroJugador);
-		
-		Turno unTurno = new Turno(unJugador,otroJugador);
-
-		
-		unTurno.addObserver(unaConstruccion);
-		unTurno.addObserver(otraConstruccion);
 		
 		for (int i = 0; i<12;i++) unTurno.avanzarTurno();
 		assertTrue(unaConstruccion.estaOperativa());
@@ -97,6 +91,8 @@ public class DanioAtaqueTest extends TestBase {
 		RazaProtoss unaRaza = new RazaProtoss(); 
 		TipoConstruccion unTipo = null;
 		Jugador unJugador = new Jugador("unNombre",unaRaza,"Azul");
+		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
+		Turno unTurno = new Turno(unJugador,otroJugador);
 		
 		AbstractConstruccionFactory factoryConstrucciones = unaRaza.getFactoryConstrucciones();
 		Posicion unaPosicion = new Posicion(12,3);
@@ -104,16 +100,8 @@ public class DanioAtaqueTest extends TestBase {
 		
 		Acceso unaConstruccion = (Acceso) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesBasicas, unaPosicion, unJugador);
 		
-		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
-		
 		Acceso otraConstruccion = (Acceso) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesBasicas, otraPosicion, otroJugador);
-		
-		Turno unTurno = new Turno(unJugador,otroJugador);
-
-		
-		unTurno.addObserver(unaConstruccion);
-		unTurno.addObserver(otraConstruccion);
-		
+	
 		for (int i = 0; i<12;i++) unTurno.avanzarTurno();
 		assertTrue(unaConstruccion.estaOperativa());
 		
@@ -160,6 +148,8 @@ public class DanioAtaqueTest extends TestBase {
 		RazaProtoss unaRaza = new RazaProtoss(); 
 		TipoConstruccion unTipo = null;
 		Jugador unJugador = new Jugador("unNombre",unaRaza,"Azul");
+		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
+		Turno unTurno = Turno.getInstance(unJugador,otroJugador);
 		
 		AbstractConstruccionFactory factoryConstrucciones = unaRaza.getFactoryConstrucciones();
 		Posicion unaPosicion = new Posicion(12,3);
@@ -167,11 +157,8 @@ public class DanioAtaqueTest extends TestBase {
 		
 		Acceso unaConstruccion = (Acceso) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesBasicas, unaPosicion, unJugador);
 		
-		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
-		
 		Acceso otraConstruccion = (Acceso) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesBasicas, otraPosicion, otroJugador);
 		
-		Turno unTurno = new Turno(unJugador,otroJugador);
 
 		unTurno.addObserver(unaConstruccion);
 		unTurno.addObserver(otraConstruccion);
@@ -227,6 +214,8 @@ public class DanioAtaqueTest extends TestBase {
 		RazaProtoss unaRaza = new RazaProtoss(); 
 		TipoConstruccion unTipo = null;
 		Jugador unJugador = new Jugador("unNombre",unaRaza,"Azul");
+		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
+		Turno unTurno = Turno.getInstance(unJugador,otroJugador);
 		
 		AbstractConstruccionFactory factoryConstrucciones = unaRaza.getFactoryConstrucciones();
 		Posicion unaPosicion = new Posicion(12,3);
@@ -235,11 +224,10 @@ public class DanioAtaqueTest extends TestBase {
 		
 		Acceso unaConstruccion = (Acceso) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesBasicas, unaPosicion, unJugador);
 		
-		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
-		
+
 		Acceso otraConstruccion = (Acceso) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesBasicas, otraPosicion, otroJugador);
 		
-		Turno unTurno = new Turno(unJugador,otroJugador);
+
 		otroJugador.dameAlmacenMineral().almacenarRecurso(500);
 		
 		unTurno.addObserver(unaConstruccion);

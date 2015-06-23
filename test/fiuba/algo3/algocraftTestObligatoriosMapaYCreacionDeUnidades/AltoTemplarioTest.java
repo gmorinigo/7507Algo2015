@@ -85,6 +85,7 @@ public class AltoTemplarioTest extends TestBase {
 		assertTrue(celdaAltoTemplario.obtenerUnidad() instanceof AltoTemplario);
 	}
 
+	@SuppressWarnings("unused")
 	public void testCrearUnAltoTemplarioYVerificarLaCantidadDeEnergiaAcumuladaAlPasarLosTurnos() throws NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, JugadorConNombreDemasiadoCortoException, NoHaySuficientesRecursos, CapacidadDePoblacionMaximaSuperada, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoSePudoConstruirException, MaximaCapacidadDeTransporteSuperadaException, NoSePuedeAgregarALaNaveDeTransporteUnaUnidadVoladora{	
 		Mapa unMapa = Mapa.getInstance();
 		RazaProtoss unaRaza = new RazaProtoss(); 
@@ -99,16 +100,17 @@ public class AltoTemplarioTest extends TestBase {
 		
 		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
 		Turno unTurno = Turno.getInstance(unJugador,otroJugador);
+		unTurno.vaciarObservers();
 		
 		// Agrego las construcciones necesarias para crear la construccion actua
 		Posicion posicion3 = new Posicion(12,3);		
 		Construccion unaConstruccion = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.expansorPoblacion, posicion3 , unJugador);
 
 		Construccion unAcceso = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesBasicas, unaPosicion, unJugador);
-		unTurno.addObserver(unaConstruccion);
+		//unTurno.addObserver(unaConstruccion);
 		
-		unTurno.addObserver(unAcceso);
-		unJugador.agregarConstruccion(unAcceso);
+		//unTurno.addObserver(unAcceso);
+		//unJugador.agregarConstruccion(unAcceso);
 		for (int i = 0; i < 8 ;i++) unTurno.avanzarTurno();
 
 		Construccion unPuertoEstelar = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesVoladoras, otraPosicion, unJugador);

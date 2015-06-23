@@ -47,6 +47,8 @@ public class JugadorTest extends TestBase {
 		RazaTerran unaRaza = new RazaTerran(); 
 		TipoConstruccion unTipo = null;
 		Jugador unJugador = new Jugador("unNombre",unaRaza,"Azul");
+		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
+		Turno unTurno = Turno.getInstance(unJugador,otroJugador);
 		
 		AbstractConstruccionFactory factoryConstrucciones = unaRaza.getFactoryConstrucciones();
 		//Posicion unaPosicion = new Posicion(1,1);
@@ -60,9 +62,6 @@ public class JugadorTest extends TestBase {
 		Construccion DepositoDeSuministros5 = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.expansorPoblacion, new Posicion(10,++j*4), unJugador);
 		Construccion DepositoDeSuministros6 = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.expansorPoblacion, new Posicion(10,++j*4), unJugador);
 		
-		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
-		Turno unTurno = new Turno(unJugador,otroJugador);
-			
 		unTurno.addObserver(DepositoDeSuministros1);
 		unTurno.addObserver(DepositoDeSuministros2);
 		unTurno.addObserver(DepositoDeSuministros3);
@@ -128,6 +127,8 @@ public class JugadorTest extends TestBase {
 		RazaProtoss unaRaza = new RazaProtoss(); 
 		TipoConstruccion unTipo = null;
 		Jugador unJugador = new Jugador("unNombre",unaRaza,"Azul");
+		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
+		Turno unTurno = Turno.getInstance(unJugador,otroJugador);
 		
 		AbstractConstruccionFactory factoryConstrucciones = unaRaza.getFactoryConstrucciones();
 		//Posicion unaPosicion = new Posicion(1,1);
@@ -141,8 +142,7 @@ public class JugadorTest extends TestBase {
 		Construccion Pilon5 = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.expansorPoblacion, new Posicion(2,++w*6), unJugador);
 		Construccion Pilon6 = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.expansorPoblacion, new Posicion(2,++w*6), unJugador);
 		
-		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
-		Turno unTurno = new Turno(unJugador,otroJugador);
+
 			
 		unTurno.addObserver(Pilon1);
 		unTurno.addObserver(Pilon2);
@@ -207,7 +207,10 @@ public class JugadorTest extends TestBase {
         Mapa mapa = Mapa.getInstance();
 		RazaTerran unaRaza = new RazaTerran(); 
 		TipoConstruccion unTipo = null;
+		RazaProtoss otraRaza = new RazaProtoss(); 
 		Jugador unJugador = new Jugador("unNombre",unaRaza,"Azul");
+		Jugador otroJugador = new Jugador("Nombre",otraRaza,"Rojo");
+		Turno unTurno = Turno.getInstance(unJugador,otroJugador);
 		
 		AbstractConstruccionFactory factoryConstrucciones = unaRaza.getFactoryConstrucciones();
 		Posicion unaPosicion = new Posicion(12,3);
@@ -215,19 +218,10 @@ public class JugadorTest extends TestBase {
 		
 		Barraca unaConstruccion = (Barraca) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesBasicas, unaPosicion, unJugador);
 		
-
-		RazaProtoss otraRaza = new RazaProtoss(); 
-		Jugador otroJugador = new Jugador("Nombre",otraRaza,"Rojo");
 		AbstractConstruccionFactory factoryConstruccionesProtoss = otraRaza.getFactoryConstrucciones();
-		
 		Acceso otraConstruccion = (Acceso) factoryConstruccionesProtoss.crearConstruccion(unTipo.creadorUnidadesBasicas, otraPosicion, otroJugador);
 		
-		Turno unTurno = new Turno(unJugador,otroJugador);
-
-		
-		unTurno.addObserver(unaConstruccion);
-		unTurno.addObserver(otraConstruccion);
-		
+	
 		for (int i = 0; i<12;i++) unTurno.avanzarTurno();
 		assertTrue(unaConstruccion.estaOperativa());
 		assertTrue(otraConstruccion.estaOperativa());
@@ -253,8 +247,6 @@ public class JugadorTest extends TestBase {
 		Unidad unaUnidad = (Unidad) unaConstruccion.crearUnidad(unJugador,unTipoUnidad.terrestre1);
 		UnidadProtoss otraUnidad = (UnidadProtoss) otraConstruccion.crearUnidad(otroJugador,unTipoUnidad.terrestre1);
 		
-		unTurno.addObserver(unaUnidad);
-		unTurno.addObserver(otraUnidad);
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
@@ -272,8 +264,8 @@ public class JugadorTest extends TestBase {
 		//System.out.println("Unidad 1: " + unaUnidad.dameCelda().obtenerPosicion().dameFila() + " " + unaUnidad.dameCelda().obtenerPosicion().dameFila() );
 		//System.out.println("Unidad 2: " + otraUnidad.dameCelda().obtenerPosicion().dameFila() + " " + unaUnidad.dameCelda().obtenerPosicion().dameFila() );
 		
-		for(int i = 0; i < 160; i++){
-			unaUnidad.atacar(otraUnidad.dameCelda());
+		for(int i = 0; i < 155; i++){
+			assertTrue(unaUnidad.atacar(otraUnidad.dameCelda()));
 			unTurno.avanzarTurno();
 			//System.out.println(otraUnidad.obtenerCantidadVida());
 			//System.out.println(otraUnidad.obtenerCantidadEscudo());
