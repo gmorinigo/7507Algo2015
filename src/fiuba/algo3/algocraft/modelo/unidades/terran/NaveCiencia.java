@@ -44,9 +44,12 @@ public class NaveCiencia extends UnidadTerran {
 		}
 		else{
 			this.energia += 10;
-		}}
+		}
+	}
 	
-	public int getEnergia(){return this.energia;}
+	public int obtenerCantidadEnergia(){
+		return this.energia;
+	}
 
 
 	public int turnosNecesariosParaCreacion() {
@@ -91,7 +94,7 @@ public class NaveCiencia extends UnidadTerran {
 	
 	
 	private boolean atacarConRadiacion(Unidad unaUnidad) {
-		if(this.getEnergia()>=75){
+		if(this.obtenerCantidadEnergia()>=75){
 			DisparoConRadiacion unaRadiacion = new DisparoConRadiacion(this, 0, unaUnidad );
 			boolean retornoAtaqueTormentaPsionica = unaRadiacion.disparar();	
 			if (retornoAtaqueTormentaPsionica){
@@ -104,7 +107,7 @@ public class NaveCiencia extends UnidadTerran {
 	}
 
 	private boolean atacarConMisilEMP(Celda unaCelda) {		
-		if(this.getEnergia() >= 100){
+		if(this.obtenerCantidadEnergia() >= 100){
 			DisparoEMP unMisilazo = new DisparoEMP(this, 2);  
 			return unMisilazo.disparar(unaCelda);
 		}

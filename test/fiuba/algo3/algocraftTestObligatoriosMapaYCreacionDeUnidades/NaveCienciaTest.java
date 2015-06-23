@@ -105,7 +105,7 @@ public class NaveCienciaTest extends TestBase {
 		Unidad unaNaveCiencia = (Unidad) unPuerto.crearUnidad(unJugador,TipoUnidad.especial1);
 		
 		for (int i=0;i<10;i++) unTurno.avanzarTurno();
-		assertEquals(((NaveCiencia) unaNaveCiencia).getEnergia(), 50);
+		assertEquals(((NaveCiencia) unaNaveCiencia).obtenerCantidadEnergia(), 50);
 	}
 
 	@SuppressWarnings("unused")
@@ -142,11 +142,11 @@ public class NaveCienciaTest extends TestBase {
 		Unidad unaNaveCiencia = (Unidad) unPuerto.crearUnidad(unJugador,TipoUnidad.especial1);
 		
 		for (int i=0;i<10;i++) unTurno.avanzarTurno();
-		assertEquals(((NaveCiencia) unaNaveCiencia).getEnergia(), 50);
+		assertEquals(((NaveCiencia) unaNaveCiencia).obtenerCantidadEnergia(), 50);
 
 		for (int i = 0; i <= 4; i++)
 			unTurno.avanzarTurno();
-		assertEquals(((NaveCiencia) unaNaveCiencia).getEnergia(), 100);
+		assertEquals(((NaveCiencia) unaNaveCiencia).obtenerCantidadEnergia(), 100);
 	}
 	
 	public void testCrearNaveCienciaCreadaacumula200DeEnergia()
@@ -186,11 +186,11 @@ public class NaveCienciaTest extends TestBase {
 		
 		unTurno.addObserver(unaNaveCiencia);
 		for (int i=0;i<10;i++) unTurno.avanzarTurno();
-		assertEquals(((NaveCiencia) unaNaveCiencia).getEnergia(), 150);
+		assertEquals(((NaveCiencia) unaNaveCiencia).obtenerCantidadEnergia(), 150);
 
 		for (int i = 0; i <= 4; i++)
 			unTurno.avanzarTurno();
-		assertEquals(((NaveCiencia) unaNaveCiencia).getEnergia(), 200);
+		assertEquals(((NaveCiencia) unaNaveCiencia).obtenerCantidadEnergia(), 200);
 	}
 
 
