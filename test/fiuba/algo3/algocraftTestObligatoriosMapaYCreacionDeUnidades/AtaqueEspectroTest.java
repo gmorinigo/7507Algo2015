@@ -123,18 +123,16 @@ public class AtaqueEspectroTest extends TestBase{
 		Posicion posicion444 = new Posicion(44,4);
 		Posicion otraPosicion = new Posicion(15,7);
 		
-		AbstractConstruccionFactory factoryConstrucciones = unaRaza.getFactoryConstrucciones();	
-		Barraca unaConstruccion = (Barraca) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesBasicas, unaPosicion, unJugador);
-		
 		Jugador otroJugador = new Jugador("Nombre",otraRaza,"Azul");
 		unJugador.dameAlmacenMineral().almacenarRecurso(10000);
 		otroJugador.dameAlmacenMineral().almacenarRecurso(10000);
 		
+		Turno unTurno = new Turno(unJugador,otroJugador);
+		AbstractConstruccionFactory factoryConstrucciones = unaRaza.getFactoryConstrucciones();	
+		Barraca unaConstruccion = (Barraca) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesBasicas, unaPosicion, unJugador);
+		
 		AbstractConstruccionFactory otroFactoryConstrucciones = otraRaza.getFactoryConstrucciones();
 		Acceso unAcceso = (Acceso) otroFactoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesBasicas, otraPosicion, otroJugador);
-		
-		Turno unTurno = new Turno(unJugador,otroJugador);
-
 		
 		unTurno.addObserver(unaConstruccion);
 		unTurno.addObserver(unAcceso);

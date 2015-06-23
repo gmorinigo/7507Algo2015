@@ -160,13 +160,12 @@ public class AtaqueDragonTest extends TestBase{
 		Posicion unaPosicion = new Posicion(12,3);
 		Posicion otraPosicion = new Posicion(15,7);
 		
-		Acceso unaConstruccion = (Acceso) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesBasicas, unaPosicion, unJugador);
-		
 		Jugador otroJugador = new Jugador("Nombre",new RazaProtoss(),"Azul");
+		Turno unTurno = new Turno(unJugador,otroJugador);
 		
+		Acceso unaConstruccion = (Acceso) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesBasicas, unaPosicion, unJugador);
 		Acceso otraConstruccion = (Acceso) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesBasicas, otraPosicion, otroJugador);
 		
-		Turno unTurno = new Turno(unJugador,otroJugador);
 
 		unTurno.addObserver(unaConstruccion);
 		unTurno.addObserver(otraConstruccion);
