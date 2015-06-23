@@ -97,6 +97,9 @@ public abstract class Construccion implements TurnoObserver{
 		while (it.hasNext()) {
 			it.next().desocuparCelda();
 		}
+		
+		Turno unTurno = Turno.getInstance();
+		unTurno.removeObserver(this);
 	}
 	
 	abstract protected void vivir();
@@ -120,7 +123,12 @@ public abstract class Construccion implements TurnoObserver{
 	public void atacarConTormentaPsionica() {
 		this.salud.atacar(100);
 		if(! this.salud.tieneVida()) {
-			this.destruirConstruccion();
+			this.jugador.quitarConstruccion(this);
+			Iterator<Celda> it = celdas.iterator();
+
+			while (it.hasNext()) {
+				it.next().desocuparCelda();
+			}
 		}
 	}
 

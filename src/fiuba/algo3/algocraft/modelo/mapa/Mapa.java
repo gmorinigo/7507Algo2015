@@ -3,6 +3,8 @@ package fiuba.algo3.algocraft.modelo.mapa;
 import java.util.ArrayList;
 
 import fiuba.algo3.algocraft.modelo.construciones.Construccion;
+import fiuba.algo3.algocraft.modelo.excepciones.MaximaCapacidadDeTransporteSuperadaException;
+import fiuba.algo3.algocraft.modelo.excepciones.NoSePuedeAgregarALaNaveDeTransporteUnaUnidadVoladora;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 
 public class Mapa {
@@ -225,7 +227,11 @@ public class Mapa {
 	public boolean agregarUnidad(Posicion unaPosicion, Unidad unaUnidad) {
 		Celda unaCelda = this.matriz[unaPosicion.dameFila()][unaPosicion.dameColumna()];
 		unaUnidad.setCelda(unaCelda);
-		return unaCelda.agregarUnidad(unaUnidad);
+		try {
+			return unaCelda.agregarUnidad(unaUnidad);
+		} catch (MaximaCapacidadDeTransporteSuperadaException | NoSePuedeAgregarALaNaveDeTransporteUnaUnidadVoladora e) {
+		}
+		return false;
 		
 	}
 }

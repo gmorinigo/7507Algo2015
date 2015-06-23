@@ -1,10 +1,12 @@
 package fiuba.algo3.algocraft.modelo.unidades;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.excepciones.MaximaCapacidadDeTransporteSuperadaException;
 import fiuba.algo3.algocraft.modelo.excepciones.NoSePuedeAgregarALaNaveDeTransporteUnaUnidadVoladora;
+import fiuba.algo3.algocraft.modelo.unidades.movimientos.Movimiento.TipoDireccion;
 
 public abstract class NaveTransporte extends UnidadTerran {
 	private ArrayList<Unidad> unidadesCargadas;
@@ -17,8 +19,6 @@ public abstract class NaveTransporte extends UnidadTerran {
 		this.capacidadCargada = 0;
 		this.tamanioTransporte = 0;
 		this.capacidadMaximaCarga = 8;
-		//this.disparoStrategy=disparoStrategy;
-		//this.disparoStrategy.setUnidad(this);
 	}
 
 	protected Salud saludInicial() {
@@ -37,7 +37,7 @@ public abstract class NaveTransporte extends UnidadTerran {
 			this.capacidadCargada += unaUnidad.getTamanioTransporte(); 
 		}
 		else {
-			throw new MaximaCapacidadDeTransporteSuperadaException();
+				throw new MaximaCapacidadDeTransporteSuperadaException();
 		}
 	}
 
@@ -51,5 +51,56 @@ public abstract class NaveTransporte extends UnidadTerran {
 	public int getCapacidadOcupada(){
 		
 		return this.capacidadCargada;
+	}
+
+	public void descargarUnidades() {
+		Iterator<Unidad> it = unidadesCargadas.iterator();
+		
+		while (it.hasNext()) {
+			Unidad unaUnidad = it.next();
+			unaUnidad.dameCelda().bajarDeLaNaveDeTransporte(unaUnidad);
+		}
+	}
+	
+	public boolean recibirataque(Unidad unaUnidadAtacante){
+		if(! this.verificarSiPuedeAtacar(unaUnidadAtacante))
+			return false;
+		
+		this.salud.atacar(unaUnidadAtacante.DanioAtaque(this));
+		if(! this.salud.tieneVida()) {
+			Iterator<Unidad> it = unidadesCargadas.iterator();
+			
+			while (it.hasNext()) {
+				Unidad unaUnidad = it.next();
+				unaUnidad.destruirUnidad();
+			}
+			this.destruirUnidad();
+		}
+		return true;
+	}
+	
+	public boolean esUnaNaveTransporte() {
+		return true;
+	}
+
+	public boolean mover(TipoDireccion direccion) throws MaximaCapacidadDeTransporteSuperadaException, NoSePuedeAgregarALaNaveDeTransporteUnaUnidadVoladora {
+		if(! this.estado.esPosibleRealizarAccion()) {
+			return false;
+		}
+		
+		boolean movAplicado = this.movimiento.mover(direccion);
+		if( ! movAplicado ) {
+			return false;
+		}
+		else{
+			Iterator<Unidad> it = unidadesCargadas.iterator();
+			
+			while (it.hasNext()) {
+				Unidad unaUnidad = it.next();
+				unaUnidad.setCelda(this.celda);
+			}
+		}
+		this.estado = new UnidadEstadoDescansando(this);
+		return true;
 	}
 }

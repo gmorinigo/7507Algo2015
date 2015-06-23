@@ -21,18 +21,22 @@ import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionInvalidaPrimeroDebeC
 import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException;
 import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException;
 import fiuba.algo3.algocraft.modelo.excepciones.JugadorConNombreDemasiadoCortoException;
+import fiuba.algo3.algocraft.modelo.excepciones.MaximaCapacidadDeTransporteSuperadaException;
 import fiuba.algo3.algocraft.modelo.excepciones.NoHaySuficientesRecursos;
 import fiuba.algo3.algocraft.modelo.excepciones.NoReuneLosRequisitosException;
 import fiuba.algo3.algocraft.modelo.excepciones.NoSePudoConstruirException;
+import fiuba.algo3.algocraft.modelo.excepciones.NoSePuedeAgregarALaNaveDeTransporteUnaUnidadVoladora;
 import fiuba.algo3.algocraft.modelo.mapa.Celda;
 import fiuba.algo3.algocraft.modelo.mapa.Mapa;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.turnos.Turno;
 import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory;
+import fiuba.algo3.algocraft.modelo.unidades.NaveTransporte;
 //import fiuba.algo3.algocraft.modelo.unidades.NaveTransporte;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 import fiuba.algo3.algocraft.modelo.unidades.UnidadFactoryTerran;
 import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory.TipoUnidad;
+import fiuba.algo3.algocraft.modelo.unidades.movimientos.Movimiento.TipoDireccion;
 //import fiuba.algo3.algocraft.modelo.unidades.movimientos.Movimiento.TipoDireccion;
 import fiuba.algo3.algocrafttest.TestBase;
 
@@ -99,18 +103,6 @@ public class MapaTest extends TestBase {
 		assertFalse(unMapa.verificarCeldaOcupada(posicion1012));
 	}
 	
-	/*
-	public void testAgregarUnExtractorDeMineralEnUnaCeldaQueNoTieneMineralYNoRecolectaNada() throws JugadorConNombreDemasiadoCortoException{
-		Posicion posicion912 = new Posicion(9,12);
-
-		Mapa unMapa = Mapa.getInstance();
-		CentroMineral unCentroDeMineral = new CentroMineral(posicion912, new Jugador("unNombre",new RazaProtoss(),"Azul"),TipoConstruccion.extractorMineral);
-		
-		
-		assertTrue(unMapa.agregarConstruccion(unCentroDeMineral));
-		fail();
-	}*/
-	
 	
 	public void testAgregarUnExtractorDeGasYVerificarLasCeldasOcupadas() throws JugadorConNombreDemasiadoCortoException{
 		Posicion posicion99 = new Posicion(9,9);
@@ -127,19 +119,6 @@ public class MapaTest extends TestBase {
 		assertFalse(unMapa.verificarCeldaOcupada(posicion109));
 		assertFalse(unMapa.verificarCeldaOcupada(posicion1010));
 	}
-
-	/*
-	public void testAgregarUnExtractorDeGasEnUnaCeldaQueNoTieneGasYNoRecolectaNada() throws JugadorConNombreDemasiadoCortoException{
-		Posicion posicion910 = new Posicion(9,10);
-
-		Mapa unMapa = Mapa.getInstance();
-		Refineria unaRefineria = new Refineria(posicion910, new Jugador("unNombre",new RazaProtoss(),"Azul"),TipoConstruccion.extractorGas);
-		
-		unMapa.agregarConstruccion(unaRefineria);
-		fail();
-		
-	}*/
-	
 	
 	public void testAgregarUnaConstruccionAlMapaYVerificarLasCeldasQueOcupa() throws JugadorConNombreDemasiadoCortoException{
 		Posicion posicion22 = new Posicion(2,2);
@@ -169,7 +148,7 @@ public class MapaTest extends TestBase {
 		assertTrue(unMapa.agregarConstruccion(unaBarraca)); 
 		
 		Jugador otroJugador = new Jugador("Nombre",new RazaTerran(),"Rojo");
-		Turno unTurno = new Turno(unJugador,otroJugador);
+		Turno unTurno = Turno.getInstance(unJugador,otroJugador);
 		
 		
 		unTurno.avanzarTurno();
@@ -235,7 +214,7 @@ public class MapaTest extends TestBase {
 		assertFalse(unMapa.agregarConstruccion(unaBarraca));
 	}
 	
-	public void testAgregarUnaNaveDeTransporteAlMapaCargarleUnaUnidadPasarPorElEspacioYDejarlaDelOtroLado() throws JugadorConNombreDemasiadoCortoException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, NoHaySuficientesRecursos, NoSuchObjectException, CapacidadDePoblacionMaximaSuperada, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoSePudoConstruirException{
+	public void testAgregarUnaNaveDeTransporteAlMapaCargarleUnaUnidadPasarPorElEspacioYDejarlaDelOtroLado() throws JugadorConNombreDemasiadoCortoException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, NoHaySuficientesRecursos, NoSuchObjectException, CapacidadDePoblacionMaximaSuperada, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoSePudoConstruirException, MaximaCapacidadDeTransporteSuperadaException, NoSePuedeAgregarALaNaveDeTransporteUnaUnidadVoladora{
 		RazaTerran unaRaza = new RazaTerran(); 
 		//TipoUnidad unTipo = null;
 		Jugador unJugador = new Jugador("unNombre",unaRaza,"Azul");
@@ -259,7 +238,7 @@ public class MapaTest extends TestBase {
 		unTurno.addObserver(unaBarraca);
 		for (int i=0;i<12;i++) unTurno.avanzarTurno();
 
-		Unidad unMarine = (Unidad) unaBarraca.crearUnidad(unJugador,TipoUnidad.volador2);
+		Unidad unMarine = (Unidad) unaBarraca.crearUnidad(unJugador,TipoUnidad.terrestre1);
 	
 		Fabrica unaFabrica = (Fabrica) factoryConstrucciones.crearConstruccion(TipoConstruccion.creadorUnidadesNivel2, new Posicion(25,15), unJugador);
 		
@@ -271,7 +250,7 @@ public class MapaTest extends TestBase {
 		unTurno.addObserver(unPuerto);
 		for (int i=0;i<10;i++) unTurno.avanzarTurno();
 		
-		Unidad unaNaveDeTransporte = (Unidad) unPuerto.crearUnidad(unJugador,TipoUnidad.volador2);
+		NaveTransporte unaNaveDeTransporte = (NaveTransporte) unPuerto.crearUnidad(unJugador,TipoUnidad.volador2);
 		
 		unTurno.addObserver(unaNaveDeTransporte);
 		unTurno.addObserver(unMarine);
@@ -281,25 +260,47 @@ public class MapaTest extends TestBase {
 		assertTrue(unMapa.verificarCeldaOcupada(new Posicion(15,14)));
 		assertTrue(unMapa.verificarCeldaOcupada(new Posicion(17,14)));
         
-		// TODO: Terminar el test
-		/*
-		marine.mover(TipoDireccion.Abajo);
+		assertTrue(unMarine.mover(TipoDireccion.Abajo));
 
-		assertFalse(unMapa.verificarCeldaOcupada(posicion3079));
+		assertFalse(unMapa.verificarCeldaOcupada(new Posicion(15,14)));
+		assertTrue(unMapa.verificarCeldaOcupada(new Posicion(16,14)));
 		
-		for (int i = 0; i < 42; i++){
-			assertEquals(marine.dameCelda().obtenerPosicion(), new Posicion(31,79+i));
-			assertEquals(unaNaveTransporte.dameCelda().obtenerPosicion(), new Posicion(31,79+i));
-			unaNaveTransporte.mover(TipoDireccion.Derecha);
+		unTurno.avanzarTurno();
+		assertTrue(unMarine.mover(TipoDireccion.Abajo));
+		
+		assertFalse(unMapa.verificarCeldaOcupada(new Posicion(15,14)));
+		assertFalse(unMapa.verificarCeldaOcupada(new Posicion(16,14)));
+		assertTrue(unMapa.verificarCeldaOcupada(new Posicion(17,14)));
+		assertEquals(unMarine.dameCelda(), unMapa.dameCelda(new Posicion(17,14)));
+		
+		for (int i = 0; i < 2; i++){
+			assertEquals(unMarine.dameCelda().obtenerPosicion().dameFila(),17+i);
+			assertEquals(unMarine.dameCelda().obtenerPosicion().dameColumna(),14);
+			assertEquals(unaNaveDeTransporte.dameCelda().obtenerPosicion().dameFila(),17+i);
+			assertEquals(unaNaveDeTransporte.dameCelda().obtenerPosicion().dameColumna(),14);
+			unaNaveDeTransporte.mover(TipoDireccion.Abajo);
 			unTurno.avanzarTurno();
 		}
 		
-		assertEquals(marine.dameCelda().obtenerPosicion(), new Posicion(31,120));
-		assertEquals(unaNaveTransporte.dameCelda().obtenerPosicion(), new Posicion(31,120));
 		
-		unaNaveTransporte.descargarUnidades();
-		assertEquals(marine.dameCelda().obtenerPosicion(), new Posicion(32,120));
-		*/
+		for (int i = 0; i < 106; i++){
+			assertEquals(unMarine.dameCelda().obtenerPosicion().dameFila(),19);
+			assertEquals(unMarine.dameCelda().obtenerPosicion().dameColumna(),14+i);
+			assertEquals(unaNaveDeTransporte.dameCelda().obtenerPosicion().dameFila(),19);
+			assertEquals(unaNaveDeTransporte.dameCelda().obtenerPosicion().dameColumna(),14+i);
+			unaNaveDeTransporte.mover(TipoDireccion.Derecha);
+			unTurno.avanzarTurno();
+		}
+		
+		assertEquals(unMarine.dameCelda().obtenerPosicion().dameFila(),19);
+		assertEquals(unMarine.dameCelda().obtenerPosicion().dameColumna(),120);
+		assertEquals(unaNaveDeTransporte.dameCelda().obtenerPosicion().dameFila(),19);
+		assertEquals(unaNaveDeTransporte.dameCelda().obtenerPosicion().dameColumna(),120);
+		
+		unaNaveDeTransporte.descargarUnidades();
+		assertEquals(unMarine.dameCelda().obtenerPosicion().dameFila(),20);
+		assertEquals(unMarine.dameCelda().obtenerPosicion().dameColumna(),120);
+		
 	}
 	
 	public static AbstractUnidadFactory getFactoryUnidades(){

@@ -1,5 +1,8 @@
 package fiuba.algo3.algocraft.modelo.unidades;
 
+import fiuba.algo3.algocraft.modelo.excepciones.MaximaCapacidadDeTransporteSuperadaException;
+import fiuba.algo3.algocraft.modelo.excepciones.NoSePuedeAgregarALaNaveDeTransporteUnaUnidadVoladora;
+
 public class UnidadEstadoNaciendo extends UnidadEstado{
 
 	protected int turnosNecesariosParaCreacion;
@@ -9,8 +12,7 @@ public class UnidadEstadoNaciendo extends UnidadEstado{
 		this.turnosNecesariosParaCreacion = turnosNecesariosParaCreacion;
 	}
 	
-	@Override
-	public void avanzarEnElTurno() {
+	public void avanzarEnElTurno() throws MaximaCapacidadDeTransporteSuperadaException, NoSePuedeAgregarALaNaveDeTransporteUnaUnidadVoladora {
 		this.turnosNecesariosParaCreacion--;
 		if(this.turnosNecesariosParaCreacion <= 0)
 			this.contexto.finalizarNacimiento();

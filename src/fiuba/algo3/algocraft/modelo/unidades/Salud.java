@@ -3,7 +3,7 @@ package fiuba.algo3.algocraft.modelo.unidades;
 abstract public class Salud {
 	
 	protected int hp;
-	private int salud;
+	protected int salud;
 	
 	public Salud(int hp, int salud) {
 		this.hp = hp;

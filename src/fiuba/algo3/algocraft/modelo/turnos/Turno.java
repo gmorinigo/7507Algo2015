@@ -4,6 +4,11 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import fiuba.algo3.algocraft.modelo.Jugador;
+import fiuba.algo3.algocraft.modelo.construciones.Construccion;
+import fiuba.algo3.algocraft.modelo.excepciones.MaximaCapacidadDeTransporteSuperadaException;
+import fiuba.algo3.algocraft.modelo.excepciones.NoSePuedeAgregarALaNaveDeTransporteUnaUnidadVoladora;
+import fiuba.algo3.algocraft.modelo.unidades.Unidad;
+import fiuba.algo3.algocraft.modelo.unidades.ataques.DisparoTormentaPsionica;
 
 public class Turno {
 	
@@ -37,13 +42,29 @@ public class Turno {
 		INSTANCE = this;
 	}
 
-	public void avanzarTurno() {
+	public void avanzarTurno(){
 		if(this.partidaEnProceso && !this.jugadoresEstanEnJuego())
 			return;
 		Iterator<TurnoObserver> it = this.observadores.iterator();
 		
 		while (it.hasNext()) {
-			it.next().finDeTurno(this);	
+			try {
+				it.next().finDeTurno(this);
+				if (it instanceof Unidad){
+					Unidad unaUnidad = (Unidad) it;
+					if (!unaUnidad.estaViva()) it.remove();
+				}
+				if (it instanceof Construccion){
+					Construccion unaConstruccion = (Construccion) it;
+					if (!unaConstruccion.estaViva()) it.remove();					
+				}
+				if (it instanceof DisparoTormentaPsionica){
+					DisparoTormentaPsionica unDisparoTormentaPsionica = (DisparoTormentaPsionica) it;
+					if (unDisparoTormentaPsionica.turnosRestantes()==0) it.remove();	
+				}
+			} catch (MaximaCapacidadDeTransporteSuperadaException| NoSePuedeAgregarALaNaveDeTransporteUnaUnidadVoladora e) {
+
+			}	
 		}
 		
 		this.jugadorConTurno = (this.jugadorConTurno == this.jugador1) ? this.jugador2 : this.jugador1;
@@ -58,6 +79,10 @@ public class Turno {
 		this.observadores.add(observer);
 	}
 
+	public void removeObserver(TurnoObserver observer) {
+		this.observadores.remove(observer);
+	}
+	
 	public int dameTurno() {
 		return this.turno;
 	}
@@ -66,6 +91,9 @@ public class Turno {
     	return this.jugadorConTurno; 	
     }
     
+    public void vaciarObservers(){
+    	this.observadores.clear(); 	
+    }
     public void comenzar() {
     	this.partidaEnProceso = true;;
 		this.jugador1.empezarPartida();

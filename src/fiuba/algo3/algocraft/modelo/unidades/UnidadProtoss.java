@@ -1,7 +1,10 @@
 package fiuba.algo3.algocraft.modelo.unidades;
 
 import fiuba.algo3.algocraft.modelo.Jugador;
+import fiuba.algo3.algocraft.modelo.excepciones.MaximaCapacidadDeTransporteSuperadaException;
+import fiuba.algo3.algocraft.modelo.excepciones.NoSePuedeAgregarALaNaveDeTransporteUnaUnidadVoladora;
 import fiuba.algo3.algocraft.modelo.mapa.Celda;
+import fiuba.algo3.algocraft.modelo.turnos.Turno;
 import fiuba.algo3.algocraft.modelo.unidades.protoss.SaludProtoss;
 
 public abstract class UnidadProtoss extends Unidad {
@@ -24,8 +27,10 @@ public abstract class UnidadProtoss extends Unidad {
 			return false;
 		
 		this.salud.atacar(unaUnidadAtacante.DanioAtaque(this));
-		if(! this.salud.tieneVida()) {
+		if((!this.salud.tieneVida() && !this.esUnaAlucinacion) || (!this.salud.tieneEscudo()&& this.esUnaAlucinacion)) {
 			this.destruirUnidad();
+			Turno unTurno = Turno.getInstance();
+			unTurno.removeObserver(this);
 		}
 		return true;
 	}
@@ -43,7 +48,7 @@ public abstract class UnidadProtoss extends Unidad {
 		}
 	}
 	
-	public boolean atacar(Celda unaCelda) {
+	public boolean atacar(Celda unaCelda)  {
 		if (this.esUnaAlucinacion()) {
 			return true;
 		}
@@ -52,8 +57,11 @@ public abstract class UnidadProtoss extends Unidad {
 			return false;
 		}
 		
-		boolean disparoRealizado = this.disparo.disparar(unaCelda);
-		
+		boolean disparoRealizado = false;
+		try {
+			disparoRealizado = this.disparo.disparar(unaCelda);
+		} catch (MaximaCapacidadDeTransporteSuperadaException | NoSePuedeAgregarALaNaveDeTransporteUnaUnidadVoladora e) {
+		}		
 		if(! disparoRealizado)
 			return false;
 		

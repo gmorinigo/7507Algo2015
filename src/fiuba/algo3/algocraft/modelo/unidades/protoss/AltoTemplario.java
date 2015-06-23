@@ -2,6 +2,8 @@ package fiuba.algo3.algocraft.modelo.unidades.protoss;
 
 import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.construciones.Construccion;
+import fiuba.algo3.algocraft.modelo.excepciones.MaximaCapacidadDeTransporteSuperadaException;
+import fiuba.algo3.algocraft.modelo.excepciones.NoSePuedeAgregarALaNaveDeTransporteUnaUnidadVoladora;
 import fiuba.algo3.algocraft.modelo.mapa.Celda;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.turnos.Turno;
@@ -59,7 +61,7 @@ public class AltoTemplario extends UnidadProtoss {
 	}
 
 	
-	public boolean atacar(Celda unaCelda, TipoAtaqueAltoTemplario unTipoAtaqueAltoTemplario) {
+	public boolean atacar(Celda unaCelda, TipoAtaqueAltoTemplario unTipoAtaqueAltoTemplario) throws MaximaCapacidadDeTransporteSuperadaException, NoSePuedeAgregarALaNaveDeTransporteUnaUnidadVoladora {
 		if (!this.estado.esPosibleRealizarAccion()) {
 			return false;
 		}
@@ -112,7 +114,7 @@ public class AltoTemplario extends UnidadProtoss {
 		return retornoAtaqueTormentaPsionica;
 	}
 	
-	private boolean atacarConAlucinacion(Celda unaCelda) {
+	private boolean atacarConAlucinacion(Celda unaCelda) throws MaximaCapacidadDeTransporteSuperadaException, NoSePuedeAgregarALaNaveDeTransporteUnaUnidadVoladora {
 		if (!this.cantidadMagiaDisponible(TipoAtaqueAltoTemplario.Alucinacion)){
 			return false;
 		}

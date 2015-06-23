@@ -2,6 +2,8 @@ package fiuba.algo3.algocraft.modelo.unidades;
 
 import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.construciones.Construccion;
+import fiuba.algo3.algocraft.modelo.excepciones.MaximaCapacidadDeTransporteSuperadaException;
+import fiuba.algo3.algocraft.modelo.excepciones.NoSePuedeAgregarALaNaveDeTransporteUnaUnidadVoladora;
 import fiuba.algo3.algocraft.modelo.mapa.Celda;
 import fiuba.algo3.algocraft.modelo.mapa.Mapa;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
@@ -44,12 +46,12 @@ abstract public class Unidad implements TurnoObserver{
 	}
 	
 
-	public void finDeTurno(Turno turno) {
+	public void finDeTurno(Turno turno) throws MaximaCapacidadDeTransporteSuperadaException, NoSePuedeAgregarALaNaveDeTransporteUnaUnidadVoladora {
 		this.estado.avanzarEnElTurno();	
 //		this.estado = new UnidadEstadoViviendo(this);
 	}
 	
-	public void finalizarNacimiento() {
+	public void finalizarNacimiento() throws MaximaCapacidadDeTransporteSuperadaException, NoSePuedeAgregarALaNaveDeTransporteUnaUnidadVoladora {
 		this.estado = new UnidadEstadoViviendo(this);
 		Posicion posicionOcupada = posicionDeConstruccion; 
 		Mapa mapa = Mapa.getInstance();
@@ -90,7 +92,7 @@ abstract public class Unidad implements TurnoObserver{
 		this.celda = unaCelda;
 	}
 	
-	public boolean mover(TipoDireccion direccion) {
+	public boolean mover(TipoDireccion direccion) throws MaximaCapacidadDeTransporteSuperadaException, NoSePuedeAgregarALaNaveDeTransporteUnaUnidadVoladora {
 		if(! this.estado.esPosibleRealizarAccion()) {
 			return false;
 		}
@@ -126,6 +128,8 @@ abstract public class Unidad implements TurnoObserver{
 	public void destruirUnidad() {
 		this.jugador.quitarUnidad(this);
 		this.celda.desocuparCelda();
+		Turno unTurno = Turno.getInstance();
+		unTurno.removeObserver(this);
 	}
 	
 	protected abstract boolean atacaUnidadesAereas();
@@ -169,12 +173,17 @@ abstract public class Unidad implements TurnoObserver{
 	
 	public abstract Unidad crearAlucinacion();
 
-	public void atacarConTormentaPsionica() {
+	public void recibirAtaqueTormentaPsionica() {
 		this.salud.atacar(100);
 		if(! this.salud.tieneVida()) {
-			this.destruirUnidad();
+			this.jugador.quitarUnidad(this);
+			this.celda.desocuparCelda();
 		}
 	}
 
 	public abstract int obtenerCantidadEscudo();
+
+	public boolean esUnaNaveTransporte() {
+		return false;
+	}
 }

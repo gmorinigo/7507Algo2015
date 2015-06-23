@@ -33,6 +33,11 @@ public class DisparoTormentaPsionica extends AbstractDisparo implements TurnoObs
 				this.turnosRestantes--;
 			}
 		}
+		/*if (this.turnosRestantes == 0){
+			Turno unTurno = Turno.getInstance();
+			unTurno.removeObserver(this);
+		}*/
+		
 		return retornoAtaque;
 	}
 
@@ -40,5 +45,10 @@ public class DisparoTormentaPsionica extends AbstractDisparo implements TurnoObs
 		this.disparar(celdaObjetivo);
 	}
 
+
+	public int turnosRestantes () {
+		return this.turnosRestantes;
+	}
+	
 }
 

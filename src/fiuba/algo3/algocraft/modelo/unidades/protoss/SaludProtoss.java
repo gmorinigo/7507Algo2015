@@ -4,7 +4,7 @@ import fiuba.algo3.algocraft.modelo.unidades.Salud;
 
 public class SaludProtoss extends Salud{
 	
-	protected int salud;
+	//protected int salud;
 	protected int escudo;
 	protected int escudoInicial;
 	

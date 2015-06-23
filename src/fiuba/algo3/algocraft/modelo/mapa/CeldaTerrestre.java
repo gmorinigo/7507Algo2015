@@ -8,17 +8,14 @@ public class CeldaTerrestre extends Celda {
 		super(fila, columna);
 	}
 
-	@Override
 	public boolean puedeMoverse(Unidad unaUnidad) {
 		return true;
 	}
 
-	@Override
 	public boolean esAtacable() {
 		return this.celdaOcupada();
 	}
 
-	@Override
 	public boolean agregarConstruccion(Construccion construccion) {
 		if( this.celdaOcupada())
 
@@ -29,8 +26,11 @@ public class CeldaTerrestre extends Celda {
 		return true;
 	}
 
-	@Override
 	public boolean esPosbibleConstruir(Construccion construccion) {
 		return (! this.celdaOcupada());
+	}
+
+	protected boolean esCeldaTerrestre() {
+		return true;
 	}
 }

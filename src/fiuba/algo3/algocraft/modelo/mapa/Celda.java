@@ -1,6 +1,9 @@
 package fiuba.algo3.algocraft.modelo.mapa;
 
 import fiuba.algo3.algocraft.modelo.construciones.Construccion;
+import fiuba.algo3.algocraft.modelo.excepciones.MaximaCapacidadDeTransporteSuperadaException;
+import fiuba.algo3.algocraft.modelo.excepciones.NoSePuedeAgregarALaNaveDeTransporteUnaUnidadVoladora;
+import fiuba.algo3.algocraft.modelo.unidades.NaveTransporte;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 
 public abstract class Celda {
@@ -30,6 +33,7 @@ public abstract class Celda {
 
 	public void desocuparCelda(){
 		this.unidad = null;
+		this.construccion = null;
 		this.estaOcupada = false;  
 	}
 	
@@ -42,17 +46,50 @@ public abstract class Celda {
 	}
 
 
-	public boolean agregarUnidad(Unidad unaUnidad) {
-		if (!this.puedeMoverse(unaUnidad) || this.celdaOcupada() || !unaUnidad.estaOperativa()) {
+	public boolean agregarUnidad(Unidad unaUnidad) throws MaximaCapacidadDeTransporteSuperadaException, NoSePuedeAgregarALaNaveDeTransporteUnaUnidadVoladora {
+		if (!this.puedeMoverse(unaUnidad) || !unaUnidad.estaOperativa()) {
 			return false;
 		}
+		
+		// Esta ocupada por una construccion
+		if (this.unidad == null && this.celdaOcupada()){
+			return false;
+		}
+		
+		if (this.unidad != null) {
+			// Tiene una unidad
+			if (this.unidad.esUnaNaveTransporte()){
+				return (this.agregarUnidadANaveDeTransporte(unaUnidad));
+			}
+			else{
+				return false;
+			}
+		}
+		// No tiene nada
+		else{
+			return (this.agregarUnidadNormal(unaUnidad));
+		}
+
+	}
+	
+	private boolean agregarUnidadANaveDeTransporte(Unidad unaUnidad) throws MaximaCapacidadDeTransporteSuperadaException, NoSePuedeAgregarALaNaveDeTransporteUnaUnidadVoladora {
+		NaveTransporte unaNaveTransporte = (NaveTransporte) this.unidad;
+		unaNaveTransporte.cargarUnidad(unaUnidad);
+		unaUnidad.dameCelda().desocuparCelda();
+		unaUnidad.setCelda(this);
+		return true;
+	}
+
+
+	private boolean agregarUnidadNormal(Unidad unaUnidad) {
 		this.unidad = unaUnidad;
 		this.unidad.setCelda(this);
 		this.ocuparCelda();
 		
 		return true;
 	}
-	
+
+
 	public void eliminarUnidad() {
 		this.unidad = null;
 		this.desocuparCelda();
@@ -135,11 +172,10 @@ public abstract class Celda {
 		return (this.construccion != null);
 	}
 
-	public boolean atacarUnidadDelaCeldaConAlucionacion(Unidad unaUnidadAtacante) {
+	public boolean atacarUnidadDelaCeldaConAlucionacion(Unidad unaUnidadAtacante) throws MaximaCapacidadDeTransporteSuperadaException, NoSePuedeAgregarALaNaveDeTransporteUnaUnidadVoladora {
 		if(!this.esAtacable())
 			return false;
 		
-
 		if (this.celdaFueraDelRangoDeAtaqueEnemigo(unaUnidadAtacante)) return false;
 
 		if(!this.unidad.sonUnidadesDelMismoJugador(unaUnidadAtacante)){
@@ -186,7 +222,7 @@ public abstract class Celda {
 
 	private void atacarCeldaConTormentaPsionica() {
 		if (this.unidad != null){
-			this.unidad.atacarConTormentaPsionica();
+			this.unidad.recibirAtaqueTormentaPsionica();
 		}
 		
 		if (this.construccion != null){
@@ -212,5 +248,27 @@ public abstract class Celda {
 		}
 		
 		return this.unidad.recibirAtaqueRadiacion(unaUnidadAtacante);
+	}
+
+
+	public void bajarDeLaNaveDeTransporte(Unidad unaUnidad) {
+		Mapa mapaDelJuego = Mapa.getInstance();
+		boolean unidadBajada = false;
+		
+		while(!unidadBajada){
+			Celda nuevaCelda = mapaDelJuego.dameCelda(new Posicion(this.posicion.dameFila()+1,this.posicion.dameColumna()));
+			if (nuevaCelda.estaOcupada || !nuevaCelda.esCeldaTerrestre()){
+				nuevaCelda = mapaDelJuego.dameCelda(new Posicion(nuevaCelda.posicion.dameFila()+1,nuevaCelda.posicion.dameColumna()));				
+			}
+			else{
+				unaUnidad.setCelda(nuevaCelda);
+				unidadBajada = true;
+			}
+		}
+	}
+
+
+	protected boolean esCeldaTerrestre() {
+		return false;
 	}
 }

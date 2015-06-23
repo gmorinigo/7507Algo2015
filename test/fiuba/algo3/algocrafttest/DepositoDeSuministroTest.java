@@ -27,6 +27,7 @@ import fiuba.algo3.algocraft.modelo.turnos.Turno;
 @SuppressWarnings("static-access")
 public class DepositoDeSuministroTest extends TestBase {
 
+	@SuppressWarnings("unused")
 	public void testCrearUnDepositoDeSuministro() throws JugadorConNombreDemasiadoCortoException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoHaySuficientesRecursos, NoSePudoConstruirException{
 		RazaTerran unaRaza = new RazaTerran(); 
 		TipoConstruccion unTipo = null;

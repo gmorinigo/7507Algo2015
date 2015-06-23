@@ -1,5 +1,7 @@
 package fiuba.algo3.algocraft.modelo.unidades.movimientos;
 
+import fiuba.algo3.algocraft.modelo.excepciones.MaximaCapacidadDeTransporteSuperadaException;
+import fiuba.algo3.algocraft.modelo.excepciones.NoSePuedeAgregarALaNaveDeTransporteUnaUnidadVoladora;
 import fiuba.algo3.algocraft.modelo.mapa.Celda;
 import fiuba.algo3.algocraft.modelo.mapa.Mapa;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
@@ -20,7 +22,7 @@ public class Movimiento {
 	}
 	
 	
-	public boolean mover(TipoDireccion direccion) {
+	public boolean mover(TipoDireccion direccion) throws MaximaCapacidadDeTransporteSuperadaException, NoSePuedeAgregarALaNaveDeTransporteUnaUnidadVoladora {
 
 		switch (direccion) {
 		case Arriba:
@@ -48,7 +50,7 @@ public class Movimiento {
 	}
 
 
-	protected boolean moverArriba() {
+	protected boolean moverArriba() throws MaximaCapacidadDeTransporteSuperadaException, NoSePuedeAgregarALaNaveDeTransporteUnaUnidadVoladora {
         Celda celda = this.unidad.dameCelda();
         Posicion posActual = celda.obtenerPosicion();
         Posicion posNueva = new Posicion(posActual.dameFila()-1,posActual.dameColumna());
@@ -56,7 +58,7 @@ public class Movimiento {
         return aplicarMovimiento(celda, posNueva);
 	}
 	
-	protected boolean moverAbajo() {
+	protected boolean moverAbajo() throws MaximaCapacidadDeTransporteSuperadaException, NoSePuedeAgregarALaNaveDeTransporteUnaUnidadVoladora {
         
         Celda celda = this.unidad.dameCelda();
         Posicion posActual = celda.obtenerPosicion();
@@ -66,7 +68,7 @@ public class Movimiento {
 		
 	}
 	
-	protected boolean moverDerecha() {
+	protected boolean moverDerecha() throws MaximaCapacidadDeTransporteSuperadaException, NoSePuedeAgregarALaNaveDeTransporteUnaUnidadVoladora {
         Celda celda = this.unidad.dameCelda();
         Posicion posActual = celda.obtenerPosicion();
         Posicion posNueva = new Posicion(posActual.dameFila(),posActual.dameColumna()+1);
@@ -75,7 +77,7 @@ public class Movimiento {
         
 	}
 	
-	protected boolean moverIzquierda() {
+	protected boolean moverIzquierda() throws MaximaCapacidadDeTransporteSuperadaException, NoSePuedeAgregarALaNaveDeTransporteUnaUnidadVoladora {
         Celda celda = this.unidad.dameCelda();
         Posicion posActual = celda.obtenerPosicion();
         Posicion posNueva = new Posicion(posActual.dameFila(),posActual.dameColumna()-1);
@@ -83,7 +85,7 @@ public class Movimiento {
         return this.aplicarMovimiento(celda, posNueva);
 	}
 	
-	protected boolean moverDiagonalArribaDerecha() {
+	protected boolean moverDiagonalArribaDerecha() throws MaximaCapacidadDeTransporteSuperadaException, NoSePuedeAgregarALaNaveDeTransporteUnaUnidadVoladora {
 		Celda celda = this.unidad.dameCelda();
         Posicion posActual = celda.obtenerPosicion();
         Posicion posNueva = new Posicion(posActual.dameFila()-1,posActual.dameColumna()+1);
@@ -91,7 +93,7 @@ public class Movimiento {
         return this.aplicarMovimiento(celda, posNueva);
 	}
 	
-	protected boolean moverDiagonalArribaIzquierda() {
+	protected boolean moverDiagonalArribaIzquierda() throws MaximaCapacidadDeTransporteSuperadaException, NoSePuedeAgregarALaNaveDeTransporteUnaUnidadVoladora {
 		Celda celda = this.unidad.dameCelda();
         Posicion posActual = celda.obtenerPosicion();
         Posicion posNueva = new Posicion(posActual.dameFila()-1,posActual.dameColumna()-1);
@@ -99,7 +101,7 @@ public class Movimiento {
         return this.aplicarMovimiento(celda, posNueva);
 	}
 	
-	protected boolean moverDiagonalAbajoDerecha() {
+	protected boolean moverDiagonalAbajoDerecha() throws MaximaCapacidadDeTransporteSuperadaException, NoSePuedeAgregarALaNaveDeTransporteUnaUnidadVoladora {
         Celda celda = this.unidad.dameCelda();
         Posicion posActual = celda.obtenerPosicion();
         Posicion posNueva = new Posicion(posActual.dameFila()+1,posActual.dameColumna()+1);
@@ -108,7 +110,7 @@ public class Movimiento {
         
 	}
 	
-	protected boolean moverDiagonalAbajoIzquierda() {
+	protected boolean moverDiagonalAbajoIzquierda() throws MaximaCapacidadDeTransporteSuperadaException, NoSePuedeAgregarALaNaveDeTransporteUnaUnidadVoladora {
 		Celda celda = this.unidad.dameCelda();
         Posicion posActual = celda.obtenerPosicion();
         Posicion posNueva = new Posicion(posActual.dameFila()+1,posActual.dameColumna()-1);
@@ -116,7 +118,7 @@ public class Movimiento {
         return aplicarMovimiento(celda, posNueva);
 	}
 
-	protected boolean aplicarMovimiento(Celda celda, Posicion posNueva) {
+	protected boolean aplicarMovimiento(Celda celda, Posicion posNueva) throws MaximaCapacidadDeTransporteSuperadaException, NoSePuedeAgregarALaNaveDeTransporteUnaUnidadVoladora {
 		Mapa mapa = Mapa.getInstance();
 		Celda nuevaCelda = mapa.dameCelda(posNueva);
         boolean agregado = nuevaCelda.agregarUnidad(this.unidad);

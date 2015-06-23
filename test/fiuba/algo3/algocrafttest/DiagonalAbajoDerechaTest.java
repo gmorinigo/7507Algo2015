@@ -18,8 +18,10 @@ import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionInvalidaPrimeroDebeC
 import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException;
 import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionNoPermitidaPorSalirseDelMapaException;
 import fiuba.algo3.algocraft.modelo.excepciones.JugadorConNombreDemasiadoCortoException;
+import fiuba.algo3.algocraft.modelo.excepciones.MaximaCapacidadDeTransporteSuperadaException;
 import fiuba.algo3.algocraft.modelo.excepciones.NoHaySuficientesRecursos;
 import fiuba.algo3.algocraft.modelo.excepciones.NoSePudoConstruirException;
+import fiuba.algo3.algocraft.modelo.excepciones.NoSePuedeAgregarALaNaveDeTransporteUnaUnidadVoladora;
 import fiuba.algo3.algocraft.modelo.mapa.Mapa;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.turnos.Turno;
@@ -29,7 +31,7 @@ import fiuba.algo3.algocraft.modelo.unidades.movimientos.Movimiento.TipoDireccio
 
 @SuppressWarnings("static-access")
 public class DiagonalAbajoDerechaTest extends TestBase{
-	public void testDeberiaMoverLaUnidadUnaPosicionParaAbajoALaDerecha() throws JugadorConNombreDemasiadoCortoException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, NoHaySuficientesRecursos, CapacidadDePoblacionMaximaSuperada, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoSePudoConstruirException{ 	             
+	public void testDeberiaMoverLaUnidadUnaPosicionParaAbajoALaDerecha() throws JugadorConNombreDemasiadoCortoException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, NoHaySuficientesRecursos, CapacidadDePoblacionMaximaSuperada, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoSePudoConstruirException, MaximaCapacidadDeTransporteSuperadaException, NoSePuedeAgregarALaNaveDeTransporteUnaUnidadVoladora{ 	             
 	       
         Mapa mapa = Mapa.getInstance();
 		RazaProtoss unaRaza = new RazaProtoss(); 
@@ -81,7 +83,7 @@ public class DiagonalAbajoDerechaTest extends TestBase{
         assertEquals(unaUnidad.dameCelda(),mapa.dameCelda(new Posicion(17,15)));
     }
    
-    public void testNosePuedeMoverUnaUnidadAUnaPosicionYaOcupada() throws JugadorConNombreDemasiadoCortoException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, NoHaySuficientesRecursos, CapacidadDePoblacionMaximaSuperada, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoSePudoConstruirException{
+    public void testNosePuedeMoverUnaUnidadAUnaPosicionYaOcupada() throws JugadorConNombreDemasiadoCortoException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, NoHaySuficientesRecursos, CapacidadDePoblacionMaximaSuperada, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoSePudoConstruirException, MaximaCapacidadDeTransporteSuperadaException, NoSePuedeAgregarALaNaveDeTransporteUnaUnidadVoladora{
         Mapa mapa = Mapa.getInstance();
 		RazaProtoss unaRaza = new RazaProtoss(); 
 		Jugador unJugador = new Jugador("unNombre",unaRaza,"Azul");
@@ -123,61 +125,8 @@ public class DiagonalAbajoDerechaTest extends TestBase{
 		
         assertEquals(unaUnidad.dameCelda(),mapa.dameCelda(new Posicion(15,14)));
     }
-  /*
-    public void testNosePuedeMoverUnaUnidadAUnaPosicionYaOcupadaPorOtroJugador() throws JugadorConNombreDemasiadoCortoException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, NoHaySuficientesRecursos, CapacidadDePoblacionMaximaSuperada, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoSePudoConstruirException{
-        Mapa mapa = Mapa.getInstance();
-		RazaProtoss unaRaza = new RazaProtoss(); 
-		Jugador unJugador = new Jugador("unNombre",unaRaza,"Azul");
-		Jugador otroJugador = new Jugador("elNombre",unaRaza,"Rojo");
-		
-		TipoConstruccion unTipoConstruccion = null;
-		unJugador.dameAlmacenMineral().almacenarRecurso(1000);
-		AbstractConstruccionFactory factoryConstrucciones = unaRaza.getFactoryConstrucciones();
-		Turno unTurno = new Turno(unJugador,otroJugador);
-		Construccion unExpansor = (Construccion) factoryConstrucciones.crearConstruccion(unTipoConstruccion.expansorPoblacion, new Posicion(124,124), unJugador);
-		Construccion expansor3 = (Construccion) factoryConstrucciones.crearConstruccion(unTipoConstruccion.expansorPoblacion, new Posicion(130,130), unJugador);
-		Construccion expansor4 = (Construccion) factoryConstrucciones.crearConstruccion(unTipoConstruccion.expansorPoblacion, new Posicion(134,134), otroJugador);
-		unTurno.addObserver(unExpansor);
-		unTurno.addObserver(expansor3);
-		unTurno.addObserver(expansor4);
-		for (int i=0;i<6;i++) unTurno.avanzarTurno();
-		
-		Acceso unaConstruccion = (Acceso) factoryConstrucciones.crearConstruccion(TipoConstruccion.creadorUnidadesBasicas, new Posicion(15,15), unJugador);
-		Acceso otraConstruccion = (Acceso) factoryConstrucciones.crearConstruccion(TipoConstruccion.creadorUnidadesBasicas, new Posicion(18,15), unJugador);
-		for (int i=0;i<6;i++) unTurno.avanzarTurno();
-		
-		Unidad unaUnidad = (Unidad) unaConstruccion.crearUnidad(unJugador,TipoUnidad.terrestre1);
-		Unidad otraUnidad = (Unidad) otraConstruccion.crearUnidad(unJugador,TipoUnidad.terrestre1);
-		
-		unTurno.addObserver(unaUnidad);
-		unTurno.addObserver(otraUnidad);
-		unTurno.avanzarTurno();
-		unTurno.avanzarTurno();
-		unTurno.avanzarTurno();
-		unTurno.avanzarTurno();
-		unTurno.avanzarTurno();
-		unTurno.avanzarTurno();
-		assertTrue(unaUnidad.estaOperativa());
-		assertTrue(otraUnidad.estaOperativa());
-		
-        assertEquals(unaUnidad.dameCelda(),mapa.dameCelda(new Posicion(15,14)));
-        assertEquals(otraUnidad.dameCelda(),mapa.dameCelda(new Posicion(18,14)));
-		
-		assertTrue(unaUnidad.mover(TipoDireccion.DiagonalAbajoDerecha));
-		unTurno.addObserver(unaUnidad);
-        assertEquals(unaUnidad.dameCelda(),mapa.dameCelda(new Posicion(16,14)));
-        assertNotSame(otraUnidad.dameCelda(),mapa.dameCelda(new Posicion(15,14)));
-		unTurno.avanzarTurno();
-
-        assertTrue(unaUnidad.mover(TipoDireccion.DiagonalAbajoDerecha));
-        assertEquals(unaUnidad.dameCelda(),mapa.dameCelda(new Posicion(17,14)));
-        assertNotSame(otraUnidad.dameCelda(),mapa.dameCelda(new Posicion(16,14)));
-		unTurno.avanzarTurno();
-        
-        assertFalse(unaUnidad.mover(TipoDireccion.DiagonalAbajoDerecha));
-    }*/
     
-    public void testNoSePuedeMoverUnaUnidadAUnaPosicionDondeHayUnaConstruccion() throws JugadorConNombreDemasiadoCortoException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, NoHaySuficientesRecursos, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException, ConstruccionNoPermitidaPorSalirseDelMapaException, CapacidadDePoblacionMaximaSuperada, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoSePudoConstruirException{
+    public void testNoSePuedeMoverUnaUnidadAUnaPosicionDondeHayUnaConstruccion() throws JugadorConNombreDemasiadoCortoException, NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, NoHaySuficientesRecursos, ConstruccionExtractorDeMineralEnCeldaQueNoTieneMineralException, ConstruccionExtractorDeGasEnCeldaQueNoTieneGasException, ConstruccionNoPermitidaPorSalirseDelMapaException, CapacidadDePoblacionMaximaSuperada, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoSePudoConstruirException, MaximaCapacidadDeTransporteSuperadaException, NoSePuedeAgregarALaNaveDeTransporteUnaUnidadVoladora{
         @SuppressWarnings("unused")
 		Mapa mapa = Mapa.getInstance();
 		RazaProtoss unaRaza = new RazaProtoss(); 
