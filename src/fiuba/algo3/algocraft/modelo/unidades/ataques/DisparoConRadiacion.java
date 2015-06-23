@@ -44,4 +44,8 @@ public class DisparoConRadiacion extends AbstractDisparo implements TurnoObserve
 		return false;
 	}
 
+	public Unidad obtenerUnidadObjetivo() {
+		return this.unidadObjetivo;
+	}
+
 }

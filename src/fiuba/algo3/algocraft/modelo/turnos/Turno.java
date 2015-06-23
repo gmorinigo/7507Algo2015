@@ -8,6 +8,7 @@ import fiuba.algo3.algocraft.modelo.construciones.Construccion;
 import fiuba.algo3.algocraft.modelo.excepciones.MaximaCapacidadDeTransporteSuperadaException;
 import fiuba.algo3.algocraft.modelo.excepciones.NoSePuedeAgregarALaNaveDeTransporteUnaUnidadVoladora;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
+import fiuba.algo3.algocraft.modelo.unidades.ataques.DisparoConRadiacion;
 import fiuba.algo3.algocraft.modelo.unidades.ataques.DisparoTormentaPsionica;
 
 public class Turno {
@@ -49,18 +50,24 @@ public class Turno {
 		
 		while (it.hasNext()) {
 			try {
-				it.next().finDeTurno(this);
-				if (it instanceof Unidad){
-					Unidad unaUnidad = (Unidad) it;
+				TurnoObserver unObserver = it.next();
+				unObserver.finDeTurno(this);
+				
+				if (unObserver instanceof Unidad){
+					Unidad unaUnidad = (Unidad) unObserver;
 					if (!unaUnidad.estaViva()) it.remove();
 				}
-				if (it instanceof Construccion){
-					Construccion unaConstruccion = (Construccion) it;
+				if (unObserver instanceof Construccion){
+					Construccion unaConstruccion = (Construccion) unObserver;
 					if (!unaConstruccion.estaViva()) it.remove();					
 				}
-				if (it instanceof DisparoTormentaPsionica){
-					DisparoTormentaPsionica unDisparoTormentaPsionica = (DisparoTormentaPsionica) it;
+				if (unObserver instanceof DisparoTormentaPsionica){
+					DisparoTormentaPsionica unDisparoTormentaPsionica = (DisparoTormentaPsionica) unObserver;
 					if (unDisparoTormentaPsionica.turnosRestantes()==0) it.remove();	
+				}
+				if (unObserver instanceof DisparoConRadiacion){
+					DisparoConRadiacion unDisparoRadiacion = (DisparoConRadiacion) unObserver;
+					if (!unDisparoRadiacion.obtenerUnidadObjetivo().estaViva()) it.remove();	
 				}
 			} catch (MaximaCapacidadDeTransporteSuperadaException| NoSePuedeAgregarALaNaveDeTransporteUnaUnidadVoladora e) {
 
