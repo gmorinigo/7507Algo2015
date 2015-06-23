@@ -10,7 +10,7 @@ public class MapaFactory {
 	
 	public Mapa crearMapa30x30Hardcodeado() {
 		
-		
+		this.mapa.nuevoMapa(30);
 		
 		return this.mapa;
 	}
