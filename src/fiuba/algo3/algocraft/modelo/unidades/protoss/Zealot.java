@@ -30,6 +30,7 @@ public class Zealot extends UnidadProtoss{
 	}
 	
 	public int DanioAtaque(Unidad unaUnidadAtacada) {
+		if (this.esUnaAlucinacion) return 0;
 		if (unaUnidadAtacada.esUnidadAerea()){
 			return 0;
 		}
@@ -39,6 +40,7 @@ public class Zealot extends UnidadProtoss{
 	} 
 	
 	public int DanioAtaque(Construccion construccion) {
+		if (this.esUnaAlucinacion) return 0;
 		return 8;
 	}
 	

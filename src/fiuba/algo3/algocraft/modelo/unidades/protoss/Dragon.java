@@ -30,10 +30,12 @@ public class Dragon extends UnidadProtoss {
 	}
 
 	public int DanioAtaque(Unidad unaUnidadAtacada) {
+		if (this.esUnaAlucinacion) return 0;
 		return 20;
 	}
 	
 	public int DanioAtaque(Construccion construccion) {
+		if (this.esUnaAlucinacion) return 0;
 		return 20;
 	}
 	

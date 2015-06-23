@@ -10,7 +10,6 @@ import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 import fiuba.algo3.algocraft.modelo.unidades.UnidadEstadoDescansando;
 import fiuba.algo3.algocraft.modelo.unidades.UnidadEstadoViviendo;
 import fiuba.algo3.algocraft.modelo.unidades.UnidadTerran;
-import fiuba.algo3.algocraft.modelo.unidades.ataques.AbstractDisparo;
 import fiuba.algo3.algocraft.modelo.unidades.ataques.DisparoConRadiacion;
 import fiuba.algo3.algocraft.modelo.unidades.ataques.DisparoEMP;
 
@@ -22,8 +21,6 @@ public class NaveCiencia extends UnidadTerran {
 		super(unJugador);
 		this.energia =  50;
 		this.tamanioTransporte = 0;
-		//this.disparoStrategy=disparoStrategy;
-		//this.disparoStrategy.setUnidad(this);
 	}
 	
 	public NaveCiencia(Jugador unJugador,Posicion posicionConstruccion){
@@ -138,10 +135,6 @@ public class NaveCiencia extends UnidadTerran {
 		return 2;
 	}
 	
-	public boolean atacar(Celda unaCelda, AbstractDisparo unDisparo) {
-		return false;
-	}	
-
 	public boolean recibirataqueMisilEMP(){
 		this.energia=0;
 		return true;
