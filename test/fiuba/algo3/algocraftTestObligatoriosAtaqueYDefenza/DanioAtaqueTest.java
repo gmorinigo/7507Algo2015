@@ -1,4 +1,4 @@
-package fiuba.algo3.algocrafttest;
+package fiuba.algo3.algocraftTestObligatoriosAtaqueYDefenza;
 
 import java.rmi.NoSuchObjectException;
 
@@ -25,6 +25,7 @@ import fiuba.algo3.algocraft.modelo.turnos.Turno;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 import fiuba.algo3.algocraft.modelo.unidades.UnidadProtoss;
 import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory.TipoUnidad;
+import fiuba.algo3.algocrafttest.TestBase;
 
 @SuppressWarnings("static-access")
 public class DanioAtaqueTest extends TestBase {

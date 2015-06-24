@@ -1,4 +1,4 @@
-package fiuba.algo3.algocraftTestJugadorGanador;
+package fiuba.algo3.algocraftTestObligatoriosAtaqueYDefenza;
 
 import java.rmi.NoSuchObjectException;
 
