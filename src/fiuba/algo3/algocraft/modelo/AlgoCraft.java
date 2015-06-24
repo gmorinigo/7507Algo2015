@@ -70,5 +70,13 @@ public class AlgoCraft {
 		return cantJugadores;
 	}
 	
+	public Jugador dameJugador1() {
+		return this.jugador1;
+	}
+	
+	public Jugador dameJugador2() {
+		return this.jugador2;
+	}
+	
 }
 
