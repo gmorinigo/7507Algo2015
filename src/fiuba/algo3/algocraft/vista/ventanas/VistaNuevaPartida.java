@@ -51,8 +51,8 @@ public class VistaNuevaPartida extends VistaLayout{
 		grupoRazasJug2 = new ButtonGroup();
 		
 		
-		tituloLabel = new JLabel("Por favor elija un nombre: ", JLabel.CENTER);
-		tituloLabel2 = new JLabel("Por favor elija un nombre: ", JLabel.CENTER);
+		tituloLabel = new JLabel("Por favor elija un nombre Jugador1: ", JLabel.CENTER);
+		tituloLabel2 = new JLabel("Por favor elija un nombre Jugador2: ", JLabel.CENTER);
 		razaLabelJug1 = new JLabel("Por favor elija una raza: ", JLabel.CENTER);
 		razaLabelJug2 = new JLabel("Por favor elija una raza: ", JLabel.CENTER);
 		

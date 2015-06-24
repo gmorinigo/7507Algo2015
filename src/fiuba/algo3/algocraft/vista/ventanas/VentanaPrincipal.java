@@ -8,7 +8,7 @@ import java.util.HashMap;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class VentanaPrincipal {
+public class VentanaPrincipal extends JFrame{
 	
 	JFrame frame;
  	JPanel paneles;
