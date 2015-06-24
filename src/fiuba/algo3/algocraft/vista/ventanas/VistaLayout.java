@@ -2,8 +2,7 @@ package fiuba.algo3.algocraft.vista.ventanas;
 
 import javax.swing.JPanel;
 
-import fiuba.algo3.algocraft.modelo.Jugador;
-
+import fiuba.algo3.algocraft.modelo.AlgoCraft;
 
 public abstract class VistaLayout extends JPanel{
 	
@@ -15,7 +14,7 @@ public abstract class VistaLayout extends JPanel{
 	 * 
 	 */
 	protected String id;
-	protected Jugador model;
+	protected AlgoCraft model;
 
 	public  VistaLayout(String id) {
 		this.id = id;
@@ -29,11 +28,11 @@ public abstract class VistaLayout extends JPanel{
 	public abstract void reiniciarCampos();
 	
 
-	public void setModel(Jugador model) {
+	public void setModel(AlgoCraft model) {
 		this.model = model;
 	}
 	
-	public Jugador getModel() {
+	public AlgoCraft getModel() {
 		return this.model;
 	}
 

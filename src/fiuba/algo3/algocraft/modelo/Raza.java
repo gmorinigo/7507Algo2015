@@ -8,6 +8,9 @@ import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory;
 
 public abstract class Raza {
 	
+	public enum TipoRaza {Protoss, Terran};
+	protected TipoRaza raza;
+	
 	protected AbstractUnidadFactory unidadFactory;
 	protected AbstractConstruccionFactory construccionFactory;
 	
@@ -25,5 +28,9 @@ public abstract class Raza {
 	}
 	
 	public abstract int dameCapacidadDePoblacion(ArrayList<Construccion> construccionesTerminadas);
-	    
+
+	
+	public boolean equals(Raza raza) {
+		return (raza.raza == this.raza);
+	}
 }

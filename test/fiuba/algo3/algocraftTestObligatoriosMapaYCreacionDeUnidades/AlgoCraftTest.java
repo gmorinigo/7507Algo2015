@@ -3,8 +3,10 @@ package fiuba.algo3.algocraftTestObligatoriosMapaYCreacionDeUnidades;
 import fiuba.algo3.algocraft.modelo.AlgoCraft;
 import fiuba.algo3.algocraft.modelo.Raza;
 import fiuba.algo3.algocraft.modelo.RazaProtoss;
+import fiuba.algo3.algocraft.modelo.RazaTerran;
 import fiuba.algo3.algocraft.modelo.excepciones.JugadorConElMismoColorException;
 import fiuba.algo3.algocraft.modelo.excepciones.JugadorConElMismoNombreException;
+import fiuba.algo3.algocraft.modelo.excepciones.JugadorConMismaRazaException;
 import fiuba.algo3.algocraft.modelo.excepciones.JugadorConNombreDemasiadoCortoException;
 import fiuba.algo3.algocraft.modelo.excepciones.MaximaCantidadDeJugadoresSuperadaException;
 
@@ -20,9 +22,10 @@ public class AlgoCraftTest extends TestBase {
 		assertNotNull(unJuegoAlgoCraft.dameElMapaDelJuego());
 	}
 	
-	public void testVerificarCreacionDeLosJugadores() throws JugadorConNombreDemasiadoCortoException {
+	public void testVerificarCreacionDeLosJugadores() throws JugadorConNombreDemasiadoCortoException, JugadorConMismaRazaException {
 		AlgoCraft unJuegoAlgoCraft = new AlgoCraft();
 		Raza unaRaza = new RazaProtoss();
+		Raza otraRaza = new RazaTerran();
 		
 		try {
 			unJuegoAlgoCraft.agregarJugador("nombreDelJugador",unaRaza,"Rojo");
@@ -32,7 +35,7 @@ public class AlgoCraftTest extends TestBase {
 		assertTrue(unJuegoAlgoCraft.obtenerCantidadDeJugadores() == 1); 
 		
 		try {
-			unJuegoAlgoCraft.agregarJugador("nombreDelJugador2",unaRaza,"Azul");
+			unJuegoAlgoCraft.agregarJugador("nombreDelJugador2",otraRaza,"Azul");
 		} catch (MaximaCantidadDeJugadoresSuperadaException | JugadorConElMismoNombreException | JugadorConElMismoColorException e) {
 		}
 		
@@ -42,13 +45,14 @@ public class AlgoCraftTest extends TestBase {
 
 	
 	public void testVerificarExcepcionJugadorConElMismoNombre() 
-	throws MaximaCantidadDeJugadoresSuperadaException, JugadorConElMismoColorException, JugadorConNombreDemasiadoCortoException{
+	throws MaximaCantidadDeJugadoresSuperadaException, JugadorConElMismoColorException, JugadorConNombreDemasiadoCortoException, JugadorConMismaRazaException{
 		AlgoCraft unJuegoAlgoCraft = new AlgoCraft();
 		Raza unaRaza = new RazaProtoss();
+		Raza otraRaza = new RazaTerran();
 		
 		try {
 			unJuegoAlgoCraft.agregarJugador("nombreDelJugador",unaRaza,"Rojo");
-			unJuegoAlgoCraft.agregarJugador("nombreDelJugador",unaRaza,"Azul");
+			unJuegoAlgoCraft.agregarJugador("nombreDelJugador",otraRaza,"Azul");
 		} catch ( JugadorConElMismoNombreException e) {
 			return;
 		}
@@ -58,7 +62,7 @@ public class AlgoCraftTest extends TestBase {
 	}		
 
 	public void testVerificarExcepcionJugadorConNombreCorto() 
-			throws MaximaCantidadDeJugadoresSuperadaException, JugadorConElMismoColorException, JugadorConElMismoNombreException{
+			throws MaximaCantidadDeJugadoresSuperadaException, JugadorConElMismoColorException, JugadorConElMismoNombreException, JugadorConMismaRazaException{
 		AlgoCraft unJuegoAlgoCraft = new AlgoCraft();
 		Raza unaRaza = new RazaProtoss();
 		
@@ -72,13 +76,14 @@ public class AlgoCraftTest extends TestBase {
 	}		
 
 	public void testVerificarExcepcionJugadorConElMismoColor() 
-	throws MaximaCantidadDeJugadoresSuperadaException, JugadorConElMismoNombreException, JugadorConNombreDemasiadoCortoException{
+	throws MaximaCantidadDeJugadoresSuperadaException, JugadorConElMismoNombreException, JugadorConNombreDemasiadoCortoException, JugadorConMismaRazaException{
 		AlgoCraft unJuegoAlgoCraft = new AlgoCraft();
 		Raza unaRaza = new RazaProtoss();
+		Raza otraRaza = new RazaTerran();
 		
 		try {
 			unJuegoAlgoCraft.agregarJugador("nombreDelJugador",unaRaza,"Rojo");
-			unJuegoAlgoCraft.agregarJugador("nombreDelJugador2",unaRaza,"Rojo");
+			unJuegoAlgoCraft.agregarJugador("nombreDelJugador2",otraRaza,"Rojo");
 		} catch ( JugadorConElMismoColorException e) {
 			return;
 		}
@@ -88,13 +93,14 @@ public class AlgoCraftTest extends TestBase {
 	}		
 
 	public void testVerificarExcepcionMaximaCantidadDeJugadoresSuperada() 
-	throws JugadorConElMismoNombreException, JugadorConElMismoColorException, JugadorConNombreDemasiadoCortoException{
+	throws JugadorConElMismoNombreException, JugadorConElMismoColorException, JugadorConNombreDemasiadoCortoException, JugadorConMismaRazaException{
 		AlgoCraft unJuegoAlgoCraft = new AlgoCraft();
 		Raza unaRaza = new RazaProtoss();
+		Raza otraRaza = new RazaTerran();
 		
 		try {
 			unJuegoAlgoCraft.agregarJugador("nombreDelJugador",unaRaza, "Rojo");
-			unJuegoAlgoCraft.agregarJugador("nombreDelJugador1",unaRaza, "Verde");
+			unJuegoAlgoCraft.agregarJugador("nombreDelJugador1",otraRaza, "Verde");
 			unJuegoAlgoCraft.agregarJugador("nombreDelJugador2",unaRaza, "Azul");
 		} catch ( MaximaCantidadDeJugadoresSuperadaException e) {
 			return;

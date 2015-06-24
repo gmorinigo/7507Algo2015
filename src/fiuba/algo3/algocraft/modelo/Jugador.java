@@ -64,7 +64,7 @@ public class Jugador {
 	}
 
 	public boolean tieneElMismoNombre(String unNombre){
-		return (this.nombreJugador == unNombre);
+		return (this.nombreJugador.equals(unNombre));
 	}
 
 	public boolean tieneElMismoColor(String unColor){

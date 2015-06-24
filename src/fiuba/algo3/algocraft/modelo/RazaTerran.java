@@ -12,6 +12,7 @@ public class RazaTerran extends Raza{
 
 	public RazaTerran() {
 		super(new ConstruccionFactoryTerran(), new UnidadFactoryTerran());
+		this.raza = TipoRaza.Terran;
 	}
 
 	@Override

@@ -8,9 +8,10 @@ import fiuba.algo3.algocraft.modelo.construciones.protoss.Pilon;
 import fiuba.algo3.algocraft.modelo.unidades.UnidadFactoryProtoss;
 
 public class RazaProtoss extends Raza {
-
+	
 	public RazaProtoss() {
 		super(new ConstruccionFactoryProtoss(), new UnidadFactoryProtoss());
+		this.raza = TipoRaza.Protoss;
 	}
 
 	@Override

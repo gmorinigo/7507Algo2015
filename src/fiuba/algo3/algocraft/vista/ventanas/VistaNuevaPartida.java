@@ -128,15 +128,21 @@ public class VistaNuevaPartida extends VistaLayout{
 	}
 	
 	public String dameNombreJug2() {
-		return nombreJug1TField.getText();		
+		return nombreJug2TField.getText();		
 	}
 	
-	public String getRazaSeleccionadaJug1() {
+	public String dameRazaSeleccionadaJug1() {
+		if(grupoRazasJug1.getSelection() == null) {
+			return "";
+		}
 		return grupoRazasJug1.getSelection().getActionCommand();
 	}
 
-	public String getRazaSeleccionadaJug2() {
-		return grupoRazasJug1.getSelection().getActionCommand();
+	public String dameRazaSeleccionadaJug2() {
+		if(grupoRazasJug2.getSelection() == null) {
+			return "";
+		}
+		return grupoRazasJug2.getSelection().getActionCommand();
 	}
 	
 	@Override
