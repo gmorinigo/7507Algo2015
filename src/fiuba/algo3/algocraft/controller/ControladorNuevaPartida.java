@@ -11,7 +11,6 @@ import fiuba.algo3.algocraft.modelo.RazaProtoss;
 import fiuba.algo3.algocraft.modelo.RazaTerran;
 import fiuba.algo3.algocraft.modelo.excepciones.JugadorConElMismoColorException;
 import fiuba.algo3.algocraft.modelo.excepciones.JugadorConElMismoNombreException;
-import fiuba.algo3.algocraft.modelo.excepciones.JugadorConMismaRazaException;
 import fiuba.algo3.algocraft.modelo.excepciones.JugadorConNombreDemasiadoCortoException;
 import fiuba.algo3.algocraft.vista.ventanas.VentanaPrincipal;
 import fiuba.algo3.algocraft.vista.ventanas.VistaNuevaPartida;
@@ -77,8 +76,6 @@ public class ControladorNuevaPartida extends ControllerGui {
 				JOptionPane.showMessageDialog(null, "Jugador 2 tiene el mismo color que Jugador 1");
 			} catch (JugadorConNombreDemasiadoCortoException e1) {
 				JOptionPane.showMessageDialog(null, "Nombre del jugador 2 demasiado corto");
-			} catch (JugadorConMismaRazaException e1) {
-				JOptionPane.showMessageDialog(null, "Jugador 2 tiene la misma raza que Jugador 1");
 			}
 			
 		}

@@ -44,17 +44,13 @@ public class AlgoCraft {
 	
 	
 	public void agregarJugadorNumero2(String nombreJugador, Raza unaRaza, String colorJugador) 
-	throws JugadorConElMismoNombreException, JugadorConElMismoColorException, JugadorConNombreDemasiadoCortoException, JugadorConMismaRazaException{
+	throws JugadorConElMismoNombreException, JugadorConElMismoColorException, JugadorConNombreDemasiadoCortoException{
 		if (this.jugador1.tieneElMismoNombre(nombreJugador)){
 			throw new JugadorConElMismoNombreException();
 		}
 		
 		if (this.jugador1.tieneElMismoColor(colorJugador)){
 			throw new JugadorConElMismoColorException();
-		}
-		
-		if(this.jugador1.dameRaza().equals(unaRaza)) {
-			throw new JugadorConMismaRazaException();
 		}
 		
 		this.jugador2 = new Jugador(nombreJugador, unaRaza, colorJugador);
