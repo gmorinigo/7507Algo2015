@@ -34,4 +34,8 @@ public class CeldaConMineral extends Celda {
 	public boolean esPosbibleConstruir(Construccion construccion) {
 		return (construccion.construccionRecolectoraDeMineral() && ! this.celdaOcupada());
 	}
+	
+	public String getNombreObjetoPosicionable() {
+		return "CeldaConMineral";
+	}
 }

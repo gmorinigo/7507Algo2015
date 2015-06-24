@@ -5,8 +5,9 @@ import fiuba.algo3.algocraft.modelo.excepciones.MaximaCapacidadDeTransporteSuper
 import fiuba.algo3.algocraft.modelo.excepciones.NoSePuedeAgregarALaNaveDeTransporteUnaUnidadVoladora;
 import fiuba.algo3.algocraft.modelo.unidades.NaveTransporte;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
+import fiuba.algo3.algocraft.vista.Dibujable;
 
-public abstract class Celda {
+public abstract class Celda implements Dibujable {
 	private Posicion posicion;
 	private boolean estaOcupada;
 	private Unidad unidad;
@@ -285,5 +286,9 @@ public abstract class Celda {
 
 	protected boolean esCeldaTerrestre() {
 		return false;
+	}
+	
+	public Posicion getPosicionActual() {
+		return this.obtenerPosicion();
 	}
 }

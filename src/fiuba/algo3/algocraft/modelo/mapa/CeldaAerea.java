@@ -8,23 +8,23 @@ public class CeldaAerea extends Celda {
 		super(fila, columna);
 	}
 
-	@Override
 	public boolean puedeMoverse(Unidad unaUnidad) {
 		return unaUnidad.esUnidadAerea();
 	}
 
-	@Override
 	public boolean esAtacable() {
 		return this.celdaOcupada();
 	}
 
-	@Override
 	public boolean agregarConstruccion(Construccion construccion) {
 		return false;
 	}
 
-	@Override
 	public boolean esPosbibleConstruir(Construccion construccion) {
 		return false;
+	}
+
+	public String getNombreObjetoPosicionable() {
+		return "CeldaAerea";
 	}
 }

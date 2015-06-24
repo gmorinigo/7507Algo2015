@@ -20,7 +20,6 @@ public class CeldaConGas extends Celda {
 		return false;
 	}
 
-	@Override
 	public boolean agregarConstruccion(Construccion construccion) {
 		if( ! construccion.construccionRecolectoraDeGas() || this.celdaOcupada())
 			return false;
@@ -30,8 +29,11 @@ public class CeldaConGas extends Celda {
 		return true;
 	}
 
-	@Override
 	public boolean esPosbibleConstruir(Construccion construccion) {
 		return (construccion.construccionRecolectoraDeGas() && ! this.celdaOcupada());
+	}
+
+	public String getNombreObjetoPosicionable() {
+		return "CeldaConGas";
 	}
 }

@@ -20,4 +20,11 @@ public class Posicion {
 	public boolean compararPosicion(Posicion unaPosicion) {
 		return ((fila == unaPosicion.dameFila()) && (columna == unaPosicion.dameColumna())); 
 	}
+
+	public void setFila(int fila) {
+		this.fila=fila;
+	}
+	public void setColumna(int columna) {
+		this.columna=columna;
+	}
 }

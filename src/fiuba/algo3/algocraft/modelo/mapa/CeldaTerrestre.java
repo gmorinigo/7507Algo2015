@@ -33,4 +33,8 @@ public class CeldaTerrestre extends Celda {
 	protected boolean esCeldaTerrestre() {
 		return true;
 	}
+	
+	public String getNombreObjetoPosicionable() {
+		return "CeldaTerrestre";
+	}
 }
