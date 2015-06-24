@@ -102,6 +102,7 @@ public class Mapa {
 			}
 		}
 	}
+	
 	private void agregarCeldaTerrestre(int i, int j) {
 		CeldaTerrestre unaCelda = new CeldaTerrestre(i, j);
 		this.matriz[i][j] = unaCelda;
@@ -114,6 +115,11 @@ public class Mapa {
 
 	private void agregarCeldaConGas(int i, int j) {
 		CeldaConGas unaCelda = new CeldaConGas(i, j);
+		this.matriz[i][j] = unaCelda;
+	}
+	
+	private void agregarCeldaAerea(int i, int j) {
+		CeldaAerea unaCelda = new CeldaAerea(i, j);
 		this.matriz[i][j] = unaCelda;
 	}
 
@@ -228,10 +234,76 @@ public class Mapa {
 		this.matriz = new Celda[tamanio][tamanio];
 		this.nroColumnaMaxima = tamanio-1;
 		this.nroFilaMaxima = tamanio-1;
+		if (tamanio == 20) this.nuevoMapa20x20HardCodeado();
 	}
 	
-	public void agregarCelda(Celda celda, Posicion posicion) {
+	private void nuevoMapa20x20HardCodeado() {
+		// Filas 1 a 4 
+		for (int i = 0; i < 4; i++) {
+			for (int j = 0; j < 20; j++) {
+				if (((j==2) || (j==16)) && (i==1)){
+					agregarCeldaConMineral(i, j);
+				} else {
+					if (((j==2) || (j==16)) && (i==3)){
+						agregarCeldaConGas(i, j);
+					} else {
+						agregarCeldaTerrestre(i, j);						
+					}
+				}
+			}
+		}
 		
+		// Filas 4 a 8 
+		for (int i = 4; i < 8; i++) {
+			for (int j = 0; j < 20; j++) {
+				if ((j==9) || (j==10)){
+					agregarCeldaAerea(i, j);
+				} else {
+					agregarCeldaTerrestre(i, j);						
+				}
+			}
+		}
+		
+		// Filas 8 a 12 
+		for (int i = 8; i < 12; i++) {
+			for (int j = 0; j < 20; j++) {
+				if (((j==4) || (j==15)) && (i==10)){
+					agregarCeldaConMineral(i, j);
+				} else {
+					if (((j==4) || (j==15)) && (i==12)){
+						agregarCeldaConGas(i, j);
+					} else {
+						agregarCeldaTerrestre(i, j);						
+					}
+				}
+			}
+		}
+		
+		// Filas 12 a 16 
+		for (int i = 12; i < 16; i++) {
+			for (int j = 0; j < 20; j++) {
+				if ((j==9) || (j==10)){
+					agregarCeldaAerea(i, j);
+				} else {
+					agregarCeldaTerrestre(i, j);						
+				}
+			}
+		}
+
+		// Filas 16 a 20 
+		for (int i = 16; i < 20; i++) {
+			for (int j = 0; j < 20; j++) {
+				if (((i==16) && (j==4)) || ((i==16) && (j==16))){
+					agregarCeldaConMineral(i, j);
+				} else {
+					if (((i==17) && (j==5)) || ((i==17) && (j==15))){
+						agregarCeldaConGas(i, j);
+					} else {
+						agregarCeldaTerrestre(i, j);						
+					}
+				}
+			}
+		}
 	}
 
 	public boolean agregarUnidad(Posicion unaPosicion, Unidad unaUnidad) {

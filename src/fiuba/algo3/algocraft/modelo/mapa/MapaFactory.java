@@ -8,9 +8,9 @@ public class MapaFactory {
 		this.mapa = Mapa.getInstance();
 	}
 	
-	public Mapa crearMapa10x10Hardcodeado() {
+	public Mapa crearMapa20x20Hardcodeado() {
 		
-		this.mapa.nuevoMapa(10);
+		this.mapa.nuevoMapa(20);
 		
 		return this.mapa;
 	}
