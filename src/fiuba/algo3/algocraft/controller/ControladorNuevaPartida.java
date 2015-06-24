@@ -6,48 +6,30 @@ import java.awt.event.ActionListener;
 import fiuba.algo3.algocraft.vista.ventanas.VentanaPrincipal;
 import fiuba.algo3.algocraft.vista.ventanas.VistaNuevaPartida;
 
-public class ControladorNuevaPartida extends ControllerGui {
-	
+public class ControladorNuevaPartida extends ControllerGui{
+
 	protected VistaNuevaPartida vista;
 
-	public ControladorNuevaPartida(VentanaPrincipal ventana, VistaNuevaPartida vistaNuevaPartida) {
+	public ControladorNuevaPartida(VentanaPrincipal ventana, VistaNuevaPartida vistaNuevoJugador1) {
 		super(ventana);
-		this.vista = vistaNuevaPartida;
-	}
-	
-
-	/****************************************************/
-	
-	/****** Listener para el boton acepater users *******/
-	private class EscuchaBotonAceptarUsers implements ActionListener {
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
-		
+		this.vista = vistaNuevoJugador1;
 	}
 
 	public ActionListener getListenerButtonAceptarUsers() {
-		return new EscuchaBotonAceptarUsers();
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	
-	
-	/****************************************************/
-	
-	/****** Listener para el boton volver ***************/
 	private class EscuchaBotonVolver implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			vista.reiniciarCampos();
 			vent.showLayout("Bienvenido");
 		}
 		
 	}
-	
+
 	public ActionListener getListenerButtonVolver() {
 		return new EscuchaBotonVolver();
 	}

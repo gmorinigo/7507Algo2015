@@ -23,7 +23,7 @@ public class ControladorBienvenido extends ControllerGui{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			vent.showLayout("NuevoJugador1");
+			vent.showLayout("NuevaPartida");
 		}
 		
 	}
