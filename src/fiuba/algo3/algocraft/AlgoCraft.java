@@ -1,7 +1,5 @@
 package fiuba.algo3.algocraft;
 
-import fiuba.algo3.algocraft.controller.ControladorBienvenido;
-import fiuba.algo3.algocraft.controller.ControladorNuevaPartida;
 import fiuba.algo3.algocraft.vista.ventanas.VentanaPrincipal;
 import fiuba.algo3.algocraft.vista.ventanas.VistaBienvenido;
 import fiuba.algo3.algocraft.vista.ventanas.VistaNuevaPartida;
@@ -11,11 +9,8 @@ public class AlgoCraft {
 	private VentanaPrincipal ventana;
 
 	private void initVistas() {
-		ControladorBienvenido controlBienvenido = new ControladorBienvenido(this.ventana);
-		ControladorNuevaPartida controlNuevaPartida = new ControladorNuevaPartida(this.ventana);
-		
-		VistaBienvenido bienvenidoVista = new VistaBienvenido(controlBienvenido);
-		VistaNuevaPartida nuevaPartidaVista = new VistaNuevaPartida(controlNuevaPartida);
+		VistaBienvenido bienvenidoVista = new VistaBienvenido(this.ventana);
+		VistaNuevaPartida nuevaPartidaVista = new VistaNuevaPartida(this.ventana);
 		
 		this.ventana.agregarLayout(bienvenidoVista);
 		this.ventana.agregarLayout(nuevaPartidaVista);

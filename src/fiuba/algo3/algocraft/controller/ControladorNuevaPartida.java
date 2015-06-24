@@ -7,9 +7,12 @@ import fiuba.algo3.algocraft.vista.ventanas.VentanaPrincipal;
 import fiuba.algo3.algocraft.vista.ventanas.VistaNuevaPartida;
 
 public class ControladorNuevaPartida extends ControllerGui {
+	
+	protected VistaNuevaPartida vista;
 
-	public ControladorNuevaPartida(VentanaPrincipal ventana) {
+	public ControladorNuevaPartida(VentanaPrincipal ventana, VistaNuevaPartida vistaNuevaPartida) {
 		super(ventana);
+		this.vista = vistaNuevaPartida;
 	}
 	
 
@@ -26,7 +29,7 @@ public class ControladorNuevaPartida extends ControllerGui {
 		
 	}
 
-	public ActionListener getListenerButtonAceptarUsers(VistaNuevaPartida vistaNuevaPartida) {
+	public ActionListener getListenerButtonAceptarUsers() {
 		return new EscuchaBotonAceptarUsers();
 	}
 	
@@ -39,14 +42,13 @@ public class ControladorNuevaPartida extends ControllerGui {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
-			
+			vista.reiniciarCampos();
+			vent.showLayout("Bienvenido");
 		}
 		
 	}
 	
-	public ActionListener getListenerButtonVolver(VistaNuevaPartida vistaNuevaPartida) {
-		// TODO Auto-generated method stub
+	public ActionListener getListenerButtonVolver() {
 		return new EscuchaBotonVolver();
 	}
 

@@ -7,7 +7,6 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-
 import fiuba.algo3.algocraft.controller.ControladorNuevaPartida;
 
 public class VistaNuevaPartida extends VistaLayout{
@@ -26,7 +25,7 @@ public class VistaNuevaPartida extends VistaLayout{
 	//--------------------------------------------------
 	// Public ------------------------------------------
 	
-	public VistaNuevaPartida( ControladorNuevaPartida control){
+	public VistaNuevaPartida(VentanaPrincipal ventana){
 		super("NuevaPartida");
 		setLayout(new GridLayout(0, 1));
 		tituloLabel = new JLabel("Por favor elija un nombre: ", JLabel.CENTER);
@@ -41,8 +40,10 @@ public class VistaNuevaPartida extends VistaLayout{
 		add(aceptarButton);
 		add(volverButton);
 		
-		aceptarButton.addActionListener(control.getListenerButtonAceptarUsers(this));
-		volverButton.addActionListener(control.getListenerButtonVolver(this));
+		ControladorNuevaPartida control = new ControladorNuevaPartida(ventana, this);
+		
+		aceptarButton.addActionListener(control.getListenerButtonAceptarUsers());
+		volverButton.addActionListener(control.getListenerButtonVolver());
 		
 		
 	}

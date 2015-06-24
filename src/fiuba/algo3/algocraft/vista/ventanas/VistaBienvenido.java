@@ -20,13 +20,15 @@ public class VistaBienvenido extends VistaLayout{
 	//--------------------------------------------------
 	// Public ------------------------------------------
 	
-	public VistaBienvenido(ControladorBienvenido control){
+	public VistaBienvenido(VentanaPrincipal ventana){
 		super("Bienvenido");
 		setLayout(new GridLayout(0, 1));
 		tituloLabel = new JLabel("Bienvenido", JLabel.CENTER);
 		nuevaPartida = new JButton("Nueva Partida");
 		add(tituloLabel);
 		add(nuevaPartida);
+		
+		ControladorBienvenido control = new ControladorBienvenido(ventana, this);
 		
 		nuevaPartida.addActionListener(control.getListenerButtonNuevaPartida());
 		
