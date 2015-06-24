@@ -37,9 +37,9 @@ public class VistaEscenario extends JPanel {
 	int dim;
 	
 	public VistaEscenario(Jugador jug) {
-		tamanio  = 10;
-		//dim = 40*tamanio;
-		dim = (tamanio+1) * 40 + 20*tamanio;
+		tamanio  = 20;
+		dim = 32*tamanio;
+		//dim = (tamanio+1) * 40 + 20*tamanio;
 
 		mapaDelJuego = Mapa.getInstance();
 		

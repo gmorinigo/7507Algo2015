@@ -77,7 +77,7 @@ public class VentanaMapa {
 	
 	public VentanaMapa(Jugador jugador, VentanaPrincipal ventPpal) {
 		frame = new JFrame("AlgoCraft");
-		frame.setSize(600, 600);
+		frame.setSize(800, 800);
 		//frame.addKeyListener(controlTab.getKeyListenerMovimientos());
 		this.jugador = jugador;
 		this.controladorMapa = new ControladorVentanaMapa(jugador, this);
@@ -97,6 +97,7 @@ public class VentanaMapa {
 	}
 	
 	// Main de prueba
+	@SuppressWarnings("unused")
 	public static void main(String[] args) {
 		MapaFactory unMapaFactory = new MapaFactory();
 		Mapa unMapa = unMapaFactory.crearMapa20x20Hardcodeado();

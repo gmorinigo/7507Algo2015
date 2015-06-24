@@ -24,10 +24,10 @@ public abstract class VistaObjetoDibujable implements Observer{
 	}
 	
 	public static Posicion convertToPix(Posicion pos) {	
-		int x = pos.dameColumna();
-		int y = pos.dameFila();
-		return new Posicion( 30 +60*(x-1), 30 + 60*(y-1));
-		//return new Posicion( x*40, y*40);
+		int x = pos.dameFila();
+		int y = pos.dameColumna();
+		//return new Posicion( 30 +60*(x-1), 30 + 60*(y-1));
+		return new Posicion( x*32, y*32);
 	}
 
 	public void paint(Graphics g) {

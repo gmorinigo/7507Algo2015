@@ -270,11 +270,7 @@ public class Mapa {
 				if (((j==4) || (j==15)) && (i==10)){
 					agregarCeldaConMineral(i, j);
 				} else {
-					if (((j==4) || (j==15)) && (i==12)){
-						agregarCeldaConGas(i, j);
-					} else {
-						agregarCeldaTerrestre(i, j);						
-					}
+					agregarCeldaTerrestre(i, j);						
 				}
 			}
 		}
@@ -285,7 +281,12 @@ public class Mapa {
 				if ((j==9) || (j==10)){
 					agregarCeldaAerea(i, j);
 				} else {
-					agregarCeldaTerrestre(i, j);						
+					if (((j==4) || (j==15)) && (i==12)){
+						agregarCeldaConGas(i, j);
+					}
+					else{
+						agregarCeldaTerrestre(i, j);
+					}
 				}
 			}
 		}
