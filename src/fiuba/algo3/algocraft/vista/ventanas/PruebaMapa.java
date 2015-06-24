@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.EventQueue;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
@@ -16,14 +17,11 @@ import javax.swing.JPanel;
 import fiuba.algo3.algocraft.controller.ControladorVentanaMapa;
 import fiuba.algo3.algocraft.modelo.AlgoCraft;
 import fiuba.algo3.algocraft.modelo.Jugador;
-import fiuba.algo3.algocraft.modelo.Raza;
-import fiuba.algo3.algocraft.modelo.RazaProtoss;
-import fiuba.algo3.algocraft.modelo.excepciones.JugadorConNombreDemasiadoCortoException;
 import fiuba.algo3.algocraft.modelo.mapa.Mapa;
 import fiuba.algo3.algocraft.modelo.mapa.MapaFactory;
 import fiuba.algo3.algocraft.vista.VistaEscenario;
 
-public class VentanaMapa extends JFrame{
+public class PruebaMapa extends JFrame{
 
 	JFrame frame;
 	private Jugador jugador;
@@ -36,7 +34,6 @@ public class VentanaMapa extends JFrame{
 	JPanel panelCenter;
 	JLabel saludoLabel;
 	JButton volverButton;
-	JButton guardarButton;
 	VentanaPrincipal ventanaPrincipal;
 	static AlgoCraft juego;
 	private JLabel lblGas;
@@ -112,7 +109,7 @@ public class VentanaMapa extends JFrame{
 		panel.add(panelRight, BorderLayout.LINE_END);
 	}
 	
-	public VentanaMapa(AlgoCraft unJuego) {
+	public PruebaMapa(AlgoCraft unJuego) {
 		MapaFactory unMapaFactory = new MapaFactory();
 		Mapa unMapa = unMapaFactory.crearMapa20x20Hardcodeado();
 		frame = new JFrame("AlgoCraft");
