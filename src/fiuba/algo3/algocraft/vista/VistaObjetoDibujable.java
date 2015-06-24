@@ -10,7 +10,6 @@ import java.util.Observer;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
-import fiuba.algo3.algocraft.AlgoCraft;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 
 public abstract class VistaObjetoDibujable implements Observer{

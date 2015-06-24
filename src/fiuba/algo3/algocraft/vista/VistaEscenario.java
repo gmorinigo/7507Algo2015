@@ -57,7 +57,7 @@ public class VistaEscenario extends JPanel {
 	
 	private void cargarMapaInicial() {
 		for (int i = 0; i<20;i++){
-			for (int j = 0; i<20; i++){
+			for (int j = 0; j<20; j++){
 				Celda unaCelda = mapaDelJuego.dameCelda(new Posicion(i, j)); 
 				this.vistasObjetosDibujables.add(new VistaCelda(unaCelda,this));
 			}

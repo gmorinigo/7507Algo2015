@@ -18,6 +18,8 @@ import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.Raza;
 import fiuba.algo3.algocraft.modelo.RazaProtoss;
 import fiuba.algo3.algocraft.modelo.excepciones.JugadorConNombreDemasiadoCortoException;
+import fiuba.algo3.algocraft.modelo.mapa.Mapa;
+import fiuba.algo3.algocraft.modelo.mapa.MapaFactory;
 import fiuba.algo3.algocraft.vista.VistaEscenario;
 
 public class VentanaMapa {
@@ -96,6 +98,8 @@ public class VentanaMapa {
 	
 	// Main de prueba
 	public static void main(String[] args) {
+		MapaFactory unMapaFactory = new MapaFactory();
+		Mapa unMapa = unMapaFactory.crearMapa20x20Hardcodeado();
 		Raza razaProtoss = new RazaProtoss();
 		Jugador unJugador = null;
 		try {
