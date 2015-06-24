@@ -4,6 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
@@ -11,13 +13,17 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPopupMenu;
 
 import fiuba.algo3.algocraft.controller.ControladorVentanaMapa;
 import fiuba.algo3.algocraft.modelo.AlgoCraft;
 import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.Raza;
 import fiuba.algo3.algocraft.modelo.RazaProtoss;
+import fiuba.algo3.algocraft.modelo.construciones.AbstractConstruccionFactory;
 import fiuba.algo3.algocraft.modelo.excepciones.JugadorConNombreDemasiadoCortoException;
 import fiuba.algo3.algocraft.modelo.mapa.Mapa;
 import fiuba.algo3.algocraft.modelo.mapa.MapaFactory;
@@ -110,7 +116,82 @@ public class VentanaMapa extends JFrame{
 		//panel.add(panelLeft, BorderLayout.LINE_START);
 		panel.add(panelCenter, BorderLayout.CENTER);
 		panel.add(panelRight, BorderLayout.LINE_END);
+		panel.addMouseListener(new MouseListener(){
+			
+			
+			@Override
+			public void mouseReleased(MouseEvent arg0) {
+			JPopupMenu popupMenu = new JPopupMenu("Menu contextual");
+			JMenuItem mitem = popupMenu.add(String.format("Crear extractorMineral en %s %s",arg0.getX(),arg0.getY()));
+			popupMenu.add(String.format("Crear extractorGas en %s %s",arg0.getX(),arg0.getY()));
+			popupMenu.add(String.format("Crear expansorPoblacion en %s %s",arg0.getX(),arg0.getY()));
+			popupMenu.add(String.format("Crear creadorUnidadesBasicas en %s %s",arg0.getX(),arg0.getY()));
+			popupMenu.addMouseListener(new MouseListener() {
+				
+				@Override
+				public void mouseReleased(MouseEvent arg0) {
+					// TODO Auto-generated method stub
+					
+				}
+				
+				@Override
+				public void mousePressed(MouseEvent arg0) {
+					// TODO Auto-generated method stub
+					
+				}
+				
+				@Override
+				public void mouseExited(MouseEvent arg0) {
+					// TODO Auto-generated method stub
+					
+				}
+				
+				@Override
+				public void mouseEntered(MouseEvent arg0) {
+					// TODO Auto-generated method stub
+					
+				}
+				
+				@Override
+				public void mouseClicked(MouseEvent arg0) {
+					JOptionPane.showMessageDialog(null,"presionaste el elemento del menu");
+					
+				}
+			});
+			popupMenu.setEnabled(true);
+			popupMenu.show(arg0.getComponent(), arg0.getX(), arg0.getY());
+
+
+			// TODO Auto-generated method stub
+			
+		}
+		
+		@Override
+		public void mousePressed(MouseEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+		@Override
+		public void mouseExited(MouseEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+		@Override
+		public void mouseEntered(MouseEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+		@Override
+		public void mouseClicked(MouseEvent arg0) {
+		
+			
+		}
+	});
 	}
+	
 	
 	public VentanaMapa(AlgoCraft unJuego) {
 		MapaFactory unMapaFactory = new MapaFactory();
@@ -124,7 +205,6 @@ public class VentanaMapa extends JFrame{
 		this.ventPpal = ventanaPrincipal;
 		this.initVistaMapa();
 		this.initComponents(frame.getContentPane());
-		
 		//frame.setResizable(false);
 		frame.addWindowListener( new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {

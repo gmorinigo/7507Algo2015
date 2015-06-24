@@ -80,7 +80,7 @@ public class ControladorNuevaPartida extends ControllerGui {
 			} catch (JugadorConNombreDemasiadoCortoException e1) {
 				JOptionPane.showMessageDialog(null, "Nombre del jugador 2 demasiado corto");
 			}
-			PruebaMapa unMapa = new PruebaMapa(juego);
+			VentanaMapa unMapa = new VentanaMapa(juego);
 			unMapa.setVisible(true);
 		}
 		
