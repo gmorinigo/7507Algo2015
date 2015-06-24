@@ -5,6 +5,8 @@ import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.EventQueue;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
@@ -12,14 +14,20 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPopupMenu;
 
 import fiuba.algo3.algocraft.controller.ControladorVentanaMapa;
 import fiuba.algo3.algocraft.modelo.AlgoCraft;
 import fiuba.algo3.algocraft.modelo.Jugador;
+import fiuba.algo3.algocraft.modelo.construciones.terran.Barraca;
 import fiuba.algo3.algocraft.modelo.mapa.Mapa;
 import fiuba.algo3.algocraft.modelo.mapa.MapaFactory;
 import fiuba.algo3.algocraft.vista.VistaEscenario;
+
+import java.awt.event.MouseAdapter;
 
 public class PruebaMapa extends JFrame{
 
@@ -46,6 +54,11 @@ public class PruebaMapa extends JFrame{
 	private JLabel lblNewLabel;
 	private JLabel lblPoblacionTotal;
 	private JButton cambiarTurno;
+	private JPopupMenu popupMenu;
+	private JMenuItem mntmExpansorPoblacion;
+	private JMenuItem mntmUnidadesBasicas;
+	private JMenuItem mntmExtractorGas;
+	private JMenuItem mntmExtractorMineral;
 	
 	private void initComponents(Container panel){
 		panelTop = new JPanel();
@@ -107,6 +120,7 @@ public class PruebaMapa extends JFrame{
 		//panel.add(panelLeft, BorderLayout.LINE_START);
 		panel.add(panelCenter, BorderLayout.CENTER);
 		panel.add(panelRight, BorderLayout.LINE_END);
+	
 	}
 	
 	public PruebaMapa(AlgoCraft unJuego) {
@@ -136,6 +150,33 @@ public class PruebaMapa extends JFrame{
 	private void initVistaMapa(){
 		this.vistaEscenario = new VistaEscenario(this.jugador);
 		
+		popupMenu = new JPopupMenu();
+		addPopup(vistaEscenario, popupMenu);
+		
+		mntmExtractorMineral = new JMenuItem("Crear extractorMineral");
+		mntmExtractorMineral.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				System.out.println("hola mundo");
+			}
+		});
+		popupMenu.add(mntmExtractorMineral);
+		
+		mntmExtractorGas = new JMenuItem("Crear extractorGas");
+		popupMenu.add(mntmExtractorGas);
+		
+		mntmExpansorPoblacion = new JMenuItem("Crear expansorPoblacion");
+		popupMenu.add(mntmExpansorPoblacion);
+		
+		mntmUnidadesBasicas = new JMenuItem("Crear creadorUnidadesBasicas");
+		mntmUnidadesBasicas.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				JOptionPane.showMessageDialog(null,"presionaste el elemento del menu");
+			}
+		});
+		popupMenu.add(mntmUnidadesBasicas);
+		
 		label = new JLabel("");
 		vistaEscenario.add(label, BorderLayout.NORTH);
 	}
@@ -157,5 +198,21 @@ public class PruebaMapa extends JFrame{
 	public VentanaPrincipal getVentanaGUI() {
 		return this.ventPpal;
 	}
-
+	private static void addPopup(Component component, final JPopupMenu popup) {
+		component.addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent e) {
+				if (e.isPopupTrigger()) {
+					showMenu(e);
+				}
+			}
+			public void mouseReleased(MouseEvent e) {
+				if (e.isPopupTrigger()) {
+					showMenu(e);
+				}
+			}
+			private void showMenu(MouseEvent e) {
+				popup.show(e.getComponent(), e.getX(), e.getY());
+			}
+		});
+	}
 }
