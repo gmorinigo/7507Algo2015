@@ -10,12 +10,16 @@ public class ControladorBienvenido extends ControllerGui{
 	public ControladorBienvenido(VentanaPrincipal ventana) {
 		super(ventana);
 	}
-
+	
+	/****************************************************/
+	
+	/****** Listener para el boton nueva partida ********/
+	
 	private class EscuchaBotonNuevaPartida implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			
+			vent.showLayout("NuevaPartida");
 		}
 		
 	}
