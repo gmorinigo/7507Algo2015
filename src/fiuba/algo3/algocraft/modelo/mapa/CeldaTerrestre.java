@@ -1,5 +1,12 @@
 package fiuba.algo3.algocraft.modelo.mapa;
 
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
+import java.net.URISyntaxException;
+
+import javax.imageio.ImageIO;
+
 import fiuba.algo3.algocraft.modelo.construciones.Construccion;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 
@@ -34,7 +41,19 @@ public class CeldaTerrestre extends Celda {
 		return true;
 	}
 	
-	public String getNombreObjetoPosicionable() {
+	public String getNombreObjetoDibujable() {
 		return "CeldaTerrestre";
+	}
+	
+	public Image getImagen() {
+		Image imagen = null;
+		try {
+			imagen =  ImageIO.read(new File((getClass().getResource("/fiuba/algo3/algocraft/resources/images/celdaTerrestre.png")).toURI()));
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (URISyntaxException e) {
+			e.printStackTrace();
+		}
+		return imagen;
 	}
 }

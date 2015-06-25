@@ -2,14 +2,10 @@ package fiuba.algo3.algocraft.vista;
 
 import java.awt.Graphics;
 import java.awt.Image;
-import java.io.File;
-import java.io.IOException;
-import java.net.URISyntaxException;
 import java.util.Observer;
-
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
+import fiuba.algo3.algocraft.modelo.mapa.Celda;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 
 public abstract class VistaObjetoDibujable implements Observer{
@@ -33,43 +29,32 @@ public abstract class VistaObjetoDibujable implements Observer{
 	public void paint(Graphics g) {
 		Image image = null;
 		ImageIcon imageIcon;
-		Posicion posPixel = VistaObjetoDibujable.convertToPix(this.objeto.getPosicionActual());
+		Posicion posPixel = VistaObjetoDibujable.convertToPix(this.objeto.getPosicion());
 		
-		//Cargamos la imagen del objeto que vamos a pintar en la ciudad.
-		switch(this.objeto.getNombreObjetoPosicionable())
-		{
-		case "CeldaTerrestre":
-		{
-			try {			
-				image = ImageIO.read(new File((getClass().getResource("/fiuba/algo3/algocraft/resources/images/celdaTerrestre.png")).toURI()));
-				
-			} catch (IOException | NullPointerException | URISyntaxException ex) {
-			}	
-		}break;
-		case "CeldaAerea":
-		{
-			try {			
-				image = ImageIO.read(new File((getClass().getResource("/fiuba/algo3/algocraft/resources/images/celdaAerea.png")).toURI()));				
-			} catch (IOException | NullPointerException | URISyntaxException ex) {
-			}	
-		}break;
-		case "CeldaConGas":
-		{
-			try {			
-				image = ImageIO.read(new File((getClass().getResource("/fiuba/algo3/algocraft/resources/images/celdaConGas.png")).toURI()));				
-			} catch (IOException | NullPointerException | URISyntaxException ex) {
-			}	
-		}break;
-		case "CeldaConMineral":
-		{
-			try {			
-				image = ImageIO.read(new File((getClass().getResource("/fiuba/algo3/algocraft/resources/images/celdaConMineral.png")).toURI()));				
-			} catch (IOException | NullPointerException | URISyntaxException ex) {
-			}	
-		}break;
+		Celda unaCelda = (Celda) this.objeto;
+		
+		if (unaCelda.tieneUnidad()){
+			image = unaCelda.obtenerUnidad().getImagen();
 		}
+		else{
+			if (unaCelda.tieneConstruccion()){
+				image = unaCelda.obtenerConstruccion().getImagen();	
+			}
+		}
+		
+		if (!unaCelda.tieneUnidad() && !unaCelda.tieneConstruccion()){
+			image = this.objeto.getImagen();
+		}
+		
 		imageIcon = new ImageIcon(image);
-		imageIcon.paintIcon(vistaEscenario, g, posPixel.dameColumna(), posPixel.dameFila());
+		
+		if (unaCelda.tieneConstruccion() && !unaCelda.obtenerConstruccion().construccionRecolectoraDeGas() && !unaCelda.obtenerConstruccion().construccionRecolectoraDeMineral()){
+			//TODO Ver como dibujamos la construccion en 4 celdas
+			imageIcon.paintIcon(vistaEscenario, g, posPixel.dameColumna(), posPixel.dameFila());
+		}
+		else{
+			imageIcon.paintIcon(vistaEscenario, g, posPixel.dameColumna(), posPixel.dameFila());
+		}
 	}
 }
 

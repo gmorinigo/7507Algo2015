@@ -13,8 +13,9 @@ import fiuba.algo3.algocraft.modelo.unidades.ataques.AbstractDisparo;
 import fiuba.algo3.algocraft.modelo.unidades.ataques.DisparoNormal;
 import fiuba.algo3.algocraft.modelo.unidades.movimientos.Movimiento;
 import fiuba.algo3.algocraft.modelo.unidades.movimientos.Movimiento.TipoDireccion;
+import fiuba.algo3.algocraft.vista.Dibujable;
 
-abstract public class Unidad implements TurnoObserver{
+abstract public class Unidad implements TurnoObserver, Dibujable{
 	
 	protected Salud salud;
 	protected UnidadEstado estado;
@@ -186,5 +187,9 @@ abstract public class Unidad implements TurnoObserver{
 			this.jugador.quitarUnidad(this);
 			this.celda.desocuparCelda();
 		}
+	}
+	
+	public Posicion getPosicion() {
+		return this.dameCelda().obtenerPosicion();
 	}
 }

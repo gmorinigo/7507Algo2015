@@ -245,5 +245,5 @@ public class VentanaMapa extends JFrame{
 	public VentanaPrincipal getVentanaGUI() {
 		return this.ventPpal;
 	}
-
+	
 }
