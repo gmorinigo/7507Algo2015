@@ -1,7 +1,13 @@
 package fiuba.algo3.algocraft.modelo.construciones.protoss;
 
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.rmi.NoSuchObjectException;
 import java.util.ArrayList;
+
+import javax.imageio.ImageIO;
 
 import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.construciones.Construccion;
@@ -41,14 +47,26 @@ public class ArchivosTemplarios extends Construccion{
 		return 9;
 	}
 
-	@Override
 	protected void vivir() {
-		// TODO Auto-generated method stub
-		
 	}
 
 	protected Salud saludInicial() {
 		return new SaludProtoss(500,500);
 	}
 
+	public String getNombreObjetoDibujable() {
+		return "ArchivosTemplarios";
+	}
+	
+	public Image getImagen() {
+		Image imagen = null;
+		try {
+			imagen =  ImageIO.read(new File((getClass().getResource("/fiuba/algo3/algocraft/resources/images/archivostemplarios.png")).toURI()));
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (URISyntaxException e) {
+			e.printStackTrace();
+		}
+		return imagen;
+	}
 }

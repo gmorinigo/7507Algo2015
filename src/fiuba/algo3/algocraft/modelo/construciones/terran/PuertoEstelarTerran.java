@@ -1,7 +1,13 @@
 package fiuba.algo3.algocraft.modelo.construciones.terran;
 
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.rmi.NoSuchObjectException;
 import java.util.ArrayList;
+
+import javax.imageio.ImageIO;
 
 import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.construciones.Construccion;
@@ -52,5 +58,21 @@ public class PuertoEstelarTerran extends Construccion {
 
 	protected Salud saludInicial() {
 		return new SaludTerran(1300);
+	}
+	
+	public String getNombreObjetoDibujable() {
+		return "PuertoEstelarTerran";
+	}
+	
+	public Image getImagen() {
+		Image imagen = null;
+		try {
+			imagen =  ImageIO.read(new File((getClass().getResource("/fiuba/algo3/algocraft/resources/images/puertoestelarterran.png")).toURI()));
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (URISyntaxException e) {
+			e.printStackTrace();
+		}
+		return imagen;
 	}
 }

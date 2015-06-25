@@ -288,7 +288,12 @@ public abstract class Celda implements Dibujable {
 		return false;
 	}
 	
-	public Posicion getPosicionActual() {
+	public Posicion getPosicion() {
 		return this.obtenerPosicion();
+	}
+
+
+	public Construccion obtenerConstruccion() {
+		return this.construccion;
 	}
 }

@@ -31,7 +31,7 @@ public class VistaEscenario extends JPanel {
 	private static final long serialVersionUID = 1L;
 	Mapa mapaDelJuego;
 	//MapaPanel mapaPanel;
-	//NieblaPanel nieblaPanel;
+	NieblaPanel nieblaPanel;
 	private List<VistaObjetoDibujable> vistasObjetosDibujables;
 	int tamanio;
 	int dim;
@@ -50,7 +50,7 @@ public class VistaEscenario extends JPanel {
         //this.crearVistasSituaciones(jug.obtenerSituacionesCiudad());
         
         //this.mapaPanel = new MapaPanel();
-		//this.nieblaPanel = new NieblaPanel(jug.getVehiculo(), jug.getCiudad().getMeta());
+		this.nieblaPanel = new NieblaPanel();
 		
         setLayout(new BorderLayout()); 
 	}
@@ -67,13 +67,13 @@ public class VistaEscenario extends JPanel {
 	@Override
 	public void paint(Graphics g) {
 		super.paint(g);
+		//this.nieblaPanel.paint(g);
 		//this.mapaPanel.paint(g);
 		Iterator<VistaObjetoDibujable> it = this.vistasObjetosDibujables.iterator();
 		while(it.hasNext()){
 			it.next().paint(g);
 		}
 		
-		//this.nieblaPanel.paint(g);
 		revalidate();
 		
 	}
@@ -105,14 +105,14 @@ public class VistaEscenario extends JPanel {
 		}
 	}
 	*/
-	/*private class NieblaPanel extends JPanel
+	private class NieblaPanel extends JPanel
 	{
 		private static final long serialVersionUID = 1L;
-		private BufferedImage nieblaImagen;*/
+		private BufferedImage nieblaImagen;
 		//private Posicionable vehiculo;
 		//private Posicionable meta;
 		
-/*		public NieblaPanel()//Posicionable vehiculo, Posicionable meta)
+		public NieblaPanel()//Posicionable vehiculo, Posicionable meta)
 		{
 			this.updateNieblaImagen();
 		}
@@ -126,14 +126,14 @@ public class VistaEscenario extends JPanel {
 			
 			g.drawImage(nieblaImagen, 0, 0, this);
 		}
-*/
 
-/*
+
+
 		private void updateNieblaImagen() {
 	
 			nieblaImagen = new BufferedImage(dim, dim, BufferedImage.TYPE_INT_ARGB);
 			
-			Area donut = new Area(new Rectangle2D.Double(0, 0, dim, dim));
+/*			Area donut = new Area(new Rectangle2D.Double(0, 0, dim, dim));
 			Posicion pos1 = VistaObjetoDibujable.convertToPix(vehiculo.getPosicionActual());
 			centrarPosicion(pos1, 240);
 			Posicion pos2 = VistaObjetoDibujable.convertToPix(meta.getPosicionActual());
@@ -144,20 +144,20 @@ public class VistaEscenario extends JPanel {
 		    
 		    donut.subtract(hole1);
 		    donut.subtract(hole2);
-		    
+		    */
 		    Graphics2D g = nieblaImagen.createGraphics();
 		    g.setColor(Color.black);
-		    g.fill(donut);
+		    //g.fill(donut);
 		}
 
 
-
+		/*
 		private void centrarPosicion(Posicion pos, int diamtro) {
 			int radio = diamtro / 2;
 			
 			pos.setFila(pos.dameFila() - radio + 10);
 			pos.setColumna(pos.dameColumna() - radio + 10);
-		}
-	}*/
+		}*/
+	}
 
 }

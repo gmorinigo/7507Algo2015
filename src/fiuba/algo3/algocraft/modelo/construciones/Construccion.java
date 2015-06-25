@@ -11,8 +11,9 @@ import fiuba.algo3.algocraft.modelo.turnos.Turno;
 import fiuba.algo3.algocraft.modelo.turnos.TurnoObserver;
 import fiuba.algo3.algocraft.modelo.unidades.Salud;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
+import fiuba.algo3.algocraft.vista.Dibujable;
 
-public abstract class Construccion implements TurnoObserver{
+public abstract class Construccion implements TurnoObserver, Dibujable{
 
 	protected ArrayList<Celda> celdas;
 	protected Jugador jugador;
@@ -34,7 +35,6 @@ public abstract class Construccion implements TurnoObserver{
 		return this.estaOperativa();
 	}
 	
-	@Override
 	public void finDeTurno(Turno turno) {
 		this.estado.avanzarEnElTurno();
 	}
@@ -132,5 +132,7 @@ public abstract class Construccion implements TurnoObserver{
 		}
 	}
 
-
+	public Posicion getPosicion() {
+		return this.posicionCeldaSupIzquierda;
+	}
 }

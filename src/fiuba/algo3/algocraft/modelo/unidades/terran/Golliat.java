@@ -1,5 +1,12 @@
 package fiuba.algo3.algocraft.modelo.unidades.terran;
 
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
+import java.net.URISyntaxException;
+
+import javax.imageio.ImageIO;
+
 import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.construciones.Construccion;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
@@ -67,5 +74,19 @@ public class Golliat extends UnidadTerran {
 	public int obtenerOcupacionSuministro() {
 		return 2;
 	}
-
+	public String getNombreObjetoDibujable() {
+		return "Golliat";
+	}
+	
+	public Image getImagen() {
+		Image imagen = null;
+		try {
+			imagen =  ImageIO.read(new File((getClass().getResource("/fiuba/algo3/algocraft/resources/images/golliat.png")).toURI()));
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (URISyntaxException e) {
+			e.printStackTrace();
+		}
+		return imagen;
+	}
 }
