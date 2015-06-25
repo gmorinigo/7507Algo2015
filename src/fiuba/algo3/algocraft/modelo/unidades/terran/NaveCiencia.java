@@ -1,5 +1,12 @@
 package fiuba.algo3.algocraft.modelo.unidades.terran;
 
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
+import java.net.URISyntaxException;
+
+import javax.imageio.ImageIO;
+
 import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.construciones.Construccion;
 import fiuba.algo3.algocraft.modelo.mapa.Celda;
@@ -150,5 +157,21 @@ public class NaveCiencia extends UnidadTerran {
 		else{
 			this.energia -= cantidadEnergiaARestar;
 		}
+	}
+	
+	public String getNombreObjetoDibujable() {
+		return "NaveCiencia";
+	}
+	
+	public Image getImagen() {
+		Image imagen = null;
+		try {
+			imagen =  ImageIO.read(new File((getClass().getResource("/fiuba/algo3/algocraft/resources/images/naveciencia.png")).toURI()));
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (URISyntaxException e) {
+			e.printStackTrace();
+		}
+		return imagen;
 	}
 }
