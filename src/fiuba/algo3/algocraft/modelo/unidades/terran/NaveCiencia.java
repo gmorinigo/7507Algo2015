@@ -150,6 +150,5 @@ public class NaveCiencia extends UnidadTerran {
 		else{
 			this.energia -= cantidadEnergiaARestar;
 		}
-		
 	}
 }

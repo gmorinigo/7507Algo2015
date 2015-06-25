@@ -65,6 +65,5 @@ public class Zealot extends UnidadProtoss{
 		unaUnidad.marcarEstaUnidadComoAlucinacion();
 		unaUnidad.estado = new UnidadEstadoViviendo(this);
 		return unaUnidad;
-	}
-	
+	}	
 }
