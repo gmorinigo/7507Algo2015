@@ -5,6 +5,8 @@ import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.Observable;
+import java.util.Observer;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -21,7 +23,7 @@ import fiuba.algo3.algocraft.modelo.mapa.MapaFactory;
 import fiuba.algo3.algocraft.vista.VistaEscenario;
 
 @SuppressWarnings("static-access")
-public class VentanaMapa extends JFrame{
+public class VentanaMapa extends JFrame implements Observer{
 
 	private static final long serialVersionUID = 1L;
 	JFrame frame;
@@ -42,7 +44,6 @@ public class VentanaMapa extends JFrame{
 	private JLabel lblDameGas;
 	private JLabel lblMineral;
 	private JLabel lblDameMineral;
-	private JLabel label;
 	private JLabel lblPoblacion;
 	private JLabel lblPoblacionDisponible;
 	private JLabel lblNewLabel;
@@ -60,7 +61,6 @@ public class VentanaMapa extends JFrame{
 		saludoLabel = new JLabel("Hola " +juego.dameJugador1().dameNombre());
 		saludoLabel.setPreferredSize(new Dimension(100, 20));
 		
-		//String dif = this.jugador.getCiudad().getDificultad();
 		volverButton = new JButton("Salir");
 		volverButton.setPreferredSize(new Dimension(80,20));
 		
@@ -71,28 +71,26 @@ public class VentanaMapa extends JFrame{
 		
 		lblDameGas = new JLabel();
 		panelTop.add(lblDameGas);
-		lblDameGas.setText(Integer.toString(juego.dameJugador1().dameCantidadGas()));
 		
 		lblMineral = new JLabel("Mineral:");
 		panelTop.add(lblMineral);
 		
 		lblDameMineral = new JLabel();
 		panelTop.add(lblDameMineral);
-		lblDameMineral.setText(Integer.toString(juego.dameJugador1().dameCantidadMineral()));
-		
+	
 		lblPoblacion = new JLabel("Poblacion:");
 		panelTop.add(lblPoblacion);
 		
 		lblPoblacionDisponible = new JLabel();
 		panelTop.add(lblPoblacionDisponible);
-		lblPoblacionDisponible.setText(Integer.toString(juego.dameJugador1().obtenerCantidadPoblacionDisponible()));
 		
 		lblNewLabel = new JLabel("/");
 		panelTop.add(lblNewLabel);
 		
 		lblPoblacionTotal = new JLabel();
 		panelTop.add(lblPoblacionTotal);
-		lblPoblacionTotal.setText(Integer.toString(juego.dameJugador1().dameLimiteDePoblacion()));
+		
+		this.actualizarRecursos();
 		
 		panelTop.add(saludoLabel, BorderLayout.LINE_START);
 		panelTop.add(volverButton, BorderLayout.LINE_END);
@@ -108,7 +106,6 @@ public class VentanaMapa extends JFrame{
         panel.addMouseListener(new MapaMouseListener(this,this.juego));
 	}
 	
-	
 	@SuppressWarnings("unused")
 	public VentanaMapa(AlgoCraft unJuego) {
 		MapaFactory unMapaFactory = new MapaFactory();
@@ -120,8 +117,9 @@ public class VentanaMapa extends JFrame{
 		this.jugador = juego.dameJugador1();
 		this.controladorMapa = new ControladorVentanaMapa(jugador, this);
 		this.ventPpal = ventanaPrincipal;
-		this.initVistaMapa();
+		this.vistaEscenario = new VistaEscenario(this.jugador, this.juego);
 		this.initComponents(frame.getContentPane());
+		unJuego.addObserver(this);
 		//frame.setResizable(false);
 		frame.addWindowListener( new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
@@ -133,13 +131,6 @@ public class VentanaMapa extends JFrame{
 		this.mostrar();
 	}
 
-	private void initVistaMapa(){
-		this.vistaEscenario = new VistaEscenario(this.jugador, this.juego);
-		
-		label = new JLabel("");
-		vistaEscenario.add(label, BorderLayout.NORTH);
-	}
-	
 	public void ocultar() {
 		frame.setVisible(false);
 	}
@@ -157,6 +148,18 @@ public class VentanaMapa extends JFrame{
 	public VentanaPrincipal getVentanaGUI() {
 		return this.ventPpal;
 	}
+
+
+	public void update(Observable arg0, Object arg1) {
+		this.actualizarRecursos();		
+	}
 	
+	
+	private void actualizarRecursos() {
+		lblDameGas.setText(Integer.toString(juego.dameJugador1().dameCantidadGas()));		
+		lblDameMineral.setText(Integer.toString(juego.dameJugador1().dameCantidadMineral()));
+		lblPoblacionTotal.setText(Integer.toString(juego.dameJugador1().dameLimiteDePoblacion()));
+		lblPoblacionDisponible.setText(Integer.toString(juego.dameJugador1().obtenerCantidadPoblacionDisponible()));
+	}
 
 }

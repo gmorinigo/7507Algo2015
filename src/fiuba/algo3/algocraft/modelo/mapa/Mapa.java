@@ -145,6 +145,8 @@ public class Mapa {
 		Posicion unaPosicion = construccion.damePosicionCeldaSupIzquierda();
 		Celda unaCelda = this.matriz[unaPosicion.dameFila()][unaPosicion.dameColumna()];
 		
+		
+		
 		if(! this.verificarFinDeMapa(construccion, unaPosicion) 
 				|| ! this.verificarSiPuedoConstruir(construccion, unaCelda))
 			return false;
@@ -158,8 +160,7 @@ public class Mapa {
 
 	private boolean verificarSiPuedoConstruir(Construccion construccion, Celda celda) {
 		//Para construccion de una sola celda
-		if (!construccion.construccionRecolectoraDeMineral() &&
-			!construccion.construccionRecolectoraDeGas())
+		if (construccion.construccionRecolectoraDeMineral() || construccion.construccionRecolectoraDeGas())
 			return celda.esPosbibleConstruir(construccion);
 		
 		//Para construcciones de 4celdas

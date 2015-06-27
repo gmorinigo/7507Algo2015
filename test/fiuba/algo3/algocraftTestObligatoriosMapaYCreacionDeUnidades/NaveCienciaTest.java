@@ -246,7 +246,7 @@ public class NaveCienciaTest extends TestBase {
 		assertTrue(unaNaveCiencia instanceof NaveCiencia);
 	
 	/** Se Crea unidadProtoss  **/
-		factoryConstruccionesProtoss.crearConstruccion(TipoConstruccion.creadorUnidadesBasicas, new Posicion(16,14), otroJugador);
+		factoryConstruccionesProtoss.crearConstruccion(TipoConstruccion.creadorUnidadesBasicas, new Posicion(17,14), otroJugador);
 		for (int i=0;i<12;i++) unTurno.avanzarTurno();		
 		PuertoEstelarProtoss unPuertoProtoss = (PuertoEstelarProtoss) factoryConstruccionesProtoss.crearConstruccion(TipoConstruccion.creadorUnidadesVoladoras, new Posicion(27,25), otroJugador);
 		for (int i=0;i<10;i++) unTurno.avanzarTurno();	
@@ -313,7 +313,7 @@ public class NaveCienciaTest extends TestBase {
 		assertTrue(unaNaveCiencia instanceof NaveCiencia);
 		
 		/** Se Crea unidadProtoss  **/
-		factoryConstruccionesProtoss.crearConstruccion(TipoConstruccion.creadorUnidadesBasicas, new Posicion(16,14), otroJugador);
+		factoryConstruccionesProtoss.crearConstruccion(TipoConstruccion.creadorUnidadesBasicas, new Posicion(17,14), otroJugador);
 		for (int i=0;i<12;i++) unTurno.avanzarTurno();		
 		PuertoEstelarProtoss unPuertoProtoss = (PuertoEstelarProtoss) factoryConstruccionesProtoss.crearConstruccion(TipoConstruccion.creadorUnidadesVoladoras, new Posicion(27,25), otroJugador);
 		for (int i=0;i<10;i++) unTurno.avanzarTurno();	
