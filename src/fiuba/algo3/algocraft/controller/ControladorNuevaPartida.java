@@ -2,7 +2,9 @@ package fiuba.algo3.algocraft.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.JOptionPane;
+
 import fiuba.algo3.algocraft.modelo.AlgoCraft;
 import fiuba.algo3.algocraft.modelo.Raza;
 import fiuba.algo3.algocraft.modelo.RazaProtoss;
@@ -10,9 +12,9 @@ import fiuba.algo3.algocraft.modelo.RazaTerran;
 import fiuba.algo3.algocraft.modelo.excepciones.JugadorConElMismoColorException;
 import fiuba.algo3.algocraft.modelo.excepciones.JugadorConElMismoNombreException;
 import fiuba.algo3.algocraft.modelo.excepciones.JugadorConNombreDemasiadoCortoException;
+import fiuba.algo3.algocraft.vista.VistaNuevaPartida;
 import fiuba.algo3.algocraft.vista.ventanas.VentanaMapa;
 import fiuba.algo3.algocraft.vista.ventanas.VentanaPrincipal;
-import fiuba.algo3.algocraft.vista.ventanas.VistaNuevaPartida;
 
 public class ControladorNuevaPartida extends ControllerGui {
 

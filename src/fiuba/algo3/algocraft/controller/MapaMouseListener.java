@@ -37,7 +37,7 @@ public class MapaMouseListener extends MouseAdapter {
 				JMenuItem mitemMineral = popupMenu.add(String.format("CeldaOcupada"));
 			}
 			else{
-				JMenuItem mitemMineral = popupMenu.add(String.format("Crear extractorMineral en %s %s",arg0.getX(),arg0.getY()));
+				JMenuItem mitemMineral = popupMenu.add(String.format("Crear extractorMineral"));
 				mitemMineral.addMouseListener(new CeldaMineralMouseListener(this.ventanaMapa, this.juego,posicionCeldaPresionada));
 			}
 		}
@@ -47,7 +47,7 @@ public class MapaMouseListener extends MouseAdapter {
 				JMenuItem mitemGas = popupMenu.add(String.format("CeldaOcupada"));
 			}
 			else{
-				JMenuItem mitemGas = popupMenu.add(String.format("Crear extractorGas en %s %s",arg0.getX(),arg0.getY()));
+				JMenuItem mitemGas = popupMenu.add(String.format("Crear extractorGas"));
 				mitemGas.addMouseListener(new CeldaGasMouseListener(this.ventanaMapa, this.juego,posicionCeldaPresionada));
 			}
 		}	
@@ -57,8 +57,10 @@ public class MapaMouseListener extends MouseAdapter {
 		}
 		
 		if (!celdaPresionada.tieneGas() && !celdaPresionada.tieneMineral() && !celdaPresionada.esCeldaAerea()){ 
-			JMenuItem mitemPoblacion = popupMenu.add(String.format("Crear expansorPoblacion en %s %s",arg0.getX(),arg0.getY()));
-			JMenuItem mitemUnidadesBasicas = popupMenu.add(String.format("Crear creadorUnidadesBasicas en %s %s",arg0.getX(),arg0.getY()));
+			JMenuItem mitemPoblacion = popupMenu.add(String.format("Crear expansorPoblacion"));
+			mitemPoblacion.addMouseListener(new ExpansorPoblacionMouseListener(this.ventanaMapa, this.juego,posicionCeldaPresionada));
+			JMenuItem mitemUnidadesBasicas = popupMenu.add(String.format("Crear creadorUnidadesBasicas"));
+			mitemUnidadesBasicas.addMouseListener(new CreadorUnidadesBasicasMouseListener(this.ventanaMapa, this.juego,posicionCeldaPresionada));
 		}
 		popupMenu.setEnabled(true);
 		popupMenu.show(arg0.getComponent(), arg0.getX(), arg0.getY());
@@ -66,8 +68,6 @@ public class MapaMouseListener extends MouseAdapter {
 	}
 	
 	public static Posicion convertirPixAPosicionCelda(int x, int y) {	
-		// El vector empieza en 0, resto 1 a la division
-		//return new Posicion( ((x-35)/30), ((y-70)/30));
 		return new Posicion(((y-40)/30),((x-5)/30));
 	}
 

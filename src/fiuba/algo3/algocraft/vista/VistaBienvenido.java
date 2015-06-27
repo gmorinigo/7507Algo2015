@@ -1,10 +1,12 @@
-package fiuba.algo3.algocraft.vista.ventanas;
+package fiuba.algo3.algocraft.vista;
 
 import java.awt.GridLayout;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+
 import fiuba.algo3.algocraft.controller.ControladorBienvenido;
+import fiuba.algo3.algocraft.vista.ventanas.VentanaPrincipal;
 
 public class VistaBienvenido extends VistaLayout{
 

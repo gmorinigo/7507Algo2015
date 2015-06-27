@@ -4,31 +4,19 @@ package fiuba.algo3.algocraft.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
-
-import javax.swing.JOptionPane;
 
 import fiuba.algo3.algocraft.modelo.Jugador;
-import fiuba.algo3.algocraft.vista.ventanas.PruebaMapa;
 import fiuba.algo3.algocraft.vista.ventanas.VentanaMapa;
 
 public class ControladorVentanaMapa {
 	private VentanaMapa ventMapa;
-	private PruebaMapa pruebaMapa;
+	@SuppressWarnings("unused")
 	private Jugador jugador;
 
 	public ControladorVentanaMapa(Jugador jugador, VentanaMapa ventMapa) {
 		this.ventMapa = ventMapa;
 		this.jugador = jugador;
-		//this.jugador.ActualizarObservadoresVehiculo();
 	}
-
-
-	public ControladorVentanaMapa(Jugador jugador2, PruebaMapa pruebaMapa) {
-		this.pruebaMapa = pruebaMapa;
-		this.jugador = jugador;
-	}
-
 
 	private class EscuchaBotonArriba implements ActionListener {
 

@@ -1,4 +1,4 @@
-package fiuba.algo3.algocraft.vista.ventanas;
+package fiuba.algo3.algocraft.vista;
 
 import javax.swing.JPanel;
 

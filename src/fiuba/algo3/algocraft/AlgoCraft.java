@@ -1,8 +1,8 @@
 package fiuba.algo3.algocraft;
 
+import fiuba.algo3.algocraft.vista.VistaBienvenido;
+import fiuba.algo3.algocraft.vista.VistaNuevaPartida;
 import fiuba.algo3.algocraft.vista.ventanas.VentanaPrincipal;
-import fiuba.algo3.algocraft.vista.ventanas.VistaBienvenido;
-import fiuba.algo3.algocraft.vista.ventanas.VistaNuevaPartida;
 
 public class AlgoCraft {
 	

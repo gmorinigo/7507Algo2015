@@ -1,4 +1,4 @@
-package fiuba.algo3.algocraft.vista.ventanas;
+package fiuba.algo3.algocraft.vista;
 
 import java.awt.GridLayout;
 import java.util.ArrayList;
@@ -12,6 +12,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 import fiuba.algo3.algocraft.controller.ControladorNuevaPartida;
+import fiuba.algo3.algocraft.vista.ventanas.VentanaPrincipal;
 
 public class VistaNuevaPartida extends VistaLayout{
 	

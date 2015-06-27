@@ -58,16 +58,17 @@ public abstract class VistaObjetoDibujable implements Observer{
 		
 		//Image otraimg = img.getScaledInstance(115,230,java.awt.Image.SCALE_SMOOTH); //creamos una imagen nueva dándole las dimensiones que queramos a la antigua
 
-		Image imagenEscalada = image.getScaledInstance(30, 30, Image.SCALE_SMOOTH);
-		
-		//imageIcon = new ImageIcon(image);
-		imageIcon = new ImageIcon(imagenEscalada);
 		
 		if (unaCelda.tieneConstruccion() && !unaCelda.obtenerConstruccion().construccionRecolectoraDeGas() && !unaCelda.obtenerConstruccion().construccionRecolectoraDeMineral()){
-			//TODO Ver como dibujamos la construccion en 4 celdas
-			imageIcon.paintIcon(vistaEscenario, g, posPixel.dameColumna(), posPixel.dameFila());
+			if (unaCelda.getPosicion().compararPosicion(unaCelda.obtenerConstruccion().damePosicionCeldaSupIzquierda())){
+				Image imagenEscalada = image.getScaledInstance(60, 60, Image.SCALE_SMOOTH);
+				imageIcon = new ImageIcon(imagenEscalada);
+				imageIcon.paintIcon(vistaEscenario, g, posPixel.dameColumna(), posPixel.dameFila());
+			}
 		}
 		else{
+			Image imagenEscalada = image.getScaledInstance(30, 30, Image.SCALE_SMOOTH);
+			imageIcon = new ImageIcon(imagenEscalada);
 			imageIcon.paintIcon(vistaEscenario, g, posPixel.dameColumna(), posPixel.dameFila());
 		}
 	}

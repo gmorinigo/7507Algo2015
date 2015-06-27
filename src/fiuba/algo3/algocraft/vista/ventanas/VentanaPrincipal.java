@@ -8,6 +8,8 @@ import java.util.HashMap;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import fiuba.algo3.algocraft.vista.VistaLayout;
+
 public class VentanaPrincipal extends JFrame{
 	
 	private static final long serialVersionUID = 1L;

@@ -3,8 +3,8 @@ package fiuba.algo3.algocraft.controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import fiuba.algo3.algocraft.vista.VistaBienvenido;
 import fiuba.algo3.algocraft.vista.ventanas.VentanaPrincipal;
-import fiuba.algo3.algocraft.vista.ventanas.VistaBienvenido;
 
 public class ControladorBienvenido extends ControllerGui{
 
