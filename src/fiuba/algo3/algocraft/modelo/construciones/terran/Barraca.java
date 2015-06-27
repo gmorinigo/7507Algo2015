@@ -1,13 +1,6 @@
 package fiuba.algo3.algocraft.modelo.construciones.terran;
 
-import java.awt.Image;
-import java.io.File;
-import java.io.IOException;
-import java.net.URISyntaxException;
 import java.rmi.NoSuchObjectException;
-
-import javax.imageio.ImageIO;
-
 import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.construciones.Construccion;
 import fiuba.algo3.algocraft.modelo.construciones.ConstruccionEstadoTrabajando;
@@ -66,18 +59,6 @@ public class Barraca extends Construccion {
 
 	public String getNombreObjetoDibujable() {
 		return "Barraca";
-	}
-	
-	public Image getImagen() {
-		Image imagen = null;
-		try {
-			imagen =  ImageIO.read(new File((getClass().getResource("/fiuba/algo3/algocraft/resources/images/barraca.png")).toURI()));
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (URISyntaxException e) {
-			e.printStackTrace();
-		}
-		return imagen;
 	}
 
 }

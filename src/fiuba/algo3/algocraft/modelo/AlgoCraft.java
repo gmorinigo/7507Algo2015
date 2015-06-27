@@ -1,13 +1,28 @@
 package fiuba.algo3.algocraft.modelo;
 
+import java.rmi.NoSuchObjectException;
+import java.util.Observable;
+
+import fiuba.algo3.algocraft.modelo.construciones.AbstractConstruccionFactory;
+import fiuba.algo3.algocraft.modelo.construciones.AbstractConstruccionFactory.TipoConstruccion;
+import fiuba.algo3.algocraft.modelo.construciones.Construccion;
+import fiuba.algo3.algocraft.modelo.excepciones.CantidadDeGasInsuficienteException;
+import fiuba.algo3.algocraft.modelo.excepciones.CantidadDeMineralInsuficienteException;
+import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException;
+import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException;
+import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException;
 import fiuba.algo3.algocraft.modelo.excepciones.JugadorConElMismoColorException;
 import fiuba.algo3.algocraft.modelo.excepciones.JugadorConElMismoNombreException;
 import fiuba.algo3.algocraft.modelo.excepciones.JugadorConMismaRazaException;
 import fiuba.algo3.algocraft.modelo.excepciones.JugadorConNombreDemasiadoCortoException;
 import fiuba.algo3.algocraft.modelo.excepciones.MaximaCantidadDeJugadoresSuperadaException;
+import fiuba.algo3.algocraft.modelo.excepciones.NoHaySuficientesRecursos;
+import fiuba.algo3.algocraft.modelo.excepciones.NoSePudoConstruirException;
 import fiuba.algo3.algocraft.modelo.mapa.Mapa;
+import fiuba.algo3.algocraft.modelo.mapa.Posicion;
+import fiuba.algo3.algocraft.modelo.turnos.Turno;
 
-public class AlgoCraft {
+public class AlgoCraft extends Observable{
 	private Mapa mapaDelJuego;
 	private Jugador jugador1;
 	private Jugador jugador2;
@@ -43,6 +58,7 @@ public class AlgoCraft {
 	}
 	
 	
+	@SuppressWarnings("unused")
 	public void agregarJugadorNumero2(String nombreJugador, Raza unaRaza, String colorJugador) 
 	throws JugadorConElMismoNombreException, JugadorConElMismoColorException, JugadorConNombreDemasiadoCortoException{
 		if (this.jugador1.tieneElMismoNombre(nombreJugador)){
@@ -54,6 +70,7 @@ public class AlgoCraft {
 		}
 		
 		this.jugador2 = new Jugador(nombreJugador, unaRaza, colorJugador);
+		Turno unTurno = Turno.getInstance(this.jugador1, this.jugador2);
 	}
 	
 	
@@ -77,6 +94,18 @@ public class AlgoCraft {
 	
 	public Jugador dameJugador2() {
 		return this.jugador2;
+	}
+
+	public void agregarConstruccion(Jugador unJugador, TipoConstruccion unTipoConstruccion, Posicion posicionCeldaPresionada) throws NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException, ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException, ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException, NoHaySuficientesRecursos, NoSePudoConstruirException {
+		AbstractConstruccionFactory unFactory = unJugador.dameRaza().getFactoryConstrucciones();
+		Construccion unaConstruccion = unFactory.crearConstruccion(unTipoConstruccion, posicionCeldaPresionada, unJugador);
+		this.mapaDelJuego.agregarConstruccion(unaConstruccion);
+		this.avisarObservers();
+	}
+	
+	public void avisarObservers(){
+        setChanged();
+        this.notifyObservers();
 	}
 	
 }

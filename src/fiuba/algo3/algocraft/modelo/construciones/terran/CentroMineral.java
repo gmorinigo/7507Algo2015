@@ -1,12 +1,5 @@
 package fiuba.algo3.algocraft.modelo.construciones.terran;
 
-import java.awt.Image;
-import java.io.File;
-import java.io.IOException;
-import java.net.URISyntaxException;
-
-import javax.imageio.ImageIO;
-
 import fiuba.algo3.algocraft.modelo.Almacen;
 import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.construciones.ExtractorDeMineral;
@@ -34,18 +27,6 @@ public class CentroMineral extends ExtractorDeMineral{
 	}
 	public String getNombreObjetoDibujable() {
 		return "centromineral";
-	}
-	
-	public Image getImagen() {
-		Image imagen = null;
-		try {
-			imagen =  ImageIO.read(new File((getClass().getResource("/fiuba/algo3/algocraft/resources/images/centromineral.png")).toURI()));
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (URISyntaxException e) {
-			e.printStackTrace();
-		}
-		return imagen;
 	}
 
 }

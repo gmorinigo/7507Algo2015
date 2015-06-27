@@ -148,7 +148,7 @@ public class PruebaMapa extends JFrame{
 	}
 
 	private void initVistaMapa(){
-		this.vistaEscenario = new VistaEscenario(this.jugador);
+		this.vistaEscenario = new VistaEscenario(this.jugador,this.juego);
 		
 		popupMenu = new JPopupMenu();
 		addPopup(vistaEscenario, popupMenu);

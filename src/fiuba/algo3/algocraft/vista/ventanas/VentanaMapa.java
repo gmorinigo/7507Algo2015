@@ -1,45 +1,29 @@
 package fiuba.algo3.algocraft.vista.ventanas;
 
 import java.awt.BorderLayout;
-import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Image;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.io.File;
-import java.io.IOException;
-import java.net.URISyntaxException;
 
-import javax.imageio.ImageIO;
 import javax.swing.BoxLayout;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JPopupMenu;
 
 import fiuba.algo3.algocraft.controller.ControladorVentanaMapa;
+import fiuba.algo3.algocraft.controller.MapaMouseListener;
 import fiuba.algo3.algocraft.modelo.AlgoCraft;
 import fiuba.algo3.algocraft.modelo.Jugador;
-import fiuba.algo3.algocraft.modelo.Raza;
-import fiuba.algo3.algocraft.modelo.RazaProtoss;
-import fiuba.algo3.algocraft.modelo.construciones.AbstractConstruccionFactory;
-import fiuba.algo3.algocraft.modelo.construciones.terran.Barraca;
-import fiuba.algo3.algocraft.modelo.excepciones.JugadorConNombreDemasiadoCortoException;
 import fiuba.algo3.algocraft.modelo.mapa.Mapa;
 import fiuba.algo3.algocraft.modelo.mapa.MapaFactory;
 import fiuba.algo3.algocraft.vista.VistaEscenario;
 
+@SuppressWarnings("static-access")
 public class VentanaMapa extends JFrame{
 
+	private static final long serialVersionUID = 1L;
 	JFrame frame;
 	private Jugador jugador;
 	private ControladorVentanaMapa controladorMapa;
@@ -113,91 +97,19 @@ public class VentanaMapa extends JFrame{
 		panelTop.add(saludoLabel, BorderLayout.LINE_START);
 		panelTop.add(volverButton, BorderLayout.LINE_END);
 		
-		//panelLeft.add(new VistaMovimientosTablero(jugador), BorderLayout.PAGE_START);
-		//panelLeft.add(new VistaBotonesMovimiento(jugador, controlTab), BorderLayout.PAGE_END);
-		
 		panelCenter.add(this.vistaEscenario);
 		
 		panel.add(panelTop, BorderLayout.PAGE_START);
 		
 		cambiarTurno = new JButton("CambiarTurno");
 		panelTop.add(cambiarTurno);
-		//panel.add(panelLeft, BorderLayout.LINE_START);
 		panel.add(panelCenter, BorderLayout.CENTER);
 		panel.add(panelRight, BorderLayout.LINE_END);
-		panel.addMouseListener(new MouseListener(){
-			
-			
-			@Override
-			public void mouseReleased(MouseEvent arg0) {
-			JPopupMenu popupMenu = new JPopupMenu("Menu contextual");
-			JMenuItem mitemMineral = popupMenu.add(String.format("Crear extractorMineral en %s %s",arg0.getX(),arg0.getY()));
-			JMenuItem mitemGas = popupMenu.add(String.format("Crear extractorGas en %s %s",arg0.getX(),arg0.getY()));
-			JMenuItem mitemPoblacion = popupMenu.add(String.format("Crear expansorPoblacion en %s %s",arg0.getX(),arg0.getY()));
-			JMenuItem mitemUnidadesBasicas = popupMenu.add(String.format("Crear creadorUnidadesBasicas en %s %s",arg0.getX(),arg0.getY()));
-			popupMenu.setEnabled(true);
-			popupMenu.show(arg0.getComponent(), arg0.getX(), arg0.getY());
-			mitemMineral.addMouseListener(new MouseAdapter() {
-				@Override
-				public void mouseClicked(MouseEvent arg0) {
-				}
-			});
-			mitemGas.addMouseListener(new MouseAdapter() {
-				@Override
-				public void mouseClicked(MouseEvent arg0) {
-				}
-			});
-			mitemPoblacion.addMouseListener(new MouseAdapter() {
-				@Override
-				public void mouseClicked(MouseEvent arg0) {
-				}
-			});
-			mitemUnidadesBasicas.addMouseListener(new MouseAdapter() {
-				@Override
-				public void mouseClicked(MouseEvent arg0) {
-					System.out.println("hiciste Click");
-					JOptionPane.showMessageDialog(null,"presionaste la barraca");
-					Graphics g = null;
-					Image imageBarraca = null;
-					try {
-						imageBarraca = ImageIO.read(new File((getClass().getResource("/fiuba/algo3/algocraft/resources/images/barraca.png")).toURI()));
-					} catch (IOException e) {
-						e.printStackTrace();
-					} catch (URISyntaxException e) {
-						e.printStackTrace();
-					}				
-					ImageIcon imageIcon = new ImageIcon(imageBarraca);					
-					imageIcon.paintIcon(vistaEscenario,g, arg0.getX(), arg0.getY());
-				}
-			});
-		}
-		
-		@Override
-		public void mousePressed(MouseEvent arg0) {
-			// TODO Auto-generated method stub
-			
-		}
-		
-		@Override
-		public void mouseExited(MouseEvent arg0) {
-			// TODO Auto-generated method stub
-			
-		}
-		
-		@Override
-		public void mouseEntered(MouseEvent arg0) {
-			// TODO Auto-generated method stub
-			
-		}
-		
-		@Override
-		public void mouseClicked(MouseEvent arg0) {
-		
-		}
-	});
+        panel.addMouseListener(new MapaMouseListener(this,this.juego));
 	}
 	
 	
+	@SuppressWarnings("unused")
 	public VentanaMapa(AlgoCraft unJuego) {
 		MapaFactory unMapaFactory = new MapaFactory();
 		Mapa unMapa = unMapaFactory.crearMapa20x20Hardcodeado();
@@ -222,7 +134,7 @@ public class VentanaMapa extends JFrame{
 	}
 
 	private void initVistaMapa(){
-		this.vistaEscenario = new VistaEscenario(this.jugador);
+		this.vistaEscenario = new VistaEscenario(this.jugador, this.juego);
 		
 		label = new JLabel("");
 		vistaEscenario.add(label, BorderLayout.NORTH);
