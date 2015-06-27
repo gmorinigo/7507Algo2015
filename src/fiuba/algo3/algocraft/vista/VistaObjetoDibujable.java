@@ -56,5 +56,6 @@ public abstract class VistaObjetoDibujable implements Observer{
 			imageIcon.paintIcon(vistaEscenario, g, posPixel.dameColumna(), posPixel.dameFila());
 		}
 	}
+
 }
 

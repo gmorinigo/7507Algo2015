@@ -215,4 +215,5 @@ public class PruebaMapa extends JFrame{
 			}
 		});
 	}
+
 }

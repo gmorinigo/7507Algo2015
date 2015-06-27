@@ -160,4 +160,5 @@ public class VistaEscenario extends JPanel {
 		}*/
 	}
 
+	
 }

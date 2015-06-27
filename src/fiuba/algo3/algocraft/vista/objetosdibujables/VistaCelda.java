@@ -21,4 +21,5 @@ public class VistaCelda extends VistaObjetoDibujable implements Observer{
 		
 	}
 
+	
 }

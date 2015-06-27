@@ -246,4 +246,5 @@ public class VentanaMapa extends JFrame{
 		return this.ventPpal;
 	}
 	
+
 }

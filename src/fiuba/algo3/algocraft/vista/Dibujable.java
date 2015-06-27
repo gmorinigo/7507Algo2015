@@ -9,4 +9,5 @@ public interface Dibujable {
 	public Posicion getPosicion();
 	public String getNombreObjetoDibujable();
 	public Image getImagen();
+	
 }
