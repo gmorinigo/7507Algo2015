@@ -86,4 +86,5 @@ public class Espectro extends UnidadTerran {
 		}
 		return imagen;
 	}
+
 }

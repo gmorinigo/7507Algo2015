@@ -200,4 +200,5 @@ public class AltoTemplario extends UnidadProtoss {
 		}
 		return imagen;
 	}
+
 }

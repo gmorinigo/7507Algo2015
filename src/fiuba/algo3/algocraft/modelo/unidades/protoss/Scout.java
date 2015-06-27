@@ -91,4 +91,5 @@ public class Scout extends UnidadProtoss {
 		}
 		return imagen;
 	}
+
 }

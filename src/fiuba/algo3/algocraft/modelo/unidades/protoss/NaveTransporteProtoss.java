@@ -95,4 +95,5 @@ public class NaveTransporteProtoss extends NaveTransporte {
 		}
 		return imagen;
 	}
+
 }

@@ -86,4 +86,5 @@ public class NaveTransporteTerran extends NaveTransporte {
 		}
 		return imagen;
 	}
+
 }

@@ -79,4 +79,5 @@ public class Marine extends UnidadTerran {
 		}
 		return imagen;
 	}
+
 }
