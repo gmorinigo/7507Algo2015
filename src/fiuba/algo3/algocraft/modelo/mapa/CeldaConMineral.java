@@ -57,4 +57,5 @@ public class CeldaConMineral extends Celda {
 		}
 		return imagen;
 	}
+
 }

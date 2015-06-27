@@ -56,4 +56,5 @@ public class CeldaTerrestre extends Celda {
 		}
 		return imagen;
 	}
+
 }

@@ -55,4 +55,5 @@ public class CeldaConGas extends Celda {
 		}
 		return imagen;
 	}
+
 }

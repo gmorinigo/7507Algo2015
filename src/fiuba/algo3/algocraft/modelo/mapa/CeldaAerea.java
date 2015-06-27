@@ -46,4 +46,5 @@ public class CeldaAerea extends Celda {
 		}
 		return imagen;
 	}
+
 }
