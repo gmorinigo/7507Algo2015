@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 
 public class VentanaPrincipal extends JFrame{
 	
+	private static final long serialVersionUID = 1L;
 	JFrame frame;
  	JPanel paneles;
  	private HashMap<String, VistaLayout> vistas;
@@ -56,6 +57,7 @@ public class VentanaPrincipal extends JFrame{
 
 	public void ocultar() {
 		frame.setVisible(false);
+		//System.exit(0);
 	}
 	
 

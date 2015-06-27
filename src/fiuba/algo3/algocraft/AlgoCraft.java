@@ -10,10 +10,8 @@ public class AlgoCraft {
 
 	private void initVistas() {
 		VistaBienvenido bienvenidoVista = new VistaBienvenido(this.ventana);
-		VistaNuevaPartida nuevaPartidaVista = new VistaNuevaPartida(this.ventana);
-		
-		
 		this.ventana.agregarLayout(bienvenidoVista);
+		VistaNuevaPartida nuevaPartidaVista = new VistaNuevaPartida(this.ventana);
 		this.ventana.agregarLayout(nuevaPartidaVista);
 	}
 
@@ -30,7 +28,7 @@ public class AlgoCraft {
 	public AlgoCraft(){
 		ventana = new VentanaPrincipal(500, 500);
 		initVistas();
-		ventana.showLayout("Bienvenido");
+		ventana.showLayout("Bienvenido a AlgoCraft");
 	}
 
 

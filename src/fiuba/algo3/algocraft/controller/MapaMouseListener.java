@@ -50,8 +50,13 @@ public class MapaMouseListener extends MouseAdapter {
 				JMenuItem mitemGas = popupMenu.add(String.format("Crear extractorGas en %s %s",arg0.getX(),arg0.getY()));
 				mitemGas.addMouseListener(new CeldaGasMouseListener(this.ventanaMapa, this.juego,posicionCeldaPresionada));
 			}
-		}		
-		else{
+		}	
+		
+		if (celdaPresionada.esCeldaAerea() && celdaPresionada.tieneUnidad()){
+			JMenuItem mitemUnidadAerea = popupMenu.add(String.format("Tiene una unidad aerea"));
+		}
+		
+		if (!celdaPresionada.tieneGas() && !celdaPresionada.tieneMineral() && !celdaPresionada.esCeldaAerea()){ 
 			JMenuItem mitemPoblacion = popupMenu.add(String.format("Crear expansorPoblacion en %s %s",arg0.getX(),arg0.getY()));
 			JMenuItem mitemUnidadesBasicas = popupMenu.add(String.format("Crear creadorUnidadesBasicas en %s %s",arg0.getX(),arg0.getY()));
 		}

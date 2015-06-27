@@ -18,12 +18,12 @@ import fiuba.algo3.algocraft.vista.ventanas.VentanaMapa;
 	
 public class CeldaMineralMouseListener extends MouseAdapter{
 		
-	private VentanaMapa ventanaMapa;
+	//private VentanaMapa ventanaMapa;
 	private AlgoCraft juego;
 	private Posicion posicionCeldaPresionada;
 	
     public CeldaMineralMouseListener(VentanaMapa ventanaMapa, AlgoCraft juego, Posicion posicionCeldaPresionada) {
-    	this.ventanaMapa = ventanaMapa;
+    	//this.ventanaMapa = ventanaMapa;
     	this.juego = juego;
     	this.posicionCeldaPresionada = posicionCeldaPresionada;
 	}

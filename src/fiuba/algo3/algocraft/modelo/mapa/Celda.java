@@ -296,4 +296,9 @@ public abstract class Celda implements Dibujable {
 	public Construccion obtenerConstruccion() {
 		return this.construccion;
 	}
+
+
+	public boolean esCeldaAerea() {
+		return false;
+	}
 }

@@ -15,9 +15,6 @@ import fiuba.algo3.algocraft.controller.ControladorNuevaPartida;
 
 public class VistaNuevaPartida extends VistaLayout{
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	JLabel tituloLabel;
 	JLabel tituloLabel2;

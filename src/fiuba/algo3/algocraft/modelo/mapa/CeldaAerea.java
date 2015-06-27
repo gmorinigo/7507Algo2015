@@ -29,4 +29,7 @@ public class CeldaAerea extends Celda {
 	}
 
 
+	public boolean esCeldaAerea() {
+		return true;
+	}
 }
