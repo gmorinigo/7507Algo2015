@@ -31,7 +31,7 @@ public class CeldaGasMouseListener  extends MouseAdapter{
 	public void mouseReleased(MouseEvent arg0) {		
 		// Acá tiene que construir el jugador del turno actual
 		try {
-			this.juego.agregarConstruccion(this.juego.dameJugador1(),TipoConstruccion.extractorGas,posicionCeldaPresionada);
+			this.juego.agregarConstruccion(this.juego.dameElJugadorDelTurno(),TipoConstruccion.extractorGas,posicionCeldaPresionada);
 		} catch (NoSuchObjectException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

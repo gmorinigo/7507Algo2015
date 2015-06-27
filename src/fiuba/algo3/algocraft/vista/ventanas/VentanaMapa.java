@@ -36,6 +36,7 @@ public class VentanaMapa extends JFrame implements Observer{
 	JPanel panelRight;
 	JPanel panelCenter;
 	JLabel saludoLabel;
+	JLabel cabeceraPanelDerecho;
 	JButton volverButton;
 	JButton guardarButton;
 	VentanaPrincipal ventanaPrincipal;
@@ -58,8 +59,12 @@ public class VentanaMapa extends JFrame implements Observer{
 		panelRight.setLayout(new BoxLayout(panelRight, BoxLayout.Y_AXIS));
 		panelCenter = new JPanel();
 		
-		saludoLabel = new JLabel("Hola " +juego.dameJugador1().dameNombre());
-		saludoLabel.setPreferredSize(new Dimension(100, 20));
+		saludoLabel = new JLabel("Turno Jugador: " + juego.dameElJugadorDelTurno().dameNombre());
+		saludoLabel.setPreferredSize(new Dimension(160, 20));
+		panelTop.add(saludoLabel, BorderLayout.LINE_START);
+		
+		cabeceraPanelDerecho = new JLabel("Botonera");
+		cabeceraPanelDerecho.setPreferredSize(new Dimension(100, 40));
 		
 		volverButton = new JButton("Salir");
 		volverButton.setPreferredSize(new Dimension(80,20));
@@ -92,7 +97,6 @@ public class VentanaMapa extends JFrame implements Observer{
 		
 		this.actualizarRecursos();
 		
-		panelTop.add(saludoLabel, BorderLayout.LINE_START);
 		panelTop.add(volverButton, BorderLayout.LINE_END);
 		
 		panelCenter.add(this.vistaEscenario);
@@ -101,6 +105,7 @@ public class VentanaMapa extends JFrame implements Observer{
 		
 		cambiarTurno = new JButton("CambiarTurno");
 		panelTop.add(cambiarTurno);
+		panelRight.add(cabeceraPanelDerecho);
 		panel.add(panelCenter, BorderLayout.CENTER);
 		panel.add(panelRight, BorderLayout.LINE_END);
         panel.addMouseListener(new MapaMouseListener(this,this.juego));
@@ -114,7 +119,7 @@ public class VentanaMapa extends JFrame implements Observer{
 		frame.setSize(800, 800);
 		juego = unJuego;
 		//frame.addKeyListener(controlTab.getKeyListenerMovimientos());
-		this.jugador = juego.dameJugador1();
+		this.jugador = juego.dameElJugadorDelTurno();
 		this.controladorMapa = new ControladorVentanaMapa(jugador, this);
 		this.ventPpal = ventanaPrincipal;
 		this.vistaEscenario = new VistaEscenario(this.jugador, this.juego);
@@ -156,10 +161,10 @@ public class VentanaMapa extends JFrame implements Observer{
 	
 	
 	private void actualizarRecursos() {
-		lblDameGas.setText(Integer.toString(juego.dameJugador1().dameCantidadGas()));		
-		lblDameMineral.setText(Integer.toString(juego.dameJugador1().dameCantidadMineral()));
-		lblPoblacionTotal.setText(Integer.toString(juego.dameJugador1().dameLimiteDePoblacion()));
-		lblPoblacionDisponible.setText(Integer.toString(juego.dameJugador1().obtenerCantidadPoblacionDisponible()));
+		lblDameGas.setText(Integer.toString(juego.dameElJugadorDelTurno().dameCantidadGas()));		
+		lblDameMineral.setText(Integer.toString(juego.dameElJugadorDelTurno().dameCantidadMineral()));
+		lblPoblacionTotal.setText(Integer.toString(juego.dameElJugadorDelTurno().dameLimiteDePoblacion()));
+		lblPoblacionDisponible.setText(Integer.toString(juego.dameElJugadorDelTurno().obtenerCantidadPoblacionDisponible()));
 	}
 
 }

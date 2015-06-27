@@ -83,9 +83,8 @@ public class ControladorNuevaPartida extends ControllerGui {
 			}
 			VentanaMapa unMapa = new VentanaMapa(juego);
 			unMapa.setVisible(true);
-			vista.setVisible(false);
+			//vista.setVisible(false);
 		}
-		
 	}
 
 	public ActionListener getListenerButtonAceptarUsers() {
@@ -98,6 +97,7 @@ public class ControladorNuevaPartida extends ControllerGui {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			vent.showLayout("Bienvenido");
+			vent.ocultar();
 		}
 		
 	}

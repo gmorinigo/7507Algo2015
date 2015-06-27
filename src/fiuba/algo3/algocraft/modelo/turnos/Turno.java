@@ -94,7 +94,7 @@ public class Turno {
 		return this.turno;
 	}
 	
-    public Jugador dameJugador(){
+    public Jugador obtenerJugadorConTurno(){
     	return this.jugadorConTurno; 	
     }
     

@@ -31,7 +31,7 @@ public class CreadorUnidadesBasicasMouseListener extends MouseAdapter {
 	public void mouseReleased(MouseEvent arg0) {		
 		// Acá tiene que construir el jugador del turno actual
 		try {
-			this.juego.agregarConstruccion(this.juego.dameJugador1(),TipoConstruccion.creadorUnidadesBasicas,posicionCeldaPresionada);
+			this.juego.agregarConstruccion(this.juego.dameElJugadorDelTurno(),TipoConstruccion.creadorUnidadesBasicas,posicionCeldaPresionada);
 		} catch (NoSuchObjectException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

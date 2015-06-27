@@ -53,13 +53,17 @@ public class VentanaPrincipal extends JFrame{
 		paneles.add(vista, vista.getId());
 		this.vistas.put(vista.getId(), vista);
 	}
+	
+	public void removerLayout(VistaLayout vista){
+		paneles.remove(vista);
+	}
+	
 	public VistaLayout getLayout(String id){
 		return (VistaLayout)this.vistas.get(id);
 	}
 
 	public void ocultar() {
 		frame.setVisible(false);
-		//System.exit(0);
 	}
 	
 

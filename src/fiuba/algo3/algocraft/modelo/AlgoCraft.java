@@ -107,6 +107,11 @@ public class AlgoCraft extends Observable{
         setChanged();
         this.notifyObservers();
 	}
+
+	public Jugador dameElJugadorDelTurno() {
+		Turno unTurno = Turno.getInstance(this.jugador1, this.jugador2);
+		return unTurno.obtenerJugadorConTurno();
+	}
 	
 }
 

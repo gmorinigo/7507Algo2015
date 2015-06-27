@@ -31,7 +31,7 @@ public class ExpansorPoblacionMouseListener extends MouseAdapter {
 	public void mouseReleased(MouseEvent arg0) {		
 		// Acá tiene que construir el jugador del turno actual
 		try {
-			this.juego.agregarConstruccion(this.juego.dameJugador1(),TipoConstruccion.expansorPoblacion,posicionCeldaPresionada);
+			this.juego.agregarConstruccion(this.juego.dameElJugadorDelTurno(),TipoConstruccion.expansorPoblacion,posicionCeldaPresionada);
 		} catch (NoSuchObjectException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
