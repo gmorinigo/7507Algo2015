@@ -47,4 +47,5 @@ public class CentroMineral extends ExtractorDeMineral{
 		}
 		return imagen;
 	}
+
 }

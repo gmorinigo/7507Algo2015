@@ -95,4 +95,5 @@ public class Fabrica extends Construccion {
 		return imagen;
 	}
 
+	
 }

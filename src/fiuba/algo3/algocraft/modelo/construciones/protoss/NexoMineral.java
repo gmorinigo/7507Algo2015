@@ -47,4 +47,5 @@ public class NexoMineral extends ExtractorDeMineral {
 		}
 		return imagen;
 	}
+	
 }

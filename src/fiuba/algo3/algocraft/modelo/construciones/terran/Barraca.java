@@ -79,4 +79,5 @@ public class Barraca extends Construccion {
 		}
 		return imagen;
 	}
+
 }

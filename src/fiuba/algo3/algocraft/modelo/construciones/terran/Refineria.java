@@ -48,4 +48,5 @@ public class Refineria extends ExtractorDeGas{
 		}
 		return imagen;
 	}
+	
 }

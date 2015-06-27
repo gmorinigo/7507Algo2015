@@ -50,4 +50,5 @@ public class Asimilador extends ExtractorDeGas{
 		}
 		return imagen;
 	}
+	
 }

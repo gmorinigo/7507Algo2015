@@ -68,4 +68,5 @@ public class Acceso extends Construccion{
 		}
 		return imagen;
 	}
+	
 }

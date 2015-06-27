@@ -49,4 +49,5 @@ public class DepositoDeSuministro extends Construccion {
 		}
 		return imagen;
 	}
+
 }

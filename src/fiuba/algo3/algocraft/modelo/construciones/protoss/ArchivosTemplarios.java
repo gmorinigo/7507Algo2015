@@ -69,4 +69,5 @@ public class ArchivosTemplarios extends Construccion{
 		}
 		return imagen;
 	}
+	
 }

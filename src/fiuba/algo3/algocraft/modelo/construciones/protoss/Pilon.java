@@ -49,4 +49,5 @@ public class Pilon extends Construccion{
 		}
 		return imagen;
 	}
+	
 }

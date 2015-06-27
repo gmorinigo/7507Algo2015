@@ -75,4 +75,5 @@ public class PuertoEstelarTerran extends Construccion {
 		}
 		return imagen;
 	}
+	
 }
