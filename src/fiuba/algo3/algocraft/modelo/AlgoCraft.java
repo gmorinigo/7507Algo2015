@@ -8,6 +8,7 @@ import fiuba.algo3.algocraft.modelo.construciones.AbstractConstruccionFactory.Ti
 import fiuba.algo3.algocraft.modelo.construciones.Construccion;
 import fiuba.algo3.algocraft.modelo.excepciones.CantidadDeGasInsuficienteException;
 import fiuba.algo3.algocraft.modelo.excepciones.CantidadDeMineralInsuficienteException;
+import fiuba.algo3.algocraft.modelo.excepciones.CapacidadDePoblacionMaximaSuperada;
 import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException;
 import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException;
 import fiuba.algo3.algocraft.modelo.excepciones.ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException;
@@ -21,6 +22,9 @@ import fiuba.algo3.algocraft.modelo.excepciones.NoSePudoConstruirException;
 import fiuba.algo3.algocraft.modelo.mapa.Mapa;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.turnos.Turno;
+import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory;
+import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory.TipoUnidad;
+import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 
 public class AlgoCraft extends Observable{
 	private Mapa mapaDelJuego;
@@ -100,6 +104,13 @@ public class AlgoCraft extends Observable{
 		AbstractConstruccionFactory unFactory = unJugador.dameRaza().getFactoryConstrucciones();
 		Construccion unaConstruccion = unFactory.crearConstruccion(unTipoConstruccion, posicionCeldaPresionada, unJugador);
 		this.mapaDelJuego.agregarConstruccion(unaConstruccion);
+		this.avisarObservers();
+	}
+	
+	public void agregarUnidad(Jugador unJugador, TipoUnidad unTipoUnidad,Posicion posicionCeldaPresionada) throws NoSuchObjectException, CantidadDeMineralInsuficienteException, CantidadDeGasInsuficienteException, NoHaySuficientesRecursos, CapacidadDePoblacionMaximaSuperada{
+		AbstractUnidadFactory unFactory = unJugador.dameRaza().getFactoryUnidades();
+		Unidad unaUnidad = unFactory.crearUnidad(unTipoUnidad, unJugador, posicionCeldaPresionada);
+		this.mapaDelJuego.agregarUnidad(posicionCeldaPresionada, unaUnidad);
 		this.avisarObservers();
 	}
 	

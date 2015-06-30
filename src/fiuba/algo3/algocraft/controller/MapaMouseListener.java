@@ -52,6 +52,7 @@ public class MapaMouseListener extends MouseAdapter {
 			}
 		}	
 		
+		
 		if (celdaPresionada.esCeldaAerea() && celdaPresionada.tieneUnidad()){
 			JMenuItem mitemUnidadAerea = popupMenu.add(String.format("Tiene una unidad aerea"));
 		}
@@ -61,6 +62,13 @@ public class MapaMouseListener extends MouseAdapter {
 			mitemPoblacion.addMouseListener(new ExpansorPoblacionMouseListener(this.ventanaMapa, this.juego,posicionCeldaPresionada));
 			JMenuItem mitemUnidadesBasicas = popupMenu.add(String.format("Crear creadorUnidadesBasicas"));
 			mitemUnidadesBasicas.addMouseListener(new CreadorUnidadesBasicasMouseListener(this.ventanaMapa, this.juego,posicionCeldaPresionada));
+		}
+		
+		if(celdaPresionada.tieneConstruccion()){
+			JMenuItem mitemUnidadesT1 = popupMenu.add(String.format("Crear unidad terrestre1"));
+			mitemUnidadesT1.addMouseListener(new UnidadesTerrestres1MouseListener(this.ventanaMapa, this.juego,posicionCeldaPresionada));
+			JMenuItem mitemUnidadesT2 = popupMenu.add(String.format("Crear unidad terrestre2"));
+			mitemUnidadesT2.addMouseListener(new UnidadesTerrestres2MouseListener(this.ventanaMapa, this.juego,posicionCeldaPresionada));
 		}
 		popupMenu.setEnabled(true);
 		popupMenu.show(arg0.getComponent(), arg0.getX(), arg0.getY());
