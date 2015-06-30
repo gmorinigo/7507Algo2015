@@ -74,7 +74,22 @@ public class MapaMouseListener extends MouseAdapter {
 		
 		if(celdaPresionada.tieneUnidad()){
 			JMenuItem mitemMovimientoArriba = popupMenu.add(String.format("Mover Arriba"));
-			mitemMovimientoArriba.addMouseListener(new MovimientoMouseListener(this.ventanaMapa,this.juego,posicionCeldaPresionada,TipoDireccion.Arriba));
+			mitemMovimientoArriba.addMouseListener(new MovimientoMouseListener(this.ventanaMapa,this.juego,posicionCeldaPresionada,TipoDireccion.Arriba,celdaPresionada.obtenerUnidad()));
+			JMenuItem mitemMovimientoAbajo = popupMenu.add(String.format("Mover Abajo"));
+			mitemMovimientoAbajo.addMouseListener(new MovimientoMouseListener(this.ventanaMapa,this.juego,posicionCeldaPresionada,TipoDireccion.Abajo,celdaPresionada.obtenerUnidad()));
+			JMenuItem mitemMovimientoDerecha = popupMenu.add(String.format("Mover Derecha"));
+			mitemMovimientoDerecha.addMouseListener(new MovimientoMouseListener(this.ventanaMapa,this.juego,posicionCeldaPresionada,TipoDireccion.Derecha,celdaPresionada.obtenerUnidad()));
+			JMenuItem mitemMovimientoIzquierda = popupMenu.add(String.format("Mover Izquierda"));
+			mitemMovimientoIzquierda.addMouseListener(new MovimientoMouseListener(this.ventanaMapa,this.juego,posicionCeldaPresionada,TipoDireccion.Izquierda,celdaPresionada.obtenerUnidad()));
+			JMenuItem mitemMovimientoDiagonalAbajoDerecha = popupMenu.add(String.format("Mover DiagonalAbajoDerecha"));
+			mitemMovimientoDiagonalAbajoDerecha.addMouseListener(new MovimientoMouseListener(this.ventanaMapa,this.juego,posicionCeldaPresionada,TipoDireccion.DiagonalAbajoDerecha,celdaPresionada.obtenerUnidad()));
+			JMenuItem mitemMovimientoDiagonalAbajoIzquierda = popupMenu.add(String.format("Mover DiagonalAbajoIzquierda"));
+			mitemMovimientoDiagonalAbajoIzquierda.addMouseListener(new MovimientoMouseListener(this.ventanaMapa,this.juego,posicionCeldaPresionada,TipoDireccion.DiagonalAbajoIzquierda,celdaPresionada.obtenerUnidad()));
+			JMenuItem mitemMovimientoDiagonalArribaDerecha = popupMenu.add(String.format("Mover DiagonalArribaDerecha"));
+			mitemMovimientoDiagonalArribaDerecha.addMouseListener(new MovimientoMouseListener(this.ventanaMapa,this.juego,posicionCeldaPresionada,TipoDireccion.DiagonalArribaDerecha,celdaPresionada.obtenerUnidad()));
+			JMenuItem mitemMovimientoDiagonalArribaIzquierda = popupMenu.add(String.format("Mover DiagonalArribaIzquierda"));
+			mitemMovimientoDiagonalArribaIzquierda.addMouseListener(new MovimientoMouseListener(this.ventanaMapa,this.juego,posicionCeldaPresionada,TipoDireccion.DiagonalArribaIzquierda,celdaPresionada.obtenerUnidad()));
+			
 		}
 		
 		popupMenu.setEnabled(true);
