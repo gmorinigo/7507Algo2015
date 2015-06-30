@@ -10,6 +10,7 @@ import fiuba.algo3.algocraft.modelo.AlgoCraft;
 import fiuba.algo3.algocraft.modelo.mapa.Celda;
 import fiuba.algo3.algocraft.modelo.mapa.Mapa;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
+import fiuba.algo3.algocraft.modelo.unidades.movimientos.Movimiento.TipoDireccion;
 import fiuba.algo3.algocraft.vista.ventanas.VentanaMapa;
 
 public class MapaMouseListener extends MouseAdapter { 
@@ -70,6 +71,12 @@ public class MapaMouseListener extends MouseAdapter {
 			JMenuItem mitemUnidadesT2 = popupMenu.add(String.format("Crear unidad terrestre2"));
 			mitemUnidadesT2.addMouseListener(new UnidadesTerrestres2MouseListener(this.ventanaMapa, this.juego,posicionCeldaPresionada));
 		}
+		
+		if(celdaPresionada.tieneUnidad()){
+			JMenuItem mitemMovimientoArriba = popupMenu.add(String.format("Mover Arriba"));
+			mitemMovimientoArriba.addMouseListener(new MovimientoMouseListener(this.ventanaMapa,this.juego,posicionCeldaPresionada,TipoDireccion.Arriba));
+		}
+		
 		popupMenu.setEnabled(true);
 		popupMenu.show(arg0.getComponent(), arg0.getX(), arg0.getY());
 			

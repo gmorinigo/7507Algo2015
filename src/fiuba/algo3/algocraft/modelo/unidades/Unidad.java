@@ -58,7 +58,6 @@ abstract public class Unidad implements TurnoObserver, Dibujable{
 		Mapa mapa = Mapa.getInstance();
 		Celda unaCelda = mapa.dameCelda(posicionOcupada);
 		Posicion posNueva;
-		
 		while (unaCelda.celdaOcupada()){
 	        posNueva = new Posicion(posicionOcupada.dameFila(),posicionOcupada.dameColumna()-1);
 			unaCelda = mapa.dameCelda(posNueva);

@@ -4,6 +4,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.rmi.NoSuchObjectException;
 
+import javax.swing.JOptionPane;
+
 import fiuba.algo3.algocraft.modelo.AlgoCraft;
 import fiuba.algo3.algocraft.modelo.construciones.AbstractConstruccionFactory.TipoConstruccion;
 import fiuba.algo3.algocraft.modelo.excepciones.CantidadDeGasInsuficienteException;
@@ -36,26 +38,19 @@ public class ExpansorPoblacionMouseListener extends MouseAdapter {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (CantidadDeMineralInsuficienteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,"Mineral Insuficiente"); 
 		} catch (CantidadDeGasInsuficienteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,"Gas Insuficiente"); 
 		} catch (ConstruccionInvalidaPrimeroDebeConstruirUnPuertoEstelarException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,"Falta construir un Puerto Estelar"); 
 		} catch (ConstruccionInvalidaPrimeroDebeConstruirUnAccesoException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,"Falta construir un Acceso"); 
 		} catch (ConstruccionInvalidaPrimeroDebeConstruirUnaBarracaException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,"Falta construir una Barraca"); 
 		} catch (NoHaySuficientesRecursos e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,"No hay suficientes recursos"); 
 		} catch (NoSePudoConstruirException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,"No se Puede Construir en esa posicion"); 
 		};
 	}
 }

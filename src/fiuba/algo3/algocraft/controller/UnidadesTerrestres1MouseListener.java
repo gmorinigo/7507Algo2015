@@ -4,6 +4,8 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.rmi.NoSuchObjectException;
 
+import javax.swing.JOptionPane;
+
 import fiuba.algo3.algocraft.modelo.AlgoCraft;
 import fiuba.algo3.algocraft.modelo.construciones.AbstractConstruccionFactory.TipoConstruccion;
 import fiuba.algo3.algocraft.modelo.excepciones.CantidadDeGasInsuficienteException;
@@ -36,21 +38,16 @@ public class UnidadesTerrestres1MouseListener implements MouseListener {
 			try {
 				this.juego.agregarUnidad(this.juego.dameElJugadorDelTurno(),TipoUnidad.terrestre1,posicionCeldaPresionada);
 			} catch (CapacidadDePoblacionMaximaSuperada e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				JOptionPane.showMessageDialog(null,"No hay poblacion"); 
 			}
 		} catch (NoSuchObjectException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (CantidadDeMineralInsuficienteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,"Mineral Insuficiente"); 
 		} catch (CantidadDeGasInsuficienteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}  catch (NoHaySuficientesRecursos e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,"Gas Insuficiente"); 
+		} catch (NoHaySuficientesRecursos e) {
+			JOptionPane.showMessageDialog(null,"No hay suficientes recursos"); 
 		} 
 	}
 
