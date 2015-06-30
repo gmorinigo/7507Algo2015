@@ -7,13 +7,11 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.Observable;
 import java.util.Observer;
-
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
 import fiuba.algo3.algocraft.controller.ControladorVentanaMapa;
 import fiuba.algo3.algocraft.controller.MapaMouseListener;
 import fiuba.algo3.algocraft.modelo.AlgoCraft;
@@ -30,14 +28,15 @@ public class VentanaMapa extends JFrame implements Observer{
 	private Jugador jugador;
 	private ControladorVentanaMapa controladorMapa;
 	private VistaEscenario vistaEscenario;
-	private VentanaPrincipal ventPpal;
+	//private VentanaPrincipal ventPpal;
 	JPanel panelTop;
 	JPanel panelLeft;
 	JPanel panelRight;
 	JPanel panelCenter;
-	JLabel saludoLabel;
+	private JLabel lblTurnoJugador;
+	private JLabel lblJugadorTurnoActual;
 	JLabel cabeceraPanelDerecho;
-	JButton volverButton;
+	JButton salirButton;
 	JButton guardarButton;
 	VentanaPrincipal ventanaPrincipal;
 	static AlgoCraft juego;
@@ -49,7 +48,7 @@ public class VentanaMapa extends JFrame implements Observer{
 	private JLabel lblPoblacionDisponible;
 	private JLabel lblNewLabel;
 	private JLabel lblPoblacionTotal;
-	private JButton cambiarTurno;
+	private JButton cambiarTurnoButton;
 	
 	private void initComponents(Container panel){
 		panelTop = new JPanel();
@@ -59,31 +58,35 @@ public class VentanaMapa extends JFrame implements Observer{
 		panelRight.setLayout(new BoxLayout(panelRight, BoxLayout.Y_AXIS));
 		panelCenter = new JPanel();
 		
-		saludoLabel = new JLabel("Turno Jugador: " + juego.dameElJugadorDelTurno().dameNombre());
-		saludoLabel.setPreferredSize(new Dimension(160, 20));
-		panelTop.add(saludoLabel, BorderLayout.LINE_START);
+		lblTurnoJugador = new JLabel("Turno Jugador:");
+		//lblTurnoJugador.setPreferredSize(new Dimension(80, 20));
+		panelTop.add(lblTurnoJugador, BorderLayout.LINE_START);
+		
+		lblJugadorTurnoActual = new JLabel();
+		panelTop.add(lblJugadorTurnoActual);
+
 		
 		cabeceraPanelDerecho = new JLabel("Botonera");
 		cabeceraPanelDerecho.setPreferredSize(new Dimension(100, 40));
 		
-		volverButton = new JButton("Salir");
-		volverButton.setPreferredSize(new Dimension(80,20));
+		salirButton = new JButton("Salir");
+		salirButton.setPreferredSize(new Dimension(80,20));
 		
-		volverButton.addActionListener(controladorMapa.getListenerBotonSalir());
+		salirButton.addActionListener(controladorMapa.getListenerBotonSalir());
 		
-		lblGas = new JLabel("Gas:");
+		lblGas = new JLabel("  Gas:");
 		panelTop.add(lblGas);
 		
 		lblDameGas = new JLabel();
 		panelTop.add(lblDameGas);
 		
-		lblMineral = new JLabel("Mineral:");
+		lblMineral = new JLabel("  Mineral:");
 		panelTop.add(lblMineral);
 		
 		lblDameMineral = new JLabel();
 		panelTop.add(lblDameMineral);
 	
-		lblPoblacion = new JLabel("Poblacion:");
+		lblPoblacion = new JLabel("  Poblacion:");
 		panelTop.add(lblPoblacion);
 		
 		lblPoblacionDisponible = new JLabel();
@@ -97,14 +100,17 @@ public class VentanaMapa extends JFrame implements Observer{
 		
 		this.actualizarRecursos();
 		
-		panelTop.add(volverButton, BorderLayout.LINE_END);
+		panelTop.add(salirButton, BorderLayout.LINE_END);
 		
 		panelCenter.add(this.vistaEscenario);
 		
 		panel.add(panelTop, BorderLayout.PAGE_START);
 		
-		cambiarTurno = new JButton("CambiarTurno");
-		panelTop.add(cambiarTurno);
+		cambiarTurnoButton = new JButton("CambiarTurno");
+		panelTop.add(cambiarTurnoButton);
+		cambiarTurnoButton.addActionListener(controladorMapa.getListenerBotonPasarTurno());
+		salirButton.addActionListener(controladorMapa.getListenerBotonSalir());
+		
 		panelRight.add(cabeceraPanelDerecho);
 		panel.add(panelCenter, BorderLayout.CENTER);
 		panel.add(panelRight, BorderLayout.LINE_END);
@@ -120,8 +126,8 @@ public class VentanaMapa extends JFrame implements Observer{
 		juego = unJuego;
 		//frame.addKeyListener(controlTab.getKeyListenerMovimientos());
 		this.jugador = juego.dameElJugadorDelTurno();
-		this.controladorMapa = new ControladorVentanaMapa(jugador, this);
-		this.ventPpal = ventanaPrincipal;
+		this.controladorMapa = new ControladorVentanaMapa(jugador, this, unJuego);
+		//this.ventPpal = ventanaPrincipal;
 		this.vistaEscenario = new VistaEscenario(this.jugador, this.juego);
 		this.initComponents(frame.getContentPane());
 		unJuego.addObserver(this);
@@ -150,9 +156,9 @@ public class VentanaMapa extends JFrame implements Observer{
 		return this.vistaEscenario;
 	}
 	
-	public VentanaPrincipal getVentanaGUI() {
+	/*public VentanaPrincipal getVentanaGUI() {
 		return this.ventPpal;
-	}
+	}*/
 
 
 	public void update(Observable arg0, Object arg1) {
@@ -161,6 +167,7 @@ public class VentanaMapa extends JFrame implements Observer{
 	
 	
 	private void actualizarRecursos() {
+		lblJugadorTurnoActual.setText(juego.dameElJugadorDelTurno().dameNombre());
 		lblDameGas.setText(Integer.toString(juego.dameElJugadorDelTurno().dameCantidadGas()));		
 		lblDameMineral.setText(Integer.toString(juego.dameElJugadorDelTurno().dameCantidadMineral()));
 		lblPoblacionTotal.setText(Integer.toString(juego.dameElJugadorDelTurno().dameLimiteDePoblacion()));

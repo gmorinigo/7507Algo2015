@@ -75,7 +75,6 @@ public class VistaNuevaPartida extends VistaLayout{
 		add(nombreJug2TField);
 		add(razaLabelJug2);
 		crearRazaOptionsJug2();
-		//add options raza
 		Iterator<JRadioButton> it2 = this.razaOptionsJug2.iterator();
 		while(it2.hasNext()) {
 			add(it2.next());

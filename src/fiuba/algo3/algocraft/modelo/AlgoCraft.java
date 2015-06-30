@@ -58,7 +58,6 @@ public class AlgoCraft extends Observable{
 	}
 	
 	
-	@SuppressWarnings("unused")
 	public void agregarJugadorNumero2(String nombreJugador, Raza unaRaza, String colorJugador) 
 	throws JugadorConElMismoNombreException, JugadorConElMismoColorException, JugadorConNombreDemasiadoCortoException{
 		if (this.jugador1.tieneElMismoNombre(nombreJugador)){
@@ -71,6 +70,7 @@ public class AlgoCraft extends Observable{
 		
 		this.jugador2 = new Jugador(nombreJugador, unaRaza, colorJugador);
 		Turno unTurno = Turno.getInstance(this.jugador1, this.jugador2);
+		unTurno.comenzar();
 	}
 	
 	
@@ -111,6 +111,12 @@ public class AlgoCraft extends Observable{
 	public Jugador dameElJugadorDelTurno() {
 		Turno unTurno = Turno.getInstance(this.jugador1, this.jugador2);
 		return unTurno.obtenerJugadorConTurno();
+	}
+
+	public void avanzarTurno() {
+		Turno unTurno = Turno.getInstance();
+		unTurno.avanzarTurno();
+		this.avisarObservers();
 	}
 	
 }

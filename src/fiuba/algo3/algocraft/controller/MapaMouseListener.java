@@ -67,7 +67,8 @@ public class MapaMouseListener extends MouseAdapter {
 			
 	}
 	
-	public static Posicion convertirPixAPosicionCelda(int x, int y) {	
+	public static Posicion convertirPixAPosicionCelda(int x, int y) {
+		//Resto el origen de coordenadas y divido por la cantidad de pixeles
 		return new Posicion(((y-40)/30),((x-5)/30));
 	}
 
