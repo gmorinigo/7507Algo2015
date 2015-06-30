@@ -9,12 +9,12 @@ public class TurnoTest extends TestBase {
 	
 	public void testCrearUnTurnoEsElPrimero() throws JugadorConNombreDemasiadoCortoException{
 		Turno unTurno = new Turno(new Jugador("unNombre",new RazaProtoss(),"Azul"),new Jugador("otroNombre",new RazaProtoss(),"Rojo"));
-		assertTrue(unTurno.dameTurno() == 1);
+		assertTrue(unTurno.obtenerNumeroTurno() == 1);
 	}
 	
 	public void testAumentarUnTurnoAumentaElTurno() throws JugadorConNombreDemasiadoCortoException{
 		Turno unTurno = new Turno(new Jugador("unNombre",new RazaProtoss(),"Azul"),new Jugador("otroNombre",new RazaProtoss(),"Rojo"));
 		unTurno.avanzarTurno();
-		assertTrue(unTurno.dameTurno() == 2);
+		assertTrue(unTurno.obtenerNumeroTurno() == 2);
 	}
 }

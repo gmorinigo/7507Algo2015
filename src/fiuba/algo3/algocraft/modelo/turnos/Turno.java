@@ -96,7 +96,7 @@ public class Turno {
 		this.observadores.remove(observer);
 	}
 	
-	public int dameTurno() {
+	public int obtenerNumeroTurno() {
 		return this.turno;
 	}
 	

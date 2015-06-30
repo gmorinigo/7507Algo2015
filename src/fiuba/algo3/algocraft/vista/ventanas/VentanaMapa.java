@@ -7,17 +7,20 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.Observable;
 import java.util.Observer;
+
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
 import fiuba.algo3.algocraft.controller.ControladorVentanaMapa;
 import fiuba.algo3.algocraft.controller.MapaMouseListener;
 import fiuba.algo3.algocraft.modelo.AlgoCraft;
 import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.mapa.Mapa;
 import fiuba.algo3.algocraft.modelo.mapa.MapaFactory;
+import fiuba.algo3.algocraft.modelo.turnos.Turno;
 import fiuba.algo3.algocraft.vista.VistaEscenario;
 
 @SuppressWarnings("static-access")
@@ -45,10 +48,11 @@ public class VentanaMapa extends JFrame implements Observer{
 	private JLabel lblMineral;
 	private JLabel lblDameMineral;
 	private JLabel lblPoblacion;
-	private JLabel lblPoblacionDisponible;
+	private JLabel lblPoblacionOcupada;
 	private JLabel lblNewLabel;
 	private JLabel lblPoblacionTotal;
 	private JButton cambiarTurnoButton;
+	private JLabel lblNroTurno;
 	
 	private void initComponents(Container panel){
 		panelTop = new JPanel();
@@ -58,7 +62,7 @@ public class VentanaMapa extends JFrame implements Observer{
 		panelRight.setLayout(new BoxLayout(panelRight, BoxLayout.Y_AXIS));
 		panelCenter = new JPanel();
 		
-		lblTurnoJugador = new JLabel("Turno Jugador:");
+		lblTurnoJugador = new JLabel("Jugador:");
 		//lblTurnoJugador.setPreferredSize(new Dimension(80, 20));
 		panelTop.add(lblTurnoJugador, BorderLayout.LINE_START);
 		
@@ -89,14 +93,20 @@ public class VentanaMapa extends JFrame implements Observer{
 		lblPoblacion = new JLabel("  Poblacion:");
 		panelTop.add(lblPoblacion);
 		
-		lblPoblacionDisponible = new JLabel();
-		panelTop.add(lblPoblacionDisponible);
+		lblPoblacionOcupada = new JLabel();
+		panelTop.add(lblPoblacionOcupada);
 		
 		lblNewLabel = new JLabel("/");
 		panelTop.add(lblNewLabel);
 		
 		lblPoblacionTotal = new JLabel();
 		panelTop.add(lblPoblacionTotal);
+		
+		JLabel lvlNroTurnoActual = new JLabel("Nro Turno Actual:");
+		panelTop.add(lvlNroTurnoActual);
+		
+		lblNroTurno = new JLabel();
+		panelTop.add(lblNroTurno);
 		
 		this.actualizarRecursos();
 		
@@ -170,8 +180,11 @@ public class VentanaMapa extends JFrame implements Observer{
 		lblJugadorTurnoActual.setText(juego.dameElJugadorDelTurno().dameNombre());
 		lblDameGas.setText(Integer.toString(juego.dameElJugadorDelTurno().dameCantidadGas()));		
 		lblDameMineral.setText(Integer.toString(juego.dameElJugadorDelTurno().dameCantidadMineral()));
-		lblPoblacionTotal.setText(Integer.toString(juego.dameElJugadorDelTurno().dameLimiteDePoblacion()));
-		lblPoblacionDisponible.setText(Integer.toString(juego.dameElJugadorDelTurno().obtenerCantidadPoblacionDisponible()));
+		lblPoblacionOcupada.setText(Integer.toString(juego.dameElJugadorDelTurno().obtenerCantidadPoblacionOcupada()));
+		lblPoblacionTotal.setText(Integer.toString(juego.dameElJugadorDelTurno().dameLimiteDePoblacion()));		
+		
+		Turno unTurno = Turno.getInstance();
+		lblNroTurno.setText(Integer.toString(unTurno.obtenerNumeroTurno()));
 	}
 
 }

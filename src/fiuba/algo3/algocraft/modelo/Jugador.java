@@ -193,5 +193,9 @@ public class Jugador {
 	public void darVictoria() {
 		this.estado = new JugadorEstadoGanador(this);
 	}
+
+	public int obtenerCantidadPoblacionOcupada() {
+		return (this.dameLimiteDePoblacion() - this.obtenerCantidadPoblacionDisponible());
+	}
 	
 }
