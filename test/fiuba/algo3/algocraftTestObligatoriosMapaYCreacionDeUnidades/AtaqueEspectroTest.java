@@ -57,19 +57,19 @@ public class AtaqueEspectroTest extends TestBase{
 		unTurno.addObserver(unaConstruccion);
 		unTurno.addObserver(otraConstruccion);
 		
-		for (int i = 0; i<12;i++) unTurno.avanzarTurno();
+		for (int i = 0; i<24;i++) unTurno.avanzarTurno();
 		assertTrue(unaConstruccion.estaOperativa());
 		
 		Fabrica unaFabrica = (Fabrica) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesNivel2, unaPosicion2, unJugador);
 		
 		unTurno.addObserver(unaFabrica);
-		for (int i = 0; i<12;i++) unTurno.avanzarTurno();
+		for (int i = 0; i<24;i++) unTurno.avanzarTurno();
 		assertTrue(unaFabrica.estaOperativa());
 		
 		PuertoEstelarTerran unPuertoEstelar = (PuertoEstelarTerran) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesEspecialesYVoladoras, posicion444, unJugador);
 		
 		unTurno.addObserver(unPuertoEstelar);
-		for (int i = 0; i<10;i++) unTurno.avanzarTurno();
+		for (int i = 0; i<20;i++) unTurno.avanzarTurno();
 		assertTrue(unPuertoEstelar.estaOperativa());
 		
 		Posicion posicion1010 = new Posicion(10,10);
@@ -77,7 +77,7 @@ public class AtaqueEspectroTest extends TestBase{
 		Construccion otroExpansor = (Construccion) otroFactoryConstrucciones.crearConstruccion(unTipo.expansorPoblacion, new Posicion(15,15), otroJugador);
 		unTurno.addObserver(unExpansor);
 		unTurno.addObserver(otroExpansor);
-		for (int i=0;i<6;i++) unTurno.avanzarTurno();
+		for (int i=0;i<12;i++) unTurno.avanzarTurno();
 		assertTrue(unExpansor.estaOperativa());
 		assertTrue(otroExpansor.estaOperativa());
 
@@ -178,6 +178,15 @@ public class AtaqueEspectroTest extends TestBase{
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
 		assertTrue(unaUnidad.estaOperativa());
 		assertTrue(otraUnidad.estaOperativa());
 		
@@ -221,7 +230,7 @@ public class AtaqueEspectroTest extends TestBase{
 		unTurno.addObserver(unaConstruccion);
 		unTurno.addObserver(unAcceso);
 		
-		for (int i = 0; i<12;i++) unTurno.avanzarTurno();
+		for (int i = 0; i<24;i++) unTurno.avanzarTurno();
 		assertTrue(unaConstruccion.estaOperativa());
 		
 		Fabrica unaFabrica = (Fabrica) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesNivel2, unaPosicion2, unJugador);
@@ -229,13 +238,13 @@ public class AtaqueEspectroTest extends TestBase{
 		
 		unTurno.addObserver(unaFabrica);
 		unTurno.addObserver(unPuertoEstelar);
-		for (int i = 0; i<12;i++) unTurno.avanzarTurno();
+		for (int i = 0; i<24;i++) unTurno.avanzarTurno();
 		assertTrue(unaFabrica.estaOperativa());
 		
 		PuertoEstelarTerran unPuertoEstelarTerran = (PuertoEstelarTerran) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesEspecialesYVoladoras, posicion444, unJugador);
 		
 		unTurno.addObserver(unPuertoEstelarTerran);
-		for (int i = 0; i<10;i++) unTurno.avanzarTurno();
+		for (int i = 0; i<20;i++) unTurno.avanzarTurno();
 		assertTrue(unPuertoEstelarTerran.estaOperativa());
 		
 		
@@ -253,6 +262,15 @@ public class AtaqueEspectroTest extends TestBase{
 		
 		unTurno.addObserver(unaUnidad);
 		unTurno.addObserver(otraUnidad);
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
@@ -303,19 +321,19 @@ public class AtaqueEspectroTest extends TestBase{
 		unTurno.addObserver(unaConstruccion);
 		unTurno.addObserver(otraConstruccion);
 		
-		for (int i = 0; i<12;i++) unTurno.avanzarTurno();
+		for (int i = 0; i<24;i++) unTurno.avanzarTurno();
 		assertTrue(unaConstruccion.estaOperativa());
 		
 		Fabrica unaFabrica = (Fabrica) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesNivel2, unaPosicion2, unJugador);
 		
 		unTurno.addObserver(unaFabrica);
-		for (int i = 0; i<12;i++) unTurno.avanzarTurno();
+		for (int i = 0; i<24;i++) unTurno.avanzarTurno();
 		assertTrue(unaFabrica.estaOperativa());
 		
 		PuertoEstelarTerran unPuertoEstelarTerran = (PuertoEstelarTerran) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesEspecialesYVoladoras, posicion444, unJugador);
 		
 		unTurno.addObserver(unPuertoEstelarTerran);
-		for (int i = 0; i<10;i++) unTurno.avanzarTurno();
+		for (int i = 0; i<20;i++) unTurno.avanzarTurno();
 		assertTrue(unPuertoEstelarTerran.estaOperativa());
 		
 		
@@ -323,7 +341,7 @@ public class AtaqueEspectroTest extends TestBase{
 		Construccion otroExpansor = (Construccion) otroFactoryConstrucciones.crearConstruccion(unTipo.expansorPoblacion, new Posicion(120,120), otroJugador);
 		unTurno.addObserver(unExpansor);
 		unTurno.addObserver(otroExpansor);
-		for (int i=0;i<6;i++) unTurno.avanzarTurno();
+		for (int i=0;i<12;i++) unTurno.avanzarTurno();
 		assertTrue(unExpansor.estaOperativa());
 		assertTrue(otroExpansor.estaOperativa());
 		
@@ -333,6 +351,14 @@ public class AtaqueEspectroTest extends TestBase{
 		
 		unTurno.addObserver(unaUnidad);
 		unTurno.addObserver(otraUnidad);
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();

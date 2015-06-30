@@ -49,7 +49,7 @@ public class AtaqueDragonTest extends TestBase{
 		unTurno.addObserver(unaConstruccion);
 		unTurno.addObserver(otraConstruccion);
 		
-		for (int i = 0; i<12;i++) unTurno.avanzarTurno();
+		for (int i = 0; i<24;i++) unTurno.avanzarTurno();
 		assertTrue(unaConstruccion.estaOperativa());
 		
 		TipoConstruccion unTipoConstruccion = null;
@@ -110,7 +110,7 @@ public class AtaqueDragonTest extends TestBase{
 		unTurno.addObserver(unaConstruccion);
 		unTurno.addObserver(otraConstruccion);
 		
-		for (int i = 0; i<12;i++) unTurno.avanzarTurno();
+		for (int i = 0; i<24;i++) unTurno.avanzarTurno();
 		assertTrue(unaConstruccion.estaOperativa());
 		
 		
@@ -198,7 +198,16 @@ public class AtaqueDragonTest extends TestBase{
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
 		assertTrue(unaUnidad.estaOperativa());
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
@@ -238,7 +247,7 @@ public class AtaqueDragonTest extends TestBase{
 
 		otroJugador.dameAlmacenMineral().almacenarRecurso(500);
 		
-		for (int i = 0; i<12;i++) unTurno.avanzarTurno();
+		for (int i = 0; i<24;i++) unTurno.avanzarTurno();
 		assertTrue(unaConstruccion.estaOperativa());
 		
 		TipoConstruccion unTipoConstruccion = null;
@@ -264,6 +273,9 @@ public class AtaqueDragonTest extends TestBase{
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		assertTrue(unaUnidad.estaOperativa());
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();

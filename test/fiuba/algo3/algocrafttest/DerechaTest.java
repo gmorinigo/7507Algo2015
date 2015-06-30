@@ -69,8 +69,10 @@ public class DerechaTest extends TestBase{
 		
         unaUnidad.mover(TipoDireccion.Arriba);
         unTurno.avanzarTurno();
+        unTurno.avanzarTurno();
 
 		unaUnidad.mover(TipoDireccion.Derecha);
+		
 		assertNotSame(unaUnidad.dameCelda(),mapa.dameCelda(new Posicion(14,14)));
         assertEquals(unaUnidad.dameCelda(),mapa.dameCelda(new Posicion(14,15)));
         

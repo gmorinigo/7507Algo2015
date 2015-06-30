@@ -175,11 +175,14 @@ public class MapaTest extends TestBase {
 		unTurno.addObserver(expansor3);
 		unTurno.addObserver(expansor4);
 		unTurno.addObserver(expansor5);
-		for (int i=0;i<6;i++) unTurno.avanzarTurno();
+		for (int i=0;i<12;i++) unTurno.avanzarTurno();
 		
 		Unidad marine = unaBarraca.crearUnidad(unJugador);
 		unTurno.addObserver(marine);
 		
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();	
@@ -266,6 +269,7 @@ public class MapaTest extends TestBase {
 		assertTrue(unMapa.verificarCeldaOcupada(new Posicion(16,14)));
 		
 		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
 		assertTrue(unMarine.mover(TipoDireccion.Abajo));
 		
 		assertFalse(unMapa.verificarCeldaOcupada(new Posicion(15,14)));
@@ -280,6 +284,8 @@ public class MapaTest extends TestBase {
 			assertEquals(unaNaveDeTransporte.dameCelda().obtenerPosicion().dameColumna(),14);
 			unaNaveDeTransporte.mover(TipoDireccion.Abajo);
 			unTurno.avanzarTurno();
+			unTurno.avanzarTurno();
+
 		}
 		
 		
@@ -289,6 +295,7 @@ public class MapaTest extends TestBase {
 			assertEquals(unaNaveDeTransporte.dameCelda().obtenerPosicion().dameFila(),19);
 			assertEquals(unaNaveDeTransporte.dameCelda().obtenerPosicion().dameColumna(),14+i);
 			unaNaveDeTransporte.mover(TipoDireccion.Derecha);
+			unTurno.avanzarTurno();
 			unTurno.avanzarTurno();
 		}
 		

@@ -37,7 +37,11 @@ public class CentroDeMineralTest extends TestBase {
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
 		assertFalse(centroMineral.estaTerminada());
+		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		assertTrue(centroMineral.estaTerminada());
 	}
@@ -55,7 +59,11 @@ public class CentroDeMineralTest extends TestBase {
 		assertFalse(centroMineral.estaTerminada());
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
 		assertFalse(centroMineral.estaTerminada());
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		assertTrue(centroMineral.estaTerminada());

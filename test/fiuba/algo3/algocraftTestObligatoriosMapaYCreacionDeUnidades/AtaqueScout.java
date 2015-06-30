@@ -53,7 +53,7 @@ public class AtaqueScout extends TestBase{
 		unTurno.addObserver(unaConstruccion);
 		unTurno.addObserver(otraConstruccion);
 		
-		for (int i = 0; i<12;i++) unTurno.avanzarTurno();
+		for (int i = 0; i<24;i++) unTurno.avanzarTurno();
 		assertTrue(unaConstruccion.estaOperativa());
 		
 		PuertoEstelarProtoss unPuertoEstelar = (PuertoEstelarProtoss) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesVoladoras, posicion444, unJugador);
@@ -80,6 +80,15 @@ public class AtaqueScout extends TestBase{
 		
 		unTurno.addObserver(unaUnidad);
 		unTurno.addObserver(otraUnidad);
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
@@ -128,21 +137,21 @@ public class AtaqueScout extends TestBase{
 		unTurno.addObserver(unaConstruccion);
 		unTurno.addObserver(otraConstruccion);
 		
-		for (int i = 0; i<12;i++) unTurno.avanzarTurno();
+		for (int i = 0; i<24;i++) unTurno.avanzarTurno();
 		assertTrue(unaConstruccion.estaOperativa());
 		
 		PuertoEstelarProtoss unPuertoEstelar = (PuertoEstelarProtoss) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesVoladoras, posicion444, unJugador);
 		
 		unTurno.addObserver(unPuertoEstelar);
 		
-		for (int i = 0; i<12;i++) unTurno.avanzarTurno();
+		for (int i = 0; i<24;i++) unTurno.avanzarTurno();
 		assertTrue(unPuertoEstelar.estaOperativa());
 		
 		Construccion unExpansor = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.expansorPoblacion, new Posicion(124,124), unJugador);
 		Construccion otroExpansor = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.expansorPoblacion, new Posicion(120,120), otroJugador);
 		unTurno.addObserver(unExpansor);
 		unTurno.addObserver(otroExpansor);
-		for (int i=0;i<6;i++) unTurno.avanzarTurno();
+		for (int i=0;i<12;i++) unTurno.avanzarTurno();
 		assertTrue(unExpansor.estaOperativa());
 		assertTrue(otroExpansor.estaOperativa());
 		
@@ -152,6 +161,15 @@ public class AtaqueScout extends TestBase{
 		
 		unTurno.addObserver(unaUnidad);
 		unTurno.addObserver(otraUnidad);
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
@@ -200,21 +218,21 @@ public class AtaqueScout extends TestBase{
 		unJugador.dameAlmacenMineral().almacenarRecurso(1500);
 		otroJugador.dameAlmacenMineral().almacenarRecurso(500);
 		
-		for (int i = 0; i<12;i++) unTurno.avanzarTurno();
+		for (int i = 0; i<24;i++) unTurno.avanzarTurno();
 		assertTrue(unaConstruccion.estaOperativa());
 		
 		PuertoEstelarProtoss unPuertoEstelar = (PuertoEstelarProtoss) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesVoladoras, posicion444, unJugador);
 		
 		unTurno.addObserver(unPuertoEstelar);
 		
-		for (int i = 0; i<12;i++) unTurno.avanzarTurno();
+		for (int i = 0; i<24;i++) unTurno.avanzarTurno();
 		assertTrue(unPuertoEstelar.estaOperativa());
 		
 		Construccion unExpansor = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.expansorPoblacion, new Posicion(124,124), unJugador);
 		Construccion otroExpansor = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.expansorPoblacion, new Posicion(120,120), otroJugador);
 		unTurno.addObserver(unExpansor);
 		unTurno.addObserver(otroExpansor);
-		for (int i=0;i<6;i++) unTurno.avanzarTurno();
+		for (int i=0;i<12;i++) unTurno.avanzarTurno();
 		assertTrue(unExpansor.estaOperativa());
 		assertTrue(otroExpansor.estaOperativa());
 		
@@ -225,6 +243,15 @@ public class AtaqueScout extends TestBase{
 		
 		unTurno.addObserver(unaUnidad);
 		unTurno.addObserver(otraUnidad);
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
@@ -273,21 +300,21 @@ public class AtaqueScout extends TestBase{
 		unJugador.dameAlmacenMineral().almacenarRecurso(1500);
 		otroJugador.dameAlmacenMineral().almacenarRecurso(500);
 		
-		for (int i = 0; i<12;i++) unTurno.avanzarTurno();
+		for (int i = 0; i<24;i++) unTurno.avanzarTurno();
 		assertTrue(unaConstruccion.estaOperativa());
 		
 		PuertoEstelarProtoss unPuertoEstelar = (PuertoEstelarProtoss) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesVoladoras, posicion444, unJugador);
 		
 		unTurno.addObserver(unPuertoEstelar);
 		
-		for (int i = 0; i<12;i++) unTurno.avanzarTurno();
+		for (int i = 0; i<24;i++) unTurno.avanzarTurno();
 		assertTrue(unPuertoEstelar.estaOperativa());
 	
 		Construccion unExpansor = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.expansorPoblacion, new Posicion(124,124), unJugador);
 		Construccion otroExpansor = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.expansorPoblacion, new Posicion(120,120), otroJugador);
 		unTurno.addObserver(unExpansor);
 		unTurno.addObserver(otroExpansor);
-		for (int i=0;i<6;i++) unTurno.avanzarTurno();
+		for (int i=0;i<12;i++) unTurno.avanzarTurno();
 		assertTrue(unExpansor.estaOperativa());
 		assertTrue(otroExpansor.estaOperativa());
 		
@@ -297,6 +324,15 @@ public class AtaqueScout extends TestBase{
 		
 		unTurno.addObserver(unaUnidad);
 		unTurno.addObserver(otraUnidad);
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();

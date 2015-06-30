@@ -52,7 +52,7 @@ public class AtaqueMarineTest extends TestBase{
 		unTurno.addObserver(unaConstruccion);
 		unTurno.addObserver(otraConstruccion);
 		
-		for (int i = 0; i<12;i++) unTurno.avanzarTurno();
+		for (int i = 0; i<24;i++) unTurno.avanzarTurno();
 		assertTrue(unaConstruccion.estaOperativa());
 		
 		TipoConstruccion unTipoConstruccion = null;
@@ -65,7 +65,7 @@ public class AtaqueMarineTest extends TestBase{
 		unTurno.addObserver(otroExpansor);
 		unTurno.addObserver(expansor3);
 		unTurno.addObserver(expansor4);
-		for (int i=0;i<6;i++) unTurno.avanzarTurno();
+		for (int i=0;i<12;i++) unTurno.avanzarTurno();
 		assertTrue(unExpansor.estaOperativa());
 		assertTrue(otroExpansor.estaOperativa());
 		
@@ -120,7 +120,7 @@ public class AtaqueMarineTest extends TestBase{
 		unTurno.addObserver(unaConstruccion);
 		unTurno.addObserver(otraConstruccion);
 		
-		for (int i = 0; i<12;i++) unTurno.avanzarTurno();
+		for (int i = 0; i<24;i++) unTurno.avanzarTurno();
 		assertTrue(unaConstruccion.estaOperativa());
 		
 		TipoConstruccion unTipoConstruccion = null;
@@ -133,7 +133,7 @@ public class AtaqueMarineTest extends TestBase{
 		unTurno.addObserver(otroExpansor);
 		unTurno.addObserver(expansor3);
 		unTurno.addObserver(expansor4);
-		for (int i=0;i<6;i++) unTurno.avanzarTurno();
+		for (int i=0;i<12;i++) unTurno.avanzarTurno();
 		assertTrue(unExpansor.estaOperativa());
 		assertTrue(otroExpansor.estaOperativa());
 		
@@ -143,6 +143,12 @@ public class AtaqueMarineTest extends TestBase{
 		
 		unTurno.addObserver(unaUnidad);
 		unTurno.addObserver(otraUnidad);
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();

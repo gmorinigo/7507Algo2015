@@ -38,7 +38,11 @@ public class NexoMineralTest extends TestCase{
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
 		assertFalse(unNexo.estaTerminada());
+		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		assertTrue(unNexo.estaTerminada());
 	}
@@ -56,11 +60,19 @@ public class NexoMineralTest extends TestCase{
 		assertFalse(unNexo.estaTerminada());
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
 		assertFalse(unNexo.estaTerminada());
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		assertTrue(unNexo.estaTerminada());
 		
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();

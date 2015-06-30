@@ -44,7 +44,7 @@ public class AtaqueAUnaContruccionTest extends TestBase{
 		
 		Construccion c2 = jug2.dameRaza().getFactoryConstrucciones().crearConstruccion(TipoConstruccion.creadorUnidadesBasicas, new Posicion(15,15), jug2);
 		
-		for (int i = 0; i < 20; i++) {
+		for (int i = 0; i < 40; i++) {
 			turno.avanzarTurno();
 		}
 		
@@ -77,36 +77,47 @@ public class AtaqueAUnaContruccionTest extends TestBase{
 		//11 9
 		unidad.mover(TipoDireccion.Abajo);
 		turno.avanzarTurno();
+		turno.avanzarTurno();
+
 		assertTrue(unidad.dameCelda().obtenerPosicion().compararPosicion(new Posicion(11,9)));
 		
 		//12 9
 		unidad.mover(TipoDireccion.Abajo);
+		turno.avanzarTurno();
 		turno.avanzarTurno();
 		assertTrue(unidad.dameCelda().obtenerPosicion().compararPosicion(new Posicion(12,9)));
 		
 		//12 10
 		unidad.mover(TipoDireccion.Derecha);
 		turno.avanzarTurno();
+		turno.avanzarTurno();
+
 		assertTrue(unidad.dameCelda().obtenerPosicion().compararPosicion(new Posicion(12,10)));
 		
 		//12 11
 		unidad.mover(TipoDireccion.Derecha);
 		turno.avanzarTurno();
+		turno.avanzarTurno();
+
 		
 		//12 12
 		unidad.mover(TipoDireccion.Derecha);
+		turno.avanzarTurno();
 		turno.avanzarTurno();
 		
 		//12 13
 		unidad.mover(TipoDireccion.Derecha);
 		turno.avanzarTurno();
+		turno.avanzarTurno();
 
 		//12 14
 		unidad.mover(TipoDireccion.Derecha);
 		turno.avanzarTurno();
+		turno.avanzarTurno();
 		
 		//12 15
 		unidad.mover(TipoDireccion.Derecha);
+		turno.avanzarTurno();
 		turno.avanzarTurno();
 
 		assertTrue(unidad.dameCelda().obtenerPosicion().compararPosicion(new Posicion(12,15)));
@@ -114,9 +125,13 @@ public class AtaqueAUnaContruccionTest extends TestBase{
 		//13 15
 		unidad.mover(TipoDireccion.Abajo);
 		turno.avanzarTurno();
+		turno.avanzarTurno();
+
 		//14 15
 		unidad.mover(TipoDireccion.Abajo);
 		turno.avanzarTurno();		
+		turno.avanzarTurno();
+
 		assertTrue(unidad.dameCelda().obtenerPosicion().compararPosicion(new Posicion(14,15)));
 		
 		Celda celdaObjetivo = Mapa.getInstance().dameCelda(new Posicion(15,15));
@@ -125,6 +140,7 @@ public class AtaqueAUnaContruccionTest extends TestBase{
 		
 		for (int i = 0; i < 130; i++) {
 			unidad.atacar(celdaObjetivo);
+			turno.avanzarTurno();
 			turno.avanzarTurno();
 		}
 		

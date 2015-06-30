@@ -43,7 +43,7 @@ public class ControlAtaqueTets extends TestBase{
 		
 		Acceso otraConstruccion = (Acceso) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesBasicas, otraPosicion, otroJugador);
 		
-		for (int i = 0; i<12;i++) unTurno.avanzarTurno();
+		for (int i = 0; i<24;i++) unTurno.avanzarTurno();
 		assertTrue(unaConstruccion.estaOperativa());
 		
 		TipoConstruccion unTipoConstruccion = null;

@@ -59,7 +59,12 @@ public class PilonTest extends TestBase{
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
 		assertFalse(unaConstruccion.estaOperativa());
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		assertTrue(unaConstruccion.estaOperativa());
@@ -103,6 +108,12 @@ public class PilonTest extends TestBase{
 		Construccion unaConstruccion = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.expansorPoblacion, unaPosicion, unJugador);
 		Construccion otraConstruccion = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.expansorPoblacion, otraPosicion, unJugador);
 		
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();

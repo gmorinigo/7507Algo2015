@@ -74,7 +74,7 @@ public class PuertoEstelarTerranTest extends TestBase {
 		Construccion unaConstruccion = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesEspecialesYVoladoras, otraPosicion, unJugador);
 		
 
-		//unTurno.addObserver(unaConstruccion);
+		unTurno.addObserver(unaConstruccion);
 				
 		assertFalse(unaConstruccion.estaOperativa());
 		unTurno.avanzarTurno();
@@ -142,9 +142,10 @@ public class PuertoEstelarTerranTest extends TestBase {
 		unTurno.addObserver(unaNaveDeTransporte);
 		unTurno.addObserver(unaNaveDeCiencia);
 		
-		for (int i = 0; i < 7 ; i++) unTurno.avanzarTurno();
+		for (int i = 0; i < 14 ; i++) unTurno.avanzarTurno();
 		assertTrue(unaNaveDeTransporte.estaOperativa());
 		
+		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		assertTrue(unEspectro.estaOperativa());
 		

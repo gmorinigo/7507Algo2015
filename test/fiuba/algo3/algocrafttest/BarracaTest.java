@@ -68,7 +68,19 @@ public class BarracaTest extends TestBase {
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
 		assertFalse(unaConstruccion.estaOperativa());
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
@@ -95,7 +107,19 @@ public class BarracaTest extends TestBase {
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
 		assertFalse(unaConstruccion.estaOperativa());
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
@@ -115,7 +139,7 @@ public class BarracaTest extends TestBase {
 		unTurno.addObserver(unExpansor);
 		unTurno.addObserver(expansor3);
 		unTurno.addObserver(expansor4);
-		for (int i=0;i<6;i++) unTurno.avanzarTurno();
+		for (int i=0;i<12;i++) unTurno.avanzarTurno();
 		
 		Unidad unaUnidad = (Unidad) unaConstruccion.crearUnidad(unJugador);
 		

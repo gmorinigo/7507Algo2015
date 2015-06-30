@@ -70,7 +70,7 @@ public class FabricaTest extends TestBase {
 		
 		// Agrego las construcciones necesarias para crear la construccion actual
 		Construccion unaBarraca = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesBasicas, unaPosicion, unJugador);
-		for (int i = 0; i < 12 ;i++) unTurno.avanzarTurno();
+		for (int i = 0; i < 24 ;i++) unTurno.avanzarTurno();
 		
 		unJugador.dameAlmacenMineral().almacenarRecurso(1000);
 		unJugador.dameAlmacenGas().almacenarRecurso(1000);
@@ -84,7 +84,19 @@ public class FabricaTest extends TestBase {
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
 		assertFalse(unaConstruccion.estaOperativa());
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();

@@ -68,6 +68,7 @@ public class DiagonalAbajoDerechaTest extends TestBase{
 		
         unaUnidad.mover(TipoDireccion.Abajo);
         unTurno.avanzarTurno();
+        unTurno.avanzarTurno();
         assertEquals(unaUnidad.dameCelda(),mapa.dameCelda(new Posicion(16,14)));
 
         unaUnidad.mover(TipoDireccion.DiagonalAbajoDerecha);

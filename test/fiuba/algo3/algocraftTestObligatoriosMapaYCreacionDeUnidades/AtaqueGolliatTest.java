@@ -55,13 +55,13 @@ public class AtaqueGolliatTest extends TestBase{
 		unTurno.addObserver(unaConstruccion);
 		unTurno.addObserver(otraConstruccion);
 		
-		for (int i = 0; i<12;i++) unTurno.avanzarTurno();
+		for (int i = 0; i<24;i++) unTurno.avanzarTurno();
 		assertTrue(unaConstruccion.estaOperativa());
 		
 		Fabrica unaFabrica = (Fabrica) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesNivel2, unaPosicion2, unJugador);
 		
 		unTurno.addObserver(unaFabrica);
-		for (int i = 0; i<12;i++) unTurno.avanzarTurno();
+		for (int i = 0; i<24;i++) unTurno.avanzarTurno();
 		assertTrue(unaFabrica.estaOperativa());
 		
 		
@@ -75,7 +75,7 @@ public class AtaqueGolliatTest extends TestBase{
 		unTurno.addObserver(expansor3);
 		unTurno.addObserver(expansor4);
 		unTurno.addObserver(expansor5);
-		for (int i=0;i<6;i++) unTurno.avanzarTurno();
+		for (int i=0;i<12;i++) unTurno.avanzarTurno();
 		
 		
 		TipoUnidad unTipoUnidad = null;
@@ -84,6 +84,12 @@ public class AtaqueGolliatTest extends TestBase{
 		
 		unTurno.addObserver(unaUnidad);
 		unTurno.addObserver(otraUnidad);
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
@@ -132,7 +138,7 @@ public class AtaqueGolliatTest extends TestBase{
 		unTurno.addObserver(unaConstruccion);
 		unTurno.addObserver(unAcceso);
 		
-		for (int i = 0; i<12;i++) unTurno.avanzarTurno();
+		for (int i = 0; i<24;i++) unTurno.avanzarTurno();
 		assertTrue(unaConstruccion.estaOperativa());
 		
 		Fabrica unaFabrica = (Fabrica) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesNivel2, unaPosicion2, unJugador);
@@ -140,7 +146,7 @@ public class AtaqueGolliatTest extends TestBase{
 		
 		unTurno.addObserver(unaFabrica);
 		unTurno.addObserver(unPuertoEstelar);
-		for (int i = 0; i<12;i++) unTurno.avanzarTurno();
+		for (int i = 0; i<24;i++) unTurno.avanzarTurno();
 		assertTrue(unaFabrica.estaOperativa());
 		
 		
@@ -163,6 +169,15 @@ public class AtaqueGolliatTest extends TestBase{
 		
 		unTurno.addObserver(unaUnidad);
 		unTurno.addObserver(otraUnidad);
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
@@ -214,7 +229,7 @@ public class AtaqueGolliatTest extends TestBase{
 		unTurno.addObserver(unaConstruccion);
 		unTurno.addObserver(unAcceso);
 		
-		for (int i = 0; i<12;i++) unTurno.avanzarTurno();
+		for (int i = 0; i<24;i++) unTurno.avanzarTurno();
 		assertTrue(unaConstruccion.estaOperativa());
 		
 		Fabrica unaFabrica = (Fabrica) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesNivel2, unaPosicion2, unJugador);
@@ -222,7 +237,7 @@ public class AtaqueGolliatTest extends TestBase{
 		
 		unTurno.addObserver(unaFabrica);
 		unTurno.addObserver(unPuertoEstelar);
-		for (int i = 0; i<12;i++) unTurno.avanzarTurno();
+		for (int i = 0; i<24;i++) unTurno.avanzarTurno();
 		assertTrue(unaFabrica.estaOperativa());
 		
 		TipoConstruccion unTipoConstruccion = null;
@@ -235,7 +250,7 @@ public class AtaqueGolliatTest extends TestBase{
 		unTurno.addObserver(expansor3);
 		unTurno.addObserver(expansor4);
 		unTurno.addObserver(expansor5);
-		for (int i=0;i<6;i++) unTurno.avanzarTurno();
+		for (int i=0;i<12;i++) unTurno.avanzarTurno();
 		
 		TipoUnidad unTipoUnidad = null;
 		Unidad unaUnidad = (Unidad) unaFabrica.crearUnidad(unJugador,unTipoUnidad.terrestre2);
@@ -243,6 +258,15 @@ public class AtaqueGolliatTest extends TestBase{
 		
 		unTurno.addObserver(unaUnidad);
 		unTurno.addObserver(otraUnidad);
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
@@ -291,13 +315,13 @@ public class AtaqueGolliatTest extends TestBase{
 		unTurno.addObserver(unaConstruccion);
 		unTurno.addObserver(otraConstruccion);
 		
-		for (int i = 0; i<12;i++) unTurno.avanzarTurno();
+		for (int i = 0; i<24;i++) unTurno.avanzarTurno();
 		assertTrue(unaConstruccion.estaOperativa());
 		
 		Fabrica unaFabrica = (Fabrica) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesNivel2, unaPosicion2, unJugador);
 		
 		unTurno.addObserver(unaFabrica);
-		for (int i = 0; i<12;i++) unTurno.avanzarTurno();
+		for (int i = 0; i<24;i++) unTurno.avanzarTurno();
 		assertTrue(unaFabrica.estaOperativa());
 		
 		TipoConstruccion unTipoConstruccion = null;

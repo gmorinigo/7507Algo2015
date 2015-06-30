@@ -62,11 +62,11 @@ public class UnidadesMagicasEnConjuntoTest extends TestBase{
 
 		Acceso unAcceso = (Acceso) factoryConstruccionesProtoss.crearConstruccion(unTipo.creadorUnidadesBasicas, posicionAcceso, unJugador);
 
-		for (int i = 0; i < 8 ;i++) unTurno.avanzarTurno();
+		for (int i = 0; i < 16 ;i++) unTurno.avanzarTurno();
 
 		Construccion unPuertoEstelar = (Construccion) factoryConstruccionesProtoss.crearConstruccion(unTipo.creadorUnidadesVoladoras, posicionPuertoEstelar, unJugador);
 		unJugador.agregarConstruccion(unPuertoEstelar);
-		for (int i = 0; i < 10 ;i++) unTurno.avanzarTurno();
+		for (int i = 0; i < 20 ;i++) unTurno.avanzarTurno();
 		// Fin de agregado de Construcciones necesarias
 		
 		unJugador.dameAlmacenMineral().almacenarRecurso(1000);
@@ -76,7 +76,7 @@ public class UnidadesMagicasEnConjuntoTest extends TestBase{
 		ArchivosTemplarios unArchivoTemplario = (ArchivosTemplarios) factoryConstruccionesProtoss.crearConstruccion(unTipo.creadorUnidadesEspeciales, posicionArchivosTemplarios, unJugador);
 
 		assertFalse(unArchivoTemplario.estaOperativa());
-		for (int i = 0; i<9 ;i++) unTurno.avanzarTurno();
+		for (int i = 0; i<18 ;i++) unTurno.avanzarTurno();
 		assertTrue(unArchivoTemplario.estaOperativa());
 
 		AltoTemplario unAltoTemplario = (AltoTemplario) unArchivoTemplario.crearUnidad(unJugador);
@@ -84,9 +84,9 @@ public class UnidadesMagicasEnConjuntoTest extends TestBase{
 		TipoUnidad unTipoUnidad = TipoUnidad.terrestre1;
 		Unidad unZealot = (Unidad) unAcceso.crearUnidad(unJugador, unTipoUnidad);
 		
-		for (int i = 0; i<7 ;i++) unTurno.avanzarTurno();
+		for (int i = 0; i<14 ;i++) unTurno.avanzarTurno();
 		
-		for (int i= 0; i < 5; i++) unTurno.avanzarTurno();
+		for (int i= 0; i < 10; i++) unTurno.avanzarTurno();
 
 		assertEquals(125,unAltoTemplario.obtenerCantidadEnergia());
 		
@@ -94,7 +94,9 @@ public class UnidadesMagicasEnConjuntoTest extends TestBase{
 
         unZealot.mover(TipoDireccion.Abajo);
 		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
 		unZealot.mover(TipoDireccion.Abajo);
+		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		
         assertEquals(unZealot.dameCelda(),unMapa.dameCelda(new Posicion(22,6)));
@@ -121,21 +123,21 @@ public class UnidadesMagicasEnConjuntoTest extends TestBase{
 		
 	/** Se crea Barraca Fabrica y Puerto Estelar Terran **/	
 		Barraca unaBarraca = (Barraca) factoryConstruccionesTerran.crearConstruccion(TipoConstruccion.creadorUnidadesBasicas, new Posicion(15,15), otroJugador);
-		for (int i=0;i<12;i++) unTurno.avanzarTurno();		
+		for (int i=0;i<24;i++) unTurno.avanzarTurno();		
 		Fabrica unaFabrica = (Fabrica) factoryConstruccionesTerran.crearConstruccion(TipoConstruccion.creadorUnidadesNivel2, new Posicion(25,15), otroJugador);
-		for (int i=0;i<12;i++) unTurno.avanzarTurno();		
+		for (int i=0;i<24;i++) unTurno.avanzarTurno();		
 		PuertoEstelarTerran unPuerto = (PuertoEstelarTerran) factoryConstruccionesTerran.crearConstruccion(TipoConstruccion.creadorUnidadesEspecialesYVoladoras, new Posicion(24,10), otroJugador);
-		for (int i=0;i<10;i++) unTurno.avanzarTurno();
+		for (int i=0;i<20;i++) unTurno.avanzarTurno();
 
 	/** Se Crea NAVE CIENCIA  **/
 		NaveCiencia unaNaveCiencia = (NaveCiencia) unPuerto.crearUnidad(otroJugador,TipoUnidad.especial1);
-		for (int i=0;i<10;i++) unTurno.avanzarTurno();
+		for (int i=0;i<20;i++) unTurno.avanzarTurno();
 		assertTrue(unaNaveCiencia.estaOperativa());
 		assertTrue(unaNaveCiencia instanceof NaveCiencia);
 		assertEquals(50,unaNaveCiencia.obtenerCantidadEnergia());
 		assertEquals(unMapa.dameCelda(new Posicion(24,9)), unaNaveCiencia.dameCelda());
 
-		for (int i=0;i<5;i++) unTurno.avanzarTurno();
+		for (int i=0;i<10;i++) unTurno.avanzarTurno();
 		assertEquals(100,unaNaveCiencia.obtenerCantidadEnergia());
 		
 		assertEquals(200,unaNaveCiencia.obtenerCantidadVida());
@@ -179,11 +181,11 @@ public class UnidadesMagicasEnConjuntoTest extends TestBase{
 
 		Acceso unAcceso = (Acceso) factoryConstruccionesProtoss.crearConstruccion(unTipo.creadorUnidadesBasicas, posicionAcceso, unJugador);
 
-		for (int i = 0; i < 8 ;i++) unTurno.avanzarTurno();
+		for (int i = 0; i < 16 ;i++) unTurno.avanzarTurno();
 
 		Construccion unPuertoEstelar = (Construccion) factoryConstruccionesProtoss.crearConstruccion(unTipo.creadorUnidadesVoladoras, posicionPuertoEstelar, unJugador);
 		unJugador.agregarConstruccion(unPuertoEstelar);
-		for (int i = 0; i < 10 ;i++) unTurno.avanzarTurno();
+		for (int i = 0; i < 20 ;i++) unTurno.avanzarTurno();
 		// Fin de agregado de Construcciones necesarias
 		
 		unJugador.dameAlmacenMineral().almacenarRecurso(1000);
@@ -193,7 +195,7 @@ public class UnidadesMagicasEnConjuntoTest extends TestBase{
 		ArchivosTemplarios unArchivoTemplario = (ArchivosTemplarios) factoryConstruccionesProtoss.crearConstruccion(unTipo.creadorUnidadesEspeciales, posicionArchivosTemplarios, unJugador);
 
 		assertFalse(unArchivoTemplario.estaOperativa());
-		for (int i = 0; i<9 ;i++) unTurno.avanzarTurno();
+		for (int i = 0; i<18 ;i++) unTurno.avanzarTurno();
 		assertTrue(unArchivoTemplario.estaOperativa());
 
 		AltoTemplario unAltoTemplario = (AltoTemplario) unArchivoTemplario.crearUnidad(unJugador);
@@ -201,9 +203,9 @@ public class UnidadesMagicasEnConjuntoTest extends TestBase{
 		TipoUnidad unTipoUnidad = TipoUnidad.terrestre1;
 		Unidad unZealot = (Unidad) unAcceso.crearUnidad(unJugador, unTipoUnidad);
 		
-		for (int i = 0; i<7 ;i++) unTurno.avanzarTurno();
+		for (int i = 0; i<14 ;i++) unTurno.avanzarTurno();
 		
-		for (int i= 0; i < 5; i++) unTurno.avanzarTurno();
+		for (int i= 0; i < 10; i++) unTurno.avanzarTurno();
 
 		assertEquals(125,unAltoTemplario.obtenerCantidadEnergia());
 		
@@ -211,7 +213,10 @@ public class UnidadesMagicasEnConjuntoTest extends TestBase{
 
         unZealot.mover(TipoDireccion.Abajo);
 		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
 		unZealot.mover(TipoDireccion.Abajo);
+		unTurno.avanzarTurno();
+
 		unTurno.avanzarTurno();
 		
         assertEquals(unZealot.dameCelda(),unMapa.dameCelda(new Posicion(22,6)));
@@ -238,17 +243,17 @@ public class UnidadesMagicasEnConjuntoTest extends TestBase{
 		
 	/** Se crea Barraca Fabrica y Puerto Estelar Terran **/	
 		Barraca unaBarraca = (Barraca) factoryConstruccionesTerran.crearConstruccion(TipoConstruccion.creadorUnidadesBasicas, new Posicion(15,15), otroJugador);
-		for (int i=0;i<12;i++) unTurno.avanzarTurno();		
+		for (int i=0;i<24;i++) unTurno.avanzarTurno();		
 		Fabrica unaFabrica = (Fabrica) factoryConstruccionesTerran.crearConstruccion(TipoConstruccion.creadorUnidadesNivel2, new Posicion(25,15), otroJugador);
-		for (int i=0;i<12;i++) unTurno.avanzarTurno();		
+		for (int i=0;i<24;i++) unTurno.avanzarTurno();		
 		PuertoEstelarTerran unPuerto = (PuertoEstelarTerran) factoryConstruccionesTerran.crearConstruccion(TipoConstruccion.creadorUnidadesEspecialesYVoladoras, new Posicion(24,10), otroJugador);
-		for (int i=0;i<10;i++) unTurno.avanzarTurno();
+		for (int i=0;i<20;i++) unTurno.avanzarTurno();
 
 	/** Se Crea NAVE CIENCIA  **/
 		NaveCiencia unaNaveCiencia = (NaveCiencia) unPuerto.crearUnidad(otroJugador,TipoUnidad.especial1);
 		NaveCiencia otraNaveCiencia = (NaveCiencia) unPuerto.crearUnidad(otroJugador,TipoUnidad.especial1);
 
-		for (int i=0;i<10;i++) unTurno.avanzarTurno();
+		for (int i=0;i<20;i++) unTurno.avanzarTurno();
 		
 		assertTrue(unaNaveCiencia.estaOperativa());
 		assertTrue(otraNaveCiencia.estaOperativa());
@@ -262,11 +267,14 @@ public class UnidadesMagicasEnConjuntoTest extends TestBase{
 		assertTrue(otraNaveCiencia.mover(TipoDireccion.Arriba));
 		assertEquals(unMapa.dameCelda(new Posicion(23,8)), otraNaveCiencia.dameCelda());
 		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+
 		assertTrue(otraNaveCiencia.mover(TipoDireccion.Arriba));
 		assertEquals(unMapa.dameCelda(new Posicion(22,8)), otraNaveCiencia.dameCelda());
 		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
 		
-		for (int i=0;i<4;i++) unTurno.avanzarTurno();
+		for (int i=0;i<8;i++) unTurno.avanzarTurno();
 		assertEquals(110,unaNaveCiencia.obtenerCantidadEnergia());
 		
 		assertTrue(unaNaveCiencia.atacar(unAltoTemplario.dameCelda(), TipoAtaqueNaveCiencia.MisilEMP));
@@ -299,11 +307,11 @@ public class UnidadesMagicasEnConjuntoTest extends TestBase{
 
 		Acceso unAcceso = (Acceso) factoryConstruccionesProtoss.crearConstruccion(unTipo.creadorUnidadesBasicas, posicionAcceso, unJugador);
 
-		for (int i = 0; i < 8 ;i++) unTurno.avanzarTurno();
+		for (int i = 0; i < 16 ;i++) unTurno.avanzarTurno();
 
 		Construccion unPuertoEstelar = (Construccion) factoryConstruccionesProtoss.crearConstruccion(unTipo.creadorUnidadesVoladoras, posicionPuertoEstelar, unJugador);
 		unJugador.agregarConstruccion(unPuertoEstelar);
-		for (int i = 0; i < 10 ;i++) unTurno.avanzarTurno();
+		for (int i = 0; i < 20 ;i++) unTurno.avanzarTurno();
 		// Fin de agregado de Construcciones necesarias
 		
 		unJugador.dameAlmacenMineral().almacenarRecurso(1000);
@@ -313,32 +321,32 @@ public class UnidadesMagicasEnConjuntoTest extends TestBase{
 		ArchivosTemplarios unArchivoTemplario = (ArchivosTemplarios) factoryConstruccionesProtoss.crearConstruccion(unTipo.creadorUnidadesEspeciales, posicionArchivosTemplarios, unJugador);
 
 		assertFalse(unArchivoTemplario.estaOperativa());
-		for (int i = 0; i<9 ;i++) unTurno.avanzarTurno();
+		for (int i = 0; i<18 ;i++) unTurno.avanzarTurno();
 		assertTrue(unArchivoTemplario.estaOperativa());
 
 		AltoTemplario unAltoTemplario = (AltoTemplario) unArchivoTemplario.crearUnidad(unJugador);
-		for (int i=0;i<7;i++) unTurno.avanzarTurno();
+		for (int i=0;i<14;i++) unTurno.avanzarTurno();
 		assertEquals(unMapa.dameCelda(new Posicion(22,9)), unAltoTemplario.dameCelda());
 
 		
 	/** Se crean Construcciones **/	
 		Construccion expansor4 = (Construccion) factoryConstruccionesTerran.crearConstruccion(TipoConstruccion.expansorPoblacion, new Posicion(134,134), otroJugador);
 		Construccion expansor5 = (Construccion) factoryConstruccionesTerran.crearConstruccion(TipoConstruccion.expansorPoblacion, new Posicion(136,134), otroJugador);
-		for (int i=0;i<6;i++) unTurno.avanzarTurno();
+		for (int i=0;i<12;i++) unTurno.avanzarTurno();
 		
 	/** Se crea Barraca Fabrica y Puerto Estelar Terran **/	
 		Barraca unaBarraca = (Barraca) factoryConstruccionesTerran.crearConstruccion(TipoConstruccion.creadorUnidadesBasicas, new Posicion(15,15), otroJugador);
-		for (int i=0;i<12;i++) unTurno.avanzarTurno();		
+		for (int i=0;i<24;i++) unTurno.avanzarTurno();		
 		Fabrica unaFabrica = (Fabrica) factoryConstruccionesTerran.crearConstruccion(TipoConstruccion.creadorUnidadesNivel2, new Posicion(25,15), otroJugador);
-		for (int i=0;i<12;i++) unTurno.avanzarTurno();		
+		for (int i=0;i<24;i++) unTurno.avanzarTurno();		
 		PuertoEstelarTerran unPuerto = (PuertoEstelarTerran) factoryConstruccionesTerran.crearConstruccion(TipoConstruccion.creadorUnidadesEspecialesYVoladoras, new Posicion(24,10), otroJugador);
-		for (int i=0;i<10;i++) unTurno.avanzarTurno();
+		for (int i=0;i<20;i++) unTurno.avanzarTurno();
 
 	/** Se Crea NAVE CIENCIA  **/
 		NaveCiencia unaNaveCiencia = (NaveCiencia) unPuerto.crearUnidad(otroJugador,TipoUnidad.especial1);
 		NaveCiencia otraNaveCiencia = (NaveCiencia) unPuerto.crearUnidad(otroJugador,TipoUnidad.especial1);
 
-		for (int i=0;i<10;i++) unTurno.avanzarTurno();
+		for (int i=0;i<20;i++) unTurno.avanzarTurno();
 		
 		assertTrue(unaNaveCiencia.estaOperativa());
 		assertTrue(otraNaveCiencia.estaOperativa());
@@ -352,11 +360,13 @@ public class UnidadesMagicasEnConjuntoTest extends TestBase{
 		assertTrue(otraNaveCiencia.mover(TipoDireccion.Arriba));
 		assertEquals(unMapa.dameCelda(new Posicion(23,8)), otraNaveCiencia.dameCelda());
 		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
 		assertTrue(otraNaveCiencia.mover(TipoDireccion.Arriba));
 		assertEquals(unMapa.dameCelda(new Posicion(22,8)), otraNaveCiencia.dameCelda());
 		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
 		
-		for (int i=0;i<4;i++) unTurno.avanzarTurno();
+		for (int i=0;i<8;i++) unTurno.avanzarTurno();
 		assertEquals(110,unaNaveCiencia.obtenerCantidadEnergia());
 		
 		assertTrue(unaNaveCiencia.atacar(unMapa.dameCelda(new Posicion(20,8)), TipoAtaqueNaveCiencia.MisilEMP));

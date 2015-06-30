@@ -143,7 +143,6 @@ public class Jugador {
 	}
 
 	public void quitarUnidad(Unidad unidad) {
-		// Restar poblacion
 		this.unidadesTerminadas.remove(unidad);
 		
 		this.estado = this.estado.nextEstado();
@@ -156,7 +155,7 @@ public class Jugador {
 		
 	}
 
-	public Object dameCantidadPoblacion() {
+	public int dameCantidadPoblacion() {
 		int poblacionOcupada = 0;
 		
 		Iterator<Unidad> it = unidadesTerminadas.iterator();

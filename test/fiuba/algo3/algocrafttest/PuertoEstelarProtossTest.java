@@ -82,7 +82,17 @@ public class PuertoEstelarProtossTest extends TestBase{
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
 		assertFalse(unaConstruccion.estaOperativa());
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
@@ -145,6 +155,7 @@ public class PuertoEstelarProtossTest extends TestBase{
 		unTurno.avanzarTurno();
     	assertTrue(otraUnidad.estaOperativa());
     	
+		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		assertTrue(unaUnidad.estaOperativa());
 	}

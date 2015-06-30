@@ -51,7 +51,7 @@ public class AtaqueZealotTest extends TestBase{
 	unTurno.addObserver(unaConstruccion);
 	unTurno.addObserver(otraConstruccion);
 	
-	for (int i = 0; i<12;i++) unTurno.avanzarTurno();
+	for (int i = 0; i<24;i++) unTurno.avanzarTurno();
 	assertTrue(unaConstruccion.estaOperativa());
 	
 	TipoConstruccion unTipoConstruccion = null;
@@ -115,7 +115,7 @@ public class AtaqueZealotTest extends TestBase{
 		unTurno.addObserver(unaConstruccion);
 		unTurno.addObserver(otraConstruccion);
 		
-		for (int i = 0; i<12;i++) unTurno.avanzarTurno();
+		for (int i = 0; i<24;i++) unTurno.avanzarTurno();
 		assertTrue(unaConstruccion.estaOperativa());
 		
 		TipoConstruccion unTipoConstruccion = null;
@@ -177,7 +177,7 @@ public class AtaqueZealotTest extends TestBase{
 		unTurno.addObserver(unaConstruccion);
 		unTurno.addObserver(otraConstruccion);
 		
-		for (int i = 0; i<12;i++) unTurno.avanzarTurno();
+		for (int i = 0; i<24;i++) unTurno.avanzarTurno();
 		assertTrue(unaConstruccion.estaOperativa());
 		
 		TipoConstruccion unTipoConstruccion = null;
@@ -191,7 +191,7 @@ public class AtaqueZealotTest extends TestBase{
 		unTurno.addObserver(expansor3);
 		unTurno.addObserver(expansor4);
 		unTurno.addObserver(expansor5);
-		for (int i=0;i<6;i++) unTurno.avanzarTurno();
+		for (int i=0;i<12;i++) unTurno.avanzarTurno();
 		
 		TipoUnidad unTipoUnidad = null;
 		Unidad unaUnidad = (Unidad) unaConstruccion.crearUnidad(unJugador,unTipoUnidad.terrestre1);
@@ -200,7 +200,7 @@ public class AtaqueZealotTest extends TestBase{
 		unTurno.addObserver(unaUnidad);
 		unTurno.addObserver(otraUnidad);
 
-		for (int i=0;i<9;i++) unTurno.avanzarTurno();
+		for (int i=0;i<18;i++) unTurno.avanzarTurno();
 		assertTrue(unaUnidad.estaOperativa());
 		assertTrue(otraUnidad.estaOperativa());
 		

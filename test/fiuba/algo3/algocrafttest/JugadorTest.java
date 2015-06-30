@@ -222,7 +222,7 @@ public class JugadorTest extends TestBase {
 		Acceso otraConstruccion = (Acceso) factoryConstruccionesProtoss.crearConstruccion(unTipo.creadorUnidadesBasicas, otraPosicion, otroJugador);
 		
 	
-		for (int i = 0; i<12;i++) unTurno.avanzarTurno();
+		for (int i = 0; i<24;i++) unTurno.avanzarTurno();
 		assertTrue(unaConstruccion.estaOperativa());
 		assertTrue(otraConstruccion.estaOperativa());
 		
@@ -236,7 +236,7 @@ public class JugadorTest extends TestBase {
 		unTurno.addObserver(expansor3);
 		unTurno.addObserver(expansor4);
 		unTurno.addObserver(expansor5);
-		for (int i=0;i<6;i++) unTurno.avanzarTurno();
+		for (int i=0;i<12;i++) unTurno.avanzarTurno();
 		
 		assertTrue(unJugador.dameLimiteDePoblacion() == 10);
 		assertTrue(otroJugador.dameLimiteDePoblacion() == 10);
@@ -250,8 +250,12 @@ public class JugadorTest extends TestBase {
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
 		assertTrue(unaUnidad.estaOperativa());
-		unTurno.avanzarTurno(); 
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
 		assertTrue(otraUnidad.estaOperativa());
 		
 		assertTrue(unJugador.obtenerCantidadPoblacionDisponible() == 9);
@@ -267,6 +271,8 @@ public class JugadorTest extends TestBase {
 		for(int i = 0; i < 155; i++){
 			assertTrue(unaUnidad.atacar(otraUnidad.dameCelda()));
 			unTurno.avanzarTurno();
+			unTurno.avanzarTurno();
+
 			//System.out.println(otraUnidad.obtenerCantidadVida());
 			//System.out.println(otraUnidad.obtenerCantidadEscudo());
 		}

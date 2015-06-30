@@ -73,12 +73,12 @@ public class AltoTemplarioTest extends TestBase {
 		unTurno.addObserver(unArchivoTemplario);
 			
 		assertFalse(unArchivoTemplario.estaOperativa());
-		for (int i = 0; i<9 ;i++) unTurno.avanzarTurno();
+		for (int i = 0; i<18 ;i++) unTurno.avanzarTurno();
 		assertTrue(unArchivoTemplario.estaOperativa());
 		
 		unTurno.addObserver(unArchivoTemplario.crearUnidad(unJugador));
 		
-		for (int i = 0; i<7 ;i++) unTurno.avanzarTurno();
+		for (int i = 0; i<14 ;i++) unTurno.avanzarTurno();
 		
 		Celda celdaAltoTemplario = unMapa.dameCelda(posicionAltoTemplario);
 		
@@ -111,12 +111,12 @@ public class AltoTemplarioTest extends TestBase {
 		
 		//unTurno.addObserver(unAcceso);
 		//unJugador.agregarConstruccion(unAcceso);
-		for (int i = 0; i < 8 ;i++) unTurno.avanzarTurno();
+		for (int i = 0; i < 16 ;i++) unTurno.avanzarTurno();
 
 		Construccion unPuertoEstelar = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesVoladoras, otraPosicion, unJugador);
 		unTurno.addObserver(unPuertoEstelar);
 		unJugador.agregarConstruccion(unPuertoEstelar);
-		for (int i = 0; i < 10 ;i++) unTurno.avanzarTurno();
+		for (int i = 0; i < 20 ;i++) unTurno.avanzarTurno();
 		// Fin de agregado de Construcciones necesarias
 		
 		unJugador.dameAlmacenMineral().almacenarRecurso(1000);
@@ -126,20 +126,20 @@ public class AltoTemplarioTest extends TestBase {
 		unTurno.addObserver(unArchivoTemplario);
 			
 		assertFalse(unArchivoTemplario.estaOperativa());
-		for (int i = 0; i<9 ;i++) unTurno.avanzarTurno();
+		for (int i = 0; i<18 ;i++) unTurno.avanzarTurno();
 		assertTrue(unArchivoTemplario.estaOperativa());
 
 		unArchivoTemplario.crearUnidad(unJugador);
 		//unTurno.addObserver();
 
 		
-		for (int i = 0; i<7 ;i++) unTurno.avanzarTurno();
+		for (int i = 0; i<14 ;i++) unTurno.avanzarTurno();
 		
 		Celda celdaAltoTemplario = unMapa.dameCelda(posicionAltoTemplario);
 		
 		AltoTemplario unAltoTemplario = (AltoTemplario) celdaAltoTemplario.obtenerUnidad();
 		
-		for (int i= 0; i < 5; i++) unTurno.avanzarTurno();
+		for (int i= 0; i < 10; i++) unTurno.avanzarTurno();
 		
 		assertEquals(125,unAltoTemplario.obtenerCantidadEnergia());
 		
@@ -165,12 +165,12 @@ public class AltoTemplarioTest extends TestBase {
 
 		Acceso unAcceso = (Acceso) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesBasicas, posicionAcceso, unJugador);
 
-		for (int i = 0; i < 8 ;i++) unTurno.avanzarTurno();
+		for (int i = 0; i < 16 ;i++) unTurno.avanzarTurno();
 
 		Construccion unPuertoEstelar = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesVoladoras, posicionPuertoEstelar, unJugador);
 		unTurno.addObserver(unPuertoEstelar);
 		unJugador.agregarConstruccion(unPuertoEstelar);
-		for (int i = 0; i < 10 ;i++) unTurno.avanzarTurno();
+		for (int i = 0; i < 20 ;i++) unTurno.avanzarTurno();
 		// Fin de agregado de Construcciones necesarias
 		
 		unJugador.dameAlmacenMineral().almacenarRecurso(1000);
@@ -180,7 +180,7 @@ public class AltoTemplarioTest extends TestBase {
 		//unTurno.addObserver(unArchivoTemplario);
 			
 		assertFalse(unArchivoTemplario.estaOperativa());
-		for (int i = 0; i<9 ;i++) unTurno.avanzarTurno();
+		for (int i = 0; i<18 ;i++) unTurno.avanzarTurno();
 		assertTrue(unArchivoTemplario.estaOperativa());
 
 		AltoTemplario unAltoTemplario = (AltoTemplario) unArchivoTemplario.crearUnidad(unJugador);
@@ -188,9 +188,9 @@ public class AltoTemplarioTest extends TestBase {
 		TipoUnidad unTipoUnidad = TipoUnidad.terrestre1;
 		Unidad unaUnidad = (Unidad) unAcceso.crearUnidad(unJugador, unTipoUnidad);
 		
-		for (int i = 0; i<7 ;i++) unTurno.avanzarTurno();
+		for (int i = 0; i<14 ;i++) unTurno.avanzarTurno();
 		
-		for (int i= 0; i < 5; i++) unTurno.avanzarTurno();
+		for (int i= 0; i < 10; i++) unTurno.avanzarTurno();
 
 		assertEquals(125,unAltoTemplario.obtenerCantidadEnergia());
 		
@@ -198,7 +198,9 @@ public class AltoTemplarioTest extends TestBase {
 
 		unaUnidad.mover(TipoDireccion.Abajo);
 		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
 		unaUnidad.mover(TipoDireccion.Abajo);
+		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		
         assertEquals(unaUnidad.dameCelda(),unMapa.dameCelda(new Posicion(22,6)));
@@ -242,7 +244,7 @@ public class AltoTemplarioTest extends TestBase {
 
 		factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesBasicas, posicionAccesoJug1, unJugador);
 
-		for (int i = 0; i < 8 ;i++) unTurno.avanzarTurno();
+		for (int i = 0; i < 16 ;i++) unTurno.avanzarTurno();
 
 		Construccion unPuertoEstelar = (Construccion) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesVoladoras, posicionPuertoEstelar, unJugador);
 		unTurno.addObserver(unPuertoEstelar);
@@ -260,7 +262,7 @@ public class AltoTemplarioTest extends TestBase {
 		Acceso accesoJug2 = (Acceso) factoryConstrucciones.crearConstruccion(unTipo.creadorUnidadesBasicas, posicionAcceso, unJugador);
 			
 		assertFalse(unArchivoTemplario.estaOperativa());
-		for (int i = 0; i<9 ;i++) unTurno.avanzarTurno();
+		for (int i = 0; i<18 ;i++) unTurno.avanzarTurno();
 		assertTrue(unArchivoTemplario.estaOperativa());
 
 		AltoTemplario unAltoTemplario = (AltoTemplario) unArchivoTemplario.crearUnidad(unJugador);
@@ -268,9 +270,9 @@ public class AltoTemplarioTest extends TestBase {
 		TipoUnidad unTipoUnidad = TipoUnidad.terrestre1;
 		Unidad unaUnidad = (Unidad) accesoJug2.crearUnidad(unJugador, unTipoUnidad);
 		
-		for (int i = 0; i<7 ;i++) unTurno.avanzarTurno();
+		for (int i = 0; i<14 ;i++) unTurno.avanzarTurno();
 		
-		for (int i= 0; i < 5; i++) unTurno.avanzarTurno();
+		for (int i= 0; i < 10; i++) unTurno.avanzarTurno();
 
 		assertEquals(125,unAltoTemplario.obtenerCantidadEnergia());
 		
@@ -278,7 +280,9 @@ public class AltoTemplarioTest extends TestBase {
 
 		unaUnidad.mover(TipoDireccion.Abajo);
 		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
 		unaUnidad.mover(TipoDireccion.Abajo);
+		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		
         assertEquals(unaUnidad.dameCelda(),unMapa.dameCelda(new Posicion(22,6)));
@@ -287,8 +291,10 @@ public class AltoTemplarioTest extends TestBase {
 		assertEquals(60, unaUnidad.obtenerCantidadVida());
 		assertEquals(0, unaUnidad.obtenerCantidadEscudo());
 		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
 		assertEquals(60, unaUnidad.obtenerCantidadVida());
 		assertEquals(5, unaUnidad.obtenerCantidadEscudo());
+		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		assertFalse(unaUnidad.estaViva());
 	}

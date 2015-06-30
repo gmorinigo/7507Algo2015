@@ -92,19 +92,19 @@ public class NaveCienciaTest extends TestBase {
 		for (int i=0;i<6;i++) unTurno.avanzarTurno();
 		Barraca unaBarraca = (Barraca) factoryConstrucciones.crearConstruccion(TipoConstruccion.creadorUnidadesBasicas, new Posicion(15,15), unJugador);
 		
-		for (int i=0;i<12;i++) unTurno.avanzarTurno();
+		for (int i=0;i<24;i++) unTurno.avanzarTurno();
 		
 		Fabrica unaFabrica = (Fabrica) factoryConstrucciones.crearConstruccion(TipoConstruccion.creadorUnidadesNivel2, new Posicion(25,15), unJugador);
 		
-		for (int i=0;i<12;i++) unTurno.avanzarTurno();
+		for (int i=0;i<24;i++) unTurno.avanzarTurno();
 		
 		PuertoEstelarTerran unPuerto = (PuertoEstelarTerran) factoryConstrucciones.crearConstruccion(TipoConstruccion.creadorUnidadesEspecialesYVoladoras, new Posicion(25,25), unJugador);
 		
-		for (int i=0;i<10;i++) unTurno.avanzarTurno();
+		for (int i=0;i<20;i++) unTurno.avanzarTurno();
 		
 		Unidad unaNaveCiencia = (Unidad) unPuerto.crearUnidad(unJugador,TipoUnidad.especial1);
 		
-		for (int i=0;i<10;i++) unTurno.avanzarTurno();
+		for (int i=0;i<20;i++) unTurno.avanzarTurno();
 		assertEquals(((NaveCiencia) unaNaveCiencia).obtenerCantidadEnergia(), 50);
 	}
 
@@ -129,22 +129,22 @@ public class NaveCienciaTest extends TestBase {
 		for (int i=0;i<6;i++) unTurno.avanzarTurno();
 		Barraca unaBarraca = (Barraca) factoryConstrucciones.crearConstruccion(TipoConstruccion.creadorUnidadesBasicas, new Posicion(15,15), unJugador);
 		
-		for (int i=0;i<12;i++) unTurno.avanzarTurno();
+		for (int i=0;i<24;i++) unTurno.avanzarTurno();
 		
 		Fabrica unaFabrica = (Fabrica) factoryConstrucciones.crearConstruccion(TipoConstruccion.creadorUnidadesNivel2, new Posicion(25,15), unJugador);
 		
-		for (int i=0;i<12;i++) unTurno.avanzarTurno();
+		for (int i=0;i<24;i++) unTurno.avanzarTurno();
 		
 		PuertoEstelarTerran unPuerto = (PuertoEstelarTerran) factoryConstrucciones.crearConstruccion(TipoConstruccion.creadorUnidadesEspecialesYVoladoras, new Posicion(25,25), unJugador);
 		
-		for (int i=0;i<10;i++) unTurno.avanzarTurno();
+		for (int i=0;i<20;i++) unTurno.avanzarTurno();
 		
 		Unidad unaNaveCiencia = (Unidad) unPuerto.crearUnidad(unJugador,TipoUnidad.especial1);
 		
-		for (int i=0;i<10;i++) unTurno.avanzarTurno();
+		for (int i=0;i<20;i++) unTurno.avanzarTurno();
 		assertEquals(((NaveCiencia) unaNaveCiencia).obtenerCantidadEnergia(), 50);
 
-		for (int i = 0; i <= 4; i++)
+		for (int i = 0; i <= 10; i++)
 			unTurno.avanzarTurno();
 		assertEquals(((NaveCiencia) unaNaveCiencia).obtenerCantidadEnergia(), 100);
 	}
@@ -185,10 +185,10 @@ public class NaveCienciaTest extends TestBase {
 		Unidad unaNaveCiencia = (Unidad) unPuerto.crearUnidad(unJugador,TipoUnidad.especial1);
 		
 		unTurno.addObserver(unaNaveCiencia);
-		for (int i=0;i<10;i++) unTurno.avanzarTurno();
+		for (int i=0;i<20;i++) unTurno.avanzarTurno();
 		assertEquals(((NaveCiencia) unaNaveCiencia).obtenerCantidadEnergia(), 150);
 
-		for (int i = 0; i <= 4; i++)
+		for (int i = 0; i <= 8; i++)
 			unTurno.avanzarTurno();
 		assertEquals(((NaveCiencia) unaNaveCiencia).obtenerCantidadEnergia(), 200);
 	}
@@ -232,26 +232,26 @@ public class NaveCienciaTest extends TestBase {
 		
 	/** Se crea Barraca Fabrica y Puerto Estelar Terran **/	
 		Barraca unaBarraca = (Barraca) factoryConstrucciones.crearConstruccion(TipoConstruccion.creadorUnidadesBasicas, new Posicion(15,15), unJugador);
-		for (int i=0;i<12;i++) unTurno.avanzarTurno();		
+		for (int i=0;i<24;i++) unTurno.avanzarTurno();		
 		Fabrica unaFabrica = (Fabrica) factoryConstrucciones.crearConstruccion(TipoConstruccion.creadorUnidadesNivel2, new Posicion(25,15), unJugador);
-		for (int i=0;i<12;i++) unTurno.avanzarTurno();		
+		for (int i=0;i<24;i++) unTurno.avanzarTurno();		
 		PuertoEstelarTerran unPuerto = (PuertoEstelarTerran) factoryConstrucciones.crearConstruccion(TipoConstruccion.creadorUnidadesEspecialesYVoladoras, new Posicion(25,25), unJugador);
-		for (int i=0;i<10;i++) unTurno.avanzarTurno();
+		for (int i=0;i<20;i++) unTurno.avanzarTurno();
 
 	/** Se Crea NAVE CIENCIA  **/
 		
 		NaveCiencia unaNaveCiencia = (NaveCiencia) unPuerto.crearUnidad(unJugador,TipoUnidad.especial1);
-		for (int i=0;i<10;i++) unTurno.avanzarTurno();
+		for (int i=0;i<20;i++) unTurno.avanzarTurno();
 		assertTrue(unaNaveCiencia.estaOperativa());
 		assertTrue(unaNaveCiencia instanceof NaveCiencia);
 	
 	/** Se Crea unidadProtoss  **/
 		factoryConstruccionesProtoss.crearConstruccion(TipoConstruccion.creadorUnidadesBasicas, new Posicion(17,14), otroJugador);
-		for (int i=0;i<12;i++) unTurno.avanzarTurno();		
+		for (int i=0;i<24;i++) unTurno.avanzarTurno();		
 		PuertoEstelarProtoss unPuertoProtoss = (PuertoEstelarProtoss) factoryConstruccionesProtoss.crearConstruccion(TipoConstruccion.creadorUnidadesVoladoras, new Posicion(27,25), otroJugador);
-		for (int i=0;i<10;i++) unTurno.avanzarTurno();	
+		for (int i=0;i<20;i++) unTurno.avanzarTurno();	
 		Unidad unidadProtoss = (Unidad) unPuertoProtoss.crearUnidad(otroJugador,TipoUnidad.volador1);
-		for (int i=0;i<10;i++) unTurno.avanzarTurno();
+		for (int i=0;i<20;i++) unTurno.avanzarTurno();
 		
 		assertEquals(100, unidadProtoss.obtenerCantidadEscudo());
 		assertEquals(150, unidadProtoss.obtenerCantidadVida());
@@ -299,36 +299,37 @@ public class NaveCienciaTest extends TestBase {
 		
 		/** Se crea Barraca Fabrica y Puerto Estelar Terran **/	
 		Barraca unaBarraca = (Barraca) factoryConstrucciones.crearConstruccion(TipoConstruccion.creadorUnidadesBasicas, new Posicion(15,15), unJugador);
-		for (int i=0;i<12;i++) unTurno.avanzarTurno();		
+		for (int i=0;i<24;i++) unTurno.avanzarTurno();		
 		Fabrica unaFabrica = (Fabrica) factoryConstrucciones.crearConstruccion(TipoConstruccion.creadorUnidadesNivel2, new Posicion(25,15), unJugador);
-		for (int i=0;i<12;i++) unTurno.avanzarTurno();		
+		for (int i=0;i<24;i++) unTurno.avanzarTurno();		
 		PuertoEstelarTerran unPuerto = (PuertoEstelarTerran) factoryConstrucciones.crearConstruccion(TipoConstruccion.creadorUnidadesEspecialesYVoladoras, new Posicion(25,25), unJugador);
-		for (int i=0;i<10;i++) unTurno.avanzarTurno();
+		for (int i=0;i<20;i++) unTurno.avanzarTurno();
 		
 		/** Se Crea NAVE CIENCIA  **/
 		
 		NaveCiencia unaNaveCiencia = (NaveCiencia) unPuerto.crearUnidad(unJugador,TipoUnidad.especial1);
-		for (int i=0;i<10;i++) unTurno.avanzarTurno();
+		for (int i=0;i<20;i++) unTurno.avanzarTurno();
 		assertTrue(unaNaveCiencia.estaOperativa());
 		assertTrue(unaNaveCiencia instanceof NaveCiencia);
 		
 		/** Se Crea unidadProtoss  **/
 		factoryConstruccionesProtoss.crearConstruccion(TipoConstruccion.creadorUnidadesBasicas, new Posicion(17,14), otroJugador);
-		for (int i=0;i<12;i++) unTurno.avanzarTurno();		
+		for (int i=0;i<24;i++) unTurno.avanzarTurno();		
 		PuertoEstelarProtoss unPuertoProtoss = (PuertoEstelarProtoss) factoryConstruccionesProtoss.crearConstruccion(TipoConstruccion.creadorUnidadesVoladoras, new Posicion(27,25), otroJugador);
-		for (int i=0;i<10;i++) unTurno.avanzarTurno();	
+		for (int i=0;i<20;i++) unTurno.avanzarTurno();	
 		Unidad unidadProtoss = (Unidad) unPuertoProtoss.crearUnidad(otroJugador,TipoUnidad.volador1);
-		for (int i=0;i<10;i++) unTurno.avanzarTurno();
+		for (int i=0;i<20;i++) unTurno.avanzarTurno();
 		
 		assertEquals(100, unidadProtoss.obtenerCantidadEscudo());
 		assertEquals(150, unidadProtoss.obtenerCantidadVida());
 		unaNaveCiencia.atacar(unidadProtoss.dameCelda(), TipoAtaqueNaveCiencia.Radiacion);
 		assertEquals(80, unidadProtoss.obtenerCantidadEscudo());
 		assertEquals(150, unidadProtoss.obtenerCantidadVida());
-		for (int i = 0 ; i < 16;i++){
+		for (int i = 0 ; i < 32;i++){
 			unTurno.avanzarTurno();
 			assertTrue(unidadProtoss.estaViva());
 		}
+		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		assertFalse(unidadProtoss.estaViva());
 	}

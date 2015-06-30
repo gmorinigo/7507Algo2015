@@ -38,7 +38,13 @@ public class AsimiladorTest extends TestBase{
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
 		assertFalse(asimilador.estaTerminada());
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		assertTrue(asimilador.estaTerminada());
@@ -60,12 +66,18 @@ public class AsimiladorTest extends TestBase{
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
 		assertFalse(asimilador.estaTerminada());
+		unTurno.avanzarTurno();
+		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		unTurno.avanzarTurno();
 		assertTrue(asimilador.estaTerminada());
 		
-		for (int i = 0; i < 8; i++) {
+		for (int i = 0; i < 16; i++) {
 			unTurno.avanzarTurno();
 		}
 		

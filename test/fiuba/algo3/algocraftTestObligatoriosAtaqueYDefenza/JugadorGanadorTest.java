@@ -59,7 +59,7 @@ public class JugadorGanadorTest extends TestBase{
 		Construccion expansor3 = (Construccion) factoryConstruccionesP.crearConstruccion(TipoConstruccion.expansorPoblacion, new Posicion(130,130), unJugador);
 		Construccion expansor4 = (Construccion) factoryConstruccionesT.crearConstruccion(TipoConstruccion.expansorPoblacion, new Posicion(134,134), otroJugador);
 		Construccion expansor5 = (Construccion) factoryConstruccionesT.crearConstruccion(TipoConstruccion.expansorPoblacion, new Posicion(138,138), otroJugador);
-		for (int i=0;i<10;i++) unTurno.avanzarTurno();
+		for (int i=0;i<20;i++) unTurno.avanzarTurno();
 	
 		assertTrue(unExpansor.estaOperativa());
 		assertTrue(expansor3.estaOperativa());
