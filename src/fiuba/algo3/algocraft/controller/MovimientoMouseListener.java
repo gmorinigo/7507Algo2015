@@ -40,6 +40,7 @@ public class MovimientoMouseListener implements MouseListener {
 	
 		try {
 			unidad.mover(direccion);
+			this.juego.avisarObservers();
 		}  catch (MaximaCapacidadDeTransporteSuperadaException e) {
 			JOptionPane.showMessageDialog(null,"Nave de Transporte llena"); 
 		} catch (NoSePuedeAgregarALaNaveDeTransporteUnaUnidadVoladora e) {

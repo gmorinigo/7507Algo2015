@@ -102,7 +102,7 @@ public class VentanaMapa extends JFrame implements Observer{
 		lblPoblacionTotal = new JLabel();
 		panelTop.add(lblPoblacionTotal);
 		
-		JLabel lvlNroTurnoActual = new JLabel("Nro Turno Actual:");
+		JLabel lvlNroTurnoActual = new JLabel("  Nro Turno Actual:");
 		panelTop.add(lvlNroTurnoActual);
 		
 		lblNroTurno = new JLabel();

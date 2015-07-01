@@ -196,5 +196,9 @@ public class Jugador {
 	public int obtenerCantidadPoblacionOcupada() {
 		return (this.dameLimiteDePoblacion() - this.obtenerCantidadPoblacionDisponible());
 	}
+
+	public boolean esUnidadDelJugado(Unidad unaUnidad) {
+		return (this.unidadesTerminadas.contains(unaUnidad));
+	}
 	
 }

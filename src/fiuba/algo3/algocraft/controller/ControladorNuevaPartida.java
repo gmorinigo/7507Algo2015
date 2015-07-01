@@ -82,7 +82,7 @@ public class ControladorNuevaPartida extends ControllerGui {
 				return;
 			}
 			VentanaMapa unMapa = new VentanaMapa(juego);
-			unMapa.setVisible(true);
+			//unMapa.setVisible(true);
 			//vista.setVisible(false);
 		}
 	}
