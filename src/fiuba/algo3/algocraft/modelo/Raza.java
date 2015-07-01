@@ -33,4 +33,6 @@ public abstract class Raza {
 	public boolean equals(Raza raza) {
 		return (raza.raza == this.raza);
 	}
+
+	public abstract boolean esRazaProtoss();
 }

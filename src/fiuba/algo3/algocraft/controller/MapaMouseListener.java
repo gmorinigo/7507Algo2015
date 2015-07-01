@@ -27,7 +27,7 @@ public class MapaMouseListener extends MouseAdapter {
 	}
     
     
-	@SuppressWarnings("static-access")
+	@SuppressWarnings({ "static-access", "unused" })
 	public void mouseReleased(MouseEvent arg0) {
 		Mapa mapaDelJuego = Mapa.getInstance();
 		Turno unTurno = Turno.getInstance();
@@ -36,14 +36,44 @@ public class MapaMouseListener extends MouseAdapter {
 		
 		JPopupMenu popupMenu = new JPopupMenu("Menu contextual");
 		
+		// Celda con unidad enemiga
+		if (celdaPresionada.tieneUnidad()){
+			if (!unTurno.obtenerJugadorConTurno().esUnidadDelJugador(celdaPresionada.obtenerUnidad())){
+				JOptionPane.showMessageDialog(null,"Aca mostrar la energia de la unidad");
+				return;
+			}
+		}
+
+		// Celda con construccion enemiga
+		if (celdaPresionada.tieneConstruccion()){
+			if (!unTurno.obtenerJugadorConTurno().esUnidadDelJugador(celdaPresionada.obtenerUnidad())){
+				JOptionPane.showMessageDialog(null,"Aca mostrar la energia de la construccion Enemiga");
+				return;
+			}
+		}
+		
+		// Celda con construccion no finalizada
+		if (celdaPresionada.tieneConstruccion()){
+			if (!celdaPresionada.obtenerConstruccion().estaTerminada()){
+				JOptionPane.showMessageDialog(null,"Aca mostrar la energia de la construccion y la cantidad de turnos faltantes");
+				return;
+			}
+		}
+		
 		// Celda con mineral con/sin construccion
 		if (celdaPresionada.tieneMineral()){
 			if (celdaPresionada.celdaOcupada()){
 				JMenuItem mitemMineral = popupMenu.add(String.format("CeldaOcupada"));
 			}
 			else{
-				JMenuItem mitemMineral = popupMenu.add(String.format("Crear extractorMineral"));
-				mitemMineral.addMouseListener(new CeldaMineralMouseListener(this.ventanaMapa, this.juego,posicionCeldaPresionada));
+				if (unTurno.obtenerJugadorConTurno().dameRaza().esRazaProtoss()){
+					JMenuItem mitemMineral = popupMenu.add(String.format("Crear Nexo Mineral (Extractor de Mineral)"));
+					mitemMineral.addMouseListener(new CeldaMineralMouseListener(this.ventanaMapa, this.juego,posicionCeldaPresionada));
+				}
+				else{
+					JMenuItem mitemMineral = popupMenu.add(String.format("Crear Centro Mineral (Extractor de Mineral)"));
+					mitemMineral.addMouseListener(new CeldaMineralMouseListener(this.ventanaMapa, this.juego,posicionCeldaPresionada));					
+				}
 			}
 		}
 		
@@ -53,8 +83,14 @@ public class MapaMouseListener extends MouseAdapter {
 				JMenuItem mitemGas = popupMenu.add(String.format("CeldaOcupada"));
 			}
 			else{
-				JMenuItem mitemGas = popupMenu.add(String.format("Crear extractorGas"));
-				mitemGas.addMouseListener(new CeldaGasMouseListener(this.ventanaMapa, this.juego,posicionCeldaPresionada));
+				if (unTurno.obtenerJugadorConTurno().dameRaza().esRazaProtoss()){
+					JMenuItem mitemGas = popupMenu.add(String.format("Crear Asimilador (Extractor de Gas)"));
+					mitemGas.addMouseListener(new CeldaGasMouseListener(this.ventanaMapa, this.juego,posicionCeldaPresionada));
+				}
+				else{
+					JMenuItem mitemGas = popupMenu.add(String.format("Crear Refineria (Extractor de Gas)"));
+					mitemGas.addMouseListener(new CeldaGasMouseListener(this.ventanaMapa, this.juego,posicionCeldaPresionada));
+				}
 			}
 		}	
 		
@@ -65,11 +101,12 @@ public class MapaMouseListener extends MouseAdapter {
 		
 		// Celda Libre
 		if (!celdaPresionada.tieneGas() && !celdaPresionada.tieneMineral() && !celdaPresionada.esCeldaAerea() && !celdaPresionada.celdaOcupada()){ 
-			//unTurno.obtenerJugadorConTurno().dameRaza()
-			JMenuItem mitemPoblacion = popupMenu.add(String.format("Crear expansorPoblacion"));
-			mitemPoblacion.addMouseListener(new ExpansorPoblacionMouseListener(this.ventanaMapa, this.juego,posicionCeldaPresionada));
-			JMenuItem mitemUnidadesBasicas = popupMenu.add(String.format("Crear creadorUnidadesBasicas"));
-			mitemUnidadesBasicas.addMouseListener(new CreadorUnidadesBasicasMouseListener(this.ventanaMapa, this.juego,posicionCeldaPresionada));
+			if (unTurno.obtenerJugadorConTurno().dameRaza().esRazaProtoss()){
+				this.mostrarOpcionesCeldaLibreProtoss(popupMenu, posicionCeldaPresionada);
+			}
+			else{
+				this.mostrarOpcionesCeldaLibreTerran(popupMenu, posicionCeldaPresionada);
+			}
 		}
 		
 		// Celda con construccion que no es extractora
@@ -82,33 +119,50 @@ public class MapaMouseListener extends MouseAdapter {
 		
 		// Celda con unidad
 		if(celdaPresionada.tieneUnidad()){
-			if (!unTurno.obtenerJugadorConTurno().esUnidadDelJugado(celdaPresionada.obtenerUnidad())){
-				JOptionPane.showMessageDialog(null,"La unidad es Enemiga"); 
-			}
-			else{
-				JMenuItem mitemMovimientoArriba = popupMenu.add(String.format("Mover Arriba"));
-				mitemMovimientoArriba.addMouseListener(new MovimientoMouseListener(this.ventanaMapa,this.juego,posicionCeldaPresionada,TipoDireccion.Arriba,celdaPresionada.obtenerUnidad()));
-				JMenuItem mitemMovimientoAbajo = popupMenu.add(String.format("Mover Abajo"));
-				mitemMovimientoAbajo.addMouseListener(new MovimientoMouseListener(this.ventanaMapa,this.juego,posicionCeldaPresionada,TipoDireccion.Abajo,celdaPresionada.obtenerUnidad()));
-				JMenuItem mitemMovimientoDerecha = popupMenu.add(String.format("Mover Derecha"));
-				mitemMovimientoDerecha.addMouseListener(new MovimientoMouseListener(this.ventanaMapa,this.juego,posicionCeldaPresionada,TipoDireccion.Derecha,celdaPresionada.obtenerUnidad()));
-				JMenuItem mitemMovimientoIzquierda = popupMenu.add(String.format("Mover Izquierda"));
-				mitemMovimientoIzquierda.addMouseListener(new MovimientoMouseListener(this.ventanaMapa,this.juego,posicionCeldaPresionada,TipoDireccion.Izquierda,celdaPresionada.obtenerUnidad()));
-				JMenuItem mitemMovimientoDiagonalAbajoDerecha = popupMenu.add(String.format("Mover DiagonalAbajoDerecha"));
-				mitemMovimientoDiagonalAbajoDerecha.addMouseListener(new MovimientoMouseListener(this.ventanaMapa,this.juego,posicionCeldaPresionada,TipoDireccion.DiagonalAbajoDerecha,celdaPresionada.obtenerUnidad()));
-				JMenuItem mitemMovimientoDiagonalAbajoIzquierda = popupMenu.add(String.format("Mover DiagonalAbajoIzquierda"));
-				mitemMovimientoDiagonalAbajoIzquierda.addMouseListener(new MovimientoMouseListener(this.ventanaMapa,this.juego,posicionCeldaPresionada,TipoDireccion.DiagonalAbajoIzquierda,celdaPresionada.obtenerUnidad()));
-				JMenuItem mitemMovimientoDiagonalArribaDerecha = popupMenu.add(String.format("Mover DiagonalArribaDerecha"));
-				mitemMovimientoDiagonalArribaDerecha.addMouseListener(new MovimientoMouseListener(this.ventanaMapa,this.juego,posicionCeldaPresionada,TipoDireccion.DiagonalArribaDerecha,celdaPresionada.obtenerUnidad()));
-				JMenuItem mitemMovimientoDiagonalArribaIzquierda = popupMenu.add(String.format("Mover DiagonalArribaIzquierda"));
-				mitemMovimientoDiagonalArribaIzquierda.addMouseListener(new MovimientoMouseListener(this.ventanaMapa,this.juego,posicionCeldaPresionada,TipoDireccion.DiagonalArribaIzquierda,celdaPresionada.obtenerUnidad()));
-			}
-			
+			JMenuItem mitemMovimientoArriba = popupMenu.add(String.format("Mover Arriba"));
+			mitemMovimientoArriba.addMouseListener(new MovimientoMouseListener(this.ventanaMapa,this.juego,posicionCeldaPresionada,TipoDireccion.Arriba,celdaPresionada.obtenerUnidad()));
+			JMenuItem mitemMovimientoAbajo = popupMenu.add(String.format("Mover Abajo"));
+			mitemMovimientoAbajo.addMouseListener(new MovimientoMouseListener(this.ventanaMapa,this.juego,posicionCeldaPresionada,TipoDireccion.Abajo,celdaPresionada.obtenerUnidad()));
+			JMenuItem mitemMovimientoDerecha = popupMenu.add(String.format("Mover Derecha"));
+			mitemMovimientoDerecha.addMouseListener(new MovimientoMouseListener(this.ventanaMapa,this.juego,posicionCeldaPresionada,TipoDireccion.Derecha,celdaPresionada.obtenerUnidad()));
+			JMenuItem mitemMovimientoIzquierda = popupMenu.add(String.format("Mover Izquierda"));
+			mitemMovimientoIzquierda.addMouseListener(new MovimientoMouseListener(this.ventanaMapa,this.juego,posicionCeldaPresionada,TipoDireccion.Izquierda,celdaPresionada.obtenerUnidad()));
+			JMenuItem mitemMovimientoDiagonalAbajoDerecha = popupMenu.add(String.format("Mover DiagonalAbajoDerecha"));
+			mitemMovimientoDiagonalAbajoDerecha.addMouseListener(new MovimientoMouseListener(this.ventanaMapa,this.juego,posicionCeldaPresionada,TipoDireccion.DiagonalAbajoDerecha,celdaPresionada.obtenerUnidad()));
+			JMenuItem mitemMovimientoDiagonalAbajoIzquierda = popupMenu.add(String.format("Mover DiagonalAbajoIzquierda"));
+			mitemMovimientoDiagonalAbajoIzquierda.addMouseListener(new MovimientoMouseListener(this.ventanaMapa,this.juego,posicionCeldaPresionada,TipoDireccion.DiagonalAbajoIzquierda,celdaPresionada.obtenerUnidad()));
+			JMenuItem mitemMovimientoDiagonalArribaDerecha = popupMenu.add(String.format("Mover DiagonalArribaDerecha"));
+			mitemMovimientoDiagonalArribaDerecha.addMouseListener(new MovimientoMouseListener(this.ventanaMapa,this.juego,posicionCeldaPresionada,TipoDireccion.DiagonalArribaDerecha,celdaPresionada.obtenerUnidad()));
+			JMenuItem mitemMovimientoDiagonalArribaIzquierda = popupMenu.add(String.format("Mover DiagonalArribaIzquierda"));
+			mitemMovimientoDiagonalArribaIzquierda.addMouseListener(new MovimientoMouseListener(this.ventanaMapa,this.juego,posicionCeldaPresionada,TipoDireccion.DiagonalArribaIzquierda,celdaPresionada.obtenerUnidad()));
 		}
 		
 		popupMenu.setEnabled(true);
-		//popupMenu.show(arg0.getComponent(), arg0.getX(), arg0.getY());
+		popupMenu.show(arg0.getComponent(), arg0.getX(), arg0.getY());
 			
+	}
+	
+	
+	private void mostrarOpcionesCeldaLibreProtoss(JPopupMenu popupMenu, Posicion posicionCeldaPresionada){
+		JMenuItem mitemPoblacion = popupMenu.add(String.format("Crear Pilon (Expansor Poblacion)"));
+		mitemPoblacion.addMouseListener(new ExpansorPoblacionMouseListener(this.ventanaMapa, this.juego,posicionCeldaPresionada));
+		JMenuItem mitemUnidadesBasicas = popupMenu.add(String.format("Crear Acceso (Creador Unidades Basicas)"));
+		mitemUnidadesBasicas.addMouseListener(new CreadorUnidadesBasicasMouseListener(this.ventanaMapa, this.juego,posicionCeldaPresionada));
+		JMenuItem mitemUnidadesVoladoras = popupMenu.add(String.format("Crear Puerto Estelar (Creador unidades voladoras)"));
+		mitemUnidadesVoladoras.addMouseListener(new CreadorUnidadesVoladorasMouseListener(this.ventanaMapa, this.juego,posicionCeldaPresionada));
+		JMenuItem mitemArchivosTemplarios = popupMenu.add(String.format("Crear Archivos Templarios (Creador unidades Especiales)"));
+		mitemArchivosTemplarios.addMouseListener(new ArchivosTemplariosMouseListener(this.ventanaMapa, this.juego,posicionCeldaPresionada));
+	}
+	
+	private void mostrarOpcionesCeldaLibreTerran(JPopupMenu popupMenu, Posicion posicionCeldaPresionada){	
+		JMenuItem mitemPoblacion = popupMenu.add(String.format("Crear Deposito de Suministros (Expansor Poblacion)"));
+		mitemPoblacion.addMouseListener(new ExpansorPoblacionMouseListener(this.ventanaMapa, this.juego,posicionCeldaPresionada));
+		JMenuItem mitemUnidadesBasicas = popupMenu.add(String.format("Crear Barraca (Creador Unidades Basicas)"));
+		mitemUnidadesBasicas.addMouseListener(new CreadorUnidadesBasicasMouseListener(this.ventanaMapa, this.juego,posicionCeldaPresionada));
+		JMenuItem mitemFabrica = popupMenu.add(String.format("Crear Fabrica (Creador unidades voladoras y Especiales)"));
+		mitemFabrica.addMouseListener(new FabricaMouseListener(this.ventanaMapa, this.juego,posicionCeldaPresionada));
+		JMenuItem mitemUnidadesVoladoras = popupMenu.add(String.format("Crear Puerto Estelar (Creador unidades voladoras y Especiales)"));
+		mitemUnidadesVoladoras.addMouseListener(new CreadorUnidadesVoladorasMouseListener(this.ventanaMapa, this.juego,posicionCeldaPresionada));
 	}
 	
 	public static Posicion convertirPixAPosicionCelda(int x, int y) {

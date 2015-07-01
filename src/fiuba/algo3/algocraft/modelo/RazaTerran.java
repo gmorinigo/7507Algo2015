@@ -23,5 +23,9 @@ public class RazaTerran extends Raza{
 		}
 		return contador;
 	}
+
+	public boolean esRazaProtoss() {
+		return false;
+	}
 	    		  
 }
