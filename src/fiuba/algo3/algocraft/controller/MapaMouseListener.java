@@ -46,7 +46,7 @@ public class MapaMouseListener extends MouseAdapter {
 
 		// Celda con construccion enemiga
 		if (celdaPresionada.tieneConstruccion()){
-			if (!unTurno.obtenerJugadorConTurno().esUnidadDelJugador(celdaPresionada.obtenerUnidad())){
+			if (!unTurno.obtenerJugadorConTurno().esConstruccionDelJugador(celdaPresionada.obtenerConstruccion())){
 				JOptionPane.showMessageDialog(null,"Aca mostrar la energia de la construccion Enemiga");
 				return;
 			}

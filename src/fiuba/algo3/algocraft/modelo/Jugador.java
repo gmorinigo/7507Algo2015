@@ -200,5 +200,9 @@ public class Jugador {
 	public boolean esUnidadDelJugador(Unidad unaUnidad) {
 		return (this.unidadesTerminadas.contains(unaUnidad));
 	}
+
+	public boolean esConstruccionDelJugador(Construccion unaConstruccion) {
+		return (this.construcciones.contains(unaConstruccion));
+	}
 	
 }
