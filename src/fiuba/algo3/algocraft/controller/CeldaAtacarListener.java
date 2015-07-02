@@ -9,13 +9,20 @@ import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.turnos.Turno;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 
-public class celdaAtacarListener implements MouseListener {
+public class CeldaAtacarListener implements MouseListener {
 	private Unidad unidad;
 	private Celda celdaAtacar;
 	
-	public celdaAtacarListener(Unidad unidad) {
+	public CeldaAtacarListener(Unidad unidad,Celda celda) {
 		
 		this.unidad = unidad;
+		celdaAtacar = celda;
+	}
+	
+	@Override
+	public void mouseReleased(MouseEvent arg0) {
+		
+		unidad.atacar(celdaAtacar);
 	}
 
 	@Override
@@ -41,13 +48,6 @@ public class celdaAtacarListener implements MouseListener {
 
 	}
 
-	@Override
-	public void mouseReleased(MouseEvent arg0) {
 
-		Mapa mapaDelJuego = Mapa.getInstance();
-		Posicion posicionCeldaPresionada =  MapaMouseListener.convertirPixAPosicionCelda(arg0.getX(),arg0.getY());
-		Celda celdaAtacar = mapaDelJuego.dameCelda(posicionCeldaPresionada);
-		unidad.atacar(celdaAtacar);
-	}
 
 }

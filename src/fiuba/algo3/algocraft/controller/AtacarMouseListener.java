@@ -22,43 +22,37 @@ import fiuba.algo3.algocraft.vista.ventanas.VentanaMapa;
 
 public class AtacarMouseListener implements MouseListener/*,MouseMotionListener */{
 
-	private AlgoCraft juego;
-	private Posicion posicionCeldaPresionada;
 	private Unidad unidad;
-	private Celda celdaAtacar;
-	private VentanaMapa ventanaMapa;
 	
-	public AtacarMouseListener(VentanaMapa ventanaMapa, AlgoCraft juego,Posicion posicionCeldaPresionada, Unidad obtenerUnidad) {
-		this.juego = juego;
-		this.posicionCeldaPresionada = posicionCeldaPresionada;
+	public AtacarMouseListener(Unidad obtenerUnidad) {
 		this.unidad = obtenerUnidad;
-		this.ventanaMapa = ventanaMapa;
 	}
-	
+
+	@Override
 	public void mouseReleased(MouseEvent arg0) {
-		ventanaMapa.addMouseListener(new celdaAtacarListener(unidad));
+		MapaMouseListener.activarAtaque();
+		MapaMouseListener.unidad = unidad;
 	}
 
 	@Override
-	public void mouseClicked(MouseEvent arg0) {
+	public void mouseClicked(MouseEvent e) {
+
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void mouseEntered(MouseEvent arg0) {
+	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void mouseExited(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void mousePressed(MouseEvent arg0) {
+	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
 
 	}

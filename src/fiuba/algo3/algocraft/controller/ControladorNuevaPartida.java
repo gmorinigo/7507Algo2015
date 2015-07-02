@@ -2,7 +2,6 @@ package fiuba.algo3.algocraft.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JOptionPane;
 
 import fiuba.algo3.algocraft.modelo.AlgoCraft;
@@ -29,10 +28,10 @@ public class ControladorNuevaPartida extends ControllerGui {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			
 			AlgoCraft juego = new AlgoCraft();
 			Raza razaJug1;
 			Raza razaJug2;
+	            
 			switch (vista.dameRazaSeleccionadaJug1()) {
 			case "":
 				JOptionPane.showMessageDialog(null, "Seleccione una raza para el jugador 1");

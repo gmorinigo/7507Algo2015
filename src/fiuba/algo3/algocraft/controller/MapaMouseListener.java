@@ -2,6 +2,7 @@ package fiuba.algo3.algocraft.controller;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
@@ -12,6 +13,7 @@ import fiuba.algo3.algocraft.modelo.mapa.Celda;
 import fiuba.algo3.algocraft.modelo.mapa.Mapa;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.turnos.Turno;
+import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 import fiuba.algo3.algocraft.modelo.unidades.movimientos.Movimiento.TipoDireccion;
 import fiuba.algo3.algocraft.vista.ventanas.VentanaMapa;
 
@@ -19,7 +21,8 @@ public class MapaMouseListener extends MouseAdapter {
 	
 	private VentanaMapa ventanaMapa;
 	private AlgoCraft juego;
-	private boolean ataqueActivado;
+	private static boolean ataqueActivado = false;
+	public static Unidad unidad;
 	
     public MapaMouseListener(VentanaMapa ventanaMapa, AlgoCraft juego) {
     	this.ventanaMapa = ventanaMapa;
@@ -39,6 +42,10 @@ public class MapaMouseListener extends MouseAdapter {
 		// Celda con unidad enemiga
 		if (celdaPresionada.tieneUnidad()){
 			if (!unTurno.obtenerJugadorConTurno().esUnidadDelJugador(celdaPresionada.obtenerUnidad())){
+				if (ataqueActivado){
+					unidad.atacar(celdaPresionada);
+					this.desactivarAtaque();
+				}
 				if(celdaPresionada.obtenerUnidad().getJugador().dameRaza().esRazaProtoss())
 				JOptionPane.showMessageDialog(null,"escudo: "+ celdaPresionada.obtenerUnidad().obtenerCantidadEscudo());	
 				JOptionPane.showMessageDialog(null,"vida: "+ celdaPresionada.obtenerUnidad().obtenerCantidadVida());
@@ -49,6 +56,10 @@ public class MapaMouseListener extends MouseAdapter {
 		// Celda con construccion enemiga
 		if (celdaPresionada.tieneConstruccion()){
 			if (!unTurno.obtenerJugadorConTurno().esConstruccionDelJugador(celdaPresionada.obtenerConstruccion())){
+				if (ataqueActivado){
+					unidad.atacar(celdaPresionada);
+					this.desactivarAtaque();
+				}
 				JOptionPane.showMessageDialog(null,"vida: "+ celdaPresionada.obtenerConstruccion().obtenerCantidadVida());				
 			return;
 			}
@@ -122,7 +133,7 @@ public class MapaMouseListener extends MouseAdapter {
 		// Celda con unidad
 		if(celdaPresionada.tieneUnidad()){
 			JMenuItem mitemAtacar = popupMenu.add(String.format("Atacar"));
-			mitemAtacar.addMouseListener(new AtacarMouseListener(this.ventanaMapa,this.juego,posicionCeldaPresionada,celdaPresionada.obtenerUnidad()));
+			mitemAtacar.addMouseListener(new AtacarMouseListener(celdaPresionada.obtenerUnidad()));
 			JMenuItem mitemMovimientoArriba = popupMenu.add(String.format("Mover Arriba"));
 			mitemMovimientoArriba.addMouseListener(new MovimientoMouseListener(this.ventanaMapa,this.juego,posicionCeldaPresionada,TipoDireccion.Arriba,celdaPresionada.obtenerUnidad()));
 			JMenuItem mitemMovimientoAbajo = popupMenu.add(String.format("Mover Abajo"));
@@ -172,6 +183,14 @@ public class MapaMouseListener extends MouseAdapter {
 	public static Posicion convertirPixAPosicionCelda(int x, int y) {
 		//Resto el origen de coordenadas y divido por la cantidad de pixeles
 		return new Posicion(((y-40)/30),((x-5)/30));
+	}
+	
+	public static void activarAtaque(){
+		ataqueActivado = true;
+	}
+	
+	public static void desactivarAtaque(){
+		ataqueActivado = false;
 	}
 
 }
