@@ -39,7 +39,9 @@ public class MapaMouseListener extends MouseAdapter {
 		// Celda con unidad enemiga
 		if (celdaPresionada.tieneUnidad()){
 			if (!unTurno.obtenerJugadorConTurno().esUnidadDelJugador(celdaPresionada.obtenerUnidad())){
-				JOptionPane.showMessageDialog(null,"Aca mostrar la energia de la unidad");
+				if(celdaPresionada.obtenerUnidad().getJugador().dameRaza().esRazaProtoss())
+				JOptionPane.showMessageDialog(null,"escudo: "+ celdaPresionada.obtenerUnidad().obtenerCantidadEscudo());	
+				JOptionPane.showMessageDialog(null,"vida: "+ celdaPresionada.obtenerUnidad().obtenerCantidadVida());
 				return;
 			}
 		}
@@ -47,15 +49,15 @@ public class MapaMouseListener extends MouseAdapter {
 		// Celda con construccion enemiga
 		if (celdaPresionada.tieneConstruccion()){
 			if (!unTurno.obtenerJugadorConTurno().esConstruccionDelJugador(celdaPresionada.obtenerConstruccion())){
-				JOptionPane.showMessageDialog(null,"Aca mostrar la energia de la construccion Enemiga");
-				return;
+				JOptionPane.showMessageDialog(null,"vida: "+ celdaPresionada.obtenerConstruccion().obtenerCantidadVida());				
+			return;
 			}
 		}
 		
 		// Celda con construccion no finalizada
 		if (celdaPresionada.tieneConstruccion()){
 			if (!celdaPresionada.obtenerConstruccion().estaTerminada()){
-				JOptionPane.showMessageDialog(null,"Aca mostrar la energia de la construccion y la cantidad de turnos faltantes");
+				JOptionPane.showMessageDialog(null,"turnos faltantes: ");
 				return;
 			}
 		}
@@ -119,6 +121,8 @@ public class MapaMouseListener extends MouseAdapter {
 		
 		// Celda con unidad
 		if(celdaPresionada.tieneUnidad()){
+			JMenuItem mitemAtacar = popupMenu.add(String.format("Atacar"));
+			mitemAtacar.addMouseListener(new AtacarMouseListener(this.ventanaMapa,this.juego,posicionCeldaPresionada,celdaPresionada.obtenerUnidad()));
 			JMenuItem mitemMovimientoArriba = popupMenu.add(String.format("Mover Arriba"));
 			mitemMovimientoArriba.addMouseListener(new MovimientoMouseListener(this.ventanaMapa,this.juego,posicionCeldaPresionada,TipoDireccion.Arriba,celdaPresionada.obtenerUnidad()));
 			JMenuItem mitemMovimientoAbajo = popupMenu.add(String.format("Mover Abajo"));
