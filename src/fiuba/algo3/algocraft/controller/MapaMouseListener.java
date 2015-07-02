@@ -19,7 +19,7 @@ public class MapaMouseListener extends MouseAdapter {
 	
 	private VentanaMapa ventanaMapa;
 	private AlgoCraft juego;
-
+	private boolean ataqueActivado;
 	
     public MapaMouseListener(VentanaMapa ventanaMapa, AlgoCraft juego) {
     	this.ventanaMapa = ventanaMapa;
