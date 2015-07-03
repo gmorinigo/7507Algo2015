@@ -122,7 +122,7 @@ public abstract class Celda implements Dibujable {
 		if(!this.esAtacable())
 			return false;
 		
-		if (this.celdaFueraDelRangoDeAtaqueEnemigo(unaUnidadAtacante)) return false;
+		if (this.celdaConConstruccionFueraDelRangoDeAtaqueEnemigo(unaUnidadAtacante)) return false;
 		
 		if(this.construccion.sonUnidadesDelMismoJugador(unaUnidadAtacante)){
 			return false;
@@ -130,6 +130,26 @@ public abstract class Celda implements Dibujable {
 		
 		return this.construccion.recibirataque(unaUnidadAtacante);
 	}
+
+	private boolean celdaConConstruccionFueraDelRangoDeAtaqueEnemigo(Unidad unaUnidadAtacante) {
+		int rango = unaUnidadAtacante.getRangoAtaque(this.construccion);
+		int posicionXUnidadAtacante = unaUnidadAtacante.dameCelda().obtenerPosicion().dameColumna();
+		int posicionYUnidadAtacante = unaUnidadAtacante.dameCelda().obtenerPosicion().dameFila();
+		
+		// esta a la derecha del rango
+		if (this.posicion.dameColumna() > (posicionXUnidadAtacante + rango)) return true;
+		
+		// esta a la izquierda del rango
+		if (this.posicion.dameColumna() < (posicionXUnidadAtacante - rango)) return true;
+		
+		// esta por encima del rango
+		if (this.posicion.dameFila() > (posicionYUnidadAtacante + rango)) return true;
+		
+		// esta por debajo del rango
+		if (this.posicion.dameFila() < (posicionYUnidadAtacante - rango)) return true;
+		return false;
+	}
+
 
 	private boolean celdaFueraDelRangoDeAtaqueEnemigo(Unidad unaUnidadAtacante) {
 		int rango = unaUnidadAtacante.getRangoAtaque(this.unidad);
