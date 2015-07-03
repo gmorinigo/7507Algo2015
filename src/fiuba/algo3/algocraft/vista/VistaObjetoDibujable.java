@@ -107,8 +107,8 @@ public abstract class VistaObjetoDibujable implements Observer{
 				//Obtiene el color
 				Color c1=new Color(bi.getRGB(x, y));
 				// Color RGB -> Fuerzo el Azul
-				if (color.equals("Rojo")) biDestino.setRGB(x, y, new Color(80,c1.getGreen(),c1.getBlue()).getRGB());
-				if (color.equals("Verde")) biDestino.setRGB(x, y, new Color(c1.getRed(),80,c1.getBlue()).getRGB());
+				if (color.equals("Rojo")) biDestino.setRGB(x, y, new Color(100,c1.getGreen(),c1.getBlue()).getRGB());
+				if (color.equals("Verde")) biDestino.setRGB(x, y, new Color(c1.getRed(),100,c1.getBlue()).getRGB());
 				if (color.equals("Azul")) biDestino.setRGB(x, y, new Color(c1.getRed(),c1.getGreen(),150).getRGB());
 			}
 		}

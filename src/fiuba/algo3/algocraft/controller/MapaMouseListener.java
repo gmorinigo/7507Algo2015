@@ -34,6 +34,8 @@ public class MapaMouseListener extends MouseAdapter {
     
 	@SuppressWarnings({ "static-access", "unused" })
 	public void mouseReleased(MouseEvent arg0) {
+		//System.out.println("x" + arg0.getX());
+		//System.out.println("y" + arg0.getY());
 		if (arg0.getX() < 5 || arg0.getX() > 605) return;
 		if (arg0.getY() < 30 || arg0.getX() > 630) return;
 		
@@ -47,19 +49,18 @@ public class MapaMouseListener extends MouseAdapter {
 		if(juego.dameElJugadorDelTurno().dameEstadoActual() == EstadoDelJugador.Ganador){ 
 			ventanaMapa.setVisible(false);
 			JOptionPane.showMessageDialog(null,"Felicitaciones!! Ganador: " + juego.dameElJugadorDelTurno().dameNombre());
-		}
-
-		//System.out.println("x" + arg0.getX());
-		//System.out.println("y" + arg0.getY());
+		}	
+		
 		// Celda con unidad enemiga
 		if (celdaPresionada.tieneUnidad()){
 			if (!unTurno.obtenerJugadorConTurno().esUnidadDelJugador(celdaPresionada.obtenerUnidad())){
 				if (ataqueActivado){
-					unidad.atacar(celdaPresionada);
 					this.desactivarAtaque();
+					unidad.atacar(celdaPresionada);
+					this.juego.avisarObservers();
 				}
 				if(celdaPresionada.obtenerUnidad().getJugador().dameRaza().esRazaProtoss())
-				JOptionPane.showMessageDialog(null,"escudo: "+ celdaPresionada.obtenerUnidad().obtenerCantidadEscudo());	
+					JOptionPane.showMessageDialog(null,"escudo: "+ celdaPresionada.obtenerUnidad().obtenerCantidadEscudo());
 				JOptionPane.showMessageDialog(null,"vida: "+ celdaPresionada.obtenerUnidad().obtenerCantidadVida());
 				return;
 			}
@@ -72,8 +73,10 @@ public class MapaMouseListener extends MouseAdapter {
 					unidad.atacar(celdaPresionada);
 					this.desactivarAtaque();
 				}
+				if(celdaPresionada.obtenerConstruccion().getJugador().dameRaza().esRazaProtoss())
+					JOptionPane.showMessageDialog(null,"escudo: "+ celdaPresionada.obtenerConstruccion().obtenerCantidadEscudo());
 				JOptionPane.showMessageDialog(null,"vida: "+ celdaPresionada.obtenerConstruccion().obtenerCantidadVida());				
-			return;
+				return;
 			}
 		}
 		
@@ -237,7 +240,7 @@ public class MapaMouseListener extends MouseAdapter {
 	
 	public static Posicion convertirPixAPosicionCelda(int x, int y) {
 		//Resto el origen de coordenadas y divido por la cantidad de pixeles
-		return new Posicion(((y-40)/30),((x-5)/30));
+		return new Posicion(((y-30)/30),((x-5)/30));
 	}
 	
 	public static void activarAtaque(){

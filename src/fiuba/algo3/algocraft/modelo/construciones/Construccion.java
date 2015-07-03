@@ -11,6 +11,7 @@ import fiuba.algo3.algocraft.modelo.turnos.Turno;
 import fiuba.algo3.algocraft.modelo.turnos.TurnoObserver;
 import fiuba.algo3.algocraft.modelo.unidades.Salud;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
+import fiuba.algo3.algocraft.modelo.unidades.protoss.SaludProtoss;
 import fiuba.algo3.algocraft.vista.Dibujable;
 
 public abstract class Construccion implements TurnoObserver, Dibujable{
@@ -142,5 +143,14 @@ public abstract class Construccion implements TurnoObserver, Dibujable{
 	
 	public int dameTurnosFaltantesParaLaCreacion(){
 		return estado.dameTurnosFaltantes();
+	}
+
+	public int obtenerCantidadEscudo() {
+		if (this.jugador.dameRaza().esRazaProtoss()){
+			SaludProtoss unaSalud = (SaludProtoss) this.salud;
+			return unaSalud.valorEscudo();
+		}
+		
+		return 0;
 	};
 }
