@@ -59,9 +59,11 @@ public class MapaMouseListener extends MouseAdapter {
 					unidad.atacar(celdaPresionada);
 					this.juego.avisarObservers();
 				}
+				if(celdaPresionada.celdaOcupada()){
 				if(celdaPresionada.obtenerUnidad().getJugador().dameRaza().esRazaProtoss())
 					JOptionPane.showMessageDialog(null,"escudo: "+ celdaPresionada.obtenerUnidad().obtenerCantidadEscudo());
 				JOptionPane.showMessageDialog(null,"vida: "+ celdaPresionada.obtenerUnidad().obtenerCantidadVida());
+				}
 				return;
 			}
 		}
@@ -73,9 +75,11 @@ public class MapaMouseListener extends MouseAdapter {
 					unidad.atacar(celdaPresionada);
 					this.desactivarAtaque();
 				}
+				if(celdaPresionada.celdaOcupada()){
 				if(celdaPresionada.obtenerConstruccion().getJugador().dameRaza().esRazaProtoss())
 					JOptionPane.showMessageDialog(null,"escudo: "+ celdaPresionada.obtenerConstruccion().obtenerCantidadEscudo());
-				JOptionPane.showMessageDialog(null,"vida: "+ celdaPresionada.obtenerConstruccion().obtenerCantidadVida());				
+				JOptionPane.showMessageDialog(null,"vida: "+ celdaPresionada.obtenerConstruccion().obtenerCantidadVida());		
+				}
 				return;
 			}
 		}
