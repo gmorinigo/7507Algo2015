@@ -65,7 +65,7 @@ public abstract class VistaObjetoDibujable implements Observer{
 		if (unaCelda.tieneConstruccion() && !unaCelda.obtenerConstruccion().construccionRecolectoraDeGas() && !unaCelda.obtenerConstruccion().construccionRecolectoraDeMineral()){
 			if (unaCelda.getPosicion().compararPosicion(unaCelda.obtenerConstruccion().damePosicionCeldaSupIzquierda())){
 				Image imagenEscalada = image.getScaledInstance(60, 60, Image.SCALE_SMOOTH);
-				BufferedImage imagenConFiltro = this.filtrarAzul(imagenEscalada);
+				BufferedImage imagenConFiltro = this.filtrarColor(imagenEscalada, unaCelda);
 				imageIcon = new ImageIcon(imagenConFiltro);
 				imageIcon.paintIcon(vistaEscenario, g, posPixel.dameColumna(), posPixel.dameFila());
 			}
@@ -73,7 +73,7 @@ public abstract class VistaObjetoDibujable implements Observer{
 		else{
 			if (unaCelda.tieneConstruccion() || unaCelda.tieneUnidad()){
 				Image imagenEscalada = image.getScaledInstance(30, 30, Image.SCALE_SMOOTH);
-				BufferedImage imagenConFiltro = this.filtrarAzul(imagenEscalada);
+				BufferedImage imagenConFiltro = this.filtrarColor(imagenEscalada, unaCelda);
 				imageIcon = new ImageIcon(imagenConFiltro);
 				imageIcon.paintIcon(vistaEscenario, g, posPixel.dameColumna(), posPixel.dameFila());
 			}
@@ -85,7 +85,15 @@ public abstract class VistaObjetoDibujable implements Observer{
 		}
 	}
 
-	public BufferedImage filtrarAzul(Image imagenEscalada){
+	public BufferedImage filtrarColor(Image imagenEscalada, Celda unaCelda){
+		
+		String color = "";
+		if (unaCelda.tieneUnidad()){
+			color = unaCelda.obtenerUnidad().getJugador().dameColor();
+		}
+		else{
+			color = unaCelda.obtenerConstruccion().getJugador().dameColor();
+		}
 		
 		//Creación BufferedImage con la imagen
 		BufferedImage bi = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDefaultConfiguration().createCompatibleImage(imagenEscalada.getWidth(null), imagenEscalada.getHeight(null), Transparency.OPAQUE);
@@ -99,7 +107,9 @@ public abstract class VistaObjetoDibujable implements Observer{
 				//Obtiene el color
 				Color c1=new Color(bi.getRGB(x, y));
 				// Color RGB -> Fuerzo el Azul
-				biDestino.setRGB(x, y, new Color(c1.getRed(),c1.getGreen(),150).getRGB());
+				if (color.equals("Rojo")) biDestino.setRGB(x, y, new Color(80,c1.getGreen(),c1.getBlue()).getRGB());
+				if (color.equals("Verde")) biDestino.setRGB(x, y, new Color(c1.getRed(),80,c1.getBlue()).getRGB());
+				if (color.equals("Azul")) biDestino.setRGB(x, y, new Color(c1.getRed(),c1.getGreen(),150).getRGB());
 			}
 		}
 		return biDestino;

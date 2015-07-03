@@ -38,7 +38,7 @@ public class VentanaMapa extends JFrame implements Observer{
 	JPanel panelCenter;
 	private JLabel lblTurnoJugador;
 	private JLabel lblJugadorTurnoActual;
-	JLabel cabeceraPanelDerecho;
+	//JLabel cabeceraPanelDerecho;
 	JButton salirButton;
 	JButton guardarButton;
 	VentanaPrincipal ventanaPrincipal;
@@ -69,9 +69,8 @@ public class VentanaMapa extends JFrame implements Observer{
 		lblJugadorTurnoActual = new JLabel();
 		panelTop.add(lblJugadorTurnoActual);
 
-		
-		cabeceraPanelDerecho = new JLabel("Botonera");
-		cabeceraPanelDerecho.setPreferredSize(new Dimension(100, 40));
+		//cabeceraPanelDerecho = new JLabel("Botonera");
+		//cabeceraPanelDerecho.setPreferredSize(new Dimension(100, 40));
 		
 		salirButton = new JButton("Salir");
 		salirButton.setPreferredSize(new Dimension(80,20));
@@ -110,18 +109,21 @@ public class VentanaMapa extends JFrame implements Observer{
 		
 		this.actualizarRecursos();
 		
-		panelTop.add(salirButton, BorderLayout.LINE_END);
+		//panelTop.add(salirButton, BorderLayout.LINE_END);
 		
 		panelCenter.add(this.vistaEscenario);
 		
 		panel.add(panelTop, BorderLayout.PAGE_START);
 		
 		cambiarTurnoButton = new JButton("CambiarTurno");
-		panelTop.add(cambiarTurnoButton);
+		//panelTop.add(cambiarTurnoButton);
+		panelRight.add(cambiarTurnoButton);
+		panelRight.add(salirButton);
+
 		cambiarTurnoButton.addActionListener(controladorMapa.getListenerBotonPasarTurno());
 		salirButton.addActionListener(controladorMapa.getListenerBotonSalir());
 		
-		panelRight.add(cabeceraPanelDerecho);
+		//panelRight.add(cabeceraPanelDerecho);
 		panel.add(panelCenter, BorderLayout.CENTER);
 		panel.add(panelRight, BorderLayout.LINE_END);
         panel.addMouseListener(new MapaMouseListener(this,this.juego));

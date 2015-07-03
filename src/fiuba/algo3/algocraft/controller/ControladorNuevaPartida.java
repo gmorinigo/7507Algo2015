@@ -2,6 +2,7 @@ package fiuba.algo3.algocraft.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.JOptionPane;
 
 import fiuba.algo3.algocraft.modelo.AlgoCraft;
@@ -31,6 +32,8 @@ public class ControladorNuevaPartida extends ControllerGui {
 			AlgoCraft juego = new AlgoCraft();
 			Raza razaJug1;
 			Raza razaJug2;
+			String colorJugador1 = "";
+			String colorJugador2 = "";
 	            
 			switch (vista.dameRazaSeleccionadaJug1()) {
 			case "":
@@ -44,12 +47,6 @@ public class ControladorNuevaPartida extends ControllerGui {
 				break;
 			default:
 				JOptionPane.showMessageDialog(null, "Seleccione una raza para el jugador 1");
-				return;
-			}
-			try {
-				juego.agregarJugadorNumero1(vista.dameNombreJug1(), razaJug1, "Azul");
-			} catch (JugadorConNombreDemasiadoCortoException ex) {
-				JOptionPane.showMessageDialog(null, "Nombre del jugador 1 demasiado corto");
 				return;
 			}
 			
@@ -68,8 +65,51 @@ public class ControladorNuevaPartida extends ControllerGui {
 				return;
 			}
 			
+			switch (vista.dameColorSeleccionadoJug1()) {
+			case "":
+				JOptionPane.showMessageDialog(null, "Seleccione un color para el jugador 1");
+				return;
+			case "Rojo":
+				colorJugador1 = "Rojo";
+				break;
+			case "Verde":
+				colorJugador1 = "Verde";
+				break;
+			case "Azul":
+				colorJugador1 = "Azul";
+				break;
+			default:
+				JOptionPane.showMessageDialog(null, "Seleccione un color para el jugador 1");
+				return;
+			}
+			
+			switch (vista.dameColorSeleccionadoJug2()) {
+			case "":
+				JOptionPane.showMessageDialog(null, "Seleccione un color para el jugador 2");
+				return;
+			case "Rojo":
+				colorJugador2 = "Rojo";
+				break;
+			case "Verde":
+				colorJugador2 = "Verde";
+				break;
+			case "Azul":
+				colorJugador2 = "Azul";
+				break;
+			default:
+				JOptionPane.showMessageDialog(null, "Seleccione un color para el jugador 2");
+				return;
+			}
+			
 			try {
-				juego.agregarJugadorNumero2(vista.dameNombreJug2(), razaJug2, "Rojo");
+				juego.agregarJugadorNumero1(vista.dameNombreJug1(), razaJug1, colorJugador1);
+			} catch (JugadorConNombreDemasiadoCortoException ex) {
+				JOptionPane.showMessageDialog(null, "Nombre del jugador 1 demasiado corto");
+				return;
+			}
+			
+			try {
+				juego.agregarJugadorNumero2(vista.dameNombreJug2(), razaJug2, colorJugador2);
 			} catch (JugadorConElMismoNombreException e1) {
 				JOptionPane.showMessageDialog(null, "Jugador 2 tiene el mismo nombre que Jugador 1");
 				return;
@@ -80,6 +120,7 @@ public class ControladorNuevaPartida extends ControllerGui {
 				JOptionPane.showMessageDialog(null, "Nombre del jugador 2 demasiado corto");
 				return;
 			}
+			@SuppressWarnings("unused")
 			VentanaMapa unMapa = new VentanaMapa(juego);
 			//unMapa.setVisible(true);
 			//vista.setVisible(false);

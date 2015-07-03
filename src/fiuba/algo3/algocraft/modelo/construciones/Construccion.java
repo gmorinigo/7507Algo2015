@@ -11,7 +11,6 @@ import fiuba.algo3.algocraft.modelo.turnos.Turno;
 import fiuba.algo3.algocraft.modelo.turnos.TurnoObserver;
 import fiuba.algo3.algocraft.modelo.unidades.Salud;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
-import fiuba.algo3.algocraft.modelo.unidades.protoss.SaludProtoss;
 import fiuba.algo3.algocraft.vista.Dibujable;
 
 public abstract class Construccion implements TurnoObserver, Dibujable{
@@ -73,7 +72,6 @@ public abstract class Construccion implements TurnoObserver, Dibujable{
 	}
 	
 	public void destruir() {
-		//TODO
 	}
 	
 	public boolean estaOperativa() {
@@ -133,6 +131,11 @@ public abstract class Construccion implements TurnoObserver, Dibujable{
 		}
 	}
 
+	
+	public Jugador getJugador() {
+		return this.jugador;
+	}	
+	
 	public Posicion getPosicion() {
 		return this.posicionCeldaSupIzquierda;
 	}

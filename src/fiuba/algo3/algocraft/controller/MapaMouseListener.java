@@ -2,7 +2,6 @@ package fiuba.algo3.algocraft.controller;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
@@ -32,12 +31,18 @@ public class MapaMouseListener extends MouseAdapter {
     
 	@SuppressWarnings({ "static-access", "unused" })
 	public void mouseReleased(MouseEvent arg0) {
+		if (arg0.getX() < 5 || arg0.getX() > 605) return;
+		if (arg0.getY() < 30 || arg0.getX() > 630) return;
+		
 		Mapa mapaDelJuego = Mapa.getInstance();
 		Turno unTurno = Turno.getInstance();
 		Posicion posicionCeldaPresionada =  this.convertirPixAPosicionCelda(arg0.getX(),arg0.getY());
 		Celda celdaPresionada = mapaDelJuego.dameCelda(posicionCeldaPresionada);
 		
 		JPopupMenu popupMenu = new JPopupMenu("Menu contextual");
+		
+		//System.out.println("x" + arg0.getX());
+		//System.out.println("y" + arg0.getY());
 		
 		// Celda con unidad enemiga
 		if (celdaPresionada.tieneUnidad()){

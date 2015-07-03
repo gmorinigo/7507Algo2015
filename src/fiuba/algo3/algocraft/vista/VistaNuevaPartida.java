@@ -33,6 +33,12 @@ public class VistaNuevaPartida extends VistaLayout{
 	
 	ButtonGroup grupoRazasJug2;
 	List<JRadioButton> razaOptionsJug2;
+
+	ButtonGroup grupoColorJug1;
+	List<JRadioButton> colorOptionsJug1;
+
+	ButtonGroup grupoColorJug2;
+	List<JRadioButton> colorOptionsJug2;
 	
 	JButton aceptarButton;
 	JButton volverButton;
@@ -44,15 +50,24 @@ public class VistaNuevaPartida extends VistaLayout{
 		super("NuevaPartida");
 		setLayout(new GridLayout(0, 1));
 		this.razaOptionsJug1 = new ArrayList<>();
-		this.razaOptionsJug2 = new ArrayList<>();
 		grupoRazasJug1 = new ButtonGroup();
+
+		this.colorOptionsJug1 = new ArrayList<>();
+		grupoColorJug1 = new ButtonGroup();
+		
+		this.razaOptionsJug2 = new ArrayList<>();
 		grupoRazasJug2 = new ButtonGroup();
+
+		this.colorOptionsJug2 = new ArrayList<>();
+		grupoColorJug2 = new ButtonGroup();
 		
 		
 		tituloLabel = new JLabel("Por favor elija un nombre Jugador1: ", JLabel.CENTER);
 		tituloLabel2 = new JLabel("Por favor elija un nombre Jugador2: ", JLabel.CENTER);
 		razaLabelJug1 = new JLabel("Por favor elija una raza: ", JLabel.CENTER);
 		razaLabelJug2 = new JLabel("Por favor elija una raza: ", JLabel.CENTER);
+		colorLabelJug1 = new JLabel("Por favor elija un color: ", JLabel.CENTER);
+		colorLabelJug2 = new JLabel("Por favor elija un color: ", JLabel.CENTER);
 		
 		nombreJug1TField = new JTextField(20);
 		nombreJug2TField = new JTextField(20);
@@ -65,20 +80,17 @@ public class VistaNuevaPartida extends VistaLayout{
 		
 		add(razaLabelJug1);
 		crearRazaOptionsJug1();
-		//add options raza
-		Iterator<JRadioButton> it = this.razaOptionsJug1.iterator();
-		while(it.hasNext()) {
-			add(it.next());
-		}
+		
+		add(colorLabelJug1);
+		crearColorOptionsJug1();
 		
 		add(tituloLabel2);
 		add(nombreJug2TField);
 		add(razaLabelJug2);
 		crearRazaOptionsJug2();
-		Iterator<JRadioButton> it2 = this.razaOptionsJug2.iterator();
-		while(it2.hasNext()) {
-			add(it2.next());
-		}
+	
+		add(colorLabelJug2);
+		crearColorOptionsJug2();
 		
 		add(aceptarButton);
 		add(volverButton);
@@ -88,21 +100,6 @@ public class VistaNuevaPartida extends VistaLayout{
 		volverButton.addActionListener(control.getListenerButtonVolver());
 		
 		
-	}
-
-	private void crearRazaOptionsJug2() {
-		String razaName = "Terran";
-		JRadioButton raza = new JRadioButton(razaName);
-		raza.setActionCommand(razaName);
-		
-		this.grupoRazasJug2.add(raza);
-		this.razaOptionsJug2.add(raza);
-		
-		razaName = "Protoss";
-		raza = new JRadioButton(razaName);
-		raza.setActionCommand(razaName);
-		this.grupoRazasJug2.add(raza);
-		this.razaOptionsJug2.add(raza);
 	}
 
 	protected void crearRazaOptionsJug1() {
@@ -118,6 +115,86 @@ public class VistaNuevaPartida extends VistaLayout{
 		raza.setActionCommand(razaName);
 		this.grupoRazasJug1.add(raza);
 		this.razaOptionsJug1.add(raza);
+		
+		//add options raza
+		Iterator<JRadioButton> it = this.razaOptionsJug1.iterator();
+		while(it.hasNext()) {
+			add(it.next());
+		}
+	}
+	
+	private void crearRazaOptionsJug2() {
+		String razaName = "Terran";
+		JRadioButton raza = new JRadioButton(razaName);
+		raza.setActionCommand(razaName);
+		
+		this.grupoRazasJug2.add(raza);
+		this.razaOptionsJug2.add(raza);
+		
+		razaName = "Protoss";
+		raza = new JRadioButton(razaName);
+		raza.setActionCommand(razaName);
+		this.grupoRazasJug2.add(raza);
+		this.razaOptionsJug2.add(raza);
+		
+		Iterator<JRadioButton> it2 = this.razaOptionsJug2.iterator();
+		while(it2.hasNext()) {
+			add(it2.next());
+		}
+	}
+	
+	protected void crearColorOptionsJug1() {
+		String colorName = "Azul";
+		JRadioButton color = new JRadioButton(colorName);
+		color.setActionCommand(colorName);
+		
+		this.grupoColorJug1.add(color);
+		this.colorOptionsJug1.add(color);
+		
+		colorName = "Rojo";
+		color = new JRadioButton(colorName);
+		color.setActionCommand(colorName);
+		this.grupoColorJug1.add(color);
+		this.colorOptionsJug1.add(color);
+		
+		colorName = "Verde";
+		color = new JRadioButton(colorName);
+		color.setActionCommand(colorName);
+		this.grupoColorJug1.add(color);
+		this.colorOptionsJug1.add(color);
+		
+		//add options color
+		Iterator<JRadioButton> it = this.colorOptionsJug1.iterator();
+		while(it.hasNext()) {
+			add(it.next());
+		}
+	}
+	
+	protected void crearColorOptionsJug2() {
+		String colorName = "Azul";
+		JRadioButton color = new JRadioButton(colorName);
+		color.setActionCommand(colorName);
+		
+		this.grupoColorJug2.add(color);
+		this.colorOptionsJug2.add(color);
+		
+		colorName = "Rojo";
+		color = new JRadioButton(colorName);
+		color.setActionCommand(colorName);
+		this.grupoColorJug2.add(color);
+		this.colorOptionsJug2.add(color);
+		
+		colorName = "Verde";
+		color = new JRadioButton(colorName);
+		color.setActionCommand(colorName);
+		this.grupoColorJug2.add(color);
+		this.colorOptionsJug2.add(color);
+		
+		//add options color
+		Iterator<JRadioButton> it = this.colorOptionsJug2.iterator();
+		while(it.hasNext()) {
+			add(it.next());
+		}
 	}
 	
 	public String dameNombreJug1() {
@@ -140,6 +217,20 @@ public class VistaNuevaPartida extends VistaLayout{
 			return "";
 		}
 		return grupoRazasJug2.getSelection().getActionCommand();
+	}
+	
+	public String dameColorSeleccionadoJug1() {
+		if(grupoColorJug1.getSelection() == null) {
+			return "";
+		}
+		return grupoColorJug1.getSelection().getActionCommand();
+	}
+
+	public String dameColorSeleccionadoJug2() {
+		if(grupoColorJug2.getSelection() == null) {
+			return "";
+		}
+		return grupoColorJug2.getSelection().getActionCommand();
 	}
 	
 	@Override
