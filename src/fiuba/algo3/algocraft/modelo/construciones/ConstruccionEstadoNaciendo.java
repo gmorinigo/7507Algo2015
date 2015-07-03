@@ -26,4 +26,9 @@ public class ConstruccionEstadoNaciendo extends ConstruccionEstado{
 		return false;
 	}
 
+	@Override
+	public int dameTurnosFaltantes() {
+		return turnosNecesariosParaCreacion;
+	}
+
 }

@@ -80,7 +80,7 @@ public class MapaMouseListener extends MouseAdapter {
 		// Celda con construccion no finalizada
 		if (celdaPresionada.tieneConstruccion()){
 			if (!celdaPresionada.obtenerConstruccion().estaTerminada()){
-				JOptionPane.showMessageDialog(null,"turnos faltantes: ");
+				JOptionPane.showMessageDialog(null,"turnos faltantes: "+ celdaPresionada.obtenerConstruccion().dameTurnosFaltantesParaLaCreacion());
 				return;
 			}
 		}

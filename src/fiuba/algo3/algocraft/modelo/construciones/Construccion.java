@@ -139,4 +139,8 @@ public abstract class Construccion implements TurnoObserver, Dibujable{
 	public Posicion getPosicion() {
 		return this.posicionCeldaSupIzquierda;
 	}
+	
+	public int dameTurnosFaltantesParaLaCreacion(){
+		return estado.dameTurnosFaltantes();
+	};
 }

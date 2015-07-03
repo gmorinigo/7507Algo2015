@@ -28,4 +28,9 @@ public class ConstruccionEstadoTrabajando extends ConstruccionEstado {
 		return true;
 	}
 
+	@Override
+	public int dameTurnosFaltantes() {
+		return turnosParaTerminarTrabajo;
+	}
+
 }

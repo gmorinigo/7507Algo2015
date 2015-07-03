@@ -21,4 +21,9 @@ public class ConstruccionEstadoViviendo extends ConstruccionEstado {
 		return true;
 	}
 
+	@Override
+	public int dameTurnosFaltantes() {
+		return 0;
+	}
+
 }
