@@ -20,23 +20,25 @@ import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory.TipoUnidad;
 import fiuba.algo3.algocraft.vista.ventanas.VentanaMapa;
 
-public class UnidadesTerrestres2MouseListener implements MouseListener {
+public class UnidadesMouseListener implements MouseListener {
 
 	private AlgoCraft juego;
 	private Posicion posicionCeldaPresionada;
+	private TipoUnidad tipoUnidad;
 	
-    public UnidadesTerrestres2MouseListener(VentanaMapa ventanaMapa, AlgoCraft juego, Posicion posicionCeldaPresionada) {
+    public UnidadesMouseListener(VentanaMapa ventanaMapa, AlgoCraft juego, Posicion posicionCeldaPresionada, TipoUnidad unTipoDeUnidad) {
     	//this.ventanaMapa = ventanaMapa;
     	this.juego = juego;
     	this.posicionCeldaPresionada = posicionCeldaPresionada;
+    	tipoUnidad = unTipoDeUnidad;
 	}
     
     
-    public void mouseReleased(MouseEvent arg0) {		
+	public void mouseReleased(MouseEvent arg0) {		
 		// Acá tiene que construir el jugador del turno actual
 		try {
 			try {
-				this.juego.agregarUnidad(this.juego.dameElJugadorDelTurno(),TipoUnidad.terrestre2,posicionCeldaPresionada);
+				this.juego.agregarUnidad(this.juego.dameElJugadorDelTurno(),tipoUnidad,posicionCeldaPresionada);
 			} catch (CapacidadDePoblacionMaximaSuperada e) {
 				JOptionPane.showMessageDialog(null,"No hay poblacion"); 
 			}
@@ -78,4 +80,5 @@ public class UnidadesTerrestres2MouseListener implements MouseListener {
 		// TODO Auto-generated method stub
 		
 	}
+
 }

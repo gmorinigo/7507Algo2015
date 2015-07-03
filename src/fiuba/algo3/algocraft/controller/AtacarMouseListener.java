@@ -2,23 +2,8 @@ package fiuba.algo3.algocraft.controller;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
-import java.rmi.NoSuchObjectException;
 
-import javax.swing.JOptionPane;
-
-import fiuba.algo3.algocraft.modelo.AlgoCraft;
-import fiuba.algo3.algocraft.modelo.excepciones.CantidadDeGasInsuficienteException;
-import fiuba.algo3.algocraft.modelo.excepciones.CantidadDeMineralInsuficienteException;
-import fiuba.algo3.algocraft.modelo.excepciones.CapacidadDePoblacionMaximaSuperada;
-import fiuba.algo3.algocraft.modelo.excepciones.NoHaySuficientesRecursos;
-import fiuba.algo3.algocraft.modelo.mapa.Celda;
-import fiuba.algo3.algocraft.modelo.mapa.Mapa;
-import fiuba.algo3.algocraft.modelo.mapa.Posicion;
-import fiuba.algo3.algocraft.modelo.turnos.Turno;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
-import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory.TipoUnidad;
-import fiuba.algo3.algocraft.vista.ventanas.VentanaMapa;
 
 public class AtacarMouseListener implements MouseListener/*,MouseMotionListener */{
 
@@ -26,6 +11,7 @@ public class AtacarMouseListener implements MouseListener/*,MouseMotionListener 
 	
 	public AtacarMouseListener(Unidad obtenerUnidad) {
 		this.unidad = obtenerUnidad;
+		
 	}
 
 	@Override

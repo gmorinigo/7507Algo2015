@@ -54,7 +54,7 @@ public class PuertoEstelarTerran extends Construccion {
 	}
 	
 	public String getNombreObjetoDibujable() {
-		return "PuertoEstelarTerran";
+		return "PuertoEstelarProtoss";
 	}
 	
 }

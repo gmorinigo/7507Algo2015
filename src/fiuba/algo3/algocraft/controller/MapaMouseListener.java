@@ -8,10 +8,13 @@ import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
 
 import fiuba.algo3.algocraft.modelo.AlgoCraft;
+import fiuba.algo3.algocraft.modelo.JugadorEstado.EstadoDelJugador;
+import fiuba.algo3.algocraft.modelo.construciones.AbstractConstruccionFactory.TipoConstruccion;
 import fiuba.algo3.algocraft.modelo.mapa.Celda;
 import fiuba.algo3.algocraft.modelo.mapa.Mapa;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.turnos.Turno;
+import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory.TipoUnidad;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 import fiuba.algo3.algocraft.modelo.unidades.movimientos.Movimiento.TipoDireccion;
 import fiuba.algo3.algocraft.vista.ventanas.VentanaMapa;
@@ -40,10 +43,14 @@ public class MapaMouseListener extends MouseAdapter {
 		Celda celdaPresionada = mapaDelJuego.dameCelda(posicionCeldaPresionada);
 		
 		JPopupMenu popupMenu = new JPopupMenu("Menu contextual");
-		
+
+		if(juego.dameElJugadorDelTurno().dameEstadoActual() == EstadoDelJugador.Ganador){ 
+			ventanaMapa.setVisible(false);
+			JOptionPane.showMessageDialog(null,"Felicitaciones!! Ganador: " + juego.dameElJugadorDelTurno().dameNombre());
+		}
+
 		//System.out.println("x" + arg0.getX());
 		//System.out.println("y" + arg0.getY());
-		
 		// Celda con unidad enemiga
 		if (celdaPresionada.tieneUnidad()){
 			if (!unTurno.obtenerJugadorConTurno().esUnidadDelJugador(celdaPresionada.obtenerUnidad())){
@@ -129,10 +136,12 @@ public class MapaMouseListener extends MouseAdapter {
 		
 		// Celda con construccion que no es extractora
 		if(celdaPresionada.tieneConstruccion() && !celdaPresionada.tieneGas() && !celdaPresionada.tieneMineral()){
-			JMenuItem mitemUnidadesT1 = popupMenu.add(String.format("Crear unidad terrestre1"));
-			mitemUnidadesT1.addMouseListener(new UnidadesTerrestres1MouseListener(this.ventanaMapa, this.juego,posicionCeldaPresionada));
-			JMenuItem mitemUnidadesT2 = popupMenu.add(String.format("Crear unidad terrestre2"));
-			mitemUnidadesT2.addMouseListener(new UnidadesTerrestres2MouseListener(this.ventanaMapa, this.juego,posicionCeldaPresionada));
+			if(unTurno.obtenerJugadorConTurno().dameRaza().esRazaProtoss()){
+				this.mostrarOpcionesCreacionDeUnidadesProtos(popupMenu,celdaPresionada,posicionCeldaPresionada);
+			}
+			else{
+				this.mostrarOpcionesCreacionDeUnidadesTerran(popupMenu,celdaPresionada,posicionCeldaPresionada);
+			}		
 		}
 		
 		// Celda con unidad
@@ -161,8 +170,49 @@ public class MapaMouseListener extends MouseAdapter {
 		popupMenu.show(arg0.getComponent(), arg0.getX(), arg0.getY());
 			
 	}
-	
-	
+
+
+	private void mostrarOpcionesCreacionDeUnidadesTerran(JPopupMenu popupMenu,Celda celdaPresionada,Posicion posicionCeldaPresionada) {
+		if(celdaPresionada.obtenerConstruccion().verificarTipoConstruccion(TipoConstruccion.creadorUnidadesBasicas)){
+		JMenuItem mitemUnidadesT1 = popupMenu.add(String.format("Crear Marine"));
+		mitemUnidadesT1.addMouseListener(new UnidadesMouseListener(this.ventanaMapa, this.juego,posicionCeldaPresionada,TipoUnidad.terrestre1));
+		}
+		if(celdaPresionada.obtenerConstruccion().verificarTipoConstruccion(TipoConstruccion.creadorUnidadesNivel2)){
+		JMenuItem mitemUnidadesT2 = popupMenu.add(String.format("Crear Golliat"));
+		mitemUnidadesT2.addMouseListener(new UnidadesMouseListener(this.ventanaMapa, this.juego,posicionCeldaPresionada,TipoUnidad.terrestre2));
+		}
+		if(celdaPresionada.obtenerConstruccion().verificarTipoConstruccion(TipoConstruccion.creadorUnidadesEspecialesYVoladoras)){
+			JMenuItem mitemUnidadesv1 = popupMenu.add(String.format("Crear Espectro"));
+			mitemUnidadesv1.addMouseListener(new UnidadesMouseListener(this.ventanaMapa, this.juego,posicionCeldaPresionada,TipoUnidad.volador1));
+			JMenuItem mitemUnidadesv2 = popupMenu.add(String.format("Crear Nave De Transporte"));
+			mitemUnidadesv2.addMouseListener(new UnidadesMouseListener(this.ventanaMapa, this.juego,posicionCeldaPresionada,TipoUnidad.volador2));
+			JMenuItem mitemUnidadese1 = popupMenu.add(String.format("Crear Nave De Ciencia"));
+			mitemUnidadese1.addMouseListener(new UnidadesMouseListener(this.ventanaMapa, this.juego,posicionCeldaPresionada,TipoUnidad.especial1));			
+		}
+	}
+
+
+	private void mostrarOpcionesCreacionDeUnidadesProtos(JPopupMenu popupMenu,Celda celdaPresionada, Posicion posicionCeldaPresionada) {
+		if(celdaPresionada.obtenerConstruccion().verificarTipoConstruccion(TipoConstruccion.creadorUnidadesBasicas)){
+		JMenuItem mitemUnidadesT1 = popupMenu.add(String.format("Crear Zealot"));
+		mitemUnidadesT1.addMouseListener(new UnidadesMouseListener(this.ventanaMapa, this.juego,posicionCeldaPresionada,TipoUnidad.terrestre1));
+		JMenuItem mitemUnidadesT2 = popupMenu.add(String.format("Crear Dragon"));
+		mitemUnidadesT2.addMouseListener(new UnidadesMouseListener(this.ventanaMapa, this.juego,posicionCeldaPresionada,TipoUnidad.terrestre2));
+		}
+		
+		if(celdaPresionada.obtenerConstruccion().verificarTipoConstruccion(TipoConstruccion.creadorUnidadesVoladoras)){
+			JMenuItem mitemUnidadesv1 = popupMenu.add(String.format("Crear Scout"));
+			mitemUnidadesv1.addMouseListener(new UnidadesMouseListener(this.ventanaMapa, this.juego,posicionCeldaPresionada,TipoUnidad.volador1));
+			JMenuItem mitemUnidadesv2 = popupMenu.add(String.format("Crear Nave De Transporte"));
+			mitemUnidadesv2.addMouseListener(new UnidadesMouseListener(this.ventanaMapa, this.juego,posicionCeldaPresionada,TipoUnidad.volador2));
+		}
+		if(celdaPresionada.obtenerConstruccion().verificarTipoConstruccion(TipoConstruccion.creadorUnidadesEspeciales)){
+			JMenuItem mitemUnidadese1 = popupMenu.add(String.format("Crear Alto Templario"));
+			mitemUnidadese1.addMouseListener(new UnidadesMouseListener(this.ventanaMapa, this.juego,posicionCeldaPresionada,TipoUnidad.especial1));			
+		}
+	}
+
+
 	private void mostrarOpcionesCeldaLibreProtoss(JPopupMenu popupMenu, Posicion posicionCeldaPresionada){
 		JMenuItem mitemPoblacion = popupMenu.add(String.format("Crear Pilon (Expansor Poblacion)"));
 		mitemPoblacion.addMouseListener(new ExpansorPoblacionMouseListener(this.ventanaMapa, this.juego,posicionCeldaPresionada));
