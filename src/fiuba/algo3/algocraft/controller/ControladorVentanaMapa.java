@@ -24,26 +24,6 @@ public class ControladorVentanaMapa {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			/*try
-			{
-				jugador.vehiculoBaja();
-				ventMapa.mostrar();
-			}catch(AvanzaAPosicionInvalidaException e1){
-				JOptionPane.showMessageDialog(null,"A donde vas? Te estas yendo de la ciudad.");
-			}catch(MovimientosMaximosException e2){
-				JOptionPane.showMessageDialog(null,"Perdiste!");
-				ventMapa.ocultar();
-				ventMapa.getVentanaGUI().showLayout("UserAdmin");
-			}catch(JuegoTerminadoException e3){
-				JOptionPane.showMessageDialog(null,"Ganaste!");
-				
-				int puntaje = (jugador.getCiudad().getMovimientosMaximos()-jugador.getMovimientosRealizados());
-				String dificultad = jugador.getCiudad().getDificultad();
-				ArchivadorRanking.getInstance().agregarJugadorARanking(jugador.getNombre(), puntaje, dificultad);
-				
-				ventMapa.ocultar();
-				ventMapa.getVentanaGUI().showLayout("Puntajes");
-			}*/
 			
 		}
 		
@@ -58,26 +38,7 @@ public class ControladorVentanaMapa {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			/*try{
-				jugador.vehiculoSube();
-				ventMapa.mostrar();
-			}catch(AvanzaAPosicionInvalidaException e1){
-				JOptionPane.showMessageDialog(null,"A donde vas? Te estas yendo de la ciudad.");
-			}catch(MovimientosMaximosException e2){
-				JOptionPane.showMessageDialog(null,"Perdiste!");
-				ventMapa.ocultar();
-				ventMapa.getVentanaGUI().showLayout("UserAdmin");
-			}catch(JuegoTerminadoException e3){
-				JOptionPane.showMessageDialog(null,"Ganaste!");
-				
-					
-				int puntaje = (jugador.getCiudad().getMovimientosMaximos()-jugador.getMovimientosRealizados());
-				String dificultad = jugador.getCiudad().getDificultad();
-				ArchivadorRanking.getInstance().agregarJugadorARanking(jugador.getNombre(), puntaje, dificultad);
-				
-				ventMapa.ocultar();
-				ventMapa.getVentanaGUI().showLayout("Puntajes");
-			}*/
+
 		}
 		
 	}
@@ -90,24 +51,6 @@ public class ControladorVentanaMapa {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			/*try{
-				jugador.vehiculoAvanza();
-				ventMapa.mostrar();
-			}catch(AvanzaAPosicionInvalidaException e1){
-				JOptionPane.showMessageDialog(null,"A donde vas? Te estas yendo de la ciudad.");
-			}catch(MovimientosMaximosException e2){
-				JOptionPane.showMessageDialog(null,"Perdiste!");
-				ventMapa.ocultar();
-				ventMapa.getVentanaGUI().showLayout("UserAdmin");
-			}catch(JuegoTerminadoException e3){
-				JOptionPane.showMessageDialog(null,"Ganaste!");
-				int puntaje = (jugador.getCiudad().getMovimientosMaximos()-jugador.getMovimientosRealizados());
-				String dificultad = jugador.getCiudad().getDificultad();
-				ArchivadorRanking.getInstance().agregarJugadorARanking(jugador.getNombre(), puntaje, dificultad);
-				
-				ventMapa.ocultar();
-				ventMapa.getVentanaGUI().showLayout("Puntajes");
-			}*/
 		}
 		
 	}
@@ -120,26 +63,6 @@ public class ControladorVentanaMapa {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			/*try
-			{
-				jugador.vehiculoRetrocede();
-				ventMapa.mostrar();
-			}catch(AvanzaAPosicionInvalidaException e1){
-				JOptionPane.showMessageDialog(null,"A donde vas? Te estas yendo de la ciudad.");
-			}catch(MovimientosMaximosException e2){
-				JOptionPane.showMessageDialog(null,"Perdiste!");
-				ventMapa.ocultar();
-				ventMapa.getVentanaGUI().showLayout("UserAdmin");
-			}catch(JuegoTerminadoException e3){
-				JOptionPane.showMessageDialog(null,"Ganaste!");
-				
-				int puntaje = (jugador.getCiudad().getMovimientosMaximos()-jugador.getMovimientosRealizados());
-				String dificultad = jugador.getCiudad().getDificultad();
-				ArchivadorRanking.getInstance().agregarJugadorARanking(jugador.getNombre(), puntaje, dificultad);
-				
-				ventMapa.ocultar();
-				ventMapa.getVentanaGUI().showLayout("Puntajes");
-			}*/
 		}
 		
 	}
