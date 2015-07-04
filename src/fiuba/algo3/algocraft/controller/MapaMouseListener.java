@@ -72,6 +72,7 @@ public class MapaMouseListener extends MouseAdapter {
 		if (celdaPresionada.tieneConstruccion()){
 			if (!unTurno.obtenerJugadorConTurno().esConstruccionDelJugador(celdaPresionada.obtenerConstruccion())){
 				if (ataqueActivado){
+					System.out.println("entre atacar");
 					unidad.atacar(celdaPresionada);
 					this.desactivarAtaque();
 				}
@@ -94,8 +95,14 @@ public class MapaMouseListener extends MouseAdapter {
 		
 		// Celda con mineral con/sin construccion
 		if (celdaPresionada.tieneMineral()){
-			if (celdaPresionada.celdaOcupada()){
-				JMenuItem mitemMineral = popupMenu.add(String.format("CeldaOcupada"));
+			if (celdaPresionada.celdaOcupada()){			
+				if (!unTurno.obtenerJugadorConTurno().esConstruccionDelJugador(celdaPresionada.obtenerConstruccion())){
+					if (ataqueActivado){
+						unidad.atacar(celdaPresionada);
+						this.desactivarAtaque();
+					}
+					else JOptionPane.showMessageDialog(null,"Celda Ocupada");
+				}
 			}
 			else{
 				if (unTurno.obtenerJugadorConTurno().dameRaza().esRazaProtoss()){
@@ -112,8 +119,13 @@ public class MapaMouseListener extends MouseAdapter {
 		// Celda con gas con/sin construccion
 		if (celdaPresionada.tieneGas()){
 			if (celdaPresionada.celdaOcupada()){
-				JMenuItem mitemGas = popupMenu.add(String.format("CeldaOcupada"));
+				if (ataqueActivado){
+					unidad.atacar(celdaPresionada);
+					this.desactivarAtaque();
+				}
+				else JOptionPane.showMessageDialog(null,"Celda Ocupada");
 			}
+			
 			else{
 				if (unTurno.obtenerJugadorConTurno().dameRaza().esRazaProtoss()){
 					JMenuItem mitemGas = popupMenu.add(String.format("Crear Asimilador (Extractor de Gas)"));

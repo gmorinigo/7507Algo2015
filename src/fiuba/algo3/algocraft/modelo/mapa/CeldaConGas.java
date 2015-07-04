@@ -17,7 +17,7 @@ public class CeldaConGas extends Celda {
 	}
 	
 	public boolean esAtacable() {
-		return false;
+		return true;
 	}
 
 	public boolean agregarConstruccion(Construccion construccion) {

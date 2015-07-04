@@ -17,7 +17,7 @@ public class CeldaConMineral extends Celda {
 	}
 	
 	public boolean esAtacable() {
-		return false;
+		return true;
 	}
 
 
