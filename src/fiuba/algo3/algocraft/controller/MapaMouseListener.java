@@ -186,10 +186,10 @@ public class MapaMouseListener extends MouseAdapter {
 			
 			if (celdaPresionada.obtenerUnidad().esUnaNaveCiencia()){
 				JMenuItem mitemAtacarEMP = popupMenu.add(String.format("Atacar con EMP"));
-				mitemAtacarEMP.addMouseListener(new AtacarConEMP(celdaPresionada.obtenerUnidad()));
+				mitemAtacarEMP.addMouseListener(new AtacarConEMPMouseController(celdaPresionada.obtenerUnidad()));
 				
 				JMenuItem mitemAtacarRadiacion = popupMenu.add(String.format("Atacar con Radiacion"));
-				mitemAtacarRadiacion.addMouseListener(new AtacarConRadiacion(celdaPresionada.obtenerUnidad()));
+				mitemAtacarRadiacion.addMouseListener(new AtacarConRadiacionMouseController(celdaPresionada.obtenerUnidad()));
 			}
 			
 			JMenuItem mitemMovimientoArriba = popupMenu.add(String.format("Mover Arriba"));

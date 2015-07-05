@@ -7,7 +7,6 @@ public class Sonido {
 
 	public void init() {
     	sonido = java.applet.Applet.newAudioClip(getClass().getResource("/fiuba/algo3/algocraft/resources/sounds/Mapa.wav"));
-    	//sonido = java.applet.Applet.newAudioClip(getClass().getResource("/fiuba/algo3/algocraft/resources/sounds/Menu.wav"));
 	}
 
     public void start() {

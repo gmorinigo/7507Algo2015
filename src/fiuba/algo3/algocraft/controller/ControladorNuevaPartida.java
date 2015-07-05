@@ -120,6 +120,7 @@ public class ControladorNuevaPartida extends ControllerGui {
 				JOptionPane.showMessageDialog(null, "Nombre del jugador 2 demasiado corto");
 				return;
 			}
+			vent.ocultar();
 			@SuppressWarnings("unused")
 			VentanaMapa unMapa = new VentanaMapa(juego);
 			//unMapa.setVisible(true);
@@ -136,8 +137,7 @@ public class ControladorNuevaPartida extends ControllerGui {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			vent.showLayout("Bienvenido");
-			vent.ocultar();
+			System.exit(0);
 		}
 		
 	}

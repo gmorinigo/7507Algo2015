@@ -25,7 +25,7 @@ import fiuba.algo3.algocraft.resources.sounds.Sonido;
 import fiuba.algo3.algocraft.vista.VistaEscenario;
 
 @SuppressWarnings("static-access")
-public class VentanaMapa extends JFrame implements Observer, Runnable{
+public class VentanaMapa extends JFrame implements Observer/*, Runnable*/{
 
 	private static final long serialVersionUID = 1L;
 	JFrame frame;
@@ -54,10 +54,10 @@ public class VentanaMapa extends JFrame implements Observer, Runnable{
 	private JLabel lblPoblacionTotal;
 	private JButton cambiarTurnoButton;
 	private JLabel lblNroTurno;
-	private Thread unThreadSonido;
+//	private Thread unThreadSonido;
 	
 	private void initComponents(Container panel){
-		this.generarSonido();
+//		this.generarSonido();
 		panelTop = new JPanel();
 		panelLeft = new JPanel();
 		panelLeft.setLayout(new BorderLayout());
@@ -131,27 +131,27 @@ public class VentanaMapa extends JFrame implements Observer, Runnable{
 		panel.add(panelRight, BorderLayout.LINE_END);
         panel.addMouseListener(new MapaMouseListener(this,this.juego));
 	}
-	
+/*
 	private void generarSonido() {
 		unThreadSonido = new Thread(this);
 		unThreadSonido.start();
 	}
-
+*/
 	@SuppressWarnings("unused")
 	public VentanaMapa(AlgoCraft unJuego) {
+		Sonido unSonido = new Sonido();
+		unSonido.init();
+		unSonido.start();	
 		MapaFactory unMapaFactory = new MapaFactory();
 		Mapa unMapa = unMapaFactory.crearMapa20x20Hardcodeado();
 		frame = new JFrame("AlgoCraft");
 		frame.setSize(800, 800);
 		juego = unJuego;
-		//frame.addKeyListener(controlTab.getKeyListenerMovimientos());
 		this.jugador = juego.dameElJugadorDelTurno();
 		this.controladorMapa = new ControladorVentanaMapa(jugador, this, unJuego);
-		//this.ventPpal = ventanaPrincipal;
 		this.vistaEscenario = new VistaEscenario(this.jugador, this.juego);
 		this.initComponents(frame.getContentPane());
 		unJuego.addObserver(this);
-		//frame.setResizable(false);
 		frame.addWindowListener( new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
 				System.exit(0);
@@ -191,11 +191,11 @@ public class VentanaMapa extends JFrame implements Observer, Runnable{
 		Turno unTurno = Turno.getInstance();
 		lblNroTurno.setText(Integer.toString(unTurno.obtenerNumeroTurno()));
 	}
-
+/*
 	public void run() {
 		Sonido unSonido = new Sonido();
 		unSonido.init();
 		unSonido.start();		
 	}
-
+*/
 }

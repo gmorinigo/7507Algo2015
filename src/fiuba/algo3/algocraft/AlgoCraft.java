@@ -1,6 +1,5 @@
 package fiuba.algo3.algocraft;
 
-import fiuba.algo3.algocraft.resources.sounds.Sonido;
 import fiuba.algo3.algocraft.vista.VistaNuevaPartida;
 import fiuba.algo3.algocraft.vista.ventanas.VentanaPrincipal;
 
@@ -17,9 +16,6 @@ public class AlgoCraft {
 	
 	/******************* MAIN  *************************/
 	public static void main(String[] args) {
-		Sonido unSonido = new Sonido();
-		unSonido.init();
-		unSonido.start();
 		@SuppressWarnings("unused")
 		AlgoCraft app = new AlgoCraft();
 	}

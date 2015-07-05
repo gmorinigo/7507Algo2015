@@ -6,17 +6,17 @@ import java.awt.event.MouseListener;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 import fiuba.algo3.algocraft.modelo.unidades.terran.NaveCiencia.TipoAtaqueNaveCiencia;
 
-public class AtacarConEMP implements MouseListener{
+public class AtacarConRadiacionMouseController implements MouseListener{
 
 	private Unidad unidad;
 	
-	public AtacarConEMP(Unidad obtenerUnidad) {
+	public AtacarConRadiacionMouseController(Unidad obtenerUnidad) {
 		this.unidad = obtenerUnidad;
 		
 	}
 
 	public void mouseReleased(MouseEvent arg0) {
-		MapaMouseListener.activarAtaqueNaveCiencia(unidad, TipoAtaqueNaveCiencia.MisilEMP);
+		MapaMouseListener.activarAtaqueNaveCiencia(unidad, TipoAtaqueNaveCiencia.Radiacion);
 	}
 
 	@Override

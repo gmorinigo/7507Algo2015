@@ -8,6 +8,8 @@ import java.util.HashMap;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+
+import fiuba.algo3.algocraft.resources.sounds.Sonido;
 //import fiuba.algo3.algocraft.resources.sounds.Sonido;
 import fiuba.algo3.algocraft.vista.VistaLayout;
 
@@ -16,13 +18,13 @@ public class VentanaPrincipal extends JFrame{
 	private static final long serialVersionUID = 1L;
 	JFrame frame;
  	JPanel paneles;
- 	//private Sonido sonido;
+ 	private Sonido unSonido;
  	private HashMap<String, VistaLayout> vistas;
 	
 	private void initComponents(){
-		/*this.sonido = new Sonido();
-		sonido.init();
-		sonido.start();*/
+		unSonido = new Sonido();
+		unSonido.init();
+		unSonido.start();
 		paneles = new JPanel(new CardLayout());
 		frame.getContentPane().add(paneles);
 		
@@ -42,6 +44,7 @@ public class VentanaPrincipal extends JFrame{
 		frame.setResizable(false);
 		frame.addWindowListener( new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
+				unSonido.stop();
 				System.exit(0);
 			}
 		});

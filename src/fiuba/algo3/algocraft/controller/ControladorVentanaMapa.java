@@ -7,7 +7,6 @@ import java.awt.event.ActionListener;
 
 import fiuba.algo3.algocraft.modelo.AlgoCraft;
 import fiuba.algo3.algocraft.modelo.Jugador;
-import fiuba.algo3.algocraft.resources.sounds.Sonido;
 import fiuba.algo3.algocraft.vista.ventanas.VentanaMapa;
 
 public class ControladorVentanaMapa {
