@@ -182,4 +182,7 @@ public class AltoTemplario extends UnidadProtoss {
 		return "AltoTemplario";
 	}
 
+	public boolean esUnAltoTemplario(){
+		return true;
+	}
 }

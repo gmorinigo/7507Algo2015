@@ -155,5 +155,9 @@ public class NaveCiencia extends UnidadTerran {
 	public String getNombreObjetoDibujable() {
 		return "NaveCiencia";
 	}
+
+	public boolean esUnaNaveCiencia(){
+		return true;
+	}
 	
 }

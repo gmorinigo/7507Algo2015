@@ -4,11 +4,14 @@ package fiuba.algo3.algocraft.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import fiuba.algo3.algocraft.modelo.AlgoCraft;
 import fiuba.algo3.algocraft.modelo.Jugador;
+import fiuba.algo3.algocraft.resources.sounds.Sonido;
 import fiuba.algo3.algocraft.vista.ventanas.VentanaMapa;
 
 public class ControladorVentanaMapa {
+	@SuppressWarnings("unused")
 	private VentanaMapa ventMapa;
 	@SuppressWarnings("unused")
 	private Jugador jugador;
@@ -20,57 +23,6 @@ public class ControladorVentanaMapa {
 		this.juego = juego;
 	}
 
-	private class EscuchaBotonArriba implements ActionListener {
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			
-		}
-		
-	}
-	
-	public ActionListener getListenerButtonArriba() {
-		// TODO Auto-generated method stub
-		return new EscuchaBotonArriba();
-	}
-
-	private class EscuchaBotonAbajo implements ActionListener {
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-
-		}
-		
-	}
-	public ActionListener getListenerButtonAbajo() {
-		// TODO Auto-generated method stub
-		return new EscuchaBotonAbajo();
-	}
-
-	private class EscuchaBotonDer implements ActionListener {
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-		}
-		
-	}
-	public ActionListener getListenerButtonDer() {
-		// TODO Auto-generated method stub
-		return new EscuchaBotonDer();
-	}
-
-	private class EscuchaBotonIzq implements ActionListener {
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-		}
-		
-	}
-	public ActionListener getListenerButtonIzq() {
-		// TODO Auto-generated method stub
-		return new EscuchaBotonIzq();
-	}
-	
 	private class EscuchaBotonPasarTurno implements ActionListener {
 
 		public void actionPerformed(ActionEvent e) {

@@ -73,7 +73,7 @@ public class VistaNuevaPartida extends VistaLayout{
 		nombreJug2TField = new JTextField(20);
 		
 		aceptarButton = new JButton("Aceptar");
-		volverButton = new JButton("Volver");
+		volverButton = new JButton("Salir");
 		
 		add(tituloLabel);
 		add(nombreJug1TField);

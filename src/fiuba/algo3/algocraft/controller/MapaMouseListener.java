@@ -10,6 +10,8 @@ import javax.swing.JPopupMenu;
 import fiuba.algo3.algocraft.modelo.AlgoCraft;
 import fiuba.algo3.algocraft.modelo.JugadorEstado.EstadoDelJugador;
 import fiuba.algo3.algocraft.modelo.construciones.AbstractConstruccionFactory.TipoConstruccion;
+import fiuba.algo3.algocraft.modelo.excepciones.MaximaCapacidadDeTransporteSuperadaException;
+import fiuba.algo3.algocraft.modelo.excepciones.NoSePuedeAgregarALaNaveDeTransporteUnaUnidadVoladora;
 import fiuba.algo3.algocraft.modelo.mapa.Celda;
 import fiuba.algo3.algocraft.modelo.mapa.Mapa;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
@@ -17,6 +19,10 @@ import fiuba.algo3.algocraft.modelo.turnos.Turno;
 import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory.TipoUnidad;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 import fiuba.algo3.algocraft.modelo.unidades.movimientos.Movimiento.TipoDireccion;
+import fiuba.algo3.algocraft.modelo.unidades.protoss.AltoTemplario;
+import fiuba.algo3.algocraft.modelo.unidades.protoss.AltoTemplario.TipoAtaqueAltoTemplario;
+import fiuba.algo3.algocraft.modelo.unidades.terran.NaveCiencia;
+import fiuba.algo3.algocraft.modelo.unidades.terran.NaveCiencia.TipoAtaqueNaveCiencia;
 import fiuba.algo3.algocraft.vista.ventanas.VentanaMapa;
 
 public class MapaMouseListener extends MouseAdapter { 
@@ -25,6 +31,8 @@ public class MapaMouseListener extends MouseAdapter {
 	private AlgoCraft juego;
 	private static boolean ataqueActivado = false;
 	public static Unidad unidad;
+	public static TipoAtaqueAltoTemplario tipoAtaqueAltoTemplario;
+	public static TipoAtaqueNaveCiencia tipoAtaqueNaveCiencia;
 	
     public MapaMouseListener(VentanaMapa ventanaMapa, AlgoCraft juego) {
     	this.ventanaMapa = ventanaMapa;
@@ -55,14 +63,12 @@ public class MapaMouseListener extends MouseAdapter {
 		if (celdaPresionada.tieneUnidad()){
 			if (!unTurno.obtenerJugadorConTurno().esUnidadDelJugador(celdaPresionada.obtenerUnidad())){
 				if (ataqueActivado){
-					this.desactivarAtaque();
-					unidad.atacar(celdaPresionada);
-					this.juego.avisarObservers();
+					this.realizarAtaque(celdaPresionada);
 				}
 				if(celdaPresionada.celdaOcupada()){
-				if(celdaPresionada.obtenerUnidad().getJugador().dameRaza().esRazaProtoss())
-					JOptionPane.showMessageDialog(null,"escudo: "+ celdaPresionada.obtenerUnidad().obtenerCantidadEscudo());
-				JOptionPane.showMessageDialog(null,"vida: "+ celdaPresionada.obtenerUnidad().obtenerCantidadVida());
+					if(celdaPresionada.obtenerUnidad().getJugador().dameRaza().esRazaProtoss())
+						JOptionPane.showMessageDialog(null,"escudo: "+ celdaPresionada.obtenerUnidad().obtenerCantidadEscudo());
+					JOptionPane.showMessageDialog(null,"vida: "+ celdaPresionada.obtenerUnidad().obtenerCantidadVida());
 				}
 				return;
 			}
@@ -165,8 +171,27 @@ public class MapaMouseListener extends MouseAdapter {
 		
 		// Celda con unidad
 		if(celdaPresionada.tieneUnidad()){
-			JMenuItem mitemAtacar = popupMenu.add(String.format("Atacar"));
-			mitemAtacar.addMouseListener(new AtacarMouseListener(celdaPresionada.obtenerUnidad()));
+			if (!celdaPresionada.obtenerUnidad().esUnAltoTemplario() && !celdaPresionada.obtenerUnidad().esUnaNaveCiencia() && !celdaPresionada.obtenerUnidad().esUnaNaveTransporte()){
+				JMenuItem mitemAtacar = popupMenu.add(String.format("Atacar"));
+				mitemAtacar.addMouseListener(new AtacarMouseListener(celdaPresionada.obtenerUnidad()));				
+			}
+
+			if (celdaPresionada.obtenerUnidad().esUnAltoTemplario()){
+				JMenuItem mitemAtacarTormPsio = popupMenu.add(String.format("Atacar con Tormenta Psionica"));
+				mitemAtacarTormPsio.addMouseListener(new AtacarConTormentaPsionicaMouseListener(celdaPresionada.obtenerUnidad()));
+				
+				JMenuItem mitemAtacarAlucinacion = popupMenu.add(String.format("Lanzar Alucinacion"));
+				mitemAtacarAlucinacion.addMouseListener(new AtacarConAlucinacionMouseListener(celdaPresionada.obtenerUnidad()));
+			}
+			
+			if (celdaPresionada.obtenerUnidad().esUnaNaveCiencia()){
+				JMenuItem mitemAtacarEMP = popupMenu.add(String.format("Atacar con EMP"));
+				mitemAtacarEMP.addMouseListener(new AtacarConEMP(celdaPresionada.obtenerUnidad()));
+				
+				JMenuItem mitemAtacarRadiacion = popupMenu.add(String.format("Atacar con Radiacion"));
+				mitemAtacarRadiacion.addMouseListener(new AtacarConRadiacion(celdaPresionada.obtenerUnidad()));
+			}
+			
 			JMenuItem mitemMovimientoArriba = popupMenu.add(String.format("Mover Arriba"));
 			mitemMovimientoArriba.addMouseListener(new MovimientoMouseListener(this.ventanaMapa,this.juego,posicionCeldaPresionada,TipoDireccion.Arriba,celdaPresionada.obtenerUnidad()));
 			JMenuItem mitemMovimientoAbajo = popupMenu.add(String.format("Mover Abajo"));
@@ -188,6 +213,30 @@ public class MapaMouseListener extends MouseAdapter {
 		popupMenu.setEnabled(true);
 		popupMenu.show(arg0.getComponent(), arg0.getX(), arg0.getY());
 			
+	}
+
+
+	private void realizarAtaque(Celda celdaPresionada) {
+		desactivarAtaque();
+		if (unidad.esUnAltoTemplario()){
+			AltoTemplario unAltoTemplario = (AltoTemplario) unidad;
+			try {
+				unAltoTemplario.atacar(celdaPresionada, tipoAtaqueAltoTemplario);
+			} catch (
+					MaximaCapacidadDeTransporteSuperadaException | NoSePuedeAgregarALaNaveDeTransporteUnaUnidadVoladora e) {
+				e.printStackTrace();
+			}
+		}
+		else {
+			if (unidad.esUnaNaveCiencia()){
+				NaveCiencia unaNaveCiencia = (NaveCiencia) unidad;
+				unaNaveCiencia.atacar(celdaPresionada, tipoAtaqueNaveCiencia);
+			}
+			else{
+				unidad.atacar(celdaPresionada);							
+			}
+		}
+		this.juego.avisarObservers();		
 	}
 
 
@@ -259,12 +308,27 @@ public class MapaMouseListener extends MouseAdapter {
 		return new Posicion(((y-30)/30),((x-5)/30));
 	}
 	
-	public static void activarAtaque(){
+	public static void activarAtaque(Unidad unaUnidad){
 		ataqueActivado = true;
+		unidad = unaUnidad;
+	}
+	
+	public static void activarAtaqueAltoTemplario(Unidad unaUnidad, TipoAtaqueAltoTemplario unTipoAtaque){
+		ataqueActivado = true;
+		unidad = unaUnidad;
+		tipoAtaqueAltoTemplario = unTipoAtaque;
+	}
+	
+	public static void activarAtaqueNaveCiencia(Unidad unaUnidad, TipoAtaqueNaveCiencia unTipoAtaque){
+		ataqueActivado = true;
+		unidad = unaUnidad;
+		tipoAtaqueNaveCiencia = unTipoAtaque;
 	}
 	
 	public static void desactivarAtaque(){
 		ataqueActivado = false;
+		tipoAtaqueAltoTemplario = null;
+		tipoAtaqueNaveCiencia = null;
 	}
 
 }

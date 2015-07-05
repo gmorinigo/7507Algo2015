@@ -191,4 +191,12 @@ abstract public class Unidad implements TurnoObserver, Dibujable{
 	public Posicion getPosicion() {
 		return this.dameCelda().obtenerPosicion();
 	}
+	
+	public boolean esUnAltoTemplario(){
+		return false;
+	}
+	
+	public boolean esUnaNaveCiencia(){
+		return false;
+	}
 }

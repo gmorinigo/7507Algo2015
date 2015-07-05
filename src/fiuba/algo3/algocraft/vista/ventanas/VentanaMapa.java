@@ -21,10 +21,11 @@ import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.mapa.Mapa;
 import fiuba.algo3.algocraft.modelo.mapa.MapaFactory;
 import fiuba.algo3.algocraft.modelo.turnos.Turno;
+import fiuba.algo3.algocraft.resources.sounds.Sonido;
 import fiuba.algo3.algocraft.vista.VistaEscenario;
 
 @SuppressWarnings("static-access")
-public class VentanaMapa extends JFrame implements Observer{
+public class VentanaMapa extends JFrame implements Observer, Runnable{
 
 	private static final long serialVersionUID = 1L;
 	JFrame frame;
@@ -53,8 +54,10 @@ public class VentanaMapa extends JFrame implements Observer{
 	private JLabel lblPoblacionTotal;
 	private JButton cambiarTurnoButton;
 	private JLabel lblNroTurno;
+	private Thread unThreadSonido;
 	
 	private void initComponents(Container panel){
+		this.generarSonido();
 		panelTop = new JPanel();
 		panelLeft = new JPanel();
 		panelLeft.setLayout(new BorderLayout());
@@ -129,6 +132,11 @@ public class VentanaMapa extends JFrame implements Observer{
         panel.addMouseListener(new MapaMouseListener(this,this.juego));
 	}
 	
+	private void generarSonido() {
+		unThreadSonido = new Thread(this);
+		unThreadSonido.start();
+	}
+
 	@SuppressWarnings("unused")
 	public VentanaMapa(AlgoCraft unJuego) {
 		MapaFactory unMapaFactory = new MapaFactory();
@@ -168,11 +176,6 @@ public class VentanaMapa extends JFrame implements Observer{
 		return this.vistaEscenario;
 	}
 	
-	/*public VentanaPrincipal getVentanaGUI() {
-		return this.ventPpal;
-	}*/
-
-
 	public void update(Observable arg0, Object arg1) {
 		this.actualizarRecursos();		
 	}
@@ -187,6 +190,12 @@ public class VentanaMapa extends JFrame implements Observer{
 		
 		Turno unTurno = Turno.getInstance();
 		lblNroTurno.setText(Integer.toString(unTurno.obtenerNumeroTurno()));
+	}
+
+	public void run() {
+		Sonido unSonido = new Sonido();
+		unSonido.init();
+		unSonido.start();		
 	}
 
 }

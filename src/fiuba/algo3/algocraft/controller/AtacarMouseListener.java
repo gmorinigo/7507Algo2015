@@ -6,7 +6,6 @@ import java.awt.event.MouseListener;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 
 public class AtacarMouseListener implements MouseListener/*,MouseMotionListener */{
-
 	private Unidad unidad;
 	
 	public AtacarMouseListener(Unidad obtenerUnidad) {
@@ -16,8 +15,7 @@ public class AtacarMouseListener implements MouseListener/*,MouseMotionListener 
 
 	@Override
 	public void mouseReleased(MouseEvent arg0) {
-		MapaMouseListener.activarAtaque();
-		MapaMouseListener.unidad = unidad;
+		MapaMouseListener.activarAtaque(unidad);
 	}
 
 	@Override
@@ -42,20 +40,4 @@ public class AtacarMouseListener implements MouseListener/*,MouseMotionListener 
 		// TODO Auto-generated method stub
 
 	}
-/*
-	@Override
-	public void mouseDragged(MouseEvent arg0) {
-		System.out.println("entre");
-		Mapa mapaDelJuego = Mapa.getInstance();
-		Posicion posicionCeldaPresionada =  MapaMouseListener.convertirPixAPosicionCelda(arg0.getX(),arg0.getY());
-		Celda celdaAtacable = mapaDelJuego.dameCelda(posicionCeldaPresionada);
-		unidad.atacar(celdaAtacable);
-	}
-
-	@Override
-	public void mouseMoved(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-*/
 }
