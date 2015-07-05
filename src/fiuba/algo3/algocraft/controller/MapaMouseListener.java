@@ -217,7 +217,6 @@ public class MapaMouseListener extends MouseAdapter {
 
 
 	private void realizarAtaque(Celda celdaPresionada) {
-		desactivarAtaque();
 		if (unidad.esUnAltoTemplario()){
 			AltoTemplario unAltoTemplario = (AltoTemplario) unidad;
 			try {
@@ -236,7 +235,8 @@ public class MapaMouseListener extends MouseAdapter {
 				unidad.atacar(celdaPresionada);							
 			}
 		}
-		this.juego.avisarObservers();		
+		this.juego.avisarObservers();	
+		desactivarAtaque();
 	}
 
 
