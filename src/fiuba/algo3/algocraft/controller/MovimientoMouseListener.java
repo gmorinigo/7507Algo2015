@@ -2,19 +2,13 @@ package fiuba.algo3.algocraft.controller;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.rmi.NoSuchObjectException;
 
 import javax.swing.JOptionPane;
 
 import fiuba.algo3.algocraft.modelo.AlgoCraft;
-import fiuba.algo3.algocraft.modelo.excepciones.CantidadDeGasInsuficienteException;
-import fiuba.algo3.algocraft.modelo.excepciones.CantidadDeMineralInsuficienteException;
-import fiuba.algo3.algocraft.modelo.excepciones.CapacidadDePoblacionMaximaSuperada;
 import fiuba.algo3.algocraft.modelo.excepciones.MaximaCapacidadDeTransporteSuperadaException;
-import fiuba.algo3.algocraft.modelo.excepciones.NoHaySuficientesRecursos;
 import fiuba.algo3.algocraft.modelo.excepciones.NoSePuedeAgregarALaNaveDeTransporteUnaUnidadVoladora;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
-import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory.TipoUnidad;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 import fiuba.algo3.algocraft.modelo.unidades.movimientos.Movimiento.TipoDireccion;
 import fiuba.algo3.algocraft.vista.ventanas.VentanaMapa;
@@ -22,6 +16,7 @@ import fiuba.algo3.algocraft.vista.ventanas.VentanaMapa;
 public class MovimientoMouseListener implements MouseListener {
 
 	private AlgoCraft juego;
+	@SuppressWarnings("unused")
 	private Posicion posicionCeldaPresionada;
 	private Unidad unidad;
 	private TipoDireccion direccion;

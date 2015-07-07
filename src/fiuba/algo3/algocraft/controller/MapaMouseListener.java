@@ -17,6 +17,7 @@ import fiuba.algo3.algocraft.modelo.mapa.Mapa;
 import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.turnos.Turno;
 import fiuba.algo3.algocraft.modelo.unidades.AbstractUnidadFactory.TipoUnidad;
+import fiuba.algo3.algocraft.modelo.unidades.NaveTransporte;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
 import fiuba.algo3.algocraft.modelo.unidades.movimientos.Movimiento.TipoDireccion;
 import fiuba.algo3.algocraft.modelo.unidades.protoss.AltoTemplario;
@@ -192,6 +193,14 @@ public class MapaMouseListener extends MouseAdapter {
 				mitemAtacarRadiacion.addMouseListener(new AtacarConRadiacionMouseController(celdaPresionada.obtenerUnidad()));
 			}
 			
+			if (celdaPresionada.obtenerUnidad().esUnaNaveTransporte()){
+				NaveTransporte unaNaveTransporte = (NaveTransporte) celdaPresionada.obtenerUnidad();
+				if (unaNaveTransporte.getCapacidadOcupada() > 0){ 
+					JMenuItem mitemDescargarUnidades = popupMenu.add(String.format("Descargar Unidades"));
+					mitemDescargarUnidades.addMouseListener(new DescargarUnidadesMouseListener(celdaPresionada.obtenerUnidad(), this.juego));
+				}
+			}
+			
 			JMenuItem mitemMovimientoArriba = popupMenu.add(String.format("Mover Arriba"));
 			mitemMovimientoArriba.addMouseListener(new MovimientoMouseListener(this.ventanaMapa,this.juego,posicionCeldaPresionada,TipoDireccion.Arriba,celdaPresionada.obtenerUnidad()));
 			JMenuItem mitemMovimientoAbajo = popupMenu.add(String.format("Mover Abajo"));
@@ -297,7 +306,7 @@ public class MapaMouseListener extends MouseAdapter {
 		mitemPoblacion.addMouseListener(new ExpansorPoblacionMouseListener(this.ventanaMapa, this.juego,posicionCeldaPresionada));
 		JMenuItem mitemUnidadesBasicas = popupMenu.add(String.format("Crear Barraca (Creador Unidades Basicas)"));
 		mitemUnidadesBasicas.addMouseListener(new CreadorUnidadesBasicasMouseListener(this.ventanaMapa, this.juego,posicionCeldaPresionada));
-		JMenuItem mitemFabrica = popupMenu.add(String.format("Crear Fabrica (Creador unidades voladoras y Especiales)"));
+		JMenuItem mitemFabrica = popupMenu.add(String.format("Crear Fabrica (Creador Unidades Nivel 2)"));
 		mitemFabrica.addMouseListener(new FabricaMouseListener(this.ventanaMapa, this.juego,posicionCeldaPresionada));
 		JMenuItem mitemUnidadesVoladoras = popupMenu.add(String.format("Crear Puerto Estelar (Creador unidades voladoras y Especiales)"));
 		mitemUnidadesVoladoras.addMouseListener(new CreadorUnidadesVoladorasMouseListener(this.ventanaMapa, this.juego,posicionCeldaPresionada));

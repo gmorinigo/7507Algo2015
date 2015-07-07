@@ -297,7 +297,7 @@ public abstract class Celda implements Dibujable {
 				nuevaCelda = mapaDelJuego.dameCelda(new Posicion(nuevaCelda.posicion.dameFila()+1,nuevaCelda.posicion.dameColumna()));				
 			}
 			else{
-				unaUnidad.setCelda(nuevaCelda);
+				nuevaCelda.agregarUnidadNormal(unaUnidad);
 				unidadBajada = true;
 			}
 		}
