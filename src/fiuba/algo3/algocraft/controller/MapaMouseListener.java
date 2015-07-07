@@ -41,7 +41,8 @@ public class MapaMouseListener extends MouseAdapter {
 	}
     
     
-	@SuppressWarnings({ "static-access", "unused" })
+
+	@SuppressWarnings("static-access")
 	public void mouseReleased(MouseEvent arg0) {
 		//System.out.println("x" + arg0.getX());
 		//System.out.println("y" + arg0.getY());
@@ -60,11 +61,32 @@ public class MapaMouseListener extends MouseAdapter {
 			JOptionPane.showMessageDialog(null,"Felicitaciones!! Ganador: " + juego.dameElJugadorDelTurno().dameNombre());
 		}	
 		
+		// Celda con unidad amiga veo si el ataque es alucinacion y lanzo el ataque
+		if (celdaPresionada.tieneUnidad()){
+			if (unTurno.obtenerJugadorConTurno().esUnidadDelJugador(celdaPresionada.obtenerUnidad()) && ataqueActivado){
+				if ((unidad.esUnAltoTemplario() && (tipoAtaqueAltoTemplario == tipoAtaqueAltoTemplario.Alucinacion))){
+					AltoTemplario unAltoTemplario = (AltoTemplario) unidad;
+					try {
+						unAltoTemplario.atacar(celdaPresionada, tipoAtaqueAltoTemplario);
+					} catch (
+							MaximaCapacidadDeTransporteSuperadaException | NoSePuedeAgregarALaNaveDeTransporteUnaUnidadVoladora e) {
+						e.printStackTrace();
+					}
+					this.desactivarAtaque();
+					this.juego.avisarObservers();
+					return;
+				}
+
+			}
+		}
+		
 		// Celda con unidad enemiga
 		if (celdaPresionada.tieneUnidad()){
 			if (!unTurno.obtenerJugadorConTurno().esUnidadDelJugador(celdaPresionada.obtenerUnidad())){
 				if (ataqueActivado){
-					this.realizarAtaque(celdaPresionada);
+					if (tipoAtaqueAltoTemplario != tipoAtaqueAltoTemplario.Alucinacion){
+						this.realizarAtaque(celdaPresionada);
+					}
 				}
 				if(celdaPresionada.celdaOcupada()){
 					if(celdaPresionada.obtenerUnidad().getJugador().dameRaza().esRazaProtoss())
@@ -79,7 +101,7 @@ public class MapaMouseListener extends MouseAdapter {
 		if (celdaPresionada.tieneConstruccion()){
 			if (!unTurno.obtenerJugadorConTurno().esConstruccionDelJugador(celdaPresionada.obtenerConstruccion())){
 				if (ataqueActivado){
-					System.out.println("entre atacar");
+					//System.out.println("entre atacar");
 					unidad.atacar(celdaPresionada);
 					this.desactivarAtaque();
 				}
@@ -146,10 +168,10 @@ public class MapaMouseListener extends MouseAdapter {
 		}	
 		
 		//Celda aerea con unidad
-		if (celdaPresionada.esCeldaAerea() && celdaPresionada.tieneUnidad()){
+		/*if (celdaPresionada.esCeldaAerea() && celdaPresionada.tieneUnidad()){
 			JMenuItem mitemUnidadAerea = popupMenu.add(String.format("Tiene una unidad aerea"));
 		}
-		
+		*/
 		// Celda Libre
 		if (!celdaPresionada.tieneGas() && !celdaPresionada.tieneMineral() && !celdaPresionada.esCeldaAerea() && !celdaPresionada.celdaOcupada()){ 
 			if (unTurno.obtenerJugadorConTurno().dameRaza().esRazaProtoss()){
