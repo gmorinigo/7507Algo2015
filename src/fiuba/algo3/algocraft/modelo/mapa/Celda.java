@@ -288,19 +288,23 @@ public abstract class Celda implements Dibujable {
 
 
 	public void bajarDeLaNaveDeTransporte(Unidad unaUnidad) {
-		Mapa mapaDelJuego = Mapa.getInstance();
-		boolean unidadBajada = false;
-		
-		while(!unidadBajada){
-			Celda nuevaCelda = mapaDelJuego.dameCelda(new Posicion(this.posicion.dameFila()+1,this.posicion.dameColumna()));
-			if (nuevaCelda.estaOcupada || !nuevaCelda.esCeldaTerrestre()){
-				nuevaCelda = mapaDelJuego.dameCelda(new Posicion(nuevaCelda.posicion.dameFila()+1,nuevaCelda.posicion.dameColumna()));				
-			}
-			else{
-				nuevaCelda.agregarUnidadNormal(unaUnidad);
-				unidadBajada = true;
-			}
+		Mapa mapa = Mapa.getInstance();
+		Posicion posicionOcupada = new Posicion(this.obtenerPosicion().dameFila(),this.obtenerPosicion().dameColumna());
+		Celda unaCelda = mapa.dameCelda(posicionOcupada);
+		Posicion posNueva;
+		int fil = 1;
+		while ((unaCelda.celdaOcupada()) || (unaCelda.esCeldaAerea())  || (unaCelda.tieneGas()) || (unaCelda.tieneMineral())){
+	        posNueva = new Posicion(posicionOcupada.dameFila()-fil,posicionOcupada.dameColumna());
+	        try{
+	        	unaCelda = mapa.dameCelda(posNueva);
+	        }
+	        catch(ArrayIndexOutOfBoundsException e){
+	        	fil = -1;
+	        	posNueva = new Posicion(posicionOcupada.dameFila()+1,posicionOcupada.dameColumna());
+	        }
+			posicionOcupada = posNueva;
 		}
+		unaCelda.agregarUnidadNormal(unaUnidad);
 	}
 
 
