@@ -77,4 +77,13 @@ public class NaveTransporteProtoss extends NaveTransporte {
 		return "NaveTransporteProtoss";
 	}
 
+	protected void vivir() {
+		this.estado = new UnidadEstadoViviendo(this);
+	}
+
+	public int obtenerCantidadEscudo() {
+		SaludProtoss unaSalud = (SaludProtoss) this.salud;
+		return unaSalud.valorEscudo();
+	}
+
 }

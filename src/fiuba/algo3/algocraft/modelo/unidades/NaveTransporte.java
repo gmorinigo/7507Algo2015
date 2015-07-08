@@ -8,7 +8,7 @@ import fiuba.algo3.algocraft.modelo.excepciones.MaximaCapacidadDeTransporteSuper
 import fiuba.algo3.algocraft.modelo.excepciones.NoSePuedeAgregarALaNaveDeTransporteUnaUnidadVoladora;
 import fiuba.algo3.algocraft.modelo.unidades.movimientos.Movimiento.TipoDireccion;
 
-public abstract class NaveTransporte extends UnidadTerran {
+public abstract class NaveTransporte extends Unidad {
 	private ArrayList<Unidad> unidadesCargadas;
 	private int capacidadCargada;
 	private int capacidadMaximaCarga;

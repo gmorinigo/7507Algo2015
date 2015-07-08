@@ -7,6 +7,7 @@ import fiuba.algo3.algocraft.modelo.mapa.Posicion;
 import fiuba.algo3.algocraft.modelo.unidades.NaveTransporte;
 import fiuba.algo3.algocraft.modelo.unidades.Salud;
 import fiuba.algo3.algocraft.modelo.unidades.Unidad;
+import fiuba.algo3.algocraft.modelo.unidades.UnidadEstadoViviendo;
 
 public class NaveTransporteTerran extends NaveTransporte {
 
@@ -66,6 +67,18 @@ public class NaveTransporteTerran extends NaveTransporte {
 
 	public String getNombreObjetoDibujable() {
 		return "NaveTransporteTerran";
+	}
+
+	protected void vivir() {
+		this.estado = new UnidadEstadoViviendo(this);
+	}
+
+	public Unidad crearAlucinacion() {
+		return null;
+	}
+
+	public int obtenerCantidadEscudo() {
+		return 0;
 	}
 
 }
