@@ -2,6 +2,7 @@ package fiuba.algo3.algocraft.modelo.unidades;
 
 import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.construciones.Construccion;
+import fiuba.algo3.algocraft.modelo.excepciones.ArrayIndezOutOfBoundsException;
 import fiuba.algo3.algocraft.modelo.excepciones.MaximaCapacidadDeTransporteSuperadaException;
 import fiuba.algo3.algocraft.modelo.excepciones.NoSePuedeAgregarALaNaveDeTransporteUnaUnidadVoladora;
 import fiuba.algo3.algocraft.modelo.mapa.Celda;
@@ -58,9 +59,16 @@ abstract public class Unidad implements TurnoObserver, Dibujable{
 		Mapa mapa = Mapa.getInstance();
 		Celda unaCelda = mapa.dameCelda(posicionOcupada);
 		Posicion posNueva;
-		while (unaCelda.celdaOcupada()){
-	        posNueva = new Posicion(posicionOcupada.dameFila(),posicionOcupada.dameColumna()-1);
-			unaCelda = mapa.dameCelda(posNueva);
+		int col = 1;
+		while ((unaCelda.celdaOcupada()) || (unaCelda.esCeldaAerea())  || (unaCelda.tieneGas()) || (unaCelda.tieneMineral())){
+	        posNueva = new Posicion(posicionOcupada.dameFila(),posicionOcupada.dameColumna()-col);
+	        try{
+	        	unaCelda = mapa.dameCelda(posNueva);
+	        }
+	        catch(ArrayIndexOutOfBoundsException e){
+	        	col = -1;
+	        	posNueva = new Posicion(posicionOcupada.dameFila(),posicionOcupada.dameColumna()+1);
+	        }
 			posicionOcupada = posNueva;
 			//System.out.println("buscando celda libre " + posNueva.dameFila() + " " + posNueva.dameColumna() );
 		}
