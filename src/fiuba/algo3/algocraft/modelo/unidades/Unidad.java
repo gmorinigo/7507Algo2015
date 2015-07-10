@@ -2,7 +2,6 @@ package fiuba.algo3.algocraft.modelo.unidades;
 
 import fiuba.algo3.algocraft.modelo.Jugador;
 import fiuba.algo3.algocraft.modelo.construciones.Construccion;
-import fiuba.algo3.algocraft.modelo.excepciones.ArrayIndezOutOfBoundsException;
 import fiuba.algo3.algocraft.modelo.excepciones.MaximaCapacidadDeTransporteSuperadaException;
 import fiuba.algo3.algocraft.modelo.excepciones.NoSePuedeAgregarALaNaveDeTransporteUnaUnidadVoladora;
 import fiuba.algo3.algocraft.modelo.mapa.Celda;

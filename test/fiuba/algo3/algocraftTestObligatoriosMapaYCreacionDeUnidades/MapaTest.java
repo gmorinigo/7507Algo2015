@@ -305,7 +305,7 @@ public class MapaTest extends TestBase {
 		assertEquals(unaNaveDeTransporte.dameCelda().obtenerPosicion().dameColumna(),120);
 		
 		unaNaveDeTransporte.descargarUnidades();
-		assertEquals(unMarine.dameCelda().obtenerPosicion().dameFila(),20);
+		assertEquals(unMarine.dameCelda().obtenerPosicion().dameFila(),18);
 		assertEquals(unMarine.dameCelda().obtenerPosicion().dameColumna(),120);
 		
 	}

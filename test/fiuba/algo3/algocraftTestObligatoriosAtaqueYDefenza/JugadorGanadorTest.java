@@ -83,7 +83,7 @@ public class JugadorGanadorTest extends TestBase{
 		assertTrue(unaUnidad.estaOperativa());
 		assertTrue(otraUnidad.estaOperativa());
 
-		System.out.println(otroJugador.dameCantidadPoblacion());
+		//System.out.println(otroJugador.dameCantidadPoblacion());
 		
 		mapa.agregarUnidad(new Posicion(4,4), unaUnidad);
 		mapa.agregarUnidad(new Posicion(5,5), otraUnidad);
@@ -93,8 +93,8 @@ public class JugadorGanadorTest extends TestBase{
 			unTurno.avanzarTurno();
 		}
 		
-		System.out.println(otraUnidad.obtenerCantidadVida());
-		System.out.println(otroJugador.dameCantidadPoblacion());
+		//System.out.println(otraUnidad.obtenerCantidadVida());
+		//System.out.println(otroJugador.dameCantidadPoblacion());
 		
 		assertTrue(mapa.agregarUnidad(new Posicion(16,6), unaUnidad));
 		
@@ -103,7 +103,7 @@ public class JugadorGanadorTest extends TestBase{
 			unTurno.avanzarTurno();	
 		}
 		
-		System.out.println(otraConstruccion.obtenerCantidadVida());
+		//System.out.println(otraConstruccion.obtenerCantidadVida());
 	}
 		
 }
